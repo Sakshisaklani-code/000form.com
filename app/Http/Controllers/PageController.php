@@ -34,4 +34,15 @@ class PageController extends Controller
     {
         return view('pages.ajax');
     }
+
+    public function terms()
+    {
+        return view('pages.terms');
+    }
+
+    public function privacyPolicy()
+    {
+        return view('pages.privacy-policy');
+    }
+
 }

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="description" content="000form - Free form backend for your websites. No server required.">
-    <title>@yield('title', '000form - Free Form Backend')</title>
+    <title><?php echo $__env->yieldContent('title', '000form - Free Form Backend'); ?></title>
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('images/favicon/000formFavicon.png') }}" type="image/svg+xml">
+    <link rel="icon" href="<?php echo e(asset('images/favicon/000formFavicon.png')); ?>" type="image/svg+xml">
     <!-- Canonical Tag --> 
     <link rel="canonical" href="https://000form.com/" />
     <!-- Keywords --> 
@@ -22,13 +22,13 @@
     <meta property="og:description" content="Easily create and manage forms with 000Forms, a Laravel-powered solution." /> 
     <meta property="og:type" content="website" /> 
     <meta property="og:url" content="https://000form.com/" /> 
-    <meta property="og:image" content="{{ asset('images/og-image/og-image.jpg') }}" /> 
+    <meta property="og:image" content="<?php echo e(asset('images/og-image/og-image.jpg')); ?>" /> 
     <meta property="og:site_name" content="000Forms" />
     <!-- Index and follow for SEO -->
     <meta name="robots" content="index, follow">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
-    @stack('styles')
+    <?php echo $__env->yieldPushContent('styles'); ?>
     <style>
         /* Mobile menu styles */
         .mobile-menu-toggle {
@@ -128,7 +128,7 @@
     <nav class="nav">
         <div class="nav-inner">
             <a href="/" class="nav-logo">
-                <img src="{{ asset('images/logo/000formlogo.png') }}" alt="000form Logo">
+                <img src="<?php echo e(asset('images/logo/000formlogo.png')); ?>" alt="000form Logo">
             </a>
             
             <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
@@ -138,23 +138,23 @@
             </button>
             
             <ul class="nav-links" id="navLinks">
-                <li><a href="{{ route('docs') }}">Documentation</a></li>
-                <li><a href="{{ route('pricing') }}">Pricing</a></li>
-                <li><a href="{{ route('Home.library') }}">Library</a></li>
+                <li><a href="<?php echo e(route('docs')); ?>">Documentation</a></li>
+                <li><a href="<?php echo e(route('pricing')); ?>">Pricing</a></li>
+                <li><a href="<?php echo e(route('Home.library')); ?>">Library</a></li>
             </ul>
             
             <div class="nav-actions" id="navActions">
-                @auth
-                    <a href="{{ route('dashboard') }}" class="btn btn-primary">Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}" class="btn btn-ghost">Login</a>
-                    <a href="{{ route('signup') }}" class="btn btn-primary">Get Started</a>
-                @endauth
+                <?php if(auth()->guard()->check()): ?>
+                    <a href="<?php echo e(route('dashboard')); ?>" class="btn btn-primary">Dashboard</a>
+                <?php else: ?>
+                    <a href="<?php echo e(route('login')); ?>" class="btn btn-ghost">Login</a>
+                    <a href="<?php echo e(route('signup')); ?>" class="btn btn-primary">Get Started</a>
+                <?php endif; ?>
             </div>
         </div>
     </nav>
 
-    @yield('content')
+    <?php echo $__env->yieldContent('content'); ?>
     
     <footer class="footer">
         <div class="container">
@@ -162,10 +162,10 @@
                 <div class="nav-logo"><span>000</span>form</div>
                 <ul class="footer-links">
                     <li><a href="/ajax">AJAX</a></li>
-                    <li><a href="{{ route('playground.index') }}">Playground</a></li>
+                    <li><a href="<?php echo e(route('playground.index')); ?>">Playground</a></li>
                     <!-- <li><a href="mailto:support@000form.com">Support</a></li> -->
                 </ul>
-                <p class="footer-copy">&copy; {{ date('Y') }} 000form</p>
+                <p class="footer-copy">&copy; <?php echo e(date('Y')); ?> 000form</p>
             </div>
         </div>
     </footer>
@@ -191,6 +191,6 @@
             }
         });
     </script>
-    @stack('scripts')
+    <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>
-</html>
+</html><?php /**PATH C:\Git-folders\000form.com\resources\views/layouts/app.blade.php ENDPATH**/ ?>
