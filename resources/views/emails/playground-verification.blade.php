@@ -92,7 +92,6 @@
             as a form submission recipient on the <strong style="color:#fafafa;">{{ $appName }} Playground</strong>.
             Click the button below to confirm you own this address.
         </p>
-        <div class="expiry">⏱ This link expires in 15 minutes.</div>
         <a href="{{ $verifyUrl }}" class="btn">Verify My Email</a>
         <p style="font-size:0.82rem; color:#555;">
             Or copy and paste this URL into your browser:
