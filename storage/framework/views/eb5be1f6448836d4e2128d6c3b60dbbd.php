@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Plans & Pricing - 000form'); ?>
 
-@section('title', 'Plans & Pricing - 000form')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <style>
 /* ============================================
@@ -718,7 +716,7 @@
 <div class="pp">
 <div class="pp-wrap">
 
-    {{-- HEADER --}}
+    
     <div class="pp-head">
         <h1>000form <em>Plans</em></h1>
         <p>We offers plans for every project, from personal sites to client work.</p>
@@ -731,10 +729,10 @@
         </div>
     </div>
 
-    {{-- PLANS --}}
+    
     <div class="pp-grid">
 
-        {{-- FREE --}}
+        
         <div class="pp-plan">
             <span class="pp-plan-badge free">Free</span>
             <div class="pp-price">
@@ -743,7 +741,7 @@
                 <span class="per">/month</span>
             </div>
             <p class="pp-plan-desc">Perfect for side projects and getting started.</p>
-            <a href="{{ route('signup') }}" class="pp-cta pp-cta-outline">Start free →</a>
+            <a href="<?php echo e(route('signup')); ?>" class="pp-cta pp-cta-outline">Start free →</a>
             <hr class="pp-divider">
             <span class="pp-feat-label">Includes</span>
             <ul class="pp-feats">
@@ -770,7 +768,7 @@
             </ul>
         </div>
 
-        {{-- PRO --}}
+        
         <div class="pp-plan featured">
             <div class="pp-pop-badge">Most Popular</div>
             <span class="pp-plan-badge pro">Pro</span>
@@ -780,7 +778,7 @@
                 <span class="per">/month</span>
             </div>
             <p class="pp-plan-desc">For developers who need power & flexibility.</p>
-            <a href="{{ route('signup') }}" class="pp-cta pp-cta-solid">Start 14-day trial →</a>
+            <a href="<?php echo e(route('signup')); ?>" class="pp-cta pp-cta-solid">Start 14-day trial →</a>
             <hr class="pp-divider">
             <span class="pp-feat-label">Everything in Free, plus</span>
             <ul class="pp-feats">
@@ -807,7 +805,7 @@
             </ul>
         </div>
 
-        {{-- TEAM --}}
+        
         <div class="pp-plan">
             <span class="pp-plan-badge team">Team</span>
             <div class="pp-price">
@@ -843,9 +841,9 @@
             </ul>
         </div>
 
-    </div>{{-- /pp-grid --}}
+    </div>
 
-    {{-- Add the missing FAQ and Enterprise sections here if needed --}}
+    
 
 </div>
 </div>
@@ -880,4 +878,5 @@
 })();
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/pricing.blade.php ENDPATH**/ ?>
