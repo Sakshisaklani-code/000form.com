@@ -218,3 +218,7 @@ Route::get('/Scholarship-Application-forms', [LibraryController::class, 'Scholar
 Route::get('/Vendor-Application-forms',      [LibraryController::class, 'VendorApplicationForm'])->name('Home.library.VendorApplicationForm');
 Route::get('/Internship-Application-forms',  [LibraryController::class, 'InternshipApplicationForm'])->name('Home.library.InternshipApplicationForm');
 
+
+
+Route::get('/privacy',                       [PageController::class, 'privacyPolicy'])->name('pages.privacy-policy');
+Route::get('/terms',             [PageController::class, 'terms'])->name('pages.terms');
