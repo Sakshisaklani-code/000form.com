@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Services\SupabaseAuthService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -19,19 +20,18 @@ class AuthController extends Controller
 
     /**
      * Show login page.
-     */
+    */
     public function showLogin()
     {
         if (Auth::check()) {
             return redirect()->route('dashboard');
         }
-
         return view('auth.login');
     }
 
     /**
      * Show signup page.
-     */
+    */
     public function showSignup()
     {
         if (Auth::check()) {
@@ -47,11 +47,10 @@ class AuthController extends Controller
     public function signup(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|max:255',
+            'email'    => 'required|email|max:255',
             'password' => 'required|min:8|confirmed',
         ]);
 
-        // Check if user already exists in your database
         $existingUser = User::where('email', $request->input('email'))->first();
         if ($existingUser) {
             return back()
@@ -70,35 +69,18 @@ class AuthController extends Controller
                 ->withErrors(['email' => $result['error']]);
         }
 
-        // Additional check: if Supabase returns a user but no session and no confirmation needed,
-        // it might be an existing user
-        if (isset($result['data']['user']) && 
-            empty($result['data']['session']) && 
-            !isset($result['data']['user']['confirmation_sent_at'])) {
-            return back()
-                ->withInput($request->only('email'))
-                ->withErrors(['email' => 'An account with this email already exists. Please login instead.']);
-        }
-
-        // Check if email confirmation is required
-        if (isset($result['data']['user']) && empty($result['data']['session'])) {
+        if (isset($result['data']['user'])) {
             return redirect()->route('login')
                 ->with('message', 'Please check your email to confirm your account.');
         }
 
-        // Auto-login if no confirmation required
-        if (isset($result['data']['session'])) {
-            $this->storeSession($result['data']);
-            return redirect()->route('dashboard');
-        }
-
         return redirect()->route('login')
-            ->with('message', 'Account created! Please check your email to verify.');
+            ->with('message', 'Your account has been created. Kindly verify your email to activate it.');
     }
 
     /**
      * Handle email/password login.
-     */
+    */
     public function login(Request $request)
     {
         $request->validate([
@@ -124,7 +106,7 @@ class AuthController extends Controller
 
     /**
      * Handle logout.
-     */
+    */
     public function logout(Request $request)
     {
         $accessToken = Session::get('supabase_access_token');
@@ -142,7 +124,7 @@ class AuthController extends Controller
 
     /**
      * Show forgot password page.
-     */
+    */
     public function showForgotPassword()
     {
         return view('auth.forgot-password');
@@ -150,7 +132,7 @@ class AuthController extends Controller
 
     /**
      * Send password reset email.
-     */
+    */
     public function sendResetLink(Request $request)
     {
         $request->validate([
@@ -165,7 +147,7 @@ class AuthController extends Controller
 
     /**
      * Show reset password form (linked from email).
-     */
+    */
     public function showResetForm()
     {
         return view('auth.reset-password');
@@ -173,7 +155,7 @@ class AuthController extends Controller
 
     /**
      * Handle password reset submission.
-     */
+    */
     public function resetPassword(Request $request)
     {
         $request->validate([
@@ -196,7 +178,7 @@ class AuthController extends Controller
 
     /**
      * Store Supabase session data.
-     */
+    */
     protected function storeSession(array $data): void
     {
         if (isset($data['session'])) {
@@ -212,4 +194,64 @@ class AuthController extends Controller
             Auth::login($user);
         }
     }
+
+    /**
+     * Signup Email Verification.
+    */
+    public function confirmEmail(Request $request)
+    {
+        $tokenHash = $request->query('token_hash');
+        $type = $request->query('type');
+
+        $result = $this->supabase->verifyEmailToken($tokenHash, $type);
+
+        if (!$result['success']) {
+            return view('pages.signup-confirmed', [
+                'success' => false,
+                'message' => 'Verification failed or link expired.',
+                'email' => null
+            ]);
+        }
+
+        $this->storeSession($result['data']);
+
+        return view('pages.signup-confirmed', [
+            'success' => true,
+            'message' => 'Your email has been verified successfully.',
+            'email' => $result['data']['user']['email'] ?? null
+        ]);
+    }
+
+    /**
+     * Signup Email Verification Expired Notice.
+    */
+    public function verificationExpired()
+    {
+        return view('auth.verification-expired');
+    }
+
+    /**
+     * Resend Signup Email Verification Email.
+    */
+    public function resendVerificationEmail(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
+        $response = Http::withHeaders([
+            'apikey' => config('services.supabase.key'),
+            'Content-Type' => 'application/json'
+        ])->post(config('services.supabase.url') . '/auth/v1/resend', [
+            'type' => 'signup',
+            'email' => $request->email
+        ]);
+
+        if ($response->successful()) {
+            return back()->with('success', 'Verification email sent successfully.');
+        }
+
+        return back()->withErrors(['error' => 'Unable to resend verification email.']);
+    }
+
 }

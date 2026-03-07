@@ -60,24 +60,14 @@
                             Copy
                         </button>
                     </div>
-                    <textarea id="htmlEditor" class="code-editor" spellcheck="false">&lt;!-- Paste this anywhere — replace YOUR@EMAIL.COM with your verified email --&gt;
-&lt;form action="{{ config('app.url') }}/f/YOUR@EMAIL.COM" method="POST" class="preview-form"&gt;
-
-    &lt;div class="form-row"&gt;
-        &lt;div class="col"&gt;
-            &lt;input type="text" name="name" placeholder="Full Name" required&gt;
-        &lt;/div&gt;
-        &lt;div class="col"&gt;
-            &lt;input type="email" name="email" placeholder="Email Address" required&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;div class="form-group"&gt;
-        &lt;textarea name="message" placeholder="Your Message" rows="6" required&gt;&lt;/textarea&gt;
-    &lt;/div&gt;
-
-    &lt;button type="submit" class="submit-btn"&gt;Submit Form&lt;/button&gt;
-
+                    <textarea id="htmlEditor" class="code-editor" spellcheck="false">&lt;form action="{{ config('app.url') }}/f/YOUR@EMAIL.COM" method="POST"&gt;
+    &lt;input type="text" name="name" placeholder="Your name" required&gt;
+    &lt;input type="email" name="email" placeholder="Your email" required&gt;
+    &lt;textarea name="message" placeholder="Your message" required&gt;&lt;/textarea&gt;
+    
+    &lt;input type="hidden" name="_captcha" value="false"&gt;
+    
+    &lt;button type="submit"&gt;Send Message&lt;/button&gt;
 &lt;/form&gt;</textarea>
                 </div>
 
@@ -93,107 +83,46 @@
                             Copy
                         </button>
                     </div>
-                    <textarea id="cssEditor" class="code-editor" spellcheck="false">.preview-form {
-    max-width: 100%;
+                    <textarea id="cssEditor" class="code-editor" spellcheck="false">form {
+    max-width: 500px;
+    margin: 0 auto;
     font-family: sans-serif;
 }
 
-/* Two-column row */
-.form-row {
-    display: flex;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-}
-
-.form-row .col {
-    flex: 1;
-    min-width: 0;
-}
-
-.form-group {
-    margin-bottom: 1rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.4rem;
-    font-weight: 500;
-    color: #e5e7eb;
-    font-size: 0.9rem;
-}
-
-.form-row input,
-.form-group input,
-.form-group textarea,
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="url"],
-textarea {
+input, textarea {
     width: 100%;
-    padding: 0.65rem 0.9rem;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
     border: 1px solid #2d2d2d;
     border-radius: 6px;
-    font-size: 0.9rem;
     background: #1a1a1a;
     color: #ffffff;
+    font-size: 1rem;
     transition: border-color 0.2s;
-    box-sizing: border-box;
 }
 
-.form-row input:focus,
-.form-group input:focus,
-.form-group textarea:focus,
-input:focus,
-textarea:focus {
+input:focus, textarea:focus {
     outline: none;
     border-color: #00ff88;
     box-shadow: 0 0 0 3px rgba(0,255,136,0.1);
 }
 
-input::placeholder,
-textarea::placeholder {
-    color: #555;
-}
-
-textarea {
-    resize: vertical;
-}
-
-select {
+button[type="submit"] {
     width: 100%;
-    padding: 0.65rem 0.9rem;
-    border: 1px solid #2d2d2d;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    background: #1a1a1a;
-    color: #ffffff;
-    box-sizing: border-box;
-}
-
-button[type="submit"],
-.submit-btn {
+    padding: 0.75rem;
     background: #00ff88;
     color: #050505;
     border: none;
-    padding: 0.75rem 1.25rem;
-    font-size: 0.95rem;
-    font-weight: 600;
     border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    width: 100%;
     transition: all 0.2s;
-    margin-top: 0.5rem;
 }
 
-button[type="submit"]:hover,
-.submit-btn:hover {
+button[type="submit"]:hover {
     background: #00cc6a;
     transform: translateY(-1px);
-}
-
-@media (max-width: 480px) {
-    .form-row { flex-direction: column; gap: 0.5rem; }
 }</textarea>
                 </div>
             </div>
@@ -227,6 +156,19 @@ button[type="submit"]:hover,
                             <button class="verify-btn" id="verifyEmailBtn">Verify</button>
                         </div>
                         <div id="emailStatus" class="email-status"></div>
+                        
+                        {{-- Captcha info box - similar to dashboard --}}
+                        <div class="captcha-info-box" style="margin-top:1rem;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                            <div>
+                                <p style="margin:0;font-size:0.82rem;">
+                                    <strong>Google CAPTCHA is Disabled!</strong>
+                                    To Enable, comment: <code style="background:rgba(0,0,0,0.08);padding:0.1rem 0.4rem;border-radius:4px;">&lt;input type="hidden" name="_captcha" value="false"&gt;</code>
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
                     {{-- Dynamic Form Preview --}}
@@ -255,16 +197,19 @@ button[type="submit"]:hover,
                 </div>
                 <div class="how-step">
                     <span class="step-num">2</span>
-                    <span>Edit the HTML (and CSS) on the left to design your form</span>
+                    <span>Edit the HTML on the left to design your form</span>
                 </div>
                 <div class="how-step">
                     <span class="step-num">3</span>
-                    <span>Fill in and submit the preview form on the right</span>
+                    <span>Fill in and submit the preview form — you'll be redirected to a captcha page</span>
                 </div>
                 <div class="how-step">
                     <span class="step-num">4</span>
-                    <span>Submission details land in your inbox</span>
+                    <span>After captcha verification, submission lands in your inbox</span>
                 </div>
+            </div>
+            <div style="margin-top:0.75rem;font-size:0.8rem;color:var(--text-muted);">
+                <strong>Note:</strong> The captcha page appears <em>after</em> form submission, not in the form itself.
             </div>
         </div>
 
@@ -277,7 +222,6 @@ button[type="submit"]:hover,
 
 @push('styles')
 <style>
-
 /* ============================================
    Playground Page — uses global CSS variables
    ============================================ */
@@ -605,6 +549,38 @@ button[type="submit"]:hover,
     color: var(--error);
 }
 
+/* ---- Captcha info box (like dashboard) ---- */
+.captcha-info-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.9rem 1.1rem;
+    background: rgba(65,66,101,0.07);
+    border: 1px solid rgba(65,66,101,0.18);
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.captcha-info-box svg { 
+    color: #414265; 
+    flex-shrink: 0; 
+    margin-top: 1px; 
+}
+
+.captcha-info-box p { 
+    margin: 0; 
+    font-size: 0.82rem; 
+    color: var(--text-muted); 
+    line-height: 1.5; 
+}
+
+.captcha-info-box code {
+    background: rgba(0,0,0,0.08);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
 /* ---- Form Preview Content ---- */
 .preview-content {
     flex: 1;
@@ -616,62 +592,53 @@ button[type="submit"]:hover,
 }
 
 /* ---- Injected Form Styles ---- */
-.preview-content .preview-form { max-width: 100%; }
-.preview-content .form-group { margin-bottom: 1.1rem; }
-.preview-content .form-group label {
-    display: block;
-    margin-bottom: 0.35rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+.preview-content form {
+    max-width: 100%;
 }
-.preview-content .form-group input,
-.preview-content .form-group textarea {
+.preview-content input,
+.preview-content textarea {
     width: 100%;
     padding: 0.6rem 0.85rem;
+    margin-bottom: 1rem;
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    font-size: 0.9rem;
     background: var(--bg-tertiary);
     color: var(--text-primary);
-    font-family: var(--font-display);
+    font-size: 0.9rem;
     transition: all 0.2s;
 }
-.preview-content .form-group input:focus,
-.preview-content .form-group textarea:focus {
+.preview-content input:focus,
+.preview-content textarea:focus {
     outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-glow);
 }
-.preview-content .form-group input::placeholder,
-.preview-content .form-group textarea::placeholder { color: var(--text-muted); }
-.preview-content .submit-btn {
+.preview-content button[type="submit"] {
+    width: 100%;
+    padding: 0.7rem 1.25rem;
     background: var(--accent);
     color: var(--bg-primary);
     border: none;
-    padding: 0.7rem 1.25rem;
+    border-radius: 6px;
     font-size: 0.9rem;
     font-weight: 600;
-    border-radius: 6px;
     cursor: pointer;
-    width: 100%;
-    font-family: var(--font-display);
     transition: all 0.2s ease;
 }
-.preview-content .submit-btn:hover {
+.preview-content button[type="submit"]:hover {
     background: var(--text-primary);
     transform: translateY(-1px);
 }
-.preview-content .submit-btn:disabled {
+.preview-content button[type="submit"]:disabled {
     opacity: 0.5;
     cursor: not-allowed;
     transform: none;
 }
-.preview-content .submit-btn.loading {
+.preview-content button[type="submit"].loading {
     position: relative;
     color: transparent;
 }
-.preview-content .submit-btn.loading::after {
+.preview-content button[type="submit"].loading::after {
     content: '';
     position: absolute;
     width: 1rem;
@@ -704,6 +671,11 @@ button[type="submit"]:hover,
     background: rgba(255,68,68,0.08);
     border: 1px solid rgba(255,68,68,0.2);
     color: var(--error);
+}
+.response-message.info {
+    background: rgba(65,66,101,0.08);
+    border: 1px solid rgba(65,66,101,0.2);
+    color: #414265;
 }
 
 /* ---- How It Works ---- */
@@ -800,7 +772,6 @@ button[type="submit"]:hover,
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-
     /* ============================================================
        Elements
     ============================================================ */
@@ -812,10 +783,32 @@ document.addEventListener('DOMContentLoaded', function () {
     const verifyBtn       = document.getElementById('verifyEmailBtn');
     const emailStatus     = document.getElementById('emailStatus');
     const toast           = document.getElementById('toast');
+    const copyHtmlBtn     = document.getElementById('copyHtml');
+    const copyCssBtn      = document.getElementById('copyCss');
 
     let isVerified        = false;
     let injectedStyle     = null;
     let verifiedEmail     = localStorage.getItem('playground_verified_email') || '';
+
+    /* ============================================================
+       Copy Buttons
+    ============================================================ */
+    function setupCopy(btn, getContent) {
+        btn.addEventListener('click', () => {
+            navigator.clipboard.writeText(getContent()).then(() => {
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(() => showToast('Failed to copy'));
+        });
+    }
+
+    setupCopy(copyHtmlBtn, () => htmlEditor.value);
+    setupCopy(copyCssBtn, () => cssEditor.value);
 
     /* ============================================================
        Tab Switching
@@ -829,27 +822,6 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('tab-' + tab).classList.add('active');
         });
     });
-
-    /* ============================================================
-       Copy Buttons
-    ============================================================ */
-    function setupCopy(btnId, getContent) {
-        const btn = document.getElementById(btnId);
-        if (!btn) return;
-        btn.addEventListener('click', () => {
-            navigator.clipboard.writeText(getContent()).then(() => {
-                btn.innerHTML = '✓ Copied!';
-                btn.classList.add('copied');
-                setTimeout(() => {
-                    btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"/></svg> Copy`;
-                    btn.classList.remove('copied');
-                }, 2000);
-            }).catch(() => showToast('Failed to copy'));
-        });
-    }
-
-    setupCopy('copyHtml', () => htmlEditor.value);
-    setupCopy('copyCss',  () => cssEditor.value);
 
     /* ============================================================
        Live Preview — HTML + scoped CSS injection
@@ -900,28 +872,14 @@ document.addEventListener('DOMContentLoaded', function () {
     
     function updateHtmlCodeWithEmail(email) {
         let currentHtml = htmlEditor.value;
-        // Replace YOUR@EMAIL.COM or any email in the action attribute
+        // Replace YOUR@EMAIL.COM in the action attribute
         const actionRegex = /(action=["'].*\/f\/)([^"']+)(["'])/;
         const match = currentHtml.match(actionRegex);
         
         if (match) {
-            // Update the email in the action attribute
             const newHtml = currentHtml.replace(actionRegex, `$1${email}$3`);
             htmlEditor.value = newHtml;
-            
-            // Also update the preview
             scheduleUpdate();
-            
-            // Highlight the change briefly
-            const placeholder = document.getElementById('heroEmailPlaceholder');
-            if (placeholder) {
-                placeholder.textContent = email;
-                placeholder.classList.add('email-highlight');
-                setTimeout(() => {
-                    placeholder.classList.remove('email-highlight');
-                }, 1000);
-            }
-            
             showToast(`Email updated in HTML code`);
         }
     }
@@ -1044,13 +1002,12 @@ document.addEventListener('DOMContentLoaded', function () {
     recipientEmail.addEventListener('input', function() {
         const email = this.value.trim();
         if (email && email.includes('@')) {
-            // Update HTML code in real-time as user types
             updateHtmlCodeWithEmail(email);
         }
     });
 
     /* ============================================================
-       Form Submit Handler
+       Form Submit Handler - Handles redirect to captcha page
     ============================================================ */
     function resolveRecipientEmail(form) {
         // Try to extract email from action URL: /f/email@example.com
@@ -1104,14 +1061,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            // Proceed with form submission
+            // Prepare form data
             const formData = new FormData(form);
             formData.append('_token', '{{ csrf_token() }}');
             formData.append('recipient_email', targetEmail);
+            formData.append('from_playground', 'true');
 
-            // Log what we're sending
-            console.log('Submitting to:', targetEmail);
-
+            // Submit the form - expect redirect to captcha page
             fetch('{{ route("playground.submit") }}', {
                 method: 'POST',
                 headers: {
@@ -1122,12 +1078,20 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(async r => {
                 const data = await r.json();
+                
+                // Check if we need to redirect to captcha page
+                if (data.redirect) {
+                    showResponse('🔄 Redirecting to captcha verification...', 'info');
+                    setTimeout(() => {
+                        window.location.href = data.redirect;
+                    }, 1000);
+                    return;
+                }
+                
                 if (!r.ok) {
                     throw new Error(data.message || 'Submission failed');
                 }
-                return data;
-            })
-            .then(data => {
+                
                 if (data.success) {
                     showResponse(`✅ Submission sent to <strong>${targetEmail}</strong>`, 'success');
                     form.reset();
@@ -1180,7 +1144,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (verifiedEmail) {
         recipientEmail.value = verifiedEmail;
         checkEmailVerification(verifiedEmail).then(() => {
-            // Update HTML code with verified email
             updateHtmlCodeWithEmail(verifiedEmail);
         });
     }
@@ -1193,46 +1156,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Update the HTML editor default to use the current domain
-    const currentDomain = window.location.origin;
-    const defaultHtml = `<!-- Paste this anywhere — replace YOUR@EMAIL.COM with your verified email -->
-<form action="${currentDomain}/f/YOUR@EMAIL.COM" method="POST" class="preview-form">
-
-    <div class="form-row">
-        <div class="col">
-            <input type="text" name="name" placeholder="Full Name" required>
-        </div>
-        <div class="col">
-            <input type="email" name="email" placeholder="Email Address" required>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
-    </div>
-
-    <button type="submit" class="submit-btn">Submit Form</button>
-
-</form>`;
-    
-    if (htmlEditor.value.includes('{{ config')) {
-        htmlEditor.value = defaultHtml;
-    }
-
-    // Add a helper to show that email updates in real-time
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes highlight {
-            0% { background-color: rgba(0, 255, 136, 0.3); }
-            100% { background-color: transparent; }
-        }
-        .email-highlight {
-            animation: highlight 1s ease;
-        }
-    `;
-    document.head.appendChild(style);
-
-    console.log('Playground initialized with auto-email update');
+    console.log('Playground initialized with interstitial captcha flow');
 });
 </script>
 @endpush

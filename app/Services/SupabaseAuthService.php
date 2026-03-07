@@ -6,6 +6,7 @@ use App\Models\User;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Http;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
@@ -27,6 +28,7 @@ class SupabaseAuthService
         $this->client = new Client([
             'base_uri' => $this->url,
             'timeout' => 30,
+            'verify'   => false,
         ]);
     }
 
@@ -44,6 +46,7 @@ class SupabaseAuthService
                 'json' => [
                     'email' => $email,
                     'password' => $password,
+                    'email_redirect_to' => 'https://000form.com/auth/confirm'
                 ],
             ]);
 
@@ -59,10 +62,10 @@ class SupabaseAuthService
             ];
         } catch (GuzzleException $e) {
             Log::error('Supabase signup error: ' . $e->getMessage());
-            
+
             $response = $e->getResponse();
             $body = $response ? json_decode($response->getBody()->getContents(), true) : null;
-            
+
             return [
                 'success' => false,
                 'error' => $body['error_description'] ?? $body['msg'] ?? 'Signup failed',
@@ -260,24 +263,28 @@ class SupabaseAuthService
     public function updateUserPassword(string $accessToken, string $newPassword): array
     {
         try {
+
             $response = Http::withHeaders([
-                'apikey'        => $this->supabaseKey,
+                'apikey'        => $this->key,
                 'Authorization' => 'Bearer ' . $accessToken,
                 'Content-Type'  => 'application/json',
-            ])->put($this->supabaseUrl . '/auth/v1/user', [
+            ])->put($this->url . '/auth/v1/user', [
                 'password' => $newPassword,
             ]);
 
             $data = $response->json();
 
-            if ($response->failed() || isset($data['error'])) {
-                return ['success' => false, 'error' => $data['message'] ?? $data['error'] ?? 'Failed to reset password.'];
+            if ($response->failed()) {
+                return ['success' => false, 'error' => $data['error'] ?? 'Password reset failed'];
             }
 
-            return ['success' => true, 'data' => $data];
+            return ['success' => true];
 
         } catch (\Exception $e) {
-            return ['success' => false, 'error' => $e->getMessage()];
+
+            Log::error('Password reset error: ' . $e->getMessage());
+
+            return ['success' => false, 'error' => 'Password reset failed'];
         }
     }
 
@@ -322,4 +329,41 @@ class SupabaseAuthService
             ]
         );
     }
+
+    public function verifyEmailToken(string $tokenHash, string $type): array
+{
+    try {
+
+        $response = $this->client->post('/auth/v1/verify', [
+            'headers' => [
+                'apikey' => $this->key,
+                'Content-Type' => 'application/json',
+            ],
+            'json' => [
+                'token_hash' => $tokenHash,
+                'type' => $type
+            ],
+        ]);
+
+        $data = json_decode($response->getBody()->getContents(), true);
+
+        if (isset($data['user'])) {
+            $this->syncUser($data['user']);
+        }
+
+        return [
+            'success' => true,
+            'data' => $data
+        ];
+
+    } catch (\Exception $e) {
+
+        Log::error('Supabase email verify error: ' . $e->getMessage());
+
+        return [
+            'success' => false
+        ];
+    }
+}
+
 }

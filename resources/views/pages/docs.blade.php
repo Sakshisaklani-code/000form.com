@@ -237,6 +237,7 @@
                 <a href="#spam"><i class="bi bi-shield-check"></i> Spam Protection</a>
                 <a href="#uploads"><i class="bi bi-paperclip"></i> File Uploads</a>
                 <a href="#ajax"><i class="bi bi-braces"></i> AJAX / JavaScript</a>
+                <a href="#chat-widget"><i class="bi bi-chat-dots"></i> Chat Widget</a>
 
                 <div class="docs-nav-label">Reference</div>
                 <a href="#limits"><i class="bi bi-bar-chart"></i> Limits</a>
@@ -661,6 +662,54 @@ form.<span class="fn">addEventListener</span>(<span class="str2">'submit'</span>
                     </div>
                 </div>
 
+                {{-- NEW: Chat Widget Feature --}}
+                <div class="docs-section" id="chat-widget">
+                    <div class="docs-section-header">
+                        <h2>
+                            <span class="sec-icon"><i class="bi bi-chat-dots-fill"></i></span>
+                            Chat Widget
+                            <span class="badge badge-green"><i class="bi bi-circle"></i> Optional</span>
+                        </h2>
+                        <p>Add a beautiful chat widget to your website that submits directly to 000form. Perfect for customer support or live chat integration.</p>
+                    </div>
+                    <div class="docs-section-body">
+                        
+                        <div class="note-box" style="margin-bottom:1.5rem;">
+                            <i class="bi bi-info-circle-fill"></i>
+                            <span>Simply add one line of code to your website and the chat widget will appear. All messages go straight to your email and dashboard.</span>
+                        </div>
+
+                        <div class="code-block">
+                            <div class="code-header"><span class="code-lang">HTML - Add before closing &lt;/body&gt;</span><button class="code-copy"><i class="bi bi-clipboard"></i> Copy</button></div>
+                            <div class="code-content">
+<pre><span class="comment">&lt;!-- Replace YOUR_FORM_ID with your actual form ID --&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="string">"{{ config('app.url') }}/formbutton/YOUR_FORM_ID/widget.js"</span> <span class="attr">defer</span><span class="tag">&gt;&lt;/script&gt;</span></pre>
+</div>
+                        </div>
+
+                        <h4 style="color:#fff; margin:1.5rem 0 0.75rem;">Features</h4>
+                        <table class="sf-table">
+                            <thead><tr><th>Feature</th><th>Description</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>💬 Live chat</code></td>
+                                    <td>Floating chat button with popup interface</td>
+                                </tr>
+                                <tr>
+                                    <td><code>📱 Responsive</code></td>
+                                    <td>Works perfectly on mobile and desktop</td>
+                                </tr>
+                                <tr>
+                                    <td><code>🔔 Notifications</code></td>
+                                    <td>Unread message indicator badge</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+
                 {{-- Limits --}}
                 <div class="docs-section" id="limits">
                     <div class="docs-section-header">
@@ -676,6 +725,7 @@ form.<span class="fn">addEventListener</span>(<span class="str2">'submit'</span>
                             <li><i class="bi bi-database"></i> Submission history stored in your dashboard</li>
                             <li><i class="bi bi-download"></i> Export submissions as CSV</li>
                             <li><i class="bi bi-paperclip"></i> Up to 5 file attachments per submission (10 MB each)</li>
+                            <li><i class="bi bi-chat-dots"></i> Chat widget included on all plans</li>
                         </ul>
                     </div>
                 </div>
@@ -726,5 +776,8 @@ const observer = new IntersectionObserver(entries => {
 }, { rootMargin: '-20% 0px -70% 0px' });
 sections.forEach(s => observer.observe(s));
 </script>
+
+{{-- Note: This script tag is just for documentation purposes, not actually loaded --}}
+<!-- <script src="http://127.0.0.1:8000/formbutton/YOUR_FORM_ID/widget.js" defer></script> -->
 
 @endsection

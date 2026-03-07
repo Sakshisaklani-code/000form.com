@@ -38,7 +38,8 @@ class Form extends Model
         'last_submission_at',
         'allowed_domains',
         'metadata',
-        'archive_when_paused', // ← ADDED
+        'archive_when_paused',
+        'popup_config',
     ];
 
     protected $casts = [
@@ -52,7 +53,8 @@ class Form extends Model
         'allowed_domains'       => 'array',
         'metadata'              => 'array',
         'cc_emails'             => 'array',
-        'archive_when_paused'   => 'boolean', // ← ADDED
+        'archive_when_paused'   => 'boolean', 
+        'popup_config'        => 'array',
     ];
 
     protected static function boot()

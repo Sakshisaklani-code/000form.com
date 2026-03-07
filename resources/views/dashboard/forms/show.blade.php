@@ -324,7 +324,7 @@
         </div>
         <form method="POST" action="{{ route('dashboard.forms.resend-verification', $form->id) }}" style="margin:0;">
             @csrf
-            <button type="submit" class="btn btn-sm btn-secondary">Resend Email</button>
+            <button type="submit" class="btn btn-sm btn-secondary-verify">Resend Email</button>
         </form>
     </div>
 @endif
@@ -356,7 +356,29 @@
         </div>
     </div>
 </div>
-
+{{-- Form ID Strip --}}
+<div class="card mb-3" style="padding:1rem 1.25rem;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;flex:1;min-width:0;">
+            <span class="endpoint-method" style="background:#6366f1;">Form ID</span>
+            <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;font-size:0.90rem;">
+                {{ $form->slug }}
+            </span>
+            <span style="font-size:0.78rem;">
+                — Use this ID to embed a <strong style="color:var(--text);font-weight:500;">popup form</strong>.
+            </span>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.75rem;flex-shrink:0;">
+            <button class="btn btn-ghost btn-sm" onclick="copyFormId('{{ $form->slug }}')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                </svg>
+                Copy ID
+            </button>
+        </div>
+    </div>
+</div>
 {{-- ══════════════════════════════
      STATS STRIP
 ══════════════════════════════ --}}
@@ -998,6 +1020,13 @@
                 }
             });
         }
+    }
+
+    function copyFormId(slug) {
+        navigator.clipboard.writeText(slug);
+        const btn = event.currentTarget, orig = btn.innerHTML;
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+        setTimeout(() => btn.innerHTML = orig, 2000);
     }
 </script>
 

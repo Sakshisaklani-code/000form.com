@@ -1,0 +1,59 @@
+[2026-02-26 06:07:46] production.ERROR: Supabase signup error: Client error: `POST https://wqtlwldbvhhluvmdldpf.supabase.co/auth/v1/signup` resulted in a `429 Too Many Requests` response:
+{"code":429,"error_code":"over_email_send_rate_limit","msg":"For security purposes, you can only request this after 56 s (truncated...)
+  
+[2026-02-26 06:08:03] production.ERROR: Supabase signin error: Client error: `POST https://wqtlwldbvhhluvmdldpf.supabase.co/auth/v1/token?grant_type=password` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"invalid_credentials","msg":"Invalid login credentials"}
+  
+[2026-02-26 10:49:32] production.INFO: Playground: verification email sent {"email":"sakshi.saklani@drishinfo.com"} 
+[2026-02-26 10:49:50] production.INFO: Playground: email verified {"email":"sakshi.saklani@drishinfo.com"} 
+[2026-02-26 10:50:05] production.INFO: Playground submit called {"has_recipient_email":true,"has_form_slug":false,"method":"POST","url":"https://000form.com/playground/submit"} 
+[2026-02-26 10:50:05] production.INFO: Playground: Captcha verification status {"is_captcha_verified":false,"has_captcha_flag":false} 
+[2026-02-26 10:50:05] production.INFO: Playground: Redirecting to captcha page {"email":"sakshi.saklani@drishinfo.com"} 
+[2026-02-26 10:50:56] production.INFO: Playground email submission received {"email":"sakshi.saklani@drishinfo.com","ip":"112.196.28.2","method":"POST","has_files":"no"} 
+[2026-02-26 10:50:56] production.INFO: Playground email: Redirecting to captcha page {"email":"sakshi.saklani@drishinfo.com"} 
+[2026-02-26 10:50:56] production.INFO: Playground: Showing captcha page {"email":"sakshi.saklani@drishinfo.com"} 
+[2026-02-26 10:51:00] production.INFO: Playground: Captcha verification started {"email":"sakshi.saklani@drishinfo.com"} 
+[2026-02-26 10:51:00] production.INFO: Playground: Verifying captcha {"token_exists":true,"ip":"112.196.28.2"} 
+[2026-02-26 10:51:00] production.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-02-26 10:51:00] production.INFO: Playground: Captcha verified successfully  
+[2026-02-26 10:51:00] production.INFO: Playground: Pending submission found {"data_keys":["name","email","message"],"stored_ip":"112.196.28.2","source":"external"} 
+[2026-02-26 10:51:00] production.INFO: Playground: Recreating request with files {"temp_files":[],"ip":"112.196.28.2"} 
+[2026-02-26 10:51:00] production.INFO: Playground: Recreated request {"has_files":0,"ip":"112.196.28.2","source":"external"} 
+[2026-02-26 10:51:00] production.INFO: Playground: Processing verified submission {"recipient":"sakshi.saklani@drishinfo.com","all_input":{"name":"sakshi","email":"tsaklani02@gmail.com","message":"test","recipient_email":"sakshi.saklani@drishinfo.com"},"all_files":[]} 
+[2026-02-26 10:51:00] production.INFO: Playground: Form data prepared {"name":"sakshi","has_sender_email":true,"attachments_count":0} 
+[2026-02-26 10:51:00] production.INFO: Playground: Attempting to send email {"to":"sakshi.saklani@drishinfo.com"} 
+[2026-02-26 10:51:00] production.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-02-26 10:51:04] production.INFO: Playground: Email sent successfully {"to":"sakshi.saklani@drishinfo.com"} 
+[2026-02-26 10:51:04] production.INFO: Playground: Submission completed successfully {"recipient":"sakshi.saklani@drishinfo.com","attachments":0} 
+[2026-02-26 10:51:04] production.INFO: Playground: Redirecting to form submitted page  
+[2026-02-26 10:54:08] production.INFO: Playground: verification email sent {"email":"sakshi.saklani@drishinfo.com"} 
+[2026-02-26 10:54:17] production.INFO: Playground: email verified {"email":"sakshi.saklani@drishinfo.com"} 
+[2026-02-26 10:55:07] production.INFO: Playground: verification email sent {"email":"tsaklani2drish@gmail.com"} 
+[2026-02-26 10:55:19] production.INFO: Playground: email verified {"email":"tsaklani2drish@gmail.com"} 
+[2026-02-26 10:55:28] production.INFO: Playground submit called {"has_recipient_email":true,"has_form_slug":false,"method":"POST","url":"https://000form.com/playground/submit"} 
+[2026-02-26 10:55:28] production.INFO: Playground: Captcha verification status {"is_captcha_verified":false,"has_captcha_flag":false} 
+[2026-02-26 10:55:28] production.INFO: Playground: Redirecting to captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-02-26 10:55:29] production.INFO: Playground: Showing captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-02-26 10:55:32] production.INFO: Playground: Captcha verification started {"email":"tsaklani2drish@gmail.com"} 
+[2026-02-26 10:55:32] production.INFO: Playground: Verifying captcha {"token_exists":true,"ip":"112.196.28.2"} 
+[2026-02-26 10:55:33] production.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-02-26 10:55:33] production.INFO: Playground: Captcha verified successfully  
+[2026-02-26 10:55:33] production.INFO: Playground: Pending submission found {"data_keys":["name","email","message","from_playground"],"stored_ip":"112.196.28.2","source":"playground"} 
+[2026-02-26 10:55:33] production.INFO: Playground: Recreating request with files {"temp_files":[],"ip":"112.196.28.2"} 
+[2026-02-26 10:55:33] production.INFO: Playground: Recreated request {"has_files":0,"ip":"112.196.28.2","source":"playground"} 
+[2026-02-26 10:55:33] production.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Tanuja Saklani","email":"tsaklani2drish@gmail.com","message":"Test","recipient_email":"tsaklani2drish@gmail.com"},"all_files":[]} 
+[2026-02-26 10:55:33] production.INFO: Playground: Form data prepared {"name":"Tanuja Saklani","has_sender_email":true,"attachments_count":0} 
+[2026-02-26 10:55:33] production.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com"} 
+[2026-02-26 10:55:33] production.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-02-26 10:55:36] production.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-02-26 10:55:36] production.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0} 
+[2026-02-26 10:55:36] production.INFO: Playground: Redirecting back to playground after verification  
+[2026-02-26 10:56:06] production.INFO: Playground submit called {"has_recipient_email":true,"has_form_slug":false,"method":"POST","url":"https://000form.com/playground/submit"} 
+[2026-02-26 10:56:06] production.INFO: Playground: Captcha verification status {"is_captcha_verified":false,"has_captcha_flag":false} 
+[2026-02-26 10:56:06] production.INFO: Playground: Captcha disabled by user, processing directly  
+[2026-02-26 10:56:06] production.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Tanuja Saklani","email":"tsaklani2drish@gmail.com","message":"Test","_captcha":"false","recipient_email":"tsaklani2drish@gmail.com","from_playground":"true"},"all_files":[]} 
+[2026-02-26 10:56:06] production.INFO: Playground: Form data prepared {"name":"Tanuja Saklani","has_sender_email":true,"attachments_count":0} 
+[2026-02-26 10:56:06] production.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com"} 
+[2026-02-26 10:56:06] production.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-02-26 10:56:09] production.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-02-26 10:56:09] production.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0} 
