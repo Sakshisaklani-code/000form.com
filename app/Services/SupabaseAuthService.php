@@ -235,25 +235,51 @@ class SupabaseAuthService
     /**
      * Send password reset email.
      */
+    public function confirmPasswordReset(Request $request, SupabaseAuthService $supabase)
+    {
+        $tokenHash = $request->query('token_hash');
+
+        if (!$tokenHash) {
+            return redirect('/forgot-password');
+        }
+
+        $result = $supabase->verifyEmailToken($tokenHash, 'recovery');
+
+        if (!$result['success']) {
+            return redirect('/forgot-password')->with('error', 'Reset link expired');
+        }
+
+        session(['reset_access_token' => $result['data']['access_token']]);
+
+        return redirect('/auth/reset-password');
+    }
+
     public function sendPasswordReset(string $email): array
     {
         try {
-            $this->client->post('/auth/v1/recover', [
+            $response = $this->client->post('/auth/v1/recover', [
                 'headers' => [
-                    'apikey'       => $this->key,
+                    'apikey' => $this->key,
                     'Content-Type' => 'application/json',
                 ],
                 'json' => [
-                    'email'      => $email,
-                    'redirectTo' => url('/auth/reset-password'),
+                    'email' => $email,
+                    'redirect_to' => url('/auth/reset-password-confirm-token'),
                 ],
             ]);
 
-            return ['success' => true];
+            return [
+                'success' => true
+            ];
 
-        } catch (GuzzleException $e) {
+        } catch (\GuzzleHttp\Exception\GuzzleException $e) {
+
             Log::error('Supabase password reset error: ' . $e->getMessage());
-            return ['success' => false, 'error' => 'Password reset failed'];
+
+            return [
+                'success' => false,
+                'error' => 'Password reset failed'
+            ];
         }
     }
 
@@ -331,39 +357,39 @@ class SupabaseAuthService
     }
 
     public function verifyEmailToken(string $tokenHash, string $type): array
-{
-    try {
+    {
+        try {
 
-        $response = $this->client->post('/auth/v1/verify', [
-            'headers' => [
-                'apikey' => $this->key,
-                'Content-Type' => 'application/json',
-            ],
-            'json' => [
-                'token_hash' => $tokenHash,
-                'type' => $type
-            ],
-        ]);
+            $response = $this->client->post('/auth/v1/verify', [
+                'headers' => [
+                    'apikey' => $this->key,
+                    'Content-Type' => 'application/json',
+                ],
+                'json' => [
+                    'token_hash' => $tokenHash,
+                    'type' => $type
+                ],
+            ]);
 
-        $data = json_decode($response->getBody()->getContents(), true);
+            $data = json_decode($response->getBody()->getContents(), true);
 
-        if (isset($data['user'])) {
-            $this->syncUser($data['user']);
+            if (isset($data['user'])) {
+                $this->syncUser($data['user']);
+            }
+
+            return [
+                'success' => true,
+                'data' => $data
+            ];
+
+        } catch (\Exception $e) {
+
+            Log::error('Supabase email verify error: ' . $e->getMessage());
+
+            return [
+                'success' => false
+            ];
         }
-
-        return [
-            'success' => true,
-            'data' => $data
-        ];
-
-    } catch (\Exception $e) {
-
-        Log::error('Supabase email verify error: ' . $e->getMessage());
-
-        return [
-            'success' => false
-        ];
     }
-}
 
 }

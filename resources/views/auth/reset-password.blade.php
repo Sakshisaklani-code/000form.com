@@ -77,20 +77,13 @@
 </div>
 
 <script>
-    const hash      = window.location.hash.substring(1);
-    const params    = new URLSearchParams(hash);
-    const token     = params.get('access_token');
-    const type      = params.get('type');
-    const error     = params.get('error');
-    const errorDesc = params.get('error_description');
+    // Read token from query string (set by confirmPasswordResetFromToken)
+    const urlParams  = new URLSearchParams(window.location.search);
+    const token      = urlParams.get('access_token') || '{{ session("reset_access_token") }}';
 
-    if (error || !token || type !== 'recovery') {
+    if (!token) {
         document.getElementById('reset-form-wrapper').style.display = 'none';
         document.getElementById('token-error').style.display = 'block';
-        if (errorDesc) {
-            document.getElementById('error-message').textContent =
-                decodeURIComponent(errorDesc.replace(/\+/g, ' '));
-        }
     } else {
         document.getElementById('access_token').value = token;
     }

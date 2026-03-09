@@ -7,7 +7,7 @@
 
     <div class="mb-12 text-center mt-4">
         <h1 class="text-4xl font-bold text-white">Privacy Policy</h1>
-        <p class="text-sm text-gray-400 mt-2">Last updated: March 07, 2026g</p>
+        <p class="text-sm text-gray-400 mt-2">Last updated: March 07, 2026</p>
     </div>
 
     <div class="space-y-10 text-gray-300 leading-relaxed text-base">

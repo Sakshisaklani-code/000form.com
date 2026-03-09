@@ -26,7 +26,18 @@
     <meta property="og:image" content="{{ asset('images/og-image/og-image.jpg') }}" /> 
     <meta property="og:site_name" content="000Forms" />
     <!-- Index and follow for SEO -->
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow">    
+    <!-- Schema.org JSON-LD --> 
+    <script type="application/ld+json"> 
+        {
+            "@context": "https://schema.org", 
+            "@type": "Organization", 
+            "name": "000Form", 
+            "alternateName": "000Form", 
+            "url": "https://000form.com/",
+            "logo": "https://000form.com/images/logo/000formlogo.png" 
+        }
+    </script>
     @stack('styles')
     <style>
         /* Mobile dashboard styles */
@@ -501,6 +512,25 @@
             </a>
             
             <nav>
+                <div style="padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: #1c1c1c; border-radius: 10px;">
+                    <div style="display:flex; align-items:center; gap:0.75rem;">
+                        <div style="width:36px; height:36px; border-radius:50%; background:#00ff88; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                            <span style="color:#050505; font-weight:700; font-size:0.875rem;">
+                                {{ strtoupper(substr(Auth::user()->email, 0, 1)) }}
+                            </span>
+                        </div>
+                        <div style="overflow:hidden;">
+                            @if(Auth::user()->name)
+                                <div style="font-size:0.90rem; font-weight:600; color:#ffffff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                                    {{ Auth::user()->name }}
+                                </div>
+                            @endif
+                            <div style="font-size:0.90rem; color:#aaaaaa; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                                {{ Auth::user()->email }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <ul class="sidebar-nav">
                     <li>
                         <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') && !request()->routeIs('dashboard.forms.*') ? 'active' : '' }}">
@@ -527,6 +557,7 @@
             </nav>
             
             <div class="sidebar-footer">
+
                 <ul class="sidebar-nav">
                     <li>
                         <a href="{{ route('docs') }}" target="_blank">
