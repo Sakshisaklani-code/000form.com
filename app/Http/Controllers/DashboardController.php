@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Form;
 use App\Models\Submission;
+use App\Models\FormValidation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -129,17 +130,6 @@ class DashboardController extends Controller
      * Paused-form submissions are stored with is_archived = true, so they
      * will NEVER appear in inbox or spam — only in the archive tab.
      */
-/**
- * Show form details with filtered/tabbed submissions.
- *
- * Tab logic:
- *   inbox   → is_archived = false  AND  is_spam = false
- *   spam    → is_archived = false  AND  is_spam = true
- *   archive → is_archived = true   (regardless of is_spam)
- *
- * Paused-form submissions are stored with is_archived = true, so they
- * will NEVER appear in inbox or spam — only in the archive tab.
- */
     public function showForm(string $id)
     {
         $form   = Auth::user()->forms()->findOrFail($id);
@@ -225,10 +215,14 @@ class DashboardController extends Controller
             $archiveLineData[] = $dailyArchived->firstWhere('date', $date)->count ?? 0;
         }
 
+        // ── Validations for Workflow tab ──────────────────────────────────────
+        $validations = FormValidation::where('form_id', $form->id)->get();
+
         return view('dashboard.forms.show', compact(
             'form', 'submissions', 'validCount', 'spamCount', 'archiveCount',
             'lineLabels', 'lineData', 'archiveLineData',
-            'tab', 'search', 'panel'
+            'tab', 'search', 'panel',
+            'validations'
         ));
     }
 

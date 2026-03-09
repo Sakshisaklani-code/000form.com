@@ -9,14 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-   public function up(): void
-    {
+   public function up()
+{
+    if (!Schema::hasColumn('forms', 'popup_config')) {
         Schema::table('forms', function (Blueprint $table) {
-            
-        $table->json('popup_config')->nullable();
-
+            $table->json('popup_config')->nullable();
         });
     }
+}
 
     public function down(): void
     {

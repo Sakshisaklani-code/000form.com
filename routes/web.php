@@ -10,6 +10,7 @@ use App\Http\Controllers\PlaygroundController;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\FormButtonController;
 use App\Http\Controllers\SocialAuthController;
+use App\Http\Controllers\FormValidationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 
@@ -22,12 +23,13 @@ use Illuminate\Support\Facades\Mail;
 Route::get('/forms/{id}/embed', [FormButtonController::class, 'embed'])
     ->name('forms.embed')
     ->middleware('auth');
+
 Route::post('/forms/{id}/popup-config', [FormButtonController::class, 'saveConfig'])
     ->name('forms.popup.save')
     ->middleware('auth');
+
 Route::get('/formbutton/{slug}/widget.js', [FormButtonController::class, 'widget'])
     ->name('formbutton.widget');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -42,23 +44,23 @@ Route::get('/recaptcha-config', function () {
 Route::get('/captcha/{formId}', [FormSubmissionController::class, 'showCaptcha'])->name('captcha.show');
 Route::post('/captcha/{formId}/verify', [FormSubmissionController::class, 'verifyCaptcha'])->name('captcha.verify');
 
-
 /*
 |--------------------------------------------------------------------------
 | Public Pages
 |--------------------------------------------------------------------------
 */
+
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/docs', [PageController::class, 'docs'])->name('docs');
 Route::get('/pricing', [PageController::class, 'pricing'])->name('pricing');
 Route::get('/ajax', [PageController::class, 'ajax'])->name('ajax');
-
 
 /*
 |--------------------------------------------------------------------------
 | Playground Page
 |--------------------------------------------------------------------------
 */
+
 Route::withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class])->group(function () {
 
     // ── Email-based: /f/you@example.com ─────────────────────────────────
@@ -93,11 +95,12 @@ Route::withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken
 | Playground Routes
 |--------------------------------------------------------------------------
 */
+
 Route::prefix('playground')->name('playground.')->group(function () {
     Route::get('/', [PlaygroundController::class, 'index'])->name('index');
     Route::post('/submit', [PlaygroundController::class, 'submit'])->name('submit');
     Route::get('/form-submitted', [PlaygroundController::class, 'formSubmitted'])->name('form.submitted');
-    Route::get('/endpoint/{email}', [PlaygroundController::class, 'formEndpointInfo'])->name('endpoint.info');
+    Route::get('/endpoint/{email}', [PlaygroundController::class, 'formEndpointInfo'])->name('endpoint.details');
     
     // Email verification
     Route::post('/verify-email', [PlaygroundController::class, 'verifyEmail'])->name('verify');
@@ -118,17 +121,16 @@ Route::prefix('playground')->name('playground.')->group(function () {
 | Email Verification
 |--------------------------------------------------------------------------
 */
-Route::get('/auth/verification-expired', [AuthController::class, 'verificationExpired'])->name('verification.expired');
-Route::post('/auth/resend-verification-email', [AuthController::class, 'resendVerificationEmail'])->name('verification.resend');
+
 Route::get('/verify-email/{token}', [EmailVerificationController::class, 'verify'])
     ->name('verify.email');
-
 
 /*
 |--------------------------------------------------------------------------
 | Authentication
 |--------------------------------------------------------------------------
 */
+
 Route::middleware('guest')->group(function () {
     Route::get('/login',           [AuthController::class, 'showLogin'])->name('login');
     Route::post('/login',          [AuthController::class, 'login']);
@@ -138,8 +140,15 @@ Route::middleware('guest')->group(function () {
     Route::post('/forgot-password',[AuthController::class, 'sendResetLink'])->name('password.email');
 });
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/auth/reset-password',  [AuthController::class, 'showResetForm'])->name('password.reset');
-Route::post('/auth/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
+
+Route::get('/auth/reset-password-confirm', [AuthController::class, 'confirmPasswordReset'])
+    ->name('password.reset.confirm');
+
+Route::get('/auth/reset-password',  [AuthController::class, 'showResetForm'])
+    ->name('password.reset');
+
+Route::post('/auth/reset-password', [AuthController::class, 'resetPassword'])
+    ->name('password.update');
 Route::get('/signup-confirmed', function () {
     return view('pages.signup-confirmed', [
         'success' => true,
@@ -148,12 +157,14 @@ Route::get('/signup-confirmed', function () {
 })->name('signup.confirmed');
 Route::get('/account/verify', [AuthController::class, 'verifyAccount'])
     ->name('account.verify');
-
+Route::get('/auth/reset-password-confirm-token', [AuthController::class, 'confirmPasswordResetFromToken'])
+    ->name('password.reset.confirm.token');
 /*
 |--------------------------------------------------------------------------
 | Google Authentication Routes
 |--------------------------------------------------------------------------
 */
+
 Route::get('/auth/confirm', [AuthController::class, 'confirmEmail']);
 Route::get('/auth/{provider}', [SocialAuthController::class, 'redirect'])
     ->where('provider', 'google|github|facebook')
@@ -201,6 +212,12 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     // ── Archive toggle (archive_when_paused setting) ──────────────────────
     Route::patch('/forms/{form}/toggle-archive',
         [FormSubmissionController::class, 'toggleArchive'])->name('dashboard.forms.toggle-archive');
+
+    // ── Validations ──────────────────────────────────────────────────────
+    Route::post('/forms/{formId}/validations',       [FormValidationController::class, 'store']);
+    Route::put('/forms/{formId}/validations/{id}',   [FormValidationController::class, 'update']);
+    Route::delete('/forms/{formId}/validations/{id}',[FormValidationController::class, 'destroy']);
+
 });
 
 /*
@@ -219,6 +236,7 @@ Route::get('/Vendor-Application-forms',      [LibraryController::class, 'VendorA
 Route::get('/Internship-Application-forms',  [LibraryController::class, 'InternshipApplicationForm'])->name('Home.library.InternshipApplicationForm');
 
 
+Route::get('/privacy', [PageController::class, 'privacyPolicy'])->name('pages.privacy-policy');
+Route::get('/terms', [PageController::class, 'terms'])->name('pages.terms');
 
-Route::get('/privacy',                       [PageController::class, 'privacyPolicy'])->name('pages.privacy-policy');
-Route::get('/terms',             [PageController::class, 'terms'])->name('pages.terms');
+

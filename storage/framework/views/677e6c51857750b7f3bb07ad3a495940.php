@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>@yield('title', 'Dashboard') - 000form</title>
+    <title><?php echo $__env->yieldContent('title', 'Dashboard'); ?> - 000form</title>
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('images/favicon/000formFavicon.png') }}" type="image/svg+xml">
+    <link rel="icon" href="<?php echo e(asset('images/favicon/000formFavicon.png')); ?>" type="image/svg+xml">
     <!-- Canonical Tag --> 
     <link rel="canonical" href="https://000form.com/" />
     <!-- Keywords --> 
@@ -23,12 +23,12 @@
     <meta property="og:description" content="Easily create and manage forms with 000Forms, a Laravel-powered solution." /> 
     <meta property="og:type" content="website" /> 
     <meta property="og:url" content="https://000form.com/" /> 
-    <meta property="og:image" content="{{ asset('images/og-image/og-image.jpg') }}" /> 
+    <meta property="og:image" content="<?php echo e(asset('images/og-image/og-image.jpg')); ?>" /> 
     <meta property="og:site_name" content="000Forms" />
     <!-- Index and follow for SEO -->
     <meta name="robots" content="index, follow">    
     <!-- Schema.org JSON-LD --> 
-     <meta name="csrf-token" content="{{ csrf_token() }}">
+     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <script type="application/ld+json"> 
         {
             "@context": "https://schema.org", 
@@ -39,7 +39,7 @@
             "logo": "https://000form.com/images/logo/000formlogo.png" 
         }
     </script>
-    @stack('styles')
+    <?php echo $__env->yieldPushContent('styles'); ?>
     <style>
         /* Mobile dashboard styles */
         :root {
@@ -492,8 +492,8 @@
     
     <!-- Mobile Header -->
     <div class="mobile-header">
-        <a href="{{ route('dashboard') }}" class="logo">
-            <img src="{{ asset('images/logo/000formlogo.png') }}" alt="000form Logo">
+        <a href="<?php echo e(route('dashboard')); ?>" class="logo">
+            <img src="<?php echo e(asset('images/logo/000formlogo.png')); ?>" alt="000form Logo">
         </a>
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
             <span></span>
@@ -508,8 +508,8 @@
     <div class="dashboard">
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
-            <a href="{{ route('dashboard') }}" class="sidebar-logo">
-                <img src="{{ asset('images/logo/000formlogo.png') }}" alt="000form Logo">
+            <a href="<?php echo e(route('dashboard')); ?>" class="sidebar-logo">
+                <img src="<?php echo e(asset('images/logo/000formlogo.png')); ?>" alt="000form Logo">
             </a>
             
             <nav>
@@ -517,24 +517,27 @@
                     <div style="display:flex; align-items:center; gap:0.75rem;">
                         <div style="width:36px; height:36px; border-radius:50%; background:#00ff88; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
                             <span style="color:#050505; font-weight:700; font-size:0.875rem;">
-                                {{ strtoupper(substr(Auth::user()->email, 0, 1)) }}
+                                <?php echo e(strtoupper(substr(Auth::user()->email, 0, 1))); ?>
+
                             </span>
                         </div>
                         <div style="overflow:hidden;">
-                            @if(Auth::user()->name)
+                            <?php if(Auth::user()->name): ?>
                                 <div style="font-size:0.90rem; font-weight:600; color:#ffffff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
-                                    {{ Auth::user()->name }}
+                                    <?php echo e(Auth::user()->name); ?>
+
                                 </div>
-                            @endif
+                            <?php endif; ?>
                             <div style="font-size:0.90rem; color:#aaaaaa; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
-                                {{ Auth::user()->email }}
+                                <?php echo e(Auth::user()->email); ?>
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <ul class="sidebar-nav">
                     <li>
-                        <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') && !request()->routeIs('dashboard.forms.*') ? 'active' : '' }}">
+                        <a href="<?php echo e(route('dashboard')); ?>" class="<?php echo e(request()->routeIs('dashboard') && !request()->routeIs('dashboard.forms.*') ? 'active' : ''); ?>">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <rect x="3" y="3" width="7" height="7"/>
                                 <rect x="14" y="3" width="7" height="7"/>
@@ -545,7 +548,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('dashboard.forms.create') }}" class="{{ request()->routeIs('dashboard.forms.create') ? 'active' : '' }}">
+                        <a href="<?php echo e(route('dashboard.forms.create')); ?>" class="<?php echo e(request()->routeIs('dashboard.forms.create') ? 'active' : ''); ?>">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="12" cy="12" r="10"/>
                                 <line x1="12" y1="8" x2="12" y2="16"/>
@@ -561,7 +564,7 @@
 
                 <ul class="sidebar-nav">
                     <li>
-                        <a href="{{ route('docs') }}" target="_blank">
+                        <a href="<?php echo e(route('docs')); ?>" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                                 <polyline points="14 2 14 8 20 8"/>
@@ -573,8 +576,8 @@
                         </a>
                     </li>
                     <li>
-                        <form method="POST" action="{{ route('logout') }}" style="margin: 0;">
-                            @csrf
+                        <form method="POST" action="<?php echo e(route('logout')); ?>" style="margin: 0;">
+                            <?php echo csrf_field(); ?>
                             <button type="submit" class="logout-btn">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
@@ -591,28 +594,30 @@
         
         <!-- Main Content -->
         <main class="main-content">
-            @if(session('message'))
+            <?php if(session('message')): ?>
                 <div class="alert alert-success">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                         <polyline points="22 4 12 14.01 9 11.01"/>
                     </svg>
-                    {{ session('message') }}
+                    <?php echo e(session('message')); ?>
+
                 </div>
-            @endif
+            <?php endif; ?>
             
-            @if(session('error'))
+            <?php if(session('error')): ?>
                 <div class="alert alert-error">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"/>
                         <line x1="12" y1="8" x2="12" y2="12"/>
                         <line x1="12" y1="16" x2="12.01" y2="16"/>
                     </svg>
-                    {{ session('error') }}
+                    <?php echo e(session('error')); ?>
+
                 </div>
-            @endif
+            <?php endif; ?>
             
-            @yield('content')
+            <?php echo $__env->yieldContent('content'); ?>
         </main>
     </div>
     
@@ -701,6 +706,6 @@
             }
         });
     </script>
-    @stack('scripts')
+    <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>
-</html>
+</html><?php /**PATH C:\Git-folders\000form.com\resources\views/layouts/dashboard.blade.php ENDPATH**/ ?>
