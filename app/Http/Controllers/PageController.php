@@ -44,5 +44,4 @@ class PageController extends Controller
     {
         return view('pages.privacy-policy');
     }
-
 }

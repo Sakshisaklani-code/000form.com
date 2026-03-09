@@ -127,6 +127,7 @@ class AuthController extends Controller
     */
     public function showForgotPassword()
     {
+        Auth::logout();
         return view('auth.forgot-password');
     }
 
@@ -156,24 +157,27 @@ class AuthController extends Controller
     /**
      * Handle password reset submission.
     */
-    public function resetPassword(Request $request)
+    public function resetPassword(Request $request, SupabaseAuthService $supabase)
     {
         $request->validate([
-            'access_token' => 'required',
-            'password'     => 'required|min:8|confirmed',
+            'password' => 'required|min:8|confirmed',
         ]);
 
-        $result = $this->supabase->updateUserPassword(
-            $request->input('access_token'),
-            $request->input('password')
-        );
+        $accessToken = $request->input('access_token') ?? session('reset_access_token');
 
-        if (!$result['success']) {
-            return back()->withErrors(['password' => $result['error'] ?? 'Failed to reset password.']);
+        if (!$accessToken) {
+            return redirect('/forgot-password')->with('error', 'Reset session expired');
         }
 
-        return redirect()->route('login')
-            ->with('message', 'Password reset successfully. Please log in.');
+        $result = $supabase->updateUserPassword($accessToken, $request->password);
+
+        if (!$result['success']) {
+            return back()->withErrors(['password' => $result['error']]);
+        }
+
+        session()->forget('reset_access_token');
+
+       return redirect()->route('login')->with('message', 'Password reset successfully. Please log in.');
     }
 
     /**
@@ -252,6 +256,57 @@ class AuthController extends Controller
         }
 
         return back()->withErrors(['error' => 'Unable to resend verification email.']);
+    }
+
+    /**
+     * Confirm Password Reset.
+    */
+    public function confirmPasswordReset(Request $request, SupabaseAuthService $supabase)
+    {
+        $tokenHash = $request->query('token_hash');
+
+        if (!$tokenHash) {
+            return redirect('/forgot-password')->with('error', 'Invalid reset link');
+        }
+
+        $result = $supabase->verifyEmailToken($tokenHash, 'recovery');
+
+        if (!$result['success']) {
+            return redirect('/forgot-password')->with('error', 'Reset link expired');
+        }
+
+        // Try both session structures Supabase may return
+        $accessToken = $result['data']['session']['access_token'] 
+            ?? $result['data']['access_token'] 
+            ?? null;
+
+        if (!$accessToken) {
+            return redirect('/forgot-password')->with('error', 'Invalid reset session');
+        }
+
+        // ✅ Only store the reset token — do NOT call storeSession() or Auth::login()
+        session(['reset_access_token' => $accessToken]);
+        session()->save(); // Force session save before redirect
+
+        return redirect()->route('password.reset');
+    }
+
+    public function confirmPasswordResetFromToken(Request $request)
+    {
+        $accessToken = $request->query('access_token');
+
+        \Log::info('Reset token received: ' . ($accessToken ? 'YES - ' . substr($accessToken, 0, 20) . '...' : 'NO'));
+
+        if (!$accessToken) {
+            return redirect('/forgot-password')->with('error', 'Invalid reset link');
+        }
+
+        session(['reset_access_token' => $accessToken]);
+        session()->save();
+
+        \Log::info('Session after save: ' . (session('reset_access_token') ? 'SET' : 'NOT SET'));
+
+        return redirect()->route('password.reset');
     }
 
 }

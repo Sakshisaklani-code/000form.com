@@ -26,8 +26,19 @@
     <meta property="og:site_name" content="000Forms" />
     <!-- Index and follow for SEO -->
     <meta name="robots" content="index, follow">
+    <!-- Tailwind CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
+    <!-- Schema.org JSON-LD --> 
+    <script type="application/ld+json"> 
+        {
+            "@context": "https://schema.org", 
+            "@type": "Organization", 
+            "name": "000Form", 
+            "alternateName": "000Form", 
+            "url": "https://000form.com/",
+            "logo": "https://000form.com/images/logo/000formlogo.png" 
+        }
+    </script>
     @stack('styles')
     <style>
         /* Mobile menu styles */
@@ -123,7 +134,7 @@
         }
     </style>
 </head>
-<body>
+<body id="main-body">
 
     <nav class="nav">
         <div class="nav-inner">
@@ -163,7 +174,8 @@
                 <ul class="footer-links">
                     <li><a href="/ajax">AJAX</a></li>
                     <li><a href="{{ route('playground.index') }}">Playground</a></li>
-                    <!-- <li><a href="mailto:support@000form.com">Support</a></li> -->
+                    <li><a href="{{ route('pages.terms') }}">Terms</a></li>
+                    <li><a href="{{ route('pages.privacy-policy') }}">Privacy Policy</a></li>
                 </ul>
                 <p class="footer-copy">&copy; {{ date('Y') }} 000form</p>
             </div>
@@ -172,8 +184,26 @@
 
     <script src="/js/app.js"></script>
     <script>
-        // Remove hash from URL immediately on page load
-        if (window.location.hash) {
+        // ✅ FIRST: Check for password reset recovery token BEFORE touching the hash
+        (function () {
+            const hash = window.location.hash;
+            if (hash && hash.includes('type=recovery')) {
+                document.getElementById('main-body').style.display = 'none'; // hide flash
+                const params = new URLSearchParams(hash.substring(1));
+                const accessToken = params.get('access_token');
+                const refreshToken = params.get('refresh_token');
+                if (accessToken) {
+                    window.location.replace(
+                        '/auth/reset-password-confirm-token'
+                        + '?access_token=' + encodeURIComponent(accessToken)
+                        + '&refresh_token=' + encodeURIComponent(refreshToken || '')
+                    );
+                }
+            }
+        })();
+
+        // SECOND: Only remove hash if it's NOT a recovery token
+        if (window.location.hash && !window.location.hash.includes('type=recovery')) {
             history.replaceState(null, '', window.location.pathname);
         }
 
