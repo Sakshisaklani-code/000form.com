@@ -380,3 +380,6 @@
 [2026-03-09 09:34:52] local.INFO: Validation rules generated {"name":"required|min:2|max:5"} 
 [2026-03-09 09:34:52] local.ERROR: Validation failed {"name":["The name field must be at least 2 characters."]} 
 [2026-03-09 09:34:52] local.ERROR: Form submission error {"error":"Undefined variable $errors"} 
+[2026-03-09 09:54:16] local.ERROR: Supabase signout error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/logout` resulted in a `403 Forbidden` response:
+{"code":403,"error_code":"bad_jwt","msg":"invalid JWT: unable to parse or verify signature, token has invalid claims: to (truncated...)
+  

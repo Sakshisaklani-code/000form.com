@@ -117,7 +117,6 @@ class AuthController extends Controller
         }
 
         Auth::logout();
-        Session::invalidate();
         Session::regenerateToken();
 
         return redirect()->route('home');
@@ -129,7 +128,6 @@ class AuthController extends Controller
     public function showForgotPassword()
     {
         Auth::logout();
-        Session::invalidate();
         Session::regenerateToken();
         return view('auth.forgot-password');
     }
@@ -143,10 +141,16 @@ class AuthController extends Controller
             'email' => 'required|email',
         ]);
 
-        $result = $this->supabase->sendPasswordReset($request->input('email'));
+        try {
+            $this->supabase->sendPasswordReset($request->email);
+        } catch (\Throwable $e) {
+            \Log::error($e->getMessage());
+        }
 
-        // Always show success to prevent email enumeration
-        return back()->with('message', 'If an account exists with that email, you will receive a password reset link.');
+        return back()->with(
+            'message',
+            'If an account exists with that email, you will receive a password reset link.'
+        );
     }
 
     /**
