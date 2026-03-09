@@ -226,4 +226,10 @@ class Form extends Model
         return str_replace(array_keys($replacements), array_values($replacements), $message);
     }
 
+    public function validations()
+    {
+        return $this->hasMany(FormValidation::class);
+    }
+    
+
 }
