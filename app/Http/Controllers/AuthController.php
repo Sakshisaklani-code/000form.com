@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
+
 class AuthController extends Controller
 {
     protected SupabaseAuthService $supabase;
@@ -128,6 +129,8 @@ class AuthController extends Controller
     public function showForgotPassword()
     {
         Auth::logout();
+        Session::invalidate();
+        Session::regenerateToken();
         return view('auth.forgot-password');
     }
 
@@ -177,7 +180,7 @@ class AuthController extends Controller
 
         session()->forget('reset_access_token');
 
-       return redirect()->route('login')->with('message', 'Password reset successfully. Please log in.');
+        return redirect()->route('login')->with('message', 'Password reset successfully. Please log in.');
     }
 
     /**
@@ -201,6 +204,8 @@ class AuthController extends Controller
 
     /**
      * Signup Email Verification.
+     * ✅ FIX: Do NOT call storeSession() here — email confirmation should NOT auto-login the user.
+     * User must manually login after verifying their email.
     */
     public function confirmEmail(Request $request)
     {
@@ -217,7 +222,11 @@ class AuthController extends Controller
             ]);
         }
 
-        $this->storeSession($result['data']);
+        // ✅ REMOVED: $this->storeSession($result['data']);
+        // Only sync user to local DB without logging them in
+        if (isset($result['data']['user'])) {
+            $this->supabase->syncUser($result['data']['user']);
+        }
 
         return view('pages.signup-confirmed', [
             'success' => true,
@@ -276,8 +285,8 @@ class AuthController extends Controller
         }
 
         // Try both session structures Supabase may return
-        $accessToken = $result['data']['session']['access_token'] 
-            ?? $result['data']['access_token'] 
+        $accessToken = $result['data']['session']['access_token']
+            ?? $result['data']['access_token']
             ?? null;
 
         if (!$accessToken) {
