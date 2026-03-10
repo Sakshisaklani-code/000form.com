@@ -6,22 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::create('form_validations', function (Blueprint $table) {
-            $table->id();
+        Schema::table('form_validations', function (Blueprint $table) {
             $table->foreignId('form_id')->constrained()->onDelete('cascade');
             $table->string('field_name');
             $table->string('field_type')->default('text');
             $table->boolean('is_required')->default(false);
             $table->unsignedInteger('min_length')->nullable();
             $table->unsignedInteger('max_length')->nullable();
-            $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('form_validations');
+        Schema::table('form_validations', function (Blueprint $table) {
+            //
+        });
     }
 };
