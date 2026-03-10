@@ -1,22 +1,23 @@
-{{-- resources/views/dashboard/forms/create.blade.php --}}
-@extends('layouts.dashboard')
 
-@section('title', 'Create Form')
 
-@section('content')
+
+<?php $__env->startSection('title', 'Create Form'); ?>
+
+<?php $__env->startSection('content'); ?>
 <div class="page-header">
     <h1 class="page-title">Create New Form</h1>
 </div>
 
 <div class="card" style="max-width: 600px;">
-    @if($errors->any())
+    <?php if($errors->any()): ?>
         <div class="alert alert-error mb-3">
-            {{ $errors->first() }}
+            <?php echo e($errors->first()); ?>
+
         </div>
-    @endif
+    <?php endif; ?>
     
-    <form method="POST" action="{{ route('dashboard.forms.store') }}">
-        @csrf
+    <form method="POST" action="<?php echo e(route('dashboard.forms.store')); ?>">
+        <?php echo csrf_field(); ?>
         
         <div class="form-group">
             <label for="name" class="form-label">Form Name</label>
@@ -25,7 +26,7 @@
                 id="name" 
                 name="name" 
                 class="form-input" 
-                value="{{ old('name') }}"
+                value="<?php echo e(old('name')); ?>"
                 placeholder="e.g., Contact Form, Newsletter Signup"
                 required
             >
@@ -39,7 +40,7 @@
                 id="recipient_email" 
                 name="recipient_email" 
                 class="form-input" 
-                value="{{ old('recipient_email', auth()->user()->email) }}"
+                value="<?php echo e(old('recipient_email', auth()->user()->email)); ?>"
                 placeholder="you@example.com"
                 required
             >
@@ -53,7 +54,7 @@
                 id="cc_emails" 
                 name="cc_emails" 
                 class="form-input" 
-                value="{{ old('cc_emails') }}"
+                value="<?php echo e(old('cc_emails')); ?>"
                 placeholder="cc@example.com"
             >
             <p class="form-help">Separate multiple email addresses with commas. These addresses will receive a copy of all submissions.</p>
@@ -63,13 +64,13 @@
         
         <div class="form-group">
             <label class="form-checkbox" style="display: flex; align-items: center;">
-                <input type="checkbox" name="auto_response_enabled" value="1" {{ old('auto_response_enabled') ? 'checked' : '' }}>
+                <input type="checkbox" name="auto_response_enabled" value="1" <?php echo e(old('auto_response_enabled') ? 'checked' : ''); ?>>
                 <span style="font-weight: 300;">Enable auto-response email</span>
             </label>
-            <p class="form-help">Send an automatic thank-you email to users who submit this form. The email will be sent from {{ config('mail.from.address') }}</p>
+            <p class="form-help">Send an automatic thank-you email to users who submit this form. The email will be sent from <?php echo e(config('mail.from.address')); ?></p>
         </div>
         
-        <div id="autoResponseFields" style="display: {{ old('auto_response_enabled') ? 'block' : 'none' }};">
+        <div id="autoResponseFields" style="display: <?php echo e(old('auto_response_enabled') ? 'block' : 'none'); ?>;">
             <div class="form-group">
                 <label for="auto_response_message" class="form-label">Auto-Response Message</label>
                 <textarea 
@@ -78,7 +79,7 @@
                     class="form-input" 
                     rows="6" 
                     placeholder="Write your thank you message here..."
-                >>{{ old('auto_response_message', "Dear {visitor_name},\n\nThank you for contacting us! We have received your message via {form_name} and will get back to you shortly.\n\nBest regards,\nThe {site_name} Team") }}</textarea>
+                >><?php echo e(old('auto_response_message', "Dear {visitor_name},\n\nThank you for contacting us! We have received your message via {form_name} and will get back to you shortly.\n\nBest regards,\nThe {site_name} Team")); ?></textarea>
             </div>
         </div>
         
@@ -90,7 +91,7 @@
                 id="redirect_url" 
                 name="redirect_url" 
                 class="form-input" 
-                value="{{ old('redirect_url') }}"
+                value="<?php echo e(old('redirect_url')); ?>"
                 placeholder="https://yoursite.com/thank-you"
             >
             <p class="form-help">Where to redirect users after submission. Leave empty to show our default thank-you page.</p>
@@ -103,7 +104,7 @@
                 id="success_message" 
                 name="success_message" 
                 class="form-input" 
-                value="{{ old('success_message', 'Thank you for your submission!') }}"
+                value="<?php echo e(old('success_message', 'Thank you for your submission!')); ?>"
                 placeholder="Thank you for your submission!"
             >
             <p class="form-help">Shown on our thank-you page or returned in JSON response.</p>
@@ -113,7 +114,7 @@
             <button type="submit" class="btn btn-primary">
                 Create Form
             </button>
-            <a href="{{ route('dashboard') }}" class="btn btn-secondary">
+            <a href="<?php echo e(route('dashboard')); ?>" class="btn btn-secondary">
                 Cancel
             </a>
         </div>
@@ -155,4 +156,5 @@
         syncFormName(); // run once on load
     });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.dashboard', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/dashboard/forms/create.blade.php ENDPATH**/ ?>

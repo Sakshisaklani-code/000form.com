@@ -1094,7 +1094,7 @@
                         </div>
                         <div class="validation-card-actions">
                             <button class="validation-card-btn"
-                                    onclick="openEditValidationModal(<?php echo e($v->id); ?>, '<?php echo e($v->field_name); ?>', '<?php echo e($v->field_type); ?>', <?php echo e($v->min_length ?? 'null'); ?>, <?php echo e($v->max_length ?? 'null'); ?>, <?php echo e($v->is_required ? 'true' : 'false'); ?>)"
+                                    onclick="openEditValidationModal('<?php echo e($v->id); ?>', '<?php echo e($v->field_name); ?>', '<?php echo e($v->field_type); ?>', <?php echo e($v->min_length ?? 'null'); ?>, <?php echo e($v->max_length ?? 'null'); ?>, <?php echo e($v->is_required ? 'true' : 'false'); ?>)"
                                     title="Edit">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
@@ -1102,7 +1102,7 @@
                                 </svg>
                             </button>
                             <button class="validation-card-btn delete"
-                                    onclick="deleteValidation(<?php echo e($v->id); ?>)"
+                                    onclick="deleteValidation('<?php echo e($v->id); ?>')"
                                     title="Delete">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <polyline points="3 6 5 6 21 6"/>
@@ -1436,13 +1436,13 @@
         this.textContent = 'Deleting...';
         this.disabled = true;
         try {
-            const res = await fetch(`/forms/${FORM_ID}/validations/${deleteTargetId}`, {
-                method: 'DELETE',
+            const res = await fetch(`/dashboard/forms/${FORM_ID}/validations/${deleteTargetId}`, {
+                    method: 'DELETE',
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                     'Accept': 'application/json'
                 }
-            });
+            });               
             if (res.ok) {
                 window.location.reload();
             } else {

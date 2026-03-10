@@ -7,7 +7,7 @@
 <div class="auth-page">
     <div class="auth-container text-center">
 
-```
+
     <div style="width: 80px; height: 80px; background: rgba(255, 68, 68, 0.15); border-radius: 50%; margin: 0 auto 2rem; display: flex; align-items: center; justify-content: center;">
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--error)" stroke-width="2">
             <circle cx="12" cy="12" r="10"/>
@@ -40,7 +40,7 @@
     </button>
 
 </div>
-```
+
 
 </div>
 <?php $__env->stopSection(); ?>

@@ -98,6 +98,12 @@ class DashboardController extends Controller
             $ccEmails = array_values($ccEmails);
         }
 
+        // Replace {form_name} token with actual form name before storing
+        $autoResponseMessage = $request->input('auto_response_message');
+        if ($autoResponseMessage) {
+            $autoResponseMessage = str_replace('{form_name}', $request->input('name'), $autoResponseMessage);
+        }
+
         $form = Auth::user()->forms()->create([
             'name'                  => $request->input('name'),
             'recipient_email'       => $request->input('recipient_email'),
@@ -105,12 +111,12 @@ class DashboardController extends Controller
             'redirect_url'          => $request->input('redirect_url'),
             'success_message'       => $request->input('success_message', 'Thank you for your submission!'),
             'auto_response_enabled' => $request->boolean('auto_response_enabled'),
-            'auto_response_message' => $request->input('auto_response_message'),
+            'auto_response_message' => $autoResponseMessage,
             'email_notifications'   => true,
             'store_submissions'     => true,
             'honeypot_enabled'      => true,
             'status'                => 'active',
-            'archive_when_paused'   => true,   // default ON
+            'archive_when_paused'   => true,
         ]);
 
         $this->sendVerificationEmail($form);
@@ -236,7 +242,7 @@ class DashboardController extends Controller
     }
 
     /**
-     * Update form settings.
+     * Update form.
      */
     public function updateForm(Request $request, string $id)
     {
@@ -263,6 +269,12 @@ class DashboardController extends Controller
             $ccEmails = array_values($ccEmails);
         }
 
+        // Replace {form_name} token with actual form name before storing
+        $autoResponseMessage = $request->input('auto_response_message');
+        if ($autoResponseMessage) {
+            $autoResponseMessage = str_replace('{form_name}', $request->input('name'), $autoResponseMessage);
+        }
+
         $emailChanged = $form->recipient_email !== $request->input('recipient_email');
 
         $form->update([
@@ -276,7 +288,7 @@ class DashboardController extends Controller
             'email_notifications'   => $request->boolean('email_notifications'),
             'store_submissions'     => $request->boolean('store_submissions'),
             'auto_response_enabled' => $request->boolean('auto_response_enabled'),
-            'auto_response_message' => $request->input('auto_response_message'),
+            'auto_response_message' => $autoResponseMessage,
             'email_verified'        => $emailChanged ? false : $form->email_verified,
         ]);
 

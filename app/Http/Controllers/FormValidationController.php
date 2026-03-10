@@ -35,8 +35,12 @@ class FormValidationController extends Controller
 
     public function update(Request $request, string $formId, string $id)
     {
-        $form       = Auth::user()->forms()->findOrFail($formId);
-        $validation = FormValidation::where('form_id', $form->id)->findOrFail($id);
+        $form = Auth::user()->forms()->findOrFail($formId);
+
+        // Use string cast to prevent PostgreSQL uuid type mismatch
+        $validation = FormValidation::where('form_id', $form->id)
+                                    ->where('id', (string) $id)
+                                    ->firstOrFail();
 
         $request->validate([
             'field_name'  => 'required|string|max:255',
@@ -49,18 +53,21 @@ class FormValidationController extends Controller
         $validation->update([
             'field_name'  => $request->field_name,
             'field_type'  => $request->field_type,
-            'is_required' => $request->is_required ?? false,
-            'min_length'  => $request->min_length,
-            'max_length'  => $request->max_length,
+            'is_required' => $request->boolean('is_required'),
+            'min_length'  => $request->min_length ?: null,
+            'max_length'  => $request->max_length ?: null,
         ]);
 
-        return response()->json($validation);
+        return response()->json($validation->fresh());
     }
 
     public function destroy(string $formId, string $id)
     {
-        $form       = Auth::user()->forms()->findOrFail($formId);
-        $validation = FormValidation::where('form_id', $form->id)->findOrFail($id);
+        $form = Auth::user()->forms()->findOrFail($formId);
+        
+        $validation = FormValidation::where('form_id', $form->id)
+                                    ->where('id', (string) $id)
+                                    ->firstOrFail();
         $validation->delete();
 
         return response()->json(['success' => true]);
