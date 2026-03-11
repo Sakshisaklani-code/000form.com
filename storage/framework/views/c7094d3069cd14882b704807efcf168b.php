@@ -1,15 +1,15 @@
-@extends('layouts.app')
 
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 <div class="auth-page">
     <div class="auth-container">
 
-        {{-- Header --}}
+        
         <div class="auth-header">
             <div class="auth-logo">000<span>form</span></div>
         </div>
 
-        {{-- Error state (expired/invalid token) --}}
+        
         <div class="auth-card" id="token-error" style="display:none; text-align:center;">
             <div style="width:48px;height:48px;background:rgba(255,68,68,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--error)" stroke-width="2">
@@ -22,31 +22,32 @@
             <p id="error-message" style="margin-bottom:1.5rem;font-size:0.9rem;">
                 This reset link is invalid or has expired. Please request a new one.
             </p>
-            <a href="{{ route('password.request') }}" class="btn btn-primary" style="width:100%;">
+            <a href="<?php echo e(route('password.request')); ?>" class="btn btn-primary" style="width:100%;">
                 Request new link
             </a>
         </div>
 
-        {{-- Reset form --}}
+        
         <div class="auth-card" id="reset-form-wrapper">
             <div style="margin-bottom:1.5rem;">
                 <h2 style="font-size:1.25rem;margin-bottom:0.35rem;">Set new password</h2>
                 <p style="font-size:0.875rem;color:var(--text-muted);">Must be at least 8 characters.</p>
             </div>
 
-            @if($errors->any())
+            <?php if($errors->any()): ?>
                 <div class="alert alert-error" style="margin-bottom:1.25rem;">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"/>
                         <line x1="12" y1="8" x2="12" y2="12"/>
                         <line x1="12" y1="16" x2="12.01" y2="16"/>
                     </svg>
-                    {{ $errors->first() }}
-                </div>
-            @endif
+                    <?php echo e($errors->first()); ?>
 
-            <form method="POST" action="{{ route('password.update') }}" id="reset-form">
-                @csrf
+                </div>
+            <?php endif; ?>
+
+            <form method="POST" action="<?php echo e(route('password.update')); ?>" id="reset-form">
+                <?php echo csrf_field(); ?>
                 <input type="hidden" name="access_token" id="access_token">
 
                 <div class="form-group">
@@ -98,7 +99,7 @@
         </div>
 
         <div class="auth-footer">
-            <a href="{{ route('login') }}">← Back to login</a>
+            <a href="<?php echo e(route('login')); ?>">← Back to login</a>
         </div>
 
     </div>
@@ -107,7 +108,7 @@
 <script>
     // Read token from query string (set by confirmPasswordResetFromToken)
     const urlParams  = new URLSearchParams(window.location.search);
-    const token      = urlParams.get('access_token') || '{{ session("reset_access_token") }}';
+    const token      = urlParams.get('access_token') || '<?php echo e(session("reset_access_token")); ?>';
 
     if (!token) {
         document.getElementById('reset-form-wrapper').style.display = 'none';
@@ -131,4 +132,5 @@
         }
     }
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/auth/reset-password.blade.php ENDPATH**/ ?>
