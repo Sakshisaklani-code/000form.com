@@ -591,3 +591,6 @@ Did you mean one of these?
 [2026-03-11 06:49:20] local.INFO: Request data: {"name":"as","email":"tanuja8@yopmail.com","message":"Test the Form.","honeypot_1ogCBVw5":null,"_captcha":"false"} 
 [2026-03-11 06:49:20] local.INFO: Has files: {"files":0} 
 [2026-03-11 06:49:21] local.INFO: Form found {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","form_name":"UntinyPNG - Contact Form"} 
+[2026-03-11 08:31:13] local.ERROR: Supabase signout error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/logout` resulted in a `403 Forbidden` response:
+{"code":403,"error_code":"bad_jwt","msg":"invalid JWT: unable to parse or verify signature, token has invalid claims: to (truncated...)
+  
