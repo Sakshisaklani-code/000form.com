@@ -22,11 +22,11 @@
                     <!-- Main Content -->
                     <tr>
                         <td style="background-color: #111111; border-radius: 12px; padding: 40px; border: 1px solid #1a1a1a; text-align: center;">
-                            <div style="width: 64px; height: 64px; background-color: rgba(0, 255, 136, 0.15); border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
-                                <img src="<?php echo e(asset('icons/envelope-check-fill.svg')); ?>"
+                            <div style="width:64px; height:64px; background-color: rgba(0,255,136,0.15); border-radius:50%; margin:0 auto 24px; text-align:center; line-height:64px;">
+                                <img src="https://000form.com/images/icons/envelope-check-fill.svg"
                                     width="32"
                                     height="32"
-                                    style="display:block;margin:auto;">
+                                    >
                             </div>
                             
                             <h1 style="margin: 0 0 12px; font-size: 24px; font-weight: 600; color: #fafafa;">
