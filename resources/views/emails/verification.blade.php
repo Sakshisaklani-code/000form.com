@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
     <title>Verify Your Email</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #0a0a0a;">
@@ -22,11 +24,8 @@
                     <!-- Main Content -->
                     <tr>
                         <td style="background-color: #111111; border-radius: 12px; padding: 40px; border: 1px solid #1a1a1a; text-align: center;">
-                            <div style="width: 64px; height: 64px; background-color: rgba(0, 255, 136, 0.15); border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
-                                <img src="{{ asset('icons/envelope-check-fill.svg') }}"
-                                    width="32"
-                                    height="32"
-                                    style="display:block;margin:auto;">
+                            <div style="width: 80px; height: 80px; background: rgba(0, 255, 136, 0.15); border-radius: 50%; margin: 0 auto 2rem; line-height: 80px; text-align: center;">
+                                <span style="font-size: 36px; color: #00ff88;">✉</span>
                             </div>
                             
                             <h1 style="margin: 0 0 12px; font-size: 24px; font-weight: 600; color: #fafafa;">
