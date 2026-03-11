@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Plans & Pricing - 000form'); ?>
 
-@section('title', 'Plans & Pricing - 000form')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <style>
     /* ============================================
@@ -500,7 +498,7 @@
 <div class="pp">
 <div class="pp-wrap">
 
-    {{-- HEADER --}}
+    
     <div class="pp-head">
         <h1>000form <em>Plans</em></h1>
         <p>We offer plans for every project, from personal sites to large-scale enterprise campaigns.</p>
@@ -513,10 +511,10 @@
         </div>
     </div>
 
-    {{-- PLANS --}}
+    
     <div class="pp-grid">
 
-        {{-- PERSONAL --}}
+        
         <div class="pp-plan">
             <span class="pp-plan-badge personal">Personal</span>
             <div class="pp-price">
@@ -525,7 +523,7 @@
                 <span class="per">/month</span>
             </div>
             <p class="pp-plan-desc">For personal or portfolio sites.</p>
-            <a href="{{ route('signup') }}" class="pp-cta pp-cta-outline">Buy Now →</a>
+            <a href="<?php echo e(route('signup')); ?>" class="pp-cta pp-cta-outline">Buy Now →</a>
             <hr class="pp-divider">
             <span class="pp-feat-label">Includes</span>
             <ul class="pp-feats">
@@ -556,7 +554,7 @@
             </ul>
         </div>
 
-        {{-- PROFESSIONAL --}}
+        
         <div class="pp-plan featured">
             <div class="pp-pop-badge">Most Popular</div>
             <span class="pp-plan-badge professional">Professional</span>
@@ -566,7 +564,7 @@
                 <span class="per">/month</span>
             </div>
             <p class="pp-plan-desc">For freelancers and startups.</p>
-            <a href="{{ route('signup') }}" class="pp-cta pp-cta-solid">Buy Now →</a>
+            <a href="<?php echo e(route('signup')); ?>" class="pp-cta pp-cta-solid">Buy Now →</a>
             <hr class="pp-divider">
             <span class="pp-feat-label">Everything in Personal, plus</span>
             <ul class="pp-feats">
@@ -597,7 +595,7 @@
             </ul>
         </div>
 
-        {{-- BUSINESS --}}
+        
         <div class="pp-plan">
             <span class="pp-plan-badge business">Business</span>
             <div class="pp-price">
@@ -606,7 +604,7 @@
                 <span class="per">/month</span>
             </div>
             <p class="pp-plan-desc">For organizations and agencies.</p>
-            <a href="{{ route('signup') }}" class="pp-cta pp-cta-outline">Buy Now →</a>
+            <a href="<?php echo e(route('signup')); ?>" class="pp-cta pp-cta-outline">Buy Now →</a>
             <hr class="pp-divider">
             <span class="pp-feat-label">Everything in Professional, plus</span>
             <ul class="pp-feats">
@@ -637,7 +635,7 @@
             </ul>
         </div>
 
-        {{-- CUSTOM --}}
+        
         <div class="pp-plan custom">
             <span class="pp-plan-badge custom-badge">Custom</span>
             <div class="pp-price-custom">
@@ -675,7 +673,7 @@
             </ul>
         </div>
 
-    </div>{{-- /pp-grid --}}
+    </div>
 
 </div>
 </div>
@@ -705,4 +703,5 @@
 })();
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/pricing.blade.php ENDPATH**/ ?>
