@@ -23,12 +23,10 @@
                     <tr>
                         <td style="background-color: #111111; border-radius: 12px; padding: 40px; border: 1px solid #1a1a1a; text-align: center;">
                             <div style="width: 64px; height: 64px; background-color: rgba(0, 255, 136, 0.15); border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
-                                <svg width="32" height="32" viewBox="0 0 24 24" 
-                                    fill="none" stroke="#00ff88" stroke-width="2" 
-                                    xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2-2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                                </svg>
+                                <img src="{{ asset('icons/envelope-check-fill.svg') }}"
+                                    width="32"
+                                    height="32"
+                                    style="display:block;margin:auto;">
                             </div>
                             
                             <h1 style="margin: 0 0 12px; font-size: 24px; font-weight: 600; color: #fafafa;">
