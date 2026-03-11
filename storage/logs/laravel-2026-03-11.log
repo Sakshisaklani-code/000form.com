@@ -594,3 +594,6 @@ Did you mean one of these?
 [2026-03-11 08:31:13] local.ERROR: Supabase signout error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/logout` resulted in a `403 Forbidden` response:
 {"code":403,"error_code":"bad_jwt","msg":"invalid JWT: unable to parse or verify signature, token has invalid claims: to (truncated...)
   
+[2026-03-11 11:49:16] local.ERROR: Supabase signout error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/logout` resulted in a `403 Forbidden` response:
+{"code":403,"error_code":"bad_jwt","msg":"invalid JWT: unable to parse or verify signature, token has invalid claims: to (truncated...)
+  
