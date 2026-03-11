@@ -43,6 +43,7 @@
                     <th>Submissions</th>
                     <th>Status</th>
                     <th>Last Submission</th>
+                    <th>View</th>
                     <th></th>
                 </tr>
             </thead>
