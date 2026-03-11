@@ -46,6 +46,51 @@
     </div>
   </div>
 
+  {{-- VALIDATION INFO --}}
+  @if(isset($validations) && $validations->count() > 0)
+    <div style="background:rgba(65,66,101,0.06); border:1px solid rgba(65,66,101,0.15);
+                border-radius:8px; padding:.9rem 1.1rem; margin-bottom:2rem;
+                display:flex; align-items:flex-start; gap:.75rem;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#414265" stroke-width="2"
+           style="flex-shrink:0; margin-top:1px;">
+        <polyline points="9 11 12 14 22 4"/>
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+      </svg>
+      <div>
+        <p style="margin:0 0 .4rem; font-size:.82rem; color:var(--text-muted); line-height:1.5;">
+          <strong style="color:var(--text);">{{ $validations->count() }} backend validation rule{{ $validations->count() !== 1 ? 's' : '' }} active.</strong>
+          The popup will show inline errors for fields that fail these rules.
+        </p>
+        <div style="display:flex; flex-wrap:wrap; gap:.4rem;">
+          @foreach($validations as $v)
+            <span style="background:rgba(65,66,101,0.12); color:#414265; font-size:.72rem;
+                         font-weight:600; padding:.2rem .6rem; border-radius:999px;">
+              {{ $v->field_name }}
+              @if($v->is_required) · required @endif
+              @if($v->min_length) · min {{ $v->min_length }} @endif
+              @if($v->max_length) · max {{ $v->max_length }} @endif
+            </span>
+          @endforeach
+        </div>
+      </div>
+    </div>
+  @else
+    <div style="background:rgba(148,163,184,0.08); border:1px solid var(--border-color);
+                border-radius:8px; padding:.9rem 1.1rem; margin-bottom:2rem;
+                display:flex; align-items:center; gap:.75rem;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="8" x2="12" y2="12"/>
+        <line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      <p style="margin:0; font-size:.82rem; color:var(--text-muted);">
+        No backend validations configured. Only basic required field checks will apply.
+        <a href="{{ route('dashboard.forms.show', $form->id) }}?panel=workflow"
+           style="color:#414265; font-weight:600;">Add validations →</a>
+      </p>
+    </div>
+  @endif
+
   {{-- INSTRUCTIONS --}}
   <div class="card" style="margin-bottom:2rem; background:var(--bg-secondary);">
     <h3 style="margin-bottom:1rem;">How to install</h3>

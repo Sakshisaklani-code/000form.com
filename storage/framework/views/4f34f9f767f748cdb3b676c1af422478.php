@@ -1,5 +1,3 @@
-
-
 (function () {
   'use strict';
 
@@ -166,9 +164,8 @@
     }, 220);
   }
 
-  // ── Validation ──────────────────────────────────────────
+  // ── Helpers ─────────────────────────────────────────────
   function isValidEmail(val) {
-    // Requires: local@domain.tld — rejects plain words, spaces, missing dot in domain
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val);
   }
 
@@ -186,18 +183,19 @@
     if (span)  { span.textContent = ''; span.classList.remove('visible'); }
   }
 
+  function clearAllErrors() {
+    clearError('zzf-name',  'zzf-name-err');
+    clearError('zzf-email', 'zzf-email-err');
+    clearError('zzf-msg',   'zzf-msg-err');
+  }
+
+  // ── Frontend validation — only basic required + email format ──
   function validateAll() {
     var valid = true;
 
     var name = document.getElementById('zzf-name').value.trim();
     if (!name) {
       setError('zzf-name', 'zzf-name-err', 'Name is required.');
-      valid = false;
-    } else if (name.length < 2) {
-      setError('zzf-name', 'zzf-name-err', 'Name must be at least 2 characters.');
-      valid = false;
-    } else if (name.length > 20) {
-      setError('zzf-name', 'zzf-name-err', 'Name must be under 20 characters.');
       valid = false;
     } else {
       clearError('zzf-name', 'zzf-name-err');
@@ -208,7 +206,7 @@
       setError('zzf-email', 'zzf-email-err', 'Email is required.');
       valid = false;
     } else if (!isValidEmail(email)) {
-      setError('zzf-email', 'zzf-email-err', 'Enter a valid email address (e.g. you@example.com).');
+      setError('zzf-email', 'zzf-email-err', 'Enter a valid email address.');
       valid = false;
     } else {
       clearError('zzf-email', 'zzf-email-err');
@@ -218,17 +216,47 @@
     if (!message) {
       setError('zzf-msg', 'zzf-msg-err', 'Message is required.');
       valid = false;
-    } else if (message.length < 10) {
-      setError('zzf-msg', 'zzf-msg-err', 'Message must be at least 10 characters.');
-      valid = false;
-    } else if (message.length > 100) {
-      setError('zzf-msg', 'zzf-msg-err', 'Message must be under 100 characters.');
-      valid = false;
     } else {
       clearError('zzf-msg', 'zzf-msg-err');
     }
 
     return valid;
+  }
+
+  // ── Map backend field names to widget field IDs ──────────
+  var fieldMap = {
+    'name':    ['zzf-name',  'zzf-name-err'],
+    'email':   ['zzf-email', 'zzf-email-err'],
+    'message': ['zzf-msg',   'zzf-msg-err'],
+  };
+
+  function applyBackendErrors(errors) {
+    var unmatched = [];
+
+    // errors can be our custom array format [{field, message}]
+    // or standard Laravel object format {field: [messages]}
+    if (Array.isArray(errors)) {
+      errors.forEach(function (err) {
+        var pair = fieldMap[err.field];
+        if (pair) {
+          setError(pair[0], pair[1], err.message);
+        } else {
+          unmatched.push(err.field + ': ' + err.message);
+        }
+      });
+    } else {
+      Object.keys(errors).forEach(function (field) {
+        var pair = fieldMap[field];
+        var msg  = Array.isArray(errors[field]) ? errors[field][0] : errors[field];
+        if (pair) {
+          setError(pair[0], pair[1], msg);
+        } else {
+          unmatched.push(field + ': ' + msg);
+        }
+      });
+    }
+
+    return unmatched;
   }
 
   // ── Events ──────────────────────────────────────────────
@@ -240,15 +268,14 @@
       if (e.key === 'Escape') closeModal();
     });
 
-    // Clear individual field errors on input
     var fields = [
       ['zzf-name',  'zzf-name-err'],
       ['zzf-email', 'zzf-email-err'],
       ['zzf-msg',   'zzf-msg-err'],
     ];
-    fields.forEach(function(pair) {
+    fields.forEach(function (pair) {
       var el = document.getElementById(pair[0]);
-      if (el) el.addEventListener('input', function() { clearError(pair[0], pair[1]); });
+      if (el) el.addEventListener('input', function () { clearError(pair[0], pair[1]); });
     });
 
     document.getElementById('zzf-form').addEventListener('submit', handleSubmit);
@@ -264,27 +291,23 @@
     var statusDiv = document.getElementById('zzf-status');
     var formEl    = document.getElementById('zzf-form');
 
-    var name    = document.getElementById('zzf-name').value.trim();
-    var email   = document.getElementById('zzf-email').value.trim();
-    var message = document.getElementById('zzf-msg').value.trim();
-
     statusDiv.style.display = 'none';
-    submitBtn.disabled      = true;
-    submitBtn.textContent   = 'Sending\u2026';
+    statusDiv.textContent   = '';
+    clearAllErrors();
+
+    submitBtn.disabled    = true;
+    submitBtn.textContent = 'Sending\u2026';
 
     var formData = new FormData();
-    formData.append('name',    name);
-    formData.append('email',   email);
-    formData.append('message', message);
-    formData.append('captcha_verified', '1');
-    formData.append('_captcha', 'disabled');
+    formData.append('name',    document.getElementById('zzf-name').value.trim());
+    formData.append('email',   document.getElementById('zzf-email').value.trim());
+    formData.append('message', document.getElementById('zzf-msg').value.trim());
+    formData.append('_captcha', 'false');
 
     fetch(CFG.action, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-      },
-      body: formData,
+      method:  'POST',
+      headers: { 'Accept': 'application/json' },
+      body:    formData,
     })
     .then(function (res) {
       var status = res.status;
@@ -293,74 +316,86 @@
       });
     })
     .then(function (result) {
+      submitBtn.disabled    = false;
+      submitBtn.textContent = 'Send Message';
 
+      // ── Success ──
       if (result.status >= 200 && result.status < 300) {
         try {
           var json = JSON.parse(result.text);
+          // If server wants a captcha redirect, ignore it — popup disables captcha
           if (json.redirect) {
-            submitBtn.disabled    = false;
-            submitBtn.textContent = 'Send Message';
             statusDiv.style.display = 'block';
-            statusDiv.className   = 'error';
-            statusDiv.textContent = 'Captcha bypass failed. Check server logs.';
+            statusDiv.className     = 'error';
+            statusDiv.textContent   = 'Unexpected redirect. Please try again.';
             return;
           }
-        } catch (e) { /* not JSON, that's fine */ }
+        } catch (e) { /* not JSON — fine */ }
 
-        // Show success message
+        formEl.reset();
         statusDiv.style.display = 'block';
         statusDiv.className     = 'success';
         statusDiv.textContent   = 'Thanks! We\'ll be in touch soon. \u2713';
-
-        // Reset form fields and re-enable submit
-        formEl.reset();
-        submitBtn.disabled    = false;
-        submitBtn.textContent = 'Send Message';
-
-        // Auto-hide success message after 4 seconds
-        setTimeout(function () {
-          statusDiv.style.display = 'none';
-        }, 4000);
+        setTimeout(function () { statusDiv.style.display = 'none'; }, 4000);
         return;
       }
 
-      submitBtn.disabled    = false;
-      submitBtn.textContent = 'Send Message';
       statusDiv.style.display = 'block';
-      statusDiv.className   = 'error';
+      statusDiv.className     = 'error';
 
-      if (result.status === 419) {
-        statusDiv.textContent = 'Session error (419). Add "f/*" to VerifyCsrfToken $except.';
-        return;
-      }
-
+      // ── 422 — backend validation errors (user-configured rules) ──
       if (result.status === 422) {
         try {
           var json = JSON.parse(result.text);
-          var msgs = Object.values(json.errors).flat();
-          statusDiv.textContent = msgs[0] || 'Validation error.';
+
+          // Our custom format: { validation_error: true, errors: [{field, message}] }
+          if (json.validation_error && Array.isArray(json.errors)) {
+            var unmatched = applyBackendErrors(json.errors);
+            if (unmatched.length) {
+              statusDiv.textContent = unmatched.join(' · ');
+            } else {
+              statusDiv.style.display = 'none';
+            }
+            return;
+          }
+
+          // Standard Laravel format: { errors: { field: [messages] } }
+          if (json.errors) {
+            var unmatched = applyBackendErrors(json.errors);
+            if (unmatched.length) {
+              statusDiv.textContent = unmatched.join(' · ');
+            } else {
+              statusDiv.style.display = 'none';
+            }
+            return;
+          }
+
+          statusDiv.textContent = json.message || 'Validation failed.';
         } catch (e) {
           statusDiv.textContent = 'Validation failed.';
         }
         return;
       }
 
+      // ── Other errors ──
+      if (result.status === 419) {
+        statusDiv.textContent = 'Session expired. Please refresh and try again.';
+        return;
+      }
       if (result.status === 403) {
-        statusDiv.textContent = 'Access denied (403). Check form is verified and active.';
+        statusDiv.textContent = 'Form is not active or not verified.';
         return;
       }
-
       if (result.status === 404) {
-        statusDiv.textContent = 'Form not found (404). Check the form slug.';
+        statusDiv.textContent = 'Form not found.';
         return;
       }
-
       if (result.status === 500) {
-        statusDiv.textContent = 'Server error (500). Check storage/logs/laravel.log.';
+        statusDiv.textContent = 'Server error. Please try again later.';
         return;
       }
 
-      statusDiv.textContent = 'Error ' + result.status + '. Check browser console.';
+      statusDiv.textContent = 'Error ' + result.status + '. Please try again.';
     })
     .catch(function (err) {
       submitBtn.disabled      = false;
