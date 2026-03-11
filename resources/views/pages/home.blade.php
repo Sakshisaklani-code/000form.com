@@ -22,7 +22,7 @@
                     <path d="M2 17l10 5 10-5"/>
                     <path d="M2 12l10 5 10-5"/>
                 </svg>
-                Forever Free • No Credit Card Required
+                Instant Form Handling
             </div>
             
             <h1 class="hero-title">
