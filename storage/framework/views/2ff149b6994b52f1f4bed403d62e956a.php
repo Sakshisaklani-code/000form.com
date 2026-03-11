@@ -918,10 +918,12 @@
     }
 
     .steps {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 3rem;
-        margin: 3rem 0 4rem;
+      display: grid;
+      flex-direction: column;
+      align-items: center; /* centers horizontally */
+      gap: 2rem;
+      margin-bottom: 3rem;
+      text-align: center;
     }
 
     .step {
