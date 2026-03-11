@@ -936,22 +936,23 @@
                 </div>
             </div>
 
-            {{-- ══ TAB: AJAX (Interstitial Method) ══ --}}
-            <div id="code-ajax" class="code-block">
-                <div class="code-header">
-                    <span class="code-lang">HTML + AJAX (Handles Redirect)</span>
-                    <button class="code-copy" onclick="copyCode('ajax-pre')">Copy</button>
-                </div>
-                <div class="code-content">
-                    <pre id="ajax-pre"><span class="tag">&lt;form</span> <span class="attr">id</span>=<span class="string">"contact-form"</span> <span class="attr">action</span>=<span class="string">"{{ $form->endpoint_url }}"</span> <span class="attr">method</span>=<span class="string">"POST"</span><span class="tag">&gt;</span>
+{{-- ══ TAB: AJAX (Interstitial Method) ══ --}}
+<div id="code-ajax" class="code-block">
+    <div class="code-header">
+        <span class="code-lang">HTML + AJAX</span>
+        <button class="code-copy" onclick="copyCode('ajax-pre')">Copy</button>
+    </div>
+    <div class="code-content">
+        <pre id="ajax-pre"><span class="tag">&lt;form</span> <span class="attr">id</span>=<span class="string">"contact-form"</span> <span class="attr">action</span>=<span class="string">"{{ $form->endpoint_url }}"</span> <span class="attr">method</span>=<span class="string">"POST"</span><span class="tag">&gt;</span>
   <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"text"</span>  <span class="attr">name</span>=<span class="string">"name"</span>    <span class="attr">placeholder</span>=<span class="string">"Your name"</span>    <span class="attr">required</span><span class="tag">&gt;</span>
   <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">name</span>=<span class="string">"email"</span>   <span class="attr">placeholder</span>=<span class="string">"Your email"</span>   <span class="attr">required</span><span class="tag">&gt;</span>
   <span class="tag">&lt;textarea</span> <span class="attr">name</span>=<span class="string">"message"</span> <span class="attr">placeholder</span>=<span class="string">"Your message"</span><span class="tag">&gt;&lt;/textarea&gt;</span>
   @if($form->honeypot_enabled)
   <span class="comment">&lt;!-- Honeypot --&gt;</span>
-  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"{{ $form->honeypot_field }}"</span> <span class="attr">style</span>=<span class="string">"display:none"</span> <span class="tag">&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"{{ $form->honeypot_field }}"</span> <span class="attr">style</span>=<span class="string">"display:none"</span><span class="tag">&gt;</span>
   @endif
-  <span class="comment">&lt;!-- Google CAPTCHA is enabled! --&gt;</span>
+  <span class="comment">&lt;!-- Disable captcha for AJAX --&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"_captcha"</span> <span class="attr">value</span>=<span class="string">"false"</span><span class="tag">&gt;</span>
   <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="string">"submit"</span><span class="tag">&gt;</span>Send Message<span class="tag">&lt;/button&gt;</span>
 <span class="tag">&lt;/form&gt;</span>
 <span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="string">"form-response"</span> <span class="attr">style</span>=<span class="string">"margin-top:15px"</span><span class="tag">&gt;&lt;/div&gt;</span>
@@ -960,58 +961,63 @@
 <span class="keyword">document</span>.getElementById(<span class="string">'contact-form'</span>).addEventListener(<span class="string">'submit'</span>, <span class="keyword">async function</span>(e) {
   e.preventDefault();
   <span class="keyword">const</span> form = <span class="keyword">this</span>;
-  <span class="keyword">const</span> box  = <span class="keyword">document</span>.getElementById(<span class="string">'form-response'</span>);
+  <span class="keyword">const</span> box  = document.getElementById(<span class="string">'form-response'</span>);
   <span class="keyword">const</span> btn  = form.querySelector(<span class="string">'button[type="submit"]'</span>);
-  
-  btn.disabled = <span class="keyword">true</span>; btn.textContent = <span class="string">'Sending...'</span>;
+
+  box.innerHTML = <span class="string">''</span>;
+  btn.disabled = <span class="keyword">true</span>;
+  btn.textContent = <span class="string">'Sending...'</span>;
+
   <span class="keyword">try</span> {
-    <span class="keyword">const</span> res  = <span class="keyword">await</span> fetch(form.action, { method: <span class="string">'POST'</span>, body: <span class="keyword">new</span> FormData(form), headers: { <span class="string">'Accept'</span>: <span class="string">'application/json'</span> } });
-    <span class="keyword">const</span> data = <span class="keyword">await</span> res.json();
-    
-    <span class="comment">// Check if we need to redirect for captcha verification</span>
-    <span class="keyword">if</span> (data.redirect) {
-      window.location.href = data.redirect;
+    <span class="keyword">const</span> res = <span class="keyword">await</span> fetch(form.action, {
+      method: <span class="string">'POST'</span>,
+      body: <span class="keyword">new</span> FormData(form),
+      headers: { <span class="string">'Accept'</span>: <span class="string">'application/json'</span> }
+    });
+
+    <span class="keyword">const</span> statusCode = res.status;
+    <span class="keyword">const</span> text = <span class="keyword">await</span> res.text();
+    <span class="keyword">let</span> data = {};
+    <span class="keyword">try</span> { data = JSON.parse(text); } <span class="keyword">catch</span>(err) {}
+
+    <span class="keyword">if</span> (statusCode === 200 &amp;&amp; data.success) {
+      box.innerHTML = <span class="string">'&lt;p style="color:#22c55e;font-weight:500;"&gt;&#x2713; {{ addslashes($form->success_message ?? "Thank you for your submission!") }}&lt;/p&gt;'</span>;
+      form.reset();
       <span class="keyword">return</span>;
     }
-    
-    <span class="keyword">if</span> (res.ok &amp;&amp; data.success) { 
-      box.innerHTML = <span class="string">'&lt;span style="color:#22c55e"&gt;&#x2713; {{ addslashes($form->success_message ?? "Thank you!") }}&lt;/span&gt;'</span>; 
-      form.reset(); 
+
+    <span class="keyword">if</span> (statusCode === 422) {
+      <span class="keyword">if</span> (data.validation_error &amp;&amp; Array.isArray(data.errors)) {
+        <span class="keyword">const</span> msgs = data.errors.map(<span class="keyword">function</span>(e) {
+          <span class="keyword">return</span> <span class="string">'&lt;p style="color:#ef4444;margin:4px 0;"&gt;&#x2715; '</span> + e.field + <span class="string">': '</span> + e.message + <span class="string">'&lt;/p&gt;'</span>;
+        });
+        box.innerHTML = msgs.join(<span class="string">''</span>);
+      } <span class="keyword">else if</span> (data.errors) {
+        <span class="keyword">const</span> msgs = Object.entries(data.errors).map(<span class="keyword">function</span>([field, errs]) {
+          <span class="keyword">return</span> <span class="string">'&lt;p style="color:#ef4444;margin:4px 0;"&gt;&#x2715; '</span> + field + <span class="string">': '</span> + errs[0] + <span class="string">'&lt;/p&gt;'</span>;
+        });
+        box.innerHTML = msgs.join(<span class="string">''</span>);
+      } <span class="keyword">else</span> {
+        box.innerHTML = <span class="string">'&lt;p style="color:#ef4444;"&gt;&#x2715; Validation failed.&lt;/p&gt;'</span>;
+      }
+      <span class="keyword">return</span>;
     }
-    <span class="keyword">else throw new</span> Error(data.error || data.message || <span class="string">'Something went wrong'</span>);
-  } <span class="keyword">catch</span>(err) { box.innerHTML = <span class="string">'&lt;span style="color:#ef4444"&gt;&#x2715; '</span> + err.message + <span class="string">'&lt;/span&gt;'</span>; }
-  <span class="keyword">finally</span> { btn.disabled = <span class="keyword">false</span>; btn.textContent = <span class="string">'Send Message'</span>; }
+
+    <span class="keyword">if</span> (statusCode === 403) {
+      box.innerHTML = <span class="string">'&lt;p style="color:#ef4444;"&gt;&#x2715; Form is not active or email is not verified.&lt;/p&gt;'</span>;
+      <span class="keyword">return</span>;
+    }
+
+    box.innerHTML = <span class="string">'&lt;p style="color:#ef4444;"&gt;&#x2715; '</span> + (data.message || data.error || <span class="string">'Something went wrong. Please try again.'</span>) + <span class="string">'&lt;/p&gt;'</span>;
+
+  } <span class="keyword">catch</span>(err) {
+    box.innerHTML = <span class="string">'&lt;p style="color:#ef4444;"&gt;&#x2715; Network error: '</span> + err.message + <span class="string">'&lt;/p&gt;'</span>;
+  } <span class="keyword">finally</span> {
+    btn.disabled = <span class="keyword">false</span>;
+    btn.textContent = <span class="string">'Send Message'</span>;
+  }
 });
 <span class="tag">&lt;/script&gt;</span></pre>
-                </div>
-            </div>
-
-            {{-- ══ TAB: File Upload (Interstitial Method) ══ --}}
-            <div id="code-fileupload" class="code-block">
-                <div class="code-header">
-                    <span class="code-lang">File Upload (Handles Redirect)</span>
-                    <button class="code-copy" onclick="copyCode('fileupload-pre')">Copy</button>
-                </div>
-                <div class="code-content">
-                    <pre id="fileupload-pre"><span class="tag">&lt;form</span> <span class="attr">action</span>=<span class="string">"{{ $form->endpoint_url }}"</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span><span class="tag">&gt;</span>
-  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"text"</span>  <span class="attr">name</span>=<span class="string">"name"</span>    <span class="attr">placeholder</span>=<span class="string">"Your name"</span>    <span class="attr">required</span><span class="tag">&gt;</span>
-  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">name</span>=<span class="string">"email"</span>   <span class="attr">placeholder</span>=<span class="string">"Your email"</span>   <span class="attr">required</span><span class="tag">&gt;</span>
-  <span class="tag">&lt;textarea</span> <span class="attr">name</span>=<span class="string">"message"</span> <span class="attr">placeholder</span>=<span class="string">"Your message"</span><span class="tag">&gt;&lt;/textarea&gt;</span>
-  <span class="comment">&lt;!-- Single file --&gt;</span>
-  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"upload"</span><span class="tag">&gt;</span>
-  <span class="comment">&lt;!-- OR multiple files --&gt;</span>
-  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"upload[]"</span> <span class="attr">multiple</span><span class="tag">&gt;</span>
-  @if($form->honeypot_enabled)
-  <span class="comment">&lt;!-- Honeypot --&gt;</span>
-  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"{{ $form->honeypot_field }}"</span> <span class="attr">style</span>=<span class="string">"display:none"</span> &gt;</span>
-  @endif
-  <span class="comment">&lt;!-- Google CAPTCHA is enabled! --&gt;</span>
-  <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="string">"submit"</span><span class="tag">&gt;</span>Send Message<span class="tag">&lt;/button&gt;</span>
-<span class="tag">&lt;/form&gt;</span></pre>
-                </div>
-            </div>
-
-        </div>
     </div>
 </div>
 
