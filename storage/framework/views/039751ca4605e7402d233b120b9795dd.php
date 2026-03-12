@@ -615,17 +615,17 @@
 
                 
                 <div class="docs-section" id="ajax">
-                    <div class="docs-section-header">
-                        <h2>
-                            <span class="sec-icon"><i class="bi bi-braces"></i></span>
-                            AJAX / JavaScript
-                        </h2>
-                        <p>Submit the form without reloading the page. Add <span class="ic">Accept: application/json</span> to your request and you'll get a JSON response back instead of a page redirect.</p>
-                    </div>
-                    <div class="docs-section-body">
-                        <div class="code-block">
-                            <div class="code-header"><span class="code-lang">JavaScript</span><button class="code-copy"><i class="bi bi-clipboard"></i> Copy</button></div>
-                            <div class="code-content">
+    <div class="docs-section-header">
+        <h2>
+            <span class="sec-icon"><i class="bi bi-braces"></i></span>
+            AJAX / JavaScript
+        </h2>
+        <p>Submit the form without reloading the page. Add <span class="ic">Accept: application/json</span> to your request and you'll get a JSON response back instead of a page redirect.</p>
+    </div>
+    <div class="docs-section-body">
+        <div class="code-block">
+            <div class="code-header"><span class="code-lang">JavaScript</span><button class="code-copy"><i class="bi bi-clipboard"></i> Copy</button></div>
+            <div class="code-content">
 <pre><span class="kw">const</span> form = document.<span class="fn">getElementById</span>(<span class="str2">'YOUR-FORM-ID'</span>);
 <span class="kw">const</span> responseBox = document.<span class="fn">getElementById</span>(<span class="str2">'form-response'</span>);
 
@@ -659,14 +659,104 @@ form.<span class="fn">addEventListener</span>(<span class="str2">'submit'</span>
     btn.textContent = <span class="str2">'Send Message'</span>;
   }
 });</pre>
-                            </div>
-                        </div>
-                        <div class="note-box">
-                            <i class="bi bi-info-circle-fill"></i>
-                            <span>Add <span class="ic">&lt;div id="form-response"&gt;&lt;/div&gt;</span> inside your form HTML &mdash; that's where the success or error message will show. The JSON response always has <span class="ic">success</span> (true/false) and <span class="ic">message</span> (text).</span>
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </div>
+        <div class="note-box">
+            <i class="bi bi-info-circle-fill"></i>
+            <span>Add <span class="ic">&lt;div id="form-response"&gt;&lt;/div&gt;</span> inside your form HTML &mdash; that's where the success or error message will show. The JSON response always has <span class="ic">success</span> (true/false) and <span class="ic">message</span> (text).</span>
+        </div>
+
+        
+        <div class="docs-subsection-title" style="margin-top:2rem;margin-bottom:1rem;font-weight:600;font-size:0.95rem;color:var(--text-primary);">
+            <i class="bi bi-file-code" style="color:var(--accent);margin-right:0.4rem;"></i>
+            Full Example
+        </div>
+        <div class="code-block">
+            <div class="code-header"><span class="code-lang">HTML</span><button class="code-copy"><i class="bi bi-clipboard"></i> Copy</button></div>
+            <div class="code-content">
+<pre><span class="comment">&lt;!-- Replace YOUR_FORM_ID with your actual form ID from the dashboard --&gt;</span>
+
+<span class="tag">&lt;form</span> <span class="attr">id</span>=<span class="str2">"contact-form"</span> <span class="attr">action</span>=<span class="str2">"https://000form.com/f/YOUR_FORM_ID"</span> <span class="attr">method</span>=<span class="str2">"POST"</span><span class="tag">&gt;</span>
+
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str2">"text"</span>  <span class="attr">name</span>=<span class="str2">"name"</span>    <span class="attr">placeholder</span>=<span class="str2">"Your name"</span>    <span class="attr">required</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str2">"email"</span> <span class="attr">name</span>=<span class="str2">"email"</span>   <span class="attr">placeholder</span>=<span class="str2">"Your email"</span>   <span class="attr">required</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;textarea</span>          <span class="attr">name</span>=<span class="str2">"message"</span> <span class="attr">placeholder</span>=<span class="str2">"Your message"</span> <span class="attr">required</span><span class="tag">&gt;&lt;/textarea&gt;</span>
+
+  <span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="str2">"form-response"</span><span class="tag">&gt;&lt;/div&gt;</span>
+
+  <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="str2">"submit"</span><span class="tag">&gt;</span>Send Message<span class="tag">&lt;/button&gt;</span>
+
+<span class="tag">&lt;/form&gt;</span>
+
+<span class="tag">&lt;script&gt;</span>
+<span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str2">'contact-form'</span>).<span class="fn">addEventListener</span>(<span class="str2">'submit'</span>, <span class="kw">async function</span>(e) {
+  e.<span class="fn">preventDefault</span>();
+  <span class="kw">const</span> form = <span class="kw">this</span>;
+  <span class="kw">const</span> box  = document.<span class="fn">getElementById</span>(<span class="str2">'form-response'</span>);
+  <span class="kw">const</span> btn  = form.<span class="fn">querySelector</span>(<span class="str2">'button[type="submit"]'</span>);
+
+  box.innerHTML = <span class="str2">''</span>;
+  btn.disabled = <span class="kw">true</span>;
+  btn.textContent = <span class="str2">'Sending...'</span>;
+
+  <span class="kw">try</span> {
+    <span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(form.action, {
+      method:  <span class="str2">'POST'</span>,
+      body:    <span class="kw">new</span> <span class="fn">FormData</span>(form),
+      headers: { <span class="str2">'Accept'</span>: <span class="str2">'application/json'</span> }
+    });
+
+    <span class="kw">const</span> statusCode = res.status;
+    <span class="kw">const</span> text = <span class="kw">await</span> res.<span class="fn">text</span>();
+    <span class="kw">let</span> data = {};
+    <span class="kw">try</span> { data = <span class="fn">JSON</span>.<span class="fn">parse</span>(text); } <span class="kw">catch</span>(err) {}
+
+    <span class="kw">if</span> (statusCode === <span class="num">200</span> && data.success) {
+      box.innerHTML = <span class="str2">'&lt;p style="color:#22c55e;font-weight:500;"&gt;&#10003; Message sent successfully!&lt;/p&gt;'</span>;
+      form.<span class="fn">reset</span>();
+      <span class="kw">if</span> (data.redirect) location.href = data.redirect;
+      <span class="kw">return</span>;
+    }
+
+    <span class="kw">if</span> (statusCode === <span class="num">422</span>) {
+      <span class="kw">if</span> (data.validation_error && <span class="fn">Array</span>.<span class="fn">isArray</span>(data.errors)) {
+        box.innerHTML = data.errors.<span class="fn">map</span>(e =>
+          <span class="str2">`&lt;p style="color:#ef4444;margin:4px 0;"&gt;&#10007; ${e.field}: ${e.message}&lt;/p&gt;`</span>
+        ).<span class="fn">join</span>(<span class="str2">''</span>);
+      } <span class="kw">else if</span> (data.errors) {
+        box.innerHTML = <span class="fn">Object</span>.<span class="fn">entries</span>(data.errors).<span class="fn">map</span>(([field, errs]) =>
+          <span class="str2">`&lt;p style="color:#ef4444;margin:4px 0;"&gt;&#10007; ${field}: ${errs[0]}&lt;/p&gt;`</span>
+        ).<span class="fn">join</span>(<span class="str2">''</span>);
+      } <span class="kw">else</span> {
+        box.innerHTML = <span class="str2">'&lt;p style="color:#ef4444;"&gt;&#10007; Validation failed.&lt;/p&gt;'</span>;
+      }
+      <span class="kw">return</span>;
+    }
+
+    <span class="kw">if</span> (statusCode === <span class="num">403</span>) {
+      box.innerHTML = <span class="str2">'&lt;p style="color:#ef4444;"&gt;&#10007; Form is not active or email is not verified.&lt;/p&gt;'</span>;
+      <span class="kw">return</span>;
+    }
+
+    box.innerHTML = <span class="str2">`&lt;p style="color:#ef4444;"&gt;&#10007; ${data.message || data.error || 'Something went wrong.'}&lt;/p&gt;`</span>;
+
+  } <span class="kw">catch</span>(err) {
+    box.innerHTML = <span class="str2">`&lt;p style="color:#ef4444;"&gt;&#10007; Network error: ${err.message}&lt;/p&gt;`</span>;
+  } <span class="kw">finally</span> {
+    btn.disabled = <span class="kw">false</span>;
+    btn.textContent = <span class="str2">'Send Message'</span>;
+  }
+});
+<span class="tag">&lt;/script&gt;</span></pre>
+            </div>
+        </div>
+        <div class="note-box" style="margin-top:1rem;">
+            <i class="bi bi-lightbulb-fill"></i>
+            <span>Replace <span class="ic">YOUR_FORM_ID</span> with your form's ID or slug from the <a href="<?php echo e(route('dashboard')); ?>" style="color:var(--accent);">dashboard</a>. The script handles success, validation errors (422), and permission errors (403) automatically.</span>
+        </div>
+
+    </div>
+</div>
 
                 
                 <div class="docs-section" id="chat-widget">
