@@ -172,10 +172,11 @@
             <div class="footer-inner">
                 <div class="nav-logo"><span>000</span>form</div>
                 <ul class="footer-links">
-                    <li><a href="/ajax">AJAX</a></li>
+                    
                     <li><a href="{{ route('playground.index') }}">Playground</a></li>
                     <li><a href="{{ route('pages.terms') }}">Terms</a></li>
                     <li><a href="{{ route('pages.privacy-policy') }}">Privacy Policy</a></li>
+                    <li><a href="/ajax">AJAX</a></li>
                 </ul>
                 <p class="footer-copy">&copy; {{ date('Y') }} 000form</p>
             </div>
@@ -201,6 +202,39 @@
                 }
             }
         })();
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navActions = document.getElementById('navActions');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', function () {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                navActions.classList.toggle('active');
+            });
+
+            // Close menu when a nav link is clicked
+            document.querySelectorAll('#navLinks a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    navActions.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!mobileMenuToggle.contains(e.target) &&
+                    !navLinks.contains(e.target) &&
+                    !navActions.contains(e.target)) {
+                    mobileMenuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    navActions.classList.remove('active');
+                }
+            });
+        }
 
         // SECOND: Only remove hash if it's NOT a recovery token
         if (window.location.hash && !window.location.hash.includes('type=recovery')) {

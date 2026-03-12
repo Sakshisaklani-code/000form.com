@@ -1,0 +1,3 @@
+[2026-03-12 06:57:40] local.ERROR: Supabase signout error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/logout` resulted in a `403 Forbidden` response:
+{"code":403,"error_code":"bad_jwt","msg":"invalid JWT: unable to parse or verify signature, token has invalid claims: to (truncated...)
+  
