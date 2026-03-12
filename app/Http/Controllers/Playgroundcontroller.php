@@ -507,7 +507,10 @@ class PlaygroundController extends Controller
 
             if ($fileError) {
                 Log::warning('Playground: File upload error', ['error' => $fileError]);
-                if ($request->wantsJson() || $request->input('_format') === 'json') {
+                if ($request->wantsJson()
+                    || $request->input('_format') === 'json'
+                    || $request->headers->get('X-Requested-With') === 'XMLHttpRequest'
+                ) {
                     return response()->json(['success' => false, 'message' => $fileError], 422);
                 }
                 return redirect()->back()->with('error', $fileError)->withInput();
@@ -516,17 +519,47 @@ class PlaygroundController extends Controller
             $formData = $this->buildFormData($request, $recipientEmail, 'Playground Form', $submissionData, $specialData, $uploadMetadata);
 
             Log::info('Playground: Form data prepared', [
-                'name' => $formData['name'],
-                'has_sender_email' => !empty($formData['sender_email']),
+                'name'              => $formData['name'],
+                'sender_email'      => $formData['sender_email'],
+                'recipient_email'   => $formData['recipient_email'],
+                'message'           => $formData['message'],
+                'all_fields'        => $formData['all_fields'],
+                'has_sender_email'  => !empty($formData['sender_email']),
                 'attachments_count' => count($attachments),
             ]);
 
             // Send email
             try {
-                Log::info('Playground: Attempting to send email', ['to' => $recipientEmail]);
+                Log::info('Playground: Attempting to send email', [
+                    'to'           => $recipientEmail,
+                    'from_address' => config('mail.from.address'),
+                    'from_name'    => config('mail.from.name'),
+                    'mailer'       => config('mail.default'),
+                    'host'         => config('mail.mailers.smtp.host'),
+                    'subject'      => $specialData['_subject'] ?? ('New Form Submission — ' . config('app.name')),
+                ]);
+
                 $mail = new \App\Mail\PlaygroundFormSubmissionMail($formData, $attachments, $specialData);
+
+                // Log the raw rendered content to catch blade errors
+                try {
+                    $renderedHtml = $mail->render();
+                    Log::info('Playground: Mail rendered successfully', [
+                        'html_length' => strlen($renderedHtml),
+                        'html_preview' => substr(strip_tags($renderedHtml), 0, 200),
+                    ]);
+                } catch (\Exception $renderEx) {
+                    Log::error('Playground: Mail RENDER failed — this is why email is blank/broken', [
+                        'error' => $renderEx->getMessage(),
+                        'file'  => $renderEx->getFile(),
+                        'line'  => $renderEx->getLine(),
+                    ]);
+                    throw $renderEx;
+                }
+
                 Mail::to($recipientEmail)->send($mail);
                 Log::info('Playground: Email sent successfully', ['to' => $recipientEmail]);
+
             } catch (\Exception $e) {
                 Log::error('Playground: Email sending failed: ' . $e->getMessage(), [
                     'file' => $e->getFile(),
@@ -547,7 +580,7 @@ class PlaygroundController extends Controller
 
             // Clean up temp files
             $this->cleanupFiles($uploadedFiles);
-            
+
             // Clean up pending submission if exists
             $pendingKey = 'pending_playground_' . md5($recipientEmail);
             if (Session::has($pendingKey)) {
@@ -559,32 +592,30 @@ class PlaygroundController extends Controller
             }
 
             Log::info('Playground: Submission completed successfully', [
-                'recipient' => $recipientEmail,
+                'recipient'   => $recipientEmail,
                 'attachments' => count($attachments),
             ]);
 
-            // Prepare clean response data (no internal flags)
             $cleanResponse = [
                 'success' => true,
                 'message' => '✅ Message sent successfully!',
             ];
 
-            // Add redirect if present in special data (but only return it, not store it)
             if (!empty($specialData['_next'])) {
                 $cleanResponse['redirect'] = $specialData['_next'];
             }
 
-            // Return response based on format - NEVER include internal flags
-            if ($request->wantsJson()) {
+            if ($request->wantsJson()
+                || $request->input('_format') === 'json'
+                || $request->headers->get('X-Requested-With') === 'XMLHttpRequest'
+            ) {
                 return response()->json($cleanResponse);
             }
 
-            // Check if there's a custom redirect in the form data
             if (!empty($specialData['_next'])) {
                 return redirect()->away($specialData['_next']);
             }
 
-            // If no custom redirect, return to form submitted page
             return redirect()->route('playground.form.submitted')
                 ->with('success', 'Form submitted successfully! Check your email.');
 
@@ -601,7 +632,10 @@ class PlaygroundController extends Controller
                 'message' => '❌ Failed to send. Please try again.',
             ];
 
-            if ($request->wantsJson() || $request->input('_format') === 'json') {
+            if ($request->wantsJson()
+                || $request->input('_format') === 'json'
+                || $request->headers->get('X-Requested-With') === 'XMLHttpRequest'
+            ) {
                 return response()->json($errorResponse, 500);
             }
 
@@ -683,6 +717,11 @@ class PlaygroundController extends Controller
             $request->server->set('HTTP_REFERER', $referrer);
             $request->headers->set('Referer', $referrer);
         }
+
+        // ── FIX: preserve AJAX identity so processVerifiedSubmission
+        //         returns JSON instead of a redirect ──────────────────
+        $request->headers->set('X-Requested-With', 'XMLHttpRequest');
+        $request->headers->set('Accept', 'application/json');
         
         foreach ($tempFiles as $field => $paths) {
             $uploadedFiles = [];
