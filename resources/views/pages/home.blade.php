@@ -315,7 +315,7 @@
 <section class="how-it-works" id="how-it-works">
     <div class="container">
         <div class="section-header">
-            <h2>Up and running in 3 simple steps</h2>
+            <h2>Start Collecting in 3 Steps</h2>
             <p>No complicated setup. No backend code. Just forms that work.</p>
         </div>
 

@@ -30,7 +30,7 @@
                                     <td align="center" style="padding-bottom: 28px;">
                                         <table role="presentation" cellspacing="0" cellpadding="0">
                                             <tr>
-                                                <td style="width: 80px; height: 80px; background: rgba(0, 255, 136, 0.15); border-radius: 50%; margin: 0 auto 2rem; line-height: 80px; text-align: center;">
+                                                <td style="width: 80px; height: 70px; background: rgba(0, 255, 136, 0.15); border-radius: 50%; margin: 0 auto 2rem; line-height: 80px; text-align: center;">
                                                     <span style="font-size: 36px; color: #00ff88;">✉</span>
                                                 </td>
                                             </tr>
@@ -47,9 +47,9 @@
                             <!-- Description -->
                             <p style="margin: 0 0 28px; color: #888888; font-size: 14px; line-height: 1.7;">
                                 Someone (hopefully you!) entered
-                                <strong style="color: #fafafa;">{{ $recipientEmail }}</strong>
+                                <strong style="color: #fafafa;"><?php echo e($recipientEmail); ?></strong>
                                 as a form submission recipient on the
-                                <strong style="color: #fafafa;">{{ $appName }} Playground</strong>.
+                                <strong style="color: #fafafa;"><?php echo e($appName); ?> Playground</strong>.
                                 Click the button below to confirm you own this address.
                             </p>
 
@@ -57,7 +57,7 @@
                             <table role="presentation" cellspacing="0" cellpadding="0" width="100%">
                                 <tr>
                                     <td align="center" style="padding-bottom: 28px;">
-                                        <a href="{{ $verifyUrl }}"
+                                        <a href="<?php echo e($verifyUrl); ?>"
                                            style="display: inline-block; padding: 15px 52px; background-color: #00ff88; color: #050505; text-decoration: none; font-weight: 700; border-radius: 8px; font-size: 15px;">
                                             Verify My Email
                                         </a>
@@ -85,7 +85,7 @@
                     <tr>
                         <td style="padding-top: 20px; text-align: center;">
                             <p style="margin: 0; color: #444444; font-size: 12px;">
-                                Sent by <a href="{{ config('app.url') }}" style="color: #00ff88; text-decoration: none;">000form.com</a>
+                                Sent by <a href="<?php echo e(config('app.url')); ?>" style="color: #00ff88; text-decoration: none;">000form.com</a>
                             </p>
                         </td>
                     </tr>
@@ -95,4 +95,4 @@
         </tr>
     </table>
 </body>
-</html>
+</html><?php /**PATH C:\Git-folders\000form.com\resources\views/emails/playground-verification.blade.php ENDPATH**/ ?>
