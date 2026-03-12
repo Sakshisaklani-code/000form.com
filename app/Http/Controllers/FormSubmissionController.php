@@ -454,6 +454,7 @@ class FormSubmissionController extends Controller
                 // IMPORTANT: Do NOT pass the token again - it's already used!
                 // Just pass a flag that captcha was verified
                 $storedData['captcha_verified'] = true;
+                Session::flash('had_captcha', true);
                 
                 // Remove any existing token to prevent double verification
                 unset($storedData['g-recaptcha-response']);
