@@ -400,3 +400,140 @@
 [2026-03-12 10:14:04] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
 [2026-03-12 10:14:04] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0} 
 [2026-03-12 10:14:04] local.INFO: Playground: Redirecting to form submitted page  
+[2026-03-12 10:23:24] local.INFO: Playground: Captcha verification started {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:23:24] local.INFO: Playground: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 10:23:25] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-12 10:23:25] local.INFO: Playground: Captcha verified successfully  
+[2026-03-12 10:23:25] local.WARNING: Playground: No pending submission found after captcha verification  
+[2026-03-12 10:23:25] local.INFO: Playground: Showing captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:23:25] local.WARNING: Playground: No pending submission found {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:23:47] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-12 10:23:47] local.INFO: Playground email: Redirecting to captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:23:47] local.INFO: Playground: Showing captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:23:50] local.INFO: Playground: Captcha verification started {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:23:50] local.INFO: Playground: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 10:23:50] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-12 10:23:50] local.INFO: Playground: Captcha verified successfully  
+[2026-03-12 10:23:50] local.INFO: Playground: Pending submission found {"data_keys":["name","email","message"],"stored_ip":"127.0.0.1","source":"external"} 
+[2026-03-12 10:23:50] local.INFO: Playground: Recreating request with files {"temp_files":[],"ip":"127.0.0.1","is_ajax":false} 
+[2026-03-12 10:23:50] local.INFO: Playground: Recreated request {"has_files":0,"ip":"127.0.0.1","source":"external","is_ajax":false} 
+[2026-03-12 10:23:50] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Tanuja","email":"test-000forms@yopmail.com","message":"qwerty","recipient_email":"tsaklani2drish@gmail.com"},"all_files":[]} 
+[2026-03-12 10:23:50] local.INFO: Playground: Form data prepared {"name":"Tanuja","sender_email":"test-000forms@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty","all_fields":{"message":"qwerty","name":"Tanuja","email":"test-000forms@yopmail.com"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-12 10:23:50] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-12 10:23:50] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:23:50] local.INFO: Playground: Mail rendered successfully {"html_length":6035,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    
+
+        body {
+
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+            line-height: 1.6;
+
+            color:"} 
+[2026-03-12 10:23:50] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:23:52] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:23:52] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0} 
+[2026-03-12 10:23:52] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Tanuja","email":"test-000forms@yopmail.com","message":"qwerty","recipient_email":"tsaklani2drish@gmail.com"},"all_files":[]} 
+[2026-03-12 10:23:52] local.INFO: Playground: Form data prepared {"name":"Tanuja","sender_email":"test-000forms@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty","all_fields":{"message":"qwerty","name":"Tanuja","email":"test-000forms@yopmail.com"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-12 10:23:52] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-12 10:23:52] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:23:52] local.INFO: Playground: Mail rendered successfully {"html_length":6035,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    
+
+        body {
+
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+            line-height: 1.6;
+
+            color:"} 
+[2026-03-12 10:23:52] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:23:52] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:23:52] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0} 
+[2026-03-12 10:23:52] local.INFO: Playground: Redirecting to form submitted page  
+[2026-03-12 10:25:14] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-12 10:25:14] local.INFO: Playground email: Redirecting to captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:25:14] local.INFO: Playground: Showing captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:25:45] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-12 10:25:45] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"sfsdfsdfsdfsdf","_captcha":"false"},"all_files":[]} 
+[2026-03-12 10:25:45] local.INFO: Playground: Form data prepared {"name":"Tanuja","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"sfsdfsdfsdfsdf","all_fields":{"message":"sfsdfsdfsdfsdf","name":"Tanuja","email":"tsaklani2drish@gmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-12 10:25:45] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-12 10:25:45] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:25:45] local.INFO: Playground: Mail rendered successfully {"html_length":6239,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    
+
+        body {
+
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+            line-height: 1.6;
+
+            color:"} 
+[2026-03-12 10:25:45] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:25:46] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:25:46] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0} 
+[2026-03-12 10:29:16] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-12 10:29:16] local.INFO: Playground email: Redirecting to captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:29:16] local.INFO: Playground: Showing captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:29:26] local.INFO: Playground: Captcha verification started {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:29:26] local.INFO: Playground: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 10:29:27] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-12 10:29:27] local.INFO: Playground: Captcha verified successfully  
+[2026-03-12 10:29:27] local.INFO: Playground: Pending submission found {"data_keys":["name","email","message"],"stored_ip":"127.0.0.1","source":"external"} 
+[2026-03-12 10:29:27] local.INFO: Playground: Recreating request with files {"temp_files":[],"ip":"127.0.0.1","is_ajax":false} 
+[2026-03-12 10:29:27] local.INFO: Playground: Recreated request {"has_files":0,"ip":"127.0.0.1","source":"external","is_ajax":false} 
+[2026-03-12 10:29:27] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"asfdsagdfbvsdfvc","recipient_email":"tsaklani2drish@gmail.com"},"all_files":[]} 
+[2026-03-12 10:29:27] local.INFO: Playground: Form data prepared {"name":"Tanuja","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"asfdsagdfbvsdfvc","all_fields":{"message":"asfdsagdfbvsdfvc","name":"Tanuja","email":"tsaklani2drish@gmail.com"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-12 10:29:27] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-12 10:29:27] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:29:27] local.INFO: Playground: Mail rendered successfully {"html_length":6044,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    
+
+        body {
+
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+            line-height: 1.6;
+
+            color:"} 
+[2026-03-12 10:29:27] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:29:28] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:29:28] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0} 
+[2026-03-12 10:29:28] local.INFO: Playground: Redirecting to form submitted page  

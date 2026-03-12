@@ -12,7 +12,7 @@
         <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem;">
             Your form submission was received successfully. The owner of this form will be in touch soon.
         </p>
-        <button onclick="<?php echo e(session('form_back_url', url()->previous())); ?>" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: var(--bg-primary); font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 8px; border: none; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; font-family: var(--font-display);">
+        <button onclick="window.history.go(<?php echo e(session('had_captcha') ? -2 : -1); ?>)" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: var(--bg-primary); font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 8px; border: none; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; font-family: var(--font-display);">
             ← Go Back
         </button>
     </div>
