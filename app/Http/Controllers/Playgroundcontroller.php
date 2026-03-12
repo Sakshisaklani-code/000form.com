@@ -213,6 +213,8 @@ class PlaygroundController extends Controller
                 
                 // Clean up session
                 Session::forget($pendingKey);
+
+                Session::flash('had_captcha', true);
                 
                 // Process the submission (skipping captcha)
                 $response = $this->processVerifiedSubmission($newRequest, $email);
