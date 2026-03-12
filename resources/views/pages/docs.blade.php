@@ -201,13 +201,21 @@
         .docs-nav { display: none; }
         .qs-grid { grid-template-columns: 1fr; }
     }
+
+    .docs-title{
+         font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        letter-spacing: -0.03em;
+        margin-bottom: 0.5rem;
+    }
 </style>
 
 <div class="docs-wrap">
     <div class="container">
 
         <div style="margin-bottom: 2.5rem;">
-            <h1>Documentation</h1>
+            <h1 class="docs-title">Documentation</h1>
             <p>
                 Everything you need to add 000form to your website.
                 <a href="{{ route('playground.index') }}" style="color:#00ff88;text-decoration:none;margin-left:0.5rem;">
