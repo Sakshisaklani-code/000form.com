@@ -240,3 +240,4 @@ Route::get('/privacy', [PageController::class, 'privacyPolicy'])->name('pages.pr
 Route::get('/terms', [PageController::class, 'terms'])->name('pages.terms');
 
 
+Route::get('/form-submit', [PageController::class, 'formSubmit'])->name('pages.form-submit');

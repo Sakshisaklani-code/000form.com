@@ -645,7 +645,7 @@ form.<span class="fn">addEventListener</span>(<span class="str2">'submit'</span>
     <span class="kw">const</span> data = <span class="kw">await</span> res.<span class="fn">json</span>();
 
     <span class="kw">if</span> (res.ok && data.success) {
-      responseBox.innerHTML = <span class="str2">'&lt;span style="color:#00ff88"&gt;&#10003; Message sent!&lt;/span&gt;'</span>;
+      responseBox.innerHTML = <span class="str2">'&lt;span style="color:#00ff88"&gt;&#10003; Message sent Successfully!&lt;/span&gt;'</span>;
       form.<span class="fn">reset</span>();
       <span class="comment">// If _next is set, send the user there</span>
       <span class="kw">if</span> (data.redirect) location.href = data.redirect;

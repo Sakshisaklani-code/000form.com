@@ -175,6 +175,9 @@ class PlaygroundController extends Controller
                 
                 // Determine if this came from playground or external
                 $source = $pending['source'] ?? 'playground';
+
+                // Retrieve whether the original request was AJAX
+                $isAjax = $pending['is_ajax'] ?? false;
                 
                 // Store the pending data
                 $storedData = $pending['data'];
@@ -190,20 +193,22 @@ class PlaygroundController extends Controller
                 // Remove any existing token
                 unset($storedData['g-recaptcha-response']);
                 
-                // Recreate the request with files
+                // Recreate the request with files, passing original AJAX status
                 $newRequest = $this->recreateRequestWithFiles(
                     $storedData, 
                     $storedFiles, 
                     $email,
                     $storedIp,
                     $storedUserAgent,
-                    $storedReferrer
+                    $storedReferrer,
+                    $isAjax  // ← pass original AJAX status instead of hardcoding true
                 );
                 
                 Log::info('Playground: Recreated request', [
                     'has_files' => count($newRequest->allFiles()),
                     'ip' => $storedIp,
-                    'source' => $source
+                    'source' => $source,
+                    'is_ajax' => $isAjax,
                 ]);
                 
                 // Clean up session
@@ -310,14 +315,16 @@ class PlaygroundController extends Controller
             Log::info('Playground: Redirecting to captcha page', ['email' => $recipientEmail]);
             
             // Store the submission data in session with source = 'playground'
+            // Also store whether this was an AJAX request so we can restore it after captcha
             Session::put('pending_playground_' . md5($recipientEmail), [
-                'data' => $request->except(['_token', 'recipient_email']),
-                'files' => $this->storeTempFiles($request),
-                'ip' => $clientIp,
+                'data'       => $request->except(['_token', 'recipient_email']),
+                'files'      => $this->storeTempFiles($request),
+                'ip'         => $clientIp,
                 'user_agent' => $request->userAgent(),
-                'referrer' => $request->header('Referer'),
-                'timestamp' => now()->toDateTimeString(),
-                'source' => 'playground' // Add source identifier
+                'referrer'   => $request->header('Referer'),
+                'timestamp'  => now()->toDateTimeString(),
+                'source'     => 'playground',
+                'is_ajax'    => $request->wantsJson() || $request->headers->get('X-Requested-With') === 'XMLHttpRequest', // ← store AJAX status
             ]);
             
             // Return redirect for AJAX or normal requests
@@ -392,14 +399,16 @@ class PlaygroundController extends Controller
             Log::info('Playground email: Redirecting to captcha page', ['email' => $email]);
             
             // Store the submission data in session with source = 'external'
+            // Also store whether this was an AJAX request so we can restore it after captcha
             Session::put('pending_playground_' . md5($email), [
-                'data' => $request->except(['_token']),
-                'files' => $this->storeTempFiles($request),
-                'ip' => $clientIp,
+                'data'       => $request->except(['_token']),
+                'files'      => $this->storeTempFiles($request),
+                'ip'         => $clientIp,
                 'user_agent' => $request->userAgent(),
-                'referrer' => $request->header('Referer'),
-                'timestamp' => now()->toDateTimeString(),
-                'source' => 'external' // Add source identifier
+                'referrer'   => $request->header('Referer'),
+                'timestamp'  => now()->toDateTimeString(),
+                'source'     => 'external',
+                'is_ajax'    => $request->wantsJson() || $request->headers->get('X-Requested-With') === 'XMLHttpRequest', // ← store AJAX status
             ]);
             
             if ($request->wantsJson() || $request->input('_format') === 'json') {
@@ -678,7 +687,10 @@ class PlaygroundController extends Controller
     }
 
     /**
-     * Recreate a request with files from temporary storage
+     * Recreate a request with files from temporary storage.
+     * The $isAjax parameter restores the original request's AJAX identity
+     * so that processVerifiedSubmission returns JSON only when the browser
+     * originally expected it, and a redirect (success page) otherwise.
      */
     private function recreateRequestWithFiles(
         array $data, 
@@ -686,11 +698,13 @@ class PlaygroundController extends Controller
         string $email,
         string $ip = '0.0.0.0',
         ?string $userAgent = null,
-        ?string $referrer = null
+        ?string $referrer = null,
+        bool $isAjax = false  // ← replaces the hardcoded XMLHttpRequest headers
     ): Request {
         Log::info('Playground: Recreating request with files', [
             'temp_files' => $tempFiles,
-            'ip' => $ip
+            'ip'         => $ip,
+            'is_ajax'    => $isAjax,
         ]);
         
         $request = new Request();
@@ -718,10 +732,13 @@ class PlaygroundController extends Controller
             $request->headers->set('Referer', $referrer);
         }
 
-        // ── FIX: preserve AJAX identity so processVerifiedSubmission
-        //         returns JSON instead of a redirect ──────────────────
-        $request->headers->set('X-Requested-With', 'XMLHttpRequest');
-        $request->headers->set('Accept', 'application/json');
+        // Only mark as AJAX if the original browser request actually was AJAX.
+        // Previously this was hardcoded to true, which forced JSON responses
+        // even for normal browser form submissions coming through the captcha flow.
+        if ($isAjax) {
+            $request->headers->set('X-Requested-With', 'XMLHttpRequest');
+            $request->headers->set('Accept', 'application/json');
+        }
         
         foreach ($tempFiles as $field => $paths) {
             $uploadedFiles = [];
