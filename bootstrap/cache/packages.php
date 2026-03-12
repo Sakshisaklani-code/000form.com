@@ -1,4 +1,11 @@
 <?php return array (
+  'laravel/cashier-paddle' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Paddle\\CashierServiceProvider',
+    ),
+  ),
   'laravel/sail' => 
   array (
     'providers' => 

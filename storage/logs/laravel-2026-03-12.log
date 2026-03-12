@@ -1,3 +1,402 @@
 [2026-03-12 06:57:40] local.ERROR: Supabase signout error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/logout` resulted in a `403 Forbidden` response:
 {"code":403,"error_code":"bad_jwt","msg":"invalid JWT: unable to parse or verify signature, token has invalid claims: to (truncated...)
   
+[2026-03-12 09:02:02] local.ERROR: View [pages.form-submit] not found. {"exception":"[object] (InvalidArgumentException(code: 0): View [pages.form-submit] not found. at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:139)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate/View/FileViewFinder->findInPaths('pages.form-subm...', Array)
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/View/Factory.php(151): Illuminate/View/FileViewFinder->find('pages.form-subm...')
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(1062): Illuminate/View/Factory->make('pages.form-subm...', Array, Array)
+#3 C:/Git-folders/000form.com/app/Http/Controllers/PageController.php(50): view('pages.form-subm...')
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App/Http/Controllers/PageController->formSubmit()
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(44): Illuminate/Routing/Controller->callAction('formSubmit', Array)
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Route.php(266): Illuminate/Routing/ControllerDispatcher->dispatch(Object(Illuminate/Routing/Route), Object(App/Http/Controllers/PageController), 'formSubmit')
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Route.php(212): Illuminate/Routing/Route->runController()
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(808): Illuminate/Routing/Route->run()
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Routing/Router->Illuminate/Routing/{closure}(Object(Illuminate/Http/Request))
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(51): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Routing/Middleware/SubstituteBindings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(88): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/VerifyCsrfToken->handle(Object(Illuminate/Http/Request), Object(Closure))
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/View/Middleware/ShareErrorsFromSession->handle(Object(Illuminate/Http/Request), Object(Closure))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(121): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate/Session/Middleware/StartSession->handleStatefulRequest(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store), Object(Closure))
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Session/Middleware/StartSession->handle(Object(Illuminate/Http/Request), Object(Closure))
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#20 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse->handle(Object(Illuminate/Http/Request), Object(Closure))
+#21 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#22 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/EncryptCookies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#23 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#24 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#25 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate/Routing/Router->runRouteWithinStack(Object(Illuminate/Routing/Route), Object(Illuminate/Http/Request))
+#26 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate/Routing/Router->runRoute(Object(Illuminate/Http/Request), Object(Illuminate/Routing/Route))
+#27 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate/Routing/Router->dispatchToRoute(Object(Illuminate/Http/Request))
+#28 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate/Routing/Router->dispatch(Object(Illuminate/Http/Request))
+#29 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Foundation/Http/Kernel->Illuminate/Foundation/Http/{closure}(Object(Illuminate/Http/Request))
+#30 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#31 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#32 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#33 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#34 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#35 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#36 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#37 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#38 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#39 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#40 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#41 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#42 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#43 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#44 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#45 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#46 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#47 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#48 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#49 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#50 C:/Git-folders/000form.com/public/index.php(17): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#51 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Git-folders//...')
+#52 {main}
+"} 
+[2026-03-12 09:20:27] local.INFO: Playground: verification email sent {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:21:43] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-12 09:21:43] local.WARNING: Playground: submission to unverified email {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:22:09] local.INFO: Playground: email verified {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:22:22] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-12 09:22:22] local.INFO: Playground email: Redirecting to captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:22:22] local.INFO: Playground: Showing captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:22:26] local.INFO: Playground: Captcha verification started {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:22:26] local.INFO: Playground: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 09:22:26] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-12 09:22:26] local.INFO: Playground: Captcha verified successfully  
+[2026-03-12 09:22:26] local.INFO: Playground: Pending submission found {"data_keys":["name","email","message"],"stored_ip":"127.0.0.1","source":"external"} 
+[2026-03-12 09:22:26] local.INFO: Playground: Recreating request with files {"temp_files":[],"ip":"127.0.0.1","is_ajax":false} 
+[2026-03-12 09:22:26] local.INFO: Playground: Recreated request {"has_files":0,"ip":"127.0.0.1","source":"external","is_ajax":false} 
+[2026-03-12 09:22:26] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"Test","recipient_email":"tsaklani2drish@gmail.com"},"all_files":[]} 
+[2026-03-12 09:22:26] local.INFO: Playground: Form data prepared {"name":"Tanuja","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"Test","all_fields":{"message":"Test","name":"Tanuja","email":"tsaklani2drish@gmail.com"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-12 09:22:26] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-12 09:22:26] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 09:22:26] local.INFO: Playground: Mail rendered successfully {"html_length":6031,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    
+
+        body {
+
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+            line-height: 1.6;
+
+            color:"} 
+[2026-03-12 09:22:26] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 09:22:27] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:22:27] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0} 
+[2026-03-12 09:22:27] local.INFO: Playground: Redirecting to form submitted page  
+[2026-03-12 09:23:24] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-12 09:23:24] local.INFO: Playground email: Redirecting to captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:23:24] local.INFO: Playground: Showing captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:23:27] local.INFO: Playground: Captcha verification started {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:23:27] local.INFO: Playground: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 09:23:27] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-12 09:23:27] local.INFO: Playground: Captcha verified successfully  
+[2026-03-12 09:23:27] local.INFO: Playground: Pending submission found {"data_keys":["name","email","message","_next"],"stored_ip":"127.0.0.1","source":"external"} 
+[2026-03-12 09:23:27] local.INFO: Playground: Recreating request with files {"temp_files":[],"ip":"127.0.0.1","is_ajax":false} 
+[2026-03-12 09:23:27] local.INFO: Playground: Recreated request {"has_files":0,"ip":"127.0.0.1","source":"external","is_ajax":false} 
+[2026-03-12 09:23:27] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"sacacadscd","_next":"https://000form.com","recipient_email":"tsaklani2drish@gmail.com"},"all_files":[]} 
+[2026-03-12 09:23:27] local.INFO: Playground: Special field found {"key":"_next","value":"https://000form.com"} 
+[2026-03-12 09:23:27] local.INFO: Playground: Form data prepared {"name":"Tanuja","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"sacacadscd","all_fields":{"message":"sacacadscd","name":"Tanuja","email":"tsaklani2drish@gmail.com"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-12 09:23:27] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-12 09:23:27] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 09:23:27] local.INFO: Playground: Mail rendered successfully {"html_length":6037,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    
+
+        body {
+
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+            line-height: 1.6;
+
+            color:"} 
+[2026-03-12 09:23:27] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 09:23:28] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:23:28] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0} 
+[2026-03-12 09:23:28] local.INFO: Playground: Redirecting to form submitted page  
+[2026-03-12 09:49:36] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_bvdjliy5","method":"POST"} 
+[2026-03-12 09:49:36] local.INFO: Request data: {"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"dsadfgdfsgfsdgfsd","honeypot_GxsrZVuf":null} 
+[2026-03-12 09:49:36] local.INFO: Has files: {"files":0} 
+[2026-03-12 09:49:37] local.ERROR: Form not found {"slug":"f_bvdjliy5"} 
+[2026-03-12 09:49:37] local.WARNING: Error response {"message":"Form not found","status":404} 
+[2026-03-12 09:58:16] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-12 09:58:16] local.INFO: Playground email: Redirecting to captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:58:16] local.INFO: Playground: Showing captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:58:20] local.INFO: Playground: Captcha verification started {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:58:20] local.INFO: Playground: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 09:58:20] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-12 09:58:20] local.INFO: Playground: Captcha verified successfully  
+[2026-03-12 09:58:20] local.INFO: Playground: Pending submission found {"data_keys":["name","email","message","_next"],"stored_ip":"127.0.0.1","source":"external"} 
+[2026-03-12 09:58:20] local.INFO: Playground: Recreating request with files {"temp_files":[],"ip":"127.0.0.1","is_ajax":false} 
+[2026-03-12 09:58:20] local.INFO: Playground: Recreated request {"has_files":0,"ip":"127.0.0.1","source":"external","is_ajax":false} 
+[2026-03-12 09:58:20] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"sakshi saklani","email":"tsaklani2drish@gmail.com","message":"qwerty qwerty","_next":"https://000form.com","recipient_email":"tsaklani2drish@gmail.com"},"all_files":[]} 
+[2026-03-12 09:58:20] local.INFO: Playground: Special field found {"key":"_next","value":"https://000form.com"} 
+[2026-03-12 09:58:20] local.INFO: Playground: Form data prepared {"name":"sakshi saklani","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty qwerty","all_fields":{"message":"qwerty qwerty","name":"sakshi saklani","email":"tsaklani2drish@gmail.com"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-12 09:58:20] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-12 09:58:20] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 09:58:20] local.INFO: Playground: Mail rendered successfully {"html_length":6048,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    
+
+        body {
+
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+            line-height: 1.6;
+
+            color:"} 
+[2026-03-12 09:58:20] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 09:58:22] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:58:22] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0} 
+[2026-03-12 09:58:22] local.INFO: Playground: Redirecting to form submitted page  
+[2026-03-12 09:58:50] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-12 09:58:50] local.INFO: Playground email: Redirecting to captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:58:50] local.INFO: Playground: Showing captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:58:54] local.INFO: Playground: Captcha verification started {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:58:54] local.INFO: Playground: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 09:58:54] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-12 09:58:54] local.INFO: Playground: Captcha verified successfully  
+[2026-03-12 09:58:54] local.INFO: Playground: Pending submission found {"data_keys":["name","email","message"],"stored_ip":"127.0.0.1","source":"external"} 
+[2026-03-12 09:58:54] local.INFO: Playground: Recreating request with files {"temp_files":[],"ip":"127.0.0.1","is_ajax":false} 
+[2026-03-12 09:58:54] local.INFO: Playground: Recreated request {"has_files":0,"ip":"127.0.0.1","source":"external","is_ajax":false} 
+[2026-03-12 09:58:54] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"sakshi saklani","email":"tsaklani2drish@gmail.com","message":"asdsdvsfvsdfv","recipient_email":"tsaklani2drish@gmail.com"},"all_files":[]} 
+[2026-03-12 09:58:54] local.INFO: Playground: Form data prepared {"name":"sakshi saklani","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"asdsdvsfvsdfv","all_fields":{"message":"asdsdvsfvsdfv","name":"sakshi saklani","email":"tsaklani2drish@gmail.com"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-12 09:58:54] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-12 09:58:54] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 09:58:54] local.INFO: Playground: Mail rendered successfully {"html_length":6048,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    
+
+        body {
+
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+            line-height: 1.6;
+
+            color:"} 
+[2026-03-12 09:58:54] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 09:58:55] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-12 09:58:55] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0} 
+[2026-03-12 09:58:55] local.INFO: Playground: Redirecting to form submitted page  
+[2026-03-12 10:10:53] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-12 10:10:53] local.INFO: Playground email: Redirecting to captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:10:53] local.INFO: Playground: Showing captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:11:09] local.ERROR: Undefined variable $pendingKey {"exception":"[object] (ErrorException(code: 0): Undefined variable $pendingKey at C:/Git-folders/000form.com/app/Http/Controllers/PlaygroundController.php:153)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(258): Illuminate/Foundation/Bootstrap/HandleExceptions->handleError(2, 'Undefined varia...', 'C://Git-folders//...', 153)
+#1 C:/Git-folders/000form.com/app/Http/Controllers/PlaygroundController.php(153): Illuminate/Foundation/Bootstrap/HandleExceptions->Illuminate/Foundation/Bootstrap/{closure}(2, 'Undefined varia...', 'C://Git-folders//...', 153)
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App/Http/Controllers/PlaygroundController->verifyCaptcha(Object(Illuminate/Http/Request), 'tsaklani2drish@...')
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(44): Illuminate/Routing/Controller->callAction('verifyCaptcha', Array)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Route.php(266): Illuminate/Routing/ControllerDispatcher->dispatch(Object(Illuminate/Routing/Route), Object(App/Http/Controllers/PlaygroundController), 'verifyCaptcha')
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Route.php(212): Illuminate/Routing/Route->runController()
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(808): Illuminate/Routing/Route->run()
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Routing/Router->Illuminate/Routing/{closure}(Object(Illuminate/Http/Request))
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(51): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Routing/Middleware/SubstituteBindings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(88): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/VerifyCsrfToken->handle(Object(Illuminate/Http/Request), Object(Closure))
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/View/Middleware/ShareErrorsFromSession->handle(Object(Illuminate/Http/Request), Object(Closure))
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(121): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate/Session/Middleware/StartSession->handleStatefulRequest(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store), Object(Closure))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Session/Middleware/StartSession->handle(Object(Illuminate/Http/Request), Object(Closure))
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse->handle(Object(Illuminate/Http/Request), Object(Closure))
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#20 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/EncryptCookies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#21 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#22 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#23 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate/Routing/Router->runRouteWithinStack(Object(Illuminate/Routing/Route), Object(Illuminate/Http/Request))
+#24 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate/Routing/Router->runRoute(Object(Illuminate/Http/Request), Object(Illuminate/Routing/Route))
+#25 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate/Routing/Router->dispatchToRoute(Object(Illuminate/Http/Request))
+#26 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate/Routing/Router->dispatch(Object(Illuminate/Http/Request))
+#27 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Foundation/Http/Kernel->Illuminate/Foundation/Http/{closure}(Object(Illuminate/Http/Request))
+#28 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#29 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#30 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#31 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#32 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#33 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#34 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#35 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#36 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#37 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#38 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#39 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#40 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#41 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#42 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#43 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#44 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#45 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#46 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#47 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#48 C:/Git-folders/000form.com/public/index.php(17): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#49 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Git-folders//...')
+#50 {main}
+"} 
+[2026-03-12 10:12:22] local.INFO: Playground: Captcha verification started {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:12:22] local.INFO: Playground: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 10:12:22] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-12 10:12:22] local.INFO: Playground: Captcha verified successfully  
+[2026-03-12 10:12:22] local.ERROR: Undefined variable $newRequest {"exception":"[object] (ErrorException(code: 0): Undefined variable $newRequest at C:/Git-folders/000form.com/app/Http/Controllers/PlaygroundController.php:178)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(258): Illuminate/Foundation/Bootstrap/HandleExceptions->handleError(2, 'Undefined varia...', 'C://Git-folders//...', 178)
+#1 C:/Git-folders/000form.com/app/Http/Controllers/PlaygroundController.php(178): Illuminate/Foundation/Bootstrap/HandleExceptions->Illuminate/Foundation/Bootstrap/{closure}(2, 'Undefined varia...', 'C://Git-folders//...', 178)
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App/Http/Controllers/PlaygroundController->verifyCaptcha(Object(Illuminate/Http/Request), 'tsaklani2drish@...')
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(44): Illuminate/Routing/Controller->callAction('verifyCaptcha', Array)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Route.php(266): Illuminate/Routing/ControllerDispatcher->dispatch(Object(Illuminate/Routing/Route), Object(App/Http/Controllers/PlaygroundController), 'verifyCaptcha')
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Route.php(212): Illuminate/Routing/Route->runController()
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(808): Illuminate/Routing/Route->run()
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Routing/Router->Illuminate/Routing/{closure}(Object(Illuminate/Http/Request))
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(51): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Routing/Middleware/SubstituteBindings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(88): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/VerifyCsrfToken->handle(Object(Illuminate/Http/Request), Object(Closure))
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/View/Middleware/ShareErrorsFromSession->handle(Object(Illuminate/Http/Request), Object(Closure))
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(121): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate/Session/Middleware/StartSession->handleStatefulRequest(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store), Object(Closure))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Session/Middleware/StartSession->handle(Object(Illuminate/Http/Request), Object(Closure))
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse->handle(Object(Illuminate/Http/Request), Object(Closure))
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#20 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/EncryptCookies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#21 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#22 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#23 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate/Routing/Router->runRouteWithinStack(Object(Illuminate/Routing/Route), Object(Illuminate/Http/Request))
+#24 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate/Routing/Router->runRoute(Object(Illuminate/Http/Request), Object(Illuminate/Routing/Route))
+#25 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate/Routing/Router->dispatchToRoute(Object(Illuminate/Http/Request))
+#26 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate/Routing/Router->dispatch(Object(Illuminate/Http/Request))
+#27 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Foundation/Http/Kernel->Illuminate/Foundation/Http/{closure}(Object(Illuminate/Http/Request))
+#28 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#29 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#30 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#31 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#32 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#33 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#34 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#35 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#36 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#37 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#38 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#39 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#40 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#41 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#42 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#43 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#44 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#45 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#46 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#47 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#48 C:/Git-folders/000form.com/public/index.php(17): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#49 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Git-folders//...')
+#50 {main}
+"} 
+[2026-03-12 10:13:42] local.INFO: Playground: Captcha verification started {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:13:42] local.INFO: Playground: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 10:13:42] local.INFO: RecaptchaService: Verification result {"success":false,"score":null,"action":null,"error_codes":["timeout-or-duplicate"]} 
+[2026-03-12 10:13:42] local.WARNING: Playground: Captcha verification failed  
+[2026-03-12 10:13:42] local.INFO: Playground: Showing captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:13:42] local.WARNING: Playground: No pending submission found {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:13:55] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-12 10:13:55] local.INFO: Playground email: Redirecting to captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:13:55] local.INFO: Playground: Showing captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:14:02] local.INFO: Playground: Captcha verification started {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:14:02] local.INFO: Playground: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 10:14:03] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-12 10:14:03] local.INFO: Playground: Captcha verified successfully  
+[2026-03-12 10:14:03] local.INFO: Playground: Pending submission found {"data_keys":["name","email","message"],"stored_ip":"127.0.0.1","source":"external"} 
+[2026-03-12 10:14:03] local.INFO: Playground: Recreating request with files {"temp_files":[],"ip":"127.0.0.1","is_ajax":false} 
+[2026-03-12 10:14:03] local.INFO: Playground: Recreated request {"has_files":0,"ip":"127.0.0.1","source":"external","is_ajax":false} 
+[2026-03-12 10:14:03] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Tanuja Saklani","email":"tsaklani2drish@gmail.com","message":"sfsdsdfgsdfg","recipient_email":"tsaklani2drish@gmail.com"},"all_files":[]} 
+[2026-03-12 10:14:03] local.INFO: Playground: Form data prepared {"name":"Tanuja Saklani","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"sfsdsdfgsdfg","all_fields":{"message":"sfsdsdfgsdfg","name":"Tanuja Saklani","email":"tsaklani2drish@gmail.com"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-12 10:14:03] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-12 10:14:03] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:14:03] local.INFO: Playground: Mail rendered successfully {"html_length":6048,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    
+
+        body {
+
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+            line-height: 1.6;
+
+            color:"} 
+[2026-03-12 10:14:03] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:14:04] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:14:04] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0} 
+[2026-03-12 10:14:04] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Tanuja Saklani","email":"tsaklani2drish@gmail.com","message":"sfsdsdfgsdfg","recipient_email":"tsaklani2drish@gmail.com"},"all_files":[]} 
+[2026-03-12 10:14:04] local.INFO: Playground: Form data prepared {"name":"Tanuja Saklani","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"sfsdsdfgsdfg","all_fields":{"message":"sfsdsdfgsdfg","name":"Tanuja Saklani","email":"tsaklani2drish@gmail.com"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-12 10:14:04] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-12 10:14:04] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:14:04] local.INFO: Playground: Mail rendered successfully {"html_length":6048,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    
+
+        body {
+
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+            line-height: 1.6;
+
+            color:"} 
+[2026-03-12 10:14:04] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:14:04] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:14:04] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0} 
+[2026-03-12 10:14:04] local.INFO: Playground: Redirecting to form submitted page  

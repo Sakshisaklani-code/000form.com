@@ -30,7 +30,7 @@
                                     <td align="center" style="padding-bottom: 28px;">
                                         <table role="presentation" cellspacing="0" cellpadding="0">
                                             <tr>
-                                                <td style="width: 80px; height: 70px; background: rgba(0, 255, 136, 0.15); border-radius: 50%; margin: 0 auto 2rem; line-height: 80px; text-align: center;">
+                                                <td style="width: 80px; height: 80px; background: rgba(0, 255, 136, 0.15); border-radius: 50%; margin: 0 auto 2rem; line-height: 80px; text-align: center;">
                                                     <span style="font-size: 36px; color: #00ff88;">✉</span>
                                                 </td>
                                             </tr>

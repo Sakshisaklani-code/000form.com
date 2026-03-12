@@ -44,4 +44,9 @@ class PageController extends Controller
     {
         return view('pages.privacy-policy');
     }
+
+    public function formSubmit()
+    {
+        return view('pages.form-submit');
+    }
 }

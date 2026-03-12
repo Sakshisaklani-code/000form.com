@@ -83,9 +83,9 @@
     <span class="token-tag">&lt;input</span> <span class="token-attr">type</span>=<span class="token-string">"text"</span> <span class="token-attr">name</span>=<span class="token-string">"name"</span> <span class="token-attr">placeholder</span>=<span class="token-string">"Full name"</span> <span class="token-attr">required</span><span class="token-tag">&gt;</span>
     <span class="token-tag">&lt;input</span> <span class="token-attr">type</span>=<span class="token-string">"email"</span> <span class="token-attr">name</span>=<span class="token-string">"email"</span> <span class="token-attr">placeholder</span>=<span class="token-string">"Email address"</span> <span class="token-attr">required</span><span class="token-tag">&gt;</span>
     <span class="token-tag">&lt;textarea</span> <span class="token-attr">name</span>=<span class="token-string">"message"</span> <span class="token-attr">placeholder</span>=<span class="token-string">"Your message..."</span> 
-    <span class="token-attr">rows</span>=<span class="token-string">"4"</span> <span class="token-attr">required</span><span class="token-tag">&gt;&lt;/textarea&gt;</span>
+         <span class="token-attr">rows</span>=<span class="token-string">"4"</span> <span class="token-attr">required</span><span class="token-tag">&gt;&lt;/textarea&gt;</span>
     <span class="token-tag">&lt;button</span> <span class="token-attr">type</span>=<span class="token-string">"submit"</span><span class="token-tag">&gt;</span>Send message<span class="token-tag">&lt;/button&gt;</span>
-    <span class="token-tag">&lt;/form&gt;</span></pre>
+<span class="token-tag">&lt;/form&gt;</span></pre>
                         </div>
 
                         <!-- Verify Section -->
