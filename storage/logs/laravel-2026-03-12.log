@@ -537,3 +537,350 @@
 [2026-03-12 10:29:28] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
 [2026-03-12 10:29:28] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0} 
 [2026-03-12 10:29:28] local.INFO: Playground: Redirecting to form submitted page  
+[2026-03-12 10:38:02] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_aklrqsxp","method":"POST"} 
+[2026-03-12 10:38:02] local.INFO: Request data: {"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"qwerty","honeypot_1ogCBVw5":null} 
+[2026-03-12 10:38:02] local.INFO: Has files: {"files":0} 
+[2026-03-12 10:38:03] local.INFO: Form found {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","form_name":"UntinyPNG - Contact Form"} 
+[2026-03-12 10:38:04] local.INFO: Validation passed {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:38:04] local.INFO: Captcha verification status {"is_captcha_verified":false,"has_captcha_flag":false,"captcha_flag_value":null} 
+[2026-03-12 10:38:04] local.INFO: Redirecting to captcha page {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:38:04] local.INFO: Showing captcha page {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:38:15] local.INFO: === CAPTCHA VERIFICATION STARTED === {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:38:17] local.INFO: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 10:38:17] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-12 10:38:17] local.INFO: Captcha verified successfully  
+[2026-03-12 10:38:17] local.INFO: Pending submission found {"data_keys":["name","email","message","honeypot_1ogCBVw5"],"stored_ip":"127.0.0.1","current_ip":"127.0.0.1"} 
+[2026-03-12 10:38:17] local.INFO: Recreating request with files {"temp_files":[],"ip":"127.0.0.1"} 
+[2026-03-12 10:38:17] local.INFO: Recreated request {"has_files":0,"ip":"127.0.0.1"} 
+[2026-03-12 10:38:17] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_aklrqsxp","method":"POST"} 
+[2026-03-12 10:38:17] local.INFO: Request data: {"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"qwerty","honeypot_1ogCBVw5":null,"captcha_verified":true} 
+[2026-03-12 10:38:17] local.INFO: Has files: {"files":0} 
+[2026-03-12 10:38:17] local.INFO: Form found {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","form_name":"UntinyPNG - Contact Form"} 
+[2026-03-12 10:38:17] local.INFO: Validation passed {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:38:17] local.INFO: Captcha verification status {"is_captcha_verified":true,"has_captcha_flag":true,"captcha_flag_value":true} 
+[2026-03-12 10:38:17] local.INFO: reCAPTCHA skipped {"is_captcha_verified":true,"is_disabled":false} 
+[2026-03-12 10:38:17] local.INFO: Parsed submission data {"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"qwerty"} 
+[2026-03-12 10:38:17] local.INFO: FILE UPLOAD CHECK {"all_files":[]} 
+[2026-03-12 10:38:17] local.INFO: Total files uploaded: 0  
+[2026-03-12 10:38:17] local.INFO: Sending auto-response to {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:38:19] local.INFO: Auto-response sent to: tsaklani2drish@gmail.com  
+[2026-03-12 10:38:19] local.INFO: VALID SUBMISSION {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","ip":"127.0.0.1","is_spam":false,"reasons":[]} 
+[2026-03-12 10:38:19] local.INFO: Spam check result {"is_spam":false,"reasons":[],"ip":"127.0.0.1"} 
+[2026-03-12 10:38:19] local.INFO: Submission created {"submission_id":"a1482294-f39f-4247-a0d1-d7cedfeb8fe8","ip":"127.0.0.1"} 
+[2026-03-12 10:38:19] local.INFO: Auto-response flag updated  
+[2026-03-12 10:38:19] local.INFO: Form stats updated  
+[2026-03-12 10:38:19] local.INFO: Checking email notification conditions {"is_spam":false,"email_notifications":true,"recipient_email":"sakshi05@yopmail.com"} 
+[2026-03-12 10:38:19] local.INFO: Attempting to send notification email {"to":"sakshi05@yopmail.com","has_attachments":false} 
+[2026-03-12 10:38:19] local.INFO: === SENDING NOTIFICATION EMAIL === {"to":"sakshi05@yopmail.com","submission_id":"a1482294-f39f-4247-a0d1-d7cedfeb8fe8","has_files":false} 
+[2026-03-12 10:38:19] local.INFO: Final CC emails {"final_list":[]} 
+[2026-03-12 10:38:19] local.INFO: Email template selected: basic  
+[2026-03-12 10:38:19] local.INFO: Attachments to process: 0  
+[2026-03-12 10:38:19] local.INFO: Mail object created  
+[2026-03-12 10:38:19] local.INFO: Sending email without CC {"to":"sakshi05@yopmail.com"} 
+[2026-03-12 10:38:19] local.INFO: Total attachments added: 0  
+[2026-03-12 10:38:20] local.INFO: Mail send method called successfully  
+[2026-03-12 10:38:20] local.INFO: Submission updated with email_sent flag  
+[2026-03-12 10:38:20] local.INFO: Email sent successfully to: sakshi05@yopmail.com  
+[2026-03-12 10:38:20] local.INFO: Notification email sent successfully  
+[2026-03-12 10:38:20] local.INFO: === FORM SUBMISSION COMPLETED === {"slug":"f_aklrqsxp"} 
+[2026-03-12 10:38:20] local.INFO: Success response {"wants_json":false,"format":null,"redirect_url":null} 
+[2026-03-12 10:40:09] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-12 10:40:09] local.INFO: Playground email: Redirecting to captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:40:09] local.INFO: Playground: Showing captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:40:16] local.INFO: Playground: Captcha verification started {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:40:16] local.INFO: Playground: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 10:40:16] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-12 10:40:16] local.INFO: Playground: Captcha verified successfully  
+[2026-03-12 10:40:16] local.INFO: Playground: Pending submission found {"data_keys":["name","email","message","_next"],"stored_ip":"127.0.0.1","source":"external"} 
+[2026-03-12 10:40:16] local.INFO: Playground: Recreating request with files {"temp_files":[],"ip":"127.0.0.1","is_ajax":false} 
+[2026-03-12 10:40:16] local.INFO: Playground: Recreated request {"has_files":0,"ip":"127.0.0.1","source":"external","is_ajax":false} 
+[2026-03-12 10:40:16] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"asda","email":"tsaklani2drish@gmail.com","message":"dsf","_next":"https://000form.com","recipient_email":"tsaklani2drish@gmail.com"},"all_files":[]} 
+[2026-03-12 10:40:16] local.INFO: Playground: Special field found {"key":"_next","value":"https://000form.com"} 
+[2026-03-12 10:40:16] local.INFO: Playground: Form data prepared {"name":"asda","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"dsf","all_fields":{"message":"dsf","name":"asda","email":"tsaklani2drish@gmail.com"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-12 10:40:16] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-12 10:40:16] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:40:16] local.INFO: Playground: Mail rendered successfully {"html_length":6029,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    
+
+        body {
+
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+            line-height: 1.6;
+
+            color:"} 
+[2026-03-12 10:40:16] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:40:17] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:40:17] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0} 
+[2026-03-12 10:40:17] local.INFO: Playground: Redirecting to form submitted page  
+[2026-03-12 10:40:23] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-12 10:40:23] local.INFO: Playground email: Redirecting to captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:40:23] local.INFO: Playground: Showing captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:40:42] local.INFO: Playground: Captcha verification started {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:40:42] local.INFO: Playground: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 10:40:43] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-12 10:40:43] local.INFO: Playground: Captcha verified successfully  
+[2026-03-12 10:40:43] local.INFO: Playground: Pending submission found {"data_keys":["name","email","message"],"stored_ip":"127.0.0.1","source":"external"} 
+[2026-03-12 10:40:43] local.INFO: Playground: Recreating request with files {"temp_files":[],"ip":"127.0.0.1","is_ajax":false} 
+[2026-03-12 10:40:43] local.INFO: Playground: Recreated request {"has_files":0,"ip":"127.0.0.1","source":"external","is_ajax":false} 
+[2026-03-12 10:40:43] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"asfdsagdfbvsdfvc","recipient_email":"tsaklani2drish@gmail.com"},"all_files":[]} 
+[2026-03-12 10:40:43] local.INFO: Playground: Form data prepared {"name":"Tanuja","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"asfdsagdfbvsdfvc","all_fields":{"message":"asfdsagdfbvsdfvc","name":"Tanuja","email":"tsaklani2drish@gmail.com"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-12 10:40:43] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-12 10:40:43] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:40:43] local.INFO: Playground: Mail rendered successfully {"html_length":6044,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    
+
+        body {
+
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+            line-height: 1.6;
+
+            color:"} 
+[2026-03-12 10:40:43] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:40:44] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:40:44] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0} 
+[2026-03-12 10:40:44] local.INFO: Playground: Redirecting to form submitted page  
+[2026-03-12 10:48:44] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_aklrqsxp","method":"POST"} 
+[2026-03-12 10:48:44] local.INFO: Request data: {"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"qwerty","honeypot_1ogCBVw5":null} 
+[2026-03-12 10:48:44] local.INFO: Has files: {"files":0} 
+[2026-03-12 10:48:46] local.INFO: Form found {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","form_name":"UntinyPNG - Contact Form"} 
+[2026-03-12 10:48:46] local.INFO: Validation passed {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:48:46] local.INFO: Captcha verification status {"is_captcha_verified":false,"has_captcha_flag":false,"captcha_flag_value":null} 
+[2026-03-12 10:48:46] local.INFO: Redirecting to captcha page {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:48:46] local.INFO: Showing captcha page {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:48:58] local.INFO: === CAPTCHA VERIFICATION STARTED === {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:48:59] local.INFO: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 10:49:00] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-12 10:49:00] local.INFO: Captcha verified successfully  
+[2026-03-12 10:49:00] local.INFO: Pending submission found {"data_keys":["name","email","message","honeypot_1ogCBVw5"],"stored_ip":"127.0.0.1","current_ip":"127.0.0.1"} 
+[2026-03-12 10:49:00] local.INFO: Recreating request with files {"temp_files":[],"ip":"127.0.0.1"} 
+[2026-03-12 10:49:00] local.INFO: Recreated request {"has_files":0,"ip":"127.0.0.1"} 
+[2026-03-12 10:49:00] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_aklrqsxp","method":"POST"} 
+[2026-03-12 10:49:00] local.INFO: Request data: {"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"qwerty","honeypot_1ogCBVw5":null,"captcha_verified":true} 
+[2026-03-12 10:49:00] local.INFO: Has files: {"files":0} 
+[2026-03-12 10:49:00] local.INFO: Form found {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","form_name":"UntinyPNG - Contact Form"} 
+[2026-03-12 10:49:00] local.INFO: Validation passed {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:49:00] local.INFO: Captcha verification status {"is_captcha_verified":true,"has_captcha_flag":true,"captcha_flag_value":true} 
+[2026-03-12 10:49:00] local.INFO: reCAPTCHA skipped {"is_captcha_verified":true,"is_disabled":false} 
+[2026-03-12 10:49:00] local.INFO: Parsed submission data {"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"qwerty"} 
+[2026-03-12 10:49:00] local.INFO: FILE UPLOAD CHECK {"all_files":[]} 
+[2026-03-12 10:49:00] local.INFO: Total files uploaded: 0  
+[2026-03-12 10:49:00] local.INFO: Sending auto-response to {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:49:01] local.INFO: Auto-response sent to: tsaklani2drish@gmail.com  
+[2026-03-12 10:49:01] local.INFO: VALID SUBMISSION {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","ip":"127.0.0.1","is_spam":false,"reasons":[]} 
+[2026-03-12 10:49:01] local.INFO: Spam check result {"is_spam":false,"reasons":[],"ip":"127.0.0.1"} 
+[2026-03-12 10:49:02] local.INFO: Submission created {"submission_id":"a1482669-ce47-4f17-85ed-9704eb5046a2","ip":"127.0.0.1"} 
+[2026-03-12 10:49:02] local.INFO: Auto-response flag updated  
+[2026-03-12 10:49:02] local.INFO: Form stats updated  
+[2026-03-12 10:49:02] local.INFO: Checking email notification conditions {"is_spam":false,"email_notifications":true,"recipient_email":"sakshi05@yopmail.com"} 
+[2026-03-12 10:49:02] local.INFO: Attempting to send notification email {"to":"sakshi05@yopmail.com","has_attachments":false} 
+[2026-03-12 10:49:02] local.INFO: === SENDING NOTIFICATION EMAIL === {"to":"sakshi05@yopmail.com","submission_id":"a1482669-ce47-4f17-85ed-9704eb5046a2","has_files":false} 
+[2026-03-12 10:49:02] local.INFO: Final CC emails {"final_list":[]} 
+[2026-03-12 10:49:02] local.INFO: Email template selected: basic  
+[2026-03-12 10:49:02] local.INFO: Attachments to process: 0  
+[2026-03-12 10:49:02] local.INFO: Mail object created  
+[2026-03-12 10:49:02] local.INFO: Sending email without CC {"to":"sakshi05@yopmail.com"} 
+[2026-03-12 10:49:02] local.INFO: Total attachments added: 0  
+[2026-03-12 10:49:02] local.INFO: Mail send method called successfully  
+[2026-03-12 10:49:03] local.INFO: Submission updated with email_sent flag  
+[2026-03-12 10:49:03] local.INFO: Email sent successfully to: sakshi05@yopmail.com  
+[2026-03-12 10:49:03] local.INFO: Notification email sent successfully  
+[2026-03-12 10:49:03] local.INFO: === FORM SUBMISSION COMPLETED === {"slug":"f_aklrqsxp"} 
+[2026-03-12 10:49:03] local.INFO: Success response {"wants_json":false,"format":null,"redirect_url":null} 
+[2026-03-12 10:50:48] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_aklrqsxp","method":"POST"} 
+[2026-03-12 10:50:48] local.INFO: Request data: {"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"saddafsdf","honeypot_1ogCBVw5":null} 
+[2026-03-12 10:50:48] local.INFO: Has files: {"files":0} 
+[2026-03-12 10:50:50] local.INFO: Form found {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","form_name":"UntinyPNG - Contact Form"} 
+[2026-03-12 10:50:50] local.INFO: Validation passed {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:50:50] local.INFO: Captcha verification status {"is_captcha_verified":false,"has_captcha_flag":false,"captcha_flag_value":null} 
+[2026-03-12 10:50:50] local.INFO: Redirecting to captcha page {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:50:50] local.INFO: Showing captcha page {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:51:10] local.INFO: === CAPTCHA VERIFICATION STARTED === {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:51:11] local.INFO: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 10:51:11] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-12 10:51:11] local.INFO: Captcha verified successfully  
+[2026-03-12 10:51:11] local.INFO: Pending submission found {"data_keys":["name","email","message","honeypot_1ogCBVw5"],"stored_ip":"127.0.0.1","current_ip":"127.0.0.1"} 
+[2026-03-12 10:51:11] local.INFO: Recreating request with files {"temp_files":[],"ip":"127.0.0.1"} 
+[2026-03-12 10:51:11] local.INFO: Recreated request {"has_files":0,"ip":"127.0.0.1"} 
+[2026-03-12 10:51:11] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_aklrqsxp","method":"POST"} 
+[2026-03-12 10:51:11] local.INFO: Request data: {"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"saddafsdf","honeypot_1ogCBVw5":null,"captcha_verified":true} 
+[2026-03-12 10:51:11] local.INFO: Has files: {"files":0} 
+[2026-03-12 10:51:11] local.INFO: Form found {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","form_name":"UntinyPNG - Contact Form"} 
+[2026-03-12 10:51:12] local.INFO: Validation passed {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:51:12] local.INFO: Captcha verification status {"is_captcha_verified":true,"has_captcha_flag":true,"captcha_flag_value":true} 
+[2026-03-12 10:51:12] local.INFO: reCAPTCHA skipped {"is_captcha_verified":true,"is_disabled":false} 
+[2026-03-12 10:51:12] local.INFO: Parsed submission data {"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"saddafsdf"} 
+[2026-03-12 10:51:12] local.INFO: FILE UPLOAD CHECK {"all_files":[]} 
+[2026-03-12 10:51:12] local.INFO: Total files uploaded: 0  
+[2026-03-12 10:51:12] local.INFO: Sending auto-response to {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:51:13] local.INFO: Auto-response sent to: tsaklani2drish@gmail.com  
+[2026-03-12 10:51:13] local.INFO: VALID SUBMISSION {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","ip":"127.0.0.1","is_spam":false,"reasons":[]} 
+[2026-03-12 10:51:13] local.INFO: Spam check result {"is_spam":false,"reasons":[],"ip":"127.0.0.1"} 
+[2026-03-12 10:51:13] local.INFO: Submission created {"submission_id":"a1482732-88ff-4ac8-8dde-e0dba4311141","ip":"127.0.0.1"} 
+[2026-03-12 10:51:13] local.INFO: Auto-response flag updated  
+[2026-03-12 10:51:14] local.INFO: Form stats updated  
+[2026-03-12 10:51:14] local.INFO: Checking email notification conditions {"is_spam":false,"email_notifications":true,"recipient_email":"sakshi05@yopmail.com"} 
+[2026-03-12 10:51:14] local.INFO: Attempting to send notification email {"to":"sakshi05@yopmail.com","has_attachments":false} 
+[2026-03-12 10:51:14] local.INFO: === SENDING NOTIFICATION EMAIL === {"to":"sakshi05@yopmail.com","submission_id":"a1482732-88ff-4ac8-8dde-e0dba4311141","has_files":false} 
+[2026-03-12 10:51:14] local.INFO: Final CC emails {"final_list":[]} 
+[2026-03-12 10:51:14] local.INFO: Email template selected: basic  
+[2026-03-12 10:51:14] local.INFO: Attachments to process: 0  
+[2026-03-12 10:51:14] local.INFO: Mail object created  
+[2026-03-12 10:51:14] local.INFO: Sending email without CC {"to":"sakshi05@yopmail.com"} 
+[2026-03-12 10:51:14] local.INFO: Total attachments added: 0  
+[2026-03-12 10:51:14] local.INFO: Mail send method called successfully  
+[2026-03-12 10:51:14] local.INFO: Submission updated with email_sent flag  
+[2026-03-12 10:51:14] local.INFO: Email sent successfully to: sakshi05@yopmail.com  
+[2026-03-12 10:51:14] local.INFO: Notification email sent successfully  
+[2026-03-12 10:51:14] local.INFO: === FORM SUBMISSION COMPLETED === {"slug":"f_aklrqsxp"} 
+[2026-03-12 10:51:14] local.INFO: Success response {"wants_json":false,"format":null,"redirect_url":null} 
+[2026-03-12 10:53:21] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_aklrqsxp","method":"POST"} 
+[2026-03-12 10:53:21] local.INFO: Request data: {"name":"sakshi","email":"tsaklani2drish@gmail.com","message":"qwerty qwerty","honeypot_1ogCBVw5":null} 
+[2026-03-12 10:53:21] local.INFO: Has files: {"files":0} 
+[2026-03-12 10:53:23] local.INFO: Form found {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","form_name":"UntinyPNG - Contact Form"} 
+[2026-03-12 10:53:23] local.INFO: Validation passed {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:53:23] local.INFO: Captcha verification status {"is_captcha_verified":false,"has_captcha_flag":false,"captcha_flag_value":null} 
+[2026-03-12 10:53:23] local.INFO: Redirecting to captcha page {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:53:23] local.INFO: Showing captcha page {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:53:34] local.INFO: === CAPTCHA VERIFICATION STARTED === {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:53:35] local.INFO: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 10:53:36] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-12 10:53:36] local.INFO: Captcha verified successfully  
+[2026-03-12 10:53:36] local.INFO: Pending submission found {"data_keys":["name","email","message","honeypot_1ogCBVw5"],"stored_ip":"127.0.0.1","current_ip":"127.0.0.1"} 
+[2026-03-12 10:53:36] local.INFO: Recreating request with files {"temp_files":[],"ip":"127.0.0.1"} 
+[2026-03-12 10:53:36] local.INFO: Recreated request {"has_files":0,"ip":"127.0.0.1"} 
+[2026-03-12 10:53:36] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_aklrqsxp","method":"POST"} 
+[2026-03-12 10:53:36] local.INFO: Request data: {"name":"sakshi","email":"tsaklani2drish@gmail.com","message":"qwerty qwerty","honeypot_1ogCBVw5":null,"captcha_verified":true} 
+[2026-03-12 10:53:36] local.INFO: Has files: {"files":0} 
+[2026-03-12 10:53:36] local.INFO: Form found {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","form_name":"UntinyPNG - Contact Form"} 
+[2026-03-12 10:53:36] local.INFO: Validation passed {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:53:36] local.INFO: Captcha verification status {"is_captcha_verified":true,"has_captcha_flag":true,"captcha_flag_value":true} 
+[2026-03-12 10:53:36] local.INFO: reCAPTCHA skipped {"is_captcha_verified":true,"is_disabled":false} 
+[2026-03-12 10:53:36] local.INFO: Parsed submission data {"name":"sakshi","email":"tsaklani2drish@gmail.com","message":"qwerty qwerty"} 
+[2026-03-12 10:53:36] local.INFO: FILE UPLOAD CHECK {"all_files":[]} 
+[2026-03-12 10:53:36] local.INFO: Total files uploaded: 0  
+[2026-03-12 10:53:36] local.INFO: Sending auto-response to {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:53:38] local.INFO: Auto-response sent to: tsaklani2drish@gmail.com  
+[2026-03-12 10:53:38] local.INFO: VALID SUBMISSION {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","ip":"127.0.0.1","is_spam":false,"reasons":[]} 
+[2026-03-12 10:53:38] local.INFO: Spam check result {"is_spam":false,"reasons":[],"ip":"127.0.0.1"} 
+[2026-03-12 10:53:38] local.INFO: Submission created {"submission_id":"a148280f-468c-44e3-9102-f03dd0ea633e","ip":"127.0.0.1"} 
+[2026-03-12 10:53:38] local.INFO: Auto-response flag updated  
+[2026-03-12 10:53:38] local.INFO: Form stats updated  
+[2026-03-12 10:53:38] local.INFO: Checking email notification conditions {"is_spam":false,"email_notifications":true,"recipient_email":"sakshi05@yopmail.com"} 
+[2026-03-12 10:53:38] local.INFO: Attempting to send notification email {"to":"sakshi05@yopmail.com","has_attachments":false} 
+[2026-03-12 10:53:38] local.INFO: === SENDING NOTIFICATION EMAIL === {"to":"sakshi05@yopmail.com","submission_id":"a148280f-468c-44e3-9102-f03dd0ea633e","has_files":false} 
+[2026-03-12 10:53:38] local.INFO: Final CC emails {"final_list":[]} 
+[2026-03-12 10:53:38] local.INFO: Email template selected: basic  
+[2026-03-12 10:53:38] local.INFO: Attachments to process: 0  
+[2026-03-12 10:53:38] local.INFO: Mail object created  
+[2026-03-12 10:53:38] local.INFO: Sending email without CC {"to":"sakshi05@yopmail.com"} 
+[2026-03-12 10:53:38] local.INFO: Total attachments added: 0  
+[2026-03-12 10:53:39] local.INFO: Mail send method called successfully  
+[2026-03-12 10:53:39] local.INFO: Submission updated with email_sent flag  
+[2026-03-12 10:53:39] local.INFO: Email sent successfully to: sakshi05@yopmail.com  
+[2026-03-12 10:53:39] local.INFO: Notification email sent successfully  
+[2026-03-12 10:53:39] local.INFO: === FORM SUBMISSION COMPLETED === {"slug":"f_aklrqsxp"} 
+[2026-03-12 10:53:39] local.INFO: Success response {"wants_json":false,"format":null,"redirect_url":null} 
+[2026-03-12 10:56:43] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-12 10:56:43] local.INFO: Playground email: Redirecting to captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:56:43] local.INFO: Playground: Showing captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:56:51] local.INFO: Playground: Captcha verification started {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:56:51] local.INFO: Playground: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 10:56:52] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-12 10:56:52] local.INFO: Playground: Captcha verified successfully  
+[2026-03-12 10:56:52] local.INFO: Playground: Pending submission found {"data_keys":["name","email","message"],"stored_ip":"127.0.0.1","source":"external"} 
+[2026-03-12 10:56:52] local.INFO: Playground: Recreating request with files {"temp_files":[],"ip":"127.0.0.1","is_ajax":false} 
+[2026-03-12 10:56:52] local.INFO: Playground: Recreated request {"has_files":0,"ip":"127.0.0.1","source":"external","is_ajax":false} 
+[2026-03-12 10:56:52] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"Testing the success page","recipient_email":"tsaklani2drish@gmail.com"},"all_files":[]} 
+[2026-03-12 10:56:52] local.INFO: Playground: Form data prepared {"name":"Tanuja","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"Testing the success page","all_fields":{"message":"Testing the success page","name":"Tanuja","email":"tsaklani2drish@gmail.com"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-12 10:56:52] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-12 10:56:52] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:56:52] local.INFO: Playground: Mail rendered successfully {"html_length":6052,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    
+
+        body {
+
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+            line-height: 1.6;
+
+            color:"} 
+[2026-03-12 10:56:52] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-12 10:56:53] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:56:53] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0} 
+[2026-03-12 10:56:53] local.INFO: Playground: Redirecting to form submitted page  
+[2026-03-12 10:58:44] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_aklrqsxp","method":"POST"} 
+[2026-03-12 10:58:44] local.INFO: Request data: {"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"Testing the thank you page.","honeypot_1ogCBVw5":null} 
+[2026-03-12 10:58:44] local.INFO: Has files: {"files":0} 
+[2026-03-12 10:58:45] local.INFO: Form found {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","form_name":"UntinyPNG - Contact Form"} 
+[2026-03-12 10:58:46] local.INFO: Validation passed {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:58:46] local.INFO: Captcha verification status {"is_captcha_verified":false,"has_captcha_flag":false,"captcha_flag_value":null} 
+[2026-03-12 10:58:46] local.INFO: Redirecting to captcha page {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:58:46] local.INFO: Showing captcha page {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:58:56] local.INFO: === CAPTCHA VERIFICATION STARTED === {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:58:58] local.INFO: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-12 10:58:58] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-12 10:58:58] local.INFO: Captcha verified successfully  
+[2026-03-12 10:58:58] local.INFO: Pending submission found {"data_keys":["name","email","message","honeypot_1ogCBVw5"],"stored_ip":"127.0.0.1","current_ip":"127.0.0.1"} 
+[2026-03-12 10:58:58] local.INFO: Recreating request with files {"temp_files":[],"ip":"127.0.0.1"} 
+[2026-03-12 10:58:58] local.INFO: Recreated request {"has_files":0,"ip":"127.0.0.1"} 
+[2026-03-12 10:58:58] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_aklrqsxp","method":"POST"} 
+[2026-03-12 10:58:58] local.INFO: Request data: {"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"Testing the thank you page.","honeypot_1ogCBVw5":null,"captcha_verified":true} 
+[2026-03-12 10:58:58] local.INFO: Has files: {"files":0} 
+[2026-03-12 10:58:58] local.INFO: Form found {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","form_name":"UntinyPNG - Contact Form"} 
+[2026-03-12 10:58:59] local.INFO: Validation passed {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-12 10:58:59] local.INFO: Captcha verification status {"is_captcha_verified":true,"has_captcha_flag":true,"captcha_flag_value":true} 
+[2026-03-12 10:58:59] local.INFO: reCAPTCHA skipped {"is_captcha_verified":true,"is_disabled":false} 
+[2026-03-12 10:58:59] local.INFO: Parsed submission data {"name":"Tanuja","email":"tsaklani2drish@gmail.com","message":"Testing the thank you page."} 
+[2026-03-12 10:58:59] local.INFO: FILE UPLOAD CHECK {"all_files":[]} 
+[2026-03-12 10:58:59] local.INFO: Total files uploaded: 0  
+[2026-03-12 10:58:59] local.INFO: Sending auto-response to {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-12 10:59:00] local.INFO: Auto-response sent to: tsaklani2drish@gmail.com  
+[2026-03-12 10:59:00] local.INFO: VALID SUBMISSION {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","ip":"127.0.0.1","is_spam":false,"reasons":[]} 
+[2026-03-12 10:59:00] local.INFO: Spam check result {"is_spam":false,"reasons":[],"ip":"127.0.0.1"} 
+[2026-03-12 10:59:00] local.INFO: Submission created {"submission_id":"a14829fa-f81d-4caa-8bea-86ed33682644","ip":"127.0.0.1"} 
+[2026-03-12 10:59:00] local.INFO: Auto-response flag updated  
+[2026-03-12 10:59:01] local.INFO: Form stats updated  
+[2026-03-12 10:59:01] local.INFO: Checking email notification conditions {"is_spam":false,"email_notifications":true,"recipient_email":"sakshi05@yopmail.com"} 
+[2026-03-12 10:59:01] local.INFO: Attempting to send notification email {"to":"sakshi05@yopmail.com","has_attachments":false} 
+[2026-03-12 10:59:01] local.INFO: === SENDING NOTIFICATION EMAIL === {"to":"sakshi05@yopmail.com","submission_id":"a14829fa-f81d-4caa-8bea-86ed33682644","has_files":false} 
+[2026-03-12 10:59:01] local.INFO: Final CC emails {"final_list":[]} 
+[2026-03-12 10:59:01] local.INFO: Email template selected: basic  
+[2026-03-12 10:59:01] local.INFO: Attachments to process: 0  
+[2026-03-12 10:59:01] local.INFO: Mail object created  
+[2026-03-12 10:59:01] local.INFO: Sending email without CC {"to":"sakshi05@yopmail.com"} 
+[2026-03-12 10:59:01] local.INFO: Total attachments added: 0  
+[2026-03-12 10:59:01] local.INFO: Mail send method called successfully  
+[2026-03-12 10:59:01] local.INFO: Submission updated with email_sent flag  
+[2026-03-12 10:59:01] local.INFO: Email sent successfully to: sakshi05@yopmail.com  
+[2026-03-12 10:59:01] local.INFO: Notification email sent successfully  
+[2026-03-12 10:59:01] local.INFO: === FORM SUBMISSION COMPLETED === {"slug":"f_aklrqsxp"} 
+[2026-03-12 10:59:01] local.INFO: Success response {"wants_json":false,"format":null,"redirect_url":null} 
