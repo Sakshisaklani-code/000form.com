@@ -682,11 +682,15 @@ btn.textContent = <span class="str2">'Sending…'</span>;
                     <div class="test-section-body">
 
                         {{-- Endpoint bar --}}
+                        <div class="note-box warn" style="margin-bottom:1rem;">
+                            <i class="bi bi-exclamation-triangle-fill"></i>
+                            <span>Enter your full endpoint URL with your <strong>verified email</strong> — e.g. <span class="ic">https://000form.com/f/you@email.com</span>. Verify your email on the <a href="{{ route('playground.index') }}" style="color:#f8c77e;">Playground</a> first.</span>
+                        </div>
                         <div class="test-endpoint">
                             <label>Endpoint</label>
                             <input type="text" id="testEndpoint"
                                    value=""
-                                   placeholder="https://000forms.com/f/YOUR_TOKEN">
+                                   placeholder="https://000form.com/f/your@verifiedemail.com">
                         </div>
 
                         {{-- Method tabs --}}
@@ -885,12 +889,20 @@ function switchTestTab(name) {
 }
 
 /* ── Helpers ── */
-function getEndpoint() { return document.getElementById('testEndpoint').value.trim(); }
+function getEndpoint() {
+    const val = document.getElementById('testEndpoint').value.trim();
+    if (!val) {
+        alert('Please enter your endpoint URL first.\nExample: https://000form.com/f/your@email.com');
+        return null;
+    }
+    return val;
+}
 function buildFD(prefix) {
     const fd = new FormData();
     fd.append('name',    document.getElementById(prefix + '-name').value);
     fd.append('email',   document.getElementById(prefix + '-email').value);
     fd.append('message', document.getElementById(prefix + '-msg').value);
+    fd.append('_captcha', 'false');
     return fd;
 }
 function setRes(p, stat, text, state) {
@@ -904,6 +916,7 @@ function fmt(data) { return JSON.stringify(data, null, 2); }
 
 /* ── Fetch test ── */
 async function testFetch() {
+    const endpoint = getEndpoint(); if (!endpoint) return;
     const btn = document.getElementById('f-btn');
     btn.disabled = true; btn.innerHTML = '<i class="bi bi-arrow-repeat"></i> Sending…';
     setRes('f', 'Sending…', 'Request in flight…', 'wait');
@@ -922,6 +935,7 @@ async function testFetch() {
 
 /* ── jQuery test ── */
 function testJQuery() {
+    const endpoint = getEndpoint(); if (!endpoint) return;
     const btn = $('#jq-btn');
     btn.prop('disabled', true).html('<i class="bi bi-arrow-repeat"></i> Sending…');
     setRes('jq', 'Sending…', 'Request in flight…', 'wait');
@@ -942,6 +956,7 @@ function testJQuery() {
 
 /* ── Axios test ── */
 async function testAxios() {
+    const endpoint = getEndpoint(); if (!endpoint) return;
     const btn = document.getElementById('ax-btn');
     btn.disabled = true; btn.innerHTML = '<i class="bi bi-arrow-repeat"></i> Sending…';
     setRes('ax', 'Sending…', 'Request in flight…', 'wait');
