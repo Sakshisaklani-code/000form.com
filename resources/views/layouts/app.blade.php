@@ -129,7 +129,7 @@
             }
         }
         .nav-logo img{
-            height: 35px;
+            height: 40px;
             /* filter: brightness(0) saturate(100%) invert(74%) sepia(69%) saturate(500%) hue-rotate(100deg) brightness(105%); */
         }
     </style>
