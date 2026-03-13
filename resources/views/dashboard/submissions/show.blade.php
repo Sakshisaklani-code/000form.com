@@ -30,7 +30,7 @@
         
         <div style="display: flex; flex-direction: column; gap: 1.25rem;">
             @foreach($submission->data as $key => $value)
-                @if(!str_starts_with($key, '_'))
+                @if(!str_starts_with($key, '_') && !str_starts_with($key, 'honeypot'))
                     <div>
                         <div class="form-label" style="margin-bottom: 0.25rem;">{{ ucwords(str_replace('_', ' ', $key)) }}</div>
                         <div style="padding: 0.75rem 1rem; background: var(--bg-tertiary); border-radius: 6px; word-break: break-word;">
