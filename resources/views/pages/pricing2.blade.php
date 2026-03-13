@@ -516,56 +516,16 @@
     {{-- PLANS --}}
     <div class="pp-grid">
 
-    {{-- CURRENT FREE --}}
-        <div class="pp-plan">
-            <span class="pp-plan-badge business">Current</span>
-            <div class="pp-price">
-                <span class="sym">$</span>
-                <span class="num">0</span>
-                <span class="per">/month</span>
-            </div>
-            <p class="pp-plan-desc">For organizations and agencies.</p>
-            <a href="signup" class="pp-cta pp-cta-outline">Use Now →</a>
-            <hr class="pp-divider">
-            <span class="pp-feat-label">Everything in Professional, plus</span>
-            <ul class="pp-feats">
-                <li class="pp-feat hi">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
-                    20,000 submissions/mo
-                </li>
-                <li class="pp-feat hi">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
-                    Unlimited forms
-                </li>
-                <li class="pp-feat hi">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
-                    Unlimited projects
-                </li>
-                <li class="pp-feat hi">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
-                    Role-based permissions
-                </li>
-                <li class="pp-feat hi">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
-                    Unlimited team members
-                </li>
-                <li class="pp-feat hi">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
-                    File uploads <span class="pp-pill pill-pro">100MB</span>
-                </li>
-            </ul>
-        </div>
-
         {{-- PERSONAL --}}
         <div class="pp-plan">
             <span class="pp-plan-badge personal">Personal</span>
             <div class="pp-price">
                 <span class="sym">$</span>
-                <span class="num" data-mo="15" data-yr="13">15</span>
+                <span class="num" data-mo="10" data-yr="8">10</span>
                 <span class="per">/month</span>
             </div>
             <p class="pp-plan-desc">For personal or portfolio sites.</p>
-            <a href="#" class="pp-cta pp-cta-outline">Coming Soon →</a>
+            <a href="#" class="pp-cta pp-cta-outline">Buy Now →</a>
             <hr class="pp-divider">
             <span class="pp-feat-label">Includes</span>
             <ul class="pp-feats">
@@ -602,11 +562,11 @@
             <span class="pp-plan-badge professional">Professional</span>
             <div class="pp-price">
                 <span class="sym">$</span>
-                <span class="num" data-mo="30" data-yr="28">30</span>
+                <span class="num" data-mo="20" data-yr="16">20</span>
                 <span class="per">/month</span>
             </div>
             <p class="pp-plan-desc">For freelancers and startups.</p>
-            <a href="#" class="pp-cta pp-cta-solid">Coming Soon →</a>
+            <a href="#" class="pp-cta pp-cta-solid">Buy Now →</a>
             <hr class="pp-divider">
             <span class="pp-feat-label">Everything in Personal, plus</span>
             <ul class="pp-feats">
@@ -642,17 +602,17 @@
             <span class="pp-plan-badge business">Business</span>
             <div class="pp-price">
                 <span class="sym">$</span>
-                <span class="num" data-mo="90" data-yr="88">90</span>
+                <span class="num" data-mo="60" data-yr="48">60</span>
                 <span class="per">/month</span>
             </div>
             <p class="pp-plan-desc">For organizations and agencies.</p>
-            <a href="#" class="pp-cta pp-cta-outline">Coming Soon →</a>
+            <a href="#" class="pp-cta pp-cta-outline">Buy Now →</a>
             <hr class="pp-divider">
             <span class="pp-feat-label">Everything in Professional, plus</span>
             <ul class="pp-feats">
                 <li class="pp-feat hi">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
-                    50 submissions/mo
+                    20,000 submissions/mo
                 </li>
                 <li class="pp-feat hi">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
@@ -677,6 +637,43 @@
             </ul>
         </div>
 
+        {{-- CUSTOM --}}
+        <!-- <div class="pp-plan custom">
+            <span class="pp-plan-badge custom-badge">Custom</span>
+            <div class="pp-price-custom">
+                <span class="custom-label">Custom</span>
+            </div>
+            <p class="pp-plan-desc">For high volume campaigns &amp; enterprise.</p>
+            <a href="#" class="pp-cta pp-cta-blue">Contact Sales →</a>
+            <hr class="pp-divider">
+            <span class="pp-feat-label">Everything in Business, plus</span>
+            <ul class="pp-feats">
+                <li class="pp-feat hi">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-blue"><polyline points="20 6 9 17 4 12"/></svg>
+                    Unlimited submissions
+                </li>
+                <li class="pp-feat hi">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-blue"><polyline points="20 6 9 17 4 12"/></svg>
+                    Unlimited forms
+                </li>
+                <li class="pp-feat hi">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-blue"><polyline points="20 6 9 17 4 12"/></svg>
+                    Unlimited projects
+                </li>
+                <li class="pp-feat hi">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-blue"><polyline points="20 6 9 17 4 12"/></svg>
+                    Unlimited team members
+                </li>
+                <li class="pp-feat hi">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-blue"><polyline points="20 6 9 17 4 12"/></svg>
+                    Dedicated account manager
+                </li>
+                <li class="pp-feat hi">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-blue"><polyline points="20 6 9 17 4 12"/></svg>
+                    Custom SLA &amp; integrations
+                </li>
+            </ul>
+        </div> -->
 
     </div>{{-- /pp-grid --}}
 
