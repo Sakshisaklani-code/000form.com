@@ -515,41 +515,37 @@
     <div class="pp-grid">
 
     
-        <div class="pp-plan">
+        <div class="pp-plan featured">
             <span class="pp-plan-badge business">Current</span>
             <div class="pp-price">
                 <span class="sym">$</span>
                 <span class="num">0</span>
                 <span class="per">/month</span>
             </div>
-            <p class="pp-plan-desc">For organizations and agencies.</p>
-            <a href="signup" class="pp-cta pp-cta-outline">Use Now →</a>
+            <p class="pp-plan-desc">For testing and development.</p>
+            <a href="signup" class="pp-cta pp-cta-solid">Use Now →</a>
             <hr class="pp-divider">
-            <span class="pp-feat-label">Everything in Professional, plus</span>
+            <span class="pp-feat-label">For the Trail Purpose</span>
             <ul class="pp-feats">
                 <li class="pp-feat hi">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
-                    20,000 submissions/mo
+                    50 submissions/mo
                 </li>
                 <li class="pp-feat hi">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
-                    Unlimited forms
+                    Limited forms
                 </li>
                 <li class="pp-feat hi">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
-                    Unlimited projects
+                    Only 1 Role
                 </li>
                 <li class="pp-feat hi">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
-                    Role-based permissions
+                    Only 1 Team Member
                 </li>
                 <li class="pp-feat hi">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
-                    Unlimited team members
-                </li>
-                <li class="pp-feat hi">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
-                    File uploads <span class="pp-pill pill-pro">100MB</span>
+                    File uploads
                 </li>
             </ul>
         </div>
@@ -577,10 +573,6 @@
                 </li>
                 <li class="pp-feat hi">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
-                    Unlimited projects
-                </li>
-                <li class="pp-feat hi">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
                     Email notifications
                 </li>
                 <li class="pp-feat hi">
@@ -595,16 +587,16 @@
         </div>
 
         
-        <div class="pp-plan featured">
-            <div class="pp-pop-badge">Most Popular</div>
-            <span class="pp-plan-badge professional">Professional</span>
+        <div class="pp-plan">
+            <!-- <div class="pp-pop-badge">Most Popular</div> -->
+            <span class="pp-plan-badge personal">Professional</span>
             <div class="pp-price">
                 <span class="sym">$</span>
                 <span class="num" data-mo="30" data-yr="28">30</span>
                 <span class="per">/month</span>
             </div>
             <p class="pp-plan-desc">For freelancers and startups.</p>
-            <a href="#" class="pp-cta pp-cta-solid">Coming Soon →</a>
+            <a href="#" class="pp-cta pp-cta-outline">Coming Soon →</a>
             <hr class="pp-divider">
             <span class="pp-feat-label">Everything in Personal, plus</span>
             <ul class="pp-feats">
@@ -615,10 +607,6 @@
                 <li class="pp-feat hi">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
                     Unlimited forms
-                </li>
-                <li class="pp-feat hi">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
-                    Unlimited projects
                 </li>
                 <li class="pp-feat hi">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
@@ -637,7 +625,7 @@
 
         
         <div class="pp-plan">
-            <span class="pp-plan-badge business">Business</span>
+            <span class="pp-plan-badge personal">Business</span>
             <div class="pp-price">
                 <span class="sym">$</span>
                 <span class="num" data-mo="90" data-yr="88">90</span>
@@ -655,10 +643,6 @@
                 <li class="pp-feat hi">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
                     Unlimited forms
-                </li>
-                <li class="pp-feat hi">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
-                    Unlimited projects
                 </li>
                 <li class="pp-feat hi">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>
