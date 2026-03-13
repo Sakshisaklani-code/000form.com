@@ -882,8 +882,7 @@
 </div>
 
 {{-- ══════════════════════════════
-     PANEL: CODE - INTERSTITIAL PAGE METHOD
-     Like Formspree - NO SITE KEY EVER EXPOSED!
+     PANEL: CODE
 ══════════════════════════════ --}}
 <div class="page-panel {{ $panel === 'code' ? 'active' : '' }}">
     <div class="card">
@@ -914,7 +913,7 @@
                 <button class="code-tab" onclick="switchCodeTab('fileupload', event)">File Upload</button>
             </div>
 
-            {{-- ══ TAB: Plain HTML (Interstitial Method) ══ --}}
+            {{-- ══ TAB: Plain HTML ══ --}}
             <div id="code-html" class="code-block active">
                 <div class="code-header">
                     <span class="code-lang">HTML</span>
@@ -936,14 +935,14 @@
                 </div>
             </div>
 
-{{-- ══ TAB: AJAX (Interstitial Method) ══ --}}
-<div id="code-ajax" class="code-block">
-    <div class="code-header">
-        <span class="code-lang">HTML + AJAX</span>
-        <button class="code-copy" onclick="copyCode('ajax-pre')">Copy</button>
-    </div>
-    <div class="code-content">
-        <pre id="ajax-pre"><span class="tag">&lt;form</span> <span class="attr">id</span>=<span class="string">"contact-form"</span> <span class="attr">action</span>=<span class="string">"{{ $form->endpoint_url }}"</span> <span class="attr">method</span>=<span class="string">"POST"</span><span class="tag">&gt;</span>
+            {{-- ══ TAB: AJAX ══ --}}
+            <div id="code-ajax" class="code-block">
+                <div class="code-header">
+                    <span class="code-lang">HTML + AJAX</span>
+                    <button class="code-copy" onclick="copyCode('ajax-pre')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="ajax-pre"><span class="tag">&lt;form</span> <span class="attr">id</span>=<span class="string">"contact-form"</span> <span class="attr">action</span>=<span class="string">"{{ $form->endpoint_url }}"</span> <span class="attr">method</span>=<span class="string">"POST"</span><span class="tag">&gt;</span>
   <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"text"</span>  <span class="attr">name</span>=<span class="string">"name"</span>    <span class="attr">placeholder</span>=<span class="string">"Your name"</span>    <span class="attr">required</span><span class="tag">&gt;</span>
   <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">name</span>=<span class="string">"email"</span>   <span class="attr">placeholder</span>=<span class="string">"Your email"</span>   <span class="attr">required</span><span class="tag">&gt;</span>
   <span class="tag">&lt;textarea</span> <span class="attr">name</span>=<span class="string">"message"</span> <span class="attr">placeholder</span>=<span class="string">"Your message"</span><span class="tag">&gt;&lt;/textarea&gt;</span>
@@ -1018,6 +1017,28 @@
   }
 });
 <span class="tag">&lt;/script&gt;</span></pre>
+                </div>
+            </div>
+
+            {{-- ══ TAB: File Upload ══ --}}
+            <div id="code-fileupload" class="code-block">
+                <div class="code-header">
+                    <span class="code-lang">HTML</span>
+                    <button class="code-copy" onclick="copyCode('fileupload-pre')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="fileupload-pre"><span class="comment">&lt;!-- Add enctype="multipart/form-data" whenever you use file inputs --&gt;</span>
+<span class="tag">&lt;form</span> <span class="attr">action</span>=<span class="string">"{{ $form->endpoint_url }}"</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"text"</span>  <span class="attr">name</span>=<span class="string">"name"</span>       <span class="attr">placeholder</span>=<span class="string">"Your name"</span>  <span class="attr">required</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">name</span>=<span class="string">"email"</span>      <span class="attr">placeholder</span>=<span class="string">"Your email"</span> <span class="attr">required</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"file"</span>  <span class="attr">name</span>=<span class="string">"uploads[]"</span> <span class="attr">multiple</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="string">"submit"</span><span class="tag">&gt;</span>Send<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/form&gt;</span>
+</pre>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 
@@ -1514,7 +1535,7 @@
                 alert(data.message || 'Validation failed. Please check your inputs.');
             }
         } catch(err) {
-            console.error(err);   // full error in console
+            console.error(err);
             if (err.response) {
                 console.log(err.response.data);
                 alert(JSON.stringify(err.response.data, null, 2));
