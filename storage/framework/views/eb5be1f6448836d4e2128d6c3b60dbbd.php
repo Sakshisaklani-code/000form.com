@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Plans & Pricing - 000form'); ?>
 
-@section('title', 'Plans & Pricing - 000form')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <style>
     /* ============================================
@@ -500,7 +498,7 @@
 <div class="pp">
 <div class="pp-wrap">
 
-    {{-- HEADER --}}
+    
     <div class="pp-head">
         <h1>000form <em>Plans</em></h1>
         <p>We offer plans for every project, from personal sites to large-scale enterprise campaigns.</p>
@@ -513,10 +511,10 @@
         </div>
     </div>
 
-    {{-- PLANS --}}
+    
     <div class="pp-grid">
 
-    {{-- CURRENT FREE --}}
+    
         <div class="pp-plan">
             <span class="pp-plan-badge business">Current</span>
             <div class="pp-price">
@@ -556,7 +554,7 @@
             </ul>
         </div>
 
-        {{-- PERSONAL --}}
+        
         <div class="pp-plan">
             <span class="pp-plan-badge personal">Personal</span>
             <div class="pp-price">
@@ -596,7 +594,7 @@
             </ul>
         </div>
 
-        {{-- PROFESSIONAL --}}
+        
         <div class="pp-plan featured">
             <div class="pp-pop-badge">Most Popular</div>
             <span class="pp-plan-badge professional">Professional</span>
@@ -637,7 +635,7 @@
             </ul>
         </div>
 
-        {{-- BUSINESS --}}
+        
         <div class="pp-plan">
             <span class="pp-plan-badge business">Business</span>
             <div class="pp-price">
@@ -678,7 +676,7 @@
         </div>
 
 
-    </div>{{-- /pp-grid --}}
+    </div>
 
 </div>
 </div>
@@ -708,4 +706,5 @@
 })();
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/pricing.blade.php ENDPATH**/ ?>
