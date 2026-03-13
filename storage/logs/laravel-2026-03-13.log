@@ -1,0 +1,259 @@
+[2026-03-13 06:29:49] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_aklrqsxp","method":"POST"} 
+[2026-03-13 06:29:49] local.INFO: Request data: {"name":"Tanuja","email":"test-000forms@yopmail.com","uploads":[{"Illuminate\\Http\\UploadedFile":"C:\\xampp\\tmp\\php6EF6.tmp"}]} 
+[2026-03-13 06:29:49] local.INFO: Has files: {"files":1} 
+[2026-03-13 06:29:51] local.INFO: Form found {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","form_name":"UntinyPNG - Contact Form"} 
+[2026-03-13 06:30:22] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_aklrqsxp","method":"POST"} 
+[2026-03-13 06:30:22] local.INFO: Request data: {"name":"Tanuja","email":"test-000forms@yopmail.com","uploads":[{"Illuminate\\Http\\UploadedFile":"C:\\xampp\\tmp\\phpEFA0.tmp"},{"Illuminate\\Http\\UploadedFile":"C:\\xampp\\tmp\\phpEFA1.tmp"}]} 
+[2026-03-13 06:30:22] local.INFO: Has files: {"files":1} 
+[2026-03-13 06:30:23] local.INFO: Form found {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","form_name":"UntinyPNG - Contact Form"} 
+[2026-03-13 06:30:24] local.INFO: Validation passed {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-13 06:30:24] local.INFO: Captcha verification status {"is_captcha_verified":false,"has_captcha_flag":false,"captcha_flag_value":null} 
+[2026-03-13 06:30:24] local.INFO: Redirecting to captcha page {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-13 06:30:24] local.INFO: Temp file stored {"field":"uploads","path":"temp/a144024d-f19e-4657-92a2-81bfb7b1b53d/69b3af003fc8d/nlZF7kgq0Q5DsdUTNuwt6Bx2MP48l9E9aj3slhyA.jpg"} 
+[2026-03-13 06:30:24] local.INFO: Temp file stored {"field":"uploads","path":"temp/a144024d-f19e-4657-92a2-81bfb7b1b53d/69b3af0042c3d/oW5ZoobSpo7F9fieL2SajTzYpdsszeHzBV8wq00I.png"} 
+[2026-03-13 06:30:24] local.ERROR: Serialization of 'Illuminate\Http\UploadedFile' is not allowed {"exception":"[object] (Exception(code: 0): Serialization of 'Illuminate\\Http\\UploadedFile' is not allowed at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Store.php:177)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Store.php(177): serialize(Array)
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(245): Illuminate/Session/Store->save()
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(130): Illuminate/Session/Middleware/StartSession->saveSession(Object(Illuminate/Http/Request))
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate/Session/Middleware/StartSession->handleStatefulRequest(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store), Object(Closure))
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Session/Middleware/StartSession->handle(Object(Illuminate/Http/Request), Object(Closure))
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse->handle(Object(Illuminate/Http/Request), Object(Closure))
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/EncryptCookies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate/Routing/Router->runRouteWithinStack(Object(Illuminate/Routing/Route), Object(Illuminate/Http/Request))
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate/Routing/Router->runRoute(Object(Illuminate/Http/Request), Object(Illuminate/Routing/Route))
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate/Routing/Router->dispatchToRoute(Object(Illuminate/Http/Request))
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate/Routing/Router->dispatch(Object(Illuminate/Http/Request))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Foundation/Http/Kernel->Illuminate/Foundation/Http/{closure}(Object(Illuminate/Http/Request))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#20 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#21 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#22 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#23 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#24 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#25 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#26 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#27 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#28 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#29 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#30 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#31 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#32 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#33 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#34 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#35 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#36 C:/Git-folders/000form.com/public/index.php(17): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#37 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Git-folders//...')
+#38 {main}
+"} 
+[2026-03-13 06:31:21] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_aklrqsxp","method":"POST"} 
+[2026-03-13 06:31:21] local.INFO: Request data: {"name":"Tanuja","email":"test-000forms@yopmail.com","uploads":[{"Illuminate\\Http\\UploadedFile":"C:\\xampp\\tmp\\phpD4A3.tmp"},{"Illuminate\\Http\\UploadedFile":"C:\\xampp\\tmp\\phpD4A4.tmp"},{"Illuminate\\Http\\UploadedFile":"C:\\xampp\\tmp\\phpD4A5.tmp"},{"Illuminate\\Http\\UploadedFile":"C:\\xampp\\tmp\\phpD4A6.tmp"}]} 
+[2026-03-13 06:31:21] local.INFO: Has files: {"files":1} 
+[2026-03-13 06:31:22] local.INFO: Form found {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","form_name":"UntinyPNG - Contact Form"} 
+[2026-03-13 06:31:22] local.INFO: Validation passed {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-13 06:31:22] local.INFO: Captcha verification status {"is_captcha_verified":false,"has_captcha_flag":false,"captcha_flag_value":null} 
+[2026-03-13 06:31:22] local.INFO: Redirecting to captcha page {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-13 06:31:22] local.INFO: Temp file stored {"field":"uploads","path":"temp/a144024d-f19e-4657-92a2-81bfb7b1b53d/69b3af3a9a022/C2gJYAJkGR0eZ3CP9nIoGly3PpCp3Rol5x6G52Oi.jpg"} 
+[2026-03-13 06:31:22] local.INFO: Temp file stored {"field":"uploads","path":"temp/a144024d-f19e-4657-92a2-81bfb7b1b53d/69b3af3a9cbb9/OVmgYvBs56N7uxsnorWKxhat7qAFTzjC2uzfBUTT.png"} 
+[2026-03-13 06:31:22] local.INFO: Temp file stored {"field":"uploads","path":"temp/a144024d-f19e-4657-92a2-81bfb7b1b53d/69b3af3a9d11f/CTrtw73RkV1F2c2jRK16pthRyHg50GrAGuTT3Osv.png"} 
+[2026-03-13 06:31:22] local.INFO: Temp file stored {"field":"uploads","path":"temp/a144024d-f19e-4657-92a2-81bfb7b1b53d/69b3af3a9d718/K4SCrC1GUqb9ug2kqxsIFq8tjQLORNEckmRGQpQf.png"} 
+[2026-03-13 06:31:22] local.ERROR: Serialization of 'Illuminate\Http\UploadedFile' is not allowed {"exception":"[object] (Exception(code: 0): Serialization of 'Illuminate\\Http\\UploadedFile' is not allowed at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Store.php:177)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Store.php(177): serialize(Array)
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(245): Illuminate/Session/Store->save()
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(130): Illuminate/Session/Middleware/StartSession->saveSession(Object(Illuminate/Http/Request))
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate/Session/Middleware/StartSession->handleStatefulRequest(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store), Object(Closure))
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Session/Middleware/StartSession->handle(Object(Illuminate/Http/Request), Object(Closure))
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse->handle(Object(Illuminate/Http/Request), Object(Closure))
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/EncryptCookies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate/Routing/Router->runRouteWithinStack(Object(Illuminate/Routing/Route), Object(Illuminate/Http/Request))
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate/Routing/Router->runRoute(Object(Illuminate/Http/Request), Object(Illuminate/Routing/Route))
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate/Routing/Router->dispatchToRoute(Object(Illuminate/Http/Request))
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate/Routing/Router->dispatch(Object(Illuminate/Http/Request))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Foundation/Http/Kernel->Illuminate/Foundation/Http/{closure}(Object(Illuminate/Http/Request))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#20 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#21 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#22 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#23 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#24 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#25 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#26 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#27 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#28 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#29 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#30 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#31 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#32 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#33 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#34 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#35 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#36 C:/Git-folders/000form.com/public/index.php(17): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#37 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Git-folders//...')
+#38 {main}
+"} 
+[2026-03-13 06:41:37] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_aklrqsxp","method":"POST"} 
+[2026-03-13 06:41:37] local.INFO: Request data: {"name":"Tanuja","email":"test-000forms@yopmail.com","uploads":[{"Illuminate\\Http\\UploadedFile":"C:\\xampp\\tmp\\php3980.tmp"},{"Illuminate\\Http\\UploadedFile":"C:\\xampp\\tmp\\php3981.tmp"}]} 
+[2026-03-13 06:41:37] local.INFO: Has files: {"files":1} 
+[2026-03-13 06:41:38] local.INFO: Form found {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d","form_name":"UntinyPNG - Contact Form"} 
+[2026-03-13 06:41:38] local.INFO: Validation passed {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-13 06:41:38] local.INFO: Captcha verification status {"is_captcha_verified":false,"has_captcha_flag":false,"captcha_flag_value":null} 
+[2026-03-13 06:41:38] local.INFO: Redirecting to captcha page {"form_id":"a144024d-f19e-4657-92a2-81bfb7b1b53d"} 
+[2026-03-13 06:41:38] local.INFO: Temp file stored {"field":"uploads","path":"temp/a144024d-f19e-4657-92a2-81bfb7b1b53d/69b3b1a2d897e/ocu9xeTcGkGiT3IQq3hUIrrVFxEOXWlMtnOPY9tt.jpg"} 
+[2026-03-13 06:41:38] local.INFO: Temp file stored {"field":"uploads","path":"temp/a144024d-f19e-4657-92a2-81bfb7b1b53d/69b3b1a2db8ef/Ytg9kvd5xKmOJfsvSTIxO0RZgf2RoHqxqd9jFKI1.png"} 
+[2026-03-13 06:41:38] local.ERROR: Serialization of 'Illuminate\Http\UploadedFile' is not allowed {"exception":"[object] (Exception(code: 0): Serialization of 'Illuminate\\Http\\UploadedFile' is not allowed at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Store.php:177)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Store.php(177): serialize(Array)
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(245): Illuminate/Session/Store->save()
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(130): Illuminate/Session/Middleware/StartSession->saveSession(Object(Illuminate/Http/Request))
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate/Session/Middleware/StartSession->handleStatefulRequest(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store), Object(Closure))
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Session/Middleware/StartSession->handle(Object(Illuminate/Http/Request), Object(Closure))
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse->handle(Object(Illuminate/Http/Request), Object(Closure))
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/EncryptCookies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate/Routing/Router->runRouteWithinStack(Object(Illuminate/Routing/Route), Object(Illuminate/Http/Request))
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate/Routing/Router->runRoute(Object(Illuminate/Http/Request), Object(Illuminate/Routing/Route))
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate/Routing/Router->dispatchToRoute(Object(Illuminate/Http/Request))
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate/Routing/Router->dispatch(Object(Illuminate/Http/Request))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Foundation/Http/Kernel->Illuminate/Foundation/Http/{closure}(Object(Illuminate/Http/Request))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#20 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#21 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#22 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#23 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#24 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#25 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#26 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#27 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#28 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#29 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#30 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#31 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#32 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#33 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#34 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#35 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#36 C:/Git-folders/000form.com/public/index.php(17): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#37 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Git-folders//...')
+#38 {main}
+"} 
+[2026-03-13 06:42:35] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_hnzeiu3z","method":"POST"} 
+[2026-03-13 06:42:35] local.INFO: Request data: {"name":"Tanuja","email":"test-000forms@yopmail.com","uploads":[{"Illuminate\\Http\\UploadedFile":"C:\\xampp\\tmp\\php1F3E.tmp"}]} 
+[2026-03-13 06:42:35] local.INFO: Has files: {"files":1} 
+[2026-03-13 06:42:37] local.INFO: Form found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","form_name":"Test form"} 
+[2026-03-13 06:42:37] local.INFO: Validation passed {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-13 06:42:37] local.INFO: Captcha verification status {"is_captcha_verified":false,"has_captcha_flag":false,"captcha_flag_value":null} 
+[2026-03-13 06:42:37] local.INFO: Redirecting to captcha page {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-13 06:42:37] local.INFO: Temp file stored {"field":"uploads","path":"temp/a143d206-6ec8-4480-a8bf-5124209c3cc1/69b3b1dd6b649/ojf6pDJHU08Q1OvKdLKbzFSmSkuw4vydrlcOScOx.jpg"} 
+[2026-03-13 06:42:37] local.ERROR: Serialization of 'Illuminate\Http\UploadedFile' is not allowed {"exception":"[object] (Exception(code: 0): Serialization of 'Illuminate\\Http\\UploadedFile' is not allowed at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Store.php:177)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Store.php(177): serialize(Array)
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(245): Illuminate/Session/Store->save()
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(130): Illuminate/Session/Middleware/StartSession->saveSession(Object(Illuminate/Http/Request))
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate/Session/Middleware/StartSession->handleStatefulRequest(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store), Object(Closure))
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Session/Middleware/StartSession->handle(Object(Illuminate/Http/Request), Object(Closure))
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse->handle(Object(Illuminate/Http/Request), Object(Closure))
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/EncryptCookies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate/Routing/Router->runRouteWithinStack(Object(Illuminate/Routing/Route), Object(Illuminate/Http/Request))
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate/Routing/Router->runRoute(Object(Illuminate/Http/Request), Object(Illuminate/Routing/Route))
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate/Routing/Router->dispatchToRoute(Object(Illuminate/Http/Request))
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate/Routing/Router->dispatch(Object(Illuminate/Http/Request))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Foundation/Http/Kernel->Illuminate/Foundation/Http/{closure}(Object(Illuminate/Http/Request))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#20 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#21 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#22 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#23 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#24 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#25 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#26 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#27 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#28 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#29 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#30 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#31 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#32 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#33 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#34 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#35 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#36 C:/Git-folders/000form.com/public/index.php(17): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#37 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Git-folders//...')
+#38 {main}
+"} 
+[2026-03-13 06:49:07] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_hnzeiu3z","method":"POST"} 
+[2026-03-13 06:49:07] local.INFO: Request data: {"name":"Tanuja","email":"test-000forms@yopmail.com","uploads":[{"Illuminate\\Http\\UploadedFile":"C:\\xampp\\tmp\\php18BA.tmp"}]} 
+[2026-03-13 06:49:07] local.INFO: Has files: {"files":1} 
+[2026-03-13 06:49:08] local.INFO: Form found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","form_name":"Test form"} 
+[2026-03-13 06:49:08] local.INFO: Validation passed {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-13 06:49:08] local.INFO: Captcha verification status {"is_captcha_verified":false,"has_captcha_flag":false,"captcha_flag_value":null} 
+[2026-03-13 06:49:08] local.INFO: Redirecting to captcha page {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-13 06:49:09] local.INFO: Temp file stored {"field":"uploads","path":"temp/a143d206-6ec8-4480-a8bf-5124209c3cc1/69b3b364f217b/3gRkLFW6hybWiTrQif7FboAv9YvyfyQCfuQe4vF1.jpg"} 
+[2026-03-13 06:49:09] local.ERROR: Serialization of 'Illuminate\Http\UploadedFile' is not allowed {"exception":"[object] (Exception(code: 0): Serialization of 'Illuminate\\Http\\UploadedFile' is not allowed at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Store.php:177)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Store.php(177): serialize(Array)
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(245): Illuminate/Session/Store->save()
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(130): Illuminate/Session/Middleware/StartSession->saveSession(Object(Illuminate/Http/Request))
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate/Session/Middleware/StartSession->handleStatefulRequest(Object(Illuminate/Http/Request), Object(Illuminate/Session/Store), Object(Closure))
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Session/Middleware/StartSession->handle(Object(Illuminate/Http/Request), Object(Closure))
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse->handle(Object(Illuminate/Http/Request), Object(Closure))
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(75): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Cookie/Middleware/EncryptCookies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(807): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(786): Illuminate/Routing/Router->runRouteWithinStack(Object(Illuminate/Routing/Route), Object(Illuminate/Http/Request))
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(750): Illuminate/Routing/Router->runRoute(Object(Illuminate/Http/Request), Object(Illuminate/Routing/Route))
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(739): Illuminate/Routing/Router->dispatchToRoute(Object(Illuminate/Http/Request))
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(201): Illuminate/Routing/Router->dispatch(Object(Illuminate/Http/Request))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(170): Illuminate/Foundation/Http/Kernel->Illuminate/Foundation/Http/{closure}(Object(Illuminate/Http/Request))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#20 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#21 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#22 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#23 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#24 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#25 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#26 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#27 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#28 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#29 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#30 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#31 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#32 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#33 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#34 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#35 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#36 C:/Git-folders/000form.com/public/index.php(17): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#37 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Git-folders//...')
+#38 {main}
+"} 
