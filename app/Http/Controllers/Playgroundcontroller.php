@@ -287,7 +287,6 @@ class PlaygroundController extends Controller
         $cacheKey       = 'playground_verify_' . md5($recipientEmail);
         $data           = Cache::get($cacheKey);
 
-        // Check if email is verified
         if (!$data || empty($data['verified'])) {
             Log::warning('Playground: submit without verification', ['email' => $recipientEmail]);
             return response()->json([
@@ -296,61 +295,55 @@ class PlaygroundController extends Controller
             ], 403);
         }
 
-        // Check if this is a return from captcha verification
         $isCaptchaVerified = $request->has('captcha_verified') || !empty($request->input('captcha_verified'));
-        
-        Log::info('Playground: Captcha verification status', [
-            'is_captcha_verified' => $isCaptchaVerified,
-            'has_captcha_flag' => $request->has('captcha_verified')
-        ]);
 
-        // Get client IP
         $clientIp = $request->ip() ?? $request->getClientIp() ?? '0.0.0.0';
 
-        // Check if captcha is disabled by user
         $allData = $request->except(['_token']);
         $recaptcha = app(\App\Services\RecaptchaService::class);
         $captchaDisabled = $recaptcha->isDisabledByUser($allData);
 
-        // If this is the first submission (no captcha token and not disabled and not returning from captcha)
         if (!$isCaptchaVerified && !$captchaDisabled) {
+
             Log::info('Playground: Redirecting to captcha page', ['email' => $recipientEmail]);
-            
-            // Store the submission data in session with source = 'playground'
-            // Also store whether this was an AJAX request so we can restore it after captcha
+
+            $data = $request->except(['_token', 'recipient_email']);
+
+            /** 🔴 REMOVE FILE FIELDS FROM SESSION DATA */
+            foreach ($request->allFiles() as $fileKey => $file) {
+                unset($data[$fileKey]);
+            }
+
             Session::put('pending_playground_' . md5($recipientEmail), [
-                'data'       => $request->except(['_token', 'recipient_email']),
+                'data'       => $data,
                 'files'      => $this->storeTempFiles($request),
                 'ip'         => $clientIp,
                 'user_agent' => $request->userAgent(),
                 'referrer'   => $request->header('Referer'),
                 'timestamp'  => now()->toDateTimeString(),
                 'source'     => 'playground',
-                'is_ajax'    => $request->wantsJson() || $request->headers->get('X-Requested-With') === 'XMLHttpRequest', // ← store AJAX status
+                'is_ajax'    => $request->wantsJson() || $request->headers->get('X-Requested-With') === 'XMLHttpRequest',
             ]);
-            
-            // Return redirect for AJAX or normal requests
+
             if ($request->wantsJson() || $request->input('_format') === 'json') {
-                return response()->json(['redirect' => route('playground.show-captcha', ['email' => $recipientEmail])]);
+                return response()->json([
+                    'redirect' => route('playground.show-captcha', ['email' => $recipientEmail])
+                ]);
             }
-            
+
             return redirect()->route('playground.show-captcha', ['email' => $recipientEmail]);
         }
 
-        // If captcha is disabled, process immediately
         if ($captchaDisabled) {
             Log::info('Playground: Captcha disabled by user, processing directly');
             return $this->processVerifiedSubmission($request, $recipientEmail);
         }
 
-        // If we have captcha_verified flag, process the submission
         if ($isCaptchaVerified) {
             Log::info('Playground: Captcha verified, processing submission');
             return $this->processVerifiedSubmission($request, $recipientEmail);
         }
 
-        // If we reach here, something went wrong
-        Log::warning('Playground: Unexpected state in submission flow');
         return response()->json([
             'success' => false,
             'message' => 'Invalid submission state. Please try again.',
@@ -371,11 +364,11 @@ class PlaygroundController extends Controller
             'has_files' => count($request->allFiles()) > 0 ? 'yes' : 'no',
         ]);
 
-        // Check if email is verified
         $cacheKey = 'playground_verify_' . md5($email);
         $data     = Cache::get($cacheKey);
 
         if (!$data || empty($data['verified'])) {
+
             Log::warning('Playground: submission to unverified email', ['email' => $email]);
 
             if ($request->wantsJson() || $request->input('_format') === 'json') {
@@ -389,38 +382,45 @@ class PlaygroundController extends Controller
                 ->with('error', 'Please verify your email first.');
         }
 
-        // For email endpoint, we also need captcha flow
         $isCaptchaVerified = $request->has('captcha_verified') || !empty($request->input('captcha_verified'));
+
         $clientIp = $request->ip() ?? $request->getClientIp() ?? '0.0.0.0';
-        
+
         $allData = $request->except(['_token']);
         $recaptcha = app(\App\Services\RecaptchaService::class);
         $captchaDisabled = $recaptcha->isDisabledByUser($allData);
 
         if (!$isCaptchaVerified && !$captchaDisabled) {
+
             Log::info('Playground email: Redirecting to captcha page', ['email' => $email]);
-            
-            // Store the submission data in session with source = 'external'
-            // Also store whether this was an AJAX request so we can restore it after captcha
+
+            $data = $request->except(['_token']);
+
+            /** 🔴 REMOVE FILE FIELDS BEFORE SESSION STORE */
+            foreach ($request->allFiles() as $fileKey => $file) {
+                unset($data[$fileKey]);
+            }
+
             Session::put('pending_playground_' . md5($email), [
-                'data'       => $request->except(['_token']),
+                'data'       => $data,
                 'files'      => $this->storeTempFiles($request),
                 'ip'         => $clientIp,
                 'user_agent' => $request->userAgent(),
                 'referrer'   => $request->header('Referer'),
                 'timestamp'  => now()->toDateTimeString(),
                 'source'     => 'external',
-                'is_ajax'    => $request->wantsJson() || $request->headers->get('X-Requested-With') === 'XMLHttpRequest', // ← store AJAX status
+                'is_ajax'    => $request->wantsJson() || $request->headers->get('X-Requested-With') === 'XMLHttpRequest',
             ]);
-            
+
             if ($request->wantsJson() || $request->input('_format') === 'json') {
-                return response()->json(['redirect' => route('playground.show-captcha', ['email' => $email])]);
+                return response()->json([
+                    'redirect' => route('playground.show-captcha', ['email' => $email])
+                ]);
             }
-            
+
             return redirect()->route('playground.show-captcha', ['email' => $email]);
         }
 
-        // Process the submission
         return $this->processVerifiedSubmission($request, $email);
     }
 
