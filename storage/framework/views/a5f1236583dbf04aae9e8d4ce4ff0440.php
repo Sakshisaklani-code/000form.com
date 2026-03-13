@@ -109,21 +109,21 @@ font-weight:500;
 
 <div class="auth-container">
 
-<img src="{{ asset('images/logo/000formlogo.png') }}" class="logo" alt="000form logo">
+<img src="<?php echo e(asset('images/logo/000formlogo.png')); ?>" class="logo" alt="000form logo">
 
 <div class="success-icon">✅</div>
 
 <h1 class="title">Message Sent!</h1>
 
-<h2 class="message">{{ $message }}</h2>
+<h2 class="message"><?php echo e($message); ?></h2>
 
 <p class="subtitle">Your submission has been received.</p>
 
-@if(session('referer') ?? $referer ?? false)
-    <a href="{{ session('referer') ?? $referer }}" class="back-btn">← Go Back</a>
-@else
+<?php if(session('referer') ?? $referer ?? false): ?>
+    <a href="<?php echo e(session('referer') ?? $referer); ?>" class="back-btn">← Go Back</a>
+<?php else: ?>
     <button class="back-btn" onclick="window.history.go(-1)">← Go Back</button>
-@endif
+<?php endif; ?>
 
 <p class="footer">
 Powered by <a href="/">000form</a>
@@ -132,4 +132,4 @@ Powered by <a href="/">000form</a>
 </div>
 
 </body>
-</html>
+</html><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/thank-you.blade.php ENDPATH**/ ?>

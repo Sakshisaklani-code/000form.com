@@ -98,12 +98,12 @@ class FormSubmissionMail extends Mailable
         return new Content(
             view: $viewName,
             with: [
-                'form' => $this->form,
-                'data' => $this->getCleanedData(),
-                'submission' => $this->submission,
-                'hasAttachment' => !empty($this->attachmentPaths),
+                'form'            => $this->form,
+                'data'            => $this->getCleanedData(),
+                'submission'      => $this->submission,
+                'hasAttachment'   => !empty($this->attachmentPaths),
                 'attachmentCount' => count($this->attachmentPaths),
-                'attachments' => $this->getAttachmentInfo(),
+                'attachments'     => $this->getAttachmentInfo(),
             ],
         );
     }
@@ -126,7 +126,7 @@ class FormSubmissionMail extends Mailable
                     ->withMime($metadata['type'] ?? 'application/octet-stream');
             } else {
                 Log::warning('File not found for attachment', [
-                    'path' => $filePath,
+                    'path'  => $filePath,
                     'index' => $index,
                 ]);
             }
@@ -138,26 +138,41 @@ class FormSubmissionMail extends Mailable
     }
 
     /**
-     * Get cleaned data without internal fields
+     * Get cleaned data without internal fields, honeypot fields, and arrays.
      */
     protected function getCleanedData(): array
     {
         $cleaned = [];
-        
+
         foreach ($this->submissionData as $key => $value) {
-            // Skip internal fields, upload metadata, and uploads array
-            if (str_starts_with($key, '_') || $key === 'upload' || $key === 'uploads') {
+            // Skip internal _ prefixed fields
+            if (str_starts_with($key, '_')) {
                 continue;
             }
-            
+
+            // Skip uploads array
+            if ($key === 'upload' || $key === 'uploads') {
+                continue;
+            }
+
+            // Skip honeypot fields (dynamic names like honeypot_AxQUBSU9)
+            if (str_starts_with($key, 'honeypot')) {
+                continue;
+            }
+
+            // Skip captcha and recaptcha fields
+            if (in_array($key, ['captcha_verified', 'g-recaptcha-response', 'h-captcha-response'])) {
+                continue;
+            }
+
             // Skip arrays (like upload metadata)
             if (is_array($value)) {
                 continue;
             }
-            
+
             $cleaned[$key] = $value;
         }
-        
+
         return $cleaned;
     }
 
@@ -170,9 +185,9 @@ class FormSubmissionMail extends Mailable
         
         foreach ($this->attachmentMetadata as $metadata) {
             $info[] = [
-                'name' => $metadata['name'] ?? 'Unknown',
-                'size' => $this->formatFileSize($metadata['size'] ?? 0),
-                'type' => $metadata['type'] ?? 'application/octet-stream',
+                'name'      => $metadata['name'] ?? 'Unknown',
+                'size'      => $metadata['size'] ?? 0,
+                'type'      => $metadata['type'] ?? 'application/octet-stream',
                 'extension' => $metadata['extension'] ?? '',
             ];
         }
@@ -183,9 +198,11 @@ class FormSubmissionMail extends Mailable
     /**
      * Format file size to human-readable format
      */
-    protected function formatFileSize(int $bytes): string
+    protected function formatFileSize($bytes): string
     {
-        if ($bytes === 0) {
+        $bytes = (int) $bytes;
+
+        if ($bytes <= 0) {
             return '0 B';
         }
         

@@ -464,7 +464,7 @@ class PlaygroundController extends Controller
 
     /**
      * Process a verified submission (after captcha or with captcha disabled)
-     */
+    */
     protected function processVerifiedSubmission(Request $request, string $recipientEmail)
     {
         try {
@@ -593,18 +593,31 @@ class PlaygroundController extends Controller
             $this->cleanupFiles($uploadedFiles);
 
             // Clean up pending submission if exists
-            $pendingKey = 'pending_playground_' . md5($recipientEmail);
+            // FIX: Grab the original form referrer BEFORE forgetting the session
+            $pendingKey   = 'pending_playground_' . md5($recipientEmail);
+            $formReferrer = $request->header('Referer') ?? $request->server('HTTP_REFERER');
+
             if (Session::has($pendingKey)) {
                 $pending = Session::get($pendingKey);
                 if (!empty($pending['files'])) {
                     $this->cleanupTempFiles($pending['files']);
                 }
+                // Prefer the stored original referrer (set when form was first submitted,
+                // before the captcha redirect overwrote the HTTP Referer header)
+                if (!empty($pending['referrer'])) {
+                    $formReferrer = $pending['referrer'];
+                }
                 Session::forget($pendingKey);
             }
 
+            // Flash the original form URL so the success page "Go Back" button works
+            // correctly for both: form→success and form→captcha→success flows
+            Session::flash('form_referrer', $formReferrer);
+
             Log::info('Playground: Submission completed successfully', [
-                'recipient'   => $recipientEmail,
-                'attachments' => count($attachments),
+                'recipient'    => $recipientEmail,
+                'attachments'  => count($attachments),
+                'form_referrer' => $formReferrer,
             ]);
 
             $cleanResponse = [
@@ -902,7 +915,17 @@ class PlaygroundController extends Controller
     ): array {
         $message = $submissionData['message'] ?? $submissionData['body'] ?? null;
 
-        $skipKeys  = ['recipient_email', '_token', '_method', 'captcha_verified', 'from_playground'];
+        $skipKeys = [
+            // internal/system fields
+            'recipient_email', '_token', '_method', 'captcha_verified', 'from_playground',
+            // honeypot fields
+            '_gotcha', '_honeypot', 'honeypot', '_trap', '_bot', '_spam',
+            // other special fields already in specialFieldKeys (already excluded, but belt-and-suspenders)
+            '_subject', '_replyto', '_next', '_cc', '_bcc', '_template',
+            '_format', '_blacklist', '_auto-response', '_auto-reponse',
+            // recaptcha
+            'g-recaptcha-response', 'h-captcha-response',
+        ];
         $allFields = [];
 
         if (!empty($message)) {

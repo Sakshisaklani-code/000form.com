@@ -216,9 +216,15 @@ class FormSubmissionController extends Controller
 
         /*
         |--------------------------------------------------------------------------
-        | CLEAN TEMP FILES
+        | CLEAN TEMP FILES + FLASH ORIGINAL FORM REFERRER
         |--------------------------------------------------------------------------
         */
+
+        // Grab the original form URL before clearing the session.
+        // - Direct submit (no captcha): HTTP Referer header = the form page.
+        // - Captcha flow: HTTP Referer = captcha page (wrong), so use the
+        //   referrer stored in the pending session when the form was first submitted.
+        $formReferrer = $request->header('Referer') ?? $request->server('HTTP_REFERER');
 
         if (Session::has('pending_submission_' . $form->id)) {
 
@@ -228,8 +234,14 @@ class FormSubmissionController extends Controller
                 $this->cleanupTempFiles($pending['files']);
             }
 
+            if (!empty($pending['referrer'])) {
+                $formReferrer = $pending['referrer'];
+            }
+
             Session::forget('pending_submission_' . $form->id);
         }
+
+        Session::flash('form_referrer', $formReferrer);
 
         /*
         |--------------------------------------------------------------------------
@@ -294,8 +306,8 @@ class FormSubmissionController extends Controller
 
             if ($pending) {
                 Log::info('Pending submission found', [
-                    'data_keys' => array_keys($pending['data'] ?? []),
-                    'stored_ip' => $pending['ip'] ?? 'not stored',
+                    'data_keys'  => array_keys($pending['data'] ?? []),
+                    'stored_ip'  => $pending['ip'] ?? 'not stored',
                     'current_ip' => $clientIp,
                 ]);
 
@@ -309,11 +321,10 @@ class FormSubmissionController extends Controller
                 Session::flash('had_captcha', true);
                 unset($storedData['g-recaptcha-response']);
 
-                // FIX: pass $form (Form object), not $email string
                 $newRequest = $this->recreateRequestWithFiles(
                     $storedData,
                     $storedFiles,
-                    $form,          // <-- was incorrectly typed as string $email before
+                    $form,
                     $storedIp,
                     $storedUserAgent,
                     $storedReferrer
@@ -367,15 +378,11 @@ class FormSubmissionController extends Controller
 
     /**
      * Recreate a request with files from temporary storage.
-     *
-     * FIX: Changed $email (string) → $form (Form) to match what verifyCaptcha() passes.
-     *      The old type hint caused a silent fatal error, swallowed by the try/catch in
-     *      sendNotificationEmail(), which is why emails with attachments never arrived.
      */
     private function recreateRequestWithFiles(
         array   $data,
         array   $tempFiles,
-        Form    $form,          // <-- FIXED: was `string $email`
+        Form    $form,
         string  $ip = '0.0.0.0',
         ?string $userAgent = null,
         ?string $referrer = null,
@@ -475,10 +482,10 @@ class FormSubmissionController extends Controller
         $submissionData = [];
 
         foreach ($allData as $key => $value) {
-            if (!in_array($key, $internalFields) && $key !== $form->honeypot_field && $key !== 'g-recaptcha-response') {
-                if (!$request->hasFile($key)) {
-                    $submissionData[$key] = $value;
-                }
+            if (!in_array($key, $internalFields) && !$request->hasFile($key)) {
+                // Skip dynamic honeypot fields (e.g. honeypot_1ogCBVw5)
+                if (str_starts_with($key, 'honeypot_')) continue;
+                $submissionData[$key] = $value;
             }
         }
 
@@ -697,7 +704,6 @@ class FormSubmissionController extends Controller
                 return;
             }
 
-            // Verify all attachment files exist before building the Mailable
             $verifiedFiles    = [];
             $verifiedMetadata = [];
 
@@ -824,7 +830,7 @@ class FormSubmissionController extends Controller
 
         return view('pages.thank-you', [
             'message' => $form->success_message,
-            'referer' => $request->header('Referer'),
+            'referer' => session('form_referrer'),
         ]);
     }
 
