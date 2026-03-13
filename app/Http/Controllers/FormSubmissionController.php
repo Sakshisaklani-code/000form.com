@@ -31,13 +31,12 @@ class FormSubmissionController extends Controller
     // =========================================================================
     // MAIN SUBMIT ENTRY POINT
     // =========================================================================
-
     public function submit(Request $request, string $slug)
     {
         Log::info('=== FORM SUBMISSION STARTED ===', ['slug' => $slug, 'method' => $request->method()]);
         Log::info('Request data:', $request->except(['_token', 'g-recaptcha-response']));
         Log::info('Has files:', ['files' => count($request->allFiles())]);
-        
+
         $form = Form::where('slug', $slug)->first();
 
         if (!$form) {
@@ -47,138 +46,49 @@ class FormSubmissionController extends Controller
 
         Log::info('Form found', ['form_id' => $form->id, 'form_name' => $form->name]);
 
-        // -----------------------------------------------------------------
-        // PAUSED FORM
-        // -----------------------------------------------------------------
         if ($form->status === 'paused') {
             Log::info('Form is paused', ['form_id' => $form->id]);
+
             if ($form->archive_when_paused ?? true) {
                 $this->storeArchivedSubmission($request, $form);
             }
+
             return $this->pausedResponse($request);
         }
 
-        // -----------------------------------------------------------------
-        // EMAIL NOT VERIFIED
-        // -----------------------------------------------------------------
         if (!$form->email_verified) {
             Log::warning('Form email not verified', ['form_id' => $form->id]);
             return $this->errorResponse($request, 'Form email not verified', 403);
         }
 
-        // -----------------------------------------------------------------
-        // FORM NOT ACTIVE
-        // -----------------------------------------------------------------
         if (!$form->canAcceptSubmissions()) {
             Log::warning('Form not accepting submissions', ['form_id' => $form->id]);
             return $this->errorResponse($request, 'Form is not accepting submissions', 403);
         }
 
-        // -----------------------------------------------------------------
-        // DOMAIN RESTRICTION
-        // -----------------------------------------------------------------
         if (!$form->isDomainAllowed($request->header('Referer'))) {
             Log::warning('Domain not allowed', ['referer' => $request->header('Referer')]);
             return $this->errorResponse($request, 'Submissions from this domain are not allowed', 403);
         }
 
-        // -----------------------------------------------------------------
-        // BUILD & RUN BACKEND VALIDATIONS
-        // -----------------------------------------------------------------
-        $validations = $form->validations ?? collect();
-
-        if ($validations->count() > 0) {
-            $rules    = [];
-            $messages = [];
-
-            foreach ($validations as $v) {
-                $fieldRules = [];
-
-                if ($v->is_required) {
-                    $fieldRules[] = 'required';
-                    $messages[$v->field_name . '.required'] = "{$v->field_name} is required.";
-                } else {
-                    $fieldRules[] = 'nullable';
-                }
-
-                if ($v->field_type === 'email') {
-                    $fieldRules[] = 'email';
-                    $messages[$v->field_name . '.email'] = "{$v->field_name} must be a valid email address.";
-                }
-
-                if ($v->field_type === 'number') {
-                    $fieldRules[] = 'numeric';
-                    $messages[$v->field_name . '.numeric'] = "{$v->field_name} must be a number.";
-                }
-
-                if (!empty($v->min_length)) {
-                    $fieldRules[] = 'min:' . $v->min_length;
-                    $messages[$v->field_name . '.min'] = "{$v->field_name} must be at least {$v->min_length} characters.";
-                }
-
-                if (!empty($v->max_length)) {
-                    $fieldRules[] = 'max:' . $v->max_length;
-                    $messages[$v->field_name . '.max'] = "{$v->field_name} must not exceed {$v->max_length} characters.";
-                }
-
-                if (!empty($fieldRules)) {
-                    $rules[$v->field_name] = implode('|', $fieldRules);
-                }
-            }
-
-            $validator = Validator::make($request->all(), $rules, $messages);
-
-            if ($validator->fails()) {
-
-                $errors = [];
-
-                foreach ($validator->errors()->toArray() as $field => $messages) {
-                    foreach ($messages as $message) {
-                        $errors[] = [
-                            'field'   => $field,
-                            'message' => $message,
-                        ];
-                    }
-                }
-
-                // AJAX / JSON request
-                if ($request->wantsJson() || $request->input('_format') === 'json') {
-                    return response()->json([
-                        'success'          => false,
-                        'validation_error' => true,
-                        'errors'           => $errors,
-                    ], 422);
-                }
-
-                // Plain HTML form — show error page directly, no named route needed
-                return response()->view('pages.validation-error', [
-                    'errors' => $errors,
-                ], 422);
-            }
-
-            Log::info('Validation passed', ['form_id' => $form->id]);
-        }
-
-        // =====================================================================
-        // CAPTCHA HANDLING - INTERSTITIAL PAGE FLOW
-        // =====================================================================
         $allData = $request->except(['_token']);
 
         $isCaptchaVerified = $request->has('captcha_verified') || !empty($request->input('captcha_verified'));
 
-        Log::info('Captcha verification status', [
-            'is_captcha_verified' => $isCaptchaVerified,
-            'has_captcha_flag'    => $request->has('captcha_verified'),
-            'captcha_flag_value'  => $request->input('captcha_verified'),
-        ]);
-
         $clientIp = $request->ip() ?? $request->getClientIp() ?? '0.0.0.0';
 
         if (!$isCaptchaVerified && !$this->recaptcha->isDisabledByUser($allData)) {
+
             Log::info('Redirecting to captcha page', ['form_id' => $form->id]);
 
+            $dataForSession = $request->except(['_token']);
+
+            foreach ($request->allFiles() as $field => $file) {
+                unset($dataForSession[$field]);
+            }
+
             Session::put('pending_submission_' . $form->id, [
-                'data'       => $request->except(['_token']),
+                'data'       => $dataForSession,
                 'files'      => $this->storeTempFiles($request, $form),
                 'ip'         => $clientIp,
                 'user_agent' => $request->userAgent(),
@@ -187,196 +97,145 @@ class FormSubmissionController extends Controller
             ]);
 
             if ($request->wantsJson() || $request->input('_format') === 'json') {
-                return response()->json(['redirect' => route('captcha.show', $form->id)]);
+                return response()->json([
+                    'redirect' => route('captcha.show', $form->id)
+                ]);
             }
 
             return redirect()->route('captcha.show', $form->id);
         }
 
-        // -----------------------------------------------------------------
-        // reCAPTCHA VERIFICATION - only if not already verified via interstitial
-        // -----------------------------------------------------------------
-        if (!$isCaptchaVerified && !$this->recaptcha->isDisabledByUser($allData)) {
-            $token = $request->input('g-recaptcha-response', '');
+        /*
+        |--------------------------------------------------------------------------
+        | CLEAN SUBMISSION DATA
+        |--------------------------------------------------------------------------
+        */
 
-            Log::info('Verifying captcha token', ['token_exists' => !empty($token), 'ip' => $clientIp]);
+        $internalFields = [
+            '_token',
+            '_gotcha',
+            '_honeypot',
+            '_next',
+            '_format',
+            '_form_load_time',
+            '_cc',
+            '_captcha',
+            'g-recaptcha-response',
+            'captcha_verified'
+        ];
 
-            if (empty($token) || !$this->recaptcha->verify($token, $clientIp)) {
-                Log::warning('reCAPTCHA failed', [
-                    'form_slug' => $slug,
-                    'ip'        => $clientIp,
-                    'has_token' => !empty($token),
-                ]);
-                return $this->errorResponse($request, 'reCAPTCHA verification failed. Please try again.', 422);
-            }
-
-            Log::info('Captcha verification successful');
-        } else {
-            Log::info('reCAPTCHA skipped', [
-                'is_captcha_verified' => $isCaptchaVerified,
-                'is_disabled'         => $this->recaptcha->isDisabledByUser($allData),
-            ]);
-        }
-
-        // -----------------------------------------------------------------
-        // PARSE SUBMISSION DATA
-        // -----------------------------------------------------------------
-        $internalFields = ['_gotcha', '_honeypot', '_next', '_format', '_form_load_time', '_cc', '_captcha'];
         $submissionData = [];
 
         foreach ($allData as $key => $value) {
-            if (
-                !in_array($key, $internalFields) &&
-                $key !== $form->honeypot_field &&
-                $key !== 'g-recaptcha-response' &&
-                $key !== 'captcha_verified'
-            ) {
-                if (!$request->hasFile($key)) {
-                    $submissionData[$key] = $value;
-                }
+            if (!in_array($key, $internalFields) && !$request->hasFile($key)) {
+                $submissionData[$key] = $value;
             }
         }
 
-        Log::info('Parsed submission data', $submissionData);
+        Log::info('Clean submission data', $submissionData);
 
-        // -----------------------------------------------------------------
-        // FILE UPLOADS
-        // -----------------------------------------------------------------
-        [$uploadedFiles, $uploadMetadata, $fileError] = $this->handleFileUploads($request, $form, $internalFields);
+        /*
+        |--------------------------------------------------------------------------
+        | FILE UPLOADS
+        |--------------------------------------------------------------------------
+        */
 
-        if ($fileError !== null) {
-            Log::error('File upload error', ['error' => $fileError]);
-            return $this->errorResponse($request, $fileError, 422);
+        [$uploadedFiles, $uploadMetadata, $fileError] =
+            $this->handleFileUploads($request, $form, $internalFields);
+
+        if ($fileError) {
+            return $this->errorResponse($request, $fileError);
         }
 
-        Log::info('Total files uploaded: ' . count($uploadedFiles));
-
-        // -----------------------------------------------------------------
-        // AUTO-RESPONSE
-        // -----------------------------------------------------------------
-        $visitorEmail = null;
-        if ($form->auto_response_enabled) {
-            $visitorEmail = $form->getVisitorEmail($submissionData);
-            if ($visitorEmail) {
-                Log::info('Sending auto-response to', ['email' => $visitorEmail]);
-                $this->sendAutoResponse($form, $submissionData);
-            } else {
-                Log::warning('Auto-response: No email field found in submission');
-            }
+        if (!empty($uploadMetadata)) {
+            $submissionData['uploads'] = $uploadMetadata;
         }
 
-        // -----------------------------------------------------------------
-        // SPAM CHECK
-        // -----------------------------------------------------------------
-        $spamCheckIp = $request->ip() ?? $request->getClientIp() ?? '0.0.0.0';
+        /*
+        |--------------------------------------------------------------------------
+        | SPAM DETECTION
+        |--------------------------------------------------------------------------
+        */
 
-        if (method_exists($request, 'server')) {
-            $request->server->set('REMOTE_ADDR', $spamCheckIp);
-        }
+        $spamResult = $this->spamDetector->isSpam($form, $request, $submissionData) ?? [];
+        $isSpam     = $spamResult['is_spam'] ?? false;
+        $spamReason = $spamResult['reason'] ?? null;
 
-        $spamCheck = $this->spamDetector->isSpam($form, $request, $allData);
-        Log::info('Spam check result', [
-            'is_spam' => $spamCheck['is_spam'],
-            'reasons' => $spamCheck['reasons'],
-            'ip'      => $spamCheckIp,
+        Log::info('Spam detection result', [
+            'is_spam' => $isSpam,
+            'reason'  => $spamReason,
         ]);
 
-        // -----------------------------------------------------------------
-        // STORE SUBMISSION
-        // -----------------------------------------------------------------
-        $submission = null;
-        if ($form->store_submissions) {
-            if (!empty($uploadMetadata)) {
-                $submissionData['uploads'] = $uploadMetadata;
-            }
+        /*
+        |--------------------------------------------------------------------------
+        | STORE SUBMISSION
+        |--------------------------------------------------------------------------
+        */
 
-            $metadata = [
-                'subject'          => $allData['_subject'] ?? null,
-                'replyto'          => $allData['_replyto'] ?? $allData['email'] ?? null,
-                'template'         => $allData['_template'] ?? 'basic',
+        $submission = Submission::create([
+            'form_id'    => $form->id,
+            'data'       => $submissionData,
+            'metadata'   => [
                 'has_attachment'   => !empty($uploadedFiles),
                 'attachment_count' => count($uploadedFiles),
                 'attachments'      => $uploadMetadata,
-                'captcha_skipped'  => $this->recaptcha->isDisabledByUser($allData),
-                'captcha_verified' => $isCaptchaVerified,
-            ];
-
-            $submission = Submission::create([
-                'form_id'     => $form->id,
-                'data'        => $submissionData,
-                'metadata'    => $metadata,
-                'ip_address'  => $spamCheckIp,
-                'user_agent'  => $request->userAgent(),
-                'referrer'    => $request->header('Referer'),
-                'is_spam'     => $spamCheck['is_spam'],
-                'is_archived' => false,
-                'spam_reason' => $spamCheck['is_spam'] ? implode(', ', $spamCheck['reasons']) : null,
-            ]);
-
-            Log::info('Submission created', [
-                'submission_id' => $submission->id,
-                'ip'            => $submission->ip_address,
-            ]);
-
-            if ($visitorEmail && $form->auto_response_enabled) {
-                $submission->update(['auto_response_sent' => true]);
-                Log::info('Auto-response flag updated');
-            }
-
-            // Clean up temp files from captcha flow
-            if ($isCaptchaVerified && Session::has('pending_submission_' . $form->id)) {
-                $pending = Session::get('pending_submission_' . $form->id);
-                if (!empty($pending['files'])) {
-                    $this->cleanupTempFiles($pending['files']);
-                }
-                Session::forget('pending_submission_' . $form->id);
-            }
-        }
-
-        // -----------------------------------------------------------------
-        // UPDATE FORM STATS
-        // -----------------------------------------------------------------
-        $form->incrementSubmissionCount($spamCheck['is_spam']);
-        Log::info('Form stats updated');
-
-        // -----------------------------------------------------------------
-        // EMAIL NOTIFICATION
-        // -----------------------------------------------------------------
-        Log::info('Checking email notification conditions', [
-            'is_spam'             => $spamCheck['is_spam'],
-            'email_notifications' => $form->email_notifications,
-            'recipient_email'     => $form->recipient_email,
+            ],
+            'ip_address' => $clientIp,
+            'user_agent' => $request->userAgent(),
+            'referrer'   => $request->header('Referer'),
+            'is_spam'    => $isSpam,
+            'spam_reason' => $spamReason,
         ]);
 
-        if (!$spamCheck['is_spam'] && $form->email_notifications) {
-            Log::info('Attempting to send notification email', [
-                'to'              => $form->recipient_email,
-                'has_attachments' => !empty($uploadedFiles),
-            ]);
+        Log::info('Submission stored', ['id' => $submission->id]);
 
-            try {
-                $this->sendNotificationEmail(
-                    $form,
-                    $allData,
-                    $submissionData,
-                    $submission,
-                    $uploadedFiles,
-                    $uploadMetadata
-                );
-                Log::info('Notification email sent successfully');
-            } catch (\Exception $e) {
-                Log::error('Failed to send notification email', [
-                    'error' => $e->getMessage(),
-                    'trace' => $e->getTraceAsString(),
-                ]);
+        /*
+        |--------------------------------------------------------------------------
+        | SEND ADMIN EMAIL
+        |--------------------------------------------------------------------------
+        */
+
+        if (!$isSpam) {
+
+            $this->sendNotificationEmail(
+                $form,
+                $allData,
+                $submissionData,
+                $submission,
+                $uploadedFiles,
+                $uploadMetadata
+            );
+
+            if ($form->auto_response_enabled) {
+                $this->sendAutoResponse($form, $submissionData);
             }
+
         } else {
-            Log::warning('Email notification skipped', [
-                'reason' => !$form->email_notifications ? 'notifications_disabled' : 'is_spam',
-            ]);
+            Log::warning('Spam submission detected. Email not sent.');
         }
 
-        Log::info('=== FORM SUBMISSION COMPLETED ===', ['slug' => $slug]);
+        /*
+        |--------------------------------------------------------------------------
+        | CLEAN TEMP FILES
+        |--------------------------------------------------------------------------
+        */
+
+        if (Session::has('pending_submission_' . $form->id)) {
+
+            $pending = Session::get('pending_submission_' . $form->id);
+
+            if (!empty($pending['files'])) {
+                $this->cleanupTempFiles($pending['files']);
+            }
+
+            Session::forget('pending_submission_' . $form->id);
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | SUCCESS RESPONSE
+        |--------------------------------------------------------------------------
+        */
 
         return $this->successResponse($request, $form, $allData);
     }
@@ -403,78 +262,68 @@ class FormSubmissionController extends Controller
     public function showCaptcha($formId)
     {
         Log::info('Showing captcha page', ['form_id' => $formId]);
-        
+
         $form = Form::findOrFail($formId);
-        
-        // Check if there's a pending submission
+
         if (!Session::has('pending_submission_' . $form->id)) {
             Log::warning('No pending submission found', ['form_id' => $formId]);
             return redirect()->route('home')->with('error', 'No pending submission found.');
         }
-        
+
         return view('captcha-page', [
-            'form' => $form,
-            'siteKey' => config('services.recaptcha.site_key')
+            'form'    => $form,
+            'siteKey' => config('services.recaptcha.site_key'),
         ]);
     }
 
     public function verifyCaptcha(Request $request, $formId)
     {
         Log::info('=== CAPTCHA VERIFICATION STARTED ===', ['form_id' => $formId]);
-        
+
         $form = Form::findOrFail($formId);
-        
-        $token = $request->input('g-recaptcha-response');
-        
-        // Get client IP with fallback
+
+        $token    = $request->input('g-recaptcha-response');
         $clientIp = $request->ip() ?? $request->getClientIp() ?? '0.0.0.0';
-        
+
         Log::info('Verifying captcha', ['token_exists' => !empty($token), 'ip' => $clientIp]);
-        
+
         if ($this->recaptcha->verify($token, $clientIp)) {
             Log::info('Captcha verified successfully');
-            
-            // Get pending submission
+
             $pending = Session::get('pending_submission_' . $form->id);
-            
+
             if ($pending) {
                 Log::info('Pending submission found', [
                     'data_keys' => array_keys($pending['data'] ?? []),
                     'stored_ip' => $pending['ip'] ?? 'not stored',
-                    'current_ip' => $clientIp
+                    'current_ip' => $clientIp,
                 ]);
-                
-                // Store the pending data temporarily but don't remove from session yet
-                $storedData = $pending['data'];
-                $storedFiles = $pending['files'] ?? [];
-                $storedIp = $pending['ip'] ?? $clientIp; // Use stored IP or fallback to current
+
+                $storedData      = $pending['data'];
+                $storedFiles     = $pending['files'] ?? [];
+                $storedIp        = $pending['ip'] ?? $clientIp;
                 $storedUserAgent = $pending['user_agent'] ?? $request->userAgent();
-                $storedReferrer = $pending['referrer'] ?? $request->header('Referer');
-                
-                // IMPORTANT: Do NOT pass the token again - it's already used!
-                // Just pass a flag that captcha was verified
+                $storedReferrer  = $pending['referrer'] ?? $request->header('Referer');
+
                 $storedData['captcha_verified'] = true;
                 Session::flash('had_captcha', true);
-                
-                // Remove any existing token to prevent double verification
                 unset($storedData['g-recaptcha-response']);
-                
-                // Recreate the request with all files AND preserve IP
+
+                // FIX: pass $form (Form object), not $email string
                 $newRequest = $this->recreateRequestWithFiles(
-                    $storedData, 
-                    $storedFiles, 
-                    $form,
+                    $storedData,
+                    $storedFiles,
+                    $form,          // <-- was incorrectly typed as string $email before
                     $storedIp,
                     $storedUserAgent,
                     $storedReferrer
                 );
-                
+
                 Log::info('Recreated request', [
                     'has_files' => count($newRequest->allFiles()),
-                    'ip' => $storedIp
+                    'ip'        => $storedIp,
                 ]);
-                
-                // Process the submission - it will skip captcha because we have captcha_verified flag
+
                 return $this->submit($newRequest, $form->slug);
             } else {
                 Log::warning('No pending submission found after captcha verification');
@@ -482,9 +331,9 @@ class FormSubmissionController extends Controller
         } else {
             Log::warning('Captcha verification failed');
         }
-        
+
         Log::info('=== CAPTCHA VERIFICATION FAILED ===');
-        
+
         return redirect()->back()->with('error', 'Captcha verification failed. Please try again.');
     }
 
@@ -494,7 +343,7 @@ class FormSubmissionController extends Controller
     private function storeTempFiles(Request $request, $form): array
     {
         $files = [];
-        
+
         foreach ($request->allFiles() as $field => $file) {
             if (is_array($file)) {
                 foreach ($file as $index => $singleFile) {
@@ -512,86 +361,90 @@ class FormSubmissionController extends Controller
                 }
             }
         }
-        
+
         return $files;
     }
 
     /**
-     * Recreate a request with files from temporary storage
+     * Recreate a request with files from temporary storage.
+     *
+     * FIX: Changed $email (string) → $form (Form) to match what verifyCaptcha() passes.
+     *      The old type hint caused a silent fatal error, swallowed by the try/catch in
+     *      sendNotificationEmail(), which is why emails with attachments never arrived.
      */
     private function recreateRequestWithFiles(
-        array $data, 
-        array $tempFiles, 
-        Form $form,
-        string $ip = '0.0.0.0',
+        array   $data,
+        array   $tempFiles,
+        Form    $form,          // <-- FIXED: was `string $email`
+        string  $ip = '0.0.0.0',
         ?string $userAgent = null,
-        ?string $referrer = null
+        ?string $referrer = null,
+        bool    $isAjax = false
     ): Request {
+
         Log::info('Recreating request with files', [
             'temp_files' => $tempFiles,
-            'ip' => $ip
+            'ip'         => $ip,
+            'is_ajax'    => $isAjax,
         ]);
-        
-        // Create a new request instance
-        $request = new Request();
-        $request->replace($data);
-        
-        // Set the request method
-        $request->setMethod('POST');
-        
-        // Manually set the request URI and other server params
-        $request->server->set('REQUEST_URI', '/f/' . $form->slug);
-        $request->server->set('REQUEST_METHOD', 'POST');
+
+        $request = Request::create('/' . $form->slug, 'POST', $data);
+
         $request->server->set('REMOTE_ADDR', $ip);
-        
+
         if ($userAgent) {
-            $request->server->set('HTTP_USER_AGENT', $userAgent);
+            $request->headers->set('User-Agent', $userAgent);
         }
-        
+
         if ($referrer) {
-            $request->server->set('HTTP_REFERER', $referrer);
             $request->headers->set('Referer', $referrer);
         }
-        
-        // Add back the files from temporary storage
+
+        if ($isAjax) {
+            $request->headers->set('X-Requested-With', 'XMLHttpRequest');
+            $request->headers->set('Accept', 'application/json');
+        }
+
         foreach ($tempFiles as $field => $paths) {
+
             $uploadedFiles = [];
-            
+
             foreach ($paths as $path) {
+
                 $fullPath = storage_path('app/' . $path);
-                
+
                 if (file_exists($fullPath)) {
-                    // Get original filename from path or use a default
-                    $originalName = basename($path);
-                    
-                    // Create a new UploadedFile instance
+
                     $file = new UploadedFile(
                         $fullPath,
-                        $originalName,
+                        basename($path),
                         mime_content_type($fullPath),
                         null,
-                        true // Mark as test mode to avoid moving the file again
+                        true
                     );
-                    
+
                     $uploadedFiles[] = $file;
-                    
-                    Log::info('File restored from temp', ['field' => $field, 'path' => $path]);
+
+                    Log::info('Restored file from temp', [
+                        'field' => $field,
+                        'path'  => $path,
+                    ]);
                 } else {
-                    Log::warning('Temp file not found', ['path' => $fullPath]);
+                    Log::warning('Temp file missing during request recreation', [
+                        'field' => $field,
+                        'path'  => $fullPath,
+                    ]);
                 }
             }
-            
-            // Add files to request
-            if (strpos($field, '[]') !== false) {
-                // Handle multiple files
+
+            if (str_contains($field, '[]')) {
                 $fieldName = str_replace('[]', '', $field);
                 $request->files->set($fieldName, $uploadedFiles);
             } else {
-                // Single file (use first file)
                 $request->files->set($field, $uploadedFiles[0] ?? null);
             }
         }
-        
+
         return $request;
     }
 
@@ -693,7 +546,7 @@ class FormSubmissionController extends Controller
 
         try {
             $clientIp = $request->ip() ?? $request->getClientIp() ?? '0.0.0.0';
-            
+
             $sub = Submission::create([
                 'form_id'     => $form->id,
                 'data'        => $submissionData,
@@ -811,9 +664,11 @@ class FormSubmissionController extends Controller
     ): void {
         try {
             Log::info('=== SENDING NOTIFICATION EMAIL ===', [
-                'to' => $form->recipient_email,
+                'to'            => $form->recipient_email,
                 'submission_id' => $submission?->id,
-                'has_files' => !empty($uploadedFiles)
+                'has_files'     => !empty($uploadedFiles),
+                'file_count'    => count($uploadedFiles),
+                'file_paths'    => $uploadedFiles,
             ]);
 
             $ccEmails = [];
@@ -826,7 +681,7 @@ class FormSubmissionController extends Controller
             }
 
             if (!empty($allData['_cc'])) {
-                $extraCc = array_map('trim', explode(',', $allData['_cc']));
+                $extraCc  = array_map('trim', explode(',', $allData['_cc']));
                 $ccEmails = array_merge($ccEmails, $extraCc);
                 Log::info('CC emails from _cc field', ['extra_cc' => $extraCc]);
             }
@@ -837,14 +692,38 @@ class FormSubmissionController extends Controller
 
             Log::info('Final CC emails', ['final_list' => $ccEmails]);
 
-            // Verify recipient email is valid
             if (!filter_var($form->recipient_email, FILTER_VALIDATE_EMAIL)) {
                 Log::error('Invalid recipient email', ['email' => $form->recipient_email]);
                 return;
             }
 
+            // Verify all attachment files exist before building the Mailable
+            $verifiedFiles    = [];
+            $verifiedMetadata = [];
+
+            foreach ($uploadedFiles as $index => $filePath) {
+                if (file_exists($filePath)) {
+                    $verifiedFiles[]    = $filePath;
+                    $verifiedMetadata[] = $uploadMetadata[$index] ?? [];
+                } else {
+                    Log::warning('Attachment file missing before mail build', [
+                        'path'  => $filePath,
+                        'index' => $index,
+                    ]);
+                }
+            }
+
+            Log::info('Verified attachment paths', [
+                'verified_count' => count($verifiedFiles),
+                'paths'          => $verifiedFiles,
+            ]);
+
             $mail = new FormSubmissionMail(
-                $form, $submissionData, $submission, $uploadedFiles, $uploadMetadata
+                $form,
+                $submissionData,
+                $submission,
+                $verifiedFiles,
+                $verifiedMetadata
             );
 
             Log::info('Mail object created');
@@ -872,8 +751,8 @@ class FormSubmissionController extends Controller
             Log::error('=== EMAIL SENDING FAILED ===', [
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine()
+                'file'  => $e->getFile(),
+                'line'  => $e->getLine(),
             ]);
         }
     }
@@ -927,9 +806,9 @@ class FormSubmissionController extends Controller
     protected function successResponse(Request $request, Form $form, array $data)
     {
         Log::info('Success response', [
-            'wants_json' => $request->wantsJson(),
-            'format' => $request->input('_format'),
-            'redirect_url' => $data['_next'] ?? $form->redirect_url
+            'wants_json'   => $request->wantsJson(),
+            'format'       => $request->input('_format'),
+            'redirect_url' => $data['_next'] ?? $form->redirect_url,
         ]);
 
         if ($request->wantsJson() || $request->input('_format') === 'json') {
@@ -942,7 +821,6 @@ class FormSubmissionController extends Controller
             Log::info('Redirecting to', ['url' => $redirectUrl]);
             return redirect()->away($redirectUrl);
         }
-        
 
         return view('pages.thank-you', [
             'message' => $form->success_message,
@@ -1000,5 +878,4 @@ class FormSubmissionController extends Controller
             ['Content-Type' => $fileData['type'] ?? 'application/octet-stream']
         );
     }
-
 }

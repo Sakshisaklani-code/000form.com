@@ -69,7 +69,7 @@
                                                         {{ $fileData['name'] }}
                                                     </div>
                                                     <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem;">
-                                                        {{ round($fileData['size'] / 1024, 2) }} KB
+                                                        {{ round((int)$fileData['size'] / 1024, 2) }} KB
                                                         @if(isset($fileData['type']))
                                                             • {{ $fileData['type'] }}
                                                         @endif
@@ -81,17 +81,12 @@
                                                     @endif
                                                 </div>
                                                 
-                                                {{-- Download button --}}
-                                                <form method="POST" action="{{ route('dashboard.submissions.download', [$form->id, $submission->id]) }}" style="margin: 0;">
-                                                    @csrf
-                                                    <input type="hidden" name="file_index" value="{{ $index }}">
-                                                    <button type="submit" 
-                                                            style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.75rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text); text-decoration: none; font-size: 0.8rem; cursor: pointer;"
-                                                            @if(!$fileExists) disabled @endif>
-                                                        <span><i class="bi bi-download"></i></span>
-                                                        Download
-                                                    </button>
-                                                </form>
+                                                {{-- FIX: GET link instead of POST form --}}
+                                                <a href="{{ route('dashboard.submissions.download', [$form->id, $submission->id]) }}?file_index={{ $index }}"
+                                                   style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.75rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text); text-decoration: none; font-size: 0.8rem; {{ !$fileExists ? 'pointer-events:none;opacity:0.5;' : '' }}">
+                                                    <span><i class="bi bi-download"></i></span>
+                                                    Download
+                                                </a>
                                             </div>
                                         @endforeach
                                     </div>
@@ -126,7 +121,7 @@
                                                 {{ $value['name'] }}
                                             </div>
                                             <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem;">
-                                                {{ round($value['size'] / 1024, 2) }} KB
+                                                {{ round((int)$value['size'] / 1024, 2) }} KB
                                                 @if(isset($value['type']))
                                                     • {{ $value['type'] }}
                                                 @endif
@@ -138,17 +133,12 @@
                                             @endif
                                         </div>
                                         
-                                        {{-- Download button for single file --}}
-                                        <form method="POST" action="{{ route('dashboard.submissions.download', [$form->id, $submission->id]) }}" style="margin: 0;">
-                                            @csrf
-                                            <input type="hidden" name="field_name" value="{{ $key }}">
-                                            <button type="submit" 
-                                                    style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.75rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text); text-decoration: none; font-size: 0.8rem; cursor: pointer;"
-                                                    @if(!$fileExists) disabled @endif>
-                                                <span><i class="bi bi-download"></i></span>
-                                                Download
-                                            </button>
-                                        </form>
+                                        {{-- FIX: GET link instead of POST form --}}
+                                        <a href="{{ route('dashboard.submissions.download', [$form->id, $submission->id]) }}?file_index=0"
+                                           style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.75rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text); text-decoration: none; font-size: 0.8rem; {{ !$fileExists ? 'pointer-events:none;opacity:0.5;' : '' }}">
+                                            <span><i class="bi bi-download"></i></span>
+                                            Download
+                                        </a>
                                     </div>
                                     
                                 @else
@@ -213,7 +203,6 @@
                         </span>
                     </div>
                     
-                    {{-- Show old single file metadata if exists --}}
                     @if(isset($submission->metadata['attachment_name']))
                         <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border-color);">
                             <span class="text-muted">File Name</span>
@@ -226,18 +215,17 @@
                     @if(isset($submission->metadata['attachment_size']))
                         <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border-color);">
                             <span class="text-muted">File Size</span>
-                            <span>{{ round($submission->metadata['attachment_size'] / 1024, 2) }} KB</span>
+                            <span>{{ round((int)$submission->metadata['attachment_size'] / 1024, 2) }} KB</span>
                         </div>
                     @endif
                     
-                    {{-- Show new multiple files metadata if exists --}}
                     @if(isset($submission->metadata['attachments']) && is_array($submission->metadata['attachments']))
                         @php
                             $totalSize = array_sum(array_column($submission->metadata['attachments'], 'size'));
                         @endphp
                         <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
                             <span class="text-muted">Total Size</span>
-                            <span>{{ round($totalSize / 1024, 2) }} KB</span>
+                            <span>{{ round((int)$totalSize / 1024, 2) }} KB</span>
                         </div>
                     @endif
                 @endif
