@@ -523,7 +523,7 @@
                 <span class="per">/month</span>
             </div>
             <p class="pp-plan-desc">For personal or portfolio sites.</p>
-            <a href="<?php echo e(route('signup')); ?>" class="pp-cta pp-cta-outline">Buy Now →</a>
+            <a href="#" class="pp-cta pp-cta-outline">Buy Now →</a>
             <hr class="pp-divider">
             <span class="pp-feat-label">Includes</span>
             <ul class="pp-feats">
@@ -564,7 +564,7 @@
                 <span class="per">/month</span>
             </div>
             <p class="pp-plan-desc">For freelancers and startups.</p>
-            <a href="<?php echo e(route('signup')); ?>" class="pp-cta pp-cta-solid">Buy Now →</a>
+            <a href="#" class="pp-cta pp-cta-solid">Buy Now →</a>
             <hr class="pp-divider">
             <span class="pp-feat-label">Everything in Personal, plus</span>
             <ul class="pp-feats">
@@ -604,7 +604,7 @@
                 <span class="per">/month</span>
             </div>
             <p class="pp-plan-desc">For organizations and agencies.</p>
-            <a href="<?php echo e(route('signup')); ?>" class="pp-cta pp-cta-outline">Buy Now →</a>
+            <a href="#" class="pp-cta pp-cta-outline">Buy Now →</a>
             <hr class="pp-divider">
             <span class="pp-feat-label">Everything in Professional, plus</span>
             <ul class="pp-feats">
@@ -642,7 +642,7 @@
                 <span class="custom-label">Custom</span>
             </div>
             <p class="pp-plan-desc">For high volume campaigns &amp; enterprise.</p>
-            <a href="mailto:sales@000form.com" class="pp-cta pp-cta-blue">Contact Sales →</a>
+            <a href="#" class="pp-cta pp-cta-blue">Contact Sales →</a>
             <hr class="pp-divider">
             <span class="pp-feat-label">Everything in Business, plus</span>
             <ul class="pp-feats">
