@@ -554,6 +554,34 @@
                             New Form
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('billing.portal') }}" class="{{ request()->routeIs('billing.portal') ? 'active' : '' }}">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" 
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
+                                <line x1="2" y1="10" x2="22" y2="10"/>
+                                <line x1="6" y1="16" x2="10" y2="16"/>
+                            </svg>
+                                Plan & Subscriptions
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('billing.payment-history') }}" class="{{ request()->routeIs('billing.payment-history') ? 'active' : '' }}">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" 
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <!-- Clock circle -->
+                                <circle cx="12" cy="12" r="10"/>
+                                
+                                <!-- Clock hands -->
+                                <line x1="12" y1="12" x2="12" y2="8"/>
+                                <line x1="12" y1="12" x2="16" y2="12"/>
+                            </svg>
+
+                                Payment History
+
+                        </a>
+                    </li>
                 </ul>
             </nav>
             
@@ -570,6 +598,18 @@
                                 <polyline points="10 9 9 9 8 9"/>
                             </svg>
                             Documentation
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('account.settings') }}" class="{{ request()->routeIs('account.settings') ? 'active' : '' }}">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" 
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M4 21v-2a4 4 0 0 1 3-3.87"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            Account
+
                         </a>
                     </li>
                     <li>

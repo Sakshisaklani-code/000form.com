@@ -32,6 +32,31 @@ class SupabaseAuthService
         ]);
     }
 
+    public function updateLoggedInUserPassword(string $email, string $currentPassword, string $newPassword): array
+    {
+        // 1️⃣ Verify current password by signing in
+        $login = $this->signIn($email, $currentPassword);
+
+        if (!$login['success']) {
+            return [
+                'success' => false,
+                'error' => 'Incorrect current password.'
+            ];
+        }
+
+        // 2️⃣ Update password using Supabase access token
+        $update = $this->updateUserPassword($login['data']['session']['access_token'], $newPassword);
+
+        if (!$update['success']) {
+            return [
+                'success' => false,
+                'error' => $update['error'] ?? 'Failed to update password.'
+            ];
+        }
+
+        return ['success' => true];
+    }
+
     /**
      * Sign up a new user with email and password.
      */

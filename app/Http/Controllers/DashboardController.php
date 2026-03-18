@@ -21,18 +21,33 @@ class DashboardController extends Controller
     {
         $user  = Auth::user();
         $forms = $user->forms()
-            ->withCount(['submissions as unread_count' => function ($query) {
-                $query->where('is_spam', false)
-                      ->where('is_archived', false)
-                      ->where('is_read', false);
-            }])
+            ->withCount([
+                // total unread inbox submissions
+                'submissions as unread_count' => function ($query) {
+                    $query->where('is_spam', false)
+                          ->where('is_archived', false)
+                          ->where('is_read', false);
+                },
+                // valid (non-spam, non-archived) per form
+                'submissions as valid_count' => function ($query) {
+                    $query->where('is_spam', false)
+                          ->where('is_archived', false);
+                },
+                // spam per form
+                'submissions as spam_count' => function ($query) {
+                    $query->where('is_spam', true)
+                          ->where('is_archived', false);
+                },
+            ])
             ->orderBy('created_at', 'desc')
             ->get();
 
         $stats = [
             'total_forms'       => $forms->count(),
-            'total_submissions' => $forms->sum('submission_count'),
-            'total_unread'      => $forms->sum('unread_count'),
+            'total_submissions' => $forms->sum('submission_count'),   // all (valid + spam)
+            'total_valid'       => $forms->sum('valid_count'),        // valid only
+            'total_spam'        => $forms->sum('spam_count'),         // spam only
+            'total_unread'      => $forms->sum('unread_count'),       // unread inbox
             'forms_this_month'  => $user->forms()
                 ->where('created_at', '>=', now()->startOfMonth())
                 ->count(),
@@ -98,7 +113,6 @@ class DashboardController extends Controller
             $ccEmails = array_values($ccEmails);
         }
 
-        // Replace {form_name} token with actual form name before storing
         $autoResponseMessage = $request->input('auto_response_message');
         if ($autoResponseMessage) {
             $autoResponseMessage = str_replace('{form_name}', $request->input('name'), $autoResponseMessage);
@@ -127,14 +141,6 @@ class DashboardController extends Controller
 
     /**
      * Show form details with filtered/tabbed submissions.
-     *
-     * Tab logic:
-     *   inbox   → is_archived = false  AND  is_spam = false
-     *   spam    → is_archived = false  AND  is_spam = true
-     *   archive → is_archived = true   (regardless of is_spam)
-     *
-     * Paused-form submissions are stored with is_archived = true, so they
-     * will NEVER appear in inbox or spam — only in the archive tab.
      */
     public function showForm(string $id)
     {
@@ -143,23 +149,18 @@ class DashboardController extends Controller
         $search = trim(request('search', ''));
         $panel  = request('panel', 'submissions');
 
-        // ── Build base query per tab ────────────────────────────────────────
         $baseQuery = $form->submissions();
 
         if ($tab === 'archive') {
-            // Archive: only is_archived = true
             $baseQuery->where('is_archived', true);
         } elseif ($tab === 'spam') {
-            // Spam: not archived, marked as spam
             $baseQuery->where('is_archived', false)
                     ->where('is_spam', true);
         } else {
-            // Inbox (default): not archived, not spam
             $baseQuery->where('is_archived', false)
                     ->where('is_spam', false);
         }
 
-        // ── Search (inbox & spam only — archive has no search) ──────────────
         if ($search !== '' && $tab !== 'archive') {
             $lower = '%' . strtolower($search) . '%';
             $baseQuery->where(function ($q) use ($lower) {
@@ -173,22 +174,10 @@ class DashboardController extends Controller
 
         $submissions = $baseQuery->latest()->paginate(10)->withQueryString();
 
-        // ── Tab counts — each scoped correctly, unaffected by search ────────
-        $validCount   = $form->submissions()
-                            ->where('is_archived', false)
-                            ->where('is_spam', false)
-                            ->count();
+        $validCount   = $form->submissions()->where('is_archived', false)->where('is_spam', false)->count();
+        $spamCount    = $form->submissions()->where('is_archived', false)->where('is_spam', true)->count();
+        $archiveCount = $form->submissions()->where('is_archived', true)->count();
 
-        $spamCount    = $form->submissions()
-                            ->where('is_archived', false)
-                            ->where('is_spam', true)
-                            ->count();
-
-        $archiveCount = $form->submissions()
-                            ->where('is_archived', true)
-                            ->count();
-
-        // ── Line chart — valid submissions last 7 days ───────────────────────
         $dailySubmissions = $form->submissions()
             ->where('is_archived', false)
             ->where('is_spam', false)
@@ -206,7 +195,6 @@ class DashboardController extends Controller
             $lineData[]   = $dailySubmissions->firstWhere('date', $date)->count ?? 0;
         }
 
-        // ── Archive trend line — last 7 days ─────────────────────────────────
         $dailyArchived = $form->submissions()
             ->where('is_archived', true)
             ->selectRaw('DATE(created_at) as date, COUNT(*) as count')
@@ -221,7 +209,6 @@ class DashboardController extends Controller
             $archiveLineData[] = $dailyArchived->firstWhere('date', $date)->count ?? 0;
         }
 
-        // ── Validations for Workflow tab ──────────────────────────────────────
         $validations = FormValidation::where('form_id', $form->id)->get();
 
         return view('dashboard.forms.show', compact(
@@ -269,7 +256,6 @@ class DashboardController extends Controller
             $ccEmails = array_values($ccEmails);
         }
 
-        // Replace {form_name} token with actual form name before storing
         $autoResponseMessage = $request->input('auto_response_message');
         if ($autoResponseMessage) {
             $autoResponseMessage = str_replace('{form_name}', $request->input('name'), $autoResponseMessage);
@@ -323,7 +309,6 @@ class DashboardController extends Controller
         $form       = Auth::user()->forms()->findOrFail($formId);
         $submission = $form->submissions()->findOrFail($submissionId);
 
-        // Only mark as read if it's a normal inbox submission
         if (!$submission->is_archived && !$submission->is_spam) {
             $submission->markAsRead();
         }
@@ -368,7 +353,6 @@ class DashboardController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        // Collect all unique field names
         $fields = [];
         foreach ($submissions as $submission) {
             $fields = array_merge($fields, array_keys($submission->data));

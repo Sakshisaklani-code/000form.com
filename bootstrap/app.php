@@ -26,6 +26,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'http://127.0.0.1:8000/f/*',
             '127.0.0.1:8000/f/*',
             'localhost:8000/f/*',
+            'api/paddle/webhook',
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

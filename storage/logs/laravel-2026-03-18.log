@@ -1,0 +1,82 @@
+[2026-03-18 05:26:53] local.WARNING: Built subscription from cached intent (Paddle API unavailable) for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4  
+[2026-03-18 05:31:31] local.INFO: test log working  
+[2026-03-18 05:38:25] local.WARNING: Built subscription from cached intent (Paddle API unavailable) for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4  
+[2026-03-18 05:39:06] local.ERROR: Command "pail" is not defined.
+
+Did you mean one of these?
+    sail:add
+    sail:install
+    sail:publish {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"pail\" is not defined.
+
+Did you mean one of these?
+    sail:add
+    sail:install
+    sail:publish at C:/Git-folders/000form.com/vendor/symfony/console/Application.php:759)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(298): Symfony/Component/Console/Application->find('pail')
+#1 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#4 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#5 {main}
+"} 
+[2026-03-18 05:42:00] local.WARNING: Built subscription from cached intent (Paddle API unavailable) for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4  
+[2026-03-18 05:43:34] local.WARNING: Paddle API: failed to fetch transaction txn_01xxx {"status":404,"body":"{\"error\":{\"type\":\"request_error\",\"code\":\"invalid_url\",\"detail\":\"URL called is invalid.\",\"documentation_url\":\"https://developer.paddle.com/v1/errors/shared/invalid_url\"},\"meta\":{\"request_id\":\"65763663-5313-4a76-91f7-21487fe90c13\"}}"} 
+[2026-03-18 05:47:27] local.WARNING: Built subscription from cached intent (Paddle API unavailable) for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4  
+[2026-03-18 05:55:06] local.WARNING: Built subscription from cached intent (Paddle API unavailable) for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4  
+[2026-03-18 05:57:56] local.ERROR: Supabase signin error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=password` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"invalid_credentials","msg":"Invalid login credentials"}
+  
+[2026-03-18 06:08:08] local.WARNING: Built subscription from cached intent (Paddle API unavailable) for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4  
+[2026-03-18 06:13:40] local.WARNING: Built subscription from cached intent (Paddle API unavailable) for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4  
+[2026-03-18 06:25:42] local.INFO: Paddle API: transaction txn_01kkzsx7093yzr4wa9zh47af6y status=completed  
+[2026-03-18 06:25:45] local.INFO: Built subscription from Paddle API for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4 {"plan":"personal","sub_id":"sub_01kkzsxmebk2grvxteyhmnzq49","txn_id":"txn_01kkzsx7093yzr4wa9zh47af6y","currency":"INR","amount_raw":1434200,"invoice_pdf":"no"} 
+[2026-03-18 06:29:59] local.INFO: Paddle API: transaction txn_01kkzt52gmz1fmde5wjazhsx6e status=completed  
+[2026-03-18 06:30:00] local.INFO: Built subscription from Paddle API for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4 {"plan":"professional","sub_id":"sub_01kkzt5fkb16nmrxhncmfjnpgv","txn_id":"txn_01kkzt52gmz1fmde5wjazhsx6e","currency":"INR","amount_raw":277700,"invoice_pdf":"no"} 
+[2026-03-18 06:38:23] local.INFO: Paddle API: transaction txn_01kkztmbe3nj72fte94b3vw718 status=completed  
+[2026-03-18 06:38:23] local.INFO: Invoice PDF fetched for txn_01kkztmbe3nj72fte94b3vw718: yes  
+[2026-03-18 06:38:25] local.ERROR: buildFromPaddleTransaction error: SQLSTATE[22001]: String data, right truncated: 7 ERROR:  value too long for type character varying(255) (Connection: pgsql, SQL: insert into "subscription_invoices" ("paddle_transaction_id", "user_id", "subscription_id", "amount_cents", "currency", "status", "paid_at", "invoice_url", "updated_at", "created_at") values (txn_01kkztmbe3nj72fte94b3vw718, 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4, 1, 835400, INR, completed, 2026-03-18 06:38:24, https://s3.us-east-1.amazonaws.com/paddle-sandbox-invoice-service-pdfs/invoices/52194/6d64f928-76b6-41e9-b80e-bec2061ea5b5/invoice_82186-10025_000form.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Checksum-Mode=ENABLED&X-Amz-Credential=ASIAZWZYLIX3CH72PHND%2F20260318%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260318T063811Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDQaCXVzLWVhc3QtMSJHMEUCIHvLZoiLoPZPsuXlI2PLil3l3VbQ0%2F8TrJUZjuHL5areAiEA2PBTaRJyXiRco2FZKXY2nOi%2BWZ6QMFd1zrAgvbeG8r8qjAQI%2Ff%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARADGgw2Njc0NDg3MjI5MzQiDAdnPXvh%2Fn3TEcBFoCrgA1HY%2Fyebqtn0CDezwPu3vzFFDpO4ZoOxsJl5H30DbMYBazfnMHp5BQzC2THClZLs6XcImnFXsjPTdfze0LSqpdbXBwSz4NjCNpVrEBbMhCsbV4VXS1waQQQC9UflbpamHS3BYDJDhWGZuOd%2Fn0ycA881vzYGnJtPFpdanFuhRmFfrS5O12CM5mPVL025pDOSdVUUr4eHYUnjIoMQ%2BGBu2cBE9iKVXA9BX8IGVrcHaXa2Qir%2BrJA9P1gTa4tdv4DCLy8Ek%2BMTLr29A4b5v0CBcJ3sJJQmToOdTUhyX3u92jAR1PqiOvNonQNShxcNm05Y5JIhpaLcESKWJ3MfpqcA%2FWX%2F9tgjKGYFTWuL68PBabcLN9lKjDx03RG2y7pYFxsjkTkq45h03BTfQUoukLrKKTPySnxj4Bm4WziIgkP8pdj441E8DP14QWmg4CvxuQCHInPTgNMgoqDrAQ0iljaAGHTbMSGP6G%2F7TkghcBtB4QgizKZd1GD23SN6EcS9MLxGnFOIecxHGXCoGeqlYZ3DIy%2BM2i%2FWJrc8LqioTJMCd47xlQ%2FGSfX98%2FRlZnWDP9zKnVG9QzN2U6g75BtDP5q%2B4Nj25CnZS%2BU3iINK12Pg7iSo71uBudVbmrSwDKkn9UUwkTCowejNBjqlASUfRn4QZPLZGuMn%2Ft6jYJk9JqXSn4S%2BNlhEfisDo4h3XZy7eLH7axhBToF3cfceQ%2B9Pal1eLQTBgnqHSaycZZKqwWhpYLONjOt%2BSw5ZH1zNcTXx1P9iWj88V7BnRnIDQJEZ6De3IhVmQnUslUHWA%2BIqNUwWcommWoK9C8626FCGXwhOLG5gP2EsGWveqVQWegkAVCIi0DzLnw2kbeUEjEkivQdbkw%3D%3D&X-Amz-SignedHeaders=host&response-content-disposition=attachment&response-content-type=application%2Fpdf&x-id=GetObject&X-Amz-Signature=4e64958e49182698cae96cded292301f10a856ae8bbad2e052fc8172178417ea, 2026-03-18 06:38:24, 2026-03-18 06:38:24) returning "id") {"txn_id":"txn_01kkztmbe3nj72fte94b3vw718"} 
+[2026-03-18 06:38:26] local.INFO: Invoice PDF fetched for txn_01kkztmbe3nj72fte94b3vw718: yes  
+[2026-03-18 06:48:18] local.INFO: Paddle API: transaction txn_01kkzv6nahb96trrpbw261y4am status=completed  
+[2026-03-18 06:48:19] local.INFO: Invoice PDF fetched for txn_01kkzv6nahb96trrpbw261y4am: yes  
+[2026-03-18 06:48:20] local.ERROR: buildFromPaddleTransaction error: SQLSTATE[22001]: String data, right truncated: 7 ERROR:  value too long for type character varying(255) (Connection: pgsql, SQL: insert into "subscription_invoices" ("paddle_transaction_id", "user_id", "subscription_id", "amount_cents", "currency", "status", "paid_at", "invoice_url", "updated_at", "created_at") values (txn_01kkzv6nahb96trrpbw261y4am, 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4, 1, 277700, INR, completed, 2026-03-18 06:48:20, https://s3.us-east-1.amazonaws.com/paddle-sandbox-invoice-service-pdfs/invoices/52194/1f0a390e-3e8a-48db-9a7c-2624a3cacb5a/invoice_82186-10026_000form.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Checksum-Mode=ENABLED&X-Amz-Credential=ASIAZWZYLIX3CH72PHND%2F20260318%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260318T064806Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDQaCXVzLWVhc3QtMSJHMEUCIHvLZoiLoPZPsuXlI2PLil3l3VbQ0%2F8TrJUZjuHL5areAiEA2PBTaRJyXiRco2FZKXY2nOi%2BWZ6QMFd1zrAgvbeG8r8qjAQI%2Ff%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARADGgw2Njc0NDg3MjI5MzQiDAdnPXvh%2Fn3TEcBFoCrgA1HY%2Fyebqtn0CDezwPu3vzFFDpO4ZoOxsJl5H30DbMYBazfnMHp5BQzC2THClZLs6XcImnFXsjPTdfze0LSqpdbXBwSz4NjCNpVrEBbMhCsbV4VXS1waQQQC9UflbpamHS3BYDJDhWGZuOd%2Fn0ycA881vzYGnJtPFpdanFuhRmFfrS5O12CM5mPVL025pDOSdVUUr4eHYUnjIoMQ%2BGBu2cBE9iKVXA9BX8IGVrcHaXa2Qir%2BrJA9P1gTa4tdv4DCLy8Ek%2BMTLr29A4b5v0CBcJ3sJJQmToOdTUhyX3u92jAR1PqiOvNonQNShxcNm05Y5JIhpaLcESKWJ3MfpqcA%2FWX%2F9tgjKGYFTWuL68PBabcLN9lKjDx03RG2y7pYFxsjkTkq45h03BTfQUoukLrKKTPySnxj4Bm4WziIgkP8pdj441E8DP14QWmg4CvxuQCHInPTgNMgoqDrAQ0iljaAGHTbMSGP6G%2F7TkghcBtB4QgizKZd1GD23SN6EcS9MLxGnFOIecxHGXCoGeqlYZ3DIy%2BM2i%2FWJrc8LqioTJMCd47xlQ%2FGSfX98%2FRlZnWDP9zKnVG9QzN2U6g75BtDP5q%2B4Nj25CnZS%2BU3iINK12Pg7iSo71uBudVbmrSwDKkn9UUwkTCowejNBjqlASUfRn4QZPLZGuMn%2Ft6jYJk9JqXSn4S%2BNlhEfisDo4h3XZy7eLH7axhBToF3cfceQ%2B9Pal1eLQTBgnqHSaycZZKqwWhpYLONjOt%2BSw5ZH1zNcTXx1P9iWj88V7BnRnIDQJEZ6De3IhVmQnUslUHWA%2BIqNUwWcommWoK9C8626FCGXwhOLG5gP2EsGWveqVQWegkAVCIi0DzLnw2kbeUEjEkivQdbkw%3D%3D&X-Amz-SignedHeaders=host&response-content-disposition=attachment&response-content-type=application%2Fpdf&x-id=GetObject&X-Amz-Signature=10a6309f005297318d0fa2d5dc774d821fd7bed9c617f7f5ebb7b7ca0663ae2d, 2026-03-18 06:48:20, 2026-03-18 06:48:20) returning "id") {"txn_id":"txn_01kkzv6nahb96trrpbw261y4am"} 
+[2026-03-18 06:48:21] local.INFO: Invoice PDF fetched for txn_01kkzv6nahb96trrpbw261y4am: yes  
+[2026-03-18 06:55:43] local.INFO: Paddle API: transaction txn_01kkzvm96ecwak502hq8hwhe90 status=completed  
+[2026-03-18 06:55:44] local.INFO: Invoice PDF fetched for txn_01kkzvm96ecwak502hq8hwhe90: yes  
+[2026-03-18 06:55:45] local.ERROR: buildFromPaddleTransaction error: SQLSTATE[22001]: String data, right truncated: 7 ERROR:  value too long for type character varying(255) (Connection: pgsql, SQL: insert into "subscription_invoices" ("paddle_transaction_id", "user_id", "subscription_id", "amount_cents", "currency", "status", "paid_at", "invoice_url", "updated_at", "created_at") values (txn_01kkzvm96ecwak502hq8hwhe90, 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4, 1, 277700, INR, completed, 2026-03-18 06:55:45, https://s3.us-east-1.amazonaws.com/paddle-sandbox-invoice-service-pdfs/invoices/52194/8a926df3-2c12-46e5-ba22-56b36eb7ae96/invoice_82186-10027_000form.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Checksum-Mode=ENABLED&X-Amz-Credential=ASIAZWZYLIX3CH72PHND%2F20260318%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260318T065531Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDQaCXVzLWVhc3QtMSJHMEUCIHvLZoiLoPZPsuXlI2PLil3l3VbQ0%2F8TrJUZjuHL5areAiEA2PBTaRJyXiRco2FZKXY2nOi%2BWZ6QMFd1zrAgvbeG8r8qjAQI%2Ff%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARADGgw2Njc0NDg3MjI5MzQiDAdnPXvh%2Fn3TEcBFoCrgA1HY%2Fyebqtn0CDezwPu3vzFFDpO4ZoOxsJl5H30DbMYBazfnMHp5BQzC2THClZLs6XcImnFXsjPTdfze0LSqpdbXBwSz4NjCNpVrEBbMhCsbV4VXS1waQQQC9UflbpamHS3BYDJDhWGZuOd%2Fn0ycA881vzYGnJtPFpdanFuhRmFfrS5O12CM5mPVL025pDOSdVUUr4eHYUnjIoMQ%2BGBu2cBE9iKVXA9BX8IGVrcHaXa2Qir%2BrJA9P1gTa4tdv4DCLy8Ek%2BMTLr29A4b5v0CBcJ3sJJQmToOdTUhyX3u92jAR1PqiOvNonQNShxcNm05Y5JIhpaLcESKWJ3MfpqcA%2FWX%2F9tgjKGYFTWuL68PBabcLN9lKjDx03RG2y7pYFxsjkTkq45h03BTfQUoukLrKKTPySnxj4Bm4WziIgkP8pdj441E8DP14QWmg4CvxuQCHInPTgNMgoqDrAQ0iljaAGHTbMSGP6G%2F7TkghcBtB4QgizKZd1GD23SN6EcS9MLxGnFOIecxHGXCoGeqlYZ3DIy%2BM2i%2FWJrc8LqioTJMCd47xlQ%2FGSfX98%2FRlZnWDP9zKnVG9QzN2U6g75BtDP5q%2B4Nj25CnZS%2BU3iINK12Pg7iSo71uBudVbmrSwDKkn9UUwkTCowejNBjqlASUfRn4QZPLZGuMn%2Ft6jYJk9JqXSn4S%2BNlhEfisDo4h3XZy7eLH7axhBToF3cfceQ%2B9Pal1eLQTBgnqHSaycZZKqwWhpYLONjOt%2BSw5ZH1zNcTXx1P9iWj88V7BnRnIDQJEZ6De3IhVmQnUslUHWA%2BIqNUwWcommWoK9C8626FCGXwhOLG5gP2EsGWveqVQWegkAVCIi0DzLnw2kbeUEjEkivQdbkw%3D%3D&X-Amz-SignedHeaders=host&response-content-disposition=attachment&response-content-type=application%2Fpdf&x-id=GetObject&X-Amz-Signature=052c3422b8f0207275d699b36aa07ccfe691b28876125b8b9443b10e5ba8cc48, 2026-03-18 06:55:45, 2026-03-18 06:55:45) returning "id") {"txn_id":"txn_01kkzvm96ecwak502hq8hwhe90"} 
+[2026-03-18 06:55:46] local.INFO: Invoice PDF fetched for txn_01kkzvm96ecwak502hq8hwhe90: yes  
+[2026-03-18 06:59:20] local.INFO: Paddle API: transaction txn_01kkzvtwn7fy4rac791m455gr0 status=completed  
+[2026-03-18 06:59:20] local.INFO: Invoice PDF fetched for txn_01kkzvtwn7fy4rac791m455gr0: yes  
+[2026-03-18 06:59:22] local.INFO: Built subscription from Paddle API for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4 {"plan":"professional","sub_id":"sub_01kkzvv83mmjgp7t6edd8y277m","txn_id":"txn_01kkzvtwn7fy4rac791m455gr0","currency":"INR","invoice_pdf":"yes"} 
+[2026-03-18 08:49:13] local.ERROR: Command "session:flush" is not defined.
+
+Did you mean one of these?
+    queue:flush
+    session:table {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"session:flush\" is not defined.
+
+Did you mean one of these?
+    queue:flush
+    session:table at C:/Git-folders/000form.com/vendor/symfony/console/Application.php:759)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(298): Symfony/Component/Console/Application->find('session:flush')
+#1 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#4 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#5 {main}
+"} 
+[2026-03-18 08:56:56] local.ERROR: Supabase signin error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=password` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"invalid_credentials","msg":"Invalid login credentials"}
+  
+[2026-03-18 08:57:04] local.ERROR: Supabase signin error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=password` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"invalid_credentials","msg":"Invalid login credentials"}
+  
+[2026-03-18 08:57:20] local.ERROR: Supabase signin error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=password` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"invalid_credentials","msg":"Invalid login credentials"}
+  
+[2026-03-18 09:01:26] local.INFO: Paddle API: transaction txn_01km02r1sd102s86h0mwdgx4p2 status=completed  
+[2026-03-18 09:01:27] local.INFO: Invoice PDF fetched for txn_01km02r1sd102s86h0mwdgx4p2: yes  
+[2026-03-18 09:01:29] local.INFO: Built subscription from Paddle API for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4 {"plan":"personal","sub_id":"sub_01km02tste5x0e39q1vdgh5wsj","txn_id":"txn_01km02r1sd102s86h0mwdgx4p2","currency":"INR","invoice_pdf":"yes"} 
+[2026-03-18 09:39:09] local.INFO: Paddle API: transaction txn_01km04xeg42715s9sa2h13nfhb status=completed  
+[2026-03-18 09:39:10] local.INFO: Invoice PDF fetched for txn_01km04xeg42715s9sa2h13nfhb: yes  
+[2026-03-18 09:39:11] local.INFO: Built subscription from Paddle API for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4 {"plan":"personal","sub_id":"sub_01km04zvz8jpddng88n2z6de1s","txn_id":"txn_01km04xeg42715s9sa2h13nfhb","currency":"INR","invoice_pdf":"yes"} 

@@ -11,8 +11,12 @@ use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\FormButtonController;
 use App\Http\Controllers\SocialAuthController;
 use App\Http\Controllers\FormValidationController;
+use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\BillingController;
+use App\Http\Controllers\WebhookController;
 
 
 /*
@@ -234,6 +238,16 @@ Route::get('/Job-Application-forms',         [LibraryController::class, 'JobAppl
 Route::get('/Scholarship-Application-forms', [LibraryController::class, 'ScholarshipApplicationForm'])->name('Home.library.ScholarshipApplicationForm');
 Route::get('/Vendor-Application-forms',      [LibraryController::class, 'VendorApplicationForm'])->name('Home.library.VendorApplicationForm');
 Route::get('/Internship-Application-forms',  [LibraryController::class, 'InternshipApplicationForm'])->name('Home.library.InternshipApplicationForm');
+Route::get('/account', [PageController::class, 'AccountSettings'])
+    ->name('account.settings')
+    ->middleware('auth');
+
+Route::delete('/account/delete', [AccountController::class, 'deleteAccount'])
+    ->name('account.delete')
+    ->middleware('auth');
+Route::post('/account/update-password', [AccountController::class, 'updatePassword'])
+    ->name('account.password.update')
+    ->middleware('auth');
 
 
 Route::get('/privacy', [PageController::class, 'privacyPolicy'])->name('pages.privacy-policy');
@@ -241,3 +255,79 @@ Route::get('/terms', [PageController::class, 'terms'])->name('pages.terms');
 
 
 Route::get('/form-submit', [PageController::class, 'formSubmit'])->name('pages.form-submit');
+
+
+/*
+|--------------------------------------------------------------------------
+| PADDLE
+|--------------------------------------------------------------------------
+*/
+// Auth required — user must be logged in to subscribe
+// 'verified' — user must have confirmed their email (optional, remove if not using)
+Route::middleware(['auth', 'verified'])->group(function () {
+ 
+    // Called by startCheckout() JS on pricing page
+    // Receives { plan, billing } and returns { transaction_id }
+    Route::post('/subscription/checkout', [CheckoutController::class, 'createCheckout'])
+         ->name('subscription.checkout');
+ 
+    // "Activating your plan..." page shown after Paddle overlay closes
+    Route::get('/subscription/processing', [CheckoutController::class, 'processing'])
+         ->name('subscription.processing');
+ 
+    // Polled by processing page every 3s to check if webhook activated plan
+    Route::get('/subscription/status', [CheckoutController::class, 'checkStatus'])
+         ->name('subscription.status');
+ 
+});
+ 
+ 
+// ── BILLING PORTAL ROUTES ─────────────────────────────────────
+// Auth required — only logged-in users can see their billing
+Route::middleware(['auth', 'verified'])->prefix('billing')->name('billing.')->group(function () {
+ 
+    // Main billing portal — shows plan, dates, invoices
+    // View: resources/views/billing/portal.blade.php
+    Route::get('/', [BillingController::class, 'index'])
+         ->name('portal');
+ 
+    // Cancel subscription (at period end — not immediately)
+    Route::post('/cancel', [BillingController::class, 'cancel'])
+         ->name('cancel');
+ 
+    // Resume/reactivate a cancelled subscription (before period ends)
+    Route::post('/resume', [BillingController::class, 'resume'])
+         ->name('resume');
+ 
+    // Upgrade, downgrade, or switch billing cycle (monthly ↔ annual)
+    Route::post('/change-plan', [BillingController::class, 'changePlan'])
+         ->name('change-plan');
+ 
+    // Generate Paddle Customer Portal link → update payment method
+    Route::get('/portal-link', [BillingController::class, 'portalLink'])
+         ->name('portal-link');
+ 
+});
+ 
+ 
+// ── PADDLE WEBHOOK ────────────────────────────────────────────
+// NO auth middleware   — Paddle is not a logged-in user
+// NO 'verified' check — same reason
+// Signature is verified inside WebhookController::handle() instead
+// IMPORTANT: also add 'api/paddle/webhook' to VerifyCsrfToken $except
+Route::post('/api/paddle/webhook', [WebhookController::class, 'handle'])
+     ->name('paddle.webhook');
+
+
+/*
+|--------------------------------------------------------------------------
+|  Payment history page (shows past transactions, invoices, etc.)
+|--------------------------------------------------------------------------
+*/
+Route::get('/billing/payment-history', [App\Http\Controllers\PaymentHistoryController::class, 'index'])
+     ->name('billing.payment-history')
+     ->middleware('auth');
+
+Route::get('/billing/invoice/{txnId}/pdf', [App\Http\Controllers\PaymentHistoryController::class, 'invoicePdf'])
+     ->name('billing.invoice-pdf')
+     ->middleware('auth');

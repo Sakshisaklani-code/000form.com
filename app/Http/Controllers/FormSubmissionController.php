@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\FormSubmissionMail;
 use App\Models\Form;
 use App\Models\Submission;
+use App\Models\Subscription;
 use App\Services\SpamDetectionService;
 use App\Services\RecaptchaService;
 use Illuminate\Http\Request;
@@ -173,21 +174,49 @@ class FormSubmissionController extends Controller
         */
 
         $submission = Submission::create([
-            'form_id'    => $form->id,
-            'data'       => $submissionData,
-            'metadata'   => [
+            'form_id'     => $form->id,
+            'data'        => $submissionData,
+            'metadata'    => [
                 'has_attachment'   => !empty($uploadedFiles),
                 'attachment_count' => count($uploadedFiles),
                 'attachments'      => $uploadMetadata,
             ],
-            'ip_address' => $clientIp,
-            'user_agent' => $request->userAgent(),
-            'referrer'   => $request->header('Referer'),
-            'is_spam'    => $isSpam,
+            'ip_address'  => $clientIp,
+            'user_agent'  => $request->userAgent(),
+            'referrer'    => $request->header('Referer'),
+            'is_spam'     => $isSpam,
             'spam_reason' => $spamReason,
         ]);
 
         Log::info('Submission stored', ['id' => $submission->id]);
+
+        /*
+        |--------------------------------------------------------------------------
+        | INCREMENT COUNTERS
+        |--------------------------------------------------------------------------
+        */
+
+        // Always increment form submission_count (drives dashboard table numbers)
+        $form->increment('submission_count');
+
+        // Only count valid (non-spam) submissions against the plan quota
+        if (!$isSpam) {
+            $owner = $form->user;
+            if ($owner) {
+                $activeSub = Subscription::where('user_id', $owner->id)
+                    ->whereIn('status', ['active', 'trialing'])
+                    ->where(function ($q) {
+                        $q->whereNull('current_period_end')
+                          ->orWhere('current_period_end', '>', now());
+                    })
+                    ->first();
+
+                if ($activeSub && $activeSub->submissions_limit !== -1) {
+                    $activeSub->increment('submissions_used');
+                    Log::info("submissions_used incremented for user {$owner->id}: now {$activeSub->submissions_used}");
+                }
+            }
+        }
 
         /*
         |--------------------------------------------------------------------------
@@ -220,10 +249,6 @@ class FormSubmissionController extends Controller
         |--------------------------------------------------------------------------
         */
 
-        // Grab the original form URL before clearing the session.
-        // - Direct submit (no captcha): HTTP Referer header = the form page.
-        // - Captcha flow: HTTP Referer = captcha page (wrong), so use the
-        //   referrer stored in the pending session when the form was first submitted.
         $formReferrer = $request->header('Referer') ?? $request->server('HTTP_REFERER');
 
         if (Session::has('pending_submission_' . $form->id)) {
@@ -483,7 +508,6 @@ class FormSubmissionController extends Controller
 
         foreach ($allData as $key => $value) {
             if (!in_array($key, $internalFields) && !$request->hasFile($key)) {
-                // Skip dynamic honeypot fields (e.g. honeypot_1ogCBVw5)
                 if (str_starts_with($key, 'honeypot_')) continue;
                 $submissionData[$key] = $value;
             }

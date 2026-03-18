@@ -25,6 +25,14 @@
         <div class="stat-value">{{ number_format($stats['total_submissions']) }}</div>
     </div>
     <div class="card stat-card">
+        <div class="stat-label">Valid</div>
+        <div class="stat-value" style="color: var(--accent);">{{ number_format($stats['total_valid']) }}</div>
+    </div>
+    <div class="card stat-card">
+        <div class="stat-label">Spam Blocked</div>
+        <div class="stat-value" style="color: #ff6b6b;">{{ number_format($stats['total_spam']) }}</div>
+    </div>
+    <div class="card stat-card">
         <div class="stat-label">Unread</div>
         <div class="stat-value accent">{{ $stats['total_unread'] }}</div>
     </div>
@@ -42,11 +50,12 @@
                 <tr>
                     <th>Form Name</th>
                     <th>Endpoint</th>
-                    <th>Submissions</th>
+                    <th>Total</th>
+                    <th>Valid</th>
+                    <th>Spam</th>
                     <th>Status</th>
                     <th>Last Submission</th>
                     <th>View</th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -68,6 +77,8 @@
                             </code>
                         </td>
                         <td>{{ number_format($form->submission_count) }}</td>
+                        <td style="color: var(--accent);">{{ number_format($form->valid_count) }}</td>
+                        <td style="color: #ff6b6b;">{{ number_format($form->spam_count) }}</td>
                         <td>
                             @if(!$form->email_verified)
                                 <span class="badge badge-warning">

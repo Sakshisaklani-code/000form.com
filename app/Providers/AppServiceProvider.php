@@ -28,6 +28,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Force HTTPS when behind ngrok or any proxy
+        if (str_contains(config('app.url'), 'ngrok')) {
+            \URL::forceScheme('https');
+            $this->app['request']->server->set('HTTPS', true);
+        }
        View::share('recaptchaSiteKey', config('services.recaptcha.site_key'));
     }
 }

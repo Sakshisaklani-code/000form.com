@@ -4,6 +4,8 @@ use Illuminate\Support\Str;
 
 return [
 
+    'domain' => env('SESSION_DOMAIN', null),
+
     'driver' => env('SESSION_DRIVER', 'database'),
 
     'lifetime' => env('SESSION_LIFETIME', 120),

@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Paddle\Billable;
+use App\Enums\PlanName;
+use App\Enums\SubscriptionStatus;
 
 class User extends Authenticatable
 {
-    use HasFactory, HasUuids, Notifiable, SoftDeletes;
+    use HasFactory, Billable, HasUuids, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -31,6 +34,7 @@ class User extends Authenticatable
         'metadata',
         'google_id',  
         'avatar',
+        'paddle_customer_id', // ← ADD THIS
     ];
 
     /**
@@ -89,4 +93,57 @@ class User extends Authenticatable
         
         return strtoupper(substr($name, 0, 2));
     }
+
+    public function subscription(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(\App\Models\Subscription::class)
+                    ->latestOfMany(); // always get the most recent one
+    }
+ 
+    // ── CONVENIENCE HELPERS ───────────────────────────────
+ 
+    // Get the subscription only if it's active/accessible
+    // Returns null if user has no subscription or it's expired
+    // USAGE: if ($user->activeSubscription()) { ... }
+    public function activeSubscription(): ?\App\Models\Subscription
+    {
+        $sub = $this->subscription;
+        return ($sub && $sub->canAccess()) ? $sub : null;
+    }
+ 
+    // What plan is this user currently on?
+    // Returns PlanName enum — defaults to Free if no subscription
+    // USAGE: $user->currentPlan()->isAtLeast(PlanName::Professional)
+    public function currentPlan(): PlanName
+    {
+        $sub = $this->activeSubscription();
+        if (! $sub) return PlanName::Free;
+        return $sub->plan_name;
+    }
+ 
+    // Can this user use a specific feature?
+    // USAGE: $user->canUseFeature('webhooks')  → true/false
+    //        $user->canUseFeature('file_upload_mb')  → true/false
+    public function canUseFeature(string $feature): bool
+    {
+        $val = $this->currentPlan()->limit($feature);
+        // false = explicitly disabled for this plan
+        // 0 = not allowed (e.g. file_upload_mb = 0)
+        return $val !== false && $val !== 0;
+    }
+ 
+    // Get a specific limit value for this user's plan
+    // USAGE: $user->planLimit('submissions')  → 200
+    //        $user->planLimit('team_members') → 2
+    public function planLimit(string $feature): mixed
+    {
+        return $this->currentPlan()->limit($feature);
+    }
+ 
+    // Is this user on the free plan (no paid subscription)?
+    public function isOnFreePlan(): bool
+    {
+        return $this->currentPlan() === PlanName::Free;
+    }
+    
 }

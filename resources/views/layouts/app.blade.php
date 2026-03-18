@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="description" content="000form - Free form backend for your websites. No server required.">
     <title>@yield('title', '000form - Free Form Backend')</title>
+    <!-- csrf-token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('images/favicon/000formFavicon.png') }}" type="image/svg+xml">
     <!-- Canonical Tag --> 

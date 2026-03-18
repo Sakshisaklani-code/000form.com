@@ -49,4 +49,17 @@ class PageController extends Controller
     {
         return view('pages.form-submit');
     }
+
+    public function AccountSettings()
+    {
+        $user = auth()->user();
+
+        $teamMembers = $user->teamMembers ?? collect();
+
+        return view('pages.account-settings', [
+            'user' => $user,
+            'teamMembers' => $teamMembers,
+        ]);
+    }
+
 }
