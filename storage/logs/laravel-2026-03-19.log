@@ -94,3 +94,77 @@
 [2026-03-19 08:52:56] local.INFO: Built subscription from Paddle API for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4 {"plan":"personal","sub_id":"sub_01km2mqw3qc1wj8hwta94crrjk","txn_id":"txn_01km2mqhab0x23b28e118tj7xw","currency":"INR","invoice_pdf":"yes"} 
 [2026-03-19 08:54:55] local.INFO: Plan swapped via Paddle: personal/monthly → professional/monthly (when=immediately) for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4  
 [2026-03-19 08:55:54] local.INFO: Plan swapped via Paddle: professional/monthly → personal/monthly (when=next_billing_period) for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4  
+[2026-03-19 09:12:44] local.INFO: Paddle API: transaction txn_01km2nvnfek34m9b1a6r9wtpn5 status=completed  
+[2026-03-19 09:12:44] local.INFO: Invoice PDF fetched for txn_01km2nvnfek34m9b1a6r9wtpn5: yes  
+[2026-03-19 09:12:46] local.INFO: Built subscription from Paddle API for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4 {"plan":"personal","sub_id":"sub_01km2nw65xyb84eqg28jzm4ghp","txn_id":"txn_01km2nvnfek34m9b1a6r9wtpn5","currency":"INR","invoice_pdf":"yes"} 
+[2026-03-19 09:14:33] local.INFO: Plan swapped via Paddle: personal/monthly → professional/monthly (when=next_billing_period) for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4  
+[2026-03-19 09:38:21] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_hnzeiu3z","method":"POST"} 
+[2026-03-19 09:38:21] local.INFO: Request data: {"name":"Tanuja","email":"tanuja10@yopmail.com","message":"asdsdfs","honeypot_wZuMf5wF":null} 
+[2026-03-19 09:38:21] local.INFO: Has files: {"files":0} 
+[2026-03-19 09:38:22] local.INFO: Form found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","form_name":"Test form"} 
+[2026-03-19 09:38:23] local.WARNING: Submission limit reached for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4: 200/200  
+[2026-03-19 09:38:23] local.WARNING: Error response {"message":"Submission limit reached for this form. Please contact the form owner.","status":429} 
+[2026-03-19 09:40:09] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_hnzeiu3z","method":"POST"} 
+[2026-03-19 09:40:09] local.INFO: Request data: {"name":"Test","email":"test@test.com","message":"limit test"} 
+[2026-03-19 09:40:09] local.INFO: Has files: {"files":0} 
+[2026-03-19 09:40:10] local.INFO: Form found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","form_name":"Test form"} 
+[2026-03-19 09:40:11] local.WARNING: Submission limit reached for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4: 200/200  
+[2026-03-19 09:40:11] local.WARNING: Error response {"message":"Submission limit reached for this form. Please contact the form owner.","status":429} 
+[2026-03-19 09:41:25] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_hnzeiu3z","method":"POST"} 
+[2026-03-19 09:41:25] local.INFO: Request data: {"name":"Test","email":"test@test.com","message":"limit test"} 
+[2026-03-19 09:41:25] local.INFO: Has files: {"files":0} 
+[2026-03-19 09:41:26] local.INFO: Form found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","form_name":"Test form"} 
+[2026-03-19 09:41:27] local.INFO: Redirecting to captcha page {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 09:41:46] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_hnzeiu3z","method":"POST"} 
+[2026-03-19 09:41:46] local.INFO: Request data: {"name":"Tanuja","email":"tanuja10@yopmail.com","message":"sdss","honeypot_wZuMf5wF":null} 
+[2026-03-19 09:41:46] local.INFO: Has files: {"files":0} 
+[2026-03-19 09:41:47] local.INFO: Form found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","form_name":"Test form"} 
+[2026-03-19 09:41:48] local.INFO: Redirecting to captcha page {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 09:41:48] local.INFO: Showing captcha page {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 09:45:06] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_hnzeiu3z","method":"POST"} 
+[2026-03-19 09:45:06] local.INFO: Request data: {"name":"Sakshi Saklani","email":"tanuja5@yopmail.com","message":"test ngrok captcha and submission","honeypot_wZuMf5wF":null} 
+[2026-03-19 09:45:06] local.INFO: Has files: {"files":0} 
+[2026-03-19 09:45:07] local.INFO: Form found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","form_name":"Test form"} 
+[2026-03-19 09:45:08] local.INFO: Redirecting to captcha page {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 09:45:08] local.INFO: Showing captcha page {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 09:45:18] local.INFO: === CAPTCHA VERIFICATION STARTED === {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 09:45:19] local.INFO: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-19 09:45:19] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-19 09:45:19] local.INFO: Captcha verified successfully  
+[2026-03-19 09:45:19] local.INFO: Pending submission found {"data_keys":["name","email","message","honeypot_wZuMf5wF"],"stored_ip":"127.0.0.1","current_ip":"127.0.0.1"} 
+[2026-03-19 09:45:19] local.INFO: Recreating request with files {"temp_files":[],"ip":"127.0.0.1","is_ajax":false} 
+[2026-03-19 09:45:19] local.INFO: Recreated request {"has_files":0,"ip":"127.0.0.1"} 
+[2026-03-19 09:45:19] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_hnzeiu3z","method":"POST"} 
+[2026-03-19 09:45:19] local.INFO: Request data: {"name":"Sakshi Saklani","email":"tanuja5@yopmail.com","message":"test ngrok captcha and submission","honeypot_wZuMf5wF":null,"captcha_verified":true} 
+[2026-03-19 09:45:19] local.INFO: Has files: {"files":0} 
+[2026-03-19 09:45:20] local.INFO: Form found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","form_name":"Test form"} 
+[2026-03-19 09:45:20] local.INFO: Clean submission data {"name":"Sakshi Saklani","email":"tanuja5@yopmail.com","message":"test ngrok captcha and submission","honeypot_wZuMf5wF":null} 
+[2026-03-19 09:45:20] local.INFO: FILE UPLOAD CHECK {"all_files":[]} 
+[2026-03-19 09:45:21] local.INFO: VALID SUBMISSION {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","ip":"127.0.0.1","is_spam":false,"reasons":[]} 
+[2026-03-19 09:45:21] local.INFO: Spam detection result {"is_spam":false,"reason":null} 
+[2026-03-19 09:45:22] local.INFO: Submission stored {"id":"a1562489-3eee-4769-8815-58a5c177affb"} 
+[2026-03-19 09:45:23] local.INFO: submissions_used incremented for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4: now 1  
+[2026-03-19 09:45:23] local.INFO: === SENDING NOTIFICATION EMAIL === {"to":"sakshi05@yopmail.com","submission_id":"a1562489-3eee-4769-8815-58a5c177affb","has_files":false,"file_count":0,"file_paths":[]} 
+[2026-03-19 09:45:23] local.INFO: CC emails from form {"cc_emails":["tsaklani2drish@gmail.com"]} 
+[2026-03-19 09:45:23] local.INFO: Final CC emails {"final_list":["tsaklani2drish@gmail.com"]} 
+[2026-03-19 09:45:23] local.INFO: Verified attachment paths {"verified_count":0,"paths":[]} 
+[2026-03-19 09:45:23] local.INFO: Email template selected: basic  
+[2026-03-19 09:45:23] local.INFO: Attachments to process: 0  
+[2026-03-19 09:45:23] local.INFO: Mail object created  
+[2026-03-19 09:45:23] local.INFO: Sending email with CC {"to":"sakshi05@yopmail.com","cc":["tsaklani2drish@gmail.com"]} 
+[2026-03-19 09:45:24] local.INFO: Total attachments added: 0  
+[2026-03-19 09:45:26] local.INFO: Mail send method called successfully  
+[2026-03-19 09:45:26] local.INFO: Submission updated with email_sent flag  
+[2026-03-19 09:45:26] local.INFO: Email sent successfully to: sakshi05@yopmail.com  
+[2026-03-19 09:45:27] local.INFO: Auto-response sent to: tanuja5@yopmail.com  
+[2026-03-19 09:45:27] local.INFO: Success response {"wants_json":false,"format":null,"redirect_url":null} 
+[2026-03-19 09:46:10] local.INFO: Showing captcha page {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 09:46:11] local.WARNING: No pending submission found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 09:50:39] local.INFO: Showing captcha page {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 09:50:40] local.WARNING: No pending submission found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 09:50:46] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_hnzeiu3z","method":"POST"} 
+[2026-03-19 09:50:46] local.INFO: Request data: {"name":"Tanuja","email":"tanuja10@yopmail.com","message":"asdasdas","honeypot_wZuMf5wF":null} 
+[2026-03-19 09:50:46] local.INFO: Has files: {"files":0} 
+[2026-03-19 09:50:48] local.INFO: Form found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","form_name":"Test form"} 
+[2026-03-19 09:50:48] local.WARNING: Submission limit reached for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4: 200/200  
+[2026-03-19 09:50:48] local.INFO: Success response {"wants_json":false,"format":null,"redirect_url":null} 

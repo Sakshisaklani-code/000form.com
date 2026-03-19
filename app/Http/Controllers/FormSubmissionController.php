@@ -67,6 +67,29 @@ class FormSubmissionController extends Controller
             return $this->errorResponse($request, 'Form is not accepting submissions', 403);
         }
 
+        // ── Check submission quota ────────────────────────────────
+        // Block submission BEFORE storing or emailing if plan limit reached
+        $owner = $form->user;
+        if ($owner) {
+            $activeSub = Subscription::where('user_id', $owner->id)
+                ->whereIn('status', ['active', 'trialing'])
+                ->where(function ($q) {
+                    $q->whereNull('current_period_end')
+                      ->orWhere('current_period_end', '>', now());
+                })
+                ->first();
+
+           if ($activeSub
+                && $activeSub->submissions_limit !== -1
+                && $activeSub->submissions_used >= $activeSub->submissions_limit
+            ) {
+                Log::warning("Submission limit reached for user {$owner->id}: {$activeSub->submissions_used}/{$activeSub->submissions_limit}");
+                // Show thank you page to submitter — they don't need to know about the limit
+                // Just silently drop the submission without storing or emailing
+                return $this->successResponse($request, $form, $request->except(['_token']));
+            }
+        }
+
         if (!$form->isDomainAllowed($request->header('Referer'))) {
             Log::warning('Domain not allowed', ['referer' => $request->header('Referer')]);
             return $this->errorResponse($request, 'Submissions from this domain are not allowed', 403);
@@ -201,9 +224,8 @@ class FormSubmissionController extends Controller
 
         // Only count valid (non-spam) submissions against the plan quota
         if (!$isSpam) {
-            $owner = $form->user;
             if ($owner) {
-                $activeSub = Subscription::where('user_id', $owner->id)
+                $activeSub = $activeSub ?? Subscription::where('user_id', $owner->id)
                     ->whereIn('status', ['active', 'trialing'])
                     ->where(function ($q) {
                         $q->whereNull('current_period_end')
@@ -213,7 +235,7 @@ class FormSubmissionController extends Controller
 
                 if ($activeSub && $activeSub->submissions_limit !== -1) {
                     $activeSub->increment('submissions_used');
-                    Log::info("submissions_used incremented for user {$owner->id}: now {$activeSub->submissions_used}");
+                    Log::info("submissions_used incremented for user {$owner->id}: now {$activeSub->fresh()->submissions_used}");
                 }
             }
         }
