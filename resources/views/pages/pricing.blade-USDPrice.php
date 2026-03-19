@@ -192,7 +192,7 @@
     }
 
     .pp-price {
-        margin-left: 10%;
+        margin-left: 20%;
         display: flex;
         align-items: baseline;
         gap: 0.2rem;
@@ -200,7 +200,7 @@
     }
 
     .pp-price .sym  { font-size: 1.25rem; font-weight: 600; color: var(--text-secondary); align-self: flex-start; padding-top: 0.5rem; }
-    .pp-price .num  { font-family: var(--font-display); font-size: 2.25rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--text-primary); transition: opacity 0.2s ease; }
+    .pp-price .num  { font-family: var(--font-display); font-size: 3.25rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--text-primary); transition: opacity 0.2s ease; }
     .pp-price .per  { font-size: 0.9rem; color: var(--text-muted); align-self: flex-end; padding-bottom: 0.5rem; }
 
     .pp-plan-desc { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin: 1rem 0; }
@@ -348,7 +348,7 @@
     <div class="pp-grid">
 
         {{-- FREE --}}
-        <div class="pp-plan">
+        <div class="pp-plan featured">
             @auth
                 @if(auth()->user()->currentPlan()->value === 'free')
                     <div class="pp-current-tag">Your Plan</div>
@@ -552,10 +552,9 @@
         }
     });
 
-    let annual = false;
     (function() {
         // ── BILLING TOGGLE ───────────────────────────────────────
-        
+        let annual = false;
 
         window.ppToggle = function() {
             annual = !annual;
@@ -644,90 +643,6 @@
             if (e.key === 't' || e.key === 'T') ppToggle();
         });
     })();
-    // ── FETCH LOCALIZED PRICES FROM PADDLE ───────────────────
-    // Paddle detects user location via IP automatically
-    // No need to detect IP manually — Paddle handles it
-    (async function fetchLocalPrices() {
-        try {
-            const priceIds = [
-                '{{ config('plans.personal.paddle_monthly_id') }}',
-                '{{ config('plans.personal.paddle_annual_id') }}',
-                '{{ config('plans.professional.paddle_monthly_id') }}',
-                '{{ config('plans.professional.paddle_annual_id') }}',
-                '{{ config('plans.business.paddle_monthly_id') }}',
-                '{{ config('plans.business.paddle_annual_id') }}',
-            ].filter(Boolean);
-
-            const result = await Paddle.PricePreview({
-                items: priceIds.map(id => ({ priceId: id, quantity: 1 }))
-            });
-
-            if (!result?.data?.details?.lineItems) return;
-
-            const priceMap = {};
-            result.data.details.lineItems.forEach(item => {
-                priceMap[item.price.id] = item.formattedTotals.total;
-            });
-
-            // ── Update Personal ───────────────────────────────
-            updatePrice('personal', 'mo', priceMap['{{ config('plans.personal.paddle_monthly_id') }}']);
-            updatePrice('personal', 'yr', priceMap['{{ config('plans.personal.paddle_annual_id') }}']);
-
-            // ── Update Professional ───────────────────────────
-            updatePrice('professional', 'mo', priceMap['{{ config('plans.professional.paddle_monthly_id') }}']);
-            updatePrice('professional', 'yr', priceMap['{{ config('plans.professional.paddle_annual_id') }}']);
-
-            // ── Update Business ───────────────────────────────
-            updatePrice('business', 'mo', priceMap['{{ config('plans.business.paddle_monthly_id') }}']);
-            updatePrice('business', 'yr', priceMap['{{ config('plans.business.paddle_annual_id') }}']);
-
-        } catch (e) {
-            console.log('Price preview failed, showing default USD prices:', e.message);
-        }
-    })();
-
-    function updatePrice(plan, cycle, formattedPrice) {
-        if (!formattedPrice) return;
-
-        // Strip currency symbol and formatting to get just the number
-        const numeric = formattedPrice.replace(/[^0-9.,]/g, '').replace(',', '');
-
-        // Find the price element — data-mo / data-yr attributes
-        document.querySelectorAll('.num[data-mo]').forEach(el => {
-            const card = el.closest('.pp-plan');
-            if (!card) return;
-
-            const badge = card.querySelector('.pp-plan-badge');
-            if (!badge) return;
-
-            const planName = badge.textContent.trim().toLowerCase();
-            if (planName !== plan) return;
-
-            if (cycle === 'mo') {
-                el.dataset.mo = numeric;
-                el.dataset.moFormatted = formattedPrice;
-                if (!annual) el.textContent = numeric;
-            } else {
-                el.dataset.yr = numeric;
-                el.dataset.yrFormatted = formattedPrice;
-                if (annual) el.textContent = numeric;
-            }
-        });
-
-        // Also update the sym span to show correct currency symbol
-        // Paddle returns ₹ for INR, $ for USD automatically
-        const symbol = formattedPrice.replace(/[\d,. ]/g, '').trim();
-        if (symbol) {
-            document.querySelectorAll('.pp-plan .sym').forEach(sym => {
-                const card = sym.closest('.pp-plan');
-                const badge = card?.querySelector('.pp-plan-badge');
-                if (badge?.textContent.trim().toLowerCase() === plan) {
-                    sym.textContent = symbol;
-                }
-            });
-        }
-    }
-
 </script>
 
 

@@ -456,7 +456,6 @@
                 <?php if($pct >= 80 && $limit !== -1): ?>
                     <p style="font-size:0.8rem;color:#ffa500;margin-top:0.5rem;">
                         You've used <?php echo e($pct); ?>% of your limit.
-                        <a href="#" onclick="openChangePlan()" style="color:inherit;text-decoration:underline;">Upgrade →</a>
                     </p>
                 <?php endif; ?>
             </div>

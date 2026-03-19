@@ -83,9 +83,9 @@ return [
         'price_annual'          => 864,    // $72/mo billed annually = 20% off
         'paddle_monthly_id'     => env('PADDLE_BUSINESS_MONTHLY_PRICE_ID'),
         'paddle_annual_id'      => env('PADDLE_BUSINESS_ANNUAL_PRICE_ID'),
-        'submissions'           => -1,     // unlimited
+        'submissions'           => 20000,     // unlimited
         'forms'                 => -1,
-        'team_members'          => 20,000,     // unlimited
+        'team_members'          => 3,    // unlimited
         'file_upload_mb'        => 10,    // ✓ 100MB uploads
         'webhooks'              => true,
         'role_permissions'      => true,   // ✓ unlocked
