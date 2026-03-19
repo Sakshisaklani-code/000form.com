@@ -1,5 +1,6 @@
 /vendor
 .env
 prod-ca-2021.crt
-/bootstrap
-``
+/bootstrap/cache/config.php
+/bootstrap/cache/routes.php
+/bootstrap/cache/services.php
