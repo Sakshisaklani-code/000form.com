@@ -1,3 +1,5 @@
 /vendor
 .env
 prod-ca-2021.crt
+/bootstrap/cache/config.php
+``
