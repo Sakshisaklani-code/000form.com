@@ -27,32 +27,20 @@
         letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.5rem;
     }
 
-    /* ── SCHEDULED CHANGE CARD ── */
     .bp-scheduled-card {
-        background: rgba(0,136,255,0.05);
-        border: 1px solid rgba(0,136,255,0.35);
+        background: rgba(0,136,255,0.05); border: 1px solid rgba(0,136,255,0.35);
         border-radius: 20px; padding: 1.5rem; margin-bottom: 1.5rem;
     }
-    .bp-scheduled-header {
-        display: flex; align-items: center; justify-content: space-between;
-        flex-wrap: wrap; gap: 1rem;
-    }
+    .bp-scheduled-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
     .bp-scheduled-title {
         font-size: 0.7rem; font-family: var(--font-mono); font-weight: 600;
         letter-spacing: 0.1em; text-transform: uppercase; color: #4db8ff; margin-bottom: 0.75rem;
     }
-    .bp-scheduled-info {
-        display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
-    }
-    .bp-scheduled-plan {
-        font-size: 1.1rem; font-weight: 700;
-    }
+    .bp-scheduled-plan { font-size: 1.1rem; font-weight: 700; }
     .bp-scheduled-plan .from { color: var(--text-muted); }
     .bp-scheduled-plan .arrow { color: var(--text-muted); margin: 0 0.5rem; }
     .bp-scheduled-plan .to { color: #4db8ff; }
-    .bp-scheduled-date {
-        font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;
-    }
+    .bp-scheduled-date { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem; }
     .bp-scheduled-date strong { color: var(--text-primary); }
 
     .bp-plan-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
@@ -149,7 +137,7 @@
         background: var(--bg-secondary); border: 1px solid var(--border-color);
         border-radius: 14px; padding: 1.25rem; transition: border-color 0.2s;
     }
-    .cp-plan-card.current  { border-color: var(--accent); background: rgba(0,255,136,0.03); }
+    .cp-plan-card.current   { border-color: var(--accent); background: rgba(0,255,136,0.03); }
     .cp-plan-card.scheduled { border-color: rgba(0,136,255,0.5); background: rgba(0,136,255,0.03); }
 
     .cp-plan-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; }
@@ -207,6 +195,7 @@
         font-size: 0.75rem; color: var(--text-muted); margin-top: 1.25rem;
         padding-top: 1rem; border-top: 1px solid var(--border-color); line-height: 1.7;
     }
+    .cp-loading { font-size: 0.8rem; color: var(--text-muted); font-style: italic; }
 
     /* ── INVOICES TABLE ── */
     .bp-table { width: 100%; border-collapse: collapse; }
@@ -237,7 +226,6 @@
     }
     .bp-invoice-dl:hover { border-color: var(--accent); color: var(--accent); }
     .bp-empty { text-align: center; padding: 2.5rem; color: var(--text-muted); font-size: 0.9rem; }
-
     .bp-no-sub { text-align: center; padding: 3rem 2rem; }
     .bp-no-sub h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; }
     .bp-no-sub p  { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
@@ -249,6 +237,9 @@
         .bp-table th:nth-child(3), .bp-table td:nth-child(3) { display: none; }
     }
 </style>
+
+
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 
 <div class="bp">
 <div class="bp-wrap">
@@ -273,10 +264,11 @@
         
         <?php if($scheduledChange ?? null): ?>
         <?php
-            $scheduledPlanRank    = ['personal' => 1, 'professional' => 2, 'business' => 3];
-            $currentPlanRank      = $scheduledPlanRank[$subscription->plan_name->value] ?? 0;
-            $scheduledTargetRank  = $scheduledPlanRank[$scheduledChange['plan']] ?? 0;
-            $isScheduledUpgrade   = $scheduledTargetRank > $currentPlanRank;
+            $scheduledPlanRank   = ['personal' => 1, 'professional' => 2, 'business' => 3];
+            $currentPlanRank     = $scheduledPlanRank[$subscription->plan_name->value] ?? 0;
+            $scheduledTargetRank = $scheduledPlanRank[$scheduledChange['plan']] ?? 0;
+            $isScheduledUpgrade  = $scheduledTargetRank > $currentPlanRank;
+            $nextLimits          = config("plans.{$scheduledChange['plan']}");
         ?>
         <div class="bp-scheduled-card">
             <div class="bp-scheduled-title">
@@ -290,17 +282,12 @@
                         <span class="arrow">→</span>
                         <span class="to"><?php echo e(ucfirst($scheduledChange['plan'])); ?> (<?php echo e(ucfirst($scheduledChange['billing'])); ?>)</span>
                     </div>
-                    <?php
-                        $nextPrice    = $scheduledChange['billing'] === 'annual'
-                            ? config("plans.{$scheduledChange['plan']}.price_annual")
-                            : config("plans.{$scheduledChange['plan']}.price_monthly");
-                        $nextPricePer = $scheduledChange['billing'] === 'annual' ? 'year' : 'month';
-                        $nextLimits   = config("plans.{$scheduledChange['plan']}");
-                    ?>
                     <div style="display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:0.75rem;">
                         <div>
                             <div style="font-size:0.7rem;color:#4db8ff;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.2rem;">New Price</div>
-                            <div style="font-weight:700;font-size:1rem;">$<?php echo e($nextPrice); ?><span style="font-size:0.8rem;font-weight:400;color:var(--text-muted);">/<?php echo e($nextPricePer); ?></span></div>
+                            <div style="font-weight:700;font-size:1rem;" id="scheduled-price">
+                                <span class="cp-loading">Loading...</span>
+                            </div>
                         </div>
                         <div>
                             <div style="font-size:0.7rem;color:#4db8ff;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.2rem;">Submissions</div>
@@ -316,7 +303,8 @@
                         </div>
                     </div>
                     <div class="bp-scheduled-date" style="margin-top:0.75rem;">
-                        Your current plan and limits remain active until <strong><?php echo e($scheduledChange['effective_at']); ?></strong>.</div>
+                        Your current plan and limits remain active until <strong><?php echo e($scheduledChange['effective_at']); ?></strong>.
+                    </div>
                 </div>
                 <form method="POST" action="<?php echo e(route('billing.cancel-scheduled-change')); ?>">
                     <?php echo csrf_field(); ?>
@@ -343,11 +331,20 @@
                         </span>
                     </div>
                     <div class="bp-plan-price">
+                        
+                        <strong id="current-plan-price">
+                            <?php if($subscription->billing_cycle === 'annual'): ?>
+                                $<?php echo e(config("plans.{$subscription->plan_name->value}.price_annual")); ?>
+
+                            <?php else: ?>
+                                $<?php echo e(config("plans.{$subscription->plan_name->value}.price_monthly")); ?>
+
+                            <?php endif; ?>
+                        </strong>
+                        / <?php echo e($subscription->billing_cycle === 'annual' ? 'year' : 'month'); ?>
+
                         <?php if($subscription->billing_cycle === 'annual'): ?>
-                            <strong>$<?php echo e(config("plans.{$subscription->plan_name->value}.price_annual")); ?></strong> / year
                             <span style="color:var(--accent);font-size:0.8rem;margin-left:0.5rem;">20% off</span>
-                        <?php else: ?>
-                            <strong>$<?php echo e(config("plans.{$subscription->plan_name->value}.price_monthly")); ?></strong> / month
                         <?php endif; ?>
                     </div>
                 </div>
@@ -363,7 +360,6 @@
                     </div>
                 </div>
             <?php endif; ?>
-
             <?php if($subscription->onPaymentGracePeriod()): ?>
                 <div class="bp-banner danger">
                     <span class="bp-banner-icon">✕</span>
@@ -374,7 +370,6 @@
                     </div>
                 </div>
             <?php endif; ?>
-
             <?php if($subscription->isTrialing()): ?>
                 <div class="bp-banner info">
                     <span class="bp-banner-icon">◷</span>
@@ -384,7 +379,6 @@
                     </div>
                 </div>
             <?php endif; ?>
-
             <?php if($subscription->status->value === 'paused'): ?>
                 <div class="bp-banner warning">
                     <span class="bp-banner-icon">⏸</span>
@@ -501,24 +495,17 @@
         <div class="bp-card">
             <div class="bp-card-title">Manage Subscription</div>
             <div class="bp-actions">
-
-                <a href="<?php echo e(route('billing.portal-link')); ?>" class="bp-btn bp-btn-outline">
-                    💳 Update Payment Method
-                </a>
-
                 <?php if($subscription->isActive() && !$subscription->cancel_at_period_end): ?>
                     <button type="button" class="bp-btn bp-btn-outline" onclick="openChangePlan()">
                         ↕ Change Plan
                     </button>
                 <?php endif; ?>
-
                 <?php if($subscription->onGracePeriod()): ?>
                     <form method="POST" action="<?php echo e(route('billing.resume')); ?>" style="display:inline;">
                         <?php echo csrf_field(); ?>
                         <button type="submit" class="bp-btn bp-btn-resume">▶ Reactivate Subscription</button>
                     </form>
                 <?php endif; ?>
-
                 <?php if($subscription->isActive() && !$subscription->cancel_at_period_end): ?>
                     <form method="POST" action="<?php echo e(route('billing.cancel')); ?>" style="display:inline;">
                         <?php echo csrf_field(); ?>
@@ -528,9 +515,7 @@
                         </button>
                     </form>
                 <?php endif; ?>
-
             </div>
-
             <?php if($subscription->isActive() && !$subscription->cancel_at_period_end): ?>
                 <p style="font-size:0.8rem;color:var(--text-muted);margin-top:1rem;">
                     Cancelling keeps your access active until <?php echo e($subscription->current_period_end?->format('M d, Y')); ?>.
@@ -539,70 +524,6 @@
             <?php endif; ?>
         </div>
 
-        
-        <div class="bp-card">
-            <div class="bp-card-title">Invoice History</div>
-            <?php if($invoices->count()): ?>
-                <table class="bp-table">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Description</th>
-                            <th>Transaction ID</th>
-                            <th>Amount</th>
-                            <th>Status</th>
-                            <th>Invoice</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $__currentLoopData = $invoices; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $invoice): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <tr>
-                                <td><?php echo e($invoice->paid_at?->format('M d, Y') ?? '—'); ?></td>
-                                <td>
-                                    <?php echo e($subscription->plan_name->label()); ?> —
-                                    <?php echo e(ucfirst($subscription->billing_cycle)); ?>
-
-                                </td>
-                                <td>
-                                    <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);">
-                                        <?php echo e($invoice->paddle_transaction_id ?? '—'); ?>
-
-                                    </span>
-                                </td>
-                                <td>
-                                    <?php
-                                        $sym   = match(strtoupper($invoice->currency ?? 'USD')) {
-                                            'INR' => '₹', 'GBP' => '£', 'EUR' => '€',
-                                            'JPY' => '¥', 'AUD' => 'A$', 'CAD' => 'C$', default => '$',
-                                        };
-                                        $noDec = in_array(strtoupper($invoice->currency ?? 'USD'), ['INR','JPY','KRW','VND']);
-                                        $amt   = number_format($invoice->amount_cents / 100, $noDec ? 0 : 2);
-                                    ?>
-                                    <span class="bp-invoice-amount"><?php echo e($sym); ?><?php echo e($amt); ?></span>
-                                </td>
-                                <td>
-                                    <span class="bp-invoice-status <?php echo e($invoice->status); ?>">
-                                        <?php echo e(ucfirst($invoice->status)); ?>
-
-                                    </span>
-                                </td>
-                                <td>
-                                    <?php if($invoice->invoice_url): ?>
-                                        <a href="<?php echo e($invoice->invoice_url); ?>" target="_blank" class="bp-invoice-dl">↓ PDF</a>
-                                    <?php else: ?>
-                                        <span style="color:var(--text-muted);font-size:0.8rem;">—</span>
-                                    <?php endif; ?>
-                                </td>
-                            </tr>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </tbody>
-                </table>
-            <?php else: ?>
-                <div class="bp-empty">
-                    No invoices yet. Your first invoice will appear here after your next payment.
-                </div>
-            <?php endif; ?>
-        </div>
 
     <?php else: ?>
 
@@ -636,28 +557,24 @@
     $scheduledPlan  = $subscription->scheduled_plan ?? null;
 
     $allPlans = [
-        'personal' => [
-            'label'    => 'Personal',
-            'sub'      => '200 submissions/mo · 1 team member',
-            'rank'     => 1,
-            'price_mo' => config('plans.personal.price_monthly'),
-            'price_yr' => config('plans.personal.price_annual'),
-        ],
-        'professional' => [
-            'label'    => 'Professional',
-            'sub'      => '2,000 submissions/mo · 2 team members',
-            'rank'     => 2,
-            'price_mo' => config('plans.professional.price_monthly'),
-            'price_yr' => config('plans.professional.price_annual'),
-        ],
-        'business' => [
-            'label'    => 'Business',
-            'sub'      => 'Unlimited submissions · Unlimited team members',
-            'rank'     => 3,
-            'price_mo' => config('plans.business.price_monthly'),
-            'price_yr' => config('plans.business.price_annual'),
-        ],
+        'personal'     => ['label' => 'Personal',     'sub' => '200 submissions/mo · 1 team member',             'rank' => 1, 'price_mo' => config('plans.personal.price_monthly'),     'price_yr' => config('plans.personal.price_annual'),     'paddle_mo' => config('plans.personal.paddle_monthly_id'),     'paddle_yr' => config('plans.personal.paddle_annual_id')],
+        'professional' => ['label' => 'Professional', 'sub' => '2,000 submissions/mo · 2 team members',          'rank' => 2, 'price_mo' => config('plans.professional.price_monthly'), 'price_yr' => config('plans.professional.price_annual'), 'paddle_mo' => config('plans.professional.paddle_monthly_id'), 'paddle_yr' => config('plans.professional.paddle_annual_id')],
+        'business'     => ['label' => 'Business',     'sub' => 'Unlimited submissions · Unlimited team members', 'rank' => 3, 'price_mo' => config('plans.business.price_monthly'),     'price_yr' => config('plans.business.price_annual'),     'paddle_mo' => config('plans.business.paddle_monthly_id'),     'paddle_yr' => config('plans.business.paddle_annual_id')],
     ];
+
+    // Current plan price ID for localized price fetching
+    $currentPaddleId = $currentBilling === 'annual'
+        ? config("plans.{$currentPlan}.paddle_annual_id")
+        : config("plans.{$currentPlan}.paddle_monthly_id");
+
+    // Scheduled plan price ID
+    $scheduledPaddleId = null;
+    if ($scheduledPlan) {
+        $scheduledBilling  = $subscription->scheduled_billing ?? 'monthly';
+        $scheduledPaddleId = $scheduledBilling === 'annual'
+            ? config("plans.{$scheduledPlan}.paddle_annual_id")
+            : config("plans.{$scheduledPlan}.paddle_monthly_id");
+    }
 ?>
 
 <div class="cp-overlay" id="changePlanModal" style="display:none;">
@@ -726,13 +643,17 @@
                                  id="toggle-mo-<?php echo e($planKey); ?>"
                                  onclick="setBilling('<?php echo e($planKey); ?>', 'monthly')">
                                 Monthly
-                                <span class="cp-save" style="color:var(--text-muted);">$<?php echo e($planData['price_mo']); ?>/mo</span>
+                                <span class="cp-save" id="label-mo-<?php echo e($planKey); ?>" style="color:var(--text-muted);">
+                                    $<?php echo e($planData['price_mo']); ?>/mo
+                                </span>
                             </div>
                             <div class="cp-billing-opt"
                                  id="toggle-yr-<?php echo e($planKey); ?>"
                                  onclick="setBilling('<?php echo e($planKey); ?>', 'annual')">
                                 Annual
-                                <span class="cp-save" style="color:var(--text-muted);">$<?php echo e($planData['price_yr']); ?>/yr</span>
+                                <span class="cp-save" id="label-yr-<?php echo e($planKey); ?>" style="color:var(--text-muted);">
+                                    $<?php echo e($planData['price_yr']); ?>/yr
+                                </span>
                             </div>
                         </div>
 
@@ -796,21 +717,137 @@
 </div>
 
 <script>
-    const planPrices = {
+    // ── Paddle price map — populated by PricePreview API ─────────────────────────
+    // Keys are Paddle price IDs, values are localized formatted prices
+    const paddlePriceMap = {};
+
+    // ── Default USD prices as fallback ───────────────────────────────────────────
+    const planDefaults = {
         <?php $__currentLoopData = $allPlans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planKey => $planData): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        '<?php echo e($planKey); ?>': { mo: <?php echo e($planData['price_mo']); ?>, yr: <?php echo e($planData['price_yr']); ?> },
+        '<?php echo e($planKey); ?>': {
+            mo: '$<?php echo e($planData['price_mo']); ?>',
+            yr: '$<?php echo e($planData['price_yr']); ?>',
+            paddle_mo: '<?php echo e($planData['paddle_mo']); ?>',
+            paddle_yr: '<?php echo e($planData['paddle_yr']); ?>',
+        },
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     };
 
+    // Current plan price ID (for billing portal current plan display)
+    const currentPaddleId    = '<?php echo e($currentPaddleId); ?>';
+    const scheduledPaddleId  = '<?php echo e($scheduledPaddleId); ?>';
+    const currentBillingCycle = '<?php echo e($currentBilling); ?>';
+
+    // ── Initialize Paddle and fetch localized prices ──────────────────────────────
+    <?php if(config('cashier.environment') === 'sandbox'): ?>
+        Paddle.Environment.set('sandbox');
+    <?php endif; ?>
+
+    Paddle.Initialize({ token: '<?php echo e(config('cashier.client_side_token')); ?>' });
+
+    (async function fetchPortalPrices() {
+        try {
+            // Collect all price IDs needed
+            const allPriceIds = [];
+            Object.values(planDefaults).forEach(p => {
+                if (p.paddle_mo) allPriceIds.push(p.paddle_mo);
+                if (p.paddle_yr) allPriceIds.push(p.paddle_yr);
+            });
+
+            const uniqueIds = [...new Set(allPriceIds.filter(Boolean))];
+            if (!uniqueIds.length) return;
+
+            const result = await Paddle.PricePreview({
+                items: uniqueIds.map(id => ({ priceId: id, quantity: 1 }))
+            });
+
+            if (!result?.data?.details?.lineItems) return;
+
+            // Build price map: priceId → formatted localized price
+            result.data.details.lineItems.forEach(item => {
+                paddlePriceMap[item.price.id] = item.formattedTotals.total;
+            });
+
+            // ── Update current plan price in portal ───────────────────
+            if (currentPaddleId && paddlePriceMap[currentPaddleId]) {
+                const priceEl = document.getElementById('current-plan-price');
+                if (priceEl) {
+                    priceEl.textContent = paddlePriceMap[currentPaddleId];
+                }
+            }
+
+            // ── Update scheduled change price in banner ───────────────
+            if (scheduledPaddleId && paddlePriceMap[scheduledPaddleId]) {
+                const schedEl = document.getElementById('scheduled-price');
+                if (schedEl) {
+                    const per = '<?php echo e($subscription->scheduled_billing ?? "monthly"); ?>' === 'annual' ? '/year' : '/month';
+                    schedEl.innerHTML = paddlePriceMap[scheduledPaddleId]
+                        + '<span style="font-size:0.8rem;font-weight:400;color:var(--text-muted);">' + per + '</span>';
+                }
+            }
+
+            // ── Update Change Plan modal prices ───────────────────────
+            Object.entries(planDefaults).forEach(([planKey, planData]) => {
+                const moPriceFormatted = paddlePriceMap[planData.paddle_mo] || planData.mo;
+                const yrPriceFormatted = paddlePriceMap[planData.paddle_yr] || planData.yr;
+
+                // Update toggle labels
+                const labelMo = document.getElementById('label-mo-' + planKey);
+                const labelYr = document.getElementById('label-yr-' + planKey);
+                if (labelMo) labelMo.textContent = moPriceFormatted + '/mo';
+                if (labelYr) labelYr.textContent = yrPriceFormatted + '/yr';
+
+                // Update price display (currently showing monthly by default)
+                const priceEl = document.getElementById('price-' + planKey);
+                if (priceEl) {
+                    const currentCycle = document.getElementById('billing-' + planKey)?.value || 'monthly';
+                    if (currentCycle === 'monthly') {
+                        priceEl.innerHTML = moPriceFormatted + ' <span>/ month</span>';
+                    } else {
+                        priceEl.innerHTML = yrPriceFormatted + ' <span>/ year</span>';
+                    }
+                }
+
+                // Store localized prices for toggle function
+                planDefaults[planKey].moFormatted = moPriceFormatted;
+                planDefaults[planKey].yrFormatted = yrPriceFormatted;
+            });
+
+        } catch (e) {
+            console.log('Portal price preview failed, using USD defaults:', e.message);
+            // Clear loading state for scheduled price
+            const schedEl = document.getElementById('scheduled-price');
+            if (schedEl) {
+                <?php if($scheduledChange ?? null): ?>
+                <?php
+                    $fallbackPrice = ($scheduledChange['billing'] === 'annual')
+                        ? '$' . config("plans.{$scheduledChange['plan']}.price_annual")
+                        : '$' . config("plans.{$scheduledChange['plan']}.price_monthly");
+                    $fallbackPer = ($scheduledChange['billing'] === 'annual') ? '/year' : '/month';
+                ?>
+                schedEl.innerHTML = '<?php echo e($fallbackPrice); ?><span style="font-size:0.8rem;font-weight:400;color:var(--text-muted);"><?php echo e($fallbackPer); ?></span>';
+                <?php endif; ?>
+            }
+        }
+    })();
+
+    // ── Modal functions ───────────────────────────────────────────────────────────
+    let cpAnnual = {};  // track billing cycle per plan in modal
+
     function setBilling(planKey, cycle) {
+        cpAnnual[planKey] = (cycle === 'annual');
+
         document.getElementById('toggle-mo-' + planKey).classList.toggle('active', cycle === 'monthly');
         document.getElementById('toggle-yr-' + planKey).classList.toggle('active', cycle === 'annual');
 
-        const prices  = planPrices[planKey];
         const priceEl = document.getElementById('price-' + planKey);
-        priceEl.innerHTML = cycle === 'monthly'
-            ? '$' + prices.mo + ' <span>/ month</span>'
-            : '$' + prices.yr + ' <span>/ year</span>';
+        if (priceEl) {
+            const moPrice = planDefaults[planKey]?.moFormatted || planDefaults[planKey]?.mo || '';
+            const yrPrice = planDefaults[planKey]?.yrFormatted || planDefaults[planKey]?.yr || '';
+            priceEl.innerHTML = cycle === 'monthly'
+                ? moPrice + ' <span>/ month</span>'
+                : yrPrice + ' <span>/ year</span>';
+        }
 
         document.getElementById('billing-' + planKey).value = cycle;
         ['billing-now-' + planKey, 'billing-renewal-' + planKey].forEach(id => {
@@ -822,20 +859,23 @@
     function submitPlanChange(planKey, when, planLabel) {
         const billing      = document.getElementById('billing-' + planKey)?.value || 'monthly';
         const billingLabel = billing === 'monthly' ? 'Monthly' : 'Annual';
+        const price        = billing === 'monthly'
+            ? (planDefaults[planKey]?.moFormatted || planDefaults[planKey]?.mo)
+            : (planDefaults[planKey]?.yrFormatted || planDefaults[planKey]?.yr);
         let msg = '';
 
         if (when === 'immediately') {
             msg = '⚠ Upgrade to ' + planLabel + ' (' + billingLabel + ')\n\n'
                 + 'You are about to upgrade your plan.\n\n'
-                + '• The full ' + billingLabel.toLowerCase() + ' price will be automatically deducted from your saved payment method.\n'
+                + '• ' + price + ' will be automatically deducted from your saved payment method.\n'
                 + '• Your new plan limits will be active immediately after payment.\n'
                 + '• No additional action is required — payment happens automatically.\n\n'
                 + 'Confirm upgrade?';
         } else {
             msg = 'Switch to ' + planLabel + ' (' + billingLabel + ') at next renewal (<?php echo e($nextRenewal); ?>)?\n\n'
                 + '• No charge today.\n'
-                + '• Change takes effect on <?php echo e($nextRenewal); ?>.\n'
-                + '• You will be billed the new plan price on that date.';
+                + '• You will be billed ' + price + ' on <?php echo e($nextRenewal); ?>.\n'
+                + '• Change takes effect on <?php echo e($nextRenewal); ?>.';
         }
 
         if (!confirm(msg)) return;
@@ -845,7 +885,7 @@
         if (form) form.submit();
     }
 
-    function openChangePlan()  {
+    function openChangePlan() {
         document.getElementById('changePlanModal').style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
