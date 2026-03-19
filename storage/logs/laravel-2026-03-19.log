@@ -168,3 +168,113 @@
 [2026-03-19 09:50:48] local.INFO: Form found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","form_name":"Test form"} 
 [2026-03-19 09:50:48] local.WARNING: Submission limit reached for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4: 200/200  
 [2026-03-19 09:50:48] local.INFO: Success response {"wants_json":false,"format":null,"redirect_url":null} 
+[2026-03-19 10:02:31] local.INFO: Plan swapped via Paddle: personal/monthly → professional/monthly (when=immediately) for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4  
+[2026-03-19 10:03:27] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_hnzeiu3z","method":"POST"} 
+[2026-03-19 10:03:27] local.INFO: Request data: {"name":"Tanuja","email":"tanuja10@yopmail.com","message":"test professional","honeypot_wZuMf5wF":null} 
+[2026-03-19 10:03:27] local.INFO: Has files: {"files":0} 
+[2026-03-19 10:03:29] local.INFO: Form found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","form_name":"Test form"} 
+[2026-03-19 10:03:29] local.INFO: Redirecting to captcha page {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 10:03:29] local.INFO: Showing captcha page {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 10:03:41] local.INFO: === CAPTCHA VERIFICATION STARTED === {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 10:03:42] local.INFO: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-19 10:03:42] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-19 10:03:42] local.INFO: Captcha verified successfully  
+[2026-03-19 10:03:42] local.INFO: Pending submission found {"data_keys":["name","email","message","honeypot_wZuMf5wF"],"stored_ip":"127.0.0.1","current_ip":"127.0.0.1"} 
+[2026-03-19 10:03:42] local.INFO: Recreating request with files {"temp_files":[],"ip":"127.0.0.1","is_ajax":false} 
+[2026-03-19 10:03:42] local.INFO: Recreated request {"has_files":0,"ip":"127.0.0.1"} 
+[2026-03-19 10:03:42] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_hnzeiu3z","method":"POST"} 
+[2026-03-19 10:03:42] local.INFO: Request data: {"name":"Tanuja","email":"tanuja10@yopmail.com","message":"test professional","honeypot_wZuMf5wF":null,"captcha_verified":true} 
+[2026-03-19 10:03:42] local.INFO: Has files: {"files":0} 
+[2026-03-19 10:03:43] local.INFO: Form found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","form_name":"Test form"} 
+[2026-03-19 10:03:43] local.INFO: Clean submission data {"name":"Tanuja","email":"tanuja10@yopmail.com","message":"test professional","honeypot_wZuMf5wF":null} 
+[2026-03-19 10:03:43] local.INFO: FILE UPLOAD CHECK {"all_files":[]} 
+[2026-03-19 10:03:45] local.INFO: VALID SUBMISSION {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","ip":"127.0.0.1","is_spam":false,"reasons":[]} 
+[2026-03-19 10:03:45] local.INFO: Spam detection result {"is_spam":false,"reason":null} 
+[2026-03-19 10:03:45] local.INFO: Submission stored {"id":"a1562b1c-21e8-4a09-8382-9d94b403c4a3"} 
+[2026-03-19 10:03:46] local.INFO: submissions_used incremented for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4: now 1  
+[2026-03-19 10:03:46] local.INFO: === SENDING NOTIFICATION EMAIL === {"to":"sakshi05@yopmail.com","submission_id":"a1562b1c-21e8-4a09-8382-9d94b403c4a3","has_files":false,"file_count":0,"file_paths":[]} 
+[2026-03-19 10:03:46] local.INFO: CC emails from form {"cc_emails":["tsaklani2drish@gmail.com"]} 
+[2026-03-19 10:03:46] local.INFO: Final CC emails {"final_list":["tsaklani2drish@gmail.com"]} 
+[2026-03-19 10:03:46] local.INFO: Verified attachment paths {"verified_count":0,"paths":[]} 
+[2026-03-19 10:03:46] local.INFO: Email template selected: basic  
+[2026-03-19 10:03:46] local.INFO: Attachments to process: 0  
+[2026-03-19 10:03:46] local.INFO: Mail object created  
+[2026-03-19 10:03:46] local.INFO: Sending email with CC {"to":"sakshi05@yopmail.com","cc":["tsaklani2drish@gmail.com"]} 
+[2026-03-19 10:03:46] local.INFO: Total attachments added: 0  
+[2026-03-19 10:03:47] local.INFO: Mail send method called successfully  
+[2026-03-19 10:03:47] local.INFO: Submission updated with email_sent flag  
+[2026-03-19 10:03:47] local.INFO: Email sent successfully to: sakshi05@yopmail.com  
+[2026-03-19 10:03:48] local.INFO: Auto-response sent to: tanuja10@yopmail.com  
+[2026-03-19 10:03:48] local.INFO: Success response {"wants_json":false,"format":null,"redirect_url":null} 
+[2026-03-19 10:03:48] local.INFO: Showing captcha page {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 10:03:49] local.WARNING: No pending submission found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 10:04:15] local.INFO: Showing captcha page {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 10:04:16] local.WARNING: No pending submission found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 10:04:30] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_hnzeiu3z","method":"POST"} 
+[2026-03-19 10:04:30] local.INFO: Request data: {"name":"Tanuja","email":"tanuja10@yopmail.com","message":"qwerty","honeypot_wZuMf5wF":null} 
+[2026-03-19 10:04:30] local.INFO: Has files: {"files":0} 
+[2026-03-19 10:04:31] local.INFO: Form found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","form_name":"Test form"} 
+[2026-03-19 10:04:31] local.WARNING: Submission limit reached for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4: 2000/2000  
+[2026-03-19 10:04:31] local.INFO: Success response {"wants_json":false,"format":null,"redirect_url":null} 
+[2026-03-19 10:05:13] local.INFO: Plan swapped via Paddle: professional/monthly → business/monthly (when=immediately) for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4  
+[2026-03-19 10:07:30] local.ERROR: There are no commands defined in the "caache" namespace.
+
+Did you mean this?
+    cache {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"caache\" namespace.
+
+Did you mean this?
+    cache at C:/Git-folders/000form.com/vendor/symfony/console/Application.php:694)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(743): Symfony/Component/Console/Application->findNamespace('caache')
+#1 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(298): Symfony/Component/Console/Application->find('caache:clear')
+#2 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#5 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#6 {main}
+"} 
+[2026-03-19 10:10:24] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_hnzeiu3z","method":"POST"} 
+[2026-03-19 10:10:24] local.INFO: Request data: {"name":"Tanuja","email":"tanuja10@yopmail.com","message":"qwerty","honeypot_wZuMf5wF":null} 
+[2026-03-19 10:10:24] local.INFO: Has files: {"files":0} 
+[2026-03-19 10:10:25] local.INFO: Form found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","form_name":"Test form"} 
+[2026-03-19 10:10:26] local.INFO: Redirecting to captcha page {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 10:10:26] local.INFO: Showing captcha page {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 10:10:34] local.INFO: === CAPTCHA VERIFICATION STARTED === {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 10:10:35] local.INFO: Verifying captcha {"token_exists":true,"ip":"127.0.0.1"} 
+[2026-03-19 10:10:35] local.INFO: RecaptchaService: Verification result {"success":true,"score":null,"action":null,"error_codes":[]} 
+[2026-03-19 10:10:35] local.INFO: Captcha verified successfully  
+[2026-03-19 10:10:35] local.INFO: Pending submission found {"data_keys":["name","email","message","honeypot_wZuMf5wF"],"stored_ip":"127.0.0.1","current_ip":"127.0.0.1"} 
+[2026-03-19 10:10:35] local.INFO: Recreating request with files {"temp_files":[],"ip":"127.0.0.1","is_ajax":false} 
+[2026-03-19 10:10:35] local.INFO: Recreated request {"has_files":0,"ip":"127.0.0.1"} 
+[2026-03-19 10:10:35] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_hnzeiu3z","method":"POST"} 
+[2026-03-19 10:10:35] local.INFO: Request data: {"name":"Tanuja","email":"tanuja10@yopmail.com","message":"qwerty","honeypot_wZuMf5wF":null,"captcha_verified":true} 
+[2026-03-19 10:10:35] local.INFO: Has files: {"files":0} 
+[2026-03-19 10:10:36] local.INFO: Form found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","form_name":"Test form"} 
+[2026-03-19 10:10:36] local.INFO: Clean submission data {"name":"Tanuja","email":"tanuja10@yopmail.com","message":"qwerty","honeypot_wZuMf5wF":null} 
+[2026-03-19 10:10:36] local.INFO: FILE UPLOAD CHECK {"all_files":[]} 
+[2026-03-19 10:10:37] local.INFO: VALID SUBMISSION {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","ip":"127.0.0.1","is_spam":false,"reasons":[]} 
+[2026-03-19 10:10:37] local.INFO: Spam detection result {"is_spam":false,"reason":null} 
+[2026-03-19 10:10:37] local.INFO: Submission stored {"id":"a1562d90-f262-4db3-abf5-116a5a8e4f34"} 
+[2026-03-19 10:10:38] local.INFO: submissions_used incremented for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4: now 1  
+[2026-03-19 10:10:38] local.INFO: === SENDING NOTIFICATION EMAIL === {"to":"sakshi05@yopmail.com","submission_id":"a1562d90-f262-4db3-abf5-116a5a8e4f34","has_files":false,"file_count":0,"file_paths":[]} 
+[2026-03-19 10:10:38] local.INFO: CC emails from form {"cc_emails":["tsaklani2drish@gmail.com"]} 
+[2026-03-19 10:10:38] local.INFO: Final CC emails {"final_list":["tsaklani2drish@gmail.com"]} 
+[2026-03-19 10:10:38] local.INFO: Verified attachment paths {"verified_count":0,"paths":[]} 
+[2026-03-19 10:10:38] local.INFO: Email template selected: basic  
+[2026-03-19 10:10:38] local.INFO: Attachments to process: 0  
+[2026-03-19 10:10:38] local.INFO: Mail object created  
+[2026-03-19 10:10:38] local.INFO: Sending email with CC {"to":"sakshi05@yopmail.com","cc":["tsaklani2drish@gmail.com"]} 
+[2026-03-19 10:10:38] local.INFO: Total attachments added: 0  
+[2026-03-19 10:10:39] local.INFO: Mail send method called successfully  
+[2026-03-19 10:10:39] local.INFO: Submission updated with email_sent flag  
+[2026-03-19 10:10:39] local.INFO: Email sent successfully to: sakshi05@yopmail.com  
+[2026-03-19 10:10:40] local.INFO: Auto-response sent to: tanuja10@yopmail.com  
+[2026-03-19 10:10:40] local.INFO: Success response {"wants_json":false,"format":null,"redirect_url":null} 
+[2026-03-19 10:11:23] local.INFO: Showing captcha page {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 10:11:24] local.WARNING: No pending submission found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1"} 
+[2026-03-19 10:11:38] local.INFO: === FORM SUBMISSION STARTED === {"slug":"f_hnzeiu3z","method":"POST"} 
+[2026-03-19 10:11:38] local.INFO: Request data: {"name":"Tanuja Saklani","email":"tanuja10@yopmail.com","message":"qwerty","honeypot_wZuMf5wF":null} 
+[2026-03-19 10:11:38] local.INFO: Has files: {"files":0} 
+[2026-03-19 10:11:39] local.INFO: Form found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","form_name":"Test form"} 
+[2026-03-19 10:11:40] local.WARNING: Submission limit reached for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4: 20000/20000  
+[2026-03-19 10:11:40] local.INFO: Success response {"wants_json":false,"format":null,"redirect_url":null} 

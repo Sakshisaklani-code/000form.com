@@ -85,7 +85,7 @@ return [
         'paddle_annual_id'      => env('PADDLE_BUSINESS_ANNUAL_PRICE_ID'),
         'submissions'           => -1,     // unlimited
         'forms'                 => -1,
-        'team_members'          => -1,     // unlimited
+        'team_members'          => 20,000,     // unlimited
         'file_upload_mb'        => 10,    // ✓ 100MB uploads
         'webhooks'              => true,
         'role_permissions'      => true,   // ✓ unlocked
