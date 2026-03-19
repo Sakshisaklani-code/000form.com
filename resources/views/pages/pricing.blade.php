@@ -508,9 +508,9 @@
             <hr class="pp-divider">
             <span class="pp-feat-label">Everything in Professional, plus</span>
             <ul class="pp-feats">
-                <li class="pp-feat hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>Unlimited submissions</li>
+                <li class="pp-feat hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>20,000 submissions</li>
                 <li class="pp-feat hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>Unlimited forms</li>
-                <li class="pp-feat hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>Unlimited team members</li>
+                <li class="pp-feat hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>3 team members</li>
                 <li class="pp-feat hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>File uploads <span class="pp-pill">100MB</span></li>
             </ul>
         </div>

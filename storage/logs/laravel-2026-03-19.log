@@ -278,3 +278,10 @@ Did you mean this?
 [2026-03-19 10:11:39] local.INFO: Form found {"form_id":"a143d206-6ec8-4480-a8bf-5124209c3cc1","form_name":"Test form"} 
 [2026-03-19 10:11:40] local.WARNING: Submission limit reached for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4: 20000/20000  
 [2026-03-19 10:11:40] local.INFO: Success response {"wants_json":false,"format":null,"redirect_url":null} 
+[2026-03-19 11:20:20] local.ERROR: Supabase password reset error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/recover` resulted in a `429 Too Many Requests` response:
+{"code":429,"error_code":"over_email_send_rate_limit","msg":"email rate limit exceeded"}
+  
+[2026-03-19 11:22:41] local.INFO: Auto-synced scheduled cancellation from Paddle for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4  
+[2026-03-19 11:38:27] local.INFO: Auto-synced: resumption detected from Paddle for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4  
+[2026-03-19 11:38:41] local.INFO: Auto-synced: scheduled cancellation detected from Paddle for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4  
+[2026-03-19 11:38:53] local.INFO: Auto-synced: resumption detected from Paddle for user 4ef898b9-c68f-40f6-a83d-5a39d10cc3a4  

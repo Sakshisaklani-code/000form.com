@@ -71,7 +71,81 @@ class BillingController extends Controller
             $subscription->refresh();
         }
 
-        // ── Auto-apply scheduled plan change if date passed ───
+        // ── Auto-sync with Paddle ─────────────────────────────────
+        // Catches ANY state changes made via Paddle dashboard or customer portal
+        // Handles both directions: cancel AND resume/reactivation
+        // On production webhooks handle this in real-time — this is the local fallback
+        if ($subscription
+            && $subscription->paddle_subscription_id
+            && $subscription->status->value === 'active'
+        ) {
+            try {
+                $paddleResponse = Http::withHeaders($this->paddleHeaders())
+                    ->get($this->paddleApiUrl("/subscriptions/{$subscription->paddle_subscription_id}"));
+
+                if ($paddleResponse->successful()) {
+                    $paddleData      = $paddleResponse->json('data');
+                    $scheduledChange = $paddleData['scheduled_change'] ?? null;
+                    $paddleStatus    = $paddleData['status'] ?? null;
+                    $paddleAction    = $scheduledChange['action'] ?? null;
+
+                    // ── Case 1: Paddle has scheduled cancel, DB doesn't know ──
+                    if ($paddleAction === 'cancel' && ! $subscription->cancel_at_period_end) {
+                        $subscription->update([
+                            'cancel_at_period_end' => true,
+                            'cancelled_at'         => now(),
+                            'paddle_last_event'    => 'subscription.canceled_scheduled',
+                        ]);
+                        Cache::forget("sub_limit_{$user->id}");
+                        $subscription->refresh();
+                        Log::info("Auto-synced: scheduled cancellation detected from Paddle for user {$user->id}");
+                    }
+
+                    // ── Case 2: DB says cancelled but Paddle has NO scheduled cancel ──
+                    // User resumed from Paddle dashboard — clear cancel status in DB
+                    if ($paddleAction !== 'cancel'
+                        && $paddleStatus === 'active'
+                        && $subscription->cancel_at_period_end
+                    ) {
+                        $subscription->update([
+                            'cancel_at_period_end' => false,
+                            'cancelled_at'         => null,
+                            'status'               => 'active',
+                            'paddle_last_event'    => 'subscription.resumed_synced',
+                        ]);
+                        Cache::forget("sub_limit_{$user->id}");
+                        $subscription->refresh();
+                        Log::info("Auto-synced: resumption detected from Paddle for user {$user->id}");
+                    }
+
+                    // ── Case 3: Paddle subscription is fully cancelled ───────
+                    if ($paddleStatus === 'canceled') {
+                        $freeLimits = config('plans.free');
+                        $subscription->update([
+                            'status'                   => 'cancelled',
+                            'cancel_at_period_end'     => false,
+                            'paddle_last_event'        => 'subscription.canceled_synced',
+                            'submissions_limit'        => $freeLimits['submissions'],
+                            'file_upload_limit_mb'     => $freeLimits['file_upload_mb'],
+                            'team_members_limit'       => $freeLimits['team_members'],
+                            'webhooks_enabled'         => $freeLimits['webhooks'],
+                            'role_permissions_enabled' => $freeLimits['role_permissions'],
+                            'submissions_used'         => 0,
+                            'scheduled_plan'           => null,
+                            'scheduled_billing'        => null,
+                            'scheduled_effective_at'   => null,
+                        ]);
+                        Cache::forget("sub_limit_{$user->id}");
+                        $subscription->refresh();
+                        Log::info("Auto-synced: full cancellation detected from Paddle for user {$user->id}");
+                    }
+                }
+            } catch (\Exception $e) {
+                Log::warning('Paddle auto-sync check failed: ' . $e->getMessage());
+            }
+        }
+
+        // ── Auto-apply scheduled plan change if date passed ──────
         if ($subscription
             && $subscription->scheduled_plan
             && $subscription->scheduled_effective_at?->isPast()
