@@ -1,8 +1,8 @@
-@extends('layouts.dashboard')
 
-@section('title', 'Account & Team - 000form')
 
-@section('content')
+<?php $__env->startSection('title', 'Account & Team - 000form'); ?>
+
+<?php $__env->startSection('content'); ?>
 
 <style>
     .ap {
@@ -260,54 +260,54 @@
 
 <div class="ap">
 
-    {{-- HEADER --}}
+    
     <div class="ap-header">
         <h1>Account & Team</h1>
         <p>Manage your account details and team members.</p>
     </div>
 
-    {{-- FLASH MESSAGES --}}
-    @if(session('success'))
-        <div class="ap-flash success">✓ {{ session('success') }}</div>
-    @endif
-    @if(session('error'))
-        <div class="ap-flash error">⚠ {{ session('error') }}</div>
-    @endif
+    
+    <?php if(session('success')): ?>
+        <div class="ap-flash success">✓ <?php echo e(session('success')); ?></div>
+    <?php endif; ?>
+    <?php if(session('error')): ?>
+        <div class="ap-flash error">⚠ <?php echo e(session('error')); ?></div>
+    <?php endif; ?>
 
-    {{-- ACCOUNT INFO --}}
+    
     <div class="ap-card">
         <div class="ap-card-title">Account Info</div>
         <div class="ap-grid">
             <div>
                 <div class="ap-label">Email</div>
-                <div class="ap-value">{{ auth()->user()?->email ?? '—' }}</div>
+                <div class="ap-value"><?php echo e(auth()->user()?->email ?? '—'); ?></div>
             </div>
             <div>
                 <div class="ap-label">Provider</div>
-                <div class="ap-value">{{ ucfirst(auth()->user()?->provider ?? 'email') }}</div>
+                <div class="ap-value"><?php echo e(ucfirst(auth()->user()?->provider ?? 'email')); ?></div>
             </div>
             <div>
                 <div class="ap-label">Account Created</div>
-                <div class="ap-value">{{ auth()->user()?->created_at?->format('M d, Y') ?? '—' }}</div>
+                <div class="ap-value"><?php echo e(auth()->user()?->created_at?->format('M d, Y') ?? '—'); ?></div>
             </div>
         </div>
     </div>
 
-    {{-- ACCOUNT SETTINGS --}}
+    
     <div class="ap-card">
         <div class="ap-card-title">Account Settings</div>
 
         <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-            {{-- Only show change password for email users --}}
-            @if(auth()->user()?->provider === 'email')
+            
+            <?php if(auth()->user()?->provider === 'email'): ?>
                 <button onclick="openPasswordModal()" class="ap-btn ap-btn-outline">
                     🔒 Change Password
                 </button>
-            @else
+            <?php else: ?>
                 <span style="font-size:0.85rem;color:#666;padding:0.7rem 0;">
-                    Password management not available for {{ ucfirst(auth()->user()?->provider) }} accounts.
+                    Password management not available for <?php echo e(ucfirst(auth()->user()?->provider)); ?> accounts.
                 </span>
-            @endif
+            <?php endif; ?>
 
             <button onclick="openDeleteModal()" class="ap-btn ap-btn-danger">
                 🗑 Delete Account
@@ -315,7 +315,7 @@
         </div>
     </div>
 
-    {{-- TEAM MEMBERS --}}
+    
     <div class="ap-card">
         <div class="ap-card-title">Team Members</div>
 
@@ -326,7 +326,7 @@
             <a href="#" class="ap-btn ap-btn-primary">+ Invite Member</a>
         </div>
 
-        @if(isset($teamMembers) && count($teamMembers))
+        <?php if(isset($teamMembers) && count($teamMembers)): ?>
             <table class="ap-table">
                 <thead>
                     <tr>
@@ -337,40 +337,41 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($teamMembers as $member)
+                    <?php $__currentLoopData = $teamMembers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $member): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-                            <td>{{ $member->email }}</td>
-                            <td>{{ ucfirst($member->role ?? 'member') }}</td>
-                            <td>{{ $member->created_at?->format('M d, Y') }}</td>
+                            <td><?php echo e($member->email); ?></td>
+                            <td><?php echo e(ucfirst($member->role ?? 'member')); ?></td>
+                            <td><?php echo e($member->created_at?->format('M d, Y')); ?></td>
                             <td>
                                 <a href="#" class="ap-btn ap-btn-outline" style="padding:0.4rem 0.7rem;">
                                     Remove
                                 </a>
                             </td>
                         </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
-        @else
+        <?php else: ?>
             <div class="ap-empty">No team members yet. Invite your first teammate.</div>
-        @endif
+        <?php endif; ?>
     </div>
 
 </div>
 
-{{-- ── CHANGE PASSWORD MODAL ── --}}
+
 <div id="passwordModal" class="modal-overlay" style="display:none;">
     <div class="modal-content">
         <h2>Change Password</h2>
 
-        @if($errors->any())
+        <?php if($errors->any()): ?>
             <div class="modal-error">
-                {{ $errors->first() }}
-            </div>
-        @endif
+                <?php echo e($errors->first()); ?>
 
-        <form method="POST" action="{{ route('account.password.update') }}">
-            @csrf
+            </div>
+        <?php endif; ?>
+
+        <form method="POST" action="<?php echo e(route('account.password.update')); ?>">
+            <?php echo csrf_field(); ?>
 
             <div class="password-toggle-container">
                 <label for="current_password" class="modal-label">Current Password</label>
@@ -404,7 +405,7 @@
     </div>
 </div>
 
-{{-- ── DELETE ACCOUNT MODAL ── --}}
+
 <div id="deleteModal" class="modal-overlay" style="display:none;">
     <div class="modal-content">
         <h2>Delete Account</h2>
@@ -419,9 +420,9 @@
             </ul>
         </div>
 
-        <form method="POST" action="{{ route('account.delete') }}">
-            @csrf
-            @method('DELETE')
+        <form method="POST" action="<?php echo e(route('account.delete')); ?>">
+            <?php echo csrf_field(); ?>
+            <?php echo method_field('DELETE'); ?>
 
             <div class="modal-actions">
                 <button type="button" class="btn-cancel" onclick="closeDeleteModal()">Cancel</button>
@@ -464,11 +465,12 @@
     }
 
     // Auto-open password modal if there are validation errors
-    @if($errors->any())
+    <?php if($errors->any()): ?>
         document.addEventListener('DOMContentLoaded', function() {
             openPasswordModal();
         });
-    @endif
+    <?php endif; ?>
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.dashboard', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/account-settings.blade.php ENDPATH**/ ?>

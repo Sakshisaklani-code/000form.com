@@ -135,6 +135,8 @@
         border-radius: 50%;
     }
 
+    .ph-badge.completed    { background: rgba(0,255,136,0.12); color: #00ff88;   border: 1px solid rgba(0,255,136,0.25); }
+    .ph-badge.completed    .ph-badge-dot { background: #00ff88; }
     .ph-badge.success    { background: rgba(0,255,136,0.12); color: #00ff88;   border: 1px solid rgba(0,255,136,0.25); }
     .ph-badge.success    .ph-badge-dot { background: #00ff88; }
     .ph-badge.failed     { background: rgba(255,68,68,0.12);  color: #ff6b6b;  border: 1px solid rgba(255,68,68,0.25); }
@@ -193,6 +195,7 @@
 </div>
 
 @php
+    $Completed  = collect($transactions)->where('status_type', 'success')->count();
     $successful  = collect($transactions)->where('status_type', 'success')->count();
     $failed      = collect($transactions)->where('status_type', 'failed')->count();
     $incomplete  = collect($transactions)->whereIn('status_type', ['incomplete', 'abandoned'])->count();

@@ -331,3 +331,6 @@ Route::get('/billing/payment-history', [App\Http\Controllers\PaymentHistoryContr
 Route::get('/billing/invoice/{txnId}/pdf', [App\Http\Controllers\PaymentHistoryController::class, 'invoicePdf'])
      ->name('billing.invoice-pdf')
      ->middleware('auth');
+
+Route::post('/cancel-scheduled-change', [BillingController::class, 'cancelScheduledChange'])
+     ->name('billing.cancel-scheduled-change');

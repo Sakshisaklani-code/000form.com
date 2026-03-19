@@ -156,6 +156,10 @@ class PaymentHistoryController extends Controller
             return ['label' => 'Abandoned', 'type' => 'abandoned'];
         }
 
+        if ($payStatus === 'none' && $txnStatus === 'completed') {
+            return ['label' => 'Completed', 'type' => 'completed'];
+        }
+
         return ['label' => ucfirst($txnStatus), 'type' => 'unknown'];
     }
 

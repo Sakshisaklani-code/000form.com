@@ -46,6 +46,10 @@ class Subscription extends Model
         'cancelled_at',
         'grace_period_ends_at',
         'trial_ends_at',
+        'trial_ends_at',
+        'scheduled_plan',
+        'scheduled_billing',
+        'scheduled_effective_at',
         'paused_at',
         'last_payment_at',
         'paddle_last_event',
@@ -68,6 +72,7 @@ class Subscription extends Model
         'trial_ends_at'             => 'datetime',
         'paused_at'                 => 'datetime',
         'last_payment_at'           => 'datetime',
+        'scheduled_effective_at' => 'datetime',
     ];
 
     // ── RELATIONSHIP ──────────────────────────────────────

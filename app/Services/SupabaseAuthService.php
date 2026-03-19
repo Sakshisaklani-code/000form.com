@@ -44,8 +44,16 @@ class SupabaseAuthService
             ];
         }
 
-        // 2️⃣ Update password using Supabase access token
-        $update = $this->updateUserPassword($login['data']['session']['access_token'], $newPassword);
+        // Supabase returns token in different locations depending on version
+        $accessToken = $login['data']['session']['access_token']
+            ?? $login['data']['access_token']
+            ?? null;
+
+        if (! $accessToken) {
+            return ['success' => false, 'error' => 'Could not retrieve session token.'];
+        }
+
+        $update = $this->updateUserPassword($accessToken, $newPassword);
 
         if (!$update['success']) {
             return [
