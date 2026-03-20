@@ -89,26 +89,88 @@
     .ap-btn-danger   { border: 1px solid rgba(255,68,68,0.4); color: #ff6b6b; background: transparent; }
     .ap-btn-danger:hover { background: rgba(255,68,68,0.1); border-color: #ff6b6b; }
 
-    .ap-table { width: 100%; border-collapse: collapse; }
-
-    .ap-table th {
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        color: #666;
-        text-align: left;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid #333;
+    .ap-btn-sm {
+        padding: 0.4rem 0.85rem;
+        font-size: 0.78rem;
+        border-radius: 8px;
     }
 
-    .ap-table td {
-        padding: 1rem 0;
-        border-bottom: 1px solid #333;
+    /* ── EMAIL LIST ── */
+    .email-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .email-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.875rem 1.25rem;
+        background: #1a1a1a;
+        border: 1px solid #2a2a2a;
+        border-radius: 12px;
+        flex-wrap: wrap;
+    }
+
+    .email-row-left {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .email-address {
         font-size: 0.9rem;
-        color: #aaa;
+        color: #eee;
         word-break: break-word;
+        font-weight: 500;
     }
 
-    .ap-empty { text-align: center; padding: 2rem; color: #666; font-style: italic; }
+    .email-badge {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.65rem;
+        font-family: 'Courier New', monospace;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.2rem 0.65rem;
+        border-radius: 100px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .badge-primary  { background: rgba(0,255,136,0.12); color: #00ff88; border: 1px solid rgba(0,255,136,0.3); }
+    .badge-verified { background: rgba(0,136,255,0.12); color: #4db8ff; border: 1px solid rgba(0,136,255,0.3); }
+    .badge-pending  { background: rgba(255,165,0,0.12);  color: #ffa500; border: 1px solid rgba(255,165,0,0.3); }
+
+    .email-row-actions { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+
+    /* ── ADD EMAIL FORM ── */
+    .add-email-form {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1.25rem;
+        flex-wrap: wrap;
+    }
+
+    .add-email-input {
+        flex: 1;
+        min-width: 220px;
+        padding: 0.7rem 1rem;
+        border-radius: 10px;
+        border: 1px solid #333;
+        background: #1a1a1a;
+        color: #eee;
+        font-size: 0.9rem;
+        transition: border-color 0.2s;
+    }
+
+    .add-email-input:focus {
+        outline: none;
+        border-color: #0fda87;
+    }
+
+    .add-email-input::placeholder { color: #555; }
 
     /* ── FLASH MESSAGES ── */
     .ap-flash {
@@ -193,11 +255,7 @@
         padding: 0;
     }
 
-    .modal-error {
-        color: #ff6b6b;
-        font-size: 0.8rem;
-        margin-bottom: 0.75rem;
-    }
+    .modal-error { color: #ff6b6b; font-size: 0.8rem; margin-bottom: 0.75rem; }
 
     .modal-actions {
         display: flex;
@@ -207,45 +265,26 @@
     }
 
     .btn-cancel {
-        background: #333;
-        color: #ccc;
-        border: none;
-        padding: 0.7rem 1.3rem;
-        border-radius: 10px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background 0.2s;
+        background: #333; color: #ccc; border: none;
+        padding: 0.7rem 1.3rem; border-radius: 10px;
+        font-weight: 600; cursor: pointer; transition: background 0.2s;
     }
-
     .btn-cancel:hover { background: #444; }
 
     .btn-primary {
-        background: #0fda87;
-        color: #121212;
-        border: none;
-        padding: 0.7rem 1.5rem;
-        border-radius: 10px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: background 0.2s;
+        background: #0fda87; color: #121212; border: none;
+        padding: 0.7rem 1.5rem; border-radius: 10px;
+        font-weight: 700; cursor: pointer; transition: background 0.2s;
     }
-
     .btn-primary:hover { background: #0bc671; }
 
     .btn-danger-confirm {
-        background: #ff4444;
-        color: #fff;
-        border: none;
-        padding: 0.7rem 1.5rem;
-        border-radius: 10px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: background 0.2s;
+        background: #ff4444; color: #fff; border: none;
+        padding: 0.7rem 1.5rem; border-radius: 10px;
+        font-weight: 700; cursor: pointer; transition: background 0.2s;
     }
-
     .btn-danger-confirm:hover { background: #cc0000; }
 
-    /* ── DELETE CONFIRM BOX ── */
     .delete-warning {
         background: rgba(255,68,68,0.08);
         border: 1px solid rgba(255,68,68,0.25);
@@ -256,6 +295,12 @@
         margin-bottom: 1.25rem;
         line-height: 1.6;
     }
+
+    @media (max-width: 600px) {
+        .email-row { flex-direction: column; align-items: flex-start; }
+        .add-email-form { flex-direction: column; }
+        .add-email-input { min-width: 100%; }
+    }
 </style>
 
 <div class="ap">
@@ -263,7 +308,7 @@
     
     <div class="ap-header">
         <h1>Account & Team</h1>
-        <p>Manage your account details.</p>
+        <p>Manage your account details and email addresses.</p>
     </div>
 
     
@@ -272,6 +317,9 @@
     <?php endif; ?>
     <?php if(session('error')): ?>
         <div class="ap-flash error">⚠ <?php echo e(session('error')); ?></div>
+    <?php endif; ?>
+    <?php if($errors->has('additional_email')): ?>
+        <div class="ap-flash error">⚠ <?php echo e($errors->first('additional_email')); ?></div>
     <?php endif; ?>
 
     
@@ -295,10 +343,101 @@
 
     
     <div class="ap-card">
+        <div class="ap-card-title">Email Addresses</div>
+
+        <div class="email-list">
+
+            
+            <div class="email-row">
+                <div class="email-row-left">
+                    <span class="email-address"><?php echo e(auth()->user()->email); ?></span>
+                    <span class="email-badge badge-primary">Primary</span>
+                    <span class="email-badge badge-verified">Verified</span>
+                </div>
+                
+            </div>
+
+            
+            <?php $__empty_1 = true; $__currentLoopData = $additionalEmails; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $userEmail): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                <div class="email-row">
+                    <div class="email-row-left">
+                        <span class="email-address"><?php echo e($userEmail->email); ?></span>
+                        <?php if($userEmail->is_verified): ?>
+                            <span class="email-badge badge-verified">Verified</span>
+                        <?php else: ?>
+                            <span class="email-badge badge-pending">Pending verification</span>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="email-row-actions">
+                        
+                        <?php if (! ($userEmail->is_verified)): ?>
+                            <form method="POST"
+                                  action="<?php echo e(route('account.email.resend', $userEmail)); ?>"
+                                  style="display:inline;">
+                                <?php echo csrf_field(); ?>
+                                <button type="submit"
+                                        class="ap-btn ap-btn-outline ap-btn-sm">
+                                    Resend
+                                </button>
+                            </form>
+                        <?php endif; ?>
+
+                        
+                        <form method="POST"
+                              action="<?php echo e(route('account.email.destroy', $userEmail)); ?>"
+                              style="display:inline;"
+                              onsubmit="return confirm('Remove <?php echo e($userEmail->email); ?> from your account?')">
+                            <?php echo csrf_field(); ?>
+                            <?php echo method_field('DELETE'); ?>
+                            <button type="submit"
+                                    class="ap-btn ap-btn-danger ap-btn-sm">
+                                Remove
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                <p style="font-size:0.85rem;color:#555;margin:0;">
+                    No additional emails added yet.
+                </p>
+            <?php endif; ?>
+
+        </div>
+
+        
+        <?php if($additionalEmails->count() < 1): ?>
+            <form method="POST"
+                action="<?php echo e(route('account.email.store')); ?>"
+                class="add-email-form">
+                <?php echo csrf_field(); ?>
+                <input type="email"
+                    name="additional_email"
+                    class="add-email-input"
+                    placeholder="Add another email address..."
+                    value="<?php echo e(old('additional_email')); ?>"
+                    required>
+                <button type="submit" class="ap-btn ap-btn-primary">
+                    + Add Email
+                </button>
+            </form>
+
+            <p style="font-size:0.78rem;color:#555;margin-top:0.75rem;">
+                A verification link will be sent to the new email address.
+            </p>
+        <?php else: ?>
+            <p style="font-size:0.82rem;color:#555;margin-top:1rem;">
+                Maximum of 1 additional email allowed.
+            </p>
+        <?php endif; ?>
+
+    </div>
+
+    
+    <div class="ap-card">
         <div class="ap-card-title">Account Settings</div>
 
         <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-            
             <?php if(auth()->user()?->provider === 'email'): ?>
                 <button onclick="openPasswordModal()" class="ap-btn ap-btn-outline">
                     🔒 Change Password
@@ -315,7 +454,6 @@
         </div>
     </div>
 
-
 </div>
 
 
@@ -323,11 +461,8 @@
     <div class="modal-content">
         <h2>Change Password</h2>
 
-        <?php if($errors->any()): ?>
-            <div class="modal-error">
-                <?php echo e($errors->first()); ?>
-
-            </div>
+        <?php if($errors->has('current_password') || $errors->has('password')): ?>
+            <div class="modal-error"><?php echo e($errors->first()); ?></div>
         <?php endif; ?>
 
         <form method="POST" action="<?php echo e(route('account.password.update')); ?>">
@@ -383,11 +518,10 @@
         <form method="POST" action="<?php echo e(route('account.delete')); ?>">
             <?php echo csrf_field(); ?>
             <?php echo method_field('DELETE'); ?>
-
             <div class="modal-actions">
                 <button type="button" class="btn-cancel" onclick="closeDeleteModal()">Cancel</button>
                 <button type="submit" class="btn-danger-confirm"
-                        onclick="return confirm('Last chance — are you absolutely sure? This cannot be undone.')">
+                        onclick="return confirm('Last chance — are you absolutely sure?')">
                     Yes, Delete My Account
                 </button>
             </div>
@@ -396,39 +530,19 @@
 </div>
 
 <script>
-    // ── PASSWORD MODAL ──
-    function openPasswordModal() {
-        document.getElementById('passwordModal').style.display = 'flex';
-    }
-    function closePasswordModal() {
-        document.getElementById('passwordModal').style.display = 'none';
-    }
+    function openPasswordModal()  { document.getElementById('passwordModal').style.display = 'flex'; }
+    function closePasswordModal() { document.getElementById('passwordModal').style.display = 'none'; }
+    function openDeleteModal()    { document.getElementById('deleteModal').style.display = 'flex'; }
+    function closeDeleteModal()   { document.getElementById('deleteModal').style.display = 'none'; }
 
-    // ── DELETE MODAL ──
-    function openDeleteModal() {
-        document.getElementById('deleteModal').style.display = 'flex';
-    }
-    function closeDeleteModal() {
-        document.getElementById('deleteModal').style.display = 'none';
-    }
-
-    // ── SHOW/HIDE PASSWORD ──
     function togglePassword(inputId, btn) {
         const input = document.getElementById(inputId);
-        if (input.type === 'password') {
-            input.type = 'text';
-            btn.textContent = 'Hide';
-        } else {
-            input.type = 'password';
-            btn.textContent = 'Show';
-        }
+        input.type  = input.type === 'password' ? 'text' : 'password';
+        btn.textContent = input.type === 'password' ? 'Show' : 'Hide';
     }
 
-    // Auto-open password modal if there are validation errors
-    <?php if($errors->any()): ?>
-        document.addEventListener('DOMContentLoaded', function() {
-            openPasswordModal();
-        });
+    <?php if($errors->has('current_password') || $errors->has('password')): ?>
+        document.addEventListener('DOMContentLoaded', () => openPasswordModal());
     <?php endif; ?>
 </script>
 

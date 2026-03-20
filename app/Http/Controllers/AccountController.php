@@ -13,6 +13,20 @@ class AccountController extends Controller
 {
     protected SupabaseAuthService $supabase;
 
+    public function index(Request $request)
+    {
+        $user = $request->user();
+
+
+        $additionalEmails = \App\Models\UserEmail::where('user_id', $user->id)
+            ->latest()
+            ->get();
+
+        return view('pages.account-settings', [
+            'additionalEmails' => $additionalEmails,
+        ]);
+    }
+
     public function __construct(SupabaseAuthService $supabase)
     {
         $this->supabase = $supabase;

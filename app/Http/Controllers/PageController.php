@@ -50,15 +50,17 @@ class PageController extends Controller
         return view('pages.form-submit');
     }
 
-    public function AccountSettings()
+    public function AccountSettings(Request $request)
     {
-        $user = auth()->user();
+        $user = $request->user();
 
-        $teamMembers = $user->teamMembers ?? collect();
+
+        $additionalEmails = \App\Models\UserEmail::where('user_id', $user->id)
+            ->latest()
+            ->get();
 
         return view('pages.account-settings', [
-            'user' => $user,
-            'teamMembers' => $teamMembers,
+            'additionalEmails' => $additionalEmails,
         ]);
     }
 

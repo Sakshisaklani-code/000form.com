@@ -18,7 +18,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\TeamController;
-
+use App\Http\Controllers\UserEmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -357,3 +357,30 @@ Route::prefix('team')->name('team.')->middleware('auth')->group(function () {
 Route::get('/team/accept/{token}',                     [TeamController::class, 'showAccept'])        ->name('team.accept');
 Route::post('/team/accept/{token}',                    [TeamController::class, 'acceptInvitation'])  ->name('team.accept.confirm')->middleware('auth');
 Route::post('/team/decline/{token}',                   [TeamController::class, 'declineInvitation']) ->name('team.decline')->middleware('auth');
+
+
+/*
+|--------------------------------------------------------------------------
+|  Additional Emails 
+|--------------------------------------------------------------------------
+*/
+Route::get('/Email-verified', [UserEmailController::class, 'userSecondEmailverified'])
+     ->name('user.another.email-verified');
+Route::middleware(['auth'])->prefix('account')->name('account.')->group(function () {
+ 
+    // Add new additional email
+    Route::post('/emails',                    [UserEmailController::class, 'store'])
+         ->name('email.store');
+ 
+    // Resend verification to an additional email
+    Route::post('/emails/{userEmail}/resend', [UserEmailController::class, 'resend'])
+         ->name('email.resend');
+ 
+    // Delete an additional email
+    Route::delete('/emails/{userEmail}',      [UserEmailController::class, 'destroy'])
+         ->name('email.destroy');
+});
+ 
+// Verify email — no auth required (user clicks link from email)
+Route::get('/account/verify-email/{token}', [UserEmailController::class, 'verify'])
+     ->name('account.email.verify');
