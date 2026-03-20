@@ -272,6 +272,13 @@ class PlaygroundController extends Controller
      */
     protected function handlePlaygroundSubmission(Request $request)
     {
+        // ✅ ADD THIS TEMPORARILY
+        Log::info('Playground: handlePlaygroundSubmission called', [
+            'has_recipient_email' => $request->has('recipient_email'),
+            'recipient_email'     => $request->input('recipient_email'),
+            'all_input'           => $request->except(['_token']),
+        ]);
+
         $validator = Validator::make($request->all(), [
             'recipient_email' => 'required|email|max:255',
         ]);
@@ -355,6 +362,12 @@ class PlaygroundController extends Controller
      */
     public function handleEmailSubmission(Request $request, string $email)
     {
+        // ADD THIS
+        Log::info('Playground: handleEmailSubmission called', [
+            'email' => $email,
+            'verified_in_cache' => Cache::get('playground_verify_' . md5($email)),
+        ]);
+
         $email = strtolower(trim($email));
 
         Log::info('Playground email submission received', [

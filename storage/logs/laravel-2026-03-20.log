@@ -4324,3 +4324,29 @@ DETAIL:  Key (id)=(d4846ed8-0c73-4d43-8052-21cb0f8e8039) already exists. at C:/G
 [2026-03-20 09:08:23] local.ERROR: JWT verification error: Incorrect key for this algorithm  
 [2026-03-20 09:11:08] local.ERROR: JWT verification error: Incorrect key for this algorithm  
 [2026-03-20 09:11:44] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-20 09:13:50] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-20 09:13:54] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-20 09:13:54] local.ERROR: Supabase refresh token error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=refresh_token` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"refresh_token_not_found","msg":"Invalid Refresh Token: Refresh Token Not Found"}
+  
+[2026-03-20 09:14:10] local.INFO: Playground: verification email sent {"email":"sakshi.saklani@drishinfo.com"} 
+[2026-03-20 09:14:21] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-20 09:14:21] local.ERROR: Supabase refresh token error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=refresh_token` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"refresh_token_not_found","msg":"Invalid Refresh Token: Refresh Token Not Found"}
+  
+[2026-03-20 09:14:23] local.INFO: Playground: email verified {"email":"sakshi.saklani@drishinfo.com"} 
+[2026-03-20 09:16:04] local.INFO: Playground: verification email sent {"email":"sakshi22@yopmail.com"} 
+[2026-03-20 09:16:15] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-20 09:16:18] local.INFO: Playground: email verified {"email":"sakshi22@yopmail.com"} 
+[2026-03-20 09:17:25] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-20 09:30:40] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-20 09:30:50] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-20 09:30:57] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-20 09:40:26] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-20 09:40:42] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-20 09:40:46] local.INFO: Playground: verification email sent {"email":"sakshi22@yopmail.com"} 
+[2026-03-20 09:40:50] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-20 09:40:52] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-20 09:40:54] local.INFO: Playground: email verified {"email":"sakshi22@yopmail.com"} 
+[2026-03-20 09:40:54] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-20 09:40:56] local.ERROR: JWT verification error: Incorrect key for this algorithm  

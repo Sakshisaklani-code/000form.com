@@ -115,11 +115,12 @@
     Your form submission was received successfully. The owner of this form will be in touch soon.
     </p>
 
-    @if(session('form_referrer'))
+    <!-- @if(session('form_referrer'))
         <a href="{{ session('form_referrer') }}" class="back-btn">← Go Back</a>
     @else
         <button class="back-btn" onclick="window.history.go(-1)">← Go Back</button>
-    @endif
+    @endif -->
+    <button class="back-btn" onclick="history.go({{ session('had_captcha') ? -2 : -1 }})">← Go Back</button>
 
     <p class="footer">
     Powered by <a href="/">000form</a>
