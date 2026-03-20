@@ -10,10 +10,23 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Paddle\Billable;
 use App\Enums\PlanName;
 use App\Enums\SubscriptionStatus;
+use App\Models\TeamMember;
+use App\Models\TeamInvitation;
 
 class User extends Authenticatable
 {
     use HasFactory, Billable, HasUuids, Notifiable, SoftDeletes;
+
+    // ✅ ADD THESE FOUR LINES — fixes UUID handling with Supabase
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    protected $keyType = 'string';
+    public function uniqueIds(): array
+    {
+        return array_filter(parent::uniqueIds(), function ($column) {
+            return empty($this->attributes[$column]);
+        });
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -145,5 +158,81 @@ class User extends Authenticatable
     {
         return $this->currentPlan() === PlanName::Free;
     }
+
+
+    // Members I have added to my workspace
+    public function teamMembers()
+    {
+        return $this->hasMany(TeamMember::class, 'workspace_owner_id', 'id');
+    }
     
+    // Workspaces I am a member of (other owners)
+    public function memberOf()
+    {
+        return $this->hasMany(TeamMember::class, 'member_user_id', 'id');
+    }
+    
+    // Invitations I have sent
+    public function sentInvitations()
+    {
+        return $this->hasMany(TeamInvitation::class, 'workspace_owner_id', 'id');
+    }
+    
+    // Pending invitations sent to my email
+    public function pendingInvitations()
+    {
+        return TeamInvitation::where('invitee_email', $this->email)
+            ->where('status', 'pending')
+            ->where('expires_at', '>', now())
+            ->get();
+    }
+    
+    // ── Team limit helpers ────────────────────────────────────────────────────────
+    
+    // Max team members allowed on current plan (including owner)
+    public function teamMembersLimit(): int
+    {
+        $plan = $this->currentPlan()->value ?? 'free';
+        return config("plans.{$plan}.team_members", 1);
+    }
+    
+    // Current total members including owner
+    public function currentTeamMembersCount(): int
+    {
+        return $this->teamMembers()->count() + 1; // +1 for owner
+    }
+    
+    // Can add more members?
+    public function canAddTeamMember(): bool
+    {
+        $limit = $this->teamMembersLimit();
+        if ($limit === -1) return true; // unlimited (business)
+        return $this->currentTeamMembersCount() < $limit;
+    }
+    
+    // Is this user a member of another workspace?
+    public function isTeamMemberOf(string $ownerId): bool
+    {
+        return $this->memberOf()->where('workspace_owner_id', $ownerId)->exists();
+    }
+    
+    // Get team member record for a specific workspace
+    public function teamMemberRecord(string $ownerId): ?TeamMember
+    {
+        return $this->memberOf()->where('workspace_owner_id', $ownerId)->first();
+    }
+    
+    // Get active workspace owner ID from session (for workspace switching)
+    public function activeWorkspaceOwnerId(): string
+    {
+        return session('active_workspace', $this->id);
+    }
+    
+    // Is user currently viewing their own workspace?
+    public function isInOwnWorkspace(): bool
+    {
+        return $this->activeWorkspaceOwnerId() === $this->id;
+    }
+
+        
 }

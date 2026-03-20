@@ -45,7 +45,7 @@ return [
         'paddle_annual_id'      => env('PADDLE_PERSONAL_ANNUAL_PRICE_ID'),
         'submissions'           => 200,
         'forms'                 => -1,     // unlimited
-        'team_members'          => 1,
+        'team_members'          => 2,
         'file_upload_mb'        => 10,      // 10MB file uploads
         'webhooks'              => false,
         'role_permissions'      => false,
@@ -65,7 +65,7 @@ return [
         'paddle_annual_id'      => env('PADDLE_PRO_ANNUAL_PRICE_ID'),
         'submissions'           => 2000,
         'forms'                 => -1,
-        'team_members'          => 2,
+        'team_members'          => 3,
         'file_upload_mb'        => 10,     // ✓ 10MB uploads
         'webhooks'              => true,   // ✓ unlocked
         'role_permissions'      => false,
@@ -85,7 +85,7 @@ return [
         'paddle_annual_id'      => env('PADDLE_BUSINESS_ANNUAL_PRICE_ID'),
         'submissions'           => 20000,     // unlimited
         'forms'                 => -1,
-        'team_members'          => 3,    // unlimited
+        'team_members'          => -1,    // unlimited
         'file_upload_mb'        => 10,    // ✓ 100MB uploads
         'webhooks'              => true,
         'role_permissions'      => true,   // ✓ unlocked

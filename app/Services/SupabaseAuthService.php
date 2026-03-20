@@ -68,83 +68,83 @@ class SupabaseAuthService
     /**
      * Sign up a new user with email and password.
      */
-    public function signUp(string $email, string $password): array
-    {
-        try {
-            $response = $this->client->post('/auth/v1/signup', [
-                'headers' => [
-                    'apikey' => $this->key,
-                    'Content-Type' => 'application/json',
-                ],
-                'json' => [
-                    'email' => $email,
-                    'password' => $password,
-                    'email_redirect_to' => 'https://000form.com/auth/confirm'
-                ],
-            ]);
+    // public function signUp(string $email, string $password): array
+    // {
+    //     try {
+    //         $response = $this->client->post('/auth/v1/signup', [
+    //             'headers' => [
+    //                 'apikey' => $this->key,
+    //                 'Content-Type' => 'application/json',
+    //             ],
+    //             'json' => [
+    //                 'email' => $email,
+    //                 'password' => $password,
+    //                 'email_redirect_to' => 'https://000form.com/auth/confirm'
+    //             ],
+    //         ]);
 
-            $data = json_decode($response->getBody()->getContents(), true);
+    //         $data = json_decode($response->getBody()->getContents(), true);
 
-            if (isset($data['user'])) {
-                $this->syncUser($data['user']);
-            }
+    //         if (isset($data['user'])) {
+    //             $this->syncUser($data['user']);
+    //         }
 
-            return [
-                'success' => true,
-                'data' => $data,
-            ];
-        } catch (GuzzleException $e) {
-            Log::error('Supabase signup error: ' . $e->getMessage());
+    //         return [
+    //             'success' => true,
+    //             'data' => $data,
+    //         ];
+    //     } catch (GuzzleException $e) {
+    //         Log::error('Supabase signup error: ' . $e->getMessage());
 
-            $response = $e->getResponse();
-            $body = $response ? json_decode($response->getBody()->getContents(), true) : null;
+    //         $response = $e->getResponse();
+    //         $body = $response ? json_decode($response->getBody()->getContents(), true) : null;
 
-            return [
-                'success' => false,
-                'error' => $body['error_description'] ?? $body['msg'] ?? 'Signup failed',
-            ];
-        }
-    }
+    //         return [
+    //             'success' => false,
+    //             'error' => $body['error_description'] ?? $body['msg'] ?? 'Signup failed',
+    //         ];
+    //     }
+    // }
 
-    /**
-     * Sign in a user with email and password.
-     */
-    public function signIn(string $email, string $password): array
-    {
-        try {
-            $response = $this->client->post('/auth/v1/token?grant_type=password', [
-                'headers' => [
-                    'apikey' => $this->key,
-                    'Content-Type' => 'application/json',
-                ],
-                'json' => [
-                    'email' => $email,
-                    'password' => $password,
-                ],
-            ]);
+    // /**
+    //  * Sign in a user with email and password.
+    //  */
+    // public function signIn(string $email, string $password): array
+    // {
+    //     try {
+    //         $response = $this->client->post('/auth/v1/token?grant_type=password', [
+    //             'headers' => [
+    //                 'apikey' => $this->key,
+    //                 'Content-Type' => 'application/json',
+    //             ],
+    //             'json' => [
+    //                 'email' => $email,
+    //                 'password' => $password,
+    //             ],
+    //         ]);
 
-            $data = json_decode($response->getBody()->getContents(), true);
+    //         $data = json_decode($response->getBody()->getContents(), true);
 
-            if (isset($data['user'])) {
-                $this->syncUser($data['user']);
-            }
+    //         if (isset($data['user'])) {
+    //             $this->syncUser($data['user']);
+    //         }
 
-            return [
-                'success' => true,
-                'data' => $data,
-            ];
-        } catch (GuzzleException $e) {
-            Log::error('Supabase signin error: ' . $e->getMessage());
+    //         return [
+    //             'success' => true,
+    //             'data' => $data,
+    //         ];
+    //     } catch (GuzzleException $e) {
+    //         Log::error('Supabase signin error: ' . $e->getMessage());
             
-            $response = $e->getResponse();
-            $body = $response ? json_decode($response->getBody()->getContents(), true) : null;
+    //         $response = $e->getResponse();
+    //         $body = $response ? json_decode($response->getBody()->getContents(), true) : null;
             
-            return [
-                'success' => false,
-                'error' => $body['error_description'] ?? $body['msg'] ?? 'Invalid credentials',
-            ];
-        }
-    }
+    //         return [
+    //             'success' => false,
+    //             'error' => $body['error_description'] ?? $body['msg'] ?? 'Invalid credentials',
+    //         ];
+    //     }
+    // }
 
     /**
      * Get OAuth URL for social login.
@@ -162,38 +162,38 @@ class SupabaseAuthService
     /**
      * Exchange OAuth code for session.
      */
-    public function exchangeCodeForSession(string $code): array
-    {
-        try {
-            $response = $this->client->post('/auth/v1/token?grant_type=pkce', [
-                'headers' => [
-                    'apikey' => $this->key,
-                    'Content-Type' => 'application/json',
-                ],
-                'json' => [
-                    'auth_code' => $code,
-                ],
-            ]);
+    // public function exchangeCodeForSession(string $code): array
+    // {
+    //     try {
+    //         $response = $this->client->post('/auth/v1/token?grant_type=pkce', [
+    //             'headers' => [
+    //                 'apikey' => $this->key,
+    //                 'Content-Type' => 'application/json',
+    //             ],
+    //             'json' => [
+    //                 'auth_code' => $code,
+    //             ],
+    //         ]);
 
-            $data = json_decode($response->getBody()->getContents(), true);
+    //         $data = json_decode($response->getBody()->getContents(), true);
 
-            if (isset($data['user'])) {
-                $this->syncUser($data['user']);
-            }
+    //         if (isset($data['user'])) {
+    //             $this->syncUser($data['user']);
+    //         }
 
-            return [
-                'success' => true,
-                'data' => $data,
-            ];
-        } catch (GuzzleException $e) {
-            Log::error('Supabase OAuth exchange error: ' . $e->getMessage());
+    //         return [
+    //             'success' => true,
+    //             'data' => $data,
+    //         ];
+    //     } catch (GuzzleException $e) {
+    //         Log::error('Supabase OAuth exchange error: ' . $e->getMessage());
             
-            return [
-                'success' => false,
-                'error' => 'OAuth authentication failed',
-            ];
-        }
-    }
+    //         return [
+    //             'success' => false,
+    //             'error' => 'OAuth authentication failed',
+    //         ];
+    //     }
+    // }
 
     /**
      * Get user from access token.
@@ -364,6 +364,8 @@ class SupabaseAuthService
     /**
      * Sync Supabase user to local database.
      */
+    // app/Services/SupabaseAuthService.php — syncUser method
+
     public function syncUser(array $supabaseUser): User
     {
         $provider = 'email';
@@ -371,58 +373,210 @@ class SupabaseAuthService
             $provider = $supabaseUser['app_metadata']['provider'];
         }
 
-        return User::updateOrCreate(
+        // ✅ withTrashed() finds the record even if soft-deleted
+        $user = User::withTrashed()->updateOrCreate(
             ['id' => $supabaseUser['id']],
             [
-                'email' => $supabaseUser['email'],
-                'name' => $supabaseUser['user_metadata']['full_name'] 
-                    ?? $supabaseUser['user_metadata']['name'] 
-                    ?? null,
-                'avatar_url' => $supabaseUser['user_metadata']['avatar_url'] 
-                    ?? $supabaseUser['user_metadata']['picture'] 
-                    ?? null,
-                'provider' => $provider,
-                'email_verified' => !empty($supabaseUser['email_confirmed_at']),
-                'email_verified_at' => $supabaseUser['email_confirmed_at'] ?? null,
-                'metadata' => $supabaseUser['user_metadata'] ?? [],
+                'email'              => $supabaseUser['email'],
+                'name'               => $supabaseUser['user_metadata']['full_name']
+                                        ?? $supabaseUser['user_metadata']['name']
+                                        ?? null,
+                'avatar_url'         => $supabaseUser['user_metadata']['avatar_url']
+                                        ?? $supabaseUser['user_metadata']['picture']
+                                        ?? null,
+                'provider'           => $provider,
+                'email_verified'     => !empty($supabaseUser['email_confirmed_at']),
+                'email_verified_at'  => $supabaseUser['email_confirmed_at'] ?? null,
+                'metadata'           => $supabaseUser['user_metadata'] ?? [],
+                'deleted_at'         => null, // ✅ restore if previously soft-deleted
             ]
         );
+
+        return $user;
     }
 
+    // public function verifyEmailToken(string $tokenHash, string $type): array
+    // {
+    //     try {
+
+    //         $response = $this->client->post('/auth/v1/verify', [
+    //             'headers' => [
+    //                 'apikey' => $this->key,
+    //                 'Content-Type' => 'application/json',
+    //             ],
+    //             'json' => [
+    //                 'token_hash' => $tokenHash,
+    //                 'type' => $type
+    //             ],
+    //         ]);
+
+    //         $data = json_decode($response->getBody()->getContents(), true);
+
+    //         if (isset($data['user'])) {
+    //             $this->syncUser($data['user']);
+    //         }
+
+    //         return [
+    //             'success' => true,
+    //             'data' => $data
+    //         ];
+
+    //     } catch (\Exception $e) {
+
+    //         Log::error('Supabase email verify error: ' . $e->getMessage());
+
+    //         return [
+    //             'success' => false
+    //         ];
+    //     }
+    // }
+
+
+    public function signUp(string $email, string $password): array
+    {
+        try {
+            $response = $this->client->post('/auth/v1/signup', [
+                'headers' => [
+                    'apikey'       => $this->key,
+                    'Content-Type' => 'application/json',
+                ],
+                'json' => [
+                    'email'             => $email,
+                    'password'          => $password,
+                    'email_redirect_to' => 'https://000form.com/auth/confirm',
+                ],
+            ]);
+    
+            $data = json_decode($response->getBody()->getContents(), true);
+    
+            // ✅ REMOVED syncUser() call — storeSession() in AuthController handles this.
+            // Calling it here AND in storeSession() caused a race-condition duplicate key error.
+    
+            return [
+                'success' => true,
+                'data'    => $data,
+            ];
+    
+        } catch (GuzzleException $e) {
+            Log::error('Supabase signup error: ' . $e->getMessage());
+    
+            $response = $e->getResponse();
+            $body     = $response ? json_decode($response->getBody()->getContents(), true) : null;
+    
+            return [
+                'success' => false,
+                'error'   => $body['error_description'] ?? $body['msg'] ?? 'Signup failed',
+            ];
+        }
+    }
+    
+    // ── 2. signIn() ──────────────────────────────────────────────
+    public function signIn(string $email, string $password): array
+    {
+        try {
+            $response = $this->client->post('/auth/v1/token?grant_type=password', [
+                'headers' => [
+                    'apikey'       => $this->key,
+                    'Content-Type' => 'application/json',
+                ],
+                'json' => [
+                    'email'    => $email,
+                    'password' => $password,
+                ],
+            ]);
+    
+            $data = json_decode($response->getBody()->getContents(), true);
+    
+            // ✅ REMOVED syncUser() call — storeSession() in AuthController handles this.
+            // Calling it here AND in storeSession() caused a race-condition duplicate key error.
+    
+            return [
+                'success' => true,
+                'data'    => $data,
+            ];
+    
+        } catch (GuzzleException $e) {
+            Log::error('Supabase signin error: ' . $e->getMessage());
+    
+            $response = $e->getResponse();
+            $body     = $response ? json_decode($response->getBody()->getContents(), true) : null;
+    
+            return [
+                'success' => false,
+                'error'   => $body['error_description'] ?? $body['msg'] ?? 'Invalid credentials',
+            ];
+        }
+    }
+    
+    // ── 3. exchangeCodeForSession() ───────────────────────────────
+    public function exchangeCodeForSession(string $code): array
+    {
+        try {
+            $response = $this->client->post('/auth/v1/token?grant_type=pkce', [
+                'headers' => [
+                    'apikey'       => $this->key,
+                    'Content-Type' => 'application/json',
+                ],
+                'json' => [
+                    'auth_code' => $code,
+                ],
+            ]);
+    
+            $data = json_decode($response->getBody()->getContents(), true);
+    
+            // ✅ REMOVED syncUser() call — storeSession() in AuthController handles this.
+            // Calling it here AND in storeSession() caused a race-condition duplicate key error.
+    
+            return [
+                'success' => true,
+                'data'    => $data,
+            ];
+    
+        } catch (GuzzleException $e) {
+            Log::error('Supabase OAuth exchange error: ' . $e->getMessage());
+    
+            return [
+                'success' => false,
+                'error'   => 'OAuth authentication failed',
+            ];
+        }
+    }
+    
+    // ── 4. verifyEmailToken() ─────────────────────────────────────
     public function verifyEmailToken(string $tokenHash, string $type): array
     {
         try {
-
             $response = $this->client->post('/auth/v1/verify', [
                 'headers' => [
-                    'apikey' => $this->key,
+                    'apikey'       => $this->key,
                     'Content-Type' => 'application/json',
                 ],
                 'json' => [
                     'token_hash' => $tokenHash,
-                    'type' => $type
+                    'type'       => $type,
                 ],
             ]);
-
+    
             $data = json_decode($response->getBody()->getContents(), true);
-
-            if (isset($data['user'])) {
-                $this->syncUser($data['user']);
-            }
-
+    
+            // ✅ REMOVED syncUser() call here.
+            // confirmEmail() in AuthController calls syncUser() directly (no login).
+            // storeSession() in AuthController calls syncUser() for login flows.
+            // Having it here too caused duplicate key errors on new user registration.
+    
             return [
                 'success' => true,
-                'data' => $data
+                'data'    => $data,
             ];
-
+    
         } catch (\Exception $e) {
-
             Log::error('Supabase email verify error: ' . $e->getMessage());
-
+    
             return [
-                'success' => false
+                'success' => false,
             ];
         }
     }
+ 
 
 }

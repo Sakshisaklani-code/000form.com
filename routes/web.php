@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\WebhookController;
+use App\Http\Controllers\TeamController;
 
 
 /*
@@ -334,3 +335,25 @@ Route::get('/billing/invoice/{txnId}/pdf', [App\Http\Controllers\PaymentHistoryC
 
 Route::post('/cancel-scheduled-change', [BillingController::class, 'cancelScheduledChange'])
      ->name('billing.cancel-scheduled-change');
+
+
+/*
+|--------------------------------------------------------------------------
+|  Team management
+|--------------------------------------------------------------------------
+*/
+// ── Team management (owner actions) ──────────────────────────────────────────
+Route::prefix('team')->name('team.')->middleware('auth')->group(function () {
+    Route::get('/',                                    [TeamController::class, 'index'])             ->name('index');
+    Route::post('/invite',                             [TeamController::class, 'invite'])            ->name('invite');
+    Route::post('/invitation/{invitation}/resend',     [TeamController::class, 'resendInvitation'])  ->name('invitation.resend');
+    Route::post('/invitation/{invitation}/cancel',     [TeamController::class, 'cancelInvitation'])  ->name('invitation.cancel');
+    Route::post('/member/{member}/role',               [TeamController::class, 'updateRole'])        ->name('member.role');
+    Route::delete('/member/{member}',                  [TeamController::class, 'removeMember'])      ->name('member.remove');
+    Route::post('/switch',                             [TeamController::class, 'switchWorkspace'])   ->name('switch');
+});
+ 
+// ── Invitation accept/decline (no auth required for show, auth required for action) ──
+Route::get('/team/accept/{token}',                     [TeamController::class, 'showAccept'])        ->name('team.accept');
+Route::post('/team/accept/{token}',                    [TeamController::class, 'acceptInvitation'])  ->name('team.accept.confirm')->middleware('auth');
+Route::post('/team/decline/{token}',                   [TeamController::class, 'declineInvitation']) ->name('team.decline')->middleware('auth');
