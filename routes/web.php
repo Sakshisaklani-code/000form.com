@@ -253,7 +253,7 @@ Route::post('/account/update-password', [AccountController::class, 'updatePasswo
 
 Route::get('/privacy', [PageController::class, 'privacyPolicy'])->name('pages.privacy-policy');
 Route::get('/terms', [PageController::class, 'terms'])->name('pages.terms');
-
+Route::get('/refund', [PageController::class, 'refundPolicy'])->name('pages.refund');
 
 Route::get('/form-submit', [PageController::class, 'formSubmit'])->name('pages.form-submit');
 

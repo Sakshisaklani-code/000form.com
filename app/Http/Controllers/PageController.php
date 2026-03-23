@@ -50,6 +50,11 @@ class PageController extends Controller
         return view('pages.form-submit');
     }
 
+    public function refundPolicy()
+    {
+        return view('pages.refund');
+    }
+
     public function AccountSettings(Request $request)
     {
         $user = $request->user();

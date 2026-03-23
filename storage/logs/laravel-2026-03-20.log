@@ -4847,3 +4847,6 @@ DETAIL:  Key (id)=(d4846ed8-0c73-4d43-8052-21cb0f8e8039) already exists. at C:/G
 [2026-03-20 11:40:37] local.ERROR: JWT verification error: Incorrect key for this algorithm  
 [2026-03-20 11:40:43] local.ERROR: JWT verification error: Incorrect key for this algorithm  
 [2026-03-20 11:40:46] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-20 11:47:59] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-20 11:48:02] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-20 11:48:04] local.ERROR: JWT verification error: Incorrect key for this algorithm  

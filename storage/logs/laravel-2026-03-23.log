@@ -1,0 +1,29 @@
+[2026-03-23 06:46:04] local.ERROR: Command "server" is not defined.
+
+Did you mean one of these?
+    make:observer
+    serve {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"server\" is not defined.
+
+Did you mean one of these?
+    make:observer
+    serve at C:/Git-folders/000form.com/vendor/symfony/console/Application.php:759)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(298): Symfony/Component/Console/Application->find('server')
+#1 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#4 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#5 {main}
+"} 
+[2026-03-23 06:47:06] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-23 07:23:48] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-23 07:24:08] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-23 07:24:12] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-23 07:24:18] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-23 08:45:32] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-23 08:45:37] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-23 08:45:37] local.ERROR: Supabase refresh token error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=refresh_token` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"refresh_token_not_found","msg":"Invalid Refresh Token: Refresh Token Not Found"}
+  
+[2026-03-23 08:45:48] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-23 08:45:58] local.ERROR: JWT verification error: Incorrect key for this algorithm  

@@ -178,6 +178,7 @@
                     <li><a href="{{ route('playground.index') }}">Playground</a></li>
                     <li><a href="{{ route('pages.terms') }}">Terms</a></li>
                     <li><a href="{{ route('pages.privacy-policy') }}">Privacy Policy</a></li>
+                    <li><a href="{{ route('pages.refund') }}">Refund Policy</a></li>
                     <li><a href="/ajax">AJAX</a></li>
                 </ul>
                 <p class="footer-copy">&copy; {{ date('Y') }} 000form</p>
