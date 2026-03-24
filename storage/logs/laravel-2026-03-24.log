@@ -247,3 +247,17 @@
 #57 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Git-folders//...')
 #58 {main}
 "} 
+[2026-03-24 10:37:34] local.ERROR: Supabase signin error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=password` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"invalid_credentials","msg":"Invalid login credentials"}
+  
+[2026-03-24 10:39:56] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-24 10:40:02] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-24 10:40:06] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-24 10:40:09] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-24 10:40:18] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-24 10:40:37] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-24 10:40:38] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-24 10:40:41] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-24 10:40:42] local.INFO: Paddle API: transaction txn_01kmfpwahmcjnkvt6hh1bghngm status=completed  
+[2026-03-24 10:40:42] local.INFO: Invoice PDF fetched for txn_01kmfpwahmcjnkvt6hh1bghngm: yes  
+[2026-03-24 10:40:44] local.INFO: Built subscription from Paddle API for user 070ea8b3-89fd-40f7-93c9-4975008410f4 {"plan":"personal","sub_id":"sub_01kmfpwpdmqy76044bqe2serzx","txn_id":"txn_01kmfpwahmcjnkvt6hh1bghngm","currency":"INR","invoice_pdf":"yes"} 

@@ -120,15 +120,16 @@
         letter-spacing: 0.02em;
     }
 
+    /* ── 3-column grid (no free plan) ── */
     .pp-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 1.25rem;
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
     }
 
-    @media (max-width: 1100px) { .pp-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 640px) {
+    @media (max-width: 900px)  { .pp-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px)  {
         .pp-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
     }
 
@@ -151,7 +152,6 @@
     .pp-plan:nth-child(1) { animation-delay: 0.1s; }
     .pp-plan:nth-child(2) { animation-delay: 0.2s; }
     .pp-plan:nth-child(3) { animation-delay: 0.3s; }
-    .pp-plan:nth-child(4) { animation-delay: 0.4s; }
 
     .pp-plan-badge {
         display: inline-block;
@@ -166,7 +166,6 @@
         width: fit-content;
     }
 
-    .pp-plan-badge.free-badge     { background: rgba(255,255,255,0.08); color: var(--text-secondary); border: 1px solid var(--border-color); }
     .pp-plan-badge.personal-badge { background: rgba(255,255,255,0.08); color: var(--text-secondary); border: 1px solid var(--border-color); }
     .pp-plan-badge.pro-badge      { background: rgba(0,255,136,0.15); color: var(--accent); border: 1px solid rgba(0,255,136,0.3); }
     .pp-plan-badge.biz-badge      { background: rgba(0,255,136,0.15); color: var(--accent); border: 1px solid rgba(0,255,136,0.3); }
@@ -284,6 +283,74 @@
         border: 1px solid rgba(0,255,136,0.3);
     }
 
+    /* ── FREE FOREVER BANNER ── */
+    .pp-free-banner {
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        padding: 2rem 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        margin-bottom: 4rem;
+        background: var(--bg-card);
+        animation: fadeInUp 0.5s ease 0.4s forwards;
+        opacity: 0;
+        flex-wrap: wrap;
+    }
+
+    .pp-free-banner:hover {
+        border-color: var(--border-hover);
+    }
+
+    .pp-free-banner-left { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .pp-free-banner-left h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .pp-free-forever-badge {
+        font-family: var(--font-mono);
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.2rem 0.6rem;
+        border-radius: 100px;
+        background: rgba(255,255,255,0.08);
+        color: var(--text-secondary);
+        border: 1px solid var(--border-color);
+    }
+
+    .pp-free-banner-left p {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        max-width: 540px;
+    }
+
+    .pp-free-banner-right { display: flex; align-items: center; gap: 2rem; flex-shrink: 0; flex-wrap: wrap; }
+
+    .pp-free-stats {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .pp-free-stat { text-align: center; }
+    .pp-free-stat .val { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); }
+    .pp-free-stat .lbl { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.15rem; }
+
+    @media (max-width: 700px) {
+        .pp-free-banner { flex-direction: column; align-items: flex-start; }
+        .pp-free-banner-right { width: 100%; justify-content: space-between; }
+        .pp-free-stats { gap: 1.5rem; }
+    }
+
     /* ── TOAST ── */
     .pp-toast {
         position: fixed;
@@ -335,7 +402,7 @@
             <div class="pp-toggle">
                 <span class="pp-toggle-lbl on" id="lbl-mo" onclick="ppToggle()">Monthly</span>
                 <span class="pp-toggle-lbl"    id="lbl-yr" onclick="ppToggle()">
-                    Annual 
+                    Annual
                     <!-- <span class="pp-save">Save 20%</span> -->
                 </span>
             </div>
@@ -348,48 +415,6 @@
         
         <div class="pp-plan">
             <?php if(auth()->guard()->check()): ?>
-                <?php if(auth()->user()->currentPlan()->value === 'free'): ?>
-                    <div class="pp-current-tag">Your Plan</div>
-                <?php endif; ?>
-            <?php endif; ?>
-            <span class="pp-plan-badge free-badge">Free</span>
-            <div class="pp-price">
-                <span class="sym">$</span>
-                <span class="num">0</span>
-                <span class="per">/month</span>
-            </div>
-            <p class="pp-plan-desc">For testing and development.</p>
-
-            <?php if(auth()->guard()->check()): ?>
-                <?php if(auth()->user()->currentPlan()->value === 'free'): ?>
-                    <button class="pp-cta pp-cta-current" disabled>
-                        <span class="btn-text">Current Plan</span>
-                    </button>
-                <?php else: ?>
-                    
-                    <a href="<?php echo e(route('billing.portal')); ?>" class="pp-cta pp-cta-outline">
-                        <span class="btn-text">Manage Plan →</span>
-                    </a>
-                <?php endif; ?>
-            <?php else: ?>
-                <a href="<?php echo e(route('signup')); ?>" class="pp-cta pp-cta-solid">
-                    <span class="btn-text">Get Started Free →</span>
-                </a>
-            <?php endif; ?>
-
-            <hr class="pp-divider">
-            <span class="pp-feat-label">Includes</span>
-            <ul class="pp-feats">
-                <li class="pp-feat hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>50 submissions/mo</li>
-                <li class="pp-feat hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>Unlimited forms</li>
-                <li class="pp-feat hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>1 team member</li>
-                <li class="pp-feat hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent"><polyline points="20 6 9 17 4 12"/></svg>File uploads <span class="pp-pill">10MB</span></li>
-            </ul>
-        </div>
-
-        
-        <div class="pp-plan">
-            <?php if(auth()->guard()->check()): ?>
                 <?php if(auth()->user()->currentPlan()->value === 'personal'): ?>
                     <div class="pp-current-tag">Your Plan</div>
                 <?php endif; ?>
@@ -398,7 +423,7 @@
             <div class="pp-price">
                 <span class="sym">$</span>
                 <span class="num" data-mo="15" data-yr="13">15</span>
-                <span class="per">/month</span>
+                <span class="per" id="per-personal">/month</span>
             </div>
             <p class="pp-plan-desc">For personal or portfolio sites.</p>
 
@@ -440,7 +465,7 @@
             <div class="pp-price">
                 <span class="sym">$</span>
                 <span class="num" data-mo="30" data-yr="28">30</span>
-                <span class="per">/month</span>
+                <span class="per" id="per-professional">/month</span>
             </div>
             <p class="pp-plan-desc">For freelancers and startups.</p>
 
@@ -482,7 +507,7 @@
             <div class="pp-price">
                 <span class="sym">$</span>
                 <span class="num" data-mo="90" data-yr="88">90</span>
-                <span class="per">/month</span>
+                <span class="per" id="per-business">/month</span>
             </div>
             <p class="pp-plan-desc">For organizations and agencies.</p>
 
@@ -513,6 +538,48 @@
             </ul>
         </div>
 
+    </div>
+
+    
+    <div class="pp-free-banner">
+        <div class="pp-free-banner-left">
+            <h3>
+                Free Forever
+                <span class="pp-free-forever-badge">Free</span>
+            </h3>
+            <p>Use 000form for testing and development. No credit card required — just sign up and start collecting submissions immediately.</p>
+        </div>
+        <div class="pp-free-banner-right">
+            <div class="pp-free-stats">
+                <div class="pp-free-stat">
+                    <div class="val">50</div>
+                    <div class="lbl">Submissions/mo</div>
+                </div>
+                <div class="pp-free-stat">
+                    <div class="val">∞</div>
+                    <div class="lbl">Forms</div>
+                </div>
+                <div class="pp-free-stat">
+                    <div class="val">10MB</div>
+                    <div class="lbl">File uploads</div>
+                </div>
+            </div>
+            <?php if(auth()->guard()->check()): ?>
+                <?php if(auth()->user()->currentPlan()->value === 'free'): ?>
+                    <button class="pp-cta pp-cta-current" style="margin-bottom:0; min-width:160px;" disabled>
+                        <span class="btn-text">Current Plan</span>
+                    </button>
+                <?php else: ?>
+                    <a href="<?php echo e(route('billing.portal')); ?>" class="pp-cta pp-cta-outline" style="margin-bottom:0; min-width:160px;">
+                        <span class="btn-text">Manage Plan →</span>
+                    </a>
+                <?php endif; ?>
+            <?php else: ?>
+                <a href="<?php echo e(route('signup')); ?>" class="pp-cta pp-cta-outline" style="margin-bottom:0; min-width:160px;">
+                    <span class="btn-text">Get Started Free →</span>
+                </a>
+            <?php endif; ?>
+        </div>
     </div>
 
 </div>
@@ -551,15 +618,16 @@
     });
 
     let annual = false;
-    (function() {
-        // ── BILLING TOGGLE ───────────────────────────────────────
-        
 
+    (function() {
+
+        // ── BILLING TOGGLE ────────────────────────────────────────
         window.ppToggle = function() {
             annual = !annual;
             document.getElementById('lbl-mo').classList.toggle('on', !annual);
             document.getElementById('lbl-yr').classList.toggle('on', annual);
 
+            // Update price numbers
             document.querySelectorAll('.num[data-mo]').forEach(function(el) {
                 el.style.opacity = '0';
                 setTimeout(function() {
@@ -567,9 +635,18 @@
                     el.style.opacity = '1';
                 }, 150);
             });
+
+            // Update /month → /annum on all .per spans
+            document.querySelectorAll('.pp-price .per').forEach(function(el) {
+                el.style.opacity = '0';
+                setTimeout(function() {
+                    el.textContent = annual ? '/annum' : '/month';
+                    el.style.opacity = '1';
+                }, 150);
+            });
         };
 
-        // ── TOAST HELPER ─────────────────────────────────────────
+        // ── TOAST HELPER ──────────────────────────────────────────
         function showToast(msg, type = 'error') {
             const toast = document.getElementById('pp-toast');
             const icon  = document.getElementById('pp-toast-icon');
@@ -584,21 +661,15 @@
         }
 
         // ── CHECKOUT FLOW ─────────────────────────────────────────
-        // 1. POST to Laravel → get Paddle checkout options JSON
-        // 2. Pass options to Paddle.Checkout.open()
-        // 3. Paddle shows overlay checkout
-        // 4. On success → eventCallback redirects to /subscription/processing
         window.startCheckout = async function(plan) {
             const billing    = annual ? 'annual' : 'monthly';
             const btn        = event.currentTarget;
             const csrfToken  = document.querySelector('meta[name=csrf-token]')?.content || '';
 
-            // Show loading spinner on button
             btn.classList.add('loading');
             btn.disabled = true;
 
             try {
-                // Step 1: Get checkout options from Laravel
                 const res = await fetch('<?php echo e(route('subscription.checkout')); ?>', {
                     method: 'POST',
                     headers: {
@@ -611,7 +682,6 @@
 
                 const data = await res.json();
 
-                // Already has subscription → go to billing portal
                 if (res.status === 409 && data.redirect) {
                     window.location.href = data.redirect;
                     return;
@@ -625,8 +695,6 @@
                     throw new Error('No checkout options received from server.');
                 }
 
-                // Step 2: Open Paddle overlay with the options from Laravel
-                // These options come directly from $checkout->options()
                 Paddle.Checkout.open(data.checkout_options);
 
             } catch (err) {
@@ -641,10 +709,10 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 't' || e.key === 'T') ppToggle();
         });
+
     })();
-    // ── FETCH LOCALIZED PRICES FROM PADDLE ───────────────────
-    // Paddle detects user location via IP automatically
-    // No need to detect IP manually — Paddle handles it
+
+    // ── FETCH LOCALIZED PRICES FROM PADDLE ───────────────────────
     (async function fetchLocalPrices() {
         try {
             const priceIds = [
@@ -667,17 +735,12 @@
                 priceMap[item.price.id] = item.formattedTotals.total;
             });
 
-            // ── Update Personal ───────────────────────────────
-            updatePrice('personal', 'mo', priceMap['<?php echo e(config('plans.personal.paddle_monthly_id')); ?>']);
-            updatePrice('personal', 'yr', priceMap['<?php echo e(config('plans.personal.paddle_annual_id')); ?>']);
-
-            // ── Update Professional ───────────────────────────
+            updatePrice('personal',     'mo', priceMap['<?php echo e(config('plans.personal.paddle_monthly_id')); ?>']);
+            updatePrice('personal',     'yr', priceMap['<?php echo e(config('plans.personal.paddle_annual_id')); ?>']);
             updatePrice('professional', 'mo', priceMap['<?php echo e(config('plans.professional.paddle_monthly_id')); ?>']);
             updatePrice('professional', 'yr', priceMap['<?php echo e(config('plans.professional.paddle_annual_id')); ?>']);
-
-            // ── Update Business ───────────────────────────────
-            updatePrice('business', 'mo', priceMap['<?php echo e(config('plans.business.paddle_monthly_id')); ?>']);
-            updatePrice('business', 'yr', priceMap['<?php echo e(config('plans.business.paddle_annual_id')); ?>']);
+            updatePrice('business',     'mo', priceMap['<?php echo e(config('plans.business.paddle_monthly_id')); ?>']);
+            updatePrice('business',     'yr', priceMap['<?php echo e(config('plans.business.paddle_annual_id')); ?>']);
 
         } catch (e) {
             console.log('Price preview failed, showing default USD prices:', e.message);
@@ -687,17 +750,13 @@
     function updatePrice(plan, cycle, formattedPrice) {
         if (!formattedPrice) return;
 
-        // Strip currency symbol and formatting to get just the number
         const numeric = formattedPrice.replace(/[^0-9.,]/g, '').replace(',', '');
 
-        // Find the price element — data-mo / data-yr attributes
         document.querySelectorAll('.num[data-mo]').forEach(el => {
-            const card = el.closest('.pp-plan');
+            const card  = el.closest('.pp-plan');
             if (!card) return;
-
             const badge = card.querySelector('.pp-plan-badge');
             if (!badge) return;
-
             const planName = badge.textContent.trim().toLowerCase();
             if (planName !== plan) return;
 
@@ -712,12 +771,10 @@
             }
         });
 
-        // Also update the sym span to show correct currency symbol
-        // Paddle returns ₹ for INR, $ for USD automatically
         const symbol = formattedPrice.replace(/[\d,. ]/g, '').trim();
         if (symbol) {
             document.querySelectorAll('.pp-plan .sym').forEach(sym => {
-                const card = sym.closest('.pp-plan');
+                const card  = sym.closest('.pp-plan');
                 const badge = card?.querySelector('.pp-plan-badge');
                 if (badge?.textContent.trim().toLowerCase() === plan) {
                     sym.textContent = symbol;
@@ -727,7 +784,6 @@
     }
 
 </script>
-
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/pricing.blade.php ENDPATH**/ ?>

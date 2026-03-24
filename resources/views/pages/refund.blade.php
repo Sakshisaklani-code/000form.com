@@ -149,7 +149,7 @@
             </li>
             <li>
                 <span class="text-green-400 font-semibold">Website:</span>
-                <a href="https://172tech.com/" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 underline ml-1">172 Tech</a>
+                <a href="https://172tech.com/" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 underline ml-1">172tech.com</a>
             </li>
             <li>
                 <span class="text-green-400 font-semibold">Address:</span>
