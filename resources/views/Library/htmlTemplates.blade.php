@@ -212,7 +212,7 @@
                     <h3 class="sidebar-title">Technology</h3>
                     
                     <div class="tech-list">
-                        <a href="#" class="tech-link active">
+                        <a href="#" onclick="return false;"class="tech-link active">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                                 <path d="M22 6l-10 7L2 6"/>
@@ -221,7 +221,7 @@
                             <span class="tech-count">6</span>
                         </a>
                         
-                        <a href="#" class="tech-link">
+                        <a href="#" onclick="return false;"class="tech-link">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
                                 <path d="M8 8h8v8H8z"/>
@@ -247,7 +247,7 @@
                     <h3 class="sidebar-title">Categories</h3>
                     
                     <div class="category-list">
-                        <a href="#" class="category-link active">
+                        <a href="#" onclick="return false;" class="category-link active">
                             <span>All Forms</span>
                             <span class="category-count">6</span>
                         </a>
@@ -336,7 +336,7 @@
                             <div class="form-card-header">
                                 <span class="form-badge">Contact Forms</span>
                             </div>
-                            <a href="#" class="view-more-link">
+                            <a href="#" onclick="return false;"class="view-more-link">
                                 Coming Soon
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -366,7 +366,7 @@
                             <div class="form-card-header">
                                 <span class="form-badge">Donation Forms</span>
                             </div>
-                            <a href="#" class="view-more-link">
+                            <a href="#" onclick="return false;" class="view-more-link">
                                 Coming Soon
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -404,7 +404,7 @@
                             <div class="form-card-header">
                                 <span class="form-badge">Feedback Forms</span>
                             </div>
-                            <a href="#" class="view-more-link">
+                            <a href="#" onclick="return false;"class="view-more-link">
                                 Coming Soon
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -439,7 +439,7 @@
                             <div class="form-card-header">
                                 <span class="form-badge">Order Forms</span>
                             </div>
-                            <a href="#" class="view-more-link">
+                            <a href="#" onclick="return false;"class="view-more-link">
                                 Coming Soon
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -469,7 +469,7 @@
                             <div class="form-card-header">
                                 <span class="form-badge">Registration Forms</span>
                             </div>
-                            <a href="#" class="view-more-link">
+                            <a href="#" onclick="return false;"class="view-more-link">
                                 Coming Soon
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -497,7 +497,7 @@
                             <div class="form-card-header">
                                 <span class="form-badge">Request Forms</span>
                             </div>
-                            <a href="#" class="view-more-link">
+                            <a href="#" onclick="return false;" class="view-more-link">
                                 Coming Soon
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -526,7 +526,7 @@
                             <div class="form-card-header">
                                 <span class="form-badge">Signup Forms</span>
                             </div>
-                            <a href="#" class="view-more-link">
+                            <a href="#" onclick="return false;"class="view-more-link">
                                 Coming Soon
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M5 12h14M12 5l7 7-7 7"/>
