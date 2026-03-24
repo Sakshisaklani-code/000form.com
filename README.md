@@ -1,35 +1,46 @@
-# 000form.com
+# 000form
 
-A free, open-source form backend service for static websites. A FormSpree/FormSubmit clone built with Laravel and Supabase.
+> A free, open-source form backend for static websites — built with Laravel 11 and Supabase.
+
+Drop one line into your HTML form and start receiving submissions by email. No backend code required on your end.
+
 
 ## Features
 
-- **Free Forever**: No credit card required, no hidden fees
-- **Email Notifications**: Get instant notifications for form submissions
-- **Spam Protection**: Built-in honeypot fields
-- **Dashboard**: View and manage all submissions
-- **AJAX Support**: Submit forms without page reloads
-- **CSV Export**: Download your data anytime
-- **Custom Redirects**: Redirect users after submission
+- **Free forever** — no credit card, no hidden fees
+- **Instant email notifications** on every submission
+- **Spam protection** via built-in honeypot fields
+- **Dashboard** to view, filter, search, and manage all submissions
+- **AJAX support** — submit forms without page reloads
+- **Custom redirects** after submission
+- **No-account mode** — verify an email once and start collecting immediately
+
+---
 
 ## Tech Stack
 
-- **Backend**: Laravel 11 (PHP 8.2+)
-- **Database**: PostgreSQL (via Supabase)
-- **Authentication**: Supabase Auth (Email + Google OAuth)
-- **Frontend**: Vanilla JavaScript
-- **Email**: Self-hosted SMTP
+| Layer | Technology |
+|---|---|
+| Backend | Laravel 11 (PHP 8.2+) |
+| Database | PostgreSQL 14+ via Supabase |
+| Authentication | Supabase Auth (Email + Google OAuth) |
+| Frontend | HTML + CSS |
+| Email | Self-hosted SMTP |
+---
 
 ## Requirements
 
-- PHP 8.2+
-- PostgreSQL 14+
-- Composer
-- Node.js (for asset compilation, optional)
-- Nginx or Apache
-- Self-hosted Supabase instance
+Make sure the following are installed on your machine before you begin:
 
-## Installation
+- PHP 8.2 or higher
+- Composer
+- PostgreSQL 14+ (or a running Supabase instance)
+- Nginx or Apache
+- A self-hosted or cloud Supabase project
+
+---
+
+## Local Development Setup
 
 ### 1. Clone the repository
 
@@ -42,104 +53,238 @@ cd 000form
 
 ```bash
 composer install
+composer dump-autoload
+composer require laravel/cashier-paddle
 ```
 
-### 3. Configure environment
+### 3. Install Node dependencies (optional — for asset compilation)
+
+```bash
+npm install
+npm run dev
+```
+
+### 4. Copy the environment file
 
 ```bash
 cp .env.example .env
+```
+
+### 5. Generate the application key
+
+```bash
 php artisan key:generate
 ```
 
-Edit `.env` with your configuration:
+### 6. Configure your `.env` file
 
-```env
-# App
-APP_URL=https://000form.com
+See the full [Environment Configuration](#environment-configuration) section below.
 
-# Supabase
-SUPABASE_URL=http://your-supabase-instance:8000
-SUPABASE_KEY=your-anon-key
-SUPABASE_SERVICE_KEY=your-service-key
-SUPABASE_JWT_SECRET=your-jwt-secret
-
-# Database
-DB_CONNECTION=pgsql
-DB_HOST=your-supabase-db-host
-DB_DATABASE=postgres
-DB_USERNAME=postgres
-DB_PASSWORD=your-password
-
-# Mail
-MAIL_HOST=mail.000form.com
-MAIL_USERNAME=noreply@000form.com
-MAIL_PASSWORD=your-mail-password
-
-# Google OAuth (optional)
-GOOGLE_CLIENT_ID=your-client-id
-GOOGLE_CLIENT_SECRET=your-client-secret
-```
-
-### 4. Run migrations
+### 7. Run database migrations
 
 ```bash
 php artisan migrate
 ```
 
-### 5. Configure web server
+### 8. Start the local development server
 
-See `deploy/nginx.conf` for Nginx configuration.
+```bash
+php artisan serve
+```
 
-### 6. Set up queue worker
+The app will be available at `http://localhost:8000`.
+
+### 9. Start the queue worker (required for email sending)
 
 ```bash
 php artisan queue:work
 ```
 
-Or use Supervisor (see `deploy/setup.sh`).
+---
 
-## Deployment
+## Supabase Project Setup
 
-For Digital Ocean Ubuntu deployment, use the provided script:
+000form uses Supabase for both its PostgreSQL database and user authentication. Follow these steps to set up your Supabase project.
+
+
+1. Go to [supabase.com](https://supabase.com) and create a new project.
+2. Choose a region and set a strong database password. Save this password — you will need it.
+3. Wait for the project to finish provisioning (about 1–2 minutes).
+
+---
+
+### Collecting your Supabase credentials
+
+Once your project is ready, collect the following from your Supabase dashboard:
+
+**Project Settings → API**
+
+| Key | Where to find it |
+|---|---|
+| `SUPABASE_URL` | Project URL (e.g. `https://xyzabc.supabase.co`) |
+| `SUPABASE_KEY` | `anon` public key |
+| `SUPABASE_SERVICE_KEY` | `service_role` secret key |
+
+**Project Settings → API → JWT Settings**
+
+| Key | Where to find it |
+|---|---|
+| `SUPABASE_JWT_SECRET` | JWT secret (under JWT Settings) |
+
+**Project Settings → Database**
+
+| Key | Where to find it |
+|---|---|
+| `DB_HOST` | Host (e.g. `db.xyzabc.supabase.co`) |
+| `DB_PASSWORD` | The database password you set when creating the project |
+
+> **Security note:** `SUPABASE_SERVICE_KEY` has full database access and bypasses Row Level Security. Never expose it on the frontend or commit it to version control.
+
+---
+
+### Configuring Supabase Auth
+
+#### Enable Email Auth
+
+1. In your Supabase dashboard, go to **Authentication → Providers**.
+2. Ensure **Email** is enabled.
+3. Under **Authentication → Email Templates**, customise the confirmation and magic link emails to match your branding if desired.
+
+#### Enable Google OAuth (optional)
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com) and create a new project (or use an existing one).
+2. Navigate to **APIs & Services → Credentials → Create Credentials → OAuth 2.0 Client ID**.
+3. Set the authorised redirect URI to:
+   ```
+   https://YOUR_SUPABASE_URL/auth/v1/callback
+   ```
+4. Copy your **Client ID** and **Client Secret**.
+5. In Supabase dashboard → **Authentication → Providers → Google**, paste your credentials.
+6. Add the same `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` to your Laravel `.env`.
+
+#### Set the Site URL and Redirect URLs
+
+In Supabase → **Authentication → URL Configuration**:
+
+- **Site URL**: `https://000form.com` (or `http://localhost:8000` for local)
+- **Redirect URLs**: Add your app's callback URL, e.g.:
+  ```
+  http://localhost:8000/auth/callback
+  https://000form.com/auth/callback
+  ```
+
+---
+
+## Environment Configuration
+
+A complete `.env` example:
+
+```env
+# ── Application ──────────────────────────────────────────
+APP_NAME=000form
+APP_ENV=local
+APP_KEY=                          # auto-generated by php artisan key:generate
+APP_DEBUG=true
+APP_URL=http://localhost:8000
+
+# ── Database (PostgreSQL via Supabase) ───────────────────
+DB_CONNECTION=pgsql
+DB_HOST=db.your-project-ref.supabase.co
+DB_PORT=5432
+DB_DATABASE=postgres
+DB_USERNAME=postgres
+DB_PASSWORD=your-database-password
+
+# ── Supabase ─────────────────────────────────────────────
+SUPABASE_URL=https://your-project-ref.supabase.co
+SUPABASE_KEY=your-anon-key
+SUPABASE_SERVICE_KEY=your-service-role-key
+SUPABASE_JWT_SECRET=your-jwt-secret
+
+# ── Mail (self-hosted SMTP) ──────────────────────────────
+MAIL_MAILER=smtp
+MAIL_HOST=mail.000form.com
+MAIL_PORT=587
+MAIL_USERNAME=noreply@000form.com
+MAIL_PASSWORD=your-mail-password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=noreply@000form.com
+MAIL_FROM_NAME="${APP_NAME}"
+
+# ── Queue ─────────────────────────────────────────────────
+QUEUE_CONNECTION=database          # or redis
+
+# ── Google OAuth (optional) ──────────────────────────────
+GOOGLE_CLIENT_ID=your-client-id
+GOOGLE_CLIENT_SECRET=your-client-secret
+GOOGLE_REDIRECT_URI="${APP_URL}/auth/google/callback"
+```
+
+---
+
+## Database Migrations
+
+Run all migrations to create the required tables:
 
 ```bash
-sudo bash deploy/setup.sh
+php artisan migrate
 ```
+
+To roll back and re-run:
+
+```bash
+php artisan migrate:fresh
+```
+---
+
+## Running the App
+
+Start all required processes for local development:
+
+```bash
+# Terminal 1 — Laravel dev server
+php artisan serve
+
+# Terminal 2 — Queue worker (handles email dispatch)
+php artisan queue:work
+
+# Terminal 3 — Vite asset watcher (optional, only if editing frontend assets)
+npm run dev
+```
+
+
+---
 
 ## Usage
 
-### Basic HTML Form
+### Basic HTML form
+
+Point your form's `action` to your endpoint URL. That is all you need.
 
 ```html
 <form action="https://000form.com/f/YOUR_FORM_ID" method="POST">
-  <input type="email" name="email" required>
-  <textarea name="message"></textarea>
+  <input type="text"  name="name"    placeholder="Your name"    required>
+  <input type="email" name="email"   placeholder="Your email"   required>
+  <textarea           name="message" placeholder="Your message" required></textarea>
   <button type="submit">Send</button>
 </form>
 ```
 
-### Special Fields
+Replace `YOUR_FORM_ID` with the ID generated in your dashboard (or your email address for the no-account quick-start mode).
 
-| Field | Description |
-|-------|-------------|
-| `email` | Sender's email (enables reply-to) |
-| `_replyto` | Alternative reply-to email |
-| `_subject` | Custom email subject |
-| `_next` | Redirect URL after submission |
-| `_gotcha` | Honeypot field (spam protection) |
-| `_format` | Set to `json` for JSON response |
+---
 
-### AJAX Submission
+## Special Form Fields
 
-```javascript
-fetch('https://000form.com/f/YOUR_FORM_ID', {
-  method: 'POST',
-  body: new FormData(form),
-  headers: { 'Accept': 'application/json' }
-})
-.then(res => res.json())
-.then(data => console.log(data));
-```
+These hidden fields control the behaviour of a submission:
+
+| Field | Description | Example |
+|---|---|---|
+| `_replyto` | Sets the reply-to address on the notification email | `<input type="hidden" name="_replyto" value="user@example.com">` |
+| `_subject` | Overrides the email subject line | `<input type="hidden" name="_subject" value="New contact message">` |
+| `_next` | URL to redirect to after a successful submission | `<input type="hidden" name="_next" value="https://yoursite.com/thanks">` |
+
+---
 
 ## Project Structure
 
@@ -148,52 +293,34 @@ fetch('https://000form.com/f/YOUR_FORM_ID', {
 ├── app/
 │   ├── Http/
 │   │   ├── Controllers/
-│   │   │   ├── AuthController.php
-│   │   │   ├── DashboardController.php
-│   │   │   └── FormSubmissionController.php
+│   │   │   ├── AuthController.php           # Login, register, OAuth callbacks
+│   │   │   ├── DashboardController.php      # Submission management UI
+│   │   │   └── FormSubmissionController.php # Core form handling endpoint
 │   │   └── Middleware/
-│   ├── Mail/
+│   ├── Mail/                                # Mailable classes (notification emails)
 │   ├── Models/
 │   └── Services/
-│       ├── SpamDetectionService.php
-│       └── SupabaseAuthService.php
+│       ├── SpamDetectionService.php         # Honeypot + filtering logic
+│       └── SupabaseAuthService.php          # Supabase JWT verification
 ├── config/
-├── database/migrations/
+├── database/
+│   └── migrations/                          # All schema migrations
 ├── deploy/
+│   ├── nginx.conf                           # Production Nginx config
+│   └── setup.sh                            # Ubuntu deployment script
 ├── public/
-├── resources/views/
-└── routes/web.php
+├── resources/
+│   └── views/                              # Blade templates
+├── routes/
+│   └── web.php                             # All application routes
+└── .env.example                            # Environment variable template
 ```
 
-## Future Roadmap
 
-### Phase 2
-- File uploads
-- reCAPTCHA integration
-- Webhook notifications
-- Custom auto-reply emails
 
-### Phase 3
-- Custom domains
-- Slack/Discord integrations
-- Team collaboration
-- API access
 
-### Phase 4+
-- Drag-and-drop form builder
-- Payment integration
-- White-label option
 
-## Contributing
 
-Contributions are welcome! Please read our contributing guidelines first.
 
-## License
 
-MIT License - see LICENSE file for details.
 
-## Support
-
-- Documentation: https://000form.com/docs
-- Email: support@000form.com
-- Issues: GitHub Issues

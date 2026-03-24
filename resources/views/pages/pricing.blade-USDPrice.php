@@ -356,7 +356,7 @@
             @endauth
             <span class="pp-plan-badge free-badge">Free</span>
             <div class="pp-price">
-                <span class="sym">$</span>
+                <!-- <span class="sym">$</span> -->
                 <span class="num">0</span>
                 <span class="per">/month</span>
             </div>

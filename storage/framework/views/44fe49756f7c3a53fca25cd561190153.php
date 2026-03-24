@@ -178,6 +178,7 @@
                     <li><a href="<?php echo e(route('playground.index')); ?>">Playground</a></li>
                     <li><a href="<?php echo e(route('pages.terms')); ?>">Terms</a></li>
                     <li><a href="<?php echo e(route('pages.privacy-policy')); ?>">Privacy Policy</a></li>
+                    <li><a href="<?php echo e(route('pages.refund')); ?>">Refund Policy</a></li>
                     <li><a href="/ajax">AJAX</a></li>
                 </ul>
                 <p class="footer-copy">&copy; <?php echo e(date('Y')); ?> 000form</p>
