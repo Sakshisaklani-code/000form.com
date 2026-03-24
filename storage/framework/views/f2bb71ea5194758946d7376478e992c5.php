@@ -1,8 +1,8 @@
-@extends('layouts.app')
 
-@section('title', 'Terms of Service - 000forms')
 
-@section('content')
+<?php $__env->startSection('title', 'Terms of Service - 000forms'); ?>
+
+<?php $__env->startSection('content'); ?>
 <div class="max-w-4xl mx-auto px-6 py-16 mt-8 mb-16">
 
     <div class="mb-12 text-center mt-4">
@@ -24,7 +24,7 @@
             any part of these Terms, you may not access or use the Service.
         </p>
 
-        {{-- Acceptance of Terms --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Acceptance of Terms</h2>
             <p>
@@ -34,7 +34,7 @@
             </p>
         </section>
 
-        {{-- Service Description --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Service Description</h2>
             <p>
@@ -50,7 +50,7 @@
             </p>
         </section>
 
-        {{-- User Accounts --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">User Accounts</h2>
             <p>
@@ -61,7 +61,7 @@
             </p>
         </section>
 
-        {{-- User Content --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">User Content</h2>
             <p>
@@ -94,7 +94,7 @@
             </ul>
         </section>
 
-        {{-- Prohibited Uses --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Prohibited Uses</h2>
             <p>
@@ -115,7 +115,7 @@
             </ul>
         </section>
 
-        {{-- Data and Privacy --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Data Handling and Privacy</h2>
             <p>
@@ -123,7 +123,7 @@
                 through your form endpoints passes through our servers. You are responsible for informing
                 your end-users about this data processing in your own privacy policy. Our handling of any
                 personal data is described in our
-                <a href="{{ route('pages.privacy-policy') }}" class="text-green-400 hover:text-green-300 underline">Privacy Policy</a>,
+                <a href="<?php echo e(route('pages.privacy-policy')); ?>" class="text-green-400 hover:text-green-300 underline">Privacy Policy</a>,
                 which is incorporated into these Terms by reference.
             </p>
             <p class="mt-3">
@@ -133,7 +133,7 @@
             </p>
         </section>
 
-        {{-- Intellectual Property --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Intellectual Property</h2>
             <p>
@@ -145,7 +145,7 @@
             </p>
         </section>
 
-        {{-- Termination --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Termination</h2>
             <p>
@@ -161,7 +161,7 @@
             </p>
         </section>
 
-        {{-- Disclaimer of Warranties --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Disclaimer of Warranties</h2>
             <p class="uppercase tracking-wide text-sm text-gray-400">
@@ -173,7 +173,7 @@
             </p>
         </section>
 
-        {{-- Limitation of Liability --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Limitation of Liability</h2>
             <p>
@@ -191,7 +191,7 @@
             </ul>
         </section>
 
-        {{-- Indemnification --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Indemnification</h2>
             <p>
@@ -203,7 +203,7 @@
             </p>
         </section>
 
-        {{-- Governing Law --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Governing Law</h2>
             <p>
@@ -213,7 +213,7 @@
             </p>
         </section>
 
-        {{-- Changes to Terms --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Changes to These Terms</h2>
             <p>
@@ -230,7 +230,7 @@
 
     </div>
 
-    {{-- Contact --}}
+    
     <section class="mt-10">
         <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Contact Us</h2>
         <p class="text-gray-300">If you have any questions about these Terms, please contact us at:</p>
@@ -251,4 +251,5 @@
     </section>
 
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/terms.blade.php ENDPATH**/ ?>

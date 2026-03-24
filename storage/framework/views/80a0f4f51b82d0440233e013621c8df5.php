@@ -1,8 +1,8 @@
-@extends('layouts.app')
 
-@section('title', 'Privacy Policy - 000forms')
 
-@section('content')
+<?php $__env->startSection('title', 'Privacy Policy - 000forms'); ?>
+
+<?php $__env->startSection('content'); ?>
 <div class="max-w-4xl mx-auto px-6 py-16 mt-8 mb-16">
 
     <div class="mb-12 text-center mt-4">
@@ -22,7 +22,7 @@
             and developed by <strong class="text-white">ESS ENN Associates</strong>.
         </p>
 
-        {{-- Information We Collect --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Information We Collect</h2>
             <p>We collect different types of information to provide and improve our Service to you.</p>
@@ -71,7 +71,7 @@
             </ul>
         </section>
 
-        {{-- How We Use Your Information --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">How We Use Your Information</h2>
             <p>We use the collected data for the following purposes:</p>
@@ -87,7 +87,7 @@
             </ul>
         </section>
 
-        {{-- User Content --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Your Data and Form Submissions</h2>
             <p>
@@ -103,7 +103,7 @@
             </p>
         </section>
 
-        {{-- Third-Party Integrations --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Third-Party Integrations</h2>
             <p>
@@ -115,7 +115,7 @@
             </p>
         </section>
 
-        {{-- Data Sharing --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Data Sharing and Disclosure</h2>
             <p>We do not sell, trade, or rent your information or your end-users' submission data to others. We may share information in the following situations:</p>
@@ -141,7 +141,7 @@
             </ul>
         </section>
 
-        {{-- Data Security --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Data Security</h2>
             <p>
@@ -153,7 +153,7 @@
             </p>
         </section>
 
-        {{-- Data Retention --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Data Retention</h2>
             <p>
@@ -166,7 +166,7 @@
             </p>
         </section>
 
-        {{-- Your Data Protection Rights --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Your Data Protection Rights</h2>
             <p>Under applicable data protection laws, you have certain rights regarding your personal data. You may have the right to:</p>
@@ -194,7 +194,7 @@
             <p class="mt-4">To exercise any of these rights, please contact us at the email address provided below.</p>
         </section>
 
-        {{-- Children's Privacy --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Children's Privacy</h2>
             <p>
@@ -206,7 +206,7 @@
             </p>
         </section>
 
-        {{-- Changes --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Changes to This Privacy Policy</h2>
             <p>
@@ -217,7 +217,7 @@
             </p>
         </section>
 
-        {{-- Contact --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Contact Us</h2>
             <p>If you have any questions about this Privacy Policy, please contact us at:</p>
@@ -239,4 +239,5 @@
 
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/privacy-policy.blade.php ENDPATH**/ ?>

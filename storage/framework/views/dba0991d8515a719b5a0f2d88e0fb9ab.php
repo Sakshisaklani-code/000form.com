@@ -1,8 +1,8 @@
-@extends('layouts.app')
 
-@section('title', 'Refund Policy - 000forms')
 
-@section('content')
+<?php $__env->startSection('title', 'Refund Policy - 000forms'); ?>
+
+<?php $__env->startSection('content'); ?>
 <div class="max-w-4xl mx-auto px-6 py-16 mt-8 mb-16">
 
     <div class="mb-12 text-center mt-4">
@@ -22,7 +22,7 @@
             and developed by <strong class="text-white">ESS ENN Associates</strong>.
         </p>
 
-        {{-- 14-Day Refund Policy --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">14-Day Refund Policy</h2>
             <p>
@@ -33,7 +33,7 @@
 
             <div class="mt-6 space-y-6">
 
-                {{-- Full Refund --}}
+                
                 <div class="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
                     <h3 class="text-lg font-semibold text-white mb-2">✅ Full Refund — No Submissions Used</h3>
                     <p>
@@ -44,7 +44,7 @@
                     </p>
                 </div>
 
-                {{-- Proportionate Refund --}}
+                
                 <div class="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
                     <h3 class="text-lg font-semibold text-white mb-2">📊 Proportionate Refund — Partial Usage</h3>
                     <p>
@@ -67,7 +67,7 @@
             </div>
         </section>
 
-        {{-- After 14 Days --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">After 14 Days</h2>
             <p>
@@ -77,7 +77,7 @@
             </p>
         </section>
 
-        {{-- Cancellation --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Cancellation Policy</h2>
             <p>
@@ -92,7 +92,7 @@
             </ul>
         </section>
 
-        {{-- How to Request --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">How to Request a Refund</h2>
             <p>To initiate a refund, please contact our team with the following details:</p>
@@ -110,7 +110,7 @@
             </p>
         </section>
 
-        {{-- Exceptions --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Exceptions</h2>
             <p>Refunds will not be issued in the following circumstances:</p>
@@ -126,7 +126,7 @@
             </p>
         </section>
 
-        {{-- Changes to Policy --}}
+        
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Changes to This Policy</h2>
             <p>
@@ -138,7 +138,7 @@
 
     </div>
 
-    {{-- Contact --}}
+    
     <section class="mt-10">
         <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Contact Us</h2>
         <p class="text-gray-300">If you have any questions about this Refund & Cancellation Policy, please contact us:</p>
@@ -159,4 +159,5 @@
     </section>
 
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/refund.blade.php ENDPATH**/ ?>
