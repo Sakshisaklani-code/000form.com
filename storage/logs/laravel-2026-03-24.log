@@ -261,3 +261,16 @@
 [2026-03-24 10:40:42] local.INFO: Paddle API: transaction txn_01kmfpwahmcjnkvt6hh1bghngm status=completed  
 [2026-03-24 10:40:42] local.INFO: Invoice PDF fetched for txn_01kmfpwahmcjnkvt6hh1bghngm: yes  
 [2026-03-24 10:40:44] local.INFO: Built subscription from Paddle API for user 070ea8b3-89fd-40f7-93c9-4975008410f4 {"plan":"personal","sub_id":"sub_01kmfpwpdmqy76044bqe2serzx","txn_id":"txn_01kmfpwahmcjnkvt6hh1bghngm","currency":"INR","invoice_pdf":"yes"} 
+[2026-03-24 10:49:44] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-24 10:51:08] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-24 10:53:51] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-24 10:54:38] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-24 10:54:42] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-24 10:54:51] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-24 10:54:53] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-24 10:54:53] local.ERROR: Supabase refresh token error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=refresh_token` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"refresh_token_not_found","msg":"Invalid Refresh Token: Refresh Token Not Found"}
+  
+[2026-03-24 11:06:07] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-24 11:06:24] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-24 11:06:37] local.ERROR: JWT verification error: Incorrect key for this algorithm  
