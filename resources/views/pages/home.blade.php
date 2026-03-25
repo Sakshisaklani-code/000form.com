@@ -40,10 +40,10 @@
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
                     Create free account
                 </a>
-                <a href="{{ route('login') }}" class="lp-btn lp-btn--ghost lp-btn--lg">
+                <!-- <a href="{{ route('login') }}" class="lp-btn lp-btn--ghost lp-btn--lg">
                     Sign in
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
+                </a> -->
             </div>
 
             <div class="lp-hero__proof">
@@ -251,11 +251,11 @@
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
                 <h3>Smart spam protection</h3>
-                <p>Built-in honeypot fields and ML-based filtering block bots before they reach your inbox.</p>
+                <p>Built-in honeypot fields and Blacklist filtering before they reach your inbox.</p>
                 <div class="lp-feat-tag-row">
                     <span class="lp-feat-tag">Honeypot</span>
-                    <span class="lp-feat-tag">Bot detection</span>
-                    <span class="lp-feat-tag">Rate limiting</span>
+                    <span class="lp-feat-tag">Blacklist filtering</span>
+                    <span class="lp-feat-tag">Captcha</span>
                 </div>
             </div>
 
@@ -326,7 +326,7 @@
                 <h3>File uploads</h3>
                 <p>Accept file attachments directly through your forms. Stored securely, accessible from your dashboard.</p>
                 <div class="lp-feat-tag-row">
-                    <span class="lp-feat-tag">Up to 100MB</span>
+                    <span class="lp-feat-tag">Up to 10MB</span>
                     <span class="lp-feat-tag">Secure storage</span>
                 </div>
             </div>
