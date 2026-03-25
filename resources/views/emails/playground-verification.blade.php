@@ -49,7 +49,7 @@
                                 Someone (hopefully you!) entered
                                 <strong style="color: #fafafa;">{{ $recipientEmail }}</strong>
                                 as a form submission recipient on the
-                                <strong style="color: #fafafa;">{{ $appName }} Playground</strong>.
+                                <strong style="color: #fafafa;">{{ $appName }} Express</strong>.
                                 Click the button below to confirm you own this address.
                             </p>
 

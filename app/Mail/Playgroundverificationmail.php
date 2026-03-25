@@ -22,7 +22,7 @@ class PlaygroundVerificationMail extends Mailable
     public function build(): static
     {
         return $this
-            ->subject('Verify your email — ' . config('app.name') . ' Playground')
+            ->subject('Verify your email — ' . config('app.name') . ' Express')
             ->view('emails.playground-verification')
             ->with([
                 'recipientEmail' => $this->recipientEmail,

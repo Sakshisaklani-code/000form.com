@@ -22,7 +22,7 @@
             </div>
         @endif
         <a href="{{ route('playground.index') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: var(--bg-primary); font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem; transition: all 0.2s;">
-            ← Back to Playground
+            ← Back to Express
         </a>
     </div>
 </div>

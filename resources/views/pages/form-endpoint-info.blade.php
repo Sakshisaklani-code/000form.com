@@ -66,7 +66,7 @@
 
         <div style="text-align:center;">
             <a href="{{ route('playground.index') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); font-size: 0.875rem; text-decoration: none; transition: color 0.2s;">
-                ← Back to Playground
+                ← Back to Express
             </a>
         </div>
 

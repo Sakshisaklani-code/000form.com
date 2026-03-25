@@ -36,7 +36,7 @@
                                                 </td>
                                                 <td align="right">
                                                     <span style="display: inline-block; background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.2); color: #00ff88; font-size: 11px; font-family: 'Courier New', monospace; padding: 3px 10px; border-radius: 100px;">
-                                                        Playground
+                                                        Express
                                                     </span>
                                                 </td>
                                             </tr>
@@ -124,7 +124,7 @@
                                                         Source
                                                     </div>
                                                     <div style="font-size: 13px; color: #888888; line-height: 1.5; font-family: 'Courier New', monospace;">
-                                                        {{ $formData['app_url'] ?? config('app.url') }} — Playground
+                                                        {{ $formData['app_url'] ?? config('app.url') }} — Express
                                                     </div>
                                                 </td>
                                             </tr>
@@ -142,11 +142,11 @@
                     <tr>
                         <td style="padding-top: 24px; text-align: center;">
                             <p style="margin: 0 0 6px; color: #555555; font-size: 12px; line-height: 1.6;">
-                                Sent via <a href="{{ config('app.url') }}" style="color: #00ff88; text-decoration: none;">{{ config('app.name') }}</a> Playground
+                                Sent via <a href="{{ config('app.url') }}" style="color: #00ff88; text-decoration: none;">{{ config('app.name') }}</a> Express
                                 to <strong style="color: #888888;">{{ $formData['recipient_email'] }}</strong>
                             </p>
                             <p style="margin: 0; color: #333333; font-size: 11px;">
-                                To stop receiving submissions, simply don't use this email in the playground.
+                                To stop receiving submissions, simply don't use this email in the Express.
                             </p>
                         </td>
                     </tr>

@@ -27,14 +27,14 @@
     // ── Auto-inject widget into matching forms ──────────────
     function injectCaptcha() {
         // Target: any form POSTing to /f/{slug} (not playground forms)
-        // Playground forms post to /playground/submit — excluded
+        // Playground forms post to /express/submit — excluded
         const forms = document.querySelectorAll(
             'form[action*="/f/"]:not([data-captcha-injected]):not([data-no-captcha])'
         );
 
         forms.forEach(function(form) {
             // Skip if action is the playground AJAX submit route
-            if (form.action.includes('/playground/submit')) return;
+            if (form.action.includes('/express/submit')) return;
 
             // Skip if already has a recaptcha div
             if (form.querySelector('.g-recaptcha')) return;

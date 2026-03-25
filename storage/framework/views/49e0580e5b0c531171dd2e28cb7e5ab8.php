@@ -1,4 +1,4 @@
-{{-- resources/views/pages/playground-captcha.blade.php --}}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -396,10 +396,10 @@
             </div>
             
             <!-- reCAPTCHA Form -->
-            <form action="{{ route('playground.verify-captcha', ['email' => $email]) }}" method="POST" id="captchaForm">
-                @csrf
+            <form action="<?php echo e(route('playground.verify-captcha', ['email' => $email])); ?>" method="POST" id="captchaForm">
+                <?php echo csrf_field(); ?>
                 <div class="recaptcha-wrapper">
-                    <div class="g-recaptcha" data-sitekey="{{ $siteKey }}" data-callback="onCaptchaSuccess"></div>
+                    <div class="g-recaptcha" data-sitekey="<?php echo e($siteKey); ?>" data-callback="onCaptchaSuccess"></div>
                 </div>
                 <button type="submit" class="verify-btn" id="submitBtn" disabled>
                     <span id="btnText">Complete Captcha First</span>
@@ -461,4 +461,4 @@
         });
     </script>
 </body>
-</html>
+</html><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/playground-captcha.blade.php ENDPATH**/ ?>

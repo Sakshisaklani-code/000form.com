@@ -101,7 +101,7 @@ Route::withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken
 |--------------------------------------------------------------------------
 */
 
-Route::prefix('playground')->name('playground.')->group(function () {
+Route::prefix('express')->name('playground.')->group(function () {
     Route::get('/', [PlaygroundController::class, 'index'])->name('index');
     Route::post('/submit', [PlaygroundController::class, 'submit'])->name('submit');
     Route::get('/form-submitted', [PlaygroundController::class, 'formSubmitted'])->name('form.submitted');

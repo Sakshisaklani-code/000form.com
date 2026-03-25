@@ -516,7 +516,7 @@ class PlaygroundController extends Controller
                         $blockedFormData = [
                             'name'         => $request->input('name') ?? 'Visitor',
                             'sender_email' => $senderEmail,
-                            'form_name'    => 'Playground Form',
+                            'form_name'    => 'Express Form',
                         ];
                         $this->sendAutoResponse($senderEmail, $blockedFormData, $specialData);
                     }
@@ -540,7 +540,7 @@ class PlaygroundController extends Controller
                 return redirect()->back()->with('error', $fileError)->withInput();
             }
 
-            $formData = $this->buildFormData($request, $recipientEmail, 'Playground Form', $submissionData, $specialData, $uploadMetadata);
+            $formData = $this->buildFormData($request, $recipientEmail, 'Express Form', $submissionData, $specialData, $uploadMetadata);
 
             Log::info('Playground: Form data prepared', [
                 'name'              => $formData['name'],
@@ -747,7 +747,7 @@ class PlaygroundController extends Controller
         $request->replace($cleanData);
         $request->setMethod('POST');
         
-        $request->server->set('REQUEST_URI', '/playground/submit');
+        $request->server->set('REQUEST_URI', '/express/submit');
         $request->server->set('REQUEST_METHOD', 'POST');
         $request->server->set('REMOTE_ADDR', $ip);
         
