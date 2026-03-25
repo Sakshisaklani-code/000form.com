@@ -1,12 +1,12 @@
-@extends('layouts.app')
 
-@section('title', 'Express — No-Account Form Endpoint')
 
-@section('content')
+<?php $__env->startSection('title', 'Express — No-Account Form Endpoint'); ?>
+
+<?php $__env->startSection('content'); ?>
 <div class="playground-wrapper">
     <div class="container">
 
-        {{-- Page Heading --}}
+        
         <div class="playground-header">
             <div class="express-badge">
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16">
@@ -22,10 +22,10 @@
             </p>
         </div>
 
-        {{-- Main Two-Column Layout — equal height via CSS grid --}}
+        
         <div class="playground-main">
 
-            {{-- LEFT PANEL - Code Editor --}}
+            
             <div class="panel editor-panel">
                 <div class="panel-header">
                     <div class="panel-title">
@@ -40,7 +40,7 @@
                     </div>
                 </div>
 
-                {{-- HTML Tab --}}
+                
                 <div class="tab-content active" id="tab-code">
                     <div class="editor-toolbar">
                         <div class="editor-toolbar-left">
@@ -55,7 +55,7 @@
                             Copy HTML
                         </button>
                     </div>
-                    <textarea id="htmlEditor" class="code-editor" spellcheck="false">&lt;form action="{{ config('app.url') }}/f/YOUR@EMAIL.COM" method="POST"&gt;
+                    <textarea id="htmlEditor" class="code-editor" spellcheck="false">&lt;form action="<?php echo e(config('app.url')); ?>/f/YOUR@EMAIL.COM" method="POST"&gt;
     &lt;input type="text" name="name" placeholder="Your name" required&gt;
     &lt;input type="email" name="email" placeholder="Your email" required&gt;
     &lt;textarea name="message" placeholder="Your message" required&gt;&lt;/textarea&gt;
@@ -66,7 +66,7 @@
 &lt;/form&gt;</textarea>
                 </div>
 
-                {{-- CSS Tab --}}
+                
                 <div class="tab-content" id="tab-css">
                     <div class="editor-toolbar">
                         <div class="editor-toolbar-left">
@@ -123,7 +123,7 @@ button[type="submit"]:hover {
 }</textarea>
                 </div>
 
-                {{-- Endpoint tip — pinned to bottom of left panel --}}
+                
                 <div class="endpoint-tip">
                     <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16">
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
@@ -132,7 +132,7 @@ button[type="submit"]:hover {
                 </div>
             </div>
 
-            {{-- RIGHT PANEL - Live Preview --}}
+            
             <div class="panel preview-panel">
                 <div class="panel-header">
                     <div class="panel-title">
@@ -149,7 +149,7 @@ button[type="submit"]:hover {
 
                 <div class="preview-body">
 
-                    {{-- Step 1: Verify email --}}
+                    
                     <div class="config-section">
                         <div class="config-section-header">
                             <span class="config-step-num">1</span>
@@ -170,7 +170,7 @@ button[type="submit"]:hover {
                         </div>
                         <div id="emailStatus" class="email-status"></div>
 
-                        {{-- CAPTCHA notice --}}
+                        
                         <div class="notice-box notice-neutral">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:1px;">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -182,7 +182,7 @@ button[type="submit"]:hover {
                         </div>
                     </div>
 
-                    {{-- Step 2: Test form --}}
+                    
                     <div class="config-section">
                         <div class="config-section-header">
                             <span class="config-step-num">2</span>
@@ -200,9 +200,7 @@ button[type="submit"]:hover {
             </div>
         </div>
 
-        {{-- =====================================================
-             Limitation banner — OUTSIDE both panels, full width
-             ===================================================== --}}
+        
         <div class="limitation-banner">
             <div class="limitation-banner-left">
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16" style="flex-shrink:0;margin-top:2px;">
@@ -210,7 +208,7 @@ button[type="submit"]:hover {
                 </svg>
                 <span><strong>Express has no submission history.</strong> Emails only go to your inbox — there's no dashboard to review or export past entries.</span>
             </div>
-            <a href="{{ route('signup') }}" class="limitation-cta">
+            <a href="<?php echo e(route('signup')); ?>" class="limitation-cta">
                 Create a free account to unlock submission tracking
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
@@ -218,7 +216,7 @@ button[type="submit"]:hover {
             </a>
         </div>
 
-        {{-- How Express works --}}
+        
         <div class="how-it-works-panel">
             <div class="how-header">
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16">
@@ -246,7 +244,7 @@ button[type="submit"]:hover {
                     </div>
                     <div>
                         <strong>Point your form at the endpoint</strong>
-                        <p>Set your form's <code>action</code> to <code>{{ config('app.url') }}/f/your@email.com</code>. That's all the backend you need.</p>
+                        <p>Set your form's <code>action</code> to <code><?php echo e(config('app.url')); ?>/f/your@email.com</code>. That's all the backend you need.</p>
                     </div>
                 </div>
                 <div class="how-step">
@@ -268,7 +266,7 @@ button[type="submit"]:hover {
                     </div>
                     <div>
                         <strong>Submissions arrive in your inbox</strong>
-                        <p>Every entry is formatted and emailed directly to you. No dashboard, no login — just your inbox. Need history? <a href="{{ route('signup') }}" style="color:var(--pg-accent);">Create a free account.</a></p>
+                        <p>Every entry is formatted and emailed directly to you. No dashboard, no login — just your inbox. Need history? <a href="<?php echo e(route('signup')); ?>" style="color:var(--pg-accent);">Create a free account.</a></p>
                     </div>
                 </div>
             </div>
@@ -278,9 +276,9 @@ button[type="submit"]:hover {
 </div>
 
 <div id="toast" class="toast"></div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('styles')
+<?php $__env->startPush('styles'); ?>
 <style>
 /* ============================================
    Express Page — Light Blue Accent Theme
@@ -846,9 +844,9 @@ button[type="submit"]:hover {
     .verify-btn         { width: 100%; justify-content: center; }
 }
 </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -940,7 +938,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function checkEmailVerification(email) {
-        return fetch('{{ route("playground.check-verified") }}?email=' + encodeURIComponent(email), {
+        return fetch('<?php echo e(route("playground.check-verified")); ?>?email=' + encodeURIComponent(email), {
             headers: { 'Accept': 'application/json' }
         })
         .then(r => r.json())
@@ -993,9 +991,9 @@ document.addEventListener('DOMContentLoaded', function () {
         verifyBtn.innerHTML = 'Sending…';
         setEmailStatus('', '');
 
-        fetch('{{ route("playground.verify") }}', {
+        fetch('<?php echo e(route("playground.verify")); ?>', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}', 'Accept': 'application/json' },
+            headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>', 'Accept': 'application/json' },
             body: JSON.stringify({ email })
         })
         .then(r => r.json())
@@ -1058,11 +1056,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const formData = new FormData(form);
-            formData.append('_token', '{{ csrf_token() }}');
+            formData.append('_token', '<?php echo e(csrf_token()); ?>');
             formData.append('recipient_email', targetEmail);
             formData.append('from_playground', 'true');
 
-            fetch('{{ route("playground.submit") }}', {
+            fetch('<?php echo e(route("playground.submit")); ?>', {
                 method: 'POST',
                 headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
                 body: formData
@@ -1115,4 +1113,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/playground.blade.php ENDPATH**/ ?>

@@ -822,7 +822,7 @@ form.<span class="fn">addEventListener</span>(<span class="str2">'submit'</span>
                             <li><i class="bi bi-envelope-check"></i> Email notification on every submission</li>
                             <li><i class="bi bi-database"></i> Submission history stored in your dashboard</li>
                             <li><i class="bi bi-download"></i> Export submissions as CSV</li>
-                            <li><i class="bi bi-paperclip"></i> Up to 5 file attachments per submission (10 MB each)</li>
+                            <!-- <li><i class="bi bi-paperclip"></i> Up to 5 file attachments per submission (10 MB each)</li> -->
                             <li><i class="bi bi-chat-dots"></i> Chat widget included on all plans</li>
                         </ul>
                     </div>

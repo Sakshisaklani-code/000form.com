@@ -175,7 +175,7 @@
                 <div class="nav-logo"><span>000</span>form</div>
                 <ul class="footer-links">
                     
-                    <li><a href="<?php echo e(route('playground.index')); ?>">Playground</a></li>
+                    <li><a href="<?php echo e(route('playground.index')); ?>">Express</a></li>
                     <li><a href="<?php echo e(route('pages.terms')); ?>">Terms</a></li>
                     <li><a href="<?php echo e(route('pages.privacy-policy')); ?>">Privacy Policy</a></li>
                     <li><a href="<?php echo e(route('pages.refund')); ?>">Refund Policy</a></li>
