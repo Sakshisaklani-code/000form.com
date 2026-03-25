@@ -665,3 +665,17 @@
 [2026-03-25 10:21:13] local.ERROR: JWT verification error: Incorrect key for this algorithm  
 [2026-03-25 10:21:21] local.ERROR: JWT verification error: Incorrect key for this algorithm  
 [2026-03-25 10:21:28] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:29:26] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:29:28] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:29:29] local.ERROR: Supabase refresh token error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=refresh_token` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"refresh_token_not_found","msg":"Invalid Refresh Token: Refresh Token Not Found"}
+  
+[2026-03-25 10:29:46] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:29:53] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:30:45] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:30:49] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:36:02] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:36:05] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:36:06] local.ERROR: Supabase refresh token error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=refresh_token` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"refresh_token_not_found","msg":"Invalid Refresh Token: Refresh Token Not Found"}
+  

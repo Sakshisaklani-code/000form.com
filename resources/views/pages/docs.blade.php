@@ -757,6 +757,18 @@ form.<span class="fn">addEventListener</span>(<span class="str2">'submit'</span>
             <span>Replace <span class="ic">YOUR_FORM_ID</span> with your form's ID or slug from the <a href="{{ route('dashboard') }}" style="color:var(--accent);">dashboard</a>. The script handles success, validation errors (422), and permission errors (403) automatically.</span>
         </div>
 
+        <div class="note-box" style="margin-top:1rem;">
+            <i class="bi bi-lightbulb-fill"></i>
+            <span>
+                See how it works:
+                <a href="/ajax" style="color:#00ff88;text-decoration:none;margin-left:0.5rem;">
+                    <i class="bi bi-play-circle"></i> View it now →
+                </a>
+            </span>
+        </div>
+
+
+
     </div>
 </div>
 
@@ -832,7 +844,7 @@ form.<span class="fn">addEventListener</span>(<span class="str2">'submit'</span>
                 <div class="docs-cta">
                     <p>Ready to get started?</p>
                     <a href="{{ route('playground.index') }}" class="btn btn-secondary" style="margin-right:0.75rem;">
-                        <i class="bi bi-play-circle"></i> Try Playground
+                        <i class="bi bi-play-circle"></i> Try Express
                     </a>
                     <a href="{{ route('signup') }}" class="btn btn-primary">
                         <i class="bi bi-person-plus"></i> Create Free Account

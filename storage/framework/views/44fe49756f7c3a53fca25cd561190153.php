@@ -30,6 +30,8 @@
     <meta name="robots" content="index, follow">
     <!-- Tailwind CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Google Analytics tag (gtag.js) --> 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TV3T8837GC"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-TV3T8837GC'); </script>
     <!-- Schema.org JSON-LD --> 
     <script type="application/ld+json"> 
         {
@@ -43,6 +45,40 @@
     </script>
     <?php echo $__env->yieldPushContent('styles'); ?>
     <style>
+        /* EXPRESS BLUE PILL */
+        .pill-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 18px 9px 13px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #1e6be6 0%, #0a3fa8 100%);
+            color: #fafcff!important;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.18);
+            box-shadow: 0 2px 12px rgba(30,107,230,0.38),
+                        inset 0 1px 0 rgba(255,255,255,0.14);
+            transition: all 0.3s ease;
+        }
+
+        .pill-link:hover {
+            box-shadow: 0 6px 22px rgba(30,107,230,0.8);
+            transform: scale(1.08); 
+        }
+
+        .pill-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
         /* Mobile menu styles */
         .mobile-menu-toggle {
             display: none;
@@ -151,19 +187,31 @@
             </button>
             
             <ul class="nav-links" id="navLinks">
+                <li>
+                    <a href="<?php echo e(route('playground.index')); ?>" class="pill-link">
+                        <span class="pill-icon">
+                        <svg width="11" height="13" viewBox="0 0 12 14" fill="none">
+                            <path d="M7 1L2 7.5H6L5 13L10 6.5H6.5L7 1Z"
+                                fill="white" stroke="rgba(255,255,255,0.4)"
+                                stroke-width="0.5" stroke-linejoin="round"/>
+                        </svg>
+                        </span>
+                        Express
+                    </a>
+                </li>
                 <li><a href="<?php echo e(route('docs')); ?>">Documentation</a></li>
                 <li><a href="<?php echo e(route('pricing')); ?>">Pricing</a></li>
                 <li><a href="<?php echo e(route('Home.library')); ?>">Library</a></li>
             </ul>
             
-            <div class="nav-actions" id="navActions">
+            <!-- <div class="nav-actions" id="navActions">
                 <?php if(auth()->guard()->check()): ?>
                     <a href="<?php echo e(route('dashboard')); ?>" class="btn btn-primary">Dashboard</a>
                 <?php else: ?>
                     <a href="<?php echo e(route('login')); ?>" class="btn btn-ghost">Login</a>
                     <a href="<?php echo e(route('signup')); ?>" class="btn btn-primary">Get Started</a>
                 <?php endif; ?>
-            </div>
+            </div> -->
         </div>
     </nav>
 
@@ -174,12 +222,11 @@
             <div class="footer-inner">
                 <div class="nav-logo"><span>000</span>form</div>
                 <ul class="footer-links">
-                    
-                    <li><a href="<?php echo e(route('playground.index')); ?>">Express</a></li>
+                    <!-- <li><a href="<?php echo e(route('playground.index')); ?>">Express Form</a></li> -->
                     <li><a href="<?php echo e(route('pages.terms')); ?>">Terms</a></li>
                     <li><a href="<?php echo e(route('pages.privacy-policy')); ?>">Privacy Policy</a></li>
                     <li><a href="<?php echo e(route('pages.refund')); ?>">Refund Policy</a></li>
-                    <li><a href="/ajax">AJAX</a></li>
+                    <!-- <li><a href="/ajax">AJAX</a></li> -->
                 </ul>
                 <p class="footer-copy">&copy; <?php echo e(date('Y')); ?> 000form</p>
             </div>

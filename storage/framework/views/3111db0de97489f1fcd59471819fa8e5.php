@@ -421,9 +421,9 @@
                             </div>
                             <div class="code-content">
 <pre><span class="tag">&lt;form</span> <span class="attr">id</span>=<span class="str">"myForm"</span><span class="tag">&gt;</span>
-  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span>  <span class="attr">name</span>=<span class="str">"name"</span>    <span class="attr">required</span><span class="tag">&gt;</span>
-  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"email"</span> <span class="attr">name</span>=<span class="str">"email"</span>   <span class="attr">required</span><span class="tag">&gt;</span>
-  <span class="tag">&lt;textarea</span>            <span class="attr">name</span>=<span class="str">"message"</span><span class="tag">&gt;&lt;/textarea&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span> <span class="attr">name</span>=<span class="str">"name"</span> <span class="attr">required</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"email"</span> <span class="attr">name</span>=<span class="str">"email"</span> <span class="attr">required</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;textarea</span> <span class="attr">name</span>=<span class="str">"message"</span><span class="tag">&gt;&lt;/textarea&gt;</span>
   <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="str">"submit"</span><span class="tag">&gt;</span>Send<span class="tag">&lt;/button&gt;</span>
 <span class="tag">&lt;/form&gt;</span>
 <span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="str">"status"</span><span class="tag">&gt;&lt;/div&gt;</span></pre>
