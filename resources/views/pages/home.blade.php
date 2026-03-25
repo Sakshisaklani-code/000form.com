@@ -78,7 +78,7 @@
                     {{-- Sidebar --}}
                     <div class="lp-dash__side">
                         <div class="lp-dash__logo">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><line x1="12" y1="7" x2="5" y2="17"/><line x1="12" y1="7" x2="19" y2="17"/></svg>
+                            
                             <span>000<b>form</b></span>
                         </div>
                         <div class="lp-dash__user">
@@ -254,7 +254,7 @@
                 <p>Built-in honeypot fields and Blacklist filtering before they reach your inbox.</p>
                 <div class="lp-feat-tag-row">
                     <span class="lp-feat-tag">Honeypot</span>
-                    <span class="lp-feat-tag">Blacklist filtering</span>
+                    <span class="lp-feat-tag">Blacklisting</span>
                     <span class="lp-feat-tag">Captcha</span>
                 </div>
             </div>
@@ -410,94 +410,129 @@
         </div>
 
         <div class="lp-dashboard-mock">
+            {{-- Sidebar --}}
             <div class="lp-dm__sidebar">
-                <div class="lp-dm__logo">000<span>form</span></div>
+                <div class="lp-dm__logo">
+                    000<span>form</span>
+                </div>
+                <div class="lp-dm__user-chip">
+                    <div class="lp-dm__user-avatar">Y</div>
+                    <span class="lp-dm__user-email">YOUR EMAIL</span>
+                </div>
                 <nav class="lp-dm__nav">
                     <div class="lp-dm__nav-item lp-dm__nav-item--active">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
                         Dashboard
                     </div>
                     <div class="lp-dm__nav-item">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                        Submissions
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        New Form
                     </div>
                     <div class="lp-dm__nav-item">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                        Analytics
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                        Plan & Subscriptions
                     </div>
                     <div class="lp-dm__nav-item">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
-                        Settings
+                        Payment History
+                    </div>
+                    <div class="lp-dm__nav-item">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        Team Management
                     </div>
                 </nav>
+                <div class="lp-dm__nav lp-dm__nav--bottom">
+                    <div class="lp-dm__nav-item">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        Documentation
+                    </div>
+                    <div class="lp-dm__nav-item">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        Account
+                    </div>
+                    <div class="lp-dm__nav-item">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                        Sign Out
+                    </div>
+                </div>
             </div>
+
+            {{-- Main --}}
             <div class="lp-dm__main">
                 <div class="lp-dm__topbar">
                     <div class="lp-dm__topbar-title">Dashboard</div>
-                    <div class="lp-dm__topbar-actions">
-                        <div class="lp-dm__search">
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                            Search…
-                        </div>
-                        <div class="lp-dm__btn">+ New Form</div>
-                    </div>
+                    <div class="lp-dm__btn">+ New Form</div>
                 </div>
+
+                {{-- Stats row — matches real dashboard exactly --}}
                 <div class="lp-dm__stats">
                     <div class="lp-dm__stat">
-                        <div class="lp-dm__stat-val">1,284</div>
-                        <div class="lp-dm__stat-lbl">Total submissions</div>
-                    </div>
-                    <div class="lp-dm__stat">
-                        <div class="lp-dm__stat-val lp-accent-text">47</div>
-                        <div class="lp-dm__stat-lbl">This month</div>
-                    </div>
-                    <div class="lp-dm__stat">
+                        <div class="lp-dm__stat-lbl">Total Forms</div>
                         <div class="lp-dm__stat-val">3</div>
-                        <div class="lp-dm__stat-lbl">Active forms</div>
                     </div>
                     <div class="lp-dm__stat">
-                        <div class="lp-dm__stat-val">98%</div>
-                        <div class="lp-dm__stat-lbl">Delivery rate</div>
+                        <div class="lp-dm__stat-lbl">Total Submissions</div>
+                        <div class="lp-dm__stat-val">34</div>
+                    </div>
+                    <div class="lp-dm__stat">
+                        <div class="lp-dm__stat-lbl">Valid</div>
+                        <div class="lp-dm__stat-val lp-dm__stat-val--green">27</div>
+                    </div>
+                    <div class="lp-dm__stat">
+                        <div class="lp-dm__stat-lbl">Spam Blocked</div>
+                        <div class="lp-dm__stat-val lp-dm__stat-val--red">7</div>
+                    </div>
+                    <div class="lp-dm__stat">
+                        <div class="lp-dm__stat-lbl">Unread</div>
+                        <div class="lp-dm__stat-val lp-dm__stat-val--green">26</div>
+                    </div>
+                    <div class="lp-dm__stat">
+                        <div class="lp-dm__stat-lbl">This Month</div>
+                        <div class="lp-dm__stat-val">3 <span class="lp-dm__stat-new">new</span></div>
                     </div>
                 </div>
-                <div class="lp-dm__chart">
-                    <div class="lp-dm__chart-label">Submissions — last 7 days</div>
-                    <div class="lp-dm__bars">
-                        <div class="lp-dm__bar" style="--h:45%"><span>Mon</span></div>
-                        <div class="lp-dm__bar" style="--h:70%"><span>Tue</span></div>
-                        <div class="lp-dm__bar" style="--h:55%"><span>Wed</span></div>
-                        <div class="lp-dm__bar" style="--h:90%"><span>Thu</span></div>
-                        <div class="lp-dm__bar" style="--h:65%"><span>Fri</span></div>
-                        <div class="lp-dm__bar" style="--h:40%"><span>Sat</span></div>
-                        <div class="lp-dm__bar lp-dm__bar--today" style="--h:78%"><span>Sun</span></div>
-                    </div>
-                </div>
-                <div class="lp-dm__recent">
-                    <div class="lp-dm__recent-head">Recent submissions</div>
-                    <div class="lp-dm__row">
-                        <div class="lp-dm__row-avatar">A</div>
-                        <div class="lp-dm__row-info">
-                            <div class="lp-dm__row-name">Alice Cooper <span class="lp-dm__row-form">contact-form</span></div>
-                            <div class="lp-dm__row-msg">I'd love to learn more about your services…</div>
-                        </div>
-                        <div class="lp-dm__row-time">2m ago</div>
-                    </div>
-                    <div class="lp-dm__row">
-                        <div class="lp-dm__row-avatar lp-dm__row-avatar--b">B</div>
-                        <div class="lp-dm__row-info">
-                            <div class="lp-dm__row-name">Bob Martin <span class="lp-dm__row-form">feedback</span></div>
-                            <div class="lp-dm__row-msg">The onboarding was really smooth, thanks!</div>
-                        </div>
-                        <div class="lp-dm__row-time">18m ago</div>
-                    </div>
-                    <div class="lp-dm__row">
-                        <div class="lp-dm__row-avatar lp-dm__row-avatar--c">C</div>
-                        <div class="lp-dm__row-info">
-                            <div class="lp-dm__row-name">Carol White <span class="lp-dm__row-form">contact-form</span></div>
-                            <div class="lp-dm__row-msg">Quick question about pricing…</div>
-                        </div>
-                        <div class="lp-dm__row-time">1h ago</div>
-                    </div>
+
+                {{-- Forms table --}}
+                <div class="lp-dm__table-wrap">
+                    <table class="lp-dm__table">
+                        <thead>
+                            <tr>
+                                <th>Form Name</th>
+                                <th>Endpoint</th>
+                                <th>Total</th>
+                                <th>Valid</th>
+                                <th>Spam</th>
+                                <th>Status</th>
+                                <th>Last Submission</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="lp-dm__td-name">
+                                    Contact Form
+                                    <span class="lp-dm__new-badge">23 new</span>
+                                </td>
+                                <td class="lp-dm__td-endpoint">/f/••••••</td>
+                                <td>31</td>
+                                <td class="lp-dm__td-green">24</td>
+                                <td>7</td>
+                                <td><span class="lp-dm__status-badge">Active</span></td>
+                                <td class="lp-dm__td-muted">1 week ago</td>
+                            </tr>
+                            <tr>
+                                <td class="lp-dm__td-name">
+                                    Test form
+                                    <span class="lp-dm__new-badge">3 new</span>
+                                </td>
+                                <td class="lp-dm__td-endpoint">/f/••••••</td>
+                                <td>3</td>
+                                <td class="lp-dm__td-green">3</td>
+                                <td>0</td>
+                                <td><span class="lp-dm__status-badge">Active</span></td>
+                                <td class="lp-dm__td-muted">2 days ago</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -1496,49 +1531,95 @@
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 40px 100px rgba(0,0,0,0.5);
-    background: rgba(10,12,14,0.95);
-    min-height: 480px;
+    background: #121316;
     margin-top: 1rem;
+    font-size: 0.82rem;
 }
 
+/* Sidebar */
 .lp-dm__sidebar {
-    width: 200px;
+    width: 220px;
     flex-shrink: 0;
+    background: #0d0f12;
     border-right: 1px solid rgba(255,255,255,0.07);
     padding: 1.5rem 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    background: rgba(255,255,255,0.015);
-}
-
-.lp-dm__logo {
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: rgba(255,255,255,0.9);
-    letter-spacing: -0.02em;
-    padding: 0 0.5rem;
-}
-
-.lp-dm__logo span { color: var(--accent, #00ff88); }
-
-.lp-dm__nav {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
 }
 
+.lp-dm__logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: -0.02em;
+    padding: 0 0.5rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lp-dm__logo svg { color: var(--accent, #00ff88); }
+.lp-dm__logo span { color: var(--accent, #00ff88); }
+
+.lp-dm__user-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(0,255,136,0.07);
+    border: 1px solid rgba(0,255,136,0.15);
+    border-radius: 10px;
+    padding: 0.55rem 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.lp-dm__user-avatar {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--accent, #00ff88);
+    color: #000;
+    font-weight: 800;
+    font-size: 0.72rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.lp-dm__user-email {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.55);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.lp-dm__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.lp-dm__nav--bottom {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
 .lp-dm__nav-item {
     display: flex;
     align-items: center;
-    gap: 0.65rem;
+    gap: 0.6rem;
     padding: 0.6rem 0.75rem;
     border-radius: 8px;
     font-size: 0.8rem;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.45);
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.15s;
 }
+
+.lp-dm__nav-item:hover { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.8); }
 
 .lp-dm__nav-item--active {
     background: rgba(0,255,136,0.08);
@@ -1546,13 +1627,15 @@
     border: 1px solid rgba(0,255,136,0.15);
 }
 
+/* Main content */
 .lp-dm__main {
     flex: 1;
-    padding: 1.5rem;
+    padding: 1.5rem 1.75rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     overflow: hidden;
+    background: #121316;
 }
 
 .lp-dm__topbar {
@@ -1562,188 +1645,138 @@
 }
 
 .lp-dm__topbar-title {
-    font-size: 1rem;
+    font-size: 1.4rem;
     font-weight: 700;
-    color: rgba(255,255,255,0.9);
-}
-
-.lp-dm__topbar-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.lp-dm__search {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 8px;
-    padding: 0.45rem 0.85rem;
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.95);
 }
 
 .lp-dm__btn {
     background: var(--accent, #00ff88);
     color: #000;
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     font-weight: 700;
-    padding: 0.45rem 0.9rem;
+    padding: 0.55rem 1.1rem;
     border-radius: 8px;
     cursor: pointer;
 }
 
+/* Stats — 6 columns matching real dashboard */
 .lp-dm__stats {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 0.75rem;
 }
 
 .lp-dm__stat {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 10px;
-    padding: 0.85rem 1rem;
-}
-
-.lp-dm__stat-val {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: rgba(255,255,255,0.9);
-    letter-spacing: -0.02em;
+    border-radius: 12px;
+    padding: 1rem 0.85rem;
 }
 
 .lp-dm__stat-lbl {
-    font-size: 0.68rem;
-    color: rgba(255,255,255,0.3);
-    margin-top: 2px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.lp-dm__chart {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
-}
-
-.lp-dm__chart-label {
-    font-size: 0.7rem;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-}
-
-.lp-dm__bars {
-    display: flex;
-    align-items: flex-end;
-    gap: 6px;
-    height: 64px;
-}
-
-.lp-dm__bar {
-    flex: 1;
-    height: var(--h);
-    background: rgba(0,255,136,0.2);
-    border-radius: 4px 4px 0 0;
-    position: relative;
-    transition: background 0.2s;
-}
-
-.lp-dm__bar:hover { background: rgba(0,255,136,0.4); }
-.lp-dm__bar--today { background: rgba(0,255,136,0.5); }
-
-.lp-dm__bar span {
-    position: absolute;
-    bottom: -1.2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.6rem;
-    color: rgba(255,255,255,0.25);
-    white-space: nowrap;
-}
-
-.lp-dm__recent {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    flex: 1;
-}
-
-.lp-dm__recent-head {
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: rgba(255,255,255,0.25);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 0.25rem;
-}
-
-.lp-dm__row {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    padding: 0.7rem 0.9rem;
-    border-radius: 10px;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.05);
-}
-
-.lp-dm__row-avatar {
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: rgba(0,255,136,0.15);
-    border: 1px solid rgba(0,255,136,0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--accent, #00ff88);
-    flex-shrink: 0;
-}
-
-.lp-dm__row-avatar--b { background: rgba(120,180,255,0.15); border-color: rgba(120,180,255,0.25); color: #78b4ff; }
-.lp-dm__row-avatar--c { background: rgba(255,200,80,0.15); border-color: rgba(255,200,80,0.25); color: #ffc850; }
-
-.lp-dm__row-info { flex: 1; min-width: 0; }
-
-.lp-dm__row-name {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: rgba(255,255,255,0.85);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.lp-dm__row-form {
     font-size: 0.65rem;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.08);
     color: rgba(255,255,255,0.35);
-    padding: 0.1rem 0.45rem;
-    border-radius: 4px;
-    font-weight: 500;
-}
-
-.lp-dm__row-msg {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.3);
+    margin-bottom: 6px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 600;
 }
 
-.lp-dm__row-time {
-    font-size: 0.68rem;
-    color: rgba(255,255,255,0.2);
-    white-space: nowrap;
-    flex-shrink: 0;
+.lp-dm__stat-val {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+
+.lp-dm__stat-val--green { color: var(--accent, #00ff88); }
+.lp-dm__stat-val--red   { color: #ff4949; }
+
+.lp-dm__stat-new {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+}
+
+/* Forms table */
+.lp-dm__table-wrap {
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.lp-dm__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+}
+
+.lp-dm__table thead tr {
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.lp-dm__table th {
+    padding: 0.7rem 1rem;
+    text-align: left;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: rgba(255,255,255,0.3);
+}
+
+.lp-dm__table tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background 0.15s;
+}
+
+.lp-dm__table tbody tr:last-child { border-bottom: none; }
+.lp-dm__table tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+.lp-dm__table td {
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.6);
+}
+
+.lp-dm__td-name {
+    color: rgba(255,255,255,0.9) !important;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.lp-dm__new-badge {
+    font-size: 0.62rem;
+    font-weight: 700;
+    background: rgba(0,255,136,0.1);
+    border: 1px solid rgba(0,255,136,0.2);
+    color: var(--accent, #00ff88);
+    padding: 0.15rem 0.5rem;
+    border-radius: 100px;
+}
+
+.lp-dm__td-endpoint {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.3) !important;
+}
+
+.lp-dm__td-green { color: var(--accent, #00ff88) !important; font-weight: 700; }
+.lp-dm__td-muted { color: rgba(255,255,255,0.3) !important; font-size: 0.75rem; }
+
+.lp-dm__status-badge {
+    background: rgba(0,255,136,0.1);
+    border: 1px solid rgba(0,255,136,0.2);
+    color: var(--accent, #00ff88);
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.2rem 0.65rem;
+    border-radius: 100px;
 }
 
 /* ════════════════════════════════════════════════════════
@@ -1945,7 +1978,7 @@
 @media (max-width: 1024px) {
     .lp-feat-grid { grid-template-columns: repeat(2, 1fr); }
     .lp-feat-card--wide { grid-column: span 2; }
-    .lp-dm__stats { grid-template-columns: repeat(2, 1fr); }
+    .lp-dm__stats { grid-template-columns: repeat(3, 1fr); }
     .lp-pt__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -1955,8 +1988,10 @@
     .lp-steps::before { display: none; }
     .lp-pt__grid { grid-template-columns: 1fr; }
     .lp-dashboard-mock { flex-direction: column; }
-    .lp-dm__sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; padding: 1rem; gap: 1rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    .lp-dm__nav { flex-direction: row; flex-wrap: wrap; }
+    .lp-dm__sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; align-items: center; padding: 1rem; gap: 0.75rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .lp-dm__nav, .lp-dm__nav--bottom { flex-direction: row; flex-wrap: wrap; }
+    .lp-dm__nav--bottom { margin-top: 0; padding-top: 0; border-top: none; }
+    .lp-dm__stats { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 640px) {
