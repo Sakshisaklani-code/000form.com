@@ -233,6 +233,5 @@ class User extends Authenticatable
     {
         return $this->activeWorkspaceOwnerId() === $this->id;
     }
-
         
 }

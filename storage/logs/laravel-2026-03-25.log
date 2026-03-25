@@ -638,3 +638,30 @@
 [2026-03-25 06:51:46] local.INFO: Playground email: Redirecting to captcha page {"email":"tsaklani2drish@gmail.com"} 
 [2026-03-25 06:51:47] local.INFO: Playground: Showing captcha page {"email":"tsaklani2drish@gmail.com"} 
 [2026-03-25 06:52:56] local.INFO: Playground: Showing captcha page {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-25 07:29:38] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 07:29:48] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 07:30:02] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 08:43:32] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 08:45:23] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 08:45:30] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 08:45:43] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 08:46:45] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 08:47:27] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 08:48:00] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 08:48:36] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 08:48:51] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 08:49:18] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 08:53:03] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:01:28] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:01:31] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:01:32] local.ERROR: Supabase refresh token error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=refresh_token` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"refresh_token_not_found","msg":"Invalid Refresh Token: Refresh Token Not Found"}
+  
+[2026-03-25 10:01:37] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:01:45] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:20:20] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:20:29] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:21:09] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:21:13] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:21:21] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 10:21:28] local.ERROR: JWT verification error: Incorrect key for this algorithm  

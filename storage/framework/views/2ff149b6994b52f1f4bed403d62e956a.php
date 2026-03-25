@@ -1992,6 +1992,24 @@
     .lp-container { padding: 0 1.25rem; }
 }
 
+/* @media (max-width: 490px) {
+.lp-hero__previews {
+    gap: 1.25rem;
+    width: 100%;
+    align-items: start;
+}
+
+.lp-dash__side {
+    flex-shrink: 0;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    padding: 1rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: rgba(255,255,255,0.015);
+}
+} */
+
 </style>
 <?php $__env->stopPush(); ?>
 
