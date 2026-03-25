@@ -212,6 +212,46 @@
 
         <div class="lp-feat-grid">
 
+            <div class="lp-feat-card lp-feat-card--wide">
+                <div class="lp-feat-card__icon lp-feat-card__icon--accent">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+                </div>
+                <h3>Instant email notifications</h3>
+                <p>Every form submission lands directly in your inbox. Reply to the sender without ever logging into a dashboard. Customize your notification template.</p>
+                <div class="lp-feat-card__visual lp-feat-card__visual--email">
+                    <div class="lp-email-preview">
+                        <div class="lp-ep__header">
+                            <div class="lp-ep__from">
+                                <div class="lp-ep__avatar">J</div>
+                                <div>
+                                    <div class="lp-ep__name">John Smith</div>
+                                    <div class="lp-ep__addr">via 000form.com</div>
+                                </div>
+                            </div>
+                            <div class="lp-ep__time">just now</div>
+                        </div>
+                        <div class="lp-ep__subject">New form submission — Contact Form</div>
+                        <div class="lp-ep__rows">
+                            <div class="lp-ep__row"><span>Name</span><span>John Smith</span></div>
+                            <div class="lp-ep__row"><span>Email</span><span class="lp-accent-text">john@example.com</span></div>
+                            <div class="lp-ep__row"><span>Message</span><span>Hey, I'm interested in working together…</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lp-feat-card">
+                <div class="lp-feat-card__icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Smart spam protection</h3>
+                <p>Built-in honeypot fields and ML-based filtering block bots before they reach your inbox.</p>
+                <div class="lp-feat-tag-row">
+                    <span class="lp-feat-tag">Honeypot</span>
+                    <span class="lp-feat-tag">Bot detection</span>
+                    <span class="lp-feat-tag">Rate limiting</span>
+                </div>
+            </div>
 
             <div class="lp-feat-card">
                 <div class="lp-feat-card__icon">
@@ -280,7 +320,7 @@
                 <h3>File uploads</h3>
                 <p>Accept file attachments directly through your forms. Stored securely, accessible from your dashboard.</p>
                 <div class="lp-feat-tag-row">
-                    <span class="lp-feat-tag">Up to 10MB</span>
+                    <span class="lp-feat-tag">Up to 100MB</span>
                     <span class="lp-feat-tag">Secure storage</span>
                 </div>
             </div>
@@ -360,99 +400,97 @@
         </div>
 
         <div class="lp-dashboard-mock">
-        <!-- Sidebar -->
-        <aside class="lp-dm__sidebar">
-            <div class="lp-dm__logo">000<span>form</span></div>
-            <div class="lp-dm__user-info">
-                <div class="lp-dm__user">Y</div>
-                <div class="lp-dm__email">YOUR_EMAIL</div>
+            <div class="lp-dm__sidebar">
+                <div class="lp-dm__logo">000<span>form</span></div>
+                <nav class="lp-dm__nav">
+                    <div class="lp-dm__nav-item lp-dm__nav-item--active">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                        Dashboard
+                    </div>
+                    <div class="lp-dm__nav-item">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        Submissions
+                    </div>
+                    <div class="lp-dm__nav-item">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        Analytics
+                    </div>
+                    <div class="lp-dm__nav-item">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+                        Settings
+                    </div>
+                </nav>
             </div>
-
-            <nav>
-            <div class="lp-dm__nav-item lp-dm__nav-item--active">Dashboard</div>
-            <div class="lp-dm__nav-item">New Form</div>
-            <div class="lp-dm__nav-item">Plan & Subscriptions</div>
-            <div class="lp-dm__nav-item">Payment History</div>
-            <div class="lp-dm__nav-item">Team Management</div>
-            </nav>
-        </aside>
-
-        <!-- Main -->
-        <main class="lp-dm__main">
-            <!-- Topbar -->
-            <div class="lp-dm__topbar">
-            <div class="lp-dm__topbar-title">Dashboard</div>
-            <div class="lp-dm__btn">+ New Form</div>
+            <div class="lp-dm__main">
+                <div class="lp-dm__topbar">
+                    <div class="lp-dm__topbar-title">Dashboard</div>
+                    <div class="lp-dm__topbar-actions">
+                        <div class="lp-dm__search">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            Search…
+                        </div>
+                        <div class="lp-dm__btn">+ New Form</div>
+                    </div>
+                </div>
+                <div class="lp-dm__stats">
+                    <div class="lp-dm__stat">
+                        <div class="lp-dm__stat-val">1,284</div>
+                        <div class="lp-dm__stat-lbl">Total submissions</div>
+                    </div>
+                    <div class="lp-dm__stat">
+                        <div class="lp-dm__stat-val lp-accent-text">47</div>
+                        <div class="lp-dm__stat-lbl">This month</div>
+                    </div>
+                    <div class="lp-dm__stat">
+                        <div class="lp-dm__stat-val">3</div>
+                        <div class="lp-dm__stat-lbl">Active forms</div>
+                    </div>
+                    <div class="lp-dm__stat">
+                        <div class="lp-dm__stat-val">98%</div>
+                        <div class="lp-dm__stat-lbl">Delivery rate</div>
+                    </div>
+                </div>
+                <div class="lp-dm__chart">
+                    <div class="lp-dm__chart-label">Submissions — last 7 days</div>
+                    <div class="lp-dm__bars">
+                        <div class="lp-dm__bar" style="--h:45%"><span>Mon</span></div>
+                        <div class="lp-dm__bar" style="--h:70%"><span>Tue</span></div>
+                        <div class="lp-dm__bar" style="--h:55%"><span>Wed</span></div>
+                        <div class="lp-dm__bar" style="--h:90%"><span>Thu</span></div>
+                        <div class="lp-dm__bar" style="--h:65%"><span>Fri</span></div>
+                        <div class="lp-dm__bar" style="--h:40%"><span>Sat</span></div>
+                        <div class="lp-dm__bar lp-dm__bar--today" style="--h:78%"><span>Sun</span></div>
+                    </div>
+                </div>
+                <div class="lp-dm__recent">
+                    <div class="lp-dm__recent-head">Recent submissions</div>
+                    <div class="lp-dm__row">
+                        <div class="lp-dm__row-avatar">A</div>
+                        <div class="lp-dm__row-info">
+                            <div class="lp-dm__row-name">Alice Cooper <span class="lp-dm__row-form">contact-form</span></div>
+                            <div class="lp-dm__row-msg">I'd love to learn more about your services…</div>
+                        </div>
+                        <div class="lp-dm__row-time">2m ago</div>
+                    </div>
+                    <div class="lp-dm__row">
+                        <div class="lp-dm__row-avatar lp-dm__row-avatar--b">B</div>
+                        <div class="lp-dm__row-info">
+                            <div class="lp-dm__row-name">Bob Martin <span class="lp-dm__row-form">feedback</span></div>
+                            <div class="lp-dm__row-msg">The onboarding was really smooth, thanks!</div>
+                        </div>
+                        <div class="lp-dm__row-time">18m ago</div>
+                    </div>
+                    <div class="lp-dm__row">
+                        <div class="lp-dm__row-avatar lp-dm__row-avatar--c">C</div>
+                        <div class="lp-dm__row-info">
+                            <div class="lp-dm__row-name">Carol White <span class="lp-dm__row-form">contact-form</span></div>
+                            <div class="lp-dm__row-msg">Quick question about pricing…</div>
+                        </div>
+                        <div class="lp-dm__row-time">1h ago</div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Stats -->
-            <div class="lp-dm__stats">
-            <div class="lp-dm__stat">
-                <div class="lp-dm__stat-val bold">3</div>
-                <div class="lp-dm__stat-lbl">Total Forms</div>
-            </div>
-            <div class="lp-dm__stat">
-                <div class="lp-dm__stat-val bold">34</div>
-                <div class="lp-dm__stat-lbl">Total Submissions</div>
-            </div>
-            <div class="lp-dm__stat">
-                <div class="lp-dm__stat-val green">27</div>
-                <div class="lp-dm__stat-lbl">Valid</div>
-            </div>
-            <div class="lp-dm__stat">
-                <div class="lp-dm__stat-val red">7</div>
-                <div class="lp-dm__stat-lbl">Spam Blocked</div>
-            </div>
-            <div class="lp-dm__stat">
-                <div class="lp-dm__stat-val green">26</div>
-                <div class="lp-dm__stat-lbl">Unread</div>
-            </div>
-            <div class="lp-dm__stat">
-                <div class="lp-dm__stat-val bold">3 <strong>new</strong></div>
-                <div class="lp-dm__stat-lbl">This Month</div>
-            </div>
-            </div>
-
-            <!-- Table -->
-            <table>
-            <thead>
-                <tr>
-                <th>Form Name</th>
-                <th>Endpoint</th>
-                <th>Total</th>
-                <th>Valid</th>
-                <th>Spam</th>
-                <th>Status</th>
-                <th>Last Submission</th>
-                <th>View</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <td class="form-name">Contact Form <span class="new-badge">23 new</span></td>
-                <td class="endpoint">/f/YOUR_TOKEN</td>
-                <td>31</td>
-                <td class="green">24</td>
-                <td>7</td>
-                <td><span class="badge green">Active</span></td>
-                <td class="last-submission">1 week ago</td>
-                <td class="view-link">View</td>
-                </tr>
-                <tr>
-                <td class="form-name">Test form <span class="new-badge">3 new</span></td>
-                <td class="endpoint">/f/YOUR_TOKEN</td>
-                <td>3</td>
-                <td class="green">3</td>
-                <td>0</td>
-                <td><span class="badge green">Active</span></td>
-                <td class="last-submission">2 days ago</td>
-                <td class="view-link">View</td>
-                </tr>
-            </tbody>
-            </table>
-        </main>
         </div>
-
 
     </div>
 </section>
@@ -460,36 +498,63 @@
 
 <section class="lp-pricing-teaser">
     <div class="lp-container">
-        <div class="lp-pt__inner">
-            <div class="lp-pt__left">
-                <div class="lp-section-tag">Pricing</div>
-                <h2>Start free.<br>Scale when ready.</h2>
-                <p>The free plan gives you 50 submissions per month and unlimited forms — plenty to get started. Upgrade only when you need more.</p>
-                <a href="<?php echo e(route('pricing')); ?>" class="lp-btn lp-btn--primary">
-                    See all plans
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+
+        <div class="lp-section-head">
+            <div class="lp-section-tag">Pricing</div>
+            <h2>One plan for every<br><span class="lp-dim">stage of your project.</span></h2>
+            <p>Start free, no credit card needed. Upgrade when your forms need to grow.</p>
+        </div>
+
+        <div class="lp-pt__grid">
+
+            
+            <div class="lp-pt__card">
+                <div class="lp-pt__name">Free</div>
+                <p class="lp-pt__desc">For testing and development.</p>
+                <a href="<?php echo e(route('pricing')); ?>" class="lp-pt__btn lp-pt__btn--ghost">
+                    View plan
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
             </div>
-            <div class="lp-pt__plans">
-                <div class="lp-pt__plan">
-                    <div class="lp-pt__plan-name">Free</div>
-                    <div class="lp-pt__plan-price">0<span>/mo</span></div>
-                    <ul class="lp-pt__plan-feats">
-                        <li>50 submissions/mo</li>
-                        <li>Unlimited forms</li>
-                        <li>Email notifications</li>
-                    </ul>
-                    <a href="<?php echo e(route('signup')); ?>" class="lp-pt__plan-btn lp-pt__plan-btn--outline">Get started</a>
-                </div>
-                <!-- <div class="lp-pt__plan">
-                    <div class="lp-pt__plan-name">Other Plans</div>
-                    <a href="<?php echo e(route('signup')); ?>" class="lp-pt__plan-btn lp-pt__plan-btn--outline">Personal</a>
-                    <a href="<?php echo e(route('signup')); ?>" class="lp-pt__plan-btn lp-pt__plan-btn--outline">Professional</a>
-                    <a href="<?php echo e(route('signup')); ?>" class="lp-pt__plan-btn lp-pt__plan-btn--outline">Business</a>
-                </div> -->
 
+            
+            <div class="lp-pt__card">
+                <div class="lp-pt__name">Personal</div>
+                <p class="lp-pt__desc">For personal or portfolio sites.</p>
+                <a href="<?php echo e(route('pricing')); ?>" class="lp-pt__btn lp-pt__btn--ghost">
+                    View plan
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
             </div>
+
+            
+            <div class="lp-pt__card lp-pt__card--featured">
+                <div class="lp-pt__popular">Most Popular</div>
+                <div class="lp-pt__name">Professional</div>
+                <p class="lp-pt__desc">For freelancers and startups.</p>
+                <a href="<?php echo e(route('pricing')); ?>" class="lp-pt__btn lp-pt__btn--solid">
+                    View plan
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+
+            
+            <div class="lp-pt__card">
+                <div class="lp-pt__name">Business</div>
+                <p class="lp-pt__desc">For organizations and agencies.</p>
+                <a href="<?php echo e(route('pricing')); ?>" class="lp-pt__btn lp-pt__btn--ghost">
+                    View plan
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+
         </div>
+
+        <div class="lp-pt__footer">
+            All plans include spam filtering, AJAX support, CSV export &amp; dashboard access. &nbsp;
+            <a href="<?php echo e(route('pricing')); ?>">See full comparison →</a>
+        </div>
+
     </div>
 </section>
 
@@ -513,207 +578,7 @@
 
 <?php $__env->startPush('styles'); ?>
 <style>
-    .lp-pt__plans {
-    display: flex;
-    gap: 24px;
-    margin-top: 20px;
-    }
 
-    .lp-pt__plan {
-    background: #181a1f;
-    border-radius: 12px;
-    padding: 20px;
-    flex: 1;
-    text-align: center;
-    }
-
-    .lp-pt__plan-name {
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    }
-
-.lp-dm__user-info {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* space between avatar and email */
-  margin-bottom: 13px;
-}
-
-.lp-dm__user {
-  background: #0f422e;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  line-height: 32px;
-  text-align: center;
-  font-weight: 700;
-  color: #fff;
-  user-select: none;
-}
-
-
-.lp-dm__email {
-  font-size: 14px;
-  color: #ccc;
-  word-break: break-all;
-}
-
-.lp-dashboard-mock {
-  display: flex;
-  min-height: 100vh;
-  font-family: "Inter", sans-serif;
-  background: #121316;
-  color: #fff;
-}
-
-/* Sidebar */
-.lp-dm__sidebar {
-  width: 220px;
-  background: #0d0f12;
-  color: #65ffa4;
-  padding: 24px 16px;
-  display: flex;
-  flex-direction: column;
-}
-
-.lp-dm__logo {
-  font-weight: 700;
-  font-size: 24px;
-  margin-bottom: 40px;
-}
-.lp-dm__logo span { color: #00d86a; }
-
-.lp-dm__user {
-  background: #0f422e;
-  border-radius: 50%;
-  width: 40px; height: 40px;
-  line-height: 40px;
-  text-align: center;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-.lp-dm__email {
-  font-size: 14px;
-  color: #ccc;
-  margin-bottom: 32px;
-  word-break: break-all;
-}
-
-.lp-dm__nav-item {
-  padding: 8px 12px;
-  cursor: pointer;
-  font-weight: 600;
-  color: #65ffa4;
-  border-radius: 6px;
-  transition: background 0.2s ease;
-}
-.lp-dm__nav-item:not(:last-child) { margin-bottom: 12px; }
-.lp-dm__nav-item:hover { background: #1f2937; color: #fff; }
-.lp-dm__nav-item--active { background: #1f2937; color: #fff; }
-
-/* Main */
-.lp-dm__main {
-  flex: 1;
-  background: #121316;
-  padding: 24px 32px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Topbar */
-.lp-dm__topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 32px;
-}
-.lp-dm__topbar-title {
-  font-size: 28px;
-  font-weight: 700;
-}
-.lp-dm__btn {
-  background: #00d86a;
-  color: #121316;
-  font-weight: 700;
-  padding: 10px 18px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-.lp-dm__btn:hover { background: #00c25d; }
-
-
-.lp-dm__stat {
-  background: #181a1f;
-  flex: 1;
-  border-radius: 12px;
-  padding: 24px 20px;
-}
-.lp-dm__stat-lbl {
-  font-weight: 600;
-  font-size: 14px;
-  color: #7a7d85;
-  margin-top: 8px;
-}
-.lp-dm__stat-val {
-  font-weight: 700;
-  font-size: 28px;
-}
-.lp-dm__stat-val.green { color: #00d86a; }
-.lp-dm__stat-val.red { color: #ff4949; }
-.lp-dm__stat-val.bold { font-weight: 800; }
-
-/* Table */
-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 10px;
-  color: #999;
-  background: #181a1f;
-  border-radius: 10px;
-}
-th, td {
-  text-align: left;
-  padding: 12px 16px;
-  font-size: 14px;
-}
-thead th {
-  color: #6e6e6e;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-tbody tr {
-  background: #181a1f;
-  border-radius: 5px;
-  transition: background 0.2s ease;
-}
-
-/* Form name + badge */
-.form-name {
-  color: #fff;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.new-badge {
-  background: #134e33;
-  color: #b6e2b6;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 12px;
-}
-
-/* Endpoint */
-.endpoint { font-family: monospace; color: #666; }
-
-/* Status badges */
-.badge {
-  border-radius : 12px;
-  padding: 4px 12px;
-                        }
 /* ════════════════════════════════════════════════════════
    GLOBAL RESET / TOKENS
 ════════════════════════════════════════════════════════ */
@@ -1357,7 +1222,6 @@ tbody tr {
     padding: 0.25rem 0.85rem;
     border-radius: 100px;
     margin-bottom: 1.25rem;
-    width: fit-content;
 }
 
 .lp-section-head h2 {
@@ -1667,7 +1531,16 @@ tbody tr {
     margin-top: 1rem;
 }
 
-
+.lp-dm__sidebar {
+    width: 200px;
+    flex-shrink: 0;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background: rgba(255,255,255,0.015);
+}
 
 .lp-dm__logo {
     font-size: 1.1rem;
@@ -1754,7 +1627,7 @@ tbody tr {
 
 .lp-dm__stats {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 0.75rem;
 }
 
@@ -1910,147 +1783,133 @@ tbody tr {
     padding: 6rem 0;
 }
 
-.lp-pt__inner {
+.lp-pt__grid {
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 4rem;
-    align-items: center;
-}
-
-.lp-pt__left {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-}
-
-.lp-pt__left h2 {
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.025em;
-    color: var(--text-primary, #fff);
-    margin: 0;
-}
-
-.lp-pt__left p {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: var(--text-secondary, rgba(255,255,255,0.55));
-    margin: 0;
-}
-
-.lp-pt__plans {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
-    align-items: start;
+    align-items: stretch;
+    margin-bottom: 2rem;
 }
 
-.lp-pt__plan {
-    background: var(--bg-card, rgba(255,255,255,0.03));
-    border: 1px solid var(--border-color, rgba(255,255,255,0.08));
+.lp-pt__card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 18px;
-    padding: 1.5rem;
+    padding: 1.75rem 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0;
     position: relative;
-    transition: all 0.2s ease;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
-.lp-pt__plan--featured {
-    border-color: rgba(0,255,136,0.3);
-    background: linear-gradient(145deg, rgba(0,255,136,0.05), rgba(255,255,255,0.02));
-    box-shadow: 0 16px 48px rgba(0,255,136,0.1);
+.lp-pt__card:hover {
+    border-color: rgba(255,255,255,0.16);
+    transform: translateY(-3px);
 }
 
-.lp-pt__plan-tag {
-    font-family: var(--font-mono, monospace);
-    font-size: 0.62rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: var(--accent, #00ff88);
-    background: rgba(0,255,136,0.1);
-    border: 1px solid rgba(0,255,136,0.2);
-    padding: 0.2rem 0.6rem;
-    border-radius: 100px;
-    width: fit-content;
+.lp-pt__card--featured {
+    border-color: rgba(0,255,136,0.35);
+    background: linear-gradient(160deg, rgba(0,255,136,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    box-shadow: 0 0 0 1px rgba(0,255,136,0.1), 0 20px 48px rgba(0,255,136,0.1);
 }
 
-.lp-pt__plan-name {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: #00ff88;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+.lp-pt__card--featured:hover {
+    border-color: rgba(0,255,136,0.55);
+    box-shadow: 0 0 0 1px rgba(0,255,136,0.2), 0 24px 56px rgba(0,255,136,0.15);
 }
 
-.lp-pt__plan-price {
-    font-size: 2rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--text-primary, #fff);
-    line-height: 1;
-}
-
-.lp-pt__plan-price span {
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: rgba(255,255,255,0.35);
-}
-
-.lp-pt__plan-feats {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.45rem;
-}
-
-.lp-pt__plan-feats li {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.5);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.lp-pt__plan-feats li::before {
-    content: '';
-    width: 5px; height: 5px;
-    border-radius: 50%;
+.lp-pt__popular {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
     background: var(--accent, #00ff88);
-    opacity: 0.5;
-    flex-shrink: 0;
+    color: #000;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.9rem;
+    border-radius: 0 0 8px 8px;
+    white-space: nowrap;
 }
 
-.lp-pt__plan-btn {
+.lp-pt__name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary, #fff);
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.lp-pt__card--featured .lp-pt__name {
+    color: var(--accent, #00ff88);
+}
+
+.lp-pt__desc {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.5;
+    margin: 0 0 1.5rem;
+    flex: 1;
+}
+
+.lp-pt__btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.65rem;
-    border-radius: 8px;
+    gap: 6px;
+    padding: 0.65rem 1rem;
+    border-radius: 9px;
     font-size: 0.82rem;
     font-weight: 600;
     text-decoration: none;
     text-align: center;
-    margin-top: 0.5rem;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
+    margin-top: auto;
 }
 
-.lp-pt__plan-btn--outline {
-    border: 1px solid #00ff88;
-    color: #00ff88;
+.lp-pt__btn--ghost {
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.65);
+    background: transparent;
 }
-.lp-pt__plan-btn--outline:hover { background-color: #00ff88; color: black; }
 
-.lp-pt__plan-btn--solid {
+.lp-pt__btn--ghost:hover {
+    border-color: rgba(255,255,255,0.3);
+    color: #fff;
+    background: rgba(255,255,255,0.04);
+}
+
+.lp-pt__btn--solid {
     background: var(--accent, #00ff88);
     color: #000;
+    border: 1px solid var(--accent, #00ff88);
 }
-.lp-pt__plan-btn--solid:hover { background: #00e87a; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,255,136,0.25); }
+
+.lp-pt__btn--solid:hover {
+    background: #00e87a;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0,255,136,0.3);
+}
+
+.lp-pt__footer {
+    text-align: center;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.25);
+    padding-top: 0.5rem;
+}
+
+.lp-pt__footer a {
+    color: var(--accent, #00ff88);
+    text-decoration: none;
+    font-weight: 600;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.lp-pt__footer a:hover { opacity: 1; }
 
 /* ════════════════════════════════════════════════════════
    FINAL CTA
@@ -2117,13 +1976,14 @@ tbody tr {
     .lp-feat-grid { grid-template-columns: repeat(2, 1fr); }
     .lp-feat-card--wide { grid-column: span 2; }
     .lp-dm__stats { grid-template-columns: repeat(2, 1fr); }
+    .lp-pt__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 860px) {
     .lp-hero__previews { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
     .lp-steps { grid-template-columns: 1fr; gap: 2rem; }
     .lp-steps::before { display: none; }
-    .lp-pt__inner { grid-template-columns: 1fr; }
+    .lp-pt__grid { grid-template-columns: 1fr; }
     .lp-dashboard-mock { flex-direction: column; }
     .lp-dm__sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; padding: 1rem; gap: 1rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
     .lp-dm__nav { flex-direction: row; flex-wrap: wrap; }
@@ -2134,7 +1994,7 @@ tbody tr {
     .lp-features, .lp-hiw, .lp-preview, .lp-pricing-teaser, .lp-cta { padding: 4rem 0; }
     .lp-feat-grid { grid-template-columns: 1fr; }
     .lp-feat-card--wide { grid-column: span 1; }
-    .lp-pt__plans { grid-template-columns: 1fr; }
+    .lp-pt__grid { grid-template-columns: 1fr; }
     .lp-hero__proof { flex-wrap: wrap; }
     .lp-trust__inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
     .lp-dm__stats { grid-template-columns: repeat(2, 1fr); }
