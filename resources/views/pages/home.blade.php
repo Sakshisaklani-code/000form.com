@@ -1602,6 +1602,7 @@
     background: #121316;
     margin-top: 1rem;
     font-size: 0.82rem;
+    transition: all 0.5s ease;
 }
 
 .lp-dm__sidebar {
@@ -1851,6 +1852,7 @@
     border-radius: 1.5rem;
     max-width: 1400px;
     margin: 0 auto;
+    transition: all 0.5s ease;
 }
 
 .lp-container {
@@ -1873,6 +1875,7 @@
     gap: 3rem;
     margin: 2rem 0 2rem;
     box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
+    transition: all 0.5s ease;
 }
 
 .banner-content {
@@ -2120,7 +2123,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.lp-feat-card, .lp-step, .lp-pt__card, .lp-hero__row').forEach(el => {
+    document.querySelectorAll('.lp-feat-card, .lp-step, .lp-pt__card, .lp-hero__row, .lp-pricing-teaser, .banner-inner, .lp-dashboard-mock').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(18px)';
         el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
