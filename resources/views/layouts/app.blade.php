@@ -217,21 +217,34 @@
 
     @yield('content')
     
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-inner">
-                <div class="nav-logo"><span>000</span>form</div>
-                <ul class="footer-links">
-                    <!-- <li><a href="{{ route('playground.index') }}">Express Form</a></li> -->
-                    <li><a href="{{ route('pages.terms') }}">Terms</a></li>
-                    <li><a href="{{ route('pages.privacy-policy') }}">Privacy Policy</a></li>
-                    <li><a href="{{ route('pages.refund') }}">Refund Policy</a></li>
-                    <!-- <li><a href="/ajax">AJAX</a></li> -->
-                </ul>
-                <p class="footer-copy">&copy; {{ date('Y') }} 000form</p>
-            </div>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-top">
+            
+            <!-- Left: Logo -->
+            <div class="nav-logo"><span>000</span>form</div>
+
+            <!-- Right: Links -->
+            <ul class="footer-links">
+                <li><a href="{{ route('pages.terms') }}">Terms</a></li>
+                <li><a href="{{ route('pages.privacy-policy') }}">Privacy Policy</a></li>
+                <li><a href="{{ route('pages.refund') }}">Refund Policy</a></li>
+            </ul>
+
         </div>
-    </footer>
+
+        <!-- Bottom Section -->
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; {{ date('Y') }} 000form. All rights reserved.</p>
+
+            <p class="footer-attribution">
+                Product of <a href="#">172 Tech</a> · 
+                Designed by <a href="#">530 Expert</a> · 
+                Developed by <a href="#">ESS ENN Associates</a>
+            </p>
+        </div>
+    </div>
+</footer>
 
     <script src="/js/app.js"></script>
     <script>

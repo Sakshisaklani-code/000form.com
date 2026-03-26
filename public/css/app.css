@@ -76,7 +76,6 @@ a {
     color: var(--text-primary);
 }
 
-
 a:hover {
     color: var(--text-primary);
 }
@@ -912,49 +911,103 @@ code, .mono {
 /* ============================================
    Footer
    ============================================ */
-
 .footer {
-    padding: 2rem 0;
-    border-top: 1px solid var(--border-color);
+    background: #050505;
+    color: #bbb;
+    padding: 30px 20px 30px;
+    border-top: 1px solid #111;
 }
 
-.footer-inner {
+/* Top Row Layout */
+.footer-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+    flex-wrap: wrap; /* responsive */
+    margin-bottom: 30px;
 }
 
-@media (max-width: 768px) {
-    .footer-inner {
-        flex-direction: column;
-        text-align: center;
-    }
+/* Logo */
+.nav-logo {
+    font-size: 26px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 1px;
 }
 
+.nav-logo span {
+    color: #00ff88;
+}
+
+/* Links */
 .footer-links {
-    display: flex;
-    gap: 2rem;
     list-style: none;
-    flex-wrap: wrap;
-    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    display: inline-block;
+    margin-left: 25px;
 }
 
 .footer-links a {
-    color: var(--text-muted);
-    font-size: 0.9rem;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Underline animation */
+.footer-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: #00ff88;
+    transition: width 0.3s ease;
 }
 
 .footer-links a:hover {
-    color: var(--text-primary);
+    color: #00ff88;
 }
 
+.footer-links a:hover::after {
+    width: 100%;
+}
+
+/* Bottom Section */
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #111;
+    padding-top: 20px;
+}
+
+/* Copyright */
 .footer-copy {
-    color: var(--text-muted);
-    font-size: 0.875rem;
+    font-size: 15px;
+    color: #777;
+    margin-bottom: 8px;
 }
 
+/* Attribution */
+.footer-attribution {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.footer-attribution a {
+    color: #00ff88;
+    text-decoration: none;
+}
+
+.footer-attribution a:hover {
+    text-decoration: underline;
+}
 /* ============================================
    Dashboard Layout
    ============================================ */
