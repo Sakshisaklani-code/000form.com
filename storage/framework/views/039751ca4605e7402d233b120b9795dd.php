@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Documentation - 000form'); ?>
 
-@section('title', 'Documentation - 000form')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
@@ -247,7 +245,7 @@
             <h1 class="docs-title">Documentation</h1>
             <p>
                 Everything you need to add 000form to your website.
-                <a href="{{ route('playground.index') }}" style="color:#00ff88;text-decoration:none;margin-left:0.5rem;">
+                <a href="<?php echo e(route('playground.index')); ?>" style="color:#00ff88;text-decoration:none;margin-left:0.5rem;">
                     <i class="bi bi-play-circle"></i> Try it in the Express &rarr;
                 </a>
             </p>
@@ -255,7 +253,7 @@
 
         <div class="docs-layout">
 
-            {{-- ── SIDEBAR ── --}}
+            
             <nav class="docs-nav">
                 <div class="docs-nav-label">Getting Started</div>
                 <a href="#quickstart"><i class="bi bi-lightning-charge"></i> Quick Start</a>
@@ -280,10 +278,10 @@
                 <a href="#limits"><i class="bi bi-bar-chart"></i> Limits</a>
             </nav>
 
-            {{-- ── MAIN CONTENT ── --}}
+            
             <div>
 
-                {{-- Quick Start --}}
+                
                 <div class="docs-section" id="quickstart">
                     <div class="docs-section-header">
                         <h2>
@@ -299,7 +297,7 @@
                                 <div class="qs-card-body">
                                     <div class="qs-num">Step 1</div>
                                     <h4>Create a free account</h4>
-                                    <p>Sign up at <a href="{{ route('signup') }}">000form.com</a>
+                                    <p>Sign up at <a href="<?php echo e(route('signup')); ?>">000form.com</a>
                                 </div>
                             </div>
                             <div class="qs-card">
@@ -329,12 +327,12 @@
                         </div>
                         <div class="note-box">
                             <i class="bi bi-play-circle-fill"></i>
-                            <span>Not ready to sign up yet? <a href="{{ route('playground.index') }}" style="color:#00ff88;text-decoration:none;font-weight:600;">Try the Playground</a> &mdash; test everything right now with no account needed.</span>
+                            <span>Not ready to sign up yet? <a href="<?php echo e(route('playground.index')); ?>" style="color:#00ff88;text-decoration:none;font-weight:600;">Try the Playground</a> &mdash; test everything right now with no account needed.</span>
                         </div>
                     </div>
                 </div>
 
-                {{-- Basic HTML Form --}}
+                
                 <div class="docs-section" id="basic-form">
                     <div class="docs-section-header">
                         <h2>
@@ -368,11 +366,11 @@
                     </div>
                 </div>
 
-                {{-- Special Fields group label --}}
+                
                 <div class="section-group-label"><span>Special Fields</span></div>
                 <p style="font-size:14px;color:#555;margin:-0.25rem 0 1.5rem;">Add these as hidden inputs to your form to turn on extra features. All of them are optional &mdash; only use the ones you need.</p>
 
-                {{-- _subject --}}
+                
                 <div class="docs-section" id="subject">
                     <div class="docs-section-header">
                         <h2>
@@ -392,7 +390,7 @@
                     </div>
                 </div>
 
-                {{-- _replyto --}}
+                
                 <div class="docs-section" id="replyto">
                     <div class="docs-section-header">
                         <h2>
@@ -413,7 +411,7 @@
                     </div>
                 </div>
 
-                {{-- _cc --}}
+                
                 <div class="docs-section" id="cc">
                     <div class="docs-section-header">
                         <h2>
@@ -437,7 +435,7 @@
                     </div>
                 </div>
 
-                {{-- _next --}}
+                
                 <div class="docs-section" id="next">
                     <div class="docs-section-header">
                         <h2>
@@ -461,7 +459,7 @@
                     </div>
                 </div>
 
-                {{-- _template --}}
+                
                 <div class="docs-section" id="template">
                     <div class="docs-section-header">
                         <h2>
@@ -500,7 +498,7 @@
                     </div>
                 </div>
 
-                {{-- _auto-response --}}
+                
                 <div class="docs-section" id="auto-response">
                     <div class="docs-section-header">
                         <h2>
@@ -541,7 +539,7 @@
                     </div>
                 </div>
 
-                {{-- _blacklist --}}
+                
                 <div class="docs-section" id="blacklist">
                     <div class="docs-section-header">
                         <h2>
@@ -567,10 +565,10 @@
                     </div>
                 </div>
 
-                {{-- Features group label --}}
+                
                 <div class="section-group-label"><span>Features</span></div>
 
-                {{-- Spam Protection --}}
+                
                 <div class="docs-section" id="spam">
                     <div class="docs-section-header">
                         <h2>
@@ -595,7 +593,7 @@
                     </div>
                 </div>
 
-                {{-- File Uploads --}}
+                
                 <div class="docs-section" id="uploads">
                     <div class="docs-section-header">
                         <h2>
@@ -644,7 +642,7 @@
                     </div>
                 </div>
 
-                {{-- AJAX --}}
+                
                 <div class="docs-section" id="ajax">
     <div class="docs-section-header">
         <h2>
@@ -697,7 +695,7 @@ form.<span class="fn">addEventListener</span>(<span class="str2">'submit'</span>
             <span>Add <span class="ic">&lt;div id="form-response"&gt;&lt;/div&gt;</span> inside your form HTML &mdash; that's where the success or error message will show. The JSON response always has <span class="ic">success</span> (true/false) and <span class="ic">message</span> (text).</span>
         </div>
 
-        {{-- ── Full working example ── --}}
+        
         <div class="docs-subsection-title" style="margin-top:2rem;margin-bottom:1rem;font-weight:600;font-size:0.95rem;color:var(--text-primary);">
             <i class="bi bi-file-code" style="color:var(--accent);margin-right:0.4rem;"></i>
             Full Example
@@ -783,7 +781,7 @@ form.<span class="fn">addEventListener</span>(<span class="str2">'submit'</span>
         </div>
         <div class="note-box" style="margin-top:1rem;">
             <i class="bi bi-lightbulb-fill"></i>
-            <span>Replace <span class="ic">YOUR_FORM_ID</span> with your form's ID or slug from the <a href="{{ route('dashboard') }}" style="color:var(--accent);">dashboard</a>. The script handles success, validation errors (422), and permission errors (403) automatically.</span>
+            <span>Replace <span class="ic">YOUR_FORM_ID</span> with your form's ID or slug from the <a href="<?php echo e(route('dashboard')); ?>" style="color:var(--accent);">dashboard</a>. The script handles success, validation errors (422), and permission errors (403) automatically.</span>
         </div>
 
         <div class="note-box" style="margin-top:1rem;">
@@ -801,7 +799,7 @@ form.<span class="fn">addEventListener</span>(<span class="str2">'submit'</span>
     </div>
 </div>
 
-                {{-- NEW: Chat Widget Feature --}}
+                
                 <div class="docs-section" id="chat-widget">
                     <div class="docs-section-header">
                         <h2>
@@ -822,7 +820,7 @@ form.<span class="fn">addEventListener</span>(<span class="str2">'submit'</span>
                             <div class="code-header"><span class="code-lang">HTML - Add before closing &lt;/body&gt;</span><button class="code-copy"><i class="bi bi-clipboard"></i> Copy</button></div>
                             <div class="code-content">
 <pre><span class="comment">&lt;!-- Replace YOUR_FORM_ID with your actual form ID --&gt;</span>
-<span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="string">"{{ config('app.url') }}/formbutton/YOUR_FORM_ID/widget.js"</span> <span class="attr">defer</span><span class="tag">&gt;&lt;/script&gt;</span></pre>
+<span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="string">"<?php echo e(config('app.url')); ?>/formbutton/YOUR_FORM_ID/widget.js"</span> <span class="attr">defer</span><span class="tag">&gt;&lt;/script&gt;</span></pre>
 </div>
                         </div>
 
@@ -849,7 +847,7 @@ form.<span class="fn">addEventListener</span>(<span class="str2">'submit'</span>
                     </div>
                 </div>
 
-                {{-- Limits --}}
+                
                 <div class="docs-section" id="limits">
                     <div class="docs-section-header">
                         <h2>
@@ -869,19 +867,19 @@ form.<span class="fn">addEventListener</span>(<span class="str2">'submit'</span>
                     </div>
                 </div>
 
-                {{-- CTA --}}
+                
                 <div class="docs-cta">
                     <p>Ready to get started?</p>
-                    <a href="{{ route('playground.index') }}" class="btn btn-secondary" style="margin-right:0.75rem;">
+                    <a href="<?php echo e(route('playground.index')); ?>" class="btn btn-secondary" style="margin-right:0.75rem;">
                         <i class="bi bi-play-circle"></i> Try Express
                     </a>
-                    <a href="{{ route('signup') }}" class="btn btn-primary">
+                    <a href="<?php echo e(route('signup')); ?>" class="btn btn-primary">
                         <i class="bi bi-person-plus"></i> Create Free Account
                     </a>
                 </div>
 
-            </div>{{-- end main --}}
-        </div>{{-- end docs-layout --}}
+            </div>
+        </div>
     </div>
 </div>
 
@@ -916,7 +914,8 @@ form.<span class="fn">addEventListener</span>(<span class="str2">'submit'</span>
     sections.forEach(s => observer.observe(s));
 </script>
 
-{{-- Note: This script tag is just for documentation purposes, not actually loaded --}}
+
 <!-- <script src="http://127.0.0.1:8000/formbutton/YOUR_FORM_ID/widget.js" defer></script> -->
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/docs.blade.php ENDPATH**/ ?>
