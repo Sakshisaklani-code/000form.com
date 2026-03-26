@@ -679,3 +679,12 @@
 [2026-03-25 10:36:06] local.ERROR: Supabase refresh token error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=refresh_token` resulted in a `400 Bad Request` response:
 {"code":400,"error_code":"refresh_token_not_found","msg":"Invalid Refresh Token: Refresh Token Not Found"}
   
+[2026-03-25 11:55:40] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 11:55:48] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 11:56:08] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 11:56:12] local.INFO: Plan swapped via Paddle: personal/monthly → professional/monthly (when=immediately) for user 1bde17a0-4b99-4ef5-b278-4e902f1717fe  
+[2026-03-25 11:56:14] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 11:56:21] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 11:56:45] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-25 11:56:47] local.INFO: Plan swapped via Paddle: professional/monthly → personal/annual (when=next_billing_period) for user 1bde17a0-4b99-4ef5-b278-4e902f1717fe  
+[2026-03-25 11:56:49] local.ERROR: JWT verification error: Incorrect key for this algorithm  

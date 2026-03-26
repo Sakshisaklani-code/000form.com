@@ -36,10 +36,6 @@
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
                     Create free account
                 </a>
-                <!-- <a href="<?php echo e(route('login')); ?>" class="lp-btn lp-btn--ghost lp-btn--lg">
-                    Sign in
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a> -->
             </div>
 
             <div class="lp-hero__proof">
@@ -62,135 +58,184 @@
         </div>
 
         
-        <div class="lp-hero__previews">
+        <div class="lp-hero__rows">
 
             
-            <div class="lp-prev lp-prev--dashboard">
-                <div class="lp-prev__label">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                    Your dashboard
-                </div>
-                <div class="lp-dash">
-                    
-                    <div class="lp-dash__side">
-                        <div class="lp-dash__logo">
-                            
-                            <span>000<b>form</b></span>
-                        </div>
-                        <div class="lp-dash__user">
-                            <div class="lp-dash__avatar">S</div>
-                            <span>you@email.com</span>
-                        </div>
-                        <nav class="lp-dash__nav">
-                            <div class="lp-dash__nav-item lp-dash__nav-item--active">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                                Dashboard
-                            </div>
-                            <div class="lp-dash__nav-item">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                                New Form
-                            </div>
-                            <div class="lp-dash__nav-item">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                                Plan & Subscriptions
-                            </div>
-                            <div class="lp-dash__nav-item">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-                                Account
-                            </div>
-                        </nav>
+            <div class="lp-hero__row">
+
+                <div class="lp-prev lp-prev--dashboard">
+                    <div class="lp-prev__label">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                        Your dashboard
                     </div>
-                    
-                    <div class="lp-dash__main">
-                        <div class="lp-dash__topbar">
-                            <span class="lp-dash__page-title">Dashboard</span>
-                            <div class="lp-dash__new-btn">+ New Form</div>
+                    <div class="lp-dash">
+                        <div class="lp-dash__side">
+                            <div class="lp-dash__logo"><span>000<b>form</b></span></div>
+                            <div class="lp-dash__user">
+                                <div class="lp-dash__avatar">S</div>
+                                <span>you@email.com</span>
+                            </div>
+                            <nav class="lp-dash__nav">
+                                <div class="lp-dash__nav-item lp-dash__nav-item--active">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                                    Dashboard
+                                </div>
+                                <div class="lp-dash__nav-item">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                    New Form
+                                </div>
+                                <div class="lp-dash__nav-item">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                                    Plan & Subscriptions
+                                </div>
+                                <div class="lp-dash__nav-item">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                                    Account
+                                </div>
+                            </nav>
                         </div>
-                        <div class="lp-dash__stats">
-                            <div class="lp-dash__stat">
-                                <div class="lp-dash__stat-lbl">Total Forms</div>
-                                <div class="lp-dash__stat-val">4</div>
+                        <div class="lp-dash__main">
+                            <div class="lp-dash__topbar">
+                                <span class="lp-dash__page-title">Dashboard</span>
+                                <div class="lp-dash__new-btn">+ New Form</div>
                             </div>
-                            <div class="lp-dash__stat">
-                                <div class="lp-dash__stat-lbl">Total Submissions</div>
-                                <div class="lp-dash__stat-val">128</div>
+                            <div class="lp-dash__stats">
+                                <div class="lp-dash__stat">
+                                    <div class="lp-dash__stat-lbl">Total Forms</div>
+                                    <div class="lp-dash__stat-val">4</div>
+                                </div>
+                                <div class="lp-dash__stat">
+                                    <div class="lp-dash__stat-lbl">Total Submissions</div>
+                                    <div class="lp-dash__stat-val">128</div>
+                                </div>
+                                <div class="lp-dash__stat">
+                                    <div class="lp-dash__stat-lbl">Valid</div>
+                                    <div class="lp-dash__stat-val lp-dash__stat-val--green">121</div>
+                                </div>
+                                <div class="lp-dash__stat">
+                                    <div class="lp-dash__stat-lbl">Spam Blocked</div>
+                                    <div class="lp-dash__stat-val lp-dash__stat-val--red">7</div>
+                                </div>
+                                <div class="lp-dash__stat">
+                                    <div class="lp-dash__stat-lbl">Unread</div>
+                                    <div class="lp-dash__stat-val lp-dash__stat-val--green">3</div>
+                                </div>
+                                <div class="lp-dash__stat">
+                                    <div class="lp-dash__stat-lbl">This Month</div>
+                                    <div class="lp-dash__stat-val">14 new</div>
+                                </div>
                             </div>
-                            <div class="lp-dash__stat">
-                                <div class="lp-dash__stat-lbl">Valid</div>
-                                <div class="lp-dash__stat-val lp-dash__stat-val--green">121</div>
+                            <div class="lp-dash__forms-head">Your Forms</div>
+                            <div class="lp-dash__form-row">
+                                <div class="lp-dash__form-dot lp-dash__form-dot--on"></div>
+                                <div class="lp-dash__form-name">contact-form</div>
+                                <div class="lp-dash__form-sub">84 submissions</div>
+                                <div class="lp-dash__form-badge">Active</div>
                             </div>
-                            <div class="lp-dash__stat">
-                                <div class="lp-dash__stat-lbl">Spam Blocked</div>
-                                <div class="lp-dash__stat-val lp-dash__stat-val--red">7</div>
+                            <div class="lp-dash__form-row">
+                                <div class="lp-dash__form-dot lp-dash__form-dot--on"></div>
+                                <div class="lp-dash__form-name">feedback</div>
+                                <div class="lp-dash__form-sub">44 submissions</div>
+                                <div class="lp-dash__form-badge">Active</div>
                             </div>
-                            <div class="lp-dash__stat">
-                                <div class="lp-dash__stat-lbl">Unread</div>
-                                <div class="lp-dash__stat-val lp-dash__stat-val--green">3</div>
-                            </div>
-                            <div class="lp-dash__stat">
-                                <div class="lp-dash__stat-lbl">This Month</div>
-                                <div class="lp-dash__stat-val">14 new</div>
-                            </div>
-                        </div>
-                        <div class="lp-dash__forms-head">Your Forms</div>
-                        <div class="lp-dash__form-row">
-                            <div class="lp-dash__form-dot lp-dash__form-dot--on"></div>
-                            <div class="lp-dash__form-name">contact-form</div>
-                            <div class="lp-dash__form-sub">84 submissions</div>
-                            <div class="lp-dash__form-badge">Active</div>
-                        </div>
-                        <div class="lp-dash__form-row">
-                            <div class="lp-dash__form-dot lp-dash__form-dot--on"></div>
-                            <div class="lp-dash__form-name">feedback</div>
-                            <div class="lp-dash__form-sub">44 submissions</div>
-                            <div class="lp-dash__form-badge">Active</div>
                         </div>
                     </div>
                 </div>
+
+                <div class="lp-hero__row-copy">
+                    <div class="lp-hero__row-tag">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                        Command center
+                    </div>
+                    <h3>Every submission,<br>in one place.</h3>
+                    <p>Your dashboard gives you a bird's-eye view of all your forms — total submissions, spam blocked, unread counts, and active status at a glance. No more digging through email threads or spreadsheets.</p>
+                    <ul class="lp-hero__row-bullets">
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Real-time submission counts per form
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Spam blocked automatically, never in your inbox
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Manage unlimited forms from one account
+                        </li>
+                    </ul>
+                </div>
+
             </div>
 
             
-            <div class="lp-prev lp-prev--email">
-                <div class="lp-prev__label">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    Email notification
+            <div class="lp-hero__row lp-hero__row--reverse">
+
+                <div class="lp-hero__row-copy">
+                    <div class="lp-hero__row-tag">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        Instant notifications
+                    </div>
+                    <h3>Submissions hit your<br>inbox instantly.</h3>
+                    <p>The moment someone submits your form, you get a clean, well-formatted email notification with every field clearly laid out. Reply directly from your inbox — no logging in required.</p>
+                    <ul class="lp-hero__row-bullets">
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Delivered in seconds, every time
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Reply-to set to the submitter's email
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Fully customizable notification template
+                        </li>
+                    </ul>
                 </div>
-                <div class="lp-email">
-                    <div class="lp-email__chrome">
-                        <div class="lp-email__from-row">
-                            <div class="lp-email__sender-avatar">0</div>
-                            <div class="lp-email__sender-info">
-                                <div class="lp-email__sender-name">000form</div>
-                                <div class="lp-email__sender-to">to me ↓</div>
+
+                <div class="lp-prev lp-prev--email">
+                    <div class="lp-prev__label">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        Email notification
+                    </div>
+                    <div class="lp-email">
+                        <div class="lp-email__chrome">
+                            <div class="lp-email__from-row">
+                                <div class="lp-email__sender-avatar">0</div>
+                                <div class="lp-email__sender-info">
+                                    <div class="lp-email__sender-name">000form</div>
+                                    <div class="lp-email__sender-to">to me ↓</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lp-email__body">
+                            <div class="lp-email__card">
+                                <div class="lp-email__card-logo">
+                                    <span class="lp-email__logo-green">000</span><span class="lp-email__logo-white">form</span>
+                                </div>
+                                <div class="lp-email__card-title">New submission: Contact Form</div>
+                                <div class="lp-email__card-divider"></div>
+                                <div class="lp-email__card-meta">Received <?php echo e(now()->format('M d, Y')); ?> at <?php echo e(now()->format('h:i A')); ?></div>
+                                <div class="lp-email__card-caption">Here's what they had to say:</div>
+                                <div class="lp-email__card-fields">
+                                    <div class="lp-email__field">
+                                        <div class="lp-email__field-key">MESSAGE</div>
+                                        <div class="lp-email__field-val">Hi, I'm interested in your services and would love to learn more.</div>
+                                    </div>
+                                    <div class="lp-email__field">
+                                        <div class="lp-email__field-key">NAME</div>
+                                        <div class="lp-email__field-val">Jane Cooper</div>
+                                    </div>
+                                    <div class="lp-email__field">
+                                        <div class="lp-email__field-key">EMAIL</div>
+                                        <div class="lp-email__field-val lp-email__field-val--link">jane@example.com</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="lp-email__body">
-                        <div class="lp-email__card">
-                            <div class="lp-email__card-logo">
-                                <span class="lp-email__logo-green">000</span><span class="lp-email__logo-white">form</span>
-                            </div>
-                            <div class="lp-email__card-title">New submission: Contact Form</div>
-                            <div class="lp-email__card-divider"></div>
-                            <div class="lp-email__card-meta">Received <?php echo e(now()->format('M d, Y')); ?> at <?php echo e(now()->format('h:i A')); ?></div>
-                            <div class="lp-email__card-caption">Here's what they had to say:</div>
-                            <div class="lp-email__card-fields">
-                                <div class="lp-email__field">
-                                    <div class="lp-email__field-key">MESSAGE</div>
-                                    <div class="lp-email__field-val">Hi, I'm interested in your services and would love to learn more.</div>
-                                </div>
-                                <div class="lp-email__field">
-                                    <div class="lp-email__field-key">NAME</div>
-                                    <div class="lp-email__field-val">Jane Cooper</div>
-                                </div>
-                                <div class="lp-email__field">
-                                    <div class="lp-email__field-key">EMAIL</div>
-                                    <div class="lp-email__field-val lp-email__field-val--link">jane@example.com</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+
             </div>
 
         </div>
@@ -400,11 +445,8 @@
         </div>
 
         <div class="lp-dashboard-mock">
-            
             <div class="lp-dm__sidebar">
-                <div class="lp-dm__logo">
-                    000<span>form</span>
-                </div>
+                <div class="lp-dm__logo">000<span>form</span></div>
                 <div class="lp-dm__user-chip">
                     <div class="lp-dm__user-avatar">Y</div>
                     <span class="lp-dm__user-email">YOUR EMAIL</span>
@@ -447,14 +489,11 @@
                 </div>
             </div>
 
-            
             <div class="lp-dm__main">
                 <div class="lp-dm__topbar">
                     <div class="lp-dm__topbar-title">Dashboard</div>
                     <div class="lp-dm__btn">+ New Form</div>
                 </div>
-
-                
                 <div class="lp-dm__stats">
                     <div class="lp-dm__stat">
                         <div class="lp-dm__stat-lbl">Total Forms</div>
@@ -481,8 +520,6 @@
                         <div class="lp-dm__stat-val">3 <span class="lp-dm__stat-new">new</span></div>
                     </div>
                 </div>
-
-                
                 <div class="lp-dm__table-wrap">
                     <table class="lp-dm__table">
                         <thead>
@@ -534,60 +571,29 @@
 <section class="lp-pricing-teaser">
     <div class="lp-container">
 
-        <div class="lp-section-head">
-            <div class="lp-section-tag">Pricing</div>
-            <h2>One plan for every<br><span class="lp-dim">stage of your project.</span></h2>
-            <p>Start free, no credit card needed. Upgrade when your forms need to grow.</p>
-        </div>
-
-        <div class="lp-pt__grid">
-
-            
-            <div class="lp-pt__card">
-                <div class="lp-pt__name">Free</div>
-                <p class="lp-pt__desc">For testing and development.</p>
-                <a href="<?php echo e(route('pricing')); ?>" class="lp-pt__btn lp-pt__btn--ghost">
-                    View plan
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <div class="banner-inner">
+            <div class="banner-content">
+                <div class="lp-section-tag">Pricing</div>
+                <h2>One plan for every<br><span class="lp-dim">stage of your project.</span></h2>
+                <p>Start free, no credit card needed. Upgrade when your forms need to grow.</p>
+                <p class="banner-description">
+                    Find the perfect plan for your project. From free tier to enterprise — flexible options, no hidden fees.
+                </p>
+            </div>
+            <div class="banner-decoration">
+                <a href="/pricing" class="lp-btn lp-btn--primary lp-btn--lg">
+                    View pricing plans
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
                 </a>
             </div>
-
-            
-            <div class="lp-pt__card">
-                <div class="lp-pt__name">Personal</div>
-                <p class="lp-pt__desc">For personal or portfolio sites.</p>
-                <a href="<?php echo e(route('pricing')); ?>" class="lp-pt__btn lp-pt__btn--ghost">
-                    View plan
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
-            </div>
-
-            
-            <div class="lp-pt__card lp-pt__card--featured">
-                <div class="lp-pt__popular">Most Popular</div>
-                <div class="lp-pt__name">Professional</div>
-                <p class="lp-pt__desc">For freelancers and startups.</p>
-                <a href="<?php echo e(route('pricing')); ?>" class="lp-pt__btn lp-pt__btn--solid">
-                    View plan
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
-            </div>
-
-            
-            <div class="lp-pt__card">
-                <div class="lp-pt__name">Business</div>
-                <p class="lp-pt__desc">For organizations and agencies.</p>
-                <a href="<?php echo e(route('pricing')); ?>" class="lp-pt__btn lp-pt__btn--ghost">
-                    View plan
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
-            </div>
-
         </div>
 
         <div class="lp-pt__footer">
             All plans include spam filtering, AJAX support, CSV export &amp; dashboard access. &nbsp;
-            <a href="<?php echo e(route('pricing')); ?>">See full comparison →</a>
+            <a href="/pricing">See full comparison </a>
         </div>
 
     </div>
@@ -613,9 +619,22 @@
 
 <?php $__env->startPush('styles'); ?>
 <style>
+        
 
-/* ════════════════════════════════════════════════════════
-   GLOBAL RESET / TOKENS
+        @media (max-width: 480px) {
+            .banner-content h2 {
+                font-size: 1.3rem;
+            }
+            .banner-inner {
+                padding: 1.5rem 1rem;
+            }
+            .pricing-link {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        /* ════════════════════════════════════════════════════════
+   GLOBAL / CONTAINER
 ════════════════════════════════════════════════════════ */
 .lp-container {
     max-width: 1200px;
@@ -704,8 +723,8 @@
     gap: 8px;
     padding: 0.4rem 1rem 0.4rem 0.75rem;
     border-radius: 100px;
-    background: rgba(0, 255, 136, 0.07);
-    border: 1px solid rgba(0, 255, 136, 0.2);
+    background: rgba(0,255,136,0.07);
+    border: 1px solid rgba(0,255,136,0.2);
     color: var(--accent, #00ff88);
     font-size: 0.78rem;
     font-weight: 600;
@@ -763,7 +782,6 @@
     border-radius: 4px;
 }
 
-/* Hero actions */
 .lp-hero__actions {
     display: flex;
     gap: 0.85rem;
@@ -771,7 +789,6 @@
     justify-content: center;
 }
 
-/* Proof row */
 .lp-hero__proof {
     display: flex;
     align-items: center;
@@ -807,16 +824,77 @@
     background: var(--border-color, rgba(255,255,255,0.1));
 }
 
-/* ── Preview panels ── */
-.lp-hero__previews {
-    display: grid;
-    grid-template-columns: 1.45fr 1fr;
-    gap: 1.25rem;
+/* ── Hero alternating rows ── */
+.lp-hero__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
     width: 100%;
     max-width: 1100px;
-    align-items: start;
 }
 
+.lp-hero__row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.lp-hero__row--reverse {
+    grid-template-columns: 1fr 1.4fr;
+}
+
+.lp-hero__row-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--accent, #00ff88);
+    margin-bottom: 0.85rem;
+}
+
+.lp-hero__row-copy h3 {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--text-primary, #fff);
+    margin: 0 0 1rem;
+}
+
+.lp-hero__row-copy p {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--text-secondary, rgba(255,255,255,0.5));
+    margin: 0 0 1.35rem;
+}
+
+.lp-hero__row-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.lp-hero__row-bullets li {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+}
+
+.lp-hero__row-bullets li svg {
+    color: var(--accent, #00ff88);
+    flex-shrink: 0;
+}
+
+/* ── Preview panels ── */
 .lp-prev {
     display: flex;
     flex-direction: column;
@@ -834,7 +912,7 @@
     color: rgba(255,255,255,0.25);
 }
 
-/* ── Dashboard mock ── */
+/* ── Dashboard mock (hero) ── */
 .lp-dash {
     display: flex;
     border: 1px solid rgba(255,255,255,0.1);
@@ -866,7 +944,6 @@
     padding: 0 0.25rem;
 }
 
-.lp-dash__logo svg { color: var(--accent, #00ff88); }
 .lp-dash__logo b { color: var(--accent, #00ff88); font-weight: 800; }
 
 .lp-dash__user {
@@ -1036,7 +1113,7 @@
     border-radius: 100px;
 }
 
-/* ── Email preview ── */
+/* ── Email preview (hero) ── */
 .lp-email {
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 14px;
@@ -1274,9 +1351,7 @@
 .lp-feat-card:hover { transform: translateY(-4px); border-color: rgba(0,255,136,0.2); box-shadow: 0 16px 48px rgba(0,255,136,0.08); }
 .lp-feat-card:hover::before { opacity: 1; }
 
-.lp-feat-card--wide {
-    grid-column: span 2;
-}
+.lp-feat-card--wide { grid-column: span 2; }
 
 .lp-feat-card__icon {
     width: 44px; height: 44px;
@@ -1330,10 +1405,7 @@
     letter-spacing: 0.03em;
 }
 
-/* Email preview widget */
-.lp-feat-card__visual--email {
-    margin-top: auto;
-}
+.lp-feat-card__visual--email { margin-top: auto; }
 
 .lp-email-preview {
     background: rgba(0,0,0,0.3);
@@ -1401,16 +1473,12 @@
     letter-spacing: 0.04em;
 }
 
-.lp-ep__row span:last-child {
-    color: rgba(255,255,255,0.7);
-}
+.lp-ep__row span:last-child { color: rgba(255,255,255,0.7); }
 
 /* ════════════════════════════════════════════════════════
    HOW IT WORKS
 ════════════════════════════════════════════════════════ */
-.lp-hiw {
-    padding: 6rem 0;
-}
+.lp-hiw { padding: 6rem 0; }
 
 .lp-steps {
     display: grid;
@@ -1504,7 +1572,7 @@
 }
 
 /* ════════════════════════════════════════════════════════
-   DASHBOARD PREVIEW
+   DASHBOARD PREVIEW SECTION
 ════════════════════════════════════════════════════════ */
 .lp-preview {
     padding: 6rem 0;
@@ -1522,7 +1590,6 @@
     font-size: 0.82rem;
 }
 
-/* Sidebar */
 .lp-dm__sidebar {
     width: 220px;
     flex-shrink: 0;
@@ -1546,7 +1613,6 @@
     gap: 8px;
 }
 
-.lp-dm__logo svg { color: var(--accent, #00ff88); }
 .lp-dm__logo span { color: var(--accent, #00ff88); }
 
 .lp-dm__user-chip {
@@ -1613,7 +1679,6 @@
     border: 1px solid rgba(0,255,136,0.15);
 }
 
-/* Main content */
 .lp-dm__main {
     flex: 1;
     padding: 1.5rem 1.75rem;
@@ -1646,7 +1711,6 @@
     cursor: pointer;
 }
 
-/* Stats — 6 columns matching real dashboard */
 .lp-dm__stats {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -1687,7 +1751,6 @@
     color: rgba(255,255,255,0.5);
 }
 
-/* Forms table */
 .lp-dm__table-wrap {
     border: 1px solid rgba(255,255,255,0.07);
     border-radius: 12px;
@@ -1766,123 +1829,139 @@
 }
 
 /* ════════════════════════════════════════════════════════
-   PRICING TEASER
+   PRICING BANNER
 ════════════════════════════════════════════════════════ */
+
 .lp-pricing-teaser {
-    padding: 6rem 0;
+    padding: 4rem 1.5rem;
+    border-radius: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-.lp-pt__grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    align-items: stretch;
+.lp-container {
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+.lp-section-head {
+    text-align: center;
     margin-bottom: 2rem;
 }
 
-.lp-pt__card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 18px;
-    padding: 1.75rem 1.5rem;
+.banner-inner {
+    border-radius: 1.5rem;
+    padding: 0 2.5rem;
     display: flex;
-    flex-direction: column;
-    gap: 0;
-    position: relative;
-    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin: 2rem 0 2rem;
+    box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
 }
 
-.lp-pt__card:hover {
-    border-color: rgba(255,255,255,0.16);
-    transform: translateY(-3px);
+.banner-content {
+    flex: 0 1 auto;
+    max-width: 80%;
 }
 
-.lp-pt__card--featured {
-    border-color: rgba(0,255,136,0.35);
-    background: linear-gradient(160deg, rgba(0,255,136,0.06) 0%, rgba(255,255,255,0.02) 100%);
-    box-shadow: 0 0 0 1px rgba(0,255,136,0.1), 0 20px 48px rgba(0,255,136,0.1);
-}
-
-.lp-pt__card--featured:hover {
-    border-color: rgba(0,255,136,0.55);
-    box-shadow: 0 0 0 1px rgba(0,255,136,0.2), 0 24px 56px rgba(0,255,136,0.15);
-}
-
-.lp-pt__popular {
-    position: absolute;
-    top: -1px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--accent, #00ff88);
-    color: #000;
-    font-size: 0.6rem;
+.banner-content h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.75rem);
     font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.25rem 0.9rem;
-    border-radius: 0 0 8px 8px;
-    white-space: nowrap;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--text-primary, #fff);
+    margin: 0 0 1rem;
 }
 
-.lp-pt__name {
+.banner-content h2 .lp-dim {
+    color: rgba(255, 255, 255, 0.3)
+}
+
+.banner-content p {
     font-size: 1rem;
-    font-weight: 700;
-    color: var(--text-primary, #fff);
-    margin-bottom: 0.5rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.5);
+    max-width: 620px;
+    margin: 0;
+}
+
+.banner-description {
+    font-size: 0.95rem;
+    color: #94a3b8;
     margin-top: 0.5rem;
 }
 
-.lp-pt__card--featured .lp-pt__name {
-    color: var(--accent, #00ff88);
+.banner-decoration {
+    flex-shrink: 0;
 }
 
-.lp-pt__desc {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.4);
-    line-height: 1.5;
-    margin: 0 0 1.5rem;
-    flex: 1;
-}
-
-.lp-pt__btn {
-    display: flex;
+.pricing-link {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 6px;
-    padding: 0.65rem 1rem;
-    border-radius: 9px;
-    font-size: 0.82rem;
-    font-weight: 600;
+    gap: 0.75rem;
+    background: white;
+    padding: 0.85rem 2rem;
+    border-radius: 3rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #0f172a;
     text-decoration: none;
-    text-align: center;
-    transition: all 0.2s ease;
-    margin-top: auto;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.lp-pt__btn--ghost {
-    border: 1px solid rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.65);
-    background: transparent;
+.pricing-link:hover {
+    background: #f1f5f9;
+    transform: scale(1.02);
+    gap: 0.9rem;
+    box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.25);
 }
 
-.lp-pt__btn--ghost:hover {
-    border-color: rgba(255,255,255,0.3);
-    color: #fff;
-    background: rgba(255,255,255,0.04);
+.pricing-link svg {
+    width: 16px;
+    height: 16px;
+    stroke: #4f46e5;
+    stroke-width: 2.2;
+    transition: transform 0.2s ease;
 }
 
-.lp-pt__btn--solid {
-    background: var(--accent, #00ff88);
-    color: #000;
-    border: 1px solid var(--accent, #00ff88);
+.pricing-link:hover svg {
+    transform: translateX(4px);
 }
 
-.lp-pt__btn--solid:hover {
-    background: #00e87a;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(0,255,136,0.3);
+.lp-pt__footer a:hover {
+    text-decoration: underline;
 }
 
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    .lp-pricing-teaser {
+        padding: 2rem 1rem;
+    }
+    .banner-inner {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1.5rem;
+        gap: 1.5rem;
+    }
+    .banner-content {
+        text-align: center;
+        max-width: 100%;
+    }
+    .banner-content h2 {
+        font-size: 1.5rem;
+    }
+    .pricing-link {
+        white-space: normal;
+        justify-content: center;
+    }
+}
 .lp-pt__footer {
     text-align: center;
     font-size: 0.78rem;
@@ -1897,9 +1976,6 @@
     opacity: 0.8;
     transition: opacity 0.2s;
 }
-
-.lp-pt__footer a:hover { opacity: 1; }
-
 /* ════════════════════════════════════════════════════════
    FINAL CTA
 ════════════════════════════════════════════════════════ */
@@ -1966,18 +2042,24 @@
     .lp-feat-card--wide { grid-column: span 2; }
     .lp-dm__stats { grid-template-columns: repeat(3, 1fr); }
     .lp-pt__grid { grid-template-columns: repeat(2, 1fr); }
+    .lp-hero__row { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .lp-hero__row--reverse { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 860px) {
-    .lp-hero__previews { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+    .lp-hero__rows { gap: 3.5rem; }
+    .lp-hero__row,
+    .lp-hero__row--reverse { grid-template-columns: 1fr; gap: 2rem; }
+    .lp-hero__row--reverse .lp-hero__row-copy { order: -1; }
     .lp-steps { grid-template-columns: 1fr; gap: 2rem; }
     .lp-steps::before { display: none; }
-    .lp-pt__grid { grid-template-columns: 1fr; }
+    .lp-pt__grid { grid-template-columns: repeat(2, 1fr); }
     .lp-dashboard-mock { flex-direction: column; }
     .lp-dm__sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; align-items: center; padding: 1rem; gap: 0.75rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
     .lp-dm__nav, .lp-dm__nav--bottom { flex-direction: row; flex-wrap: wrap; }
     .lp-dm__nav--bottom { margin-top: 0; padding-top: 0; border-top: none; }
     .lp-dm__stats { grid-template-columns: repeat(3, 1fr); }
+    .lp-pricing-banner__inner { justify-content: center; text-align: center; }
 }
 
 @media (max-width: 640px) {
@@ -1987,28 +2069,11 @@
     .lp-feat-card--wide { grid-column: span 1; }
     .lp-pt__grid { grid-template-columns: 1fr; }
     .lp-hero__proof { flex-wrap: wrap; }
-    .lp-trust__inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
     .lp-dm__stats { grid-template-columns: repeat(2, 1fr); }
     .lp-container { padding: 0 1.25rem; }
+    .lp-pricing-banner { padding: 0.95rem 1.25rem; }
+    .lp-pricing-banner__left { justify-content: center; }
 }
-
-/* @media (max-width: 490px) {
-.lp-hero__previews {
-    gap: 1.25rem;
-    width: 100%;
-    align-items: start;
-}
-
-.lp-dash__side {
-    flex-shrink: 0;
-    border-right: 1px solid rgba(255,255,255,0.07);
-    padding: 1rem 0.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    background: rgba(255,255,255,0.015);
-}
-} */
 
 </style>
 <?php $__env->stopPush(); ?>
@@ -2030,25 +2095,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Copy code button
-    const copyBtn = document.getElementById('lpCopyBtn');
-    if (copyBtn) {
-        copyBtn.addEventListener('click', async function () {
-            const code = document.querySelector('.lp-code-block__body pre').innerText;
-            try {
-                await navigator.clipboard.writeText(code);
-                copyBtn.textContent = 'Copied!';
-                copyBtn.style.color = 'var(--accent, #00ff88)';
-                copyBtn.style.borderColor = 'rgba(0,255,136,0.4)';
-                setTimeout(() => {
-                    copyBtn.textContent = 'Copy';
-                    copyBtn.style.color = '';
-                    copyBtn.style.borderColor = '';
-                }, 2000);
-            } catch (e) {}
-        });
-    }
-
     // Intersection observer for fade-in on scroll
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -2060,7 +2106,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.lp-feat-card, .lp-step, .lp-pt__plan').forEach(el => {
+    document.querySelectorAll('.lp-feat-card, .lp-step, .lp-pt__card, .lp-hero__row').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(18px)';
         el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';

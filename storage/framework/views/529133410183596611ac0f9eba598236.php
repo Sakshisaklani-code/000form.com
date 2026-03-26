@@ -848,270 +848,270 @@ button[type="submit"]:hover {
 
 <?php $__env->startPush('scripts'); ?>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
 
-    const htmlEditor     = document.getElementById('htmlEditor');
-    const cssEditor      = document.getElementById('cssEditor');
-    const formPreview    = document.getElementById('formPreview');
-    const responseDiv    = document.getElementById('responseMessage');
-    const recipientEmail = document.getElementById('recipientEmail');
-    const verifyBtn      = document.getElementById('verifyEmailBtn');
-    const emailStatus    = document.getElementById('emailStatus');
-    const toast          = document.getElementById('toast');
-    const copyHtmlBtn    = document.getElementById('copyHtml');
-    const copyCssBtn     = document.getElementById('copyCss');
+        const htmlEditor     = document.getElementById('htmlEditor');
+        const cssEditor      = document.getElementById('cssEditor');
+        const formPreview    = document.getElementById('formPreview');
+        const responseDiv    = document.getElementById('responseMessage');
+        const recipientEmail = document.getElementById('recipientEmail');
+        const verifyBtn      = document.getElementById('verifyEmailBtn');
+        const emailStatus    = document.getElementById('emailStatus');
+        const toast          = document.getElementById('toast');
+        const copyHtmlBtn    = document.getElementById('copyHtml');
+        const copyCssBtn     = document.getElementById('copyCss');
 
-    let isVerified    = false;
-    let injectedStyle = null;
-    let verifiedEmail = localStorage.getItem('playground_verified_email') || '';
+        let isVerified    = false;
+        let injectedStyle = null;
+        let verifiedEmail = localStorage.getItem('playground_verified_email') || '';
 
-    /* ---- Copy buttons ---- */
-    function setupCopy(btn, getContent) {
-        btn.addEventListener('click', () => {
-            navigator.clipboard.writeText(getContent()).then(() => {
-                const orig = btn.innerHTML;
-                btn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
-                btn.classList.add('copied');
-                setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('copied'); }, 2000);
-            }).catch(() => showToast('Failed to copy'));
-        });
-    }
-
-    setupCopy(copyHtmlBtn, () => htmlEditor.value);
-    setupCopy(copyCssBtn,  () => cssEditor.value);
-
-    /* ---- Tab switching ---- */
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const tab = btn.dataset.tab;
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            btn.classList.add('active');
-            document.getElementById('tab-' + tab).classList.add('active');
-        });
-    });
-
-    /* ---- Live preview ---- */
-    function decodeHtml(html) {
-        const t = document.createElement('textarea');
-        t.innerHTML = html;
-        return t.value;
-    }
-
-    function injectCss(css) {
-        if (injectedStyle) injectedStyle.remove();
-        try {
-            const scoped = css.replace(/(^|\})\s*([^{@][^{]*)\{/g, (match, closing, selector) => {
-                const scopedSelector = selector.split(',').map(s => '.preview-content ' + s.trim()).join(', ');
-                return (closing || '') + ' ' + scopedSelector + ' {';
+        /* ---- Copy buttons ---- */
+        function setupCopy(btn, getContent) {
+            btn.addEventListener('click', () => {
+                navigator.clipboard.writeText(getContent()).then(() => {
+                    const orig = btn.innerHTML;
+                    btn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+                    btn.classList.add('copied');
+                    setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('copied'); }, 2000);
+                }).catch(() => showToast('Failed to copy'));
             });
-            injectedStyle = document.createElement('style');
-            injectedStyle.id = 'playground-user-css';
-            injectedStyle.textContent = scoped;
-            document.head.appendChild(injectedStyle);
-        } catch(e) {}
-    }
-
-    function updatePreview() {
-        formPreview.innerHTML = decodeHtml(htmlEditor.value);
-        injectCss(cssEditor.value);
-        attachFormHandler();
-    }
-
-    let previewTimer;
-    function scheduleUpdate() {
-        clearTimeout(previewTimer);
-        previewTimer = setTimeout(updatePreview, 250);
-    }
-
-    htmlEditor.addEventListener('input', scheduleUpdate);
-    cssEditor.addEventListener('input', scheduleUpdate);
-    updatePreview();
-
-    /* ---- Email helpers ---- */
-    function updateHtmlCodeWithEmail(email) {
-        const actionRegex = /(action=["'].*\/f\/)([^"']+)(["'])/;
-        if (actionRegex.test(htmlEditor.value)) {
-            htmlEditor.value = htmlEditor.value.replace(actionRegex, `$1${email}$3`);
-            scheduleUpdate();
         }
-    }
 
-    function checkEmailVerification(email) {
-        return fetch('<?php echo e(route("playground.check-verified")); ?>?email=' + encodeURIComponent(email), {
-            headers: { 'Accept': 'application/json' }
-        })
-        .then(r => r.json())
-        .then(data => {
-            if (data.verified) {
-                isVerified    = true;
-                verifiedEmail = email;
-                localStorage.setItem('playground_verified_email', email);
-                setEmailStatus('✅ Email verified — submissions to this address are active.', 'verified');
-                verifyBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0"/></svg> Verified';
-                verifyBtn.style.background = '#059669';
-                verifyBtn.disabled = false;
-                updateHtmlCodeWithEmail(email);
-            } else {
-                isVerified = false;
-            }
-            return data.verified;
-        })
-        .catch(() => { isVerified = false; return false; });
-    }
+        setupCopy(copyHtmlBtn, () => htmlEditor.value);
+        setupCopy(copyCssBtn,  () => cssEditor.value);
 
-    function setEmailStatus(msg, type) {
-        emailStatus.textContent = msg;
-        emailStatus.className   = 'email-status' + (type ? ' ' + type : '');
-    }
-
-    function pollVerification(email) {
-        let attempts = 0;
-        if (window.verificationInterval) clearInterval(window.verificationInterval);
-        window.verificationInterval = setInterval(() => {
-            if (++attempts > 40) {
-                clearInterval(window.verificationInterval);
-                setEmailStatus('Verification timed out. Please try again.', 'error');
-                verifyBtn.disabled = false;
-                verifyBtn.innerHTML = 'Verify Email';
-                return;
-            }
-            checkEmailVerification(email).then(v => { if (v) clearInterval(window.verificationInterval); });
-        }, 3000);
-    }
-
-    verifyBtn.addEventListener('click', () => {
-        const email   = recipientEmail.value.trim();
-        const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!email)              { setEmailStatus('Please enter an email address.', 'error'); recipientEmail.focus(); return; }
-        if (!emailRx.test(email)){ setEmailStatus('Enter a valid email address.', 'error');   recipientEmail.focus(); return; }
-
-        updateHtmlCodeWithEmail(email);
-        verifyBtn.disabled  = true;
-        verifyBtn.innerHTML = 'Sending…';
-        setEmailStatus('', '');
-
-        fetch('<?php echo e(route("playground.verify")); ?>', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>', 'Accept': 'application/json' },
-            body: JSON.stringify({ email })
-        })
-        .then(r => r.json())
-        .then(data => {
-            if (data.success) {
-                setEmailStatus(`📬 Verification email sent to ${email}. Check your inbox and click the link.`, 'pending');
-                pollVerification(email);
-            } else {
-                setEmailStatus(data.message || 'Failed to send verification.', 'error');
-                verifyBtn.disabled  = false;
-                verifyBtn.innerHTML = 'Verify Email';
-            }
-        })
-        .catch(() => {
-            setEmailStatus('Network error. Please try again.', 'error');
-            verifyBtn.disabled  = false;
-            verifyBtn.innerHTML = 'Verify Email';
+        /* ---- Tab switching ---- */
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tab = btn.dataset.tab;
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById('tab-' + tab).classList.add('active');
+            });
         });
-    });
 
-    recipientEmail.addEventListener('input', function () {
-        if (this.value.trim().includes('@')) updateHtmlCodeWithEmail(this.value.trim());
-    });
-
-    recipientEmail.addEventListener('blur', function () {
-        if (this.value.trim().includes('@')) checkEmailVerification(this.value.trim());
-    });
-
-    /* ---- Form submit handler ---- */
-    function resolveRecipientEmail(form) {
-        const match = (form.getAttribute('action') || '').match(/\/f\/([^\s/?#]+@[^\s/?#]+\.[^\s/?#]+)/i);
-        if (match) return decodeURIComponent(match[1]);
-        const ei = form.querySelector('input[type="email"]');
-        if (ei && ei.value) return ei.value;
-        return recipientEmail.value.trim() || null;
-    }
-
-    function handleSubmit(e) {
-        e.preventDefault();
-        const form        = e.target;
-        const emailRx     = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const targetEmail = resolveRecipientEmail(form);
-
-        if (!targetEmail || !emailRx.test(targetEmail)) {
-            showResponse('⚠️ No valid recipient email. Set the form <code>action="/f/your@email.com"</code> or verify an email above.', 'error');
-            return;
+        /* ---- Live preview ---- */
+        function decodeHtml(html) {
+            const t = document.createElement('textarea');
+            t.innerHTML = html;
+            return t.value;
         }
 
-        const submitBtn = form.querySelector('[type="submit"]');
-        if (submitBtn) { submitBtn.classList.add('loading'); submitBtn.disabled = true; }
-        responseDiv.className = 'response-message';
+        function injectCss(css) {
+            if (injectedStyle) injectedStyle.remove();
+            try {
+                const scoped = css.replace(/(^|\})\s*([^{@][^{]*)\{/g, (match, closing, selector) => {
+                    const scopedSelector = selector.split(',').map(s => '.preview-content ' + s.trim()).join(', ');
+                    return (closing || '') + ' ' + scopedSelector + ' {';
+                });
+                injectedStyle = document.createElement('style');
+                injectedStyle.id = 'playground-user-css';
+                injectedStyle.textContent = scoped;
+                document.head.appendChild(injectedStyle);
+            } catch(e) {}
+        }
 
-        checkEmailVerification(targetEmail).then(verified => {
-            if (!verified) {
-                showResponse(`⚠️ <strong>${targetEmail}</strong> hasn't been verified yet. Enter it above and click Verify.`, 'error');
-                recipientEmail.value = targetEmail;
-                recipientEmail.focus();
-                if (submitBtn) { submitBtn.classList.remove('loading'); submitBtn.disabled = false; }
-                return;
+        function updatePreview() {
+            formPreview.innerHTML = decodeHtml(htmlEditor.value);
+            injectCss(cssEditor.value);
+            attachFormHandler();
+        }
+
+        let previewTimer;
+        function scheduleUpdate() {
+            clearTimeout(previewTimer);
+            previewTimer = setTimeout(updatePreview, 250);
+        }
+
+        htmlEditor.addEventListener('input', scheduleUpdate);
+        cssEditor.addEventListener('input', scheduleUpdate);
+        updatePreview();
+
+        /* ---- Email helpers ---- */
+        function updateHtmlCodeWithEmail(email) {
+            const actionRegex = /(action=["'].*\/f\/)([^"']+)(["'])/;
+            if (actionRegex.test(htmlEditor.value)) {
+                htmlEditor.value = htmlEditor.value.replace(actionRegex, `$1${email}$3`);
+                scheduleUpdate();
             }
+        }
 
-            const formData = new FormData(form);
-            formData.append('_token', '<?php echo e(csrf_token()); ?>');
-            formData.append('recipient_email', targetEmail);
-            formData.append('from_playground', 'true');
-
-            fetch('<?php echo e(route("playground.submit")); ?>', {
-                method: 'POST',
-                headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
-                body: formData
+        function checkEmailVerification(email) {
+            return fetch('<?php echo e(route("playground.check-verified")); ?>?email=' + encodeURIComponent(email), {
+                headers: { 'Accept': 'application/json' }
             })
-            .then(async r => {
-                const data = await r.json();
-                if (data.redirect) {
-                    showResponse('🔄 Redirecting to CAPTCHA verification…', 'info');
-                    setTimeout(() => { window.location.href = data.redirect; }, 1000);
+            .then(r => r.json())
+            .then(data => {
+                if (data.verified) {
+                    isVerified    = true;
+                    verifiedEmail = email;
+                    localStorage.setItem('playground_verified_email', email);
+                    setEmailStatus('✅ Email verified — submissions to this address are active.', 'verified');
+                    verifyBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0"/></svg> Verified';
+                    verifyBtn.style.background = '#059669';
+                    verifyBtn.disabled = false;
+                    updateHtmlCodeWithEmail(email);
+                } else {
+                    isVerified = false;
+                }
+                return data.verified;
+            })
+            .catch(() => { isVerified = false; return false; });
+        }
+
+        function setEmailStatus(msg, type) {
+            emailStatus.textContent = msg;
+            emailStatus.className   = 'email-status' + (type ? ' ' + type : '');
+        }
+
+        function pollVerification(email) {
+            let attempts = 0;
+            if (window.verificationInterval) clearInterval(window.verificationInterval);
+            window.verificationInterval = setInterval(() => {
+                if (++attempts > 40) {
+                    clearInterval(window.verificationInterval);
+                    setEmailStatus('Verification timed out. Please try again.', 'error');
+                    verifyBtn.disabled = false;
+                    verifyBtn.innerHTML = 'Verify Email';
                     return;
                 }
-                if (!r.ok) throw new Error(data.message || 'Submission failed');
+                checkEmailVerification(email).then(v => { if (v) clearInterval(window.verificationInterval); });
+            }, 3000);
+        }
+
+        verifyBtn.addEventListener('click', () => {
+            const email   = recipientEmail.value.trim();
+            const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email)              { setEmailStatus('Please enter an email address.', 'error'); recipientEmail.focus(); return; }
+            if (!emailRx.test(email)){ setEmailStatus('Enter a valid email address.', 'error');   recipientEmail.focus(); return; }
+
+            updateHtmlCodeWithEmail(email);
+            verifyBtn.disabled  = true;
+            verifyBtn.innerHTML = 'Sending…';
+            setEmailStatus('', '');
+
+            fetch('<?php echo e(route("playground.verify")); ?>', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>', 'Accept': 'application/json' },
+                body: JSON.stringify({ email })
+            })
+            .then(r => r.json())
+            .then(data => {
                 if (data.success) {
-                    showResponse(`✅ Submission delivered to <strong>${targetEmail}</strong>`, 'success');
-                    form.reset();
-                    showToast('Form submitted!');
+                    setEmailStatus(`📬 Verification email sent to ${email}. Check your inbox and click the link.`, 'pending');
+                    pollVerification(email);
                 } else {
-                    showResponse(data.message || 'An error occurred.', 'error');
+                    setEmailStatus(data.message || 'Failed to send verification.', 'error');
+                    verifyBtn.disabled  = false;
+                    verifyBtn.innerHTML = 'Verify Email';
                 }
             })
-            .catch(err => showResponse(err.message || 'Network error. Please try again.', 'error'))
-            .finally(() => { if (submitBtn) { submitBtn.classList.remove('loading'); submitBtn.disabled = false; } });
+            .catch(() => {
+                setEmailStatus('Network error. Please try again.', 'error');
+                verifyBtn.disabled  = false;
+                verifyBtn.innerHTML = 'Verify Email';
+            });
         });
-    }
 
-    function attachFormHandler() {
-        formPreview.querySelectorAll('form').forEach(form => {
-            form.removeEventListener('submit', handleSubmit);
-            form.addEventListener('submit', handleSubmit);
+        recipientEmail.addEventListener('input', function () {
+            if (this.value.trim().includes('@')) updateHtmlCodeWithEmail(this.value.trim());
         });
-    }
 
-    /* ---- UI helpers ---- */
-    function showResponse(msg, type) {
-        responseDiv.innerHTML = msg;
-        responseDiv.className = 'response-message show ' + type;
-        if (type === 'success') setTimeout(() => responseDiv.classList.remove('show'), 5000);
-    }
+        recipientEmail.addEventListener('blur', function () {
+            if (this.value.trim().includes('@')) checkEmailVerification(this.value.trim());
+        });
 
-    function showToast(msg) {
-        toast.textContent = msg;
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2500);
-    }
+        /* ---- Form submit handler ---- */
+        function resolveRecipientEmail(form) {
+            const match = (form.getAttribute('action') || '').match(/\/f\/([^\s/?#]+@[^\s/?#]+\.[^\s/?#]+)/i);
+            if (match) return decodeURIComponent(match[1]);
+            const ei = form.querySelector('input[type="email"]');
+            if (ei && ei.value) return ei.value;
+            return recipientEmail.value.trim() || null;
+        }
 
-    /* ---- Init ---- */
-    if (verifiedEmail) {
-        recipientEmail.value = verifiedEmail;
-        checkEmailVerification(verifiedEmail);
-    }
-});
+        function handleSubmit(e) {
+            e.preventDefault();
+            const form        = e.target;
+            const emailRx     = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const targetEmail = resolveRecipientEmail(form);
+
+            if (!targetEmail || !emailRx.test(targetEmail)) {
+                showResponse('⚠️ No valid recipient email. Set the form <code>action="/f/your@email.com"</code> or verify an email above.', 'error');
+                return;
+            }
+
+            const submitBtn = form.querySelector('[type="submit"]');
+            if (submitBtn) { submitBtn.classList.add('loading'); submitBtn.disabled = true; }
+            responseDiv.className = 'response-message';
+
+            checkEmailVerification(targetEmail).then(verified => {
+                if (!verified) {
+                    showResponse(`⚠️ <strong>${targetEmail}</strong> hasn't been verified yet. Enter it above and click Verify.`, 'error');
+                    recipientEmail.value = targetEmail;
+                    recipientEmail.focus();
+                    if (submitBtn) { submitBtn.classList.remove('loading'); submitBtn.disabled = false; }
+                    return;
+                }
+
+                const formData = new FormData(form);
+                formData.append('_token', '<?php echo e(csrf_token()); ?>');
+                formData.append('recipient_email', targetEmail);
+                formData.append('from_playground', 'true');
+
+                fetch('<?php echo e(route("playground.submit")); ?>', {
+                    method: 'POST',
+                    headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
+                    body: formData
+                })
+                .then(async r => {
+                    const data = await r.json();
+                    if (data.redirect) {
+                        showResponse('🔄 Redirecting to CAPTCHA verification…', 'info');
+                        setTimeout(() => { window.location.href = data.redirect; }, 1000);
+                        return;
+                    }
+                    if (!r.ok) throw new Error(data.message || 'Submission failed');
+                    if (data.success) {
+                        showResponse(`✅ Submission delivered to <strong>${targetEmail}</strong>`, 'success');
+                        form.reset();
+                        showToast('Form submitted!');
+                    } else {
+                        showResponse(data.message || 'An error occurred.', 'error');
+                    }
+                })
+                .catch(err => showResponse(err.message || 'Network error. Please try again.', 'error'))
+                .finally(() => { if (submitBtn) { submitBtn.classList.remove('loading'); submitBtn.disabled = false; } });
+            });
+        }
+
+        function attachFormHandler() {
+            formPreview.querySelectorAll('form').forEach(form => {
+                form.removeEventListener('submit', handleSubmit);
+                form.addEventListener('submit', handleSubmit);
+            });
+        }
+
+        /* ---- UI helpers ---- */
+        function showResponse(msg, type) {
+            responseDiv.innerHTML = msg;
+            responseDiv.className = 'response-message show ' + type;
+            if (type === 'success') setTimeout(() => responseDiv.classList.remove('show'), 5000);
+        }
+
+        function showToast(msg) {
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        /* ---- Init ---- */
+        if (verifiedEmail) {
+            recipientEmail.value = verifiedEmail;
+            checkEmailVerification(verifiedEmail);
+        }
+    });
 </script>
 <?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/playground.blade.php ENDPATH**/ ?>
