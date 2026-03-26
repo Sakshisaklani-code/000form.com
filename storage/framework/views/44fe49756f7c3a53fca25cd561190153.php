@@ -217,34 +217,34 @@
 
     <?php echo $__env->yieldContent('content'); ?>
     
-<footer class="footer">
-    <div class="container">
-        <div class="footer-top">
-            
-            <!-- Left: Logo -->
-            <div class="nav-logo"><span>000</span>form</div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                
+                <!-- Left: Logo -->
+                <div class="nav-logo"><span>000</span>form</div>
 
-            <!-- Right: Links -->
-            <ul class="footer-links">
-                <li><a href="<?php echo e(route('pages.terms')); ?>">Terms</a></li>
-                <li><a href="<?php echo e(route('pages.privacy-policy')); ?>">Privacy Policy</a></li>
-                <li><a href="<?php echo e(route('pages.refund')); ?>">Refund Policy</a></li>
-            </ul>
+                <!-- Right: Links -->
+                <ul class="footer-links">
+                    <li><a href="<?php echo e(route('pages.terms')); ?>">Terms</a></li>
+                    <li><a href="<?php echo e(route('pages.privacy-policy')); ?>">Privacy Policy</a></li>
+                    <li><a href="<?php echo e(route('pages.refund')); ?>">Refund Policy</a></li>
+                </ul>
 
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="footer-bottom">
+                <p class="footer-copy">&copy; <?php echo e(date('Y')); ?> 000form. All rights reserved.</p>
+
+                <p class="footer-attribution">
+                    Product of <a href="#">172 Tech</a> · 
+                    Designed by <a href="#">530 Expert</a> · 
+                    Developed by <a href="#">ESS ENN Associates</a>
+                </p>
+            </div>
         </div>
-
-        <!-- Bottom Section -->
-        <div class="footer-bottom">
-            <p class="footer-copy">&copy; <?php echo e(date('Y')); ?> 000form. All rights reserved.</p>
-
-            <p class="footer-attribution">
-                Product of <a href="#">172 Tech</a> · 
-                Designed by <a href="#">530 Expert</a> · 
-                Developed by <a href="#">ESS ENN Associates</a>
-            </p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <script src="/js/app.js"></script>
     <script>
