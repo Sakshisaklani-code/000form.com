@@ -187,6 +187,10 @@
             </button>
             
             <ul class="nav-links" id="navLinks">
+                
+                <li><a href="<?php echo e(route('docs')); ?>">Documentation</a></li>
+                <li><a href="<?php echo e(route('pricing')); ?>">Pricing</a></li>
+                <li><a href="<?php echo e(route('Home.library')); ?>">Library</a></li>
                 <li>
                     <a href="<?php echo e(route('playground.index')); ?>" class="pill-link">
                         <span class="pill-icon">
@@ -199,9 +203,6 @@
                         Express
                     </a>
                 </li>
-                <li><a href="<?php echo e(route('docs')); ?>">Documentation</a></li>
-                <li><a href="<?php echo e(route('pricing')); ?>">Pricing</a></li>
-                <li><a href="<?php echo e(route('Home.library')); ?>">Library</a></li>
             </ul>
             
             <!-- <div class="nav-actions" id="navActions">

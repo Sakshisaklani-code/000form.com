@@ -116,6 +116,12 @@
         <div class="auth-footer">
             Already have an account? <a href="{{ route('login') }}">Sign in</a>
         </div>
+        <div class="auth-footer-express">
+            OR
+        </div>
+        <div class="auth-footer-express">
+            Get started without signup with <a class="express" href="{{ route('playground.index') }}">Express</a>
+        </div>
     </div>
 </div>
 

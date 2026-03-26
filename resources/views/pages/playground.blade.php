@@ -6,7 +6,7 @@
     <meta name="description" content="000form Express — No-account form endpoint. Point your HTML form at our endpoint and get submissions delivered instantly to your inbox.">
     <title>@yield('title', 'Express — Instant Form Endpoints | 000form')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{ asset('images/favicon/000formFavicon.png') }}" type="image/svg+xml">
+    <link rel="icon" href="{{ asset('images/favicon/000formFavicon-express.png') }}" type="image/svg+xml">
     <link rel="canonical" href="https://000form.com/express" />
     <meta name="keywords" content="forms, form backend, contact forms, form submissions, 000Form, no-account forms">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -458,8 +458,8 @@ body::before {
    PLAYGROUND SECTION
 ============================================= */
 .playground-section {
-    padding: 1rem 2rem 5rem;
-    max-width: 1160px;
+    padding: 1rem 2rem 3.25rem;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -938,6 +938,8 @@ body::before {
     box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(251,191,36,0.06);
     position: relative;
     overflow: hidden;
+    max-width: 1095px;
+    margin-left: 9%;
 }
 
 .limitation-banner::before {
@@ -1161,11 +1163,11 @@ body::before {
     font-size: 1.9rem;
     font-weight: 700;
     background: linear-gradient(135deg, #1e6be6 0%, #0a3fa8 100%);
-    /* -webkit-background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     letter-spacing: -0.02em;
-    filter: drop-shadow(0 0 12px rgba(59,130,246,0.3)); */
+    filter: drop-shadow(0 0 12px rgba(59,130,246,0.3));
 }
 
 .footer-links {

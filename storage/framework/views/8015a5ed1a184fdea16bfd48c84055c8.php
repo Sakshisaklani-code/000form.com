@@ -1,32 +1,25 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Sign Up - 000form'); ?>
 
-@section('title', 'Login - 000form')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="auth-page">
     <div class="auth-container">
         <div class="auth-header">
             <a href="/" class="auth-logo">
                 <span>000</span>form
             </a>
-            <p class="text-muted">Welcome back</p>
+            <p class="text-muted">Create your free account</p>
         </div>
         
         <div class="auth-card">
-            @if(session('message'))
-                <div class="alert alert-success mb-3">
-                    {{ session('message') }}
-                </div>
-            @endif
-            
-            @if($errors->any())
+            <?php if($errors->any()): ?>
                 <div class="alert alert-error mb-3">
-                    {{ $errors->first() }}
+                    <?php echo e($errors->first()); ?>
+
                 </div>
-            @endif
+            <?php endif; ?>
             
             <!-- Google OAuth -->
-            <a href="{{ route('social.redirect', ['provider' => 'google']) }}" class="oauth-btn">
+            <a href="<?php echo e(route('social.redirect', 'google')); ?>" class="oauth-btn">
                 <svg viewBox="0 0 24 24" width="20" height="20">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                     <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -39,8 +32,8 @@
             <div class="auth-divider">or</div>
             
             <!-- Email/Password Form -->
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
+            <form method="POST" action="<?php echo e(route('signup')); ?>">
+                <?php echo csrf_field(); ?>
                 
                 <div class="form-group">
                     <label for="email" class="form-label">Email</label>
@@ -49,7 +42,7 @@
                         id="email" 
                         name="email" 
                         class="form-input" 
-                        value="{{ old('email') }}"
+                        value="<?php echo e(old('email')); ?>"
                         placeholder="you@example.com"
                         required 
                         autofocus
@@ -64,17 +57,16 @@
                             id="password" 
                             name="password" 
                             class="form-input" 
-                            placeholder="••••••••"
+                            placeholder="At least 8 characters"
                             required
+                            minlength="8"
                             style="padding-right: 42px;"
                         >
                         <span onclick="togglePassword('password', this)" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888888; user-select: none;">
-                            <!-- Eye Open -->
                             <svg class="eye-open" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
                                 <circle cx="12" cy="12" r="3"/>
                             </svg>
-                            <!-- Eye Closed -->
                             <svg class="eye-closed" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
                                 <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
                                 <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
@@ -84,29 +76,50 @@
                     </div>
                 </div>
                 
-                <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
-                    <label class="form-checkbox">
-                        <input type="checkbox" name="remember">
-                        <span>Remember me</span>
-                    </label>
-                    <a href="{{ route('password.request') }}" style="font-size: 0.875rem;">Forgot password?</a>
+                <div class="form-group">
+                    <label for="password_confirmation" class="form-label">Confirm Password</label>
+                    <div style="position: relative;">
+                        <input 
+                            type="password" 
+                            id="password_confirmation" 
+                            name="password_confirmation" 
+                            class="form-input" 
+                            placeholder="Confirm your password"
+                            required
+                            style="padding-right: 42px;"
+                        >
+                        <span onclick="togglePassword('password_confirmation', this)" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888888; user-select: none;">
+                            <svg class="eye-open" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            <svg class="eye-closed" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+                                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                                <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                                <line x1="1" y1="1" x2="23" y2="23"/>
+                            </svg>
+                        </span>
+                    </div>
                 </div>
                 
+                <p class="text-muted mb-3" style="font-size: 0.8rem;">
+                    By signing up, you agree to our <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.
+                </p>
+                
                 <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    Sign In
+                    Create Account
                 </button>
             </form>
         </div>
         
         <div class="auth-footer">
-            Don't have an account? <a href="{{ route('signup') }}">Sign up for free</a>
+            Already have an account? <a href="<?php echo e(route('login')); ?>">Sign in</a>
         </div>
-        
         <div class="auth-footer-express">
             OR
         </div>
         <div class="auth-footer-express">
-            Get started without signup with <a class="express" href="{{ route('playground.index') }}">Express</a>
+            Get started without signup with <a class="express" href="<?php echo e(route('playground.index')); ?>">Express</a>
         </div>
     </div>
 </div>
@@ -127,4 +140,5 @@ function togglePassword(fieldId, icon) {
     }
 }
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/auth/signup.blade.php ENDPATH**/ ?>

@@ -70,6 +70,7 @@ a {
     color: var(--accent);
     text-decoration: none;
     transition: all 0.2s ease;
+    font-size: 1rem;
 }
 
 .auth-footer a:hover {
@@ -1493,7 +1494,7 @@ code, .mono {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem 1rem;
+    padding: 4rem 1rem 2rem;
 }
 
 .auth-container {
@@ -1554,6 +1555,24 @@ code, .mono {
     margin-top: 1.5rem;
     color: var(--text-muted);
     font-size: 0.9rem;
+}
+
+.auth-footer-express{
+   text-align: center;
+    margin-top: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.auth-footer-express a{
+   text-align: center;
+    margin-top: 0.5rem;
+    color: #3b82f6;
+    font-size: 1rem;
+}
+
+.auth-footer-express a:hover {
+    color: #fdfdfd;
 }
 
 .oauth-btn {
