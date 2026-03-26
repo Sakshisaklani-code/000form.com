@@ -66,6 +66,17 @@ a {
     transition: all 0.2s ease;
 }
 
+.auth-footer a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.auth-footer a:hover {
+    color: var(--text-primary);
+}
+
+
 a:hover {
     color: var(--text-primary);
 }
