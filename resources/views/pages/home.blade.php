@@ -446,6 +446,7 @@
      DASHBOARD PREVIEW
 ═══════════════════════════════════════════════════════ --}}
 <section class="lp-preview">
+    
     <div class="lp-container">
 
         <div class="lp-section-head">
@@ -580,6 +581,8 @@
 {{-- ═══════════════════════════════════════════════════════
      PRICING TEASER
 ═══════════════════════════════════════════════════════ --}}
+<div class="lp-glow lp-glow--4"></div>
+<div class="lp-glow lp-glow--3"></div>
 <section class="lp-pricing-teaser">
     <div class="lp-container">
 
@@ -691,6 +694,20 @@
     background: #0077ff;
     opacity: 0.05;
     bottom: -200px; left: -100px;
+}
+
+.lp-glow--4 {
+    width: 700px; height: 700px;
+    background: var(--accent, #00ff88);
+    opacity: 0.07;
+    top: 3700px; right: -200px;
+}
+
+.lp-glow--3 {
+    width: 500px; height: 500px;
+    background: #0077ff;
+    opacity: 0.05;
+    top: 4000px; left: -100px;
 }
 
 .lp-grid {

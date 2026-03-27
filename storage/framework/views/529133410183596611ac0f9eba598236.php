@@ -458,14 +458,14 @@ body::before {
    PLAYGROUND SECTION
 ============================================= */
 .playground-section {
-    padding: 1rem 2rem 3.25rem;
+    padding: 1rem 2rem 4.5rem;
     max-width: 1400px;
     margin: 0 auto;
 }
 
 .playground-section-header {
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 4.5rem;
 }
 
 .section-title {
@@ -498,7 +498,7 @@ body::before {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3.25rem;
-    margin-bottom: 3.25rem;
+    margin-bottom: 4.5rem;
 }
 
 /* =============================================
@@ -967,8 +967,10 @@ body::before {
     align-items: center;
     gap: 0.45rem;
     padding: 0.65rem 1.35rem;
-    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dim) 100%);
-    color: #fff;
+    background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%) !important;
+    color: #001a0d !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
     text-decoration: none;
     border-radius: 9px;
     font-size: 0.81rem;
@@ -976,10 +978,14 @@ body::before {
     white-space: nowrap;
     flex-shrink: 0;
     transition: all 0.2s;
-    box-shadow: 0 2px 14px rgba(59,130,246,0.4);
+    box-shadow: 0 0 18px rgba(0,255,136,0.28), inset 0 1px 0 rgba(255,255,255,0.2) !important;
+    transition: all 0.25s !important;
 }
 
-.limitation-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(59,130,246,0.6); }
+.limitation-cta:hover { background: linear-gradient(135deg, #33ffaa 0%, #00bb66 100%) !important;
+    box-shadow: 0 0 18px rgba(0,255,136,0.28), inset 0 1px 0 rgba(255,255,255,0.2) !important;
+    transform: scale(1.05) !important;
+ }
 
 /* =============================================
    HOW IT WORKS
@@ -1510,6 +1516,14 @@ button[type="submit"]:hover {
                 <span><strong>Express has no submission history.</strong> Emails only go to your inbox — there's no dashboard to review or export past entries. Need history, spam filtering, and team access?</span>
             </div>
             <a href="<?php echo e(route('signup')); ?>" class="limitation-cta">
+                
+                    <span class="pill-icon">
+                        <svg width="11" height="13" viewBox="0 0 12 14" fill="none">
+                            <path d="M7 1L2 7.5H6L5 13L10 6.5H6.5L7 1Z"
+                                fill="#001a0d" stroke="rgba(0,0,0,0.2)"
+                                stroke-width="0.5" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
                 Explore Core
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
