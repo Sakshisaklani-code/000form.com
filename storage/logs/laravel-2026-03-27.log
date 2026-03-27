@@ -1259,3 +1259,6 @@
 #60 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Git-folders//...')
 #61 {main}
 "} 
+[2026-03-27 09:56:08] local.INFO: Playground: verification email sent {"email":"sakshi1710@yopmail.com"} 
+[2026-03-27 09:56:44] local.INFO: Playground: verification email sent {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-27 09:58:26] local.INFO: Playground: verification email sent {"email":"tsaklani2drish@gmail.com"} 
