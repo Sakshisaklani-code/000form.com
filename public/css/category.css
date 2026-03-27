@@ -11,8 +11,8 @@
 .application-forms-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    gap: 5.5rem;
+    margin-top: 4.5rem;
 }
 
 .application-form-card {

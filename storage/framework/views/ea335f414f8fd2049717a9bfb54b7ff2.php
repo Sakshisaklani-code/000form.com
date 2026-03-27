@@ -1,13 +1,13 @@
-@extends('layouts.app')
 
-@section('title', 'Application Forms - 000form Library')
 
-@push('styles')
-<link href="{{ asset('css/library.css') }}" rel="stylesheet">
-<link href="{{ asset('css/category.css') }}" rel="stylesheet">
-@endpush
+<?php $__env->startSection('title', 'Application Forms - 000form Library'); ?>
 
-@section('content')
+<?php $__env->startPush('styles'); ?>
+<link href="<?php echo e(asset('css/library.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('css/category.css')); ?>" rel="stylesheet">
+<?php $__env->stopPush(); ?>
+
+<?php $__env->startSection('content'); ?>
 
 <!-- Category Content -->
 <section class="category-features" style="padding-top: 2rem;">
@@ -82,7 +82,7 @@
                 <div class="form-preview-footer">
                     <span class="form-badge">HTML</span>
                     <span class="form-fields-count">12 fields</span>
-                    <a href="{{ route('Home.library.TenantApplicationForm') }}" class="get-code-btn">Get code →</a>
+                    <a href="<?php echo e(route('Home.library.TenantApplicationForm')); ?>" class="get-code-btn">Get code →</a>
                 </div>
             </div>
             
@@ -134,7 +134,7 @@
                 <div class="form-preview-footer">
                     <span class="form-badge">HTML</span>
                     <span class="form-fields-count">6 fields</span>
-                    <a href="{{ route('Home.library.JobApplicationForm') }}" class="get-code-btn">Get code →</a>
+                    <a href="<?php echo e(route('Home.library.JobApplicationForm')); ?>" class="get-code-btn">Get code →</a>
                 </div>
             </div>
             
@@ -211,7 +211,7 @@
                 <div class="form-preview-footer">
                     <span class="form-badge">HTML</span>
                     <span class="form-fields-count">14 fields</span>
-                    <a href="{{ route('Home.library.RentalApplicationForm') }}" class="get-code-btn">Get code →</a>
+                    <a href="<?php echo e(route('Home.library.RentalApplicationForm')); ?>" class="get-code-btn">Get code →</a>
                 </div>
             </div>
             
@@ -292,7 +292,7 @@
                 <div class="form-preview-footer">
                     <span class="form-badge">HTML</span>
                     <span class="form-fields-count">11 fields</span>
-                    <a href="{{ route('Home.library.VendorApplicationForm') }}" class="get-code-btn">Get code →</a>
+                    <a href="<?php echo e(route('Home.library.VendorApplicationForm')); ?>" class="get-code-btn">Get code →</a>
                 </div>
             </div>
             
@@ -372,7 +372,7 @@
                 <div class="form-preview-footer">
                     <span class="form-badge">HTML</span>
                     <span class="form-fields-count">13 fields</span>
-                    <a href="{{ route('Home.library.ScholarshipApplicationForm') }}" class="get-code-btn">Get code →</a>
+                    <a href="<?php echo e(route('Home.library.ScholarshipApplicationForm')); ?>" class="get-code-btn">Get code →</a>
                 </div>
             </div>
             
@@ -456,7 +456,7 @@
                 <div class="form-preview-footer">
                     <span class="form-badge">HTML</span>
                     <span class="form-fields-count">12 fields</span>
-                    <a href="{{ route('Home.library.InternshipApplicationForm') }}" class="get-code-btn">Get code →</a>
+                    <a href="<?php echo e(route('Home.library.InternshipApplicationForm')); ?>" class="get-code-btn">Get code →</a>
                 </div>
             </div>
             
@@ -465,4 +465,5 @@
     </div>
 </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/Library/ApplicationFormTemplates.blade.php ENDPATH**/ ?>

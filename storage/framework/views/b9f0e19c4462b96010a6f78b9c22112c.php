@@ -1,11 +1,11 @@
-@extends('layouts.app')
 
-@section('title', 'Scholarship Application Form - 000form Library')
 
-@push('styles')
-<link href="{{ asset('css/library.css') }}" rel="stylesheet">
-<link href="{{ asset('css/category.css') }}" rel="stylesheet">
-<link href="{{ asset('css/tenant-form.css') }}" rel="stylesheet">
+<?php $__env->startSection('title', 'Internship Application Form - 000form Library'); ?>
+
+<?php $__env->startPush('styles'); ?>
+<link href="<?php echo e(asset('css/library.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('css/category.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('css/tenant-form.css')); ?>" rel="stylesheet">
 <style>
     .form-preview-code {
         display: grid;
@@ -114,7 +114,7 @@
         }
     }
 
-    .scholarship-form-preview {
+    .internship-form-preview {
         max-width: 100%;
         padding: 1.5rem;
         background: #0d0d0d;
@@ -122,20 +122,20 @@
         border-radius: 12px;
     }
 
-    .scholarship-form-preview h3 {
+    .internship-form-preview h3 {
         font-size: 1.5rem;
         font-weight: 600;
         color: #fafafa;
         margin-bottom: 0.5rem;
     }
 
-    .scholarship-form-preview .form-description {
+    .internship-form-preview .form-description {
         font-size: 0.9rem;
         color: #888888;
         margin-bottom: 1.5rem;
     }
 
-    .scholarship-form-preview h4 {
+    .internship-form-preview h4 {
         font-size: 1.1rem;
         font-weight: 600;
         color: #00ff88;
@@ -144,15 +144,15 @@
         border-bottom: 1px dashed #2a2a2a;
     }
 
-    .scholarship-form-preview h4:first-of-type {
+    .internship-form-preview h4:first-of-type {
         margin-top: 0;
     }
 
-    .scholarship-form-preview .form-group {
+    .internship-form-preview .form-group {
         margin-bottom: 1.25rem;
     }
 
-    .scholarship-form-preview label {
+    .internship-form-preview label {
         display: block;
         font-size: 0.85rem;
         font-weight: 600;
@@ -160,9 +160,9 @@
         margin-bottom: 0.5rem;
     }
 
-    .scholarship-form-preview .form-input,
-    .scholarship-form-preview .form-select,
-    .scholarship-form-preview textarea {
+    .internship-form-preview .form-input,
+    .internship-form-preview .form-select,
+    .internship-form-preview textarea {
         width: 100%;
         padding: 0.75rem 1rem;
         background: #111111;
@@ -173,23 +173,45 @@
         font-family: inherit;
     }
 
-    .scholarship-form-preview textarea {
-        min-height: 120px;
+    .internship-form-preview textarea {
+        min-height: 100px;
         resize: vertical;
     }
 
-    .scholarship-form-preview .form-row {
+    .internship-form-preview .form-row {
         display: flex;
         gap: 1rem;
         margin-top: 0.5rem;
     }
 
-    .scholarship-form-preview .form-row .form-group {
+    .internship-form-preview .form-row .form-group {
         flex: 1;
         margin-bottom: 0;
     }
 
-    .scholarship-form-preview .form-submit {
+    .internship-form-preview .checkbox-group {
+        display: flex;
+        gap: 1.5rem;
+        padding: 0.5rem 0;
+    }
+
+    .internship-form-preview .checkbox-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .internship-form-preview .checkbox-item input {
+        width: auto;
+        margin: 0;
+    }
+
+    .internship-form-preview .checkbox-item label {
+        margin: 0;
+        cursor: pointer;
+    }
+
+    .internship-form-preview .form-submit {
         width: 100%;
         padding: 0.75rem 1.5rem;
         background: var(--accent);
@@ -203,9 +225,9 @@
         opacity: 0.9;
     }
 </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <section class="form-detail-section">
     <section style="margin-top:4.5rem">
@@ -221,7 +243,7 @@
                 </div>
                 
                 <h1 class="hero-title">
-                    <span class="highlight">Scholarship</span><br>Application Form
+                    <span class="highlight">Internship</span><br>Application Form
                 </h1>
             </div>
         </div>
@@ -230,15 +252,15 @@
     <div class="container">
         
         <div class="form-breadcrumb">
-            <a href="{{ route('Home.library') }}">Library</a>
+            <a href="<?php echo e(route('Home.library')); ?>">Library</a>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M9 18l6-6-6-6"/>
             </svg>
-            <a href="{{ route('Home.library.ApplicationForm') }}">Application Forms</a>
+            <a href="<?php echo e(route('Home.library.ApplicationForm')); ?>">Application Forms</a>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M9 18l6-6-6-6"/>
             </svg>
-            <span>Scholarship Application Form</span>
+            <span>Internship Application Form</span>
         </div>
 
         <div class="form-preview-code">
@@ -246,8 +268,8 @@
             <div class="form-preview-card">
                 <div class="form-preview-header">
                     <div>
-                        <h2>Scholarship Application Form</h2>
-                        <p class="form-preview-subtitle">Apply for educational scholarships and financial aid opportunities.</p>
+                        <h2>Internship Application Form</h2>
+                        <p class="form-preview-subtitle">Apply for internship positions at our company.</p>
                     </div>
                 </div>
                 
@@ -255,75 +277,81 @@
                     <h3 class="preview-title">Form Preview</h3>
                     <div class="preview-frame">
                         
-                        <div class="scholarship-form-preview">
-                            <h3>Scholarship Application Form</h3>
+                        <div class="internship-form-preview">
+                            <h3>Internship Application Form</h3>
                             <p class="form-description">
-                                Apply for educational scholarships and financial aid opportunities.
+                                Apply for internship positions at our company.
                             </p>
 
-                            <h4>Student information</h4>
+                            <h4>Personal information</h4>
 
                             <div class="form-group">
-                                <label>Full Name</label>
+                                <label>Full Name:</label>
                                 <input type="text" class="form-input" placeholder="Enter your full name" disabled>
                             </div>
 
                             <div class="form-group">
-                                <label>Date of Birth</label>
-                                <input type="text" class="form-input" placeholder="MM/DD/YYYY" disabled>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Email Address</label>
+                                <label>Email:</label>
                                 <input type="email" class="form-input" placeholder="Enter your email" disabled>
                             </div>
 
                             <div class="form-group">
-                                <label>Phone Number</label>
+                                <label>Phone:</label>
                                 <input type="tel" class="form-input" placeholder="Enter your phone number" disabled>
                             </div>
 
-                            <h4>Academic information</h4>
+                            <h4>Education</h4>
 
                             <div class="form-group">
-                                <label>School/University</label>
-                                <input type="text" class="form-input" placeholder="Name of institution" disabled>
+                                <label>University:</label>
+                                <input type="text" class="form-input" placeholder="Name of university" disabled>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Graduation Year</label>
-                                    <input type="text" class="form-input" placeholder="YYYY" disabled>
+                                    <label>Major:</label>
+                                    <input type="text" class="form-input" placeholder="Your major" disabled>
                                 </div>
                                 <div class="form-group">
-                                    <label>GPA</label>
-                                    <input type="text" class="form-input" placeholder="0.0 - 4.0" disabled>
+                                    <label>Graduation:</label>
+                                    <input type="text" class="form-input" placeholder="MM/YYYY" disabled>
+                                </div>
+                            </div>
+
+                            <h4>Internship details</h4>
+
+                            <div class="form-group">
+                                <label>Position:</label>
+                                <select class="form-select" disabled>
+                                    <option>Select a position</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Availability:</label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" disabled>
+                                        <label>Full-Time</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" disabled>
+                                        <label>Part-Time</label>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label>Major/Field of Study</label>
-                                <input type="text" class="form-input" placeholder="Your major" disabled>
-                            </div>
-
-                            <h4>Scholarship details</h4>
-
-                            <div class="form-group">
-                                <label>Scholarship Name</label>
-                                <input type="text" class="form-input" placeholder="Name of scholarship" disabled>
+                                <label>Start Date:</label>
+                                <input type="text" class="form-input" placeholder="MM/DD/YYYY" disabled>
                             </div>
 
                             <div class="form-group">
-                                <label>Amount Requested</label>
-                                <input type="text" class="form-input" placeholder="$" disabled>
+                                <label>Why are you interested in this internship?</label>
+                                <textarea class="form-input" placeholder="Write your motivation" disabled></textarea>
                             </div>
 
-                            <div class="form-group">
-                                <label>Personal Statement</label>
-                                <textarea class="form-input" placeholder="Write your personal statement here..." disabled></textarea>
-                            </div>
-
-                            <button class="form-submit" disabled>Submit Scholarship Application</button>
+                            <button class="form-submit" disabled>Submit Internship Application</button>
                             
                             <div class="form-note">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -366,75 +394,86 @@
                             </button>
                         </div>
                         <div class="code-block-content">
-                            <pre id="html-code-content"><span class="hljs-tag">&lt;form</span> <span class="hljs-attr">action=</span><span class="hljs-string">"https://000form.com/f/your-endpoint"</span> <span class="hljs-attr">method=</span><span class="hljs-string">"POST"</span> <span class="hljs-attr">class=</span><span class="hljs-string">"scholarship-form"</span><span class="hljs-tag">&gt;</span>
-  <span class="hljs-tag">&lt;h3&gt;</span>Scholarship Application Form<span class="hljs-tag">&lt;/h3&gt;</span>
+                            <pre id="html-code-content"><span class="hljs-tag">&lt;form</span> <span class="hljs-attr">action=</span><span class="hljs-string">"https://000form.com/f/your-endpoint"</span> <span class="hljs-attr">method=</span><span class="hljs-string">"POST"</span> <span class="hljs-attr">class=</span><span class="hljs-string">"internship-form"</span><span class="hljs-tag">&gt;</span>
+  <span class="hljs-tag">&lt;h3&gt;</span>Internship Application Form<span class="hljs-tag">&lt;/h3&gt;</span>
   <span class="hljs-tag">&lt;p</span> <span class="hljs-attr">class=</span><span class="hljs-string">"form-description"</span><span class="hljs-tag">&gt;</span>
-    Apply for educational scholarships and financial aid opportunities.
+    Apply for internship positions at our company.
   <span class="hljs-tag">&lt;/p&gt;</span>
 
-  <span class="hljs-tag">&lt;h4&gt;</span>Student information<span class="hljs-tag">&lt;/h4&gt;</span>
+  <span class="hljs-tag">&lt;h4&gt;</span>Personal information<span class="hljs-tag">&lt;/h4&gt;</span>
 
   <span class="hljs-tag">&lt;div</span> <span class="hljs-attr">class=</span><span class="hljs-string">"form-group"</span><span class="hljs-tag">&gt;</span>
-    <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"full_name"</span><span class="hljs-tag">&gt;</span>Full Name<span class="hljs-tag">&lt;/label&gt;</span>
+    <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"full_name"</span><span class="hljs-tag">&gt;</span>Full Name:<span class="hljs-tag">&lt;/label&gt;</span>
     <span class="hljs-tag">&lt;input</span> <span class="hljs-attr">type=</span><span class="hljs-string">"text"</span> <span class="hljs-attr">id=</span><span class="hljs-string">"full_name"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"full_name"</span> <span class="hljs-attr">placeholder=</span><span class="hljs-string">"Enter your full name"</span> <span class="hljs-attr">required</span><span class="hljs-tag">&gt;</span>
   <span class="hljs-tag">&lt;/div&gt;</span>
 
   <span class="hljs-tag">&lt;div</span> <span class="hljs-attr">class=</span><span class="hljs-string">"form-group"</span><span class="hljs-tag">&gt;</span>
-    <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"dob"</span><span class="hljs-tag">&gt;</span>Date of Birth<span class="hljs-tag">&lt;/label&gt;</span>
-    <span class="hljs-tag">&lt;input</span> <span class="hljs-attr">type=</span><span class="hljs-string">"text"</span> <span class="hljs-attr">id=</span><span class="hljs-string">"dob"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"dob"</span> <span class="hljs-attr">placeholder=</span><span class="hljs-string">"MM/DD/YYYY"</span> <span class="hljs-attr">required</span><span class="hljs-tag">&gt;</span>
-  <span class="hljs-tag">&lt;/div&gt;</span>
-
-  <span class="hljs-tag">&lt;div</span> <span class="hljs-attr">class=</span><span class="hljs-string">"form-group"</span><span class="hljs-tag">&gt;</span>
-    <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"email"</span><span class="hljs-tag">&gt;</span>Email Address<span class="hljs-tag">&lt;/label&gt;</span>
+    <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"email"</span><span class="hljs-tag">&gt;</span>Email:<span class="hljs-tag">&lt;/label&gt;</span>
     <span class="hljs-tag">&lt;input</span> <span class="hljs-attr">type=</span><span class="hljs-string">"email"</span> <span class="hljs-attr">id=</span><span class="hljs-string">"email"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"email"</span> <span class="hljs-attr">placeholder=</span><span class="hljs-string">"Enter your email"</span> <span class="hljs-attr">required</span><span class="hljs-tag">&gt;</span>
   <span class="hljs-tag">&lt;/div&gt;</span>
 
   <span class="hljs-tag">&lt;div</span> <span class="hljs-attr">class=</span><span class="hljs-string">"form-group"</span><span class="hljs-tag">&gt;</span>
-    <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"phone"</span><span class="hljs-tag">&gt;</span>Phone Number<span class="hljs-tag">&lt;/label&gt;</span>
+    <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"phone"</span><span class="hljs-tag">&gt;</span>Phone:<span class="hljs-tag">&lt;/label&gt;</span>
     <span class="hljs-tag">&lt;input</span> <span class="hljs-attr">type=</span><span class="hljs-string">"tel"</span> <span class="hljs-attr">id=</span><span class="hljs-string">"phone"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"phone"</span> <span class="hljs-attr">placeholder=</span><span class="hljs-string">"Enter your phone number"</span> <span class="hljs-attr">required</span><span class="hljs-tag">&gt;</span>
   <span class="hljs-tag">&lt;/div&gt;</span>
 
-  <span class="hljs-tag">&lt;h4&gt;</span>Academic information<span class="hljs-tag">&lt;/h4&gt;</span>
+  <span class="hljs-tag">&lt;h4&gt;</span>Education<span class="hljs-tag">&lt;/h4&gt;</span>
 
   <span class="hljs-tag">&lt;div</span> <span class="hljs-attr">class=</span><span class="hljs-string">"form-group"</span><span class="hljs-tag">&gt;</span>
-    <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"institution"</span><span class="hljs-tag">&gt;</span>School/University<span class="hljs-tag">&lt;/label&gt;</span>
-    <span class="hljs-tag">&lt;input</span> <span class="hljs-attr">type=</span><span class="hljs-string">"text"</span> <span class="hljs-attr">id=</span><span class="hljs-string">"institution"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"institution"</span> <span class="hljs-attr">placeholder=</span><span class="hljs-string">"Name of institution"</span> <span class="hljs-attr">required</span><span class="hljs-tag">&gt;</span>
+    <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"university"</span><span class="hljs-tag">&gt;</span>University:<span class="hljs-tag">&lt;/label&gt;</span>
+    <span class="hljs-tag">&lt;input</span> <span class="hljs-attr">type=</span><span class="hljs-string">"text"</span> <span class="hljs-attr">id=</span><span class="hljs-string">"university"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"university"</span> <span class="hljs-attr">placeholder=</span><span class="hljs-string">"Name of university"</span> <span class="hljs-attr">required</span><span class="hljs-tag">&gt;</span>
   <span class="hljs-tag">&lt;/div&gt;</span>
 
   <span class="hljs-tag">&lt;div</span> <span class="hljs-attr">class=</span><span class="hljs-string">"form-row"</span><span class="hljs-tag">&gt;</span>
     <span class="hljs-tag">&lt;div</span> <span class="hljs-attr">class=</span><span class="hljs-string">"form-group"</span><span class="hljs-tag">&gt;</span>
-      <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"graduation_year"</span><span class="hljs-tag">&gt;</span>Graduation Year<span class="hljs-tag">&lt;/label&gt;</span>
-      <span class="hljs-tag">&lt;input</span> <span class="hljs-attr">type=</span><span class="hljs-string">"text"</span> <span class="hljs-attr">id=</span><span class="hljs-string">"graduation_year"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"graduation_year"</span> <span class="hljs-attr">placeholder=</span><span class="hljs-string">"YYYY"</span> <span class="hljs-attr">required</span><span class="hljs-tag">&gt;</span>
+      <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"major"</span><span class="hljs-tag">&gt;</span>Major:<span class="hljs-tag">&lt;/label&gt;</span>
+      <span class="hljs-tag">&lt;input</span> <span class="hljs-attr">type=</span><span class="hljs-string">"text"</span> <span class="hljs-attr">id=</span><span class="hljs-string">"major"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"major"</span> <span class="hljs-attr">placeholder=</span><span class="hljs-string">"Your major"</span> <span class="hljs-attr">required</span><span class="hljs-tag">&gt;</span>
     <span class="hljs-tag">&lt;/div&gt;</span>
     <span class="hljs-tag">&lt;div</span> <span class="hljs-attr">class=</span><span class="hljs-string">"form-group"</span><span class="hljs-tag">&gt;</span>
-      <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"gpa"</span><span class="hljs-tag">&gt;</span>GPA<span class="hljs-tag">&lt;/label&gt;</span>
-      <span class="hljs-tag">&lt;input</span> <span class="hljs-attr">type=</span><span class="hljs-string">"text"</span> <span class="hljs-attr">id=</span><span class="hljs-string">"gpa"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"gpa"</span> <span class="hljs-attr">placeholder=</span><span class="hljs-string">"0.0 - 4.0"</span> <span class="hljs-attr">required</span><span class="hljs-tag">&gt;</span>
+      <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"graduation"</span><span class="hljs-tag">&gt;</span>Graduation:<span class="hljs-tag">&lt;/label&gt;</span>
+      <span class="hljs-tag">&lt;input</span> <span class="hljs-attr">type=</span><span class="hljs-string">"text"</span> <span class="hljs-attr">id=</span><span class="hljs-string">"graduation"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"graduation"</span> <span class="hljs-attr">placeholder=</span><span class="hljs-string">"MM/YYYY"</span> <span class="hljs-attr">required</span><span class="hljs-tag">&gt;</span>
+    <span class="hljs-tag">&lt;/div&gt;</span>
+  <span class="hljs-tag">&lt;/div&gt;</span>
+
+  <span class="hljs-tag">&lt;h4&gt;</span>Internship details<span class="hljs-tag">&lt;/h4&gt;</span>
+
+  <span class="hljs-tag">&lt;div</span> <span class="hljs-attr">class=</span><span class="hljs-string">"form-group"</span><span class="hljs-tag">&gt;</span>
+    <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"position"</span><span class="hljs-tag">&gt;</span>Position:<span class="hljs-tag">&lt;/label&gt;</span>
+    <span class="hljs-tag">&lt;select</span> <span class="hljs-attr">id=</span><span class="hljs-string">"position"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"position"</span> <span class="hljs-attr">required</span><span class="hljs-tag">&gt;</span>
+      <span class="hljs-tag">&lt;option</span> <span class="hljs-attr">value=</span><span class="hljs-string">""</span><span class="hljs-tag">&gt;</span>Select a position<span class="hljs-tag">&lt;/option&gt;</span>
+      <span class="hljs-tag">&lt;option</span> <span class="hljs-attr">value=</span><span class="hljs-string">"software-engineering"</span><span class="hljs-tag">&gt;</span>Software Engineering<span class="hljs-tag">&lt;/option&gt;</span>
+      <span class="hljs-tag">&lt;option</span> <span class="hljs-attr">value=</span><span class="hljs-string">"product-management"</span><span class="hljs-tag">&gt;</span>Product Management<span class="hljs-tag">&lt;/option&gt;</span>
+      <span class="hljs-tag">&lt;option</span> <span class="hljs-attr">value=</span><span class="hljs-string">"design"</span><span class="hljs-tag">&gt;</span>Design<span class="hljs-tag">&lt;/option&gt;</span>
+      <span class="hljs-tag">&lt;option</span> <span class="hljs-attr">value=</span><span class="hljs-string">"marketing"</span><span class="hljs-tag">&gt;</span>Marketing<span class="hljs-tag">&lt;/option&gt;</span>
+      <span class="hljs-tag">&lt;option</span> <span class="hljs-attr">value=</span><span class="hljs-string">"data-science"</span><span class="hljs-tag">&gt;</span>Data Science<span class="hljs-tag">&lt;/option&gt;</span>
+    <span class="hljs-tag">&lt;/select&gt;</span>
+  <span class="hljs-tag">&lt;/div&gt;</span>
+
+  <span class="hljs-tag">&lt;div</span> <span class="hljs-attr">class=</span><span class="hljs-string">"form-group"</span><span class="hljs-tag">&gt;</span>
+    <span class="hljs-tag">&lt;label&gt;</span>Availability:<span class="hljs-tag">&lt;/label&gt;</span>
+    <span class="hljs-tag">&lt;div</span> <span class="hljs-attr">class=</span><span class="hljs-string">"checkbox-group"</span><span class="hljs-tag">&gt;</span>
+      <span class="hljs-tag">&lt;div</span> <span class="hljs-attr">class=</span><span class="hljs-string">"checkbox-item"</span><span class="hljs-tag">&gt;</span>
+        <span class="hljs-tag">&lt;input</span> <span class="hljs-attr">type=</span><span class="hljs-string">"checkbox"</span> <span class="hljs-attr">id=</span><span class="hljs-string">"fulltime"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"availability[]"</span> <span class="hljs-attr">value=</span><span class="hljs-string">"full-time"</span><span class="hljs-tag">&gt;</span>
+        <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"fulltime"</span> <span class="hljs-attr">class=</span><span class="hljs-string">"checkbox-label"</span><span class="hljs-tag">&gt;</span>Full-Time<span class="hljs-tag">&lt;/label&gt;</span>
+      <span class="hljs-tag">&lt;/div&gt;</span>
+      <span class="hljs-tag">&lt;div</span> <span class="hljs-attr">class=</span><span class="hljs-string">"checkbox-item"</span><span class="hljs-tag">&gt;</span>
+        <span class="hljs-tag">&lt;input</span> <span class="hljs-attr">type=</span><span class="hljs-string">"checkbox"</span> <span class="hljs-attr">id=</span><span class="hljs-string">"parttime"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"availability[]"</span> <span class="hljs-attr">value=</span><span class="hljs-string">"part-time"</span><span class="hljs-tag">&gt;</span>
+        <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"parttime"</span> <span class="hljs-attr">class=</span><span class="hljs-string">"checkbox-label"</span><span class="hljs-tag">&gt;</span>Part-Time<span class="hljs-tag">&lt;/label&gt;</span>
+      <span class="hljs-tag">&lt;/div&gt;</span>
     <span class="hljs-tag">&lt;/div&gt;</span>
   <span class="hljs-tag">&lt;/div&gt;</span>
 
   <span class="hljs-tag">&lt;div</span> <span class="hljs-attr">class=</span><span class="hljs-string">"form-group"</span><span class="hljs-tag">&gt;</span>
-    <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"major"</span><span class="hljs-tag">&gt;</span>Major/Field of Study<span class="hljs-tag">&lt;/label&gt;</span>
-    <span class="hljs-tag">&lt;input</span> <span class="hljs-attr">type=</span><span class="hljs-string">"text"</span> <span class="hljs-attr">id=</span><span class="hljs-string">"major"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"major"</span> <span class="hljs-attr">placeholder=</span><span class="hljs-string">"Your major"</span> <span class="hljs-attr">required</span><span class="hljs-tag">&gt;</span>
-  <span class="hljs-tag">&lt;/div&gt;</span>
-
-  <span class="hljs-tag">&lt;h4&gt;</span>Scholarship details<span class="hljs-tag">&lt;/h4&gt;</span>
-
-  <span class="hljs-tag">&lt;div</span> <span class="hljs-attr">class=</span><span class="hljs-string">"form-group"</span><span class="hljs-tag">&gt;</span>
-    <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"scholarship_name"</span><span class="hljs-tag">&gt;</span>Scholarship Name<span class="hljs-tag">&lt;/label&gt;</span>
-    <span class="hljs-tag">&lt;input</span> <span class="hljs-attr">type=</span><span class="hljs-string">"text"</span> <span class="hljs-attr">id=</span><span class="hljs-string">"scholarship_name"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"scholarship_name"</span> <span class="hljs-attr">placeholder=</span><span class="hljs-string">"Name of scholarship"</span> <span class="hljs-attr">required</span><span class="hljs-tag">&gt;</span>
+    <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"start_date"</span><span class="hljs-tag">&gt;</span>Start Date:<span class="hljs-tag">&lt;/label&gt;</span>
+    <span class="hljs-tag">&lt;input</span> <span class="hljs-attr">type=</span><span class="hljs-string">"text"</span> <span class="hljs-attr">id=</span><span class="hljs-string">"start_date"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"start_date"</span> <span class="hljs-attr">placeholder=</span><span class="hljs-string">"MM/DD/YYYY"</span> <span class="hljs-attr">required</span><span class="hljs-tag">&gt;</span>
   <span class="hljs-tag">&lt;/div&gt;</span>
 
   <span class="hljs-tag">&lt;div</span> <span class="hljs-attr">class=</span><span class="hljs-string">"form-group"</span><span class="hljs-tag">&gt;</span>
-    <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"amount"</span><span class="hljs-tag">&gt;</span>Amount Requested<span class="hljs-tag">&lt;/label&gt;</span>
-    <span class="hljs-tag">&lt;input</span> <span class="hljs-attr">type=</span><span class="hljs-string">"text"</span> <span class="hljs-attr">id=</span><span class="hljs-string">"amount"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"amount"</span> <span class="hljs-attr">placeholder=</span><span class="hljs-string">"$"</span> <span class="hljs-attr">required</span><span class="hljs-tag">&gt;</span>
+    <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"motivation"</span><span class="hljs-tag">&gt;</span>Why are you interested in this internship?<span class="hljs-tag">&lt;/label&gt;</span>
+    <span class="hljs-tag">&lt;textarea</span> <span class="hljs-attr">id=</span><span class="hljs-string">"motivation"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"motivation"</span> <span class="hljs-attr">placeholder=</span><span class="hljs-string">"Write your motivation"</span> <span class="hljs-attr">required</span><span class="hljs-tag">&gt;&lt;/textarea&gt;</span>
   <span class="hljs-tag">&lt;/div&gt;</span>
 
-  <span class="hljs-tag">&lt;div</span> <span class="hljs-attr">class=</span><span class="hljs-string">"form-group"</span><span class="hljs-tag">&gt;</span>
-    <span class="hljs-tag">&lt;label</span> <span class="hljs-attr">for=</span><span class="hljs-string">"statement"</span><span class="hljs-tag">&gt;</span>Personal Statement<span class="hljs-tag">&lt;/label&gt;</span>
-    <span class="hljs-tag">&lt;textarea</span> <span class="hljs-attr">id=</span><span class="hljs-string">"statement"</span> <span class="hljs-attr">name=</span><span class="hljs-string">"statement"</span> <span class="hljs-attr">placeholder=</span><span class="hljs-string">"Write your personal statement here..."</span> <span class="hljs-attr">required</span><span class="hljs-tag">&gt;&lt;/textarea&gt;</span>
-  <span class="hljs-tag">&lt;/div&gt;</span>
-
-  <span class="hljs-tag">&lt;button</span> <span class="hljs-attr">type=</span><span class="hljs-string">"submit"</span> <span class="hljs-attr">class=</span><span class="hljs-string">"submit-btn"</span><span class="hljs-tag">&gt;</span>Submit Scholarship Application<span class="hljs-tag">&lt;/button&gt;</span>
+  <span class="hljs-tag">&lt;button</span> <span class="hljs-attr">type=</span><span class="hljs-string">"submit"</span> <span class="hljs-attr">class=</span><span class="hljs-string">"submit-btn"</span><span class="hljs-tag">&gt;</span>Submit Internship Application<span class="hljs-tag">&lt;/button&gt;</span>
 <span class="hljs-tag">&lt;/form&gt;</span></pre>
                         </div>
                     </div>
@@ -445,7 +484,7 @@
                         <div class="code-block-header">
                             <div class="code-block-info">
                                 <span class="code-block-language">CSS</span>
-                                <span class="code-block-desc">Styling for the scholarship application form</span>
+                                <span class="code-block-desc">Styling for the internship application form</span>
                             </div>
                             <button class="code-copy-btn" onclick="copyCode(this, 'css-code-content')">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -456,7 +495,7 @@
                             </button>
                         </div>
                         <div class="code-block-content">
-                            <pre id="css-code-content"><span class="hljs-selector-class">.scholarship-form</span> {
+                            <pre id="css-code-content"><span class="hljs-selector-class">.internship-form</span> {
   <span class="hljs-attribute">max-width</span>: <span class="hljs-number">600px</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">2rem</span>;
@@ -466,7 +505,7 @@
   <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'Outfit'</span>, sans-serif;
 }
 
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-tag">h3</span> {
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-tag">h3</span> {
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.5rem</span>;
   <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">600</span>;
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#fafafa</span>;
@@ -474,14 +513,14 @@
   <span class="hljs-attribute">letter-spacing</span>: -<span class="hljs-number">0.02em</span>;
 }
 
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-class">.form-description</span> {
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-class">.form-description</span> {
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.9rem</span>;
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#888888</span>;
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">1.5rem</span>;
   <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.6</span>;
 }
 
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-tag">h4</span> {
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-tag">h4</span> {
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.1rem</span>;
   <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">600</span>;
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#00ff88</span>;
@@ -490,11 +529,11 @@
   <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> dashed <span class="hljs-number">#2a2a2a</span>;
 }
 
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-class">.form-group</span> {
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-class">.form-group</span> {
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">1.25rem</span>;
 }
 
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-tag">label</span> {
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-tag">label</span> {
   <span class="hljs-attribute">display</span>: block;
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.85rem</span>;
   <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">600</span>;
@@ -502,11 +541,11 @@
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0.5rem</span>;
 }
 
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type="text"]</span>,
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type="email"]</span>,
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type="tel"]</span>,
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-tag">select</span>,
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-tag">textarea</span> {
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type="text"]</span>,
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type="email"]</span>,
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type="tel"]</span>,
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-tag">select</span>,
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-tag">textarea</span> {
   <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">0.75rem</span> <span class="hljs-number">1rem</span>;
   <span class="hljs-attribute">background</span>: <span class="hljs-number">#111111</span>;
@@ -518,36 +557,58 @@
   <span class="hljs-attribute">font-family</span>: inherit;
 }
 
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-tag">textarea</span> {
-  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">120px</span>;
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-tag">textarea</span> {
+  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">100px</span>;
   <span class="hljs-attribute">resize</span>: vertical;
 }
 
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">:focus</span>,
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-tag">select</span><span class="hljs-selector-pseudo">:focus</span>,
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-tag">textarea</span><span class="hljs-selector-pseudo">:focus</span> {
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">:focus</span>,
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-tag">select</span><span class="hljs-selector-pseudo">:focus</span>,
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-tag">textarea</span><span class="hljs-selector-pseudo">:focus</span> {
   <span class="hljs-attribute">outline</span>: none;
   <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#00ff88</span>;
   <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">3px</span> <span class="hljs-built_in">rgba</span>(0, 255, 136, 0.15);
 }
 
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">::placeholder</span>,
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-tag">textarea</span><span class="hljs-selector-pseudo">::placeholder</span> {
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">::placeholder</span>,
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-tag">textarea</span><span class="hljs-selector-pseudo">::placeholder</span> {
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#555555</span>;
 }
 
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-class">.form-row</span> {
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-class">.form-row</span> {
   <span class="hljs-attribute">display</span>: flex;
   <span class="hljs-attribute">gap</span>: <span class="hljs-number">1rem</span>;
   <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0.5rem</span>;
 }
 
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-class">.form-row</span> <span class="hljs-selector-class">.form-group</span> {
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-class">.form-row</span> <span class="hljs-selector-class">.form-group</span> {
   <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>;
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
 }
 
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-class">.submit-btn</span> {
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-class">.checkbox-group</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">gap</span>: <span class="hljs-number">1.5rem</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0.5rem</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-class">.checkbox-item</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">gap</span>: <span class="hljs-number">0.5rem</span>;
+}
+
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-class">.checkbox-item</span> <span class="hljs-selector-tag">input</span> {
+  <span class="hljs-attribute">width</span>: auto;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-class">.checkbox-item</span> <span class="hljs-selector-tag">label</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">cursor</span>: pointer;
+}
+
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-class">.submit-btn</span> {
   <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">0.875rem</span> <span class="hljs-number">1.5rem</span>;
   <span class="hljs-attribute">background</span>: <span class="hljs-number">#00ff88</span>;
@@ -561,20 +622,25 @@
   <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0.5rem</span>;
 }
 
-<span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-class">.submit-btn</span><span class="hljs-selector-pseudo">:hover</span> {
+<span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-class">.submit-btn</span><span class="hljs-selector-pseudo">:hover</span> {
   <span class="hljs-attribute">background</span>: <span class="hljs-number">#fafafa</span>;
   <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateY</span>(-<span class="hljs-number">1px</span>);
   <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">4px</span> <span class="hljs-number">20px</span> <span class="hljs-built_in">rgba</span>(0, 255, 136, 0.15);
 }
 
 <span class="hljs-keyword">@media</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">768px</span>) {
-  <span class="hljs-selector-class">.scholarship-form</span> {
+  <span class="hljs-selector-class">.internship-form</span> {
     <span class="hljs-attribute">padding</span>: <span class="hljs-number">1.5rem</span>;
   }
   
-  <span class="hljs-selector-class">.scholarship-form</span> <span class="hljs-selector-class">.form-row</span> {
+  <span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-class">.form-row</span> {
     <span class="hljs-attribute">flex-direction</span>: column;
     <span class="hljs-attribute">gap</span>: <span class="hljs-number">0.5rem</span>;
+  }
+  
+  <span class="hljs-selector-class">.internship-form</span> <span class="hljs-selector-class">.checkbox-group</span> {
+    <span class="hljs-attribute">flex-direction</span>: column;
+    <span class="hljs-attribute">gap</span>: <span class="hljs-number">0.75rem</span>;
   }
 }</pre>
                         </div>
@@ -605,19 +671,19 @@
       <span class="hljs-attr">class</span>=<span class="hljs-string">"max-w-2xl mx-auto p-8 bg-[#0d0d0d] border border-[#1a1a1a] rounded-xl font-sans"</span>&gt;</span>
   
   <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-2xl font-semibold text-[#fafafa] mb-2 tracking-tight"</span>&gt;</span>
-    Scholarship Application Form
+    Internship Application Form
   <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
   
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-sm text-[#888888] mb-6 leading-relaxed"</span>&gt;</span>
-    Apply for educational scholarships and financial aid opportunities.
+    Apply for internship positions at our company.
   <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-lg font-semibold text-[#00ff88] mb-4 pb-2 border-b border-dashed border-[#2a2a2a]"</span>&gt;</span>
-    Student information
+    Personal information
   <span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mb-5"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Full Name<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Full Name:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"full_name"</span>
            <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Enter your full name"</span>
            <span class="hljs-attr">class</span>=<span class="hljs-string">"w-full px-4 py-3 bg-[#111111] border border-[#1a1a1a] rounded-lg text-[#fafafa] placeholder-[#555555] focus:border-[#00ff88] transition-all"</span>
@@ -625,15 +691,7 @@
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mb-5"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Date of Birth<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"dob"</span>
-           <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"MM/DD/YYYY"</span>
-           <span class="hljs-attr">class</span>=<span class="hljs-string">"w-full px-4 py-3 bg-[#111111] border border-[#1a1a1a] rounded-lg text-[#fafafa] placeholder-[#555555] focus:border-[#00ff88] transition-all"</span>
-           <span class="hljs-attr">required</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mb-5"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Email Address<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Email:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"email"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"email"</span>
            <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Enter your email"</span>
            <span class="hljs-attr">class</span>=<span class="hljs-string">"w-full px-4 py-3 bg-[#111111] border border-[#1a1a1a] rounded-lg text-[#fafafa] placeholder-[#555555] focus:border-[#00ff88] transition-all"</span>
@@ -641,7 +699,7 @@
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mb-5"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Phone Number<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Phone:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"tel"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"phone"</span>
            <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Enter your phone number"</span>
            <span class="hljs-attr">class</span>=<span class="hljs-string">"w-full px-4 py-3 bg-[#111111] border border-[#1a1a1a] rounded-lg text-[#fafafa] placeholder-[#555555] focus:border-[#00ff88] transition-all"</span>
@@ -649,72 +707,84 @@
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-lg font-semibold text-[#00ff88] mt-6 mb-4 pb-2 border-b border-dashed border-[#2a2a2a]"</span>&gt;</span>
-    Academic information
+    Education
   <span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mb-5"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>School/University<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"institution"</span>
-           <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Name of institution"</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>University:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"university"</span>
+           <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Name of university"</span>
            <span class="hljs-attr">class</span>=<span class="hljs-string">"w-full px-4 py-3 bg-[#111111] border border-[#1a1a1a] rounded-lg text-[#fafafa] placeholder-[#555555] focus:border-[#00ff88] transition-all"</span>
            <span class="hljs-attr">required</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"flex flex-col sm:flex-row gap-4 mb-5 mt-2"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"flex-1"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Graduation Year<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"graduation_year"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"YYYY"</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Major:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"major"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Your major"</span>
              <span class="hljs-attr">class</span>=<span class="hljs-string">"w-full px-4 py-3 bg-[#111111] border border-[#1a1a1a] rounded-lg text-[#fafafa] placeholder-[#555555] focus:border-[#00ff88] transition-all"</span>
              <span class="hljs-attr">required</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"flex-1"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>GPA<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"gpa"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"0.0 - 4.0"</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Graduation:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"graduation"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"MM/YYYY"</span>
              <span class="hljs-attr">class</span>=<span class="hljs-string">"w-full px-4 py-3 bg-[#111111] border border-[#1a1a1a] rounded-lg text-[#fafafa] placeholder-[#555555] focus:border-[#00ff88] transition-all"</span>
              <span class="hljs-attr">required</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mb-5"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Major/Field of Study<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"major"</span>
-           <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Your major"</span>
-           <span class="hljs-attr">class</span>=<span class="hljs-string">"w-full px-4 py-3 bg-[#111111] border border-[#1a1a1a] rounded-lg text-[#fafafa] placeholder-[#555555] focus:border-[#00ff88] transition-all"</span>
-           <span class="hljs-attr">required</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
   <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-lg font-semibold text-[#00ff88] mt-6 mb-4 pb-2 border-b border-dashed border-[#2a2a2a]"</span>&gt;</span>
-    Scholarship details
+    Internship details
   <span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mb-5"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Scholarship Name<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"scholarship_name"</span>
-           <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Name of scholarship"</span>
-           <span class="hljs-attr">class</span>=<span class="hljs-string">"w-full px-4 py-3 bg-[#111111] border border-[#1a1a1a] rounded-lg text-[#fafafa] placeholder-[#555555] focus:border-[#00ff88] transition-all"</span>
-           <span class="hljs-attr">required</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Position:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"position"</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">"w-full px-4 py-3 bg-[#111111] border border-[#1a1a1a] rounded-lg text-[#fafafa] focus:border-[#00ff88] transition-all cursor-pointer"</span>
+            <span class="hljs-attr">required</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">""</span>&gt;</span>Select a position<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"software-engineering"</span>&gt;</span>Software Engineering<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"product-management"</span>&gt;</span>Product Management<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"design"</span>&gt;</span>Design<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"marketing"</span>&gt;</span>Marketing<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"data-science"</span>&gt;</span>Data Science<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mb-5"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Amount Requested<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"amount"</span>
-           <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"$"</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Availability:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"flex flex-col sm:flex-row gap-4"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"flex items-center gap-2 cursor-pointer"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"availability[]"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"full-time"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-sm text-[#e6edf3]"</span>&gt;</span>Full-Time<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"flex items-center gap-2 cursor-pointer"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"availability[]"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"part-time"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-sm text-[#e6edf3]"</span>&gt;</span>Part-Time<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mb-5"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Start Date:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"start_date"</span>
+           <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"MM/DD/YYYY"</span>
            <span class="hljs-attr">class</span>=<span class="hljs-string">"w-full px-4 py-3 bg-[#111111] border border-[#1a1a1a] rounded-lg text-[#fafafa] placeholder-[#555555] focus:border-[#00ff88] transition-all"</span>
            <span class="hljs-attr">required</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mb-6"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Personal Statement<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"statement"</span>
-              <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Write your personal statement here..."</span>
-              <span class="hljs-attr">rows</span>=<span class="hljs-string">"5"</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"block text-sm font-semibold text-[#e6edf3] mb-2"</span>&gt;</span>Why are you interested in this internship?<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"motivation"</span>
+              <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Write your motivation"</span>
+              <span class="hljs-attr">rows</span>=<span class="hljs-string">"4"</span>
               <span class="hljs-attr">class</span>=<span class="hljs-string">"w-full px-4 py-3 bg-[#111111] border border-[#1a1a1a] rounded-lg text-[#fafafa] placeholder-[#555555] focus:border-[#00ff88] transition-all resize-y"</span>
               <span class="hljs-attr">required</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>
           <span class="hljs-attr">class</span>=<span class="hljs-string">"w-full py-3 px-6 bg-[#00ff88] text-[#050505] font-semibold rounded-lg hover:bg-white transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#00ff88]/20"</span>&gt;</span>
-    Submit Scholarship Application
+    Submit Internship Application
   <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></pre>
                         </div>
@@ -738,7 +808,7 @@
                         <li><strong>Copy the HTML code</strong> and paste it into your website where you want the form to appear.</li>
                         <li><strong>Copy the CSS code</strong> and add it to your stylesheet, or use the Tailwind version if you're using Tailwind CSS.</li>
                         <li><strong>Replace <code>your-endpoint</code></strong> in the form action with your actual 000form endpoint URL.</li>
-                        <li><strong>That's it!</strong> Your form will start receiving scholarship applications directly to your inbox.</li>
+                        <li><strong>That's it!</strong> Your form will start receiving internship applications directly to your inbox.</li>
                     </ol>
                 </div>
             </div>
@@ -747,19 +817,24 @@
         <div class="related-forms">
             <h3>Related Application Forms</h3>
             <div class="related-forms-grid">
-                <a href="{{ route('Home.library.JobApplicationForm') }}" class="related-form-card">
+                <a href="<?php echo e(route('Home.library.JobApplicationForm')); ?>" class="related-form-card">
                     <h4>Job Application Form</h4>
                     <p>Minimal job application form</p>
                     <span class="related-form-link">View form →</span>
                 </a>
-                <a href="{{ route('Home.library.RentalApplicationForm') }}" class="related-form-card">
+                <a href="<?php echo e(route('Home.library.RentalApplicationForm')); ?>" class="related-form-card">
                     <h4>Rental Application Form</h4>
                     <p>Property rental application</p>
                     <span class="related-form-link">View form →</span>
                 </a>
-                <a href="{{ route('Home.library.VendorApplicationForm') }}" class="related-form-card">
+                <a href="<?php echo e(route('Home.library.VendorApplicationForm')); ?>" class="related-form-card">
                     <h4>Vendor Application Form</h4>
                     <p>Register as a vendor or supplier</p>
+                    <span class="related-form-link">View form →</span>
+                </a>
+                <a href="<?php echo e(route('Home.library.ScholarshipApplicationForm')); ?>" class="related-form-card">
+                    <h4>Scholarship Application Form</h4>
+                    <p>Educational financial aid form</p>
                     <span class="related-form-link">View form →</span>
                 </a>
             </div>
@@ -806,4 +881,5 @@
     });
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/Library/Internship-ApplicationForm.blade.php ENDPATH**/ ?>

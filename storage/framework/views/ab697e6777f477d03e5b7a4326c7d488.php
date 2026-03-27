@@ -170,13 +170,13 @@
 <?php $__env->startSection('content'); ?>
 
 <!-- Library Hero Section -->
-<section class="library-hero">
-    <div class="hero-bg">
+<section class="">
+    <div class="hero-bg" >
         <div class="hero-gradient hero-gradient-1"></div>
         <div class="hero-gradient hero-gradient-2"></div>
     </div>
     
-    <div class="container">
+    <div class="container" style="margin-top: 8.5rem">
         <div class="hero-content">
             <div class="hero-badge">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -206,42 +206,7 @@
         <!-- Sidebar -->
         <aside class="library-sidebar">
             <div class="sidebar-card">
-                
-                <!-- Framework Selector -->
-                <div class="sidebar-section">
-                    <h3 class="sidebar-title">Technology</h3>
-                    
-                    <div class="tech-list">
-                        <a href="#" onclick="return false;"class="tech-link active">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <path d="M22 6l-10 7L2 6"/>
-                            </svg>
-                            HTML Forms
-                            <span class="tech-count">6</span>
-                        </a>
-                        
-                        <a href="#" onclick="return false;"class="tech-link">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
-                                <path d="M8 8h8v8H8z"/>
-                                <path d="M12 8v8M8 12h8"/>
-                            </svg>
-                            Tailwind Forms
-                            <span class="tech-count">6</span>
-                        </a>
-                        
-                        <!-- <a href="#" class="tech-link">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M12 8v8M8 12h8"/>
-                            </svg>
-                            React Forms
-                            <span class="tech-count">15</span>
-                        </a> -->
-                    </div>
-                </div>
-                
+
                 <!-- Form Categories -->
                 <div class="sidebar-section">
                     <h3 class="sidebar-title">Categories</h3>
@@ -285,6 +250,42 @@
                         </a> -->
                     </div>
                 </div>
+                
+                <!-- Framework Selector -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Technology</h3>
+                    
+                    <div class="tech-list">
+                        <a href="#" onclick="return false;"class="tech-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <path d="M22 6l-10 7L2 6"/>
+                            </svg>
+                            HTML Forms
+                            <span class="tech-count">6</span>
+                        </a>
+                        
+                        <a href="#" onclick="return false;"class="tech-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
+                                <path d="M8 8h8v8H8z"/>
+                                <path d="M12 8v8M8 12h8"/>
+                            </svg>
+                            Tailwind Forms
+                            <span class="tech-count">6</span>
+                        </a>
+                        
+                        <!-- <a href="#" class="tech-link  active">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 8v8M8 12h8"/>
+                            </svg>
+                            React Forms
+                            <span class="tech-count">15</span>
+                        </a> -->
+                    </div>
+                </div>
+                
             </div>
         </aside>
         

@@ -10,7 +10,7 @@
     .form-preview-code {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 30px;
+        gap: 5rem;
         align-items: stretch;
         margin-bottom: 2rem;
     }
@@ -201,6 +201,24 @@
 @section('content')
 
 <section class="form-detail-section">
+    <section style="margin-top:4.5rem">
+            <div class="hero-bg">
+                <div class="hero-gradient hero-gradient-1"></div>
+                <div class="hero-gradient hero-gradient-2"></div>
+            </div>
+            
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                         HTML/CSS + Tailwind
+                    </div>
+                    
+                    <h1 class="hero-title">
+                      <span class="highlight">Vendor</span><br>  Application Form
+                    </h1>
+                </div>
+            </div>
+    </section>
     <div class="container">
         
         <div class="form-breadcrumb">

@@ -212,12 +212,11 @@
 <div class="docs-wrap">
     <section class="library-hero">
         <div class="hero-bg">
-            
+            <div class="hero-gradient hero-gradient-1"></div>
+            <div class="hero-gradient hero-gradient-2"></div>
         </div>
         
         <div class="container">
-            <div class="hero-gradient hero-gradient-1"></div>
-            <div class="hero-gradient hero-gradient-2"></div>
             <div class="hero-content" style="margin-bottom: 3.5rem;">
                 <div class="hero-badge">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
