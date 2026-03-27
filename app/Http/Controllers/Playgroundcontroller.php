@@ -26,12 +26,17 @@ class PlaygroundController extends Controller
         return view('pages.playground');
     }
 
+    public function expressGuide()
+    {
+        return view('pages.express-guide');
+    }
+
     /**
      * Show form submitted thank you page
      */
     public function formSubmitted()
     {
-        return view('pages.form-submitted');
+        return view('pages.form-submitted-express');
     }
 
     /**

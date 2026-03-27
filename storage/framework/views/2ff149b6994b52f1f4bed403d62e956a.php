@@ -245,6 +245,181 @@
 </section>
 
 
+<section class="lp-core">
+    <div class="lp-core__glow"></div>
+    <div class="lp-container">
+
+        <div class="lp-split">
+
+            
+            <div class="lp-split__copy">
+
+                <div class="lp-mode-badge lp-mode-badge--core">
+                    <span class="lp-mode-badge__dot"></span>
+                    Core
+                </div>
+
+                <h2 class="lp-split__title">
+                    Your data.<br>
+                    <span class="lp-split__accent lp-split__accent--core">Your dashboard.</span>
+                </h2>
+
+                <p class="lp-split__desc">
+                    Register a free account, spin up unlimited form endpoints, and every submission lands in your personal dashboard — searchable, filterable, exportable, and always yours.
+                </p>
+
+                <ul class="lp-split__perks">
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Permanent submission storage &amp; full history
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Analytics  per form
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Spam filtering, CSV export &amp; file uploads
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Team collaboration on paid plans
+                    </li>
+                </ul>
+
+                <a href="<?php echo e(route('signup')); ?>" class="lp-split__cta lp-split__cta--core">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                    Create free account
+                </a>
+
+                <p class="lp-split__note">No credit card · Unlimited forms · 50 free submissions/mo</p>
+
+            </div>
+
+            
+            <div class="lp-split__steps">
+
+                <div class="lp-split__step">
+                    <div class="lp-split__step-num lp-split__step-num--core">01</div>
+                    <div class="lp-split__step-line lp-split__step-line--core"></div>
+                    <div class="lp-split__step-body">
+                        <strong>Register your account</strong>
+                        <span>Free forever plan — no credit card needed. Your account unlocks a personal dashboard and submission history.</span>
+                    </div>
+                </div>
+
+                <div class="lp-split__step">
+                    <div class="lp-split__step-num lp-split__step-num--core">02</div>
+                    <div class="lp-split__step-line lp-split__step-line--core"></div>
+                    <div class="lp-split__step-body">
+                        <strong>Create unlimited endpoints</strong>
+                        <span>From your dashboard, create a form endpoint. Name it, set notifications, copy the URL — done.</span>
+                    </div>
+                </div>
+
+                <div class="lp-split__step">
+                    <div class="lp-split__step-num lp-split__step-num--core">03</div>
+                    <div class="lp-split__step-body">
+                        <strong>All data stored in your dashboard</strong>
+                        <span>Every submission is saved, searchable, and exportable. Browse, filter, and reply from one place.</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<section class="lp-express">
+    <div class="lp-express__glow"></div>
+    <div class="lp-container">
+
+        <div class="lp-split lp-split--reverse">
+
+            
+            <div class="lp-split__steps">
+
+                <div class="lp-split__step">
+                    <div class="lp-split__step-num lp-split__step-num--express">01</div>
+                    <div class="lp-split__step-line lp-split__step-line--express"></div>
+                    <div class="lp-split__step-body">
+                        <strong>Enter your email</strong>
+                        <span>No account, no password, no credit card — just your email address.</span>
+                    </div>
+                </div>
+
+                <div class="lp-split__step">
+                    <div class="lp-split__step-num lp-split__step-num--express">02</div>
+                    <div class="lp-split__step-line lp-split__step-line--express"></div>
+                    <div class="lp-split__step-body">
+                        <strong>Verify once</strong>
+                        <span>Click the link we send — that's your only setup step. Takes under 30 seconds.</span>
+                    </div>
+                </div>
+
+                <div class="lp-split__step">
+                    <div class="lp-split__step-num lp-split__step-num--express">03</div>
+                    <div class="lp-split__step-body">
+                        <strong>Start getting notifications</strong>
+                        <span>Submissions hit your inbox instantly. Spam filtered, reply-to pre-set, delivered in seconds.</span>
+                    </div>
+                </div>
+
+            </div>
+
+            
+            <div class="lp-split__copy">
+
+                <div class="lp-mode-badge lp-mode-badge--express">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    Express
+                </div>
+
+                <h2 class="lp-split__title">
+                    Zero setup.<br>
+                    <span class="lp-split__accent lp-split__accent--express">Just notifications.</span>
+                </h2>
+
+                <p class="lp-split__desc">
+                    No account required. Verify your email once and your endpoint is live — submissions land in your inbox within seconds, every time.
+                </p>
+
+                <ul class="lp-split__perks lp-split__perks--express">
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        No registration, no login, no dashboard
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Instant email delivery, reply-to pre-set
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Spam &amp; honeypot protection included
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Live in under 60 seconds
+                    </li>
+                </ul>
+
+                <a href="/express" class="lp-split__cta lp-split__cta--express">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    Get started — no account needed
+                </a>
+
+                <p class="lp-split__note lp-split__note--express">Verify email once · Instant notifications · No dashboard</p>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
 
 <section class="lp-features" id="features">
     <div class="lp-container">
@@ -622,7 +797,436 @@
 
 <?php $__env->startPush('styles'); ?>
 <style>
-        
+/* ── Accent variables ── */
+:root {
+    --blue:        #3b82f6;
+    --blue-bright: #60a5fa;
+    --blue-dim:    #1d4ed8;
+    --blue-glow:   rgba(59,130,246,0.15);
+    --blue-glow-2: rgba(59,130,246,0.08);
+    --blue-border: rgba(59,130,246,0.25);
+    --green:       #00ff88;
+    --green-dark:  #00cc6a;
+}
+
+/* ════════════════════════════════════════════════════════
+   SHARED SPLIT LAYOUT (copy | steps side by side)
+════════════════════════════════════════════════════════ */
+.lp-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+/* Flip column order for Express row */
+.lp-split--reverse { direction: rtl; }
+.lp-split--reverse > * { direction: ltr; }
+
+/* ── Badge ── */
+.lp-mode-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    width: fit-content;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.3rem 0.9rem;
+    border-radius: 100px;
+}
+
+.lp-mode-badge--core {
+    background: rgba(0,255,136,0.09);
+    border: 1px solid rgba(0,255,136,0.22);
+    color: var(--green);
+}
+
+.lp-mode-badge--express {
+    background: var(--blue-glow-2);
+    border: 1px solid var(--blue-border);
+    color: var(--blue-bright);
+}
+
+.lp-mode-badge__dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 3px rgba(0,255,136,0.2);
+    animation: lp-pulse 2s infinite;
+}
+
+/* ── Copy column ── */
+.lp-split__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+}
+
+.lp-split__title {
+    font-size: clamp(1.9rem, 2.8vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: rgba(255,255,255,0.95);
+    margin: 0;
+}
+
+.lp-split__accent--core {
+    background: linear-gradient(120deg, var(--green) 0%, #78ffc8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.lp-split__accent--express {
+    background: linear-gradient(120deg, var(--blue) 0%, var(--blue-bright) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.lp-split__desc {
+    font-size: 0.97rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.62);
+    margin: 0;
+}
+
+/* Perks */
+.lp-split__perks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.lp-split__perks li {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.68);
+}
+
+.lp-split__perks li svg          { color: var(--green); flex-shrink: 0; }
+.lp-split__perks--express li svg { color: var(--blue-bright); }
+
+/* CTA */
+.lp-split__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    font-weight: 700;
+    font-size: 0.94rem;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 0.88rem 1.65rem;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    margin-top: 0.15rem;
+}
+
+.lp-split__cta--core {
+    background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+    color: #001a0d;
+    border: 1px solid rgba(0,255,136,0.25);
+    box-shadow: 0 0 18px rgba(0,255,136,0.28), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.lp-split__cta--core:hover {
+    background: linear-gradient(135deg, #33ffaa 0%, #00bb66 100%);
+    box-shadow: 0 0 32px rgba(0,255,136,0.5);
+    transform: translateY(-2px);
+}
+
+.lp-split__cta--express {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dim) 100%);
+    color: #fff;
+    border: 1px solid var(--blue-border);
+    box-shadow: 0 0 18px rgba(59,130,246,0.28), inset 0 1px 0 rgba(255,255,255,0.12);
+}
+.lp-split__cta--express:hover {
+    background: linear-gradient(135deg, var(--blue-bright) 0%, var(--blue) 100%);
+    box-shadow: 0 0 32px rgba(59,130,246,0.5);
+    transform: translateY(-2px);
+}
+
+/* Footnote */
+.lp-split__note {
+    font-size: 0.73rem;
+    color: rgba(255,255,255,0.32);
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+.lp-split__note--express { color: rgba(59,130,246,0.5); }
+
+/* ── Steps column ── */
+.lp-split__steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.lp-split__step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    position: relative;
+}
+
+.lp-split__step-num {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.72rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.lp-split__step-num--core {
+    background: rgba(0,255,136,0.08);
+    border: 1px solid rgba(0,255,136,0.3);
+    color: var(--green);
+}
+
+.lp-split__step-num--express {
+    background: var(--blue-glow-2);
+    border: 1px solid var(--blue-border);
+    color: var(--blue-bright);
+}
+
+/* Vertical connector */
+.lp-split__step-line {
+    position: absolute;
+    left: 21px;
+    top: 44px;
+    width: 1px;
+    height: calc(100% + 0.35rem);
+}
+.lp-split__step-line--core    { background: linear-gradient(to bottom, rgba(0,255,136,0.22), transparent); }
+.lp-split__step-line--express { background: linear-gradient(to bottom, rgba(59,130,246,0.22), transparent); }
+
+.lp-split__step-body {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem 0 2.5rem;
+}
+.lp-split__step:last-child .lp-split__step-body { padding-bottom: 0; }
+
+.lp-split__step-body strong {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.3;
+}
+
+.lp-split__step-body span {
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.52);
+    line-height: 1.62;
+}
+
+/* ════════════════════════════════════════════════════════
+   SECTION BACKGROUNDS & GLOWS
+════════════════════════════════════════════════════════ */
+.lp-core {
+    padding: 6rem 0 5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.lp-core__glow {
+    position: absolute;
+    width: 700px; height: 500px;
+    border-radius: 50%;
+    background: var(--green);
+    opacity: 0.04;
+    filter: blur(150px);
+    top: -80px; left: -150px;
+    pointer-events: none;
+}
+
+.lp-express {
+    padding: 5rem 0 6rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.lp-express__glow {
+    position: absolute;
+    width: 700px; height: 500px;
+    border-radius: 50%;
+    background: var(--blue);
+    opacity: 0.06;
+    filter: blur(150px);
+    top: -80px; right: -150px;
+    pointer-events: none;
+}
+
+/* ════════════════════════════════════════════════════════
+   CONTRAST FIXES — small/low-contrast text across the page
+════════════════════════════════════════════════════════ */
+.lp-hero__desc                          { color: rgba(255,255,255,0.68) !important; }
+.lp-proof-lbl                           { color: rgba(255,255,255,0.48) !important; font-size: 0.72rem !important; }
+.lp-hero__row-copy p                    { color: rgba(255,255,255,0.62) !important; font-size: 0.95rem !important; }
+.lp-hero__row-bullets li                { color: rgba(255,255,255,0.72) !important; font-size: 0.875rem !important; }
+.lp-feat-card p                         { color: rgba(255,255,255,0.62) !important; font-size: 0.9rem !important; }
+.lp-feat-tag                            { color: rgba(255,255,255,0.55) !important; }
+.lp-ep__name                            { color: rgba(255,255,255,0.95) !important; }
+.lp-ep__addr                            { color: rgba(255,255,255,0.48) !important; }
+.lp-ep__time                            { color: rgba(255,255,255,0.42) !important; }
+.lp-ep__subject                         { color: rgba(255,255,255,0.85) !important; }
+.lp-ep__row span:first-child            { color: rgba(255,255,255,0.42) !important; font-size: 0.72rem !important; }
+.lp-ep__row span:last-child             { color: rgba(255,255,255,0.82) !important; font-size: 0.8rem !important; }
+.lp-step__body p                        { color: rgba(255,255,255,0.62) !important; font-size: 0.9rem !important; }
+.lp-step__snippet                       { color: rgba(255,255,255,0.75) !important; font-size: 0.78rem !important; }
+.lp-section-head p                      { color: rgba(255,255,255,0.65) !important; font-size: 1.02rem !important; }
+.lp-dm__stat-lbl                        { color: rgba(255,255,255,0.52) !important; font-size: 0.7rem !important; }
+.lp-dm__td-endpoint                     { color: rgba(255,255,255,0.48) !important; }
+.lp-dm__td-muted                        { color: rgba(255,255,255,0.45) !important; }
+.lp-dm__table th                        { color: rgba(255,255,255,0.48) !important; font-size: 0.68rem !important; }
+.lp-dm__table td                        { color: rgba(255,255,255,0.72) !important; font-size: 0.82rem !important; }
+.lp-dm__nav-item                        { color: rgba(255,255,255,0.58) !important; font-size: 0.82rem !important; }
+.lp-cta__inner p:not(.lp-cta__note)    { color: rgba(255,255,255,0.65) !important; }
+.lp-cta__note                           { color: rgba(255,255,255,0.35) !important; }
+.banner-content p                       { color: rgba(255,255,255,0.65) !important; }
+.banner-description                     { color: rgba(255,255,255,0.55) !important; }
+.lp-pt__footer                          { color: rgba(255,255,255,0.4) !important; font-size: 0.82rem !important; }
+.lp-dash__stat-lbl                      { color: rgba(255,255,255,0.48) !important; }
+.lp-dash__form-sub                      { color: rgba(255,255,255,0.48) !important; }
+.lp-dash__nav-item                      { color: rgba(255,255,255,0.58) !important; font-size: 0.72rem !important; }
+.lp-email__card-meta                    { color: rgba(255,255,255,0.52) !important; font-size: 0.72rem !important; }
+.lp-email__card-caption                 { color: rgba(255,255,255,0.58) !important; font-size: 0.76rem !important; }
+.lp-email__field-key                    { color: rgba(255,255,255,0.45) !important; font-size: 0.65rem !important; }
+.lp-email__field-val                    { color: rgba(255,255,255,0.88) !important; font-size: 0.78rem !important; }
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════════════════ */
+@media (max-width: 860px) {
+    .lp-split,
+    .lp-split--reverse {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        direction: ltr;
+    }
+    /* copy always on top on mobile */
+    .lp-split--reverse .lp-split__steps { order: 2; }
+    .lp-split--reverse .lp-split__copy  { order: 1; }
+
+    .lp-core    { padding: 4rem 0 3.5rem; }
+    .lp-express { padding: 3.5rem 0 4rem; }
+}
+
+@media (max-width: 640px) {
+    .lp-split__title { font-size: 1.65rem; }
+    .lp-split__cta   { width: 100%; justify-content: center; }
+}
+
+/* ════════════════════════════════════════════════════════
+   CONTRAST FIXES — small/low-contrast text throughout
+════════════════════════════════════════════════════════ */
+
+/* Hero desc */
+.lp-hero__desc { color: rgba(255,255,255,0.68) !important; }
+
+/* Proof labels */
+.lp-proof-lbl { color: rgba(255,255,255,0.45) !important; font-size: 0.72rem !important; }
+
+/* Row copy paragraphs */
+.lp-hero__row-copy p { color: rgba(255,255,255,0.62) !important; font-size: 0.95rem !important; }
+
+/* Bullet text */
+.lp-hero__row-bullets li { color: rgba(255,255,255,0.72) !important; font-size: 0.875rem !important; }
+
+/* Feature card text */
+.lp-feat-card p { color: rgba(255,255,255,0.62) !important; font-size: 0.9rem !important; }
+.lp-feat-tag { color: rgba(255,255,255,0.55) !important; }
+
+/* Feature email preview */
+.lp-ep__name  { color: rgba(255,255,255,0.95) !important; }
+.lp-ep__addr  { color: rgba(255,255,255,0.45) !important; }
+.lp-ep__time  { color: rgba(255,255,255,0.38) !important; }
+.lp-ep__subject { color: rgba(255,255,255,0.82) !important; }
+.lp-ep__row span:first-child { color: rgba(255,255,255,0.4) !important; font-size: 0.72rem !important; }
+.lp-ep__row span:last-child  { color: rgba(255,255,255,0.8) !important; font-size: 0.8rem !important; }
+
+/* Step copy */
+.lp-step__body p { color: rgba(255,255,255,0.62) !important; font-size: 0.9rem !important; }
+.lp-step__snippet { color: rgba(255,255,255,0.75) !important; font-size: 0.78rem !important; }
+
+/* Section head paragraph */
+.lp-section-head p { color: rgba(255,255,255,0.65) !important; font-size: 1.02rem !important; }
+
+/* Dashboard mock small labels */
+.lp-dm__stat-lbl { color: rgba(255,255,255,0.5) !important; font-size: 0.7rem !important; }
+.lp-dm__td-endpoint { color: rgba(255,255,255,0.45) !important; }
+.lp-dm__td-muted    { color: rgba(255,255,255,0.42) !important; }
+.lp-dm__table th    { color: rgba(255,255,255,0.45) !important; font-size: 0.68rem !important; }
+.lp-dm__table td    { color: rgba(255,255,255,0.72) !important; font-size: 0.82rem !important; }
+.lp-dm__nav-item    { color: rgba(255,255,255,0.58) !important; font-size: 0.82rem !important; }
+
+/* Final CTA paragraph */
+.lp-cta__inner p:not(.lp-cta__note) { color: rgba(255,255,255,0.65) !important; }
+.lp-cta__note { color: rgba(255,255,255,0.35) !important; }
+
+/* Pricing teaser */
+.banner-content p { color: rgba(255,255,255,0.65) !important; }
+.banner-description { color: rgba(255,255,255,0.55) !important; }
+.lp-pt__footer { color: rgba(255,255,255,0.38) !important; font-size: 0.82rem !important; }
+
+/* Hero dash small text */
+.lp-dash__stat-lbl   { color: rgba(255,255,255,0.45) !important; }
+.lp-dash__form-sub   { color: rgba(255,255,255,0.45) !important; }
+.lp-dash__nav-item   { color: rgba(255,255,255,0.55) !important; font-size: 0.72rem !important; }
+
+/* Email card meta */
+.lp-email__card-meta    { color: rgba(255,255,255,0.5) !important; font-size: 0.72rem !important; }
+.lp-email__card-caption { color: rgba(255,255,255,0.55) !important; font-size: 0.75rem !important; }
+.lp-email__field-key    { color: rgba(255,255,255,0.42) !important; font-size: 0.65rem !important; }
+.lp-email__field-val    { color: rgba(255,255,255,0.88) !important; font-size: 0.78rem !important; }
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE — modes section
+════════════════════════════════════════════════════════ */
+@media (max-width: 860px) {
+    .lp-modes__grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .lp-modes__divider {
+        flex-direction: row;
+        min-height: unset;
+        padding-top: 0;
+        padding: 0.5rem 0;
+    }
+
+    .lp-modes__divider-line {
+        flex: 1;
+        height: 1px;
+        width: auto;
+        background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+    }
+
+    .lp-mode { padding: 2rem 1.5rem; }
+}
+
+@media (max-width: 640px) {
+    .lp-mode { padding: 1.75rem 1.25rem; }
+    .lp-mode__title { font-size: 1.5rem; }
+    .lp-mode__cta { width: 100%; justify-content: center; font-size: 0.88rem; }
+}       
 
         @media (max-width: 480px) {
             .banner-content h2 {
@@ -2100,40 +2704,40 @@
 
 <?php $__env->startPush('scripts'); ?>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
 
-    // Smooth scroll
-    document.querySelectorAll('.lp-smooth-scroll').forEach(link => {
-        link.addEventListener('click', function (e) {
-            const hash = this.getAttribute('href');
-            const target = document.querySelector(hash);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                history.replaceState(null, '', window.location.pathname);
-            }
+        // Smooth scroll
+        document.querySelectorAll('.lp-smooth-scroll').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const hash = this.getAttribute('href');
+                const target = document.querySelector(hash);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.replaceState(null, '', window.location.pathname);
+                }
+            });
         });
-    });
 
-    // Intersection observer for fade-in on scroll
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
+        // Intersection observer for fade-in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.lp-feat-card, .lp-step, .lp-pt__card, .lp-hero__row, .lp-pricing-teaser, .banner-inner, .lp-dashboard-mock').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(18px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
         });
-    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.lp-feat-card, .lp-step, .lp-pt__card, .lp-hero__row, .lp-pricing-teaser, .banner-inner, .lp-dashboard-mock').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(18px)';
-        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        observer.observe(el);
     });
-
-});
 </script>
 <?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/home.blade.php ENDPATH**/ ?>
