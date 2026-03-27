@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Plans & Pricing - 000form'); ?>
 
-@section('title', 'Plans & Pricing - 000form')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <style>
     .pp {
@@ -395,7 +393,7 @@
 <div class="pp">
 <div class="pp-wrap">
 
-    {{-- HEADER --}}
+    
     <div class="pp-head">
         <div class="hero-gradient hero-gradient-1"></div>
             <div class="hero-gradient hero-gradient-2"></div>
@@ -421,16 +419,16 @@
         </div>
     </div>
 
-    {{-- PLANS GRID (Personal, Professional, Business) --}}
+    
     <div class="pp-grid">
 
-        {{-- PERSONAL --}}
+        
         <div class="pp-plan">
-            @auth
-                @if(auth()->user()->currentPlan()->value === 'personal')
+            <?php if(auth()->guard()->check()): ?>
+                <?php if(auth()->user()->currentPlan()->value === 'personal'): ?>
                     <div class="pp-current-tag">Your Plan</div>
-                @endif
-            @endauth
+                <?php endif; ?>
+            <?php endif; ?>
             <span class="pp-plan-badge personal-badge">Personal</span>
             <div class="pp-price">
                 <span class="sym">$</span>
@@ -439,22 +437,22 @@
             </div>
             <p class="pp-plan-desc">For personal or portfolio sites.</p>
 
-            @auth
-                @if(auth()->user()->currentPlan()->value === 'personal')
-                    <a href="{{ route('billing.portal') }}" class="pp-cta pp-cta-current">
+            <?php if(auth()->guard()->check()): ?>
+                <?php if(auth()->user()->currentPlan()->value === 'personal'): ?>
+                    <a href="<?php echo e(route('billing.portal')); ?>" class="pp-cta pp-cta-current">
                         <span class="btn-text">Manage Plan →</span>
                     </a>
-                @else
+                <?php else: ?>
                     <button class="pp-cta pp-cta-outline" onclick="startCheckout('personal')">
                         <span class="spinner"></span>
                         <span class="btn-text">Get Started →</span>
                     </button>
-                @endif
-            @else
-                <a href="{{ route('login') }}?redirect=pricing" class="pp-cta pp-cta-outline">
+                <?php endif; ?>
+            <?php else: ?>
+                <a href="<?php echo e(route('login')); ?>?redirect=pricing" class="pp-cta pp-cta-outline">
                     <span class="btn-text">Get Started →</span>
                 </a>
-            @endauth
+            <?php endif; ?>
 
             <hr class="pp-divider">
             <span class="pp-feat-label">Includes</span>
@@ -466,13 +464,13 @@
             </ul>
         </div>
 
-        {{-- PROFESSIONAL --}}
+        
         <div class="pp-plan">
-            @auth
-                @if(auth()->user()->currentPlan()->value === 'professional')
+            <?php if(auth()->guard()->check()): ?>
+                <?php if(auth()->user()->currentPlan()->value === 'professional'): ?>
                     <div class="pp-current-tag">Your Plan</div>
-                @endif
-            @endauth
+                <?php endif; ?>
+            <?php endif; ?>
             <span class="pp-plan-badge pro-badge">Professional</span>
             <div class="pp-price">
                 <span class="sym">$</span>
@@ -481,22 +479,22 @@
             </div>
             <p class="pp-plan-desc">For freelancers and startups.</p>
 
-            @auth
-                @if(auth()->user()->currentPlan()->value === 'professional')
-                    <a href="{{ route('billing.portal') }}" class="pp-cta pp-cta-current">
+            <?php if(auth()->guard()->check()): ?>
+                <?php if(auth()->user()->currentPlan()->value === 'professional'): ?>
+                    <a href="<?php echo e(route('billing.portal')); ?>" class="pp-cta pp-cta-current">
                         <span class="btn-text">Manage Plan →</span>
                     </a>
-                @else
+                <?php else: ?>
                     <button class="pp-cta pp-cta-outline" onclick="startCheckout('professional')">
                         <span class="spinner"></span>
                         <span class="btn-text">Get Started →</span>
                     </button>
-                @endif
-            @else
-                <a href="{{ route('login') }}?redirect=pricing" class="pp-cta pp-cta-outline">
+                <?php endif; ?>
+            <?php else: ?>
+                <a href="<?php echo e(route('login')); ?>?redirect=pricing" class="pp-cta pp-cta-outline">
                     <span class="btn-text">Get Started →</span>
                 </a>
-            @endauth
+            <?php endif; ?>
 
             <hr class="pp-divider">
             <span class="pp-feat-label">Everything in Personal, plus</span>
@@ -508,13 +506,13 @@
             </ul>
         </div>
 
-        {{-- BUSINESS --}}
+        
         <div class="pp-plan">
-            @auth
-                @if(auth()->user()->currentPlan()->value === 'business')
+            <?php if(auth()->guard()->check()): ?>
+                <?php if(auth()->user()->currentPlan()->value === 'business'): ?>
                     <div class="pp-current-tag">Your Plan</div>
-                @endif
-            @endauth
+                <?php endif; ?>
+            <?php endif; ?>
             <span class="pp-plan-badge biz-badge">Business</span>
             <div class="pp-price">
                 <span class="sym">$</span>
@@ -523,22 +521,22 @@
             </div>
             <p class="pp-plan-desc">For organizations and agencies.</p>
 
-            @auth
-                @if(auth()->user()->currentPlan()->value === 'business')
-                    <a href="{{ route('billing.portal') }}" class="pp-cta pp-cta-current">
+            <?php if(auth()->guard()->check()): ?>
+                <?php if(auth()->user()->currentPlan()->value === 'business'): ?>
+                    <a href="<?php echo e(route('billing.portal')); ?>" class="pp-cta pp-cta-current">
                         <span class="btn-text">Manage Plan →</span>
                     </a>
-                @else
+                <?php else: ?>
                     <button class="pp-cta pp-cta-outline" onclick="startCheckout('business')">
                         <span class="spinner"></span>
                         <span class="btn-text">Get Started →</span>
                     </button>
-                @endif
-            @else
-                <a href="{{ route('login') }}?redirect=pricing" class="pp-cta pp-cta-outline">
+                <?php endif; ?>
+            <?php else: ?>
+                <a href="<?php echo e(route('login')); ?>?redirect=pricing" class="pp-cta pp-cta-outline">
                     <span class="btn-text">Get Started →</span>
                 </a>
-            @endauth
+            <?php endif; ?>
 
             <hr class="pp-divider">
             <span class="pp-feat-label">Everything in Professional, plus</span>
@@ -550,9 +548,9 @@
             </ul>
         </div>
 
-    </div>{{-- /pp-grid --}}
+    </div>
 
-    {{-- FREE FOREVER BANNER --}}
+    
     <div class="pp-free-banner">
         <div class="pp-free-banner-left">
             <h3>
@@ -576,45 +574,45 @@
                     <div class="lbl">File uploads</div>
                 </div>
             </div>
-            @auth
-                @if(auth()->user()->currentPlan()->value === 'free')
+            <?php if(auth()->guard()->check()): ?>
+                <?php if(auth()->user()->currentPlan()->value === 'free'): ?>
                     <button class="pp-cta pp-cta-current" style="margin-bottom:0; min-width:160px;" disabled>
                         <span class="btn-text">Current Plan</span>
                     </button>
-                @else
-                    <a href="{{ route('billing.portal') }}" class="pp-cta pp-cta-outline" style="margin-bottom:0; min-width:160px;">
+                <?php else: ?>
+                    <a href="<?php echo e(route('billing.portal')); ?>" class="pp-cta pp-cta-outline" style="margin-bottom:0; min-width:160px;">
                         <span class="btn-text">Manage Plan →</span>
                     </a>
-                @endif
-            @else
-                <a href="{{ route('signup') }}" class="pp-cta pp-cta-outline" style="margin-bottom:0; min-width:160px;">
+                <?php endif; ?>
+            <?php else: ?>
+                <a href="<?php echo e(route('signup')); ?>" class="pp-cta pp-cta-outline" style="margin-bottom:0; min-width:160px;">
                     <span class="btn-text">Get Started Free →</span>
                 </a>
-            @endauth
+            <?php endif; ?>
         </div>
     </div>
 
 </div>
 </div>
 
-{{-- Toast notification --}}
+
 <div class="pp-toast" id="pp-toast">
     <span id="pp-toast-icon">⚠</span>
     <span id="pp-toast-msg"></span>
 </div>
 
-{{-- Paddle.js — REQUIRED for this version --}}
+
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 
 <script>
 
     // Must set environment BEFORE Initialize()
-    @if(config('cashier.environment') === 'sandbox')
+    <?php if(config('cashier.environment') === 'sandbox'): ?>
         Paddle.Environment.set('sandbox');
-    @endif
+    <?php endif; ?>
 
     Paddle.Initialize({
-        token: '{{ config('cashier.client_side_token') }}',
+        token: '<?php echo e(config('cashier.client_side_token')); ?>',
         eventCallback: function(event) {
             if (event.name === 'checkout.completed') {
                 var txnId = '';
@@ -624,7 +622,7 @@
                 if (txnId) {
                     sessionStorage.setItem('paddle_txn_id', txnId);
                 }
-                window.location.href = '{{ route('subscription.processing') }}';
+                window.location.href = '<?php echo e(route('subscription.processing')); ?>';
             }
         }
     });
@@ -682,7 +680,7 @@
             btn.disabled = true;
 
             try {
-                const res = await fetch('{{ route('subscription.checkout') }}', {
+                const res = await fetch('<?php echo e(route('subscription.checkout')); ?>', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -728,12 +726,12 @@
     (async function fetchLocalPrices() {
         try {
             const priceIds = [
-                '{{ config('plans.personal.paddle_monthly_id') }}',
-                '{{ config('plans.personal.paddle_annual_id') }}',
-                '{{ config('plans.professional.paddle_monthly_id') }}',
-                '{{ config('plans.professional.paddle_annual_id') }}',
-                '{{ config('plans.business.paddle_monthly_id') }}',
-                '{{ config('plans.business.paddle_annual_id') }}',
+                '<?php echo e(config('plans.personal.paddle_monthly_id')); ?>',
+                '<?php echo e(config('plans.personal.paddle_annual_id')); ?>',
+                '<?php echo e(config('plans.professional.paddle_monthly_id')); ?>',
+                '<?php echo e(config('plans.professional.paddle_annual_id')); ?>',
+                '<?php echo e(config('plans.business.paddle_monthly_id')); ?>',
+                '<?php echo e(config('plans.business.paddle_annual_id')); ?>',
             ].filter(Boolean);
 
             const result = await Paddle.PricePreview({
@@ -747,12 +745,12 @@
                 priceMap[item.price.id] = item.formattedTotals.total;
             });
 
-            updatePrice('personal',     'mo', priceMap['{{ config('plans.personal.paddle_monthly_id') }}']);
-            updatePrice('personal',     'yr', priceMap['{{ config('plans.personal.paddle_annual_id') }}']);
-            updatePrice('professional', 'mo', priceMap['{{ config('plans.professional.paddle_monthly_id') }}']);
-            updatePrice('professional', 'yr', priceMap['{{ config('plans.professional.paddle_annual_id') }}']);
-            updatePrice('business',     'mo', priceMap['{{ config('plans.business.paddle_monthly_id') }}']);
-            updatePrice('business',     'yr', priceMap['{{ config('plans.business.paddle_annual_id') }}']);
+            updatePrice('personal',     'mo', priceMap['<?php echo e(config('plans.personal.paddle_monthly_id')); ?>']);
+            updatePrice('personal',     'yr', priceMap['<?php echo e(config('plans.personal.paddle_annual_id')); ?>']);
+            updatePrice('professional', 'mo', priceMap['<?php echo e(config('plans.professional.paddle_monthly_id')); ?>']);
+            updatePrice('professional', 'yr', priceMap['<?php echo e(config('plans.professional.paddle_annual_id')); ?>']);
+            updatePrice('business',     'mo', priceMap['<?php echo e(config('plans.business.paddle_monthly_id')); ?>']);
+            updatePrice('business',     'yr', priceMap['<?php echo e(config('plans.business.paddle_annual_id')); ?>']);
 
         } catch (e) {
             console.log('Price preview failed, showing default USD prices:', e.message);
@@ -797,4 +795,5 @@
 
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/pricing.blade.php ENDPATH**/ ?>
