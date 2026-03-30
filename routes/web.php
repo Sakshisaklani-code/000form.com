@@ -14,6 +14,7 @@ use App\Http\Controllers\FormValidationController;
 use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\WebhookController;
@@ -389,3 +390,47 @@ Route::middleware(['auth'])->prefix('account')->name('account.')->group(function
 // Verify email — no auth required (user clicks link from email)
 Route::get('/account/verify-email/{token}', [UserEmailController::class, 'verify'])
      ->name('account.email.verify');
+
+
+/*
+|--------------------------------------------------------------------------
+|  Projects
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth'])->group(function () {
+ 
+    // ── Dashboard ────────────────────────────────────────────────────────────
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])
+        ->name('dashboard');
+ 
+    // ── Projects ─────────────────────────────────────────────────────────────
+    Route::prefix('dashboard/projects')->name('dashboard.projects.')->group(function () {
+        Route::get('/create',        [App\Http\Controllers\ProjectController::class, 'create'])->name('create');
+        Route::post('/',             [App\Http\Controllers\ProjectController::class, 'store'])->name('store');
+        Route::get('/{id}',          [App\Http\Controllers\ProjectController::class, 'show'])->name('show');
+        Route::get('/{id}/edit',     [App\Http\Controllers\ProjectController::class, 'edit'])->name('edit');
+        Route::put('/{id}',          [App\Http\Controllers\ProjectController::class, 'update'])->name('update');
+        Route::delete('/{id}',       [App\Http\Controllers\ProjectController::class, 'destroy'])->name('destroy');
+    });
+ 
+    // ── Forms ─────────────────────────────────────────────────────────────────
+    Route::prefix('dashboard/forms')->name('dashboard.forms.')->group(function () {
+        Route::get('/create',             [App\Http\Controllers\DashboardController::class, 'createForm'])->name('create');
+        Route::post('/',                  [App\Http\Controllers\DashboardController::class, 'storeForm'])->name('store');
+        Route::get('/{id}',               [App\Http\Controllers\DashboardController::class, 'showForm'])->name('show');
+        Route::get('/{id}/edit',          [App\Http\Controllers\DashboardController::class, 'editForm'])->name('edit');
+        Route::put('/{id}',               [App\Http\Controllers\DashboardController::class, 'updateForm'])->name('update');
+        Route::delete('/{id}',            [App\Http\Controllers\DashboardController::class, 'destroyForm'])->name('destroy');
+        Route::get('/{id}/export',        [App\Http\Controllers\DashboardController::class, 'exportSubmissions'])->name('export');
+        Route::post('/{id}/verify/resend',[App\Http\Controllers\DashboardController::class, 'resendVerification'])->name('verify.resend');
+    });
+ 
+    // ── Submissions ────────────────────────────────────────────────────────────
+    Route::prefix('dashboard/forms/{formId}/submissions')->name('dashboard.submissions.')->group(function () {
+        Route::get('/{id}',          [App\Http\Controllers\DashboardController::class, 'showSubmission'])->name('show');
+        Route::delete('/{id}',       [App\Http\Controllers\DashboardController::class, 'destroySubmission'])->name('destroy');
+        Route::post('/{id}/spam',    [App\Http\Controllers\DashboardController::class, 'markAsSpam'])->name('spam');
+        Route::get('/{id}/download', [App\Http\Controllers\FormSubmissionController::class, 'downloadFile'])->name('download');
+    });
+ 
+});

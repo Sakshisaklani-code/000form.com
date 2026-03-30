@@ -15,6 +15,7 @@ class Form extends Model
 
     protected $fillable = [
         'user_id',
+        'project_id',
         'name',
         'slug',
         'recipient_email',
@@ -231,5 +232,17 @@ class Form extends Model
         return $this->hasMany(FormValidation::class);
     }
     
+    public function scopeStandalone($query)
+    {
+        return $query->whereNull('project_id');
+    }
+
+    /**
+     * Get the project that owns the form
+     */
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
 
 }

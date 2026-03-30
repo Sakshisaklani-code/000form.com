@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Form;
+use App\Models\Project;
 use App\Models\Submission;
 use App\Models\FormValidation;
 use App\Models\TeamMember;
@@ -72,23 +73,35 @@ class DashboardController extends Controller
         $role = $this->getCurrentRole();
 
         return match($action) {
-            'view'         => in_array($role, ['owner', 'admin', 'editor', 'viewer']),
-            'create_form'  => in_array($role, ['owner', 'admin', 'editor']),
-            'edit_form'    => in_array($role, ['owner', 'admin', 'editor']),
-            'delete_form'  => in_array($role, ['owner', 'admin']),
-            'manage_team'  => in_array($role, ['owner', 'admin']),
-            'billing'      => $role === 'owner',
-            default        => false,
+            'view'        => in_array($role, ['owner', 'admin', 'editor', 'viewer']),
+            'create_form' => in_array($role, ['owner', 'admin', 'editor']),
+            'edit_form'   => in_array($role, ['owner', 'admin', 'editor']),
+            'delete_form' => in_array($role, ['owner', 'admin']),
+            'manage_team' => in_array($role, ['owner', 'admin']),
+            'billing'     => $role === 'owner',
+            // Project permissions
+            'view_project'  => in_array($role, ['owner', 'admin', 'editor', 'viewer']),
+            'create_project'=> in_array($role, ['owner', 'admin', 'editor']),
+            'edit_project'  => in_array($role, ['owner', 'admin', 'editor']),
+            'delete_project'=> in_array($role, ['owner', 'admin']),
+            default       => false,
         };
     }
 
     /**
      * Get a Form query scoped to the active workspace owner.
-     * ✅ Use this everywhere instead of Auth::user()->forms()
      */
     protected function workspaceForms()
     {
         return Form::where('user_id', $this->getActiveOwnerId());
+    }
+
+    /**
+     * Get a Project query scoped to the active workspace owner.
+     */
+    protected function workspaceProjects()
+    {
+        return Project::forUser($this->getActiveOwnerId());
     }
 
     // =========================================================================
@@ -96,45 +109,74 @@ class DashboardController extends Controller
     // =========================================================================
 
     /**
-     * Show dashboard home.
+     * Show dashboard home with forms grouped by project.
+     * Standalone legacy forms (project_id IS NULL) shown separately.
      */
     public function index()
     {
-        $user  = Auth::user();
+        $user    = Auth::user();
+        $ownerId = $this->getActiveOwnerId();
 
-        // ✅ was: $user->forms() — now scoped to active workspace owner
-        $forms = $this->workspaceForms()
+        // ── Active projects with their forms eagerly loaded ───────────────────
+        $projects = Project::forUser($ownerId)
+            ->active()
+            ->with(['forms' => function ($q) {
+                $q->withCount([
+                    'submissions as unread_count' => fn($q) => $q->where('is_spam', false)
+                        ->where('is_archived', false)
+                        ->where('is_read', false),
+                    'submissions as valid_count'  => fn($q) => $q->where('is_spam', false)
+                        ->where('is_archived', false),
+                    'submissions as spam_count'   => fn($q) => $q->where('is_spam', true)
+                        ->where('is_archived', false),
+                ])->orderBy('created_at', 'desc');
+            }])
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        // ── Standalone (legacy) forms — project_id IS NULL ────────────────────
+        // These were created before the project feature existed and are kept as-is.
+        $standaloneForms = Form::where('user_id', $ownerId)
+            ->standalone()
             ->withCount([
-                'submissions as unread_count' => function ($query) {
-                    $query->where('is_spam', false)
-                          ->where('is_archived', false)
-                          ->where('is_read', false);
-                },
-                'submissions as valid_count' => function ($query) {
-                    $query->where('is_spam', false)
-                          ->where('is_archived', false);
-                },
-                'submissions as spam_count' => function ($query) {
-                    $query->where('is_spam', true)
-                          ->where('is_archived', false);
-                },
+                'submissions as unread_count' => fn($q) => $q->where('is_spam', false)
+                    ->where('is_archived', false)
+                    ->where('is_read', false),
+                'submissions as valid_count'  => fn($q) => $q->where('is_spam', false)
+                    ->where('is_archived', false),
+                'submissions as spam_count'   => fn($q) => $q->where('is_spam', true)
+                    ->where('is_archived', false),
+            ])
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        // ── Flat list (kept for backwards compat with any existing partials) ──
+        $forms = Form::where('user_id', $ownerId)
+            ->withCount([
+                'submissions as unread_count' => fn($q) => $q->where('is_spam', false)
+                    ->where('is_archived', false)
+                    ->where('is_read', false),
+                'submissions as valid_count'  => fn($q) => $q->where('is_spam', false)
+                    ->where('is_archived', false),
+                'submissions as spam_count'   => fn($q) => $q->where('is_spam', true)
+                    ->where('is_archived', false),
             ])
             ->orderBy('created_at', 'desc')
             ->get();
 
         $stats = [
             'total_forms'       => $forms->count(),
+            'total_projects'    => $projects->count(),   // ← needed by dashboard view stats grid
             'total_submissions' => $forms->sum('submission_count'),
             'total_valid'       => $forms->sum('valid_count'),
             'total_spam'        => $forms->sum('spam_count'),
             'total_unread'      => $forms->sum('unread_count'),
-            // ✅ was: $user->forms() — now scoped to active workspace owner
-            'forms_this_month'  => $this->workspaceForms()
+            'forms_this_month'  => Form::where('user_id', $ownerId)
                 ->where('created_at', '>=', now()->startOfMonth())
                 ->count(),
         ];
 
-        return view('dashboard.index', compact('forms', 'stats'));
+        return view('dashboard.index', compact('projects', 'standaloneForms', 'forms', 'stats'));
     }
 
     // =========================================================================
@@ -142,14 +184,11 @@ class DashboardController extends Controller
     // =========================================================================
 
     /**
-     * Prepare chart data for forms created over time.
-     * Signature unchanged — internally uses workspace scope now.
+     * Prepare chart data for forms created over time (last 30 days).
      */
     private function prepareChartData($user)
     {
-        // ✅ was: $user->forms() — now scoped to active workspace owner
-        $ownerId = $this->getActiveOwnerId();
-
+        $ownerId      = $this->getActiveOwnerId();
         $formsGrouped = Form::where('user_id', $ownerId)
             ->select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as count'))
             ->where('created_at', '>=', now()->subDays(30))
@@ -160,9 +199,8 @@ class DashboardController extends Controller
 
         $chartData = [];
         for ($i = 29; $i >= 0; $i--) {
-            $date    = now()->subDays($i);
-            $dateKey = $date->format('Y-m-d');
-
+            $date        = now()->subDays($i);
+            $dateKey     = $date->format('Y-m-d');
             $chartData[] = [
                 'label' => $date->format('M j'),
                 'count' => $formsGrouped->get($dateKey)?->count ?? 0,
@@ -178,38 +216,81 @@ class DashboardController extends Controller
 
     /**
      * Show form creation page.
+     *
+     * NEW BEHAVIOUR:
+     *   - Requires a project to exist. If none exist, redirects to project creation.
+     *   - Accepts ?project_id= query param to pre-select a project in the dropdown.
+     *   - New forms always belong to a project — no standalone creation allowed.
+     *   - Existing standalone legacy forms (project_id = null) are unaffected.
      */
-    public function createForm()
+    public function createForm(Request $request)
     {
-        // ✅ Viewers cannot create forms
         if (! $this->canDo('create_form')) {
             return redirect()->route('dashboard')
                 ->with('error', 'You do not have permission to create forms in this workspace.');
         }
 
-        return view('dashboard.forms.create');
+        $ownerId = $this->getActiveOwnerId();
+
+        // All active projects for the required dropdown
+        $projects = Project::forUser($ownerId)
+            ->active()
+            ->orderBy('name')
+            ->get();
+
+        // If no projects exist yet, redirect to create one first
+        if ($projects->isEmpty()) {
+            return redirect()->route('dashboard.projects.create')
+                ->with('message', 'Create a project first, then add forms inside it.');
+        }
+
+        // Pre-select project if project_id is passed in query string
+        $selectedProject = null;
+        if ($request->filled('project_id')) {
+            $selectedProject = Project::forUser($ownerId)
+                ->where('id', $request->project_id)
+                ->first();
+        }
+
+        // Verified emails for recipient_email dropdown
+        $verifiedEmails = \App\Models\UserEmail::where('user_id', Auth::id())
+            ->where('is_verified', true)
+            ->pluck('email')
+            ->prepend(Auth::user()->email)
+            ->unique()
+            ->values();
+
+        return view('dashboard.forms.create', compact('projects', 'selectedProject', 'verifiedEmails'));
     }
 
     /**
-     * Store new form.
+     * Store a new form — always inside a project (project_id is required).
      */
     public function storeForm(Request $request)
     {
-        // ✅ Viewers cannot create forms
         if (! $this->canDo('create_form')) {
             return redirect()->route('dashboard')
                 ->with('error', 'You do not have permission to create forms in this workspace.');
         }
 
-        $request->validate([
-            'name'                  => 'required|string|max:255',
+        $validated = $request->validate([
+            'name'                  => 'required|string|max:100',
             'recipient_email'       => 'required|email|max:255',
+            'project_id'            => 'required|uuid|exists:projects,id',  // REQUIRED — no standalone
             'cc_emails'             => 'nullable|string|max:500',
             'redirect_url'          => 'nullable|url|max:500',
             'success_message'       => 'nullable|string|max:500',
             'auto_response_enabled' => 'boolean',
             'auto_response_message' => 'nullable|string',
+            'honeypot_enabled'      => 'nullable|boolean',
+            'email_notifications'   => 'nullable|boolean',
+            'store_submissions'     => 'nullable|boolean',
         ]);
+
+        // Confirm the project belongs to this workspace
+        Project::where('id', $validated['project_id'])
+            ->where('user_id', $this->getActiveOwnerId())
+            ->firstOrFail();
 
         $ccEmails = null;
         if ($request->filled('cc_emails')) {
@@ -223,31 +304,29 @@ class DashboardController extends Controller
             $autoResponseMessage = str_replace('{form_name}', $request->input('name'), $autoResponseMessage);
         }
 
-        // ✅ was: Auth::user()->forms()->create()
-        // Form is always created under the WORKSPACE OWNER's account.
-        // When team member creates a form → owned by the workspace owner.
-        // When in own workspace → getActiveOwner() returns Auth::user(), no change.
         $owner = $this->getActiveOwner();
 
         $form = $owner->forms()->create([
-            'name'                  => $request->input('name'),
-            'recipient_email'       => $request->input('recipient_email'),
+            'name'                  => $validated['name'],
+            'recipient_email'       => $validated['recipient_email'],
             'cc_emails'             => $ccEmails,
-            'redirect_url'          => $request->input('redirect_url'),
-            'success_message'       => $request->input('success_message', 'Thank you for your submission!'),
+            'redirect_url'          => $validated['redirect_url'] ?? null,
+            'success_message'       => $validated['success_message'] ?? 'Thank you for your submission!',
             'auto_response_enabled' => $request->boolean('auto_response_enabled'),
             'auto_response_message' => $autoResponseMessage,
-            'email_notifications'   => true,
-            'store_submissions'     => true,
-            'honeypot_enabled'      => true,
+            'email_notifications'   => $request->boolean('email_notifications', true),
+            'store_submissions'     => $request->boolean('store_submissions', true),
+            'honeypot_enabled'      => $request->boolean('honeypot_enabled', true),
             'status'                => 'active',
             'archive_when_paused'   => true,
+            'project_id'            => $validated['project_id'],
         ]);
 
         $this->sendVerificationEmail($form);
 
-        return redirect()->route('dashboard.forms.show', $form->id)
-            ->with('message', 'Form created! Please verify the recipient email address.');
+        return redirect()
+            ->route('dashboard.projects.show', $form->project_id)
+            ->with('message', "Form \"{$form->name}\" created! Please verify the recipient email address.");
     }
 
     /**
@@ -255,9 +334,8 @@ class DashboardController extends Controller
      */
     public function showForm(string $id)
     {
-        // ✅ was: Auth::user()->forms()->findOrFail($id)
-        // Scoped to workspace — prevents team members accessing other workspace forms
-        $form   = $this->workspaceForms()->findOrFail($id);
+        $form = $this->workspaceForms()->findOrFail($id);
+
         $tab    = request('tab', 'valid');
         $search = trim(request('search', ''));
         $panel  = request('panel', 'submissions');
@@ -268,24 +346,24 @@ class DashboardController extends Controller
             $baseQuery->where('is_archived', true);
         } elseif ($tab === 'spam') {
             $baseQuery->where('is_archived', false)
-                    ->where('is_spam', true);
+                ->where('is_spam', true);
         } else {
             $baseQuery->where('is_archived', false)
-                    ->where('is_spam', false);
+                ->where('is_spam', false);
         }
 
         if ($search !== '' && $tab !== 'archive') {
             $lower = '%' . strtolower($search) . '%';
             $baseQuery->where(function ($q) use ($lower) {
-                $q->whereRaw("LOWER(data->>'name')    LIKE ?", [$lower])
-                ->orWhereRaw("LOWER(data->>'email')   LIKE ?", [$lower])
-                ->orWhereRaw("LOWER(data->>'message') LIKE ?", [$lower])
-                ->orWhereRaw("LOWER(data->>'phone')   LIKE ?", [$lower])
-                ->orWhereRaw("LOWER(data::text) LIKE ?",       [$lower]);
+                $q->whereRaw("LOWER(data->>'name') LIKE ?", [$lower])
+                    ->orWhereRaw("LOWER(data->>'email') LIKE ?", [$lower])
+                    ->orWhereRaw("LOWER(data->>'message') LIKE ?", [$lower])
+                    ->orWhereRaw("LOWER(data->>'phone') LIKE ?", [$lower])
+                    ->orWhereRaw("LOWER(data::text) LIKE ?", [$lower]);
             });
         }
 
-        $submissions = $baseQuery->latest()->paginate(10)->withQueryString();
+        $submissions  = $baseQuery->latest()->paginate(10)->withQueryString();
 
         $validCount   = $form->submissions()->where('is_archived', false)->where('is_spam', false)->count();
         $spamCount    = $form->submissions()->where('is_archived', false)->where('is_spam', true)->count();
@@ -324,7 +402,6 @@ class DashboardController extends Controller
 
         $validations = FormValidation::where('form_id', $form->id)->get();
 
-        // ✅ NEW: pass permissions to view so blade can show/hide edit/delete buttons
         $permissions = [
             'can_edit_form'   => $this->canDo('edit_form'),
             'can_delete_form' => $this->canDo('delete_form'),
@@ -332,9 +409,17 @@ class DashboardController extends Controller
         ];
 
         return view('dashboard.forms.show', compact(
-            'form', 'submissions', 'validCount', 'spamCount', 'archiveCount',
-            'lineLabels', 'lineData', 'archiveLineData',
-            'tab', 'search', 'panel',
+            'form',
+            'submissions',
+            'validCount',
+            'spamCount',
+            'archiveCount',
+            'lineLabels',
+            'lineData',
+            'archiveLineData',
+            'tab',
+            'search',
+            'panel',
             'validations',
             'permissions'
         ));
@@ -342,37 +427,43 @@ class DashboardController extends Controller
 
     /**
      * Show form settings.
+     * FIX vs doc9: passes $projects to view so the project-move dropdown works.
      */
     public function editForm(string $id)
     {
-        // ✅ Viewers cannot edit
         if (! $this->canDo('edit_form')) {
             return redirect()->route('dashboard')
                 ->with('error', 'You do not have permission to edit forms in this workspace.');
         }
 
-        // ✅ was: Auth::user()->forms()->findOrFail($id)
         $form = $this->workspaceForms()->findOrFail($id);
-        return view('dashboard.forms.edit', compact('form'));
+
+        // Projects needed for the "move to project" dropdown in the edit view
+        $projects = Project::forUser($this->getActiveOwnerId())
+            ->active()
+            ->orderBy('name')
+            ->get();
+
+        return view('dashboard.forms.edit', compact('form', 'projects'));
     }
 
     /**
      * Update form.
+     * FIX vs doc9: project_id included in validation + update array; redirect to project.
      */
     public function updateForm(Request $request, string $id)
     {
-        // ✅ Viewers cannot edit
         if (! $this->canDo('edit_form')) {
             return redirect()->route('dashboard')
                 ->with('error', 'You do not have permission to edit forms in this workspace.');
         }
 
-        // ✅ was: Auth::user()->forms()->findOrFail($id)
         $form = $this->workspaceForms()->findOrFail($id);
 
         $request->validate([
             'name'                  => 'required|string|max:255',
             'recipient_email'       => 'required|email|max:255',
+            'project_id'            => 'nullable|uuid|exists:projects,id',  // allows moving between projects
             'cc_emails'             => 'nullable|string|max:500',
             'redirect_url'          => 'nullable|url|max:500',
             'success_message'       => 'nullable|string|max:500',
@@ -398,9 +489,20 @@ class DashboardController extends Controller
 
         $emailChanged = $form->recipient_email !== $request->input('recipient_email');
 
+        // Resolve project_id: use submitted value, fall back to existing value on the form
+        $newProjectId = $request->input('project_id') ?: $form->project_id;
+
+        // If a project_id is present, verify it belongs to this workspace
+        if ($newProjectId) {
+            Project::where('id', $newProjectId)
+                ->where('user_id', $this->getActiveOwnerId())
+                ->firstOrFail();
+        }
+
         $form->update([
             'name'                  => $request->input('name'),
             'recipient_email'       => $request->input('recipient_email'),
+            'project_id'            => $newProjectId,           // ← persisted
             'cc_emails'             => $ccEmails,
             'redirect_url'          => $request->input('redirect_url'),
             'success_message'       => $request->input('success_message', 'Thank you for your submission!'),
@@ -416,31 +518,39 @@ class DashboardController extends Controller
         if ($emailChanged) {
             $form->update(['email_verification_token' => Str::random(64)]);
             $this->sendVerificationEmail($form);
-
             return redirect()->route('dashboard.forms.show', $form->id)
                 ->with('message', 'Form updated! Please verify the new email address.');
         }
 
-        return redirect()->route('dashboard.forms.show', $form->id)
-            ->with('message', 'Form settings updated.');
+        // FIX vs doc9: redirect to project page if form belongs to one
+        $redirect = $form->project_id
+            ? route('dashboard.projects.show', $form->project_id)
+            : route('dashboard.forms.show', $form->id);
+
+        return redirect($redirect)->with('message', 'Form settings updated.');
     }
 
     /**
      * Delete form.
+     * FIX vs doc9: redirects back to project page instead of always going to dashboard.
      */
     public function destroyForm(string $id)
     {
-        // ✅ Only owner and admin can delete
         if (! $this->canDo('delete_form')) {
             return redirect()->route('dashboard')
                 ->with('error', 'Only admins and owners can delete forms.');
         }
 
-        // ✅ was: Auth::user()->forms()->findOrFail($id)
-        $form = $this->workspaceForms()->findOrFail($id);
+        $form      = $this->workspaceForms()->findOrFail($id);
+        $projectId = $form->project_id;  // capture before delete
         $form->delete();
 
-        return redirect()->route('dashboard')->with('message', 'Form deleted.');
+        // FIX vs doc9: go back to project if form belonged to one, else main dashboard
+        $redirect = $projectId
+            ? route('dashboard.projects.show', $projectId)
+            : route('dashboard');
+
+        return redirect($redirect)->with('message', 'Form deleted.');
     }
 
     // =========================================================================
@@ -452,7 +562,6 @@ class DashboardController extends Controller
      */
     public function showSubmission(string $formId, string $submissionId)
     {
-        // ✅ was: Auth::user()->forms()->findOrFail($formId)
         $form       = $this->workspaceForms()->findOrFail($formId);
         $submission = $form->submissions()->findOrFail($submissionId);
 
@@ -468,13 +577,11 @@ class DashboardController extends Controller
      */
     public function destroySubmission(string $formId, string $submissionId)
     {
-        // ✅ Viewers cannot delete submissions
         if (! $this->canDo('edit_form')) {
             return redirect()->back()
                 ->with('error', 'You do not have permission to delete submissions.');
         }
 
-        // ✅ was: Auth::user()->forms()->findOrFail($formId)
         $form       = $this->workspaceForms()->findOrFail($formId);
         $submission = $form->submissions()->findOrFail($submissionId);
         $submission->delete();
@@ -488,13 +595,11 @@ class DashboardController extends Controller
      */
     public function markAsSpam(string $formId, string $submissionId)
     {
-        // ✅ Viewers cannot mark spam
         if (! $this->canDo('edit_form')) {
             return redirect()->back()
                 ->with('error', 'You do not have permission to manage submissions.');
         }
 
-        // ✅ was: Auth::user()->forms()->findOrFail($formId)
         $form       = $this->workspaceForms()->findOrFail($formId);
         $submission = $form->submissions()->findOrFail($submissionId);
         $submission->markAsSpam('Marked by user');
@@ -508,15 +613,13 @@ class DashboardController extends Controller
 
     /**
      * Export submissions as CSV.
-     * ✅ Uses OWNER's plan for csv_export check — not the team member's plan.
+     * Uses OWNER's plan for csv_export check — not the team member's plan.
      */
     public function exportSubmissions(string $id)
     {
-        // ✅ was: Auth::user()->forms()->findOrFail($id)
-        $form = $this->workspaceForms()->findOrFail($id);
-
-        // ✅ Check owner's plan, not logged-in team member's plan
+        $form  = $this->workspaceForms()->findOrFail($id);
         $owner = $this->getActiveOwner();
+
         if (! $owner->canUseFeature('csv_export')) {
             return back()->with('error', "CSV export is not available on this workspace's plan. The owner needs to upgrade.");
         }
@@ -571,12 +674,10 @@ class DashboardController extends Controller
      */
     public function resendVerification(string $id)
     {
-        // ✅ Viewers cannot manage form settings
         if (! $this->canDo('edit_form')) {
             return back()->with('error', 'You do not have permission to manage form settings.');
         }
 
-        // ✅ was: Auth::user()->forms()->findOrFail($id)
         $form = $this->workspaceForms()->findOrFail($id);
 
         if ($form->email_verified) {
@@ -590,8 +691,7 @@ class DashboardController extends Controller
     }
 
     /**
-     * Send email verification.
-     * Unchanged — no workspace logic needed here.
+     * Send email verification mail to the form's recipient address.
      */
     protected function sendVerificationEmail(Form $form): void
     {
