@@ -1,15 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.express')
 
-@section('title', 'Refund Policy - 000forms')
+@section('title', 'Refund Policy - 000form Express')
 
 @section('content')
 <div class="max-w-4xl mx-auto px-6 py-16 mt-8 mb-16">
     <div class="hero-gradient hero-gradient-1"></div>
     <div class="hero-gradient hero-gradient-2"></div>
     <div class="mb-12 text-center mt-4">
-        <h1 class="hero-title">Refund & Cancellation Policy</h1>
+        <h1 class="hero-title text-6xl">Refund and Cancellation Policy</h1>
         <p class="text-gray-400 mt-3 max-w-2xl mx-auto">
-            Our payment, refund, and cancellation policies for 000form's form backend and submission processing platform.
+            Our payment, refund, and cancellation policies for 000form Express — the simplest form backend solution.
         </p>
         <p class="text-sm text-gray-500 mt-2">Last updated: March 24, 2026</p>
     </div>
@@ -17,9 +17,10 @@
     <div class="space-y-10 text-gray-300 leading-relaxed text-base">
 
         <p>
-            Thank you for choosing <strong class="text-white">000form.com</strong>! We are committed to providing a
-            high-quality form backend and submission processing service. The Service is owned and operated by
-            <a href="https://172tech.com/" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 underline">172 Tech</a>
+            Thank you for choosing <strong class="text-blue-400">000form Express</strong>! We are committed to providing a
+            fast, reliable form backend service that helps you collect submissions without the backend complexity.
+            The Service is owned and operated by
+            <a href="https://172tech.com/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline">172 Tech</a>
             and developed by <strong class="text-white">ESS ENN Associates</strong>.
         </p>
 
@@ -35,7 +36,7 @@
             <div class="mt-6 space-y-6">
 
                 {{-- Full Refund --}}
-                <div class="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <div class="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-all">
                     <h3 class="text-lg font-semibold text-white mb-2">✅ Full Refund — No Submissions Used</h3>
                     <p>
                         If you request a refund within 14 days of purchase and have not processed any form submissions
@@ -46,7 +47,7 @@
                 </div>
 
                 {{-- Proportionate Refund --}}
-                <div class="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <div class="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-all">
                     <h3 class="text-lg font-semibold text-white mb-2">📊 Proportionate Refund — Partial Usage</h3>
                     <p>
                         If you have consumed a portion of your allocated submission quota within the 14-day window,
@@ -106,7 +107,7 @@
             </ul>
             <p class="mt-4">
                 Submit your request via email at
-                <a href="mailto:info@172tech.com" class="text-green-400 hover:text-green-300 underline">info@172tech.com</a>.
+                <a href="mailto:info@172tech.com" class="text-blue-400 hover:text-blue-300 underline">info@172tech.com</a>.
                 Our team will review your request and respond within <strong class="text-white">2 business days</strong>.
             </p>
         </section>
@@ -145,19 +146,87 @@
         <p class="text-gray-300">If you have any questions about this Refund & Cancellation Policy, please contact us:</p>
         <ul class="mt-4 space-y-2 text-gray-300">
             <li>
-                <span class="text-green-400 font-semibold">Email:</span>
-                <a href="mailto:info@172tech.com" class="text-green-400 hover:text-green-300 underline ml-1">info@172tech.com</a>
+                <span class="text-blue-400 font-semibold">Email:</span>
+                <a href="mailto:info@172tech.com" class="text-blue-400 hover:text-blue-300 underline ml-1">info@172tech.com</a>
             </li>
             <li>
-                <span class="text-green-400 font-semibold">Website:</span>
-                <a href="https://172tech.com/" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 underline ml-1">172tech.com</a>
+                <span class="text-blue-400 font-semibold">Website:</span>
+                <a href="https://172tech.com/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline ml-1">172tech.com</a>
             </li>
             <li>
-                <span class="text-green-400 font-semibold">Address:</span>
+                <span class="text-blue-400 font-semibold">Address:</span>
                 <span class="ml-1">SCO 197, Sector 7C, Chandigarh, India - 160019</span>
             </li>
         </ul>
     </section>
 
 </div>
+
+<style>
+    /* Additional custom styles for hero gradients and animations */
+    .hero-gradient {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(120px);
+        pointer-events: none;
+        z-index: -1;
+    }
+    
+    .hero-gradient-1 {
+        width: 500px;
+        height: 500px;
+        background: rgba(59, 130, 246, 0.15);
+        top: -200px;
+        right: -100px;
+    }
+    
+    .hero-gradient-2 {
+        width: 600px;
+        height: 600px;
+        background: rgba(96, 165, 250, 0.1);
+        bottom: -200px;
+        left: -150px;
+    }
+    
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #1a1a1a;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #3b82f6;
+        border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: #60a5fa;
+    }
+    
+    /* Focus styles */
+    a:focus-visible, button:focus-visible {
+        outline: 2px solid #3b82f6;
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+    
+    /* Animation for cards */
+    .bg-gray-800\/50 {
+        transition: all 0.3s ease;
+    }
+    
+    .bg-gray-800\/50:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+    }
+</style>
 @endsection

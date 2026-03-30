@@ -1,30 +1,31 @@
+@extends('layouts.express')
 
+@section('title', 'Terms of Service - 000form Express')
 
-<?php $__env->startSection('title', 'Terms of Service - 000forms'); ?>
-
-<?php $__env->startSection('content'); ?>
+@section('content')
 <div class="max-w-4xl mx-auto px-6 py-16 mt-8 mb-16">
-
+    <div class="hero-gradient hero-gradient-1"></div>
+    <div class="hero-gradient hero-gradient-2"></div>
     <div class="mb-12 text-center mt-4">
-        <h1 class="text-4xl font-bold text-white">Terms of Service</h1>
+        <h1 class="hero-title text-6xl">Terms of Service</h1>
         <p class="text-sm text-gray-400 mt-2">Last updated: March 24, 2026</p>
         <p class="text-gray-400 mt-3 max-w-2xl mx-auto">
-            The terms and conditions governing your use of 000form.com's form backend and submission processing platform.
+            The terms and conditions governing your use of <strong class="text-blue-400">000form Express</strong>'s form backend and submission processing platform.
         </p>
     </div>
 
     <div class="space-y-10 text-gray-300 leading-relaxed text-base">
 
         <p>
-            Welcome to <strong class="text-white">000form.com</strong>! These Terms of Service ("Terms") govern your use of the
-            000form.com website and its services (the "Service"). The Service is owned and operated by
-            <a href="https://172tech.com" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 underline">172 Tech</a>
+            Welcome to <strong class="text-blue-400">000form Express</strong>! These Terms of Service ("Terms") govern your use of the
+            000form Express website and its services (the "Service"). The Service is owned and operated by
+            <a href="https://172tech.com" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline">172 Tech</a>
             and developed by <strong class="text-white">ESS ENN Associates</strong>.
             By accessing or using the Service, you agree to be bound by these Terms. If you disagree with
             any part of these Terms, you may not access or use the Service.
         </p>
 
-        
+        {{-- Acceptance of Terms --}}
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Acceptance of Terms</h2>
             <p>
@@ -34,14 +35,14 @@
             </p>
         </section>
 
-        
+        {{-- Service Description --}}
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Service Description</h2>
             <p>
-                000form.com provides a form backend and submission handling service that allows developers
+                000form Express provides a fast, simple form backend and submission handling service that allows developers
                 and website owners to collect, manage, and process HTML form submissions without writing
-                server-side code. Features may include form endpoint generation, email notifications,
-                spam filtering, submission storage, file uploads, and integrations with third-party services.
+                server-side code. Features include instant endpoint generation, email notifications,
+                spam filtering, submission storage, file uploads, and a built-in chat widget.
             </p>
             <p class="mt-3">
                 You understand and agree that the Service is provided "as is" and "as available," and that
@@ -50,7 +51,7 @@
             </p>
         </section>
 
-        
+        {{-- User Accounts --}}
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">User Accounts</h2>
             <p>
@@ -61,7 +62,21 @@
             </p>
         </section>
 
-        
+        {{-- Express Feature --}}
+        <section>
+            <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">000form Express Feature</h2>
+            <p>
+                The Express feature allows you to quickly test the service without creating an account. When using Express:
+            </p>
+            <ul class="list-disc list-outside ml-6 mt-4 space-y-2 text-gray-300">
+                <li>Your email address is required for verification and notification delivery.</li>
+                <li>Submitted form data is stored temporarily for delivery to your inbox.</li>
+                <li>You may create unlimited test endpoints through the Express playground.</li>
+                <li>To retain submissions beyond the test period, you must create a full account.</li>
+            </ul>
+        </section>
+
+        {{-- User Content --}}
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">User Content</h2>
             <p>
@@ -94,7 +109,7 @@
             </ul>
         </section>
 
-        
+        {{-- Prohibited Uses --}}
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Prohibited Uses</h2>
             <p>
@@ -115,7 +130,7 @@
             </ul>
         </section>
 
-        
+        {{-- Data and Privacy --}}
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Data Handling and Privacy</h2>
             <p>
@@ -123,29 +138,29 @@
                 through your form endpoints passes through our servers. You are responsible for informing
                 your end-users about this data processing in your own privacy policy. Our handling of any
                 personal data is described in our
-                <a href="<?php echo e(route('pages.privacy-policy')); ?>" class="text-green-400 hover:text-green-300 underline">Privacy Policy</a>,
+                <a href="{{ route('pages.privacy-policy') }}" class="text-blue-400 hover:text-blue-300 underline">Privacy Policy</a>,
                 which is incorporated into these Terms by reference.
             </p>
             <p class="mt-3">
-                You must not use 000form.com endpoints in contexts that require HIPAA, PCI-DSS, or similar
+                You must not use 000form Express endpoints in contexts that require HIPAA, PCI-DSS, or similar
                 regulated compliance standards unless you have entered into a separate written agreement with
                 us covering such use.
             </p>
         </section>
 
-        
+        {{-- Intellectual Property --}}
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Intellectual Property</h2>
             <p>
                 The Service and its original content, features, and functionality — including but not limited
                 to the dashboard, API, documentation, and branding — are and will remain the exclusive
-                property of <a href="https://172tech.com" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 underline">172 Tech</a> and its licensors. Our trademarks,
+                property of <a href="https://172tech.com" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline">172 Tech</a> and its licensors. Our trademarks,
                 logos, and trade dress may not be used in connection with any product or service without our
                 prior written consent.
             </p>
         </section>
 
-        
+        {{-- Termination --}}
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Termination</h2>
             <p>
@@ -161,7 +176,7 @@
             </p>
         </section>
 
-        
+        {{-- Disclaimer of Warranties --}}
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Disclaimer of Warranties</h2>
             <p class="uppercase tracking-wide text-sm text-gray-400">
@@ -173,11 +188,11 @@
             </p>
         </section>
 
-        
+        {{-- Limitation of Liability --}}
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Limitation of Liability</h2>
             <p>
-                In no event shall 000form.com, 172 Tech, ESS ENN Associates, nor their directors, employees,
+                In no event shall 000form Express, 172 Tech, ESS ENN Associates, nor their directors, employees,
                 partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special,
                 consequential, or punitive damages, including without limitation, loss of profits, data, use,
                 goodwill, or other intangible losses, resulting from:
@@ -191,11 +206,11 @@
             </ul>
         </section>
 
-        
+        {{-- Indemnification --}}
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Indemnification</h2>
             <p>
-                You agree to indemnify and hold harmless <a href="https://172tech.com" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 underline">172 Tech</a>, ESS ENN Associates, and their affiliates,
+                You agree to indemnify and hold harmless <a href="https://172tech.com" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline">172 Tech</a>, ESS ENN Associates, and their affiliates,
                 officers, agents, and employees from and against any claims, liabilities, damages, losses,
                 costs, or legal fees arising out of or in any way connected with your violation of these
                 Terms, your use of the Service, the data you collect through your form endpoints, or your
@@ -203,7 +218,7 @@
             </p>
         </section>
 
-        
+        {{-- Governing Law --}}
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Governing Law</h2>
             <p>
@@ -213,7 +228,7 @@
             </p>
         </section>
 
-        
+        {{-- Changes to Terms --}}
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Changes to These Terms</h2>
             <p>
@@ -230,26 +245,25 @@
 
     </div>
 
-    
+    {{-- Contact --}}
     <section class="mt-10">
         <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Contact Us</h2>
         <p class="text-gray-300">If you have any questions about these Terms, please contact us at:</p>
         <ul class="mt-4 space-y-2 text-gray-300">
             <li>
-                <span class="text-green-400 font-semibold">Email:</span>
-                <a href="mailto:info@172tech.com" class="text-green-400 hover:text-green-300 underline ml-1">info@172tech.com</a>
+                <span class="text-blue-400 font-semibold">Email:</span>
+                <a href="mailto:info@172tech.com" class="text-blue-400 hover:text-blue-300 underline ml-1">info@172tech.com</a>
             </li>
             <li>
-                <span class="text-green-400 font-semibold">Website:</span>
-                <a href="https://172tech.com" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 underline ml-1">172tech.com</a>
+                <span class="text-blue-400 font-semibold">Website:</span>
+                <a href="https://172tech.com" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline ml-1">172tech.com</a>
             </li>
             <li>
-                <span class="text-green-400 font-semibold">Mail:</span>
+                <span class="text-blue-400 font-semibold">Mail:</span>
                 <span class="ml-1">SCO 197, Sector 7C, Chandigarh, India - 160019</span>
             </li>
         </ul>
     </section>
 
 </div>
-<?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/terms.blade.php ENDPATH**/ ?>
+@endsection

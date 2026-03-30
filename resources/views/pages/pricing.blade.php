@@ -394,18 +394,18 @@
 
 <div class="pp">
 <div class="pp-wrap">
-
+    
     {{-- HEADER --}}
     <div class="pp-head">
-            <div class="hero-gradient hero-gradient-1"></div>
-            <div class="hero-gradient hero-gradient-2"></div>
+        <div class="hero-gradient hero-gradient-1"></div>
+        <div class="hero-gradient hero-gradient-2"></div>
         <div class="hero-badge" style="margin-top: 2.5rem;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                        <path d="M2 17l10 5 10-5"/>
-                        <path d="M2 12l10 5 10-5"/>
-                    </svg>
-                    000Form Pricing • choose the right fit
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                        000Form Pricing • choose the right fit
         </div>
         <h1>000form <em>Plans</em></h1>
         <p>We offer plans for every project, from personal sites to large-scale enterprise campaigns.</p>
@@ -447,12 +447,12 @@
                 @else
                     <button class="pp-cta pp-cta-outline" onclick="startCheckout('personal')">
                         <span class="spinner"></span>
-                        <span class="btn-text">Get Started →</span>
+                        <span class="btn-text">Upgrade Plan →</span>
                     </button>
                 @endif
             @else
                 <a href="{{ route('login') }}?redirect=pricing" class="pp-cta pp-cta-outline">
-                    <span class="btn-text">Get Started →</span>
+                    <span class="btn-text">Upgrade Plan →</span>
                 </a>
             @endauth
 
@@ -489,12 +489,12 @@
                 @else
                     <button class="pp-cta pp-cta-outline" onclick="startCheckout('professional')">
                         <span class="spinner"></span>
-                        <span class="btn-text">Get Started →</span>
+                        <span class="btn-text">Upgrade Plan →</span>
                     </button>
                 @endif
             @else
                 <a href="{{ route('login') }}?redirect=pricing" class="pp-cta pp-cta-outline">
-                    <span class="btn-text">Get Started →</span>
+                    <span class="btn-text">Upgrade Plan →</span>
                 </a>
             @endauth
 
@@ -531,12 +531,12 @@
                 @else
                     <button class="pp-cta pp-cta-outline" onclick="startCheckout('business')">
                         <span class="spinner"></span>
-                        <span class="btn-text">Get Started →</span>
+                        <span class="btn-text">Upgrade Plan →</span>
                     </button>
                 @endif
             @else
                 <a href="{{ route('login') }}?redirect=pricing" class="pp-cta pp-cta-outline">
-                    <span class="btn-text">Get Started →</span>
+                    <span class="btn-text">Upgrade Plan →</span>
                 </a>
             @endauth
 

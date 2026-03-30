@@ -12,14 +12,14 @@
     .docs-layout {
         display: grid;
         grid-template-columns: 230px 1fr;
-        gap: 3rem;
+        gap: 4rem;
         align-items: start;
     }
 
     /* ── Sidebar ── */
     .docs-nav {
         position: sticky; top: 6rem;
-        border: 1px solid #1e1e1e; border-radius: 10px;
+        border: 1.5px solid #1e1e1e; border-radius: 10px;
         padding: 1.25rem 0; background: #0d0d0d;
     }
     .docs-nav-label {
@@ -32,7 +32,7 @@
         display: flex; align-items: center; gap: 0.55rem;
         padding: 0.38rem 1.25rem; font-size: 18px; color: #666;
         text-decoration: none; transition: color 0.15s;
-        border-left: 2px solid transparent; margin-left: -1px;
+        border-left: 1px solid transparent; margin-left: -1px;
     }
     .docs-nav a i { font-size: 13px; flex-shrink: 0; }
     .docs-nav a:hover { color: #ccc; }
@@ -40,7 +40,7 @@
 
     /* ── Section cards ── */
     .docs-section {
-        margin-bottom: 2rem; border: 1px solid #1e1e1e;
+        margin-bottom: 3.5rem; border: 1.5px solid #1e1e1e;
         border-radius: 12px; overflow: hidden; background: #0d0d0d;
     }
     .docs-section-header { padding: 1.6rem 1.75rem 0; }
@@ -186,7 +186,7 @@
     }
     .section-group-label span {
         font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
-        text-transform: uppercase; color: #333; white-space: nowrap;
+        text-transform: uppercase; color: #ffffff; white-space: nowrap;
     }
     .section-group-label::after {
         content: ''; flex: 1; height: 1px; background: #1a1a1a;
@@ -370,7 +370,7 @@
 
                 {{-- Special Fields group label --}}
                 <div class="section-group-label"><span>Special Fields</span></div>
-                <p style="font-size:14px;color:#555;margin:-0.25rem 0 1.5rem;">Add these as hidden inputs to your form to turn on extra features. All of them are optional &mdash; only use the ones you need.</p>
+                <p style="font-size:14px;color:white;margin:-0.25rem 0 1.5rem;">Add these as hidden inputs to your form to turn on extra features. All of them are optional &mdash; only use the ones you need.</p>
 
                 {{-- _subject --}}
                 <div class="docs-section" id="subject">

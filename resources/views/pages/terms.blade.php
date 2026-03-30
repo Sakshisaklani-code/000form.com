@@ -4,9 +4,10 @@
 
 @section('content')
 <div class="max-w-4xl mx-auto px-6 py-16 mt-8 mb-16">
-
+    <div class="hero-gradient hero-gradient-1"></div>
+    <div class="hero-gradient hero-gradient-2"></div>
     <div class="mb-12 text-center mt-4">
-        <h1 class="text-4xl font-bold text-white">Terms of Service</h1>
+        <h1 class="hero-title">Terms of Service</h1>
         <p class="text-sm text-gray-400 mt-2">Last updated: March 24, 2026</p>
         <p class="text-gray-400 mt-3 max-w-2xl mx-auto">
             The terms and conditions governing your use of 000form.com's form backend and submission processing platform.

@@ -1020,7 +1020,7 @@ code, .mono {
 }
 
 .sidebar {
-    width: 260px;
+    width: 290px;
     background: var(--bg-primary);
     border-right: 1px solid var(--border-color);
     padding: 1.5rem;
@@ -1087,7 +1087,7 @@ code, .mono {
 .sidebar-footer {
     margin-top: auto;
     padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
+    /* border-top: 1px solid var(--border-color); */
 }
 
 .main-content {

@@ -1,16 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.express')
 
-@section('title', 'Privacy Policy - 000forms')
+@section('title', 'Privacy Policy - 000form Express')
 
 @section('content')
 <div class="max-w-4xl mx-auto px-6 py-16 mt-8 mb-16">
     <div class="hero-gradient hero-gradient-1"></div>
     <div class="hero-gradient hero-gradient-2"></div>
     <div class="mb-12 text-center mt-4">
-        <h1 class="hero-title">Privacy Policy</h1>
+        <h1 class="hero-title text-6xl">Privacy Policy</h1>
         <p class="text-sm text-gray-400 mt-2">Last updated: March 24, 2026</p>
         <p class="text-gray-400 mt-3 max-w-2xl mx-auto">
-            This Privacy Policy describes how <strong class="text-white">000form.com</strong> ("we," "us," or "our") collects,
+            This Privacy Policy describes how <strong class="text-blue-400">000form Express</strong> ("we," "us," or "our") collects,
             uses, and shares your information when you use our form backend and submission processing platform (the "Service").
         </p>
     </div>
@@ -19,7 +19,7 @@
 
         <p>
             By using the Service, you agree to the collection and use of information in accordance with this policy.
-            The Service is owned and operated by <a href="https://172tech.com" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 underline">172 Tech</a>
+            The Service is owned and operated by <a href="https://172tech.com" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline">172 Tech</a>
             and developed by <strong class="text-white">ESS ENN Associates</strong>.
         </p>
 
@@ -28,7 +28,7 @@
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Information We Collect</h2>
             <p>We collect different types of information to provide and improve our Service to you.</p>
 
-            <h3 class="text-lg font-semibold text-green-400 mt-6 mb-3">Information You Provide to Us:</h3>
+            <h3 class="text-lg font-semibold text-blue-400 mt-6 mb-3">Information You Provide to Us:</h3>
             <ul class="list-disc list-outside ml-6 space-y-3 text-gray-300">
                 <li>
                     <strong class="text-white">Account Information:</strong> When you register for an account, we collect
@@ -49,7 +49,7 @@
                 </li>
             </ul>
 
-            <h3 class="text-lg font-semibold text-green-400 mt-6 mb-3">Information We Collect Automatically:</h3>
+            <h3 class="text-lg font-semibold text-blue-400 mt-6 mb-3">Information We Collect Automatically:</h3>
             <ul class="list-disc list-outside ml-6 space-y-3 text-gray-300">
                 <li>
                     <strong class="text-white">Usage Data:</strong> We may collect non-personal information about how the
@@ -99,7 +99,7 @@
             </p>
             <p class="mt-3">
                 You are responsible for ensuring that your end-users are informed about how their data is collected
-                and processed, including its transmission through 000form.com servers. You must maintain an
+                and processed, including its transmission through 000form Express servers. You must maintain an
                 appropriate privacy policy on your own website that discloses this.
             </p>
         </section>
@@ -108,7 +108,7 @@
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 pb-2 border-b border-gray-700">Third-Party Integrations</h2>
             <p>
-                000form.com may offer integrations with third-party services (such as email providers, webhook
+                000form Express may offer integrations with third-party services (such as email providers, webhook
                 endpoints, or notification platforms) to deliver your form submissions. When you enable such
                 integrations, submission data may be transmitted to those third-party services. We are not
                 responsible for the privacy practices of third-party services you choose to integrate with.
@@ -130,7 +130,7 @@
                 <li>
                     <strong class="text-white">For Legal Reasons:</strong> We may disclose information in the good faith
                     belief that such action is necessary to comply with a legal obligation, protect and defend the
-                    rights or property of <a href="https://172tech.com" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 underline">172 Tech</a>,
+                    rights or property of <a href="https://172tech.com" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline">172 Tech</a>,
                     prevent or investigate possible wrongdoing in connection with the Service, protect the personal
                     safety of users, or protect against legal liability.
                 </li>
@@ -224,15 +224,15 @@
             <p>If you have any questions about this Privacy Policy, please contact us at:</p>
             <ul class="mt-4 space-y-2 text-gray-300">
                 <li>
-                    <span class="text-green-400 font-semibold">Email:</span>
-                    <a href="mailto:info@172tech.com" class="text-green-400 hover:text-green-300 underline ml-1">info@172tech.com</a>
+                    <span class="text-blue-400 font-semibold">Email:</span>
+                    <a href="mailto:info@172tech.com" class="text-blue-400 hover:text-blue-300 underline ml-1">info@172tech.com</a>
                 </li>
                 <li>
-                    <span class="text-green-400 font-semibold">Website:</span>
-                    <a href="https://172tech.com" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 underline ml-1">172tech.com</a>
+                    <span class="text-blue-400 font-semibold">Website:</span>
+                    <a href="https://172tech.com" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline ml-1">172tech.com</a>
                 </li>
                 <li>
-                    <span class="text-green-400 font-semibold">Mail:</span>
+                    <span class="text-blue-400 font-semibold">Mail:</span>
                     <span class="ml-1">SCO 197, Sector 7C, Chandigarh, India - 160019</span>
                 </li>
             </ul>

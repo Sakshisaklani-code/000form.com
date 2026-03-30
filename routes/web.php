@@ -19,6 +19,7 @@ use App\Http\Controllers\BillingController;
 use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserEmailController;
+use App\Http\Controllers\ExpressController;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,6 +105,9 @@ Route::withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken
 Route::prefix('express')->name('playground.')->group(function () {
     Route::get('/', [PlaygroundController::class, 'index'])->name('index');
     Route::get('/guide', [PlaygroundController::class, 'expressGuide'])->name('Guide');
+    Route::get('/terms', [ExpressController::class, 'terms'])->name('express.terms');
+    Route::get('/privacy-policy', [ExpressController::class, 'privacyPolicy'])->name('express.privacy-policy');
+    Route::get('/refund', [ExpressController::class, 'refundPolicy'])->name('express.refund');
     Route::post('/submit', [PlaygroundController::class, 'submit'])->name('submit');
     Route::get('/form-submitted', [PlaygroundController::class, 'formSubmitted'])->name('form.submitted');
     Route::get('/endpoint/{email}', [PlaygroundController::class, 'formEndpointInfo'])->name('endpoint.details');

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ asset('images/favicon/000formFavicon-express.png') }}" type="image/svg+xml">
     <title>{{ $success ? 'Email Verified' : 'Verification Failed' }} - 000form Express</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -473,14 +474,6 @@
                 You Are Working with 000form.com
                 <i class="bi bi-bolt"></i>
             </p>
-        </div>
-        
-        <!-- Back Link -->
-        <div class="back-link">
-            <a href="javascript:history.back()">
-                <i class="bi bi-arrow-left"></i>
-                Go back to form
-            </a>
         </div>
 
         <!-- Security Badge -->

@@ -15,6 +15,7 @@ use App\Mail\PlaygroundFormSubmissionMail;
 use App\Mail\PlaygroundVerificationMail;
 use App\Models\Form;
 use App\Models\Submission;
+use App\Models\VerifiedPlaygroundEmail; // ← ADDED
 
 class PlaygroundController extends Controller
 {
@@ -45,9 +46,7 @@ class PlaygroundController extends Controller
     public function formEndpointInfo(string $email)
     {
         $email    = strtolower(trim($email));
-        $cacheKey = 'playground_verify_' . md5($email);
-        $data     = Cache::get($cacheKey);
-        $verified = $data && !empty($data['verified']);
+        $verified = VerifiedPlaygroundEmail::where('email', $email)->exists(); // ← CHANGED
 
         return view('pages.form-endpoint-info', compact('email', 'verified'));
     }
@@ -65,7 +64,13 @@ class PlaygroundController extends Controller
             return response()->json(['success' => false, 'message' => 'Invalid email address.'], 422);
         }
 
-        $email    = strtolower(trim($request->email));
+        $email = strtolower(trim($request->email));
+
+        // ← ADDED: Already permanently verified — no need to send again
+        if (VerifiedPlaygroundEmail::where('email', $email)->exists()) {
+            return response()->json(['success' => true, 'message' => 'Email already verified.']);
+        }
+
         $limitKey = 'playground_verify_limit_' . md5($email);
         $attempts = Cache::get($limitKey, 0);
 
@@ -100,8 +105,16 @@ class PlaygroundController extends Controller
             ]);
         }
 
-        Cache::forever($cacheKey, array_merge($data, ['verified' => true]));
-        Log::info('Playground: email verified', ['email' => $email]);
+        // ← CHANGED: Store permanently in DB instead of Cache::forever
+        VerifiedPlaygroundEmail::firstOrCreate(
+            ['email' => $email],
+            ['verified_at' => now()]
+        );
+
+        // ← ADDED: Clean up the temp cache token, no longer needed
+        Cache::forget($cacheKey);
+
+        Log::info('Playground: email verified permanently', ['email' => $email]);
 
         return view('pages.playground-verify-result', [
             'success' => true,
@@ -115,12 +128,10 @@ class PlaygroundController extends Controller
      */
     public function checkVerified(Request $request)
     {
-        $email    = strtolower(trim($request->query('email', '')));
-        $cacheKey = 'playground_verify_' . md5($email);
-        $data     = Cache::get($cacheKey);
+        $email = strtolower(trim($request->query('email', '')));
 
         return response()->json([
-            'verified' => $data && !empty($data['verified']),
+            'verified' => VerifiedPlaygroundEmail::where('email', $email)->exists(), // ← CHANGED
         ]);
     }
 
@@ -206,7 +217,7 @@ class PlaygroundController extends Controller
                     $storedIp,
                     $storedUserAgent,
                     $storedReferrer,
-                    $isAjax  // ← pass original AJAX status instead of hardcoding true
+                    $isAjax
                 );
                 
                 Log::info('Playground: Recreated request', [
@@ -277,7 +288,6 @@ class PlaygroundController extends Controller
      */
     protected function handlePlaygroundSubmission(Request $request)
     {
-        // ✅ ADD THIS TEMPORARILY
         Log::info('Playground: handlePlaygroundSubmission called', [
             'has_recipient_email' => $request->has('recipient_email'),
             'recipient_email'     => $request->input('recipient_email'),
@@ -296,10 +306,9 @@ class PlaygroundController extends Controller
         }
 
         $recipientEmail = strtolower(trim($request->recipient_email));
-        $cacheKey       = 'playground_verify_' . md5($recipientEmail);
-        $data           = Cache::get($cacheKey);
 
-        if (!$data || empty($data['verified'])) {
+        // ← CHANGED: Check DB instead of cache
+        if (!VerifiedPlaygroundEmail::where('email', $recipientEmail)->exists()) {
             Log::warning('Playground: submit without verification', ['email' => $recipientEmail]);
             return response()->json([
                 'success' => false,
@@ -311,7 +320,7 @@ class PlaygroundController extends Controller
 
         $clientIp = $request->ip() ?? $request->getClientIp() ?? '0.0.0.0';
 
-        $allData = $request->except(['_token']);
+        $allData   = $request->except(['_token']);
         $recaptcha = app(\App\Services\RecaptchaService::class);
         $captchaDisabled = $recaptcha->isDisabledByUser($allData);
 
@@ -321,7 +330,6 @@ class PlaygroundController extends Controller
 
             $data = $request->except(['_token', 'recipient_email']);
 
-            /** 🔴 REMOVE FILE FIELDS FROM SESSION DATA */
             foreach ($request->allFiles() as $fileKey => $file) {
                 unset($data[$fileKey]);
             }
@@ -367,10 +375,8 @@ class PlaygroundController extends Controller
      */
     public function handleEmailSubmission(Request $request, string $email)
     {
-        // ADD THIS
         Log::info('Playground: handleEmailSubmission called', [
             'email' => $email,
-            'verified_in_cache' => Cache::get('playground_verify_' . md5($email)),
         ]);
 
         $email = strtolower(trim($email));
@@ -382,10 +388,8 @@ class PlaygroundController extends Controller
             'has_files' => count($request->allFiles()) > 0 ? 'yes' : 'no',
         ]);
 
-        $cacheKey = 'playground_verify_' . md5($email);
-        $data     = Cache::get($cacheKey);
-
-        if (!$data || empty($data['verified'])) {
+        // ← CHANGED: Check DB instead of cache
+        if (!VerifiedPlaygroundEmail::where('email', $email)->exists()) {
 
             Log::warning('Playground: submission to unverified email', ['email' => $email]);
 
@@ -404,7 +408,7 @@ class PlaygroundController extends Controller
 
         $clientIp = $request->ip() ?? $request->getClientIp() ?? '0.0.0.0';
 
-        $allData = $request->except(['_token']);
+        $allData   = $request->except(['_token']);
         $recaptcha = app(\App\Services\RecaptchaService::class);
         $captchaDisabled = $recaptcha->isDisabledByUser($allData);
 
@@ -414,7 +418,6 @@ class PlaygroundController extends Controller
 
             $data = $request->except(['_token']);
 
-            /** 🔴 REMOVE FILE FIELDS BEFORE SESSION STORE */
             foreach ($request->allFiles() as $fileKey => $file) {
                 unset($data[$fileKey]);
             }
@@ -475,14 +478,12 @@ class PlaygroundController extends Controller
             return response()->json(['success' => false, 'message' => 'Submissions from this domain are not allowed.'], 403);
         }
 
-        // For external forms, the captcha is handled by FormSubmissionController
-        // This should never be called directly for captcha-protected forms
         return response()->json(['success' => false, 'message' => 'Use the main form endpoint for submissions.'], 400);
     }
 
     /**
      * Process a verified submission (after captcha or with captcha disabled)
-    */
+     */
     protected function processVerifiedSubmission(Request $request, string $recipientEmail)
     {
         try {
@@ -570,7 +571,6 @@ class PlaygroundController extends Controller
 
                 $mail = new \App\Mail\PlaygroundFormSubmissionMail($formData, $attachments, $specialData);
 
-                // Log the raw rendered content to catch blade errors
                 try {
                     $renderedHtml = $mail->render();
                     Log::info('Playground: Mail rendered successfully', [
@@ -610,8 +610,6 @@ class PlaygroundController extends Controller
             // Clean up temp files
             $this->cleanupFiles($uploadedFiles);
 
-            // Clean up pending submission if exists
-            // FIX: Grab the original form referrer BEFORE forgetting the session
             $pendingKey   = 'pending_playground_' . md5($recipientEmail);
             $formReferrer = $request->header('Referer') ?? $request->server('HTTP_REFERER');
 
@@ -620,21 +618,17 @@ class PlaygroundController extends Controller
                 if (!empty($pending['files'])) {
                     $this->cleanupTempFiles($pending['files']);
                 }
-                // Prefer the stored original referrer (set when form was first submitted,
-                // before the captcha redirect overwrote the HTTP Referer header)
                 if (!empty($pending['referrer'])) {
                     $formReferrer = $pending['referrer'];
                 }
                 Session::forget($pendingKey);
             }
 
-            // Flash the original form URL so the success page "Go Back" button works
-            // correctly for both: form→success and form→captcha→success flows
             Session::flash('form_referrer', $formReferrer);
 
             Log::info('Playground: Submission completed successfully', [
-                'recipient'    => $recipientEmail,
-                'attachments'  => count($attachments),
+                'recipient'     => $recipientEmail,
+                'attachments'   => count($attachments),
                 'form_referrer' => $formReferrer,
             ]);
 
@@ -721,9 +715,6 @@ class PlaygroundController extends Controller
 
     /**
      * Recreate a request with files from temporary storage.
-     * The $isAjax parameter restores the original request's AJAX identity
-     * so that processVerifiedSubmission returns JSON only when the browser
-     * originally expected it, and a redirect (success page) otherwise.
      */
     private function recreateRequestWithFiles(
         array $data, 
@@ -732,7 +723,7 @@ class PlaygroundController extends Controller
         string $ip = '0.0.0.0',
         ?string $userAgent = null,
         ?string $referrer = null,
-        bool $isAjax = false  // ← replaces the hardcoded XMLHttpRequest headers
+        bool $isAjax = false
     ): Request {
         Log::info('Playground: Recreating request with files', [
             'temp_files' => $tempFiles,
@@ -742,7 +733,6 @@ class PlaygroundController extends Controller
         
         $request = new Request();
         
-        // Filter out internal fields before setting data
         $cleanData = collect($data)->except([
             'captcha_verified', 
             'from_playground',
@@ -765,9 +755,6 @@ class PlaygroundController extends Controller
             $request->headers->set('Referer', $referrer);
         }
 
-        // Only mark as AJAX if the original browser request actually was AJAX.
-        // Previously this was hardcoded to true, which forced JSON responses
-        // even for normal browser form submissions coming through the captcha flow.
         if ($isAjax) {
             $request->headers->set('X-Requested-With', 'XMLHttpRequest');
             $request->headers->set('Accept', 'application/json');
@@ -791,7 +778,6 @@ class PlaygroundController extends Controller
                     );
                     
                     $uploadedFiles[] = $file;
-                    
                     Log::info('Playground: File restored from temp', ['field' => $field, 'path' => $path]);
                 } else {
                     Log::warning('Playground: Temp file not found', ['path' => $fullPath]);
@@ -934,14 +920,10 @@ class PlaygroundController extends Controller
         $message = $submissionData['message'] ?? $submissionData['body'] ?? null;
 
         $skipKeys = [
-            // internal/system fields
             'recipient_email', '_token', '_method', 'captcha_verified', 'from_playground',
-            // honeypot fields
             '_gotcha', '_honeypot', 'honeypot', '_trap', '_bot', '_spam',
-            // other special fields already in specialFieldKeys (already excluded, but belt-and-suspenders)
             '_subject', '_replyto', '_next', '_cc', '_bcc', '_template',
             '_format', '_blacklist', '_auto-response', '_auto-reponse',
-            // recaptcha
             'g-recaptcha-response', 'h-captcha-response',
         ];
         $allFields = [];
@@ -1064,10 +1046,9 @@ class PlaygroundController extends Controller
      */
     protected function handleResponse(Request $request, array $specialData, string $email)
     {
-        // Clean response - no internal flags
         $response = [
-            'success'  => true,
-            'message'  => 'Form submitted successfully!',
+            'success' => true,
+            'message' => 'Form submitted successfully!',
         ];
 
         if (!empty($specialData['_next'])) {
@@ -1091,6 +1072,12 @@ class PlaygroundController extends Controller
      */
     protected function sendVerification(string $email): void
     {
+        // ← ADDED: Skip if already permanently verified in DB
+        if (VerifiedPlaygroundEmail::where('email', $email)->exists()) {
+            Log::info('Playground: email already permanently verified, skipping', ['email' => $email]);
+            return;
+        }
+
         $token    = Str::random(32);
         $cacheKey = 'playground_verify_' . md5($email);
 

@@ -6,6 +6,7 @@
     <meta name="description" content="000form Express — No-account form endpoint. Point your HTML form at our endpoint and get submissions delivered instantly to your inbox.">
     <title>@yield('title', 'Express — Instant Form Endpoints | 000form')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="{{ asset('images/favicon/000formFavicon-express.png') }}" type="image/svg+xml">
     <link rel="canonical" href="https://000form.com/express" />
     <meta name="keywords" content="forms, form backend, contact forms, form submissions, 000Form, no-account forms">
@@ -1315,9 +1316,9 @@ body::before {
         <div class="footer-top">
             <div class="footer-logo"><span>000</span>form</div>
             <ul class="footer-links">
-                <li><a href="{{ route('pages.terms') }}">Terms</a></li>
-                <li><a href="{{ route('pages.privacy-policy') }}">Privacy Policy</a></li>
-                <li><a href="{{ route('pages.refund') }}">Refund Policy</a></li>
+                <li><a href="/express/terms">Terms</a></li>
+                <li><a href="/express/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/express/refund">Refund Policy</a></li>
             </ul>
         </div>
         <div class="footer-bottom">
