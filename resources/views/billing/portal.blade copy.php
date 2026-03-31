@@ -272,7 +272,7 @@
         @endphp
         <div class="bp-scheduled-card">
             <div class="bp-scheduled-title">
-                {{ $isScheduledUpgrade ? '↑ Upgrade Scheduled' : '↓ Downgrade Scheduled' }}
+                {{ $isScheduledUpgrade ? '↑ Upgrade Scheduled' : 'Plan Change Scheduled' }}
             </div>
             <div class="bp-scheduled-header">
                 <div>

@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Plans & Pricing - 000form'); ?>
 
-@section('title', 'Plans & Pricing - 000form')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <style>
     .pp {
@@ -443,7 +441,7 @@
 <div class="pp">
 <div class="pp-wrap">
 
-    {{-- HEADER --}}
+    
     <div class="pp-head">
         <div class="hero-gradient hero-gradient-1"></div>
         <div class="hero-gradient hero-gradient-2"></div>
@@ -469,8 +467,8 @@
         </div>
     </div>
 
-    {{-- PLANS GRID --}}
-    @php
+    
+    <?php
         /**
          * Determine the logged-in user's current plan AND billing cycle.
          * We need both to correctly render the "Current Plan" vs "Switch to Annual" states.
@@ -490,15 +488,12 @@
 
         $planRankMap  = ['free' => 0, 'personal' => 1, 'professional' => 2, 'business' => 3];
         $userPlanRank = $planRankMap[$userPlan] ?? 0;
-    @endphp
+    ?>
 
     <div class="pp-grid">
 
-        {{-- ─────────────────────────────────────────────────────────
-             PLAN MACRO — avoids repeating the same logic 3 times.
-             We use a loop instead so the billing-cycle logic is DRY.
-        ───────────────────────────────────────────────────────────── --}}
-        @php
+        
+        <?php
         $planDefs = [
             'personal' => [
                 'badge'     => 'personal-badge',
@@ -546,10 +541,10 @@
                 ],
             ],
         ];
-        @endphp
+        ?>
 
-        @foreach($planDefs as $planKey => $plan)
-        @php
+        <?php $__currentLoopData = $planDefs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planKey => $plan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <?php
             $planRank = $planRankMap[$planKey];
 
             /**
@@ -567,111 +562,100 @@
             $isUpgrade   = auth()->check() && ($planRank > $userPlanRank);
             $isDowngrade = auth()->check() && ($planRank < $userPlanRank);
             $isFeatured  = $isSamePlan; // highlight the user's current plan tier
-        @endphp
+        ?>
 
-        <div class="pp-plan {{ $isFeatured ? 'featured' : '' }}"
-             data-plan="{{ $planKey }}"
-             data-plan-rank="{{ $planRank }}">
+        <div class="pp-plan <?php echo e($isFeatured ? 'featured' : ''); ?>"
+             data-plan="<?php echo e($planKey); ?>"
+             data-plan-rank="<?php echo e($planRank); ?>">
 
-            {{--
-                "Your Plan" tag:
-                - Always rendered in DOM so JS can show/hide it.
-                - Visible only when this is the user's plan AND toggle matches their billing cycle.
-                - JS controls visibility via the `pp-current-tag-exact` element.
-            --}}
-            @if($isSamePlan && auth()->check())
-                <div class="pp-current-tag-exact" id="tag-{{ $planKey }}" style="display:none;">Your Plan</div>
-            @endif
+            
+            <?php if($isSamePlan && auth()->check()): ?>
+                <div class="pp-current-tag-exact" id="tag-<?php echo e($planKey); ?>" style="display:none;">Your Plan</div>
+            <?php endif; ?>
 
-            <span class="pp-plan-badge {{ $plan['badge'] }}">{{ $plan['label'] }}</span>
+            <span class="pp-plan-badge <?php echo e($plan['badge']); ?>"><?php echo e($plan['label']); ?></span>
 
             <div class="pp-price">
                 <span class="sym">$</span>
                 <span class="num"
-                      data-mo="{{ $plan['price_mo'] }}"
-                      data-yr="{{ $plan['price_yr'] }}">{{ $plan['price_mo'] }}</span>
+                      data-mo="<?php echo e($plan['price_mo']); ?>"
+                      data-yr="<?php echo e($plan['price_yr']); ?>"><?php echo e($plan['price_mo']); ?></span>
                 <span class="per">/month</span>
             </div>
-            <p class="pp-plan-desc">{{ $plan['desc'] }}</p>
+            <p class="pp-plan-desc"><?php echo e($plan['desc']); ?></p>
 
-            {{-- ── CTA BUTTON AREA ── --}}
-            @guest
-                {{-- Not logged in — always show generic CTA --}}
-                <a href="{{ route('login') }}?redirect=pricing" class="pp-cta pp-cta-upgrade">
+            
+            <?php if(auth()->guard()->guest()): ?>
+                
+                <a href="<?php echo e(route('login')); ?>?redirect=pricing" class="pp-cta pp-cta-upgrade">
                     <span class="btn-text">Upgrade Plan →</span>
                 </a>
 
-            @else
-                @if($isSamePlan)
-                    {{--
-                        USER IS ON THIS PLAN.
-                        We render TWO button states and let JS toggle between them
-                        based on whether the billing toggle matches the user's actual cycle.
+            <?php else: ?>
+                <?php if($isSamePlan): ?>
+                    
 
-                        State A: toggle matches user billing  → "✓ Current Plan" (disabled)
-                        State B: toggle differs               → "↻ Switch to [Annual/Monthly]" (link to portal)
-                    --}}
-
-                    {{-- State A: exact match — shown by JS when toggle == user billing --}}
+                    
                     <button class="pp-cta pp-cta-current"
-                            id="btn-exact-{{ $planKey }}"
+                            id="btn-exact-<?php echo e($planKey); ?>"
                             disabled
                             style="display:none;">
                         <span class="btn-text">✓ Current Plan</span>
                     </button>
 
-                    {{-- State B: billing mismatch — shown by JS when toggle != user billing --}}
-                    <a href="{{ route('billing.portal') }}"
+                    
+                    <a href="<?php echo e(route('billing.portal')); ?>"
                        class="pp-cta pp-cta-switch"
-                       id="btn-switch-{{ $planKey }}"
+                       id="btn-switch-<?php echo e($planKey); ?>"
                        style="display:none;">
-                        <span class="btn-text" id="btn-switch-label-{{ $planKey }}">↻ Switch to Annual →</span>
+                        <span class="btn-text" id="btn-switch-label-<?php echo e($planKey); ?>">↻ Switch to Annual →</span>
                     </a>
-                    <p class="pp-switch-hint" id="hint-switch-{{ $planKey }}" style="display:none;">
+                    <p class="pp-switch-hint" id="hint-switch-<?php echo e($planKey); ?>" style="display:none;">
                         No charge today · takes effect at next renewal
                     </p>
 
-                @elseif($isUpgrade)
-                    {{-- Higher tier — show upgrade CTA --}}
-                    <button class="pp-cta pp-cta-upgrade" onclick="startCheckout('{{ $planKey }}')">
+                <?php elseif($isUpgrade): ?>
+                    
+                    <button class="pp-cta pp-cta-upgrade" onclick="startCheckout('<?php echo e($planKey); ?>')">
                         <span class="spinner"></span>
-                        <span class="btn-text">↑ Upgrade to {{ $plan['label'] }} →</span>
+                        <span class="btn-text">↑ Upgrade to <?php echo e($plan['label']); ?> →</span>
                     </button>
 
-                @elseif($isDowngrade)
-                    {{-- Lower tier — muted, redirect to portal --}}
-                    <a href="{{ route('billing.portal') }}" class="pp-cta pp-cta-downgrade">
+                <?php elseif($isDowngrade): ?>
+                    
+                    <a href="<?php echo e(route('billing.portal')); ?>" class="pp-cta pp-cta-downgrade">
                         <span class="btn-text">Manage Plan →</span>
                     </a>
 
-                @else
-                    {{-- Free user (no active sub) — every paid plan is an upgrade --}}
-                    <button class="pp-cta pp-cta-upgrade" onclick="startCheckout('{{ $planKey }}')">
+                <?php else: ?>
+                    
+                    <button class="pp-cta pp-cta-upgrade" onclick="startCheckout('<?php echo e($planKey); ?>')">
                         <span class="spinner"></span>
-                        <span class="btn-text">↑ Upgrade to {{ $plan['label'] }} →</span>
+                        <span class="btn-text">↑ Upgrade to <?php echo e($plan['label']); ?> →</span>
                     </button>
-                @endif
+                <?php endif; ?>
 
-            @endguest
+            <?php endif; ?>
 
             <hr class="pp-divider">
-            <span class="pp-feat-label">{{ $plan['feats_hdr'] }}</span>
+            <span class="pp-feat-label"><?php echo e($plan['feats_hdr']); ?></span>
             <ul class="pp-feats">
-                @foreach($plan['feats'] as $feat)
+                <?php $__currentLoopData = $plan['feats']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $feat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <li class="pp-feat hi">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ic-accent">
                             <polyline points="20 6 9 17 4 12"/>
                         </svg>
-                        {!! $feat !!}
+                        <?php echo $feat; ?>
+
                     </li>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </ul>
         </div>
-        @endforeach
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-    </div>{{-- /pp-grid --}}
+    </div>
 
-    {{-- FREE FOREVER BANNER --}}
+    
     <div class="pp-free-banner">
         <div class="pp-free-banner-left">
             <h3>
@@ -699,50 +683,50 @@
                     <div class="lbl">File uploads</div>
                 </div>
             </div>
-            @auth
-                @if($userPlan === 'free')
+            <?php if(auth()->guard()->check()): ?>
+                <?php if($userPlan === 'free'): ?>
                     <button class="pp-cta pp-cta-current" style="margin-bottom:0; min-width:160px;" disabled>
                         <span class="btn-text">✓ Current Plan</span>
                     </button>
-                @else
-                    <a href="{{ route('billing.portal') }}" class="pp-cta pp-cta-downgrade" style="margin-bottom:0; min-width:160px;">
+                <?php else: ?>
+                    <a href="<?php echo e(route('billing.portal')); ?>" class="pp-cta pp-cta-downgrade" style="margin-bottom:0; min-width:160px;">
                         <span class="btn-text">Manage Plan →</span>
                     </a>
-                @endif
-            @else
-                <a href="{{ route('signup') }}" class="pp-cta pp-cta-upgrade" style="margin-bottom:0; min-width:160px;">
+                <?php endif; ?>
+            <?php else: ?>
+                <a href="<?php echo e(route('signup')); ?>" class="pp-cta pp-cta-upgrade" style="margin-bottom:0; min-width:160px;">
                     <span class="btn-text">Get Started Free →</span>
                 </a>
-            @endauth
+            <?php endif; ?>
         </div>
     </div>
 
 </div>
 </div>
 
-{{-- Toast notification --}}
+
 <div class="pp-toast" id="pp-toast">
     <span id="pp-toast-icon">⚠</span>
     <span id="pp-toast-msg"></span>
 </div>
 
-{{-- Paddle.js --}}
+
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 
 <script>
     // ── Server-side state injected into JS ────────────────────────────────────────
     // userBilling: the actual billing cycle the user is currently on ('monthly' | 'annual' | null)
     // userPlan:    the plan key they're on ('personal' | 'professional' | 'business' | 'free' | null)
-    const PP_USER_PLAN    = @json($userPlan);
-    const PP_USER_BILLING = @json($userBilling); // null if not subscribed
+    const PP_USER_PLAN    = <?php echo json_encode($userPlan, 15, 512) ?>;
+    const PP_USER_BILLING = <?php echo json_encode($userBilling, 15, 512) ?>; // null if not subscribed
 
     // ── Paddle init ───────────────────────────────────────────────────────────────
-    @if(config('cashier.environment') === 'sandbox')
+    <?php if(config('cashier.environment') === 'sandbox'): ?>
         Paddle.Environment.set('sandbox');
-    @endif
+    <?php endif; ?>
 
     Paddle.Initialize({
-        token: '{{ config('cashier.client_side_token') }}',
+        token: '<?php echo e(config('cashier.client_side_token')); ?>',
         eventCallback: function(event) {
             if (event.name === 'checkout.completed') {
                 var txnId = '';
@@ -752,7 +736,7 @@
                 if (txnId) {
                     sessionStorage.setItem('paddle_txn_id', txnId);
                 }
-                window.location.href = '{{ route('subscription.processing') }}';
+                window.location.href = '<?php echo e(route('subscription.processing')); ?>';
             }
         }
     });
@@ -871,7 +855,7 @@
         btn.disabled = true;
 
         try {
-            const res = await fetch('{{ route('subscription.checkout') }}', {
+            const res = await fetch('<?php echo e(route('subscription.checkout')); ?>', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -910,12 +894,12 @@
     (async function fetchLocalPrices() {
         try {
             const priceIds = [
-                '{{ config('plans.personal.paddle_monthly_id') }}',
-                '{{ config('plans.personal.paddle_annual_id') }}',
-                '{{ config('plans.professional.paddle_monthly_id') }}',
-                '{{ config('plans.professional.paddle_annual_id') }}',
-                '{{ config('plans.business.paddle_monthly_id') }}',
-                '{{ config('plans.business.paddle_annual_id') }}',
+                '<?php echo e(config('plans.personal.paddle_monthly_id')); ?>',
+                '<?php echo e(config('plans.personal.paddle_annual_id')); ?>',
+                '<?php echo e(config('plans.professional.paddle_monthly_id')); ?>',
+                '<?php echo e(config('plans.professional.paddle_annual_id')); ?>',
+                '<?php echo e(config('plans.business.paddle_monthly_id')); ?>',
+                '<?php echo e(config('plans.business.paddle_annual_id')); ?>',
             ].filter(Boolean);
 
             const result = await Paddle.PricePreview({
@@ -929,12 +913,12 @@
                 priceMap[item.price.id] = item.formattedTotals.total;
             });
 
-            updatePrice('personal',     'mo', priceMap['{{ config('plans.personal.paddle_monthly_id') }}']);
-            updatePrice('personal',     'yr', priceMap['{{ config('plans.personal.paddle_annual_id') }}']);
-            updatePrice('professional', 'mo', priceMap['{{ config('plans.professional.paddle_monthly_id') }}']);
-            updatePrice('professional', 'yr', priceMap['{{ config('plans.professional.paddle_annual_id') }}']);
-            updatePrice('business',     'mo', priceMap['{{ config('plans.business.paddle_monthly_id') }}']);
-            updatePrice('business',     'yr', priceMap['{{ config('plans.business.paddle_annual_id') }}']);
+            updatePrice('personal',     'mo', priceMap['<?php echo e(config('plans.personal.paddle_monthly_id')); ?>']);
+            updatePrice('personal',     'yr', priceMap['<?php echo e(config('plans.personal.paddle_annual_id')); ?>']);
+            updatePrice('professional', 'mo', priceMap['<?php echo e(config('plans.professional.paddle_monthly_id')); ?>']);
+            updatePrice('professional', 'yr', priceMap['<?php echo e(config('plans.professional.paddle_annual_id')); ?>']);
+            updatePrice('business',     'mo', priceMap['<?php echo e(config('plans.business.paddle_monthly_id')); ?>']);
+            updatePrice('business',     'yr', priceMap['<?php echo e(config('plans.business.paddle_annual_id')); ?>']);
 
         } catch (e) {
             console.log('Price preview failed, showing default USD prices:', e.message);
@@ -976,4 +960,5 @@
     }
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/pricing.blade.php ENDPATH**/ ?>

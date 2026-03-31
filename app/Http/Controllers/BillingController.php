@@ -450,7 +450,7 @@ class BillingController extends Controller
         } elseif ($isUpgrade) {
             $msg = "Upgrade to " . ucfirst($plan) . " (" . ucfirst($billing) . ") scheduled for " . ($subscription->next_billing_date?->format('M d, Y') ?? 'next renewal') . ". No charge today.";
         } else {
-            $msg = "Downgrade to " . ucfirst($plan) . " (" . ucfirst($billing) . ") scheduled for " . ($subscription->next_billing_date?->format('M d, Y') ?? 'next renewal') . ". Current limits remain until then.";
+            $msg = "Plan changed to " . ucfirst($plan) . " (" . ucfirst($billing) . ") scheduled for " . ($subscription->next_billing_date?->format('M d, Y') ?? 'next renewal') . ". Current limits remain until then.";
         }
 
         return back()->with('success', $msg);
