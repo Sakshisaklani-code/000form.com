@@ -81,9 +81,9 @@ class PlaygroundFormSubmissionMail extends Mailable
         
         // Map template to view
         $view = match($template) {
-            'table' => 'emails.submission-table',
-            'box' => 'emails.submission-box',
-            default => 'emails.submission-basic',
+            'table' => 'emails.express.submission-table',
+            'box' => 'emails.express.submission-box',
+            default => 'emails.express.submission-basic',
         };
 
         // Prepare data for the view

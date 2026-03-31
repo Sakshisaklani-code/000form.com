@@ -188,3 +188,1040 @@
 [2026-03-31 06:43:53] local.ERROR: JWT verification error: Incorrect key for this algorithm  
 [2026-03-31 06:45:00] local.ERROR: JWT verification error: Incorrect key for this algorithm  
 [2026-03-31 06:45:28] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-31 08:31:28] local.INFO: Playground: verification email sent {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:31:34] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-31 08:31:38] local.INFO: Playground: email verified permanently {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:32:10] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:32:10] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-31 08:32:11] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty basic local","_captcha":"false"},"all_files":[]} 
+[2026-03-31 08:32:11] local.INFO: Playground: Form data prepared {"name":"Sakshi Saklani","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty basic local","all_fields":{"message":"qwerty basic local","name":"Sakshi Saklani","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-31 08:32:11] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-31 08:32:11] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:32:11] local.INFO: Playground: Mail rendered successfully {"html_length":7099,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-03-31 08:32:11] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:32:13] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:32:13] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-03-31 08:33:09] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:33:09] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-31 08:33:10] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty box local","_template":"box","_captcha":"false"},"all_files":[]} 
+[2026-03-31 08:33:10] local.INFO: Playground: Special field found {"key":"_template","value":"box"} 
+[2026-03-31 08:33:10] local.INFO: Playground: Form data prepared {"name":"Sakshi Saklani","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty box local","all_fields":{"message":"qwerty box local","name":"Sakshi Saklani","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-31 08:33:10] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-31 08:33:10] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"box","view":"emails.express.submission-box","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:33:10] local.INFO: Playground: Mail rendered successfully {"html_length":9361,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-03-31 08:33:10] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"box","view":"emails.express.submission-box","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:33:11] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:33:11] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-03-31 08:34:02] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:34:02] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-31 08:34:03] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty table local","_template":"table","_captcha":"false"},"all_files":[]} 
+[2026-03-31 08:34:03] local.INFO: Playground: Special field found {"key":"_template","value":"table"} 
+[2026-03-31 08:34:03] local.INFO: Playground: Form data prepared {"name":"Sakshi Saklani","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty table local","all_fields":{"message":"qwerty table local","name":"Sakshi Saklani","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-31 08:34:03] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-31 08:34:03] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:34:03] local.INFO: Playground: Mail rendered successfully {"html_length":8173,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-03-31 08:34:03] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:34:04] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:34:04] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-03-31 08:35:58] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:35:58] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-31 08:36:00] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty table local 2","_template":"table","_captcha":"false"},"all_files":[]} 
+[2026-03-31 08:36:00] local.INFO: Playground: Special field found {"key":"_template","value":"table"} 
+[2026-03-31 08:36:00] local.INFO: Playground: Form data prepared {"name":"Sakshi Saklani","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty table local 2","all_fields":{"message":"qwerty table local 2","name":"Sakshi Saklani","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-31 08:36:00] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-31 08:36:00] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:36:00] local.INFO: Playground: Mail rendered successfully {"html_length":8235,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-03-31 08:36:00] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:36:01] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:36:01] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-03-31 08:39:55] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:39:55] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-31 08:39:56] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"sakshi","email":"tanuja10@yopmail.com","message":"qwerty table local 3","_template":"table","_captcha":"false"},"all_files":[]} 
+[2026-03-31 08:39:56] local.INFO: Playground: Special field found {"key":"_template","value":"table"} 
+[2026-03-31 08:39:56] local.INFO: Playground: Form data prepared {"name":"sakshi","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty table local 3","all_fields":{"message":"qwerty table local 3","name":"sakshi","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-31 08:39:56] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-31 08:39:56] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:39:56] local.INFO: Playground: Mail rendered successfully {"html_length":7449,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-03-31 08:39:56] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:39:57] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:39:57] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-03-31 08:43:07] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:43:07] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-31 08:43:09] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty table local 3","_template":"table","_captcha":"false"},"all_files":[]} 
+[2026-03-31 08:43:09] local.INFO: Playground: Special field found {"key":"_template","value":"table"} 
+[2026-03-31 08:43:09] local.INFO: Playground: Form data prepared {"name":"Sakshi Saklani","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty table local 3","all_fields":{"message":"qwerty table local 3","name":"Sakshi Saklani","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-31 08:43:09] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-31 08:43:09] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:43:09] local.INFO: Playground: Mail rendered successfully {"html_length":9175,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-03-31 08:43:09] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:43:10] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:43:10] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-03-31 08:44:56] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:44:56] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-31 08:44:58] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty table local4","_template":"table","_captcha":"false"},"all_files":[]} 
+[2026-03-31 08:44:58] local.INFO: Playground: Special field found {"key":"_template","value":"table"} 
+[2026-03-31 08:44:58] local.INFO: Playground: Form data prepared {"name":"Sakshi Saklani","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty table local4","all_fields":{"message":"qwerty table local4","name":"Sakshi Saklani","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-31 08:44:58] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-31 08:44:58] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:44:58] local.INFO: Playground: Mail rendered successfully {"html_length":9343,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-03-31 08:44:58] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:44:59] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:44:59] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-03-31 08:48:21] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:48:21] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-31 08:48:22] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"sakshi","email":"tanuja10@yopmail.com","message":"qwerty table local 5","_template":"table","_captcha":"false"},"all_files":[]} 
+[2026-03-31 08:48:22] local.INFO: Playground: Special field found {"key":"_template","value":"table"} 
+[2026-03-31 08:48:22] local.INFO: Playground: Form data prepared {"name":"sakshi","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty table local 5","all_fields":{"message":"qwerty table local 5","name":"sakshi","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-31 08:48:22] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-31 08:48:22] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:48:22] local.INFO: Playground: Mail rendered successfully {"html_length":9496,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+
+        body {
+
+            font-family: 'DM Sa"} 
+[2026-03-31 08:48:22] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:48:24] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:48:24] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-03-31 08:52:38] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:52:38] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-31 08:52:39] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Sakshi Saklani","email":"test-000forms@yopmail.com","message":"qwerty table local 5","_template":"table","_captcha":"false"},"all_files":[]} 
+[2026-03-31 08:52:39] local.INFO: Playground: Special field found {"key":"_template","value":"table"} 
+[2026-03-31 08:52:39] local.INFO: Playground: Form data prepared {"name":"Sakshi Saklani","sender_email":"test-000forms@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty table local 5","all_fields":{"message":"qwerty table local 5","name":"Sakshi Saklani","email":"test-000forms@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-31 08:52:39] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-31 08:52:39] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:52:39] local.INFO: Playground: Mail rendered successfully {"html_length":9927,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+
+        body {
+
+            font-family: 'DM Sa"} 
+[2026-03-31 08:52:39] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:52:41] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:52:41] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-03-31 08:53:46] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:53:46] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-31 08:53:47] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty table local 6","_template":"table","_captcha":"false"},"all_files":[]} 
+[2026-03-31 08:53:47] local.INFO: Playground: Special field found {"key":"_template","value":"table"} 
+[2026-03-31 08:53:47] local.INFO: Playground: Form data prepared {"name":"Sakshi Saklani","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty table local 6","all_fields":{"message":"qwerty table local 6","name":"Sakshi Saklani","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-31 08:53:47] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-31 08:53:47] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:53:47] local.INFO: Playground: Mail rendered successfully {"html_length":9518,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+
+        body {
+
+            font-family: 'DM Sa"} 
+[2026-03-31 08:53:47] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:53:48] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:53:48] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-03-31 08:54:56] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:54:56] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-31 08:54:58] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty box local 2","_template":"box","_captcha":"false"},"all_files":[]} 
+[2026-03-31 08:54:58] local.INFO: Playground: Special field found {"key":"_template","value":"box"} 
+[2026-03-31 08:54:58] local.INFO: Playground: Form data prepared {"name":"Sakshi Saklani","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty box local 2","all_fields":{"message":"qwerty box local 2","name":"Sakshi Saklani","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-31 08:54:58] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-31 08:54:58] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"box","view":"emails.express.submission-box","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:54:58] local.INFO: Playground: Mail rendered successfully {"html_length":9408,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-03-31 08:54:58] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"box","view":"emails.express.submission-box","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:54:59] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:54:59] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-03-31 08:55:44] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:55:44] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-03-31 08:55:45] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty basic local 2","_captcha":"false"},"all_files":[]} 
+[2026-03-31 08:55:45] local.INFO: Playground: Form data prepared {"name":"Sakshi Saklani","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty basic local 2","all_fields":{"message":"qwerty basic local 2","name":"Sakshi Saklani","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-03-31 08:55:45] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-03-31 08:55:45] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:55:45] local.INFO: Playground: Mail rendered successfully {"html_length":7146,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-03-31 08:55:45] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-03-31 08:55:46] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-03-31 08:55:46] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-03-31 09:31:10] local.ERROR: "inactive" is not a valid backing value for enum App\Enums\SubscriptionStatus {"exception":"[object] (ValueError(code: 0): \"inactive\" is not a valid backing value for enum App\\Enums\\SubscriptionStatus at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasAttributes.php:1253)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasAttributes.php(1253): App/Enums/SubscriptionStatus::from('inactive')
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasAttributes.php(1238): Illuminate/Database/Eloquent/Model->getEnumCaseFromValue('App//Enums//Subsc...', 'inactive')
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasAttributes.php(1041): Illuminate/Database/Eloquent/Model->setEnumCastableAttribute('status', 'inactive')
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2272): Illuminate/Database/Eloquent/Model->setAttribute('status', 'inactive')
+#4 C:/Git-folders/000form.com/app/Console/Commands/ReconcileSubscriptions.php(43): Illuminate/Database/Eloquent/Model->__set('status', 'inactive')
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App/Console/Commands/ReconcileSubscriptions->handle()
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#11 C:/Git-folders/000form.com/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#13 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(1102): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#14 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(App/Console/Commands/ReconcileSubscriptions), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#15 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#19 {main}
+"} 
+[2026-03-31 09:35:42] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-31 09:35:48] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-31 09:35:51] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-31 09:35:56] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-31 09:35:58] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-31 09:35:59] local.ERROR: Supabase refresh token error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=refresh_token` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"refresh_token_not_found","msg":"Invalid Refresh Token: Refresh Token Not Found"}
+  
+[2026-03-31 09:36:23] local.ERROR: Supabase signin error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=password` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"invalid_credentials","msg":"Invalid login credentials"}
+  
+[2026-03-31 09:36:33] local.ERROR: Supabase signin error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=password` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"invalid_credentials","msg":"Invalid login credentials"}
+  
+[2026-03-31 09:36:42] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-31 09:36:53] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-31 09:37:07] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-31 10:17:00] local.ERROR: Target class [App\Services\PaddleService] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [App\\Services\\PaddleService] does not exist. at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php:961)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#19 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"App\\Services\\PaddleService\" does not exist at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php:959)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(959): ReflectionClass->__construct('App//Services//Pa...')
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#20 {main}
+"} 
+[2026-03-31 10:17:45] local.ERROR: Target class [App\Services\PaddleService] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [App\\Services\\PaddleService] does not exist. at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php:961)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#19 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"App\\Services\\PaddleService\" does not exist at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php:959)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(959): ReflectionClass->__construct('App//Services//Pa...')
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#20 {main}
+"} 
+[2026-03-31 10:20:39] local.ERROR: Target class [App\Services\PaddleService] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [App\\Services\\PaddleService] does not exist. at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php:961)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#19 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"App\\Services\\PaddleService\" does not exist at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php:959)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(959): ReflectionClass->__construct('App//Services//Pa...')
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#20 {main}
+"} 
+[2026-03-31 10:20:41] local.ERROR: Target class [App\Services\PaddleService] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [App\\Services\\PaddleService] does not exist. at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php:961)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#19 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"App\\Services\\PaddleService\" does not exist at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php:959)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(959): ReflectionClass->__construct('App//Services//Pa...')
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#20 {main}
+"} 
+[2026-03-31 10:20:56] local.ERROR: Target class [App\Services\PaddleService] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [App\\Services\\PaddleService] does not exist. at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php:961)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#19 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"App\\Services\\PaddleService\" does not exist at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php:959)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(959): ReflectionClass->__construct('App//Services//Pa...')
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#20 {main}
+"} 
+[2026-03-31 10:21:42] local.ERROR: Target class [App\Services\PaddleService] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [App\\Services\\PaddleService] does not exist. at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php:961)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#18 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#19 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"App\\Services\\PaddleService\" does not exist at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php:959)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(959): ReflectionClass->__construct('App//Services//Pa...')
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#19 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#20 {main}
+"} 
+[2026-03-31 10:23:15] local.ERROR: Cannot assign null to property App\Services\PaddleService::$apiKey of type string {"exception":"[object] (TypeError(code: 0): Cannot assign null to property App\\Services\\PaddleService::$apiKey of type string at C:/Git-folders/000form.com/app/Services/PaddleService.php:19)
+[stacktrace]
+#0 [internal function]: App/Services/PaddleService->__construct()
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1004): ReflectionClass->newInstanceArgs(Array)
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#21 {main}
+"} 
+[2026-03-31 10:23:15] local.ERROR: Cannot assign null to property App\Services\PaddleService::$apiKey of type string {"exception":"[object] (TypeError(code: 0): Cannot assign null to property App\\Services\\PaddleService::$apiKey of type string at C:/Git-folders/000form.com/app/Services/PaddleService.php:19)
+[stacktrace]
+#0 [internal function]: App/Services/PaddleService->__construct()
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1004): ReflectionClass->newInstanceArgs(Array)
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#21 {main}
+"} 
+[2026-03-31 10:23:17] local.ERROR: Cannot assign null to property App\Services\PaddleService::$apiKey of type string {"exception":"[object] (TypeError(code: 0): Cannot assign null to property App\\Services\\PaddleService::$apiKey of type string at C:/Git-folders/000form.com/app/Services/PaddleService.php:19)
+[stacktrace]
+#0 [internal function]: App/Services/PaddleService->__construct()
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1004): ReflectionClass->newInstanceArgs(Array)
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#21 {main}
+"} 
+[2026-03-31 10:23:44] local.ERROR: Cannot assign null to property App\Services\PaddleService::$apiKey of type string {"exception":"[object] (TypeError(code: 0): Cannot assign null to property App\\Services\\PaddleService::$apiKey of type string at C:/Git-folders/000form.com/app/Services/PaddleService.php:19)
+[stacktrace]
+#0 [internal function]: App/Services/PaddleService->__construct()
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1004): ReflectionClass->newInstanceArgs(Array)
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#21 {main}
+"} 
+[2026-03-31 10:27:33] local.ERROR: Cannot assign null to property App\Services\PaddleService::$apiKey of type string {"exception":"[object] (TypeError(code: 0): Cannot assign null to property App\\Services\\PaddleService::$apiKey of type string at C:/Git-folders/000form.com/app/Services/PaddleService.php:19)
+[stacktrace]
+#0 [internal function]: App/Services/PaddleService->__construct()
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1004): ReflectionClass->newInstanceArgs(Array)
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#21 {main}
+"} 
+[2026-03-31 10:27:37] local.ERROR: Cannot assign null to property App\Services\PaddleService::$apiKey of type string {"exception":"[object] (TypeError(code: 0): Cannot assign null to property App\\Services\\PaddleService::$apiKey of type string at C:/Git-folders/000form.com/app/Services/PaddleService.php:19)
+[stacktrace]
+#0 [internal function]: App/Services/PaddleService->__construct()
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1004): ReflectionClass->newInstanceArgs(Array)
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#21 {main}
+"} 
+[2026-03-31 10:27:39] local.ERROR: Cannot assign null to property App\Services\PaddleService::$apiKey of type string {"exception":"[object] (TypeError(code: 0): Cannot assign null to property App\\Services\\PaddleService::$apiKey of type string at C:/Git-folders/000form.com/app/Services/PaddleService.php:19)
+[stacktrace]
+#0 [internal function]: App/Services/PaddleService->__construct()
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1004): ReflectionClass->newInstanceArgs(Array)
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Services//Pa...')
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Services//Pa...', Array, true)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Services//Pa...', Array)
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Services//Pa...', Array)
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1133): Illuminate/Foundation/Application->make('App//Services//Pa...')
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(1043): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(994): Illuminate/Container/Container->resolveDependencies(Array)
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(832): Illuminate/Container/Container->build('App//Console//Com...')
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1078): Illuminate/Container/Container->resolve('App//Console//Com...', Array, true)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(763): Illuminate/Foundation/Application->resolve('App//Console//Com...', Array)
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1058): Illuminate/Container/Container->make('App//Console//Com...', Array)
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(292): Illuminate/Foundation/Application->make('App//Console//Com...')
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(376): Illuminate/Console/Application->resolve('App//Console//Com...')
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(134): Illuminate/Foundation/Console/Kernel->Illuminate/Foundation/Console/{closure}(Object(Illuminate/Console/Application))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(81): Illuminate/Console/Application->bootstrap()
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(540): Illuminate/Console/Application->__construct(Object(Illuminate/Foundation/Application), Object(Illuminate/Events/Dispatcher), '11.48.0')
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Illuminate/Foundation/Console/Kernel->getArtisan()
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#20 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#21 {main}
+"} 
+[2026-03-31 10:29:39] local.WARNING: Paddle API: getSubscription failed {"paddle_id":"sub_01kn176g7kx9p82ma6g3gg9zxw","status":403} 
+[2026-03-31 10:29:40] local.WARNING: Paddle API: getSubscription failed {"paddle_id":"sub_01km57kpbfwf4rn46745devxg1","status":403} 
+[2026-03-31 10:29:40] local.WARNING: Paddle API: getSubscription failed {"paddle_id":"sub_01kmfpwpdmqy76044bqe2serzx","status":403} 
+[2026-03-31 10:29:41] local.WARNING: Paddle API: getSubscription failed {"paddle_id":"sub_01km4vqytrrx8fg5yq4xmydham","status":403} 
+[2026-03-31 10:37:40] local.WARNING: Paddle API: getSubscription failed {"paddle_id":"sub_01kn176g7kx9p82ma6g3gg9zxw","status":403} 
+[2026-03-31 10:37:40] local.WARNING: Paddle API: getSubscription failed {"paddle_id":"sub_01km57kpbfwf4rn46745devxg1","status":403} 
+[2026-03-31 10:37:41] local.WARNING: Paddle API: getSubscription failed {"paddle_id":"sub_01kmfpwpdmqy76044bqe2serzx","status":403} 
+[2026-03-31 10:37:41] local.WARNING: Paddle API: getSubscription failed {"paddle_id":"sub_01km4vqytrrx8fg5yq4xmydham","status":403} 
+[2026-03-31 10:39:20] local.WARNING: Paddle API: getSubscription failed {"paddle_id":"sub_01kn176g7kx9p82ma6g3gg9zxw","status":403} 
+[2026-03-31 10:48:43] local.ERROR: Object of class App\Enums\SubscriptionStatus could not be converted to string {"exception":"[object] (Error(code: 0): Object of class App\\Enums\\SubscriptionStatus could not be converted to string at C:/Git-folders/000form.com/app/Console/Commands/Syncsubscriptionstatuses.php:54)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App/Console/Commands/SyncSubscriptionStatuses->handle()
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#6 C:/Git-folders/000form.com/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#8 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(1102): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#9 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(App/Console/Commands/SyncSubscriptionStatuses), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#10 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#13 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#14 {main}
+"} 
+[2026-03-31 10:50:01] local.ERROR: Object of class App\Enums\SubscriptionStatus could not be converted to string {"exception":"[object] (Error(code: 0): Object of class App\\Enums\\SubscriptionStatus could not be converted to string at C:/Git-folders/000form.com/app/Console/Commands/Syncsubscriptionstatuses.php:54)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App/Console/Commands/SyncSubscriptionStatuses->handle()
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#6 C:/Git-folders/000form.com/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#8 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(1102): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#9 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(App/Console/Commands/SyncSubscriptionStatuses), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#10 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#12 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#13 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#14 {main}
+"} 
+[2026-03-31 10:56:29] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-31 10:56:36] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-31 10:57:09] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-31 10:57:22] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-03-31 11:11:38] local.ERROR: A cell must be a TableCell, a scalar or an object implementing "__toString()", "App\Enums\PlanName" given. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\InvalidArgumentException(code: 0): A cell must be a TableCell, a scalar or an object implementing \"__toString()\", \"App\\Enums\\PlanName\" given. at C:/Git-folders/000form.com/vendor/symfony/console/Helper/Table.php:734)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/symfony/console/Helper/Table.php(623): Symfony/Component/Console/Helper/Table->fillNextRows(Array, 2)
+#1 C:/Git-folders/000form.com/vendor/symfony/console/Helper/Table.php(392): Symfony/Component/Console/Helper/Table->buildTableRows(Array)
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Concerns/InteractsWithIO.php(247): Symfony/Component/Console/Helper/Table->render()
+#3 C:/Git-folders/000form.com/app/Console/Commands/Subscriptionstatusreport.php(50): Illuminate/Console/Command->table(Array, Array)
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App/Console/Commands/SubscriptionStatusReport->handle()
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#10 C:/Git-folders/000form.com/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#12 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(1102): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#13 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(App/Console/Commands/SubscriptionStatusReport), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#14 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#17 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#18 {main}
+"} 

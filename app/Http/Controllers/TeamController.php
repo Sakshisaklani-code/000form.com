@@ -133,15 +133,66 @@ class TeamController extends Controller
     public function cancelInvitation(Request $request, TeamInvitation $invitation): RedirectResponse
     {
         $user = $request->user();
-
+ 
+        if (! $user) {
+            return redirect()->route('login')->with('error', 'Please log in to continue.');
+        }
+ 
         if ($invitation->workspace_owner_id !== $user->id) {
             return back()->with('error', 'Unauthorized.');
         }
-
+ 
         $invitation->update(['status' => 'declined']);
-
+ 
         return back()->with('success', 'Invitation cancelled.');
     }
+
+    // ── SHOW ACCEPT PAGE (no auth required) ──────────────────
+    // public function showAccept(string $token): View|RedirectResponse
+    // {
+    //     $invitation = TeamInvitation::where('token', $token)->first();
+
+    //     if (! $invitation) {
+    //         return redirect()->route('login')->with('error', 'Invalid invitation link.');
+    //     }
+
+    //     if ($invitation->isExpired()) {
+    //         $invitation->update(['status' => 'expired']);
+    //         return redirect()->route('login')->with('error', 'This invitation has expired. Ask the workspace owner to resend it.');
+    //     }
+
+    //     if ($invitation->isAccepted()) {
+    //         return auth()->check()
+    //             ? redirect()->route('dashboard')->with('info', 'You have already accepted this invitation.')
+    //             : redirect()->route('login')->with('info', 'This invitation has already been accepted.');
+    //     }
+
+    //     // ── Not logged in ─────────────────────────────────────
+    //     if (! auth()->check()) {
+    //         session(['team_invite_token' => $token]);
+
+    //         $hasAccount = User::where('email', $invitation->invitee_email)->exists();
+
+    //         if ($hasAccount) {
+    //             return redirect()->route('login')
+    //                 ->with('info', "Please sign in with {$invitation->invitee_email} to accept the team invitation.");
+    //         } else {
+    //             return redirect()->route('signup')
+    //                 ->with('info', "Create a free account using {$invitation->invitee_email} to accept the team invitation.");
+    //         }
+    //     }
+
+    //     $user = auth()->user();
+
+    //     // ── Wrong account logged in ───────────────────────────
+    //     $wrongAccount = strtolower($user->email) !== strtolower($invitation->invitee_email);
+
+    //     return view('team.accept', [
+    //         'invitation'   => $invitation,
+    //         'wrongAccount' => $wrongAccount,
+    //         'currentEmail' => $user->email,
+    //     ]);
+    // }
 
     // ── SHOW ACCEPT PAGE (no auth required) ──────────────────
     public function showAccept(string $token): View|RedirectResponse
@@ -165,6 +216,13 @@ class TeamController extends Controller
 
         // ── Not logged in ─────────────────────────────────────
         if (! auth()->check()) {
+            // Store the accept page as Laravel's "intended" URL.
+            // redirect()->intended() in your login controller reads exactly this
+            // session key, so after a successful login the user lands straight
+            // back on the accept page — no need to touch the login controller.
+            session(['url.intended' => route('team.accept', ['token' => $token])]);
+
+            // Keep the token as a fallback for signup flows or custom login controllers
             session(['team_invite_token' => $token]);
 
             $hasAccount = User::where('email', $invitation->invitee_email)->exists();
