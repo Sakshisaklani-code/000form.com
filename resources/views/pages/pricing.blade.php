@@ -635,7 +635,7 @@
                     {{-- Higher tier — show upgrade CTA --}}
                     <button class="pp-cta pp-cta-upgrade" onclick="startCheckout('{{ $planKey }}')">
                         <span class="spinner"></span>
-                        <span class="btn-text">↑ Upgrade to {{ $plan['label'] }} →</span>
+                        <span class="btn-text">Upgrade to {{ $plan['label'] }} →</span>
                     </button>
 
                 @elseif($isDowngrade)
@@ -648,7 +648,7 @@
                     {{-- Free user (no active sub) — every paid plan is an upgrade --}}
                     <button class="pp-cta pp-cta-upgrade" onclick="startCheckout('{{ $planKey }}')">
                         <span class="spinner"></span>
-                        <span class="btn-text">↑ Upgrade to {{ $plan['label'] }} →</span>
+                        <span class="btn-text">Upgrade to {{ $plan['label'] }} →</span>
                     </button>
                 @endif
 

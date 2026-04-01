@@ -1,0 +1,135 @@
+[2026-04-01 05:07:34] local.INFO: Supabase signup success {"result":{"success":true,"data":{"id":"6d3e164d-3723-4b28-b79b-74a2ff04e613","aud":"authenticated","role":"authenticated","email":"tanuja-test-1@yopmail.com","phone":"","confirmation_sent_at":"2026-04-01T05:07:27.96113598Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email":"tanuja-test-1@yopmail.com","email_verified":false,"phone_verified":false,"sub":"6d3e164d-3723-4b28-b79b-74a2ff04e613"},"identities":[{"identity_id":"8a2afff3-3b7f-426d-a21e-5b20337eb36a","id":"6d3e164d-3723-4b28-b79b-74a2ff04e613","user_id":"6d3e164d-3723-4b28-b79b-74a2ff04e613","identity_data":{"email":"tanuja-test-1@yopmail.com","email_verified":false,"phone_verified":false,"sub":"6d3e164d-3723-4b28-b79b-74a2ff04e613"},"provider":"email","last_sign_in_at":"2026-04-01T05:07:27.932532194Z","created_at":"2026-04-01T05:07:27.93258Z","updated_at":"2026-04-01T05:07:27.93258Z","email":"tanuja-test-1@yopmail.com"}],"created_at":"2026-04-01T05:07:27.884501Z","updated_at":"2026-04-01T05:07:29.694692Z","is_anonymous":false}}} 
+[2026-04-01 05:07:50] local.ERROR: Supabase signup error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/signup` resulted in a `429 Too Many Requests` response:
+{"code":429,"error_code":"over_email_send_rate_limit","msg":"For security purposes, you can only request this after 41 s (truncated...)
+  
+[2026-04-01 05:08:40] local.INFO: Supabase signup success {"result":{"success":true,"data":{"id":"72241ed8-03f6-469e-9cad-b50906b5f86d","aud":"authenticated","role":"authenticated","email":"tanuja-test-01@yopmail.com","phone":"","confirmation_sent_at":"2026-04-01T05:08:34.699985853Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email":"tanuja-test-01@yopmail.com","email_verified":false,"phone_verified":false,"sub":"72241ed8-03f6-469e-9cad-b50906b5f86d"},"identities":[{"identity_id":"1f0b85cd-752b-477e-bb69-f8047ce46f5c","id":"72241ed8-03f6-469e-9cad-b50906b5f86d","user_id":"72241ed8-03f6-469e-9cad-b50906b5f86d","identity_data":{"email":"tanuja-test-01@yopmail.com","email_verified":false,"phone_verified":false,"sub":"72241ed8-03f6-469e-9cad-b50906b5f86d"},"provider":"email","last_sign_in_at":"2026-04-01T05:08:34.697376368Z","created_at":"2026-04-01T05:08:34.697419Z","updated_at":"2026-04-01T05:08:34.697419Z","email":"tanuja-test-01@yopmail.com"}],"created_at":"2026-04-01T05:08:34.692605Z","updated_at":"2026-04-01T05:08:36.568446Z","is_anonymous":false}}} 
+[2026-04-01 05:08:45] local.INFO: Admin email sent {"emails":["sakshi.saklani@drishinfo.com","tsaklani2drish@gmail.com"]} 
+[2026-04-01 05:34:27] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:34:36] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:34:39] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:34:45] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:36:00] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:36:40] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:36:49] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:37:12] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:37:14] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:37:16] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:37:17] local.INFO: Paddle API: transaction txn_01kn3rpnnnj7y8a836zanj4zzc status=completed  
+[2026-04-01 05:37:18] local.INFO: Invoice PDF fetched for txn_01kn3rpnnnj7y8a836zanj4zzc: yes  
+[2026-04-01 05:37:21] local.INFO: Payment success email sent to user: tanuja-test-01@yopmail.com  
+[2026-04-01 05:37:21] local.ERROR: Failed to send admin payment email: App\Mail\PaymentSuccessAdmin::__construct(): Argument #2 ($userId) must be of type int, string given, called in C:\Git-folders\000form.com\app\Http\Controllers\CheckoutController.php on line 144  
+[2026-04-01 05:37:21] local.INFO: Built subscription from Paddle API for user 72241ed8-03f6-469e-9cad-b50906b5f86d {"plan":"professional","sub_id":"sub_01kn3rq9dpp5dec8vbrfje5tjb","txn_id":"txn_01kn3rpnnnj7y8a836zanj4zzc","currency":"INR","invoice_pdf":"yes"} 
+[2026-04-01 05:38:02] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:38:05] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:38:07] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:38:08] local.ERROR: Supabase refresh token error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=refresh_token` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"refresh_token_not_found","msg":"Invalid Refresh Token: Refresh Token Not Found"}
+  
+[2026-04-01 05:38:34] local.ERROR: Supabase signin error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=password` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"invalid_credentials","msg":"Invalid login credentials"}
+  
+[2026-04-01 05:38:48] local.INFO: Reset token received: YES - eyJhbGciOiJFUzI1NiIs...  
+[2026-04-01 05:38:48] local.INFO: Session after save: SET  
+[2026-04-01 05:39:18] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:39:27] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:39:32] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:39:37] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:40:34] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:40:36] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:40:39] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:40:40] local.INFO: Paddle API: transaction txn_01kn3rvss8jw3nwjhda1wdeph9 status=completed  
+[2026-04-01 05:40:41] local.INFO: Invoice PDF fetched for txn_01kn3rvss8jw3nwjhda1wdeph9: yes  
+[2026-04-01 05:40:44] local.INFO: Payment success email sent to user: tsaklani2drish@gmail.com  
+[2026-04-01 05:40:44] local.ERROR: Failed to send admin payment email: App\Mail\PaymentSuccessAdmin::__construct(): Argument #2 ($userId) must be of type int, string given, called in C:\Git-folders\000form.com\app\Http\Controllers\CheckoutController.php on line 144  
+[2026-04-01 05:40:44] local.INFO: Built subscription from Paddle API for user d4846ed8-0c73-4d43-8052-21cb0f8e8039 {"plan":"professional","sub_id":"sub_01kn3rxerfad2j0j20a32mxw2j","txn_id":"txn_01kn3rvss8jw3nwjhda1wdeph9","currency":"INR","invoice_pdf":"yes"} 
+[2026-04-01 05:41:22] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:41:30] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:42:07] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:47:24] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:47:28] local.INFO: Plan swapped via Paddle: professional/monthly → business/monthly (when=immediately) for user d4846ed8-0c73-4d43-8052-21cb0f8e8039  
+[2026-04-01 05:47:30] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:48:05] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:58:00] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:58:07] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:58:14] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:58:17] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:58:23] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:58:39] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:58:41] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:58:44] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 05:58:45] local.INFO: Paddle API: transaction txn_01kn3sy6papj3fwdpqa5j7tpvs status=completed  
+[2026-04-01 05:58:46] local.INFO: Invoice PDF fetched for txn_01kn3sy6papj3fwdpqa5j7tpvs: yes  
+[2026-04-01 05:58:49] local.INFO: Payment success email sent to user: tsaklani2drish@gmail.com  
+[2026-04-01 05:58:49] local.INFO: Payment admin notification sent to: sakshi.saklani@drishinfo.com, tsaklani2drish@gmail.com  
+[2026-04-01 05:58:49] local.INFO: Built subscription from Paddle API for user d4846ed8-0c73-4d43-8052-21cb0f8e8039 {"plan":"personal","sub_id":"sub_01kn3syj5wrbfedcw5w8tz92y0","txn_id":"txn_01kn3sy6papj3fwdpqa5j7tpvs","currency":"INR","invoice_pdf":"yes"} 
+[2026-04-01 06:15:59] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:16:10] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:16:13] local.INFO: Plan swapped via Paddle: personal/monthly → professional/monthly (when=next_billing_period) for user d4846ed8-0c73-4d43-8052-21cb0f8e8039  
+[2026-04-01 06:16:15] local.INFO: Plan upgrade email sent to user: tsaklani2drish@gmail.com  
+[2026-04-01 06:16:15] local.INFO: Plan upgrade admin notification sent to: sakshi.saklani@drishinfo.com, tsaklani2drish@gmail.com  
+[2026-04-01 06:16:17] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:16:45] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:16:49] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:17:15] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:17:20] local.INFO: Plan swapped via Paddle: personal/monthly → professional/monthly (when=immediately) for user d4846ed8-0c73-4d43-8052-21cb0f8e8039  
+[2026-04-01 06:17:21] local.INFO: Plan upgrade email sent to user: tsaklani2drish@gmail.com  
+[2026-04-01 06:17:21] local.INFO: Plan upgrade admin notification sent to: sakshi.saklani@drishinfo.com, tsaklani2drish@gmail.com  
+[2026-04-01 06:17:23] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:18:05] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:18:11] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:20:14] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:20:17] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:21:11] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:21:14] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:23:25] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:23:28] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:23:33] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:23:50] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:23:52] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:23:55] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:23:56] local.INFO: Paddle API: transaction txn_01kn3vc8t059nwadj938x0nfyq status=completed  
+[2026-04-01 06:23:56] local.INFO: Invoice PDF fetched for txn_01kn3vc8t059nwadj938x0nfyq: yes  
+[2026-04-01 06:24:00] local.INFO: Payment success email sent to user: tsaklani2drish@gmail.com  
+[2026-04-01 06:24:00] local.INFO: Payment admin notification sent to: sakshi.saklani@drishinfo.com, tsaklani2drish@gmail.com  
+[2026-04-01 06:24:00] local.INFO: Built subscription from Paddle API for user d4846ed8-0c73-4d43-8052-21cb0f8e8039 {"plan":"personal","sub_id":"sub_01kn3vcn281bgsbg6hn1w46k75","txn_id":"txn_01kn3vc8t059nwadj938x0nfyq","currency":"INR","invoice_pdf":"yes"} 
+[2026-04-01 06:25:21] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:25:29] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:38:40] local.ERROR: Unable to prepare route [dashboard/forms/{formId}/submissions/{id}] for serialization. Another route has already been assigned name [dashboard.submissions.show]. {"exception":"[object] (LogicException(code: 0): Unable to prepare route [dashboard/forms/{formId}/submissions/{id}] for serialization. Another route has already been assigned name [dashboard.submissions.show]. at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php:248)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php(209): Illuminate/Routing/AbstractRouteCollection->addToSymfonyRoutesCollection(Object(Symfony/Component/Routing/RouteCollection), Object(Illuminate/Routing/Route))
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php(246): Illuminate/Routing/AbstractRouteCollection->toSymfonyRouteCollection()
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php(193): Illuminate/Routing/RouteCollection->toSymfonyRouteCollection()
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php(164): Illuminate/Routing/AbstractRouteCollection->dumper()
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/RouteCacheCommand.php(109): Illuminate/Routing/AbstractRouteCollection->compile()
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/RouteCacheCommand.php(68): Illuminate/Foundation/Console/RouteCacheCommand->buildRouteCacheFile(Object(Illuminate/Routing/RouteCollection))
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Foundation/Console/RouteCacheCommand->handle()
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#12 C:/Git-folders/000form.com/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(68): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArrayInput), Object(Symfony/Component/Console/Output/NullOutput))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(41): Illuminate/Console/Command->runCommand('route:cache', Array, Object(Symfony/Component/Console/Output/NullOutput))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(53): Illuminate/Console/Command->callSilent('route:cache', Array)
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/OptimizeCommand.php(48): Illuminate/Console/Command->callSilently('route:cache')
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(40): Illuminate/Foundation/Console/OptimizeCommand->Illuminate/Foundation/Console/{closure}()
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/View/Components/Factory.php(60): Illuminate/Console/View/Components/Task->render('routes', Object(Closure))
+#20 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/OptimizeCommand.php(48): Illuminate/Console/View/Components/Factory->__call('task', Array)
+#21 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Foundation/Console/OptimizeCommand->handle()
+#22 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#23 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#24 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#25 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#26 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#27 C:/Git-folders/000form.com/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#28 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#29 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(1102): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#30 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Foundation/Console/OptimizeCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#31 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#32 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#33 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#34 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#35 {main}
+"} 

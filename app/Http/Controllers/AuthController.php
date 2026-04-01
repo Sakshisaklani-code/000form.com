@@ -7,7 +7,10 @@ use App\Services\SupabaseAuthService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\NewUserRegistered;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
 
 
 class AuthController extends Controller
@@ -45,6 +48,43 @@ class AuthController extends Controller
     /**
      * Handle email/password signup.
      */
+    // public function signup(Request $request)
+    // {
+    //     $request->validate([
+    //         'email'    => 'required|email|max:255',
+    //         'password' => 'required|min:8|confirmed',
+    //     ]);
+
+    //     $existingUser = User::where('email', $request->input('email'))->first();
+    //     if ($existingUser) {
+    //         return back()
+    //             ->withInput($request->only('email'))
+    //             ->withErrors(['email' => 'An account with this email already exists. Please login instead.']);
+    //     }
+
+    //     $result = $this->supabase->signUp(
+    //         $request->input('email'),
+    //         $request->input('password')
+    //     );
+
+    //     if (!$result['success']) {
+    //         return back()
+    //             ->withInput($request->only('email'))
+    //             ->withErrors(['email' => $result['error']]);
+    //     }
+
+    //     if (isset($result['data']['user'])) {
+    //         return redirect()->route('login')
+    //             ->with('message', 'Please check your email to confirm your account.');
+    //     }
+
+    //     return redirect()->route('login')
+    //         ->with('message', 'Your account has been created. Kindly verify your email to activate it.');
+    // }
+
+    /**
+     * Handle email/password signup.
+     */
     public function signup(Request $request)
     {
         $request->validate([
@@ -70,7 +110,26 @@ class AuthController extends Controller
                 ->withErrors(['email' => $result['error']]);
         }
 
-        if (isset($result['data']['user'])) {
+        if ($result['success']) {
+            Log::info('Supabase signup success', ['result' => $result]);
+            $adminEmails = explode(',', getenv('MAIL_ADMIN_EMAILS'));
+            // dd($adminEmails);
+
+            // $adminEmails = [
+            //     'sakshi.saklani@drishinfo.com',
+            //     'tsaklani2drish@gmail.com'
+            // ];
+
+            try {
+                Mail::to($adminEmails)->send(new NewUserRegistered($request->input('email')));
+                Log::info('Admin email sent', ['emails' => $adminEmails]);
+            } catch (\Exception $e) {
+                Log::error('Failed to send admin email', [
+                    'emails' => $adminEmails,
+                    'error'  => $e->getMessage(),
+                ]);
+            }
+
             return redirect()->route('login')
                 ->with('message', 'Please check your email to confirm your account.');
         }

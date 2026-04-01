@@ -8,11 +8,8 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Mail;
 use App\Models\Subscription;
 use App\Models\SubscriptionInvoice;
-use App\Mail\PaymentSuccessUser;
-use App\Mail\PaymentSuccessAdmin;
 
 class CheckoutController extends Controller
 {
@@ -95,71 +92,6 @@ class CheckoutController extends Controller
         }
 
         return null;
-    }
-
-    // ── SEND PAYMENT SUCCESS EMAILS ───────────────────────────────
-    // Fires two emails:
-    //   1. User  → payment confirmation + invoice link
-    //   2. Admins → new payment notification with full details
-    private function sendPaymentEmails(
-        $user,
-        Subscription $sub,
-        SubscriptionInvoice $invoice,
-        string $formattedAmount,
-        ?string $invoicePdfUrl
-    ): void {
-        $planName    = is_string($sub->plan_name) ? $sub->plan_name : $sub->plan_name->value;
-        $periodEnd   = $sub->current_period_end?->format('M d, Y') ?? '—';
-        $subId       = $sub->paddle_subscription_id ?? '—';
-        $txnId       = $invoice->paddle_transaction_id ?? '—';
-        $currency    = $invoice->currency ?? 'USD';
-        $billingCycle = $sub->billing_cycle ?? 'monthly';
-
-        // ── 1. Email to the user ──────────────────────────────────
-        try {
-            Mail::to($user->email)->send(new PaymentSuccessUser(
-                userEmail:      $user->email,
-                planName:       $planName,
-                billingCycle:   $billingCycle,
-                amount:         $formattedAmount,
-                currency:       $currency,
-                periodEnd:      $periodEnd,
-                subscriptionId: $subId,
-                transactionId:  $txnId,
-                invoiceUrl:     $invoicePdfUrl,
-            ));
-
-            Log::info("Payment success email sent to user: {$user->email}");
-        } catch (\Throwable $e) {
-            Log::error("Failed to send user payment email to {$user->email}: " . $e->getMessage());
-        }
-
-        // ── 2. Emails to all admins ───────────────────────────────
-        try {
-            $adminEmails = explode(',', getenv('MAIL_ADMIN_EMAILS'));
-
-            if (!empty($adminEmails)) {
-                Mail::to($adminEmails)->send(new PaymentSuccessAdmin(
-                    userEmail:        $user->email,
-                    userId:           (int) $user->id,
-                    planName:         $planName,
-                    billingCycle:     $billingCycle,
-                    amount:           $formattedAmount,
-                    currency:         $currency,
-                    periodEnd:        $periodEnd,
-                    subscriptionId:   $subId,
-                    transactionId:    $txnId,
-                    invoiceUrl:       $invoicePdfUrl,
-                    paddleCustomerId: $user->paddle_customer_id ?? null,
-                ));
-
-                Log::info("Payment admin notification sent to: " . implode(', ', $adminEmails));
-            } else {
-                Log::warning("No MAIL_ADMIN_EMAILS configured — admin payment notification skipped.");
-            }
-        } catch (\Throwable $e) {
-            Log::error("Failed to send admin payment email: " . $e->getMessage());
-        }
     }
 
     // ── CREATE CHECKOUT ───────────────────────────────────────────
@@ -313,15 +245,13 @@ class CheckoutController extends Controller
                     }
                 }
 
-                $formattedAmount = $invoice
-                    ? $this->formatAmount($invoice->amount_cents, $invoice->currency)
-                    : $this->currencySymbol('USD') . config("plans.{$planName}.price_{$sub->billing_cycle}");
-
                 return response()->json([
                     'activated'     => true,
                     'plan'          => ucfirst($planName),
                     'billing_cycle' => ucfirst($sub->billing_cycle),
-                    'amount'        => $formattedAmount,
+                    'amount'        => $invoice
+                        ? $this->formatAmount($invoice->amount_cents, $invoice->currency)
+                        : $this->currencySymbol('USD') . config("plans.{$planName}.price_{$sub->billing_cycle}"),
                     'currency'      => $invoice?->currency ?? 'USD',
                     'period_end'    => $sub->current_period_end?->format('M d, Y'),
                     'sub_id'        => $sub->paddle_subscription_id ?? '—',
@@ -408,12 +338,6 @@ class CheckoutController extends Controller
                 $user->update(['paddle_customer_id' => $customerId]);
             }
 
-            // ── Determine if this is a brand new subscription ─────
-            // Only send emails on first-time creation, not on updates
-            $isNewSubscription = ! Subscription::where('user_id', $user->id)
-                ->where('paddle_subscription_id', $paddleSubId)
-                ->exists();
-
             // ── Create or update subscription ─────────────────────
             $sub = Subscription::updateOrCreate(
                 ['user_id' => $user->id],
@@ -440,7 +364,7 @@ class CheckoutController extends Controller
             );
 
             // ── Create or update invoice ──────────────────────────
-            $invoice = SubscriptionInvoice::updateOrCreate(
+            SubscriptionInvoice::updateOrCreate(
                 ['paddle_transaction_id' => $txnId],
                 [
                     'user_id'               => $user->id,
@@ -455,12 +379,6 @@ class CheckoutController extends Controller
             );
 
             Cache::forget("checkout_intent_{$user->id}");
-
-            // ── Send payment emails (only on first activation) ────
-            if ($isNewSubscription) {
-                $formattedAmount = $this->formatAmount($amountRaw, $currency);
-                $this->sendPaymentEmails($user, $sub, $invoice, $formattedAmount, $invoicePdf);
-            }
 
             Log::info("Built subscription from Paddle API for user {$user->id}", [
                 'plan'        => $plan,

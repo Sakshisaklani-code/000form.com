@@ -9,6 +9,10 @@ return [
     */
 
     'default' => env('MAIL_MAILER', 'smtp'),
+    // 'admin_emails' => array_map(
+    //     'trim',
+    //     explode(',', env('MAIL_ADMIN_EMAILS', 'sakshi.saklani@drishinfo.com,tsaklani2drish@gmail.com'))
+    // ),
 
     /*
     |--------------------------------------------------------------------------
@@ -59,6 +63,8 @@ return [
                 'log',
             ],
         ],
+
+        
     ],
 
     /*
@@ -71,5 +77,10 @@ return [
         'address' => env('MAIL_FROM_ADDRESS', 'noreply@000form.com'),
         'name' => env('MAIL_FROM_NAME', '000form'),
     ],
+
+    'admin_emails' => array_map(
+        'trim',
+        explode(',', env('MAIL_ADMIN_EMAILS', 'sakshi.saklani@drishinfo.com,tsaklani2drish@gmail.com'))
+    ),
 
 ];

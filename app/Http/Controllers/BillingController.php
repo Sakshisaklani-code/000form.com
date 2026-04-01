@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Subscription;
 use App\Models\SubscriptionInvoice;
 use App\Enums\PlanName;
+use App\Mail\PlanUpgraded;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 
 class BillingController extends Controller
 {
@@ -36,6 +38,70 @@ class BillingController extends Controller
             'Content-Type'  => 'application/json',
             'Accept'        => 'application/json',
         ];
+    }
+
+    // ── SEND PLAN UPGRADE EMAILS ──────────────────────────────
+    // Sends to user + all admins. Errors are caught individually
+    // so a mail failure never breaks the plan change flow.
+    private function sendPlanUpgradeEmails(
+        $user,
+        string $oldPlan,
+        string $oldBilling,
+        string $newPlan,
+        string $newBilling,
+        string $effectiveAt,
+        bool   $isImmediate,
+        ?string $subscriptionId = null,
+    ): void {
+        // ── 1. Email to the user ──────────────────────────────
+        try {
+            Mail::to($user->email)->send(new PlanUpgraded(
+                userEmail:        $user->email,
+                userId:           $user->id,
+                oldPlan:          $oldPlan,
+                oldBilling:       $oldBilling,
+                newPlan:          $newPlan,
+                newBilling:       $newBilling,
+                effectiveAt:      $effectiveAt,
+                isImmediate:      $isImmediate,
+                isAdminCopy:      false,
+                subscriptionId:   $subscriptionId,
+                paddleCustomerId: null,
+            ));
+
+            Log::info("Plan upgrade email sent to user: {$user->email}");
+        } catch (\Throwable $e) {
+            Log::error("Failed to send plan upgrade email to user {$user->email}: " . $e->getMessage());
+        }
+
+        // ── 2. Emails to all admins ───────────────────────────
+        try {
+            $adminEmails = array_filter(
+                array_map('trim', explode(',', env('MAIL_ADMIN_EMAILS', '')))
+            );
+
+            if (!empty($adminEmails)) {
+                Mail::to($adminEmails)->send(new PlanUpgraded(
+                    userEmail:        $user->email,
+                    userId:           $user->id,
+                    oldPlan:          $oldPlan,
+                    oldBilling:       $oldBilling,
+                    newPlan:          $newPlan,
+                    newBilling:       $newBilling,
+                    effectiveAt:      $effectiveAt,
+                    isImmediate:      $isImmediate,
+                    isAdminCopy:      true,
+                    subscriptionId:   $subscriptionId,
+                    paddleCustomerId: $user->paddle_customer_id ?? null,
+                ));
+
+                Log::info("Plan upgrade admin notification sent to: " . implode(', ', $adminEmails));
+            } else {
+                Log::warning("No MAIL_ADMIN_EMAILS configured — admin plan upgrade notification skipped.");
+            }
+        } catch (\Throwable $e) {
+            Log::error("Failed to send admin plan upgrade email: " . $e->getMessage());
+        }
     }
 
     // ── BILLING PORTAL PAGE ───────────────────────────────────
@@ -72,9 +138,6 @@ class BillingController extends Controller
         }
 
         // ── Auto-sync with Paddle ─────────────────────────────────
-        // Catches ANY state changes made via Paddle dashboard or customer portal
-        // Handles both directions: cancel AND resume/reactivation
-        // On production webhooks handle this in real-time — this is the local fallback
         if ($subscription
             && $subscription->paddle_subscription_id
             && $subscription->status->value === 'active'
@@ -102,7 +165,6 @@ class BillingController extends Controller
                     }
 
                     // ── Case 2: DB says cancelled but Paddle has NO scheduled cancel ──
-                    // User resumed from Paddle dashboard — clear cancel status in DB
                     if ($paddleAction !== 'cancel'
                         && $paddleStatus === 'active'
                         && $subscription->cancel_at_period_end
@@ -172,7 +234,6 @@ class BillingController extends Controller
             $subscription->refresh();
         }
 
-        // Only pass subscription to blade if still accessible
         $activeSubscription = ($subscription && $subscription->canAccess())
             ? $subscription
             : null;
@@ -236,12 +297,11 @@ class BillingController extends Controller
         }
 
         $subscription->update([
-            'cancel_at_period_end' => true,
-            'cancelled_at'         => now(),
-            // Clear any scheduled plan changes when cancelling
-            'scheduled_plan'           => null,
-            'scheduled_billing'        => null,
-            'scheduled_effective_at'   => null,
+            'cancel_at_period_end'   => true,
+            'cancelled_at'           => now(),
+            'scheduled_plan'         => null,
+            'scheduled_billing'      => null,
+            'scheduled_effective_at' => null,
         ]);
 
         Cache::forget("sub_limit_{$user->id}");
@@ -278,7 +338,6 @@ class BillingController extends Controller
                             'effective_from' => 'immediately',
                         ]);
                 } else {
-                    // Scheduled cancel — remove via PATCH
                     $response = Http::withHeaders($this->paddleHeaders())
                         ->patch($this->paddleApiUrl("/subscriptions/{$subscription->paddle_subscription_id}"), [
                             'scheduled_change' => null,
@@ -350,7 +409,6 @@ class BillingController extends Controller
         if ($subscription->paddle_subscription_id) {
             try {
                 if ($isUpgrade && $when === 'immediately') {
-                    // ── Upgrade Now: single call, charge full price immediately ──
                     $response = Http::withHeaders($this->paddleHeaders())
                         ->patch($this->paddleApiUrl("/subscriptions/{$subscription->paddle_subscription_id}"), [
                             'items'                  => [['price_id' => $priceId, 'quantity' => 1]],
@@ -364,10 +422,6 @@ class BillingController extends Controller
                     }
 
                 } else {
-                    // ── Schedule at Renewal: two separate calls ──────────────
-                    // Paddle does NOT allow changing items + next_billed_at together
-
-                    // Call 1: swap price with no billing
                     $r1 = Http::withHeaders($this->paddleHeaders())
                         ->patch($this->paddleApiUrl("/subscriptions/{$subscription->paddle_subscription_id}"), [
                             'items'                  => [['price_id' => $priceId, 'quantity' => 1]],
@@ -379,7 +433,6 @@ class BillingController extends Controller
                         return back()->with('error', 'Failed to update plan via Paddle. Please try again.');
                     }
 
-                    // Call 2: set next billing date separately
                     $nextBilledAt = $subscription->next_billing_date
                         ? $subscription->next_billing_date->toIso8601String()
                         : $subscription->current_period_end->toIso8601String();
@@ -398,9 +451,10 @@ class BillingController extends Controller
             }
         }
 
-        // ── Update DB ─────────────────────────────────────────
+        // ── Update DB & resolve effective date string ─────────
+        $effectiveAt = 'Immediately';
+
         if ($isUpgrade && $when === 'immediately') {
-            // Reset billing period from today based on new billing cycle
             $newPeriodEnd = $billing === 'annual'
                 ? now()->addYear()
                 : now()->addMonth();
@@ -415,36 +469,46 @@ class BillingController extends Controller
                 'team_members_limit'       => $newLimits['team_members'],
                 'webhooks_enabled'         => $newLimits['webhooks'],
                 'role_permissions_enabled' => $newLimits['role_permissions'],
-                // Reset billing period to today
                 'current_period_start'     => now(),
                 'current_period_end'       => $newPeriodEnd,
                 'next_billing_date'        => $newPeriodEnd,
                 'last_payment_at'          => now(),
                 'submissions_used'         => 0,
-                // Clear any previous scheduled change
                 'scheduled_plan'           => null,
                 'scheduled_billing'        => null,
                 'scheduled_effective_at'   => null,
             ]);
 
         } else {
-            // Schedule for next billing period — store in DB, keep current plan active
-            $effectiveAt = $subscription->next_billing_date
+            $effectiveDate = $subscription->next_billing_date
                 ?? $subscription->current_period_end;
 
+            $effectiveAt = $effectiveDate?->format('M d, Y') ?? 'Next renewal';
+
             $subscription->update([
-                // Keep current plan active until renewal
                 'paddle_price_id'        => $priceId,
                 'paddle_last_event'      => 'plan_change_scheduled',
-                // Store scheduled change
                 'scheduled_plan'         => $plan,
                 'scheduled_billing'      => $billing,
-                'scheduled_effective_at' => $effectiveAt,
+                'scheduled_effective_at' => $effectiveDate,
             ]);
         }
 
         Cache::forget("sub_limit_{$user->id}");
 
+        // ── Send emails to user + admins ──────────────────────
+        $this->sendPlanUpgradeEmails(
+            user:           $user,
+            oldPlan:        $currentPlan,
+            oldBilling:     $subscription->billing_cycle,
+            newPlan:        $plan,
+            newBilling:     $billing,
+            effectiveAt:    $effectiveAt,
+            isImmediate:    $isUpgrade && $when === 'immediately',
+            subscriptionId: $subscription->paddle_subscription_id,
+        );
+
+        // ── Success message ───────────────────────────────────
         if ($isUpgrade && $when === 'immediately') {
             $msg = "Plan upgraded to " . ucfirst($plan) . " (" . ucfirst($billing) . ") successfully. New limits are active immediately.";
         } elseif ($isUpgrade) {
@@ -469,10 +533,8 @@ class BillingController extends Controller
             return back()->with('error', 'No scheduled plan change found.');
         }
 
-        // Try to remove from Paddle too
         if ($subscription->paddle_subscription_id) {
             try {
-                // Revert to current plan price in Paddle
                 $currentPriceId = config("plans.{$subscription->plan_name->value}.paddle_{$subscription->billing_cycle}_id");
                 if ($currentPriceId) {
                     Http::withHeaders($this->paddleHeaders())
