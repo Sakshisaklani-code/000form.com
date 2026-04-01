@@ -14,6 +14,7 @@ class PlaygroundFormSubmissionMail extends Mailable
     public array $formData;
     public array $fileAttachments;
     public array $specialFields;
+    public $ipAddress;
 
     /**
      * Create a new message instance.
@@ -23,6 +24,7 @@ class PlaygroundFormSubmissionMail extends Mailable
         $this->formData = $formData;
         $this->fileAttachments = $fileAttachments;
         $this->specialFields = $specialFields;
+        $this->ipAddress = $formData['ip_address'] ?? null;
     }
 
     /**
@@ -89,6 +91,7 @@ class PlaygroundFormSubmissionMail extends Mailable
         // Prepare data for the view
         $viewData = [
             'formData' => $this->formData,
+            'ipAddress' => $this->ipAddress,
             'specialFields' => $this->specialFields,
             'appName' => config('app.name'),
             'appUrl' => config('app.url'),
@@ -103,6 +106,7 @@ class PlaygroundFormSubmissionMail extends Mailable
                 'id' => 0,
             ],
             'submission' => null, // No submission object in playground
+            
         ];
 
         Log::info('Building form submission email', [

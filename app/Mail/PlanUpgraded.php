@@ -19,11 +19,17 @@ class PlanUpgraded extends Mailable
         public string      $oldBilling,
         public string      $newPlan,
         public string      $newBilling,
-        public string      $effectiveAt,   // "Immediately" or formatted date
+        public string      $effectiveAt,       // "Immediately" or formatted date
         public bool        $isImmediate,
         public bool        $isAdminCopy,
-        public ?string     $subscriptionId = null,
+        public ?string     $subscriptionId   = null,
         public ?string     $paddleCustomerId = null,
+        // ── Payment details (populated for immediate upgrades only) ──
+        public ?string     $amount           = null,  // formatted e.g. "₹2,777" / "$29.00"
+        public ?string     $currency         = null,  // raw code e.g. "USD", "INR"
+        public ?string     $transactionId    = null,  // Paddle txn ID
+        public ?string     $invoiceUrl       = null,  // Paddle PDF URL
+        public ?string     $periodEnd        = null,  // "May 01, 2026"
     ) {}
 
     public function envelope(): Envelope

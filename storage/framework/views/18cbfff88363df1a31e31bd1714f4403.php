@@ -203,64 +203,65 @@
             <div class="brand">
                 <span class="highlight">000</span><span class="normal">form</span>
             </div>
-            <h1>New submission: {{ $form->name }}</h1>
+            <h1>New submission: <?php echo e($form->name); ?></h1>
         </div>
         
         <div class="email-body">
             <p class="submission-intro">
-                Received {{ $submission ? $submission->created_at->format('M j, Y \a\t g:i A') : now()->format('M j, Y \a\t g:i A') }}
+                Received <?php echo e($submission ? $submission->created_at->format('M j, Y \a\t g:i A') : now()->format('M j, Y \a\t g:i A')); ?>
+
             </p>
             
-            @php
+            <?php
                         $skipKeys = ['captcha', 'g-recaptcha-response', 'h-captcha-response', 'cf-turnstile-response', 'recaptcha'];
                         $skipValues = ['false', 'true', '0', '1', ''];
-                    @endphp
+                    ?>
 
-                    @foreach($data as $key => $value)
-                        @php
+                    <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php
                             $strVal = is_string($value) ? trim($value) : (string) $value;
                             $lowerKey = strtolower($key);
                             $lowerVal = strtolower($strVal);
-                        @endphp
+                        ?>
 
-                        {{-- Skip: empty, captcha keys, boolean-like values on captcha-adjacent keys, pure boolean strings --}}
-                        @if(
+                        
+                        <?php if(
                             $strVal !== '' &&
                             !in_array($lowerKey, $skipKeys) &&
                             !($lowerVal === 'false' || $lowerVal === 'true')
-                        )
+                        ): ?>
                     <div class="field-item">
-                        <div class="field-label">{{ ucfirst(str_replace('_', ' ', $key)) }}</div>
-                        <div class="field-value">{!! nl2br(e($value)) !!}</div>
+                        <div class="field-label"><?php echo e(ucfirst(str_replace('_', ' ', $key))); ?></div>
+                        <div class="field-value"><?php echo nl2br(e($value)); ?></div>
                     </div>
-                @endif
-            @endforeach
+                <?php endif; ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             
-            @if($hasAttachment && !empty($attachments))
+            <?php if($hasAttachment && !empty($attachments)): ?>
                 <div class="attachment-info">
-                    <p>📎 {{ $attachmentCount }} Attachment(s)</p>
+                    <p>📎 <?php echo e($attachmentCount); ?> Attachment(s)</p>
                     <ul class="attachment-list">
-                        @foreach($attachments as $attachment)
-                            <li>📄 <span class="file-name">{{ $attachment['name'] ?? 'file' }}</span></li>
-                        @endforeach
+                        <?php $__currentLoopData = $attachments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $attachment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li>📄 <span class="file-name"><?php echo e($attachment['name'] ?? 'file'); ?></span></li>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </ul>
                 </div>
-            @endif
+            <?php endif; ?>
             
-            @if($submission)
-                <a href="{{ route('dashboard.submissions.show', [$form->id, $submission->id]) }}" class="cta-button">View in Dashboard →</a>
-            @endif
+            <?php if($submission): ?>
+                <a href="<?php echo e(route('dashboard.submissions.show', [$form->id, $submission->id])); ?>" class="cta-button">View in Dashboard →</a>
+            <?php endif; ?>
             
                 <div class="metadata">
-                    <span>IP: {{ $ipAddress ?? 'N/A' }}</span><br>
-                    <span>Referrer: {{ $formData['referer_url'] ?? 'N/A' }}</span>
+                    <span>IP: <?php echo e($ipAddress ?? 'N/A'); ?></span><br>
+                    <span>Referrer: <?php echo e($formData['referer_url'] ?? 'N/A'); ?></span>
                 </div>
         </div>
         
         <div class="email-footer">
-            <p>Sent via <a href="{{ config('app.url') }}">000form.com</a></p>
+            <p>Sent via <a href="<?php echo e(config('app.url')); ?>">000form.com</a></p>
             <p>⚡ You Are Working with 000form.com ⚡</p>
         </div>
     </div>
 </body>
-</html>
+</html><?php /**PATH C:\Git-folders\000form.com\resources\views/emails/express/submission-basic.blade.php ENDPATH**/ ?>

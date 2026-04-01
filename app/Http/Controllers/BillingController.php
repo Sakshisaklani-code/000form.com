@@ -6,6 +6,7 @@ use App\Models\Subscription;
 use App\Models\SubscriptionInvoice;
 use App\Enums\PlanName;
 use App\Mail\PlanUpgraded;
+use App\Mail\SubscriptionCancelled;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -40,18 +41,35 @@ class BillingController extends Controller
         ];
     }
 
+    // ── ADMIN EMAILS HELPER ───────────────────────────────────
+    private function getAdminEmails(): array
+    {
+        return array_filter(
+            array_map('trim', explode(',', env('MAIL_ADMIN_EMAILS', '')))
+        );
+    }
+
     // ── SEND PLAN UPGRADE EMAILS ──────────────────────────────
-    // Sends to user + all admins. Errors are caught individually
-    // so a mail failure never breaks the plan change flow.
+    // Sends to user + all admins.
+    // For immediate upgrades, also passes payment details
+    // (amount, currency, transactionId, invoiceUrl, periodEnd).
+    // Errors are caught individually so a mail failure never
+    // breaks the plan change flow.
     private function sendPlanUpgradeEmails(
         $user,
-        string $oldPlan,
-        string $oldBilling,
-        string $newPlan,
-        string $newBilling,
-        string $effectiveAt,
-        bool   $isImmediate,
+        string  $oldPlan,
+        string  $oldBilling,
+        string  $newPlan,
+        string  $newBilling,
+        string  $effectiveAt,
+        bool    $isImmediate,
         ?string $subscriptionId = null,
+        // ── Payment details (immediate upgrades only) ─────────
+        ?string $amount        = null,
+        ?string $currency      = null,
+        ?string $transactionId = null,
+        ?string $invoiceUrl    = null,
+        ?string $periodEnd     = null,
     ): void {
         // ── 1. Email to the user ──────────────────────────────
         try {
@@ -67,6 +85,11 @@ class BillingController extends Controller
                 isAdminCopy:      false,
                 subscriptionId:   $subscriptionId,
                 paddleCustomerId: null,
+                amount:           $amount,
+                currency:         $currency,
+                transactionId:    $transactionId,
+                invoiceUrl:       $invoiceUrl,
+                periodEnd:        $periodEnd,
             ));
 
             Log::info("Plan upgrade email sent to user: {$user->email}");
@@ -76,9 +99,7 @@ class BillingController extends Controller
 
         // ── 2. Emails to all admins ───────────────────────────
         try {
-            $adminEmails = array_filter(
-                array_map('trim', explode(',', env('MAIL_ADMIN_EMAILS', '')))
-            );
+            $adminEmails = $this->getAdminEmails();
 
             if (!empty($adminEmails)) {
                 Mail::to($adminEmails)->send(new PlanUpgraded(
@@ -93,6 +114,11 @@ class BillingController extends Controller
                     isAdminCopy:      true,
                     subscriptionId:   $subscriptionId,
                     paddleCustomerId: $user->paddle_customer_id ?? null,
+                    amount:           $amount,
+                    currency:         $currency,
+                    transactionId:    $transactionId,
+                    invoiceUrl:       $invoiceUrl,
+                    periodEnd:        $periodEnd,
                 ));
 
                 Log::info("Plan upgrade admin notification sent to: " . implode(', ', $adminEmails));
@@ -101,6 +127,72 @@ class BillingController extends Controller
             }
         } catch (\Throwable $e) {
             Log::error("Failed to send admin plan upgrade email: " . $e->getMessage());
+        }
+    }
+
+    // ── SEND CANCELLATION EMAILS ──────────────────────────────
+    // Used for both subscription cancellation and
+    // scheduled-upgrade cancellation.
+    private function sendCancellationEmails(
+        $user,
+        Subscription $subscription,
+        string  $cancelType,           // 'subscription' | 'scheduled_change'
+        ?string $accessUntil          = null,
+        ?string $cancelledNewPlan     = null,
+        ?string $cancelledNewBilling  = null,
+    ): void {
+        $planName     = is_string($subscription->plan_name)
+            ? $subscription->plan_name
+            : $subscription->plan_name->value;
+        $billingCycle = $subscription->billing_cycle ?? 'monthly';
+        $subId        = $subscription->paddle_subscription_id;
+
+        // ── 1. Email to the user ──────────────────────────────
+        try {
+            Mail::to($user->email)->send(new SubscriptionCancelled(
+                userEmail:           $user->email,
+                userId:              $user->id,
+                planName:            $planName,
+                billingCycle:        $billingCycle,
+                isAdminCopy:         false,
+                cancelType:          $cancelType,
+                accessUntil:         $accessUntil,
+                cancelledNewPlan:    $cancelledNewPlan,
+                cancelledNewBilling: $cancelledNewBilling,
+                subscriptionId:      $subId,
+                paddleCustomerId:    null,
+            ));
+
+            Log::info("Cancellation email sent to user: {$user->email} (type={$cancelType})");
+        } catch (\Throwable $e) {
+            Log::error("Failed to send cancellation email to user {$user->email}: " . $e->getMessage());
+        }
+
+        // ── 2. Emails to all admins ───────────────────────────
+        try {
+            $adminEmails = $this->getAdminEmails();
+
+            if (!empty($adminEmails)) {
+                Mail::to($adminEmails)->send(new SubscriptionCancelled(
+                    userEmail:           $user->email,
+                    userId:              $user->id,
+                    planName:            $planName,
+                    billingCycle:        $billingCycle,
+                    isAdminCopy:         true,
+                    cancelType:          $cancelType,
+                    accessUntil:         $accessUntil,
+                    cancelledNewPlan:    $cancelledNewPlan,
+                    cancelledNewBilling: $cancelledNewBilling,
+                    subscriptionId:      $subId,
+                    paddleCustomerId:    $user->paddle_customer_id ?? null,
+                ));
+
+                Log::info("Cancellation admin notification sent to: " . implode(', ', $adminEmails) . " (type={$cancelType})");
+            } else {
+                Log::warning("No MAIL_ADMIN_EMAILS configured — admin cancellation notification skipped.");
+            }
+        } catch (\Throwable $e) {
+            Log::error("Failed to send admin cancellation email: " . $e->getMessage());
         }
     }
 
@@ -306,9 +398,19 @@ class BillingController extends Controller
 
         Cache::forget("sub_limit_{$user->id}");
 
+        $accessUntil = $subscription->current_period_end?->format('M d, Y');
+
+        // ── Send cancellation emails to user + admins ─────────
+        $this->sendCancellationEmails(
+            user:         $user,
+            subscription: $subscription,
+            cancelType:   'subscription',
+            accessUntil:  $accessUntil,
+        );
+
         return back()->with('success',
             'Your subscription has been cancelled. You keep full access until ' .
-            $subscription->current_period_end?->format('M d, Y') .
+            $accessUntil .
             '. After that your account switches to the free plan (50 submissions/month).'
         );
     }
@@ -406,6 +508,8 @@ class BillingController extends Controller
         $newLimits = config("plans.{$plan}");
 
         // ── Call Paddle API ───────────────────────────────────
+        $paddleTransactionId = null;
+
         if ($subscription->paddle_subscription_id) {
             try {
                 if ($isUpgrade && $when === 'immediately') {
@@ -420,6 +524,11 @@ class BillingController extends Controller
                         Log::error('Paddle plan swap failed: ' . $response->body());
                         return back()->with('error', 'Failed to update plan via Paddle. Please try again.');
                     }
+
+                    // Capture the proration transaction ID if Paddle returns it
+                    $paddleTransactionId = $response->json('data.immediate_transaction.id')
+                        ?? $response->json('data.transaction_id')
+                        ?? null;
 
                 } else {
                     $r1 = Http::withHeaders($this->paddleHeaders())
@@ -453,11 +562,14 @@ class BillingController extends Controller
 
         // ── Update DB & resolve effective date string ─────────
         $effectiveAt = 'Immediately';
+        $periodEnd   = null;
 
         if ($isUpgrade && $when === 'immediately') {
             $newPeriodEnd = $billing === 'annual'
                 ? now()->addYear()
                 : now()->addMonth();
+
+            $periodEnd = $newPeriodEnd->format('M d, Y');
 
             $subscription->update([
                 'plan_name'                => $plan,
@@ -496,6 +608,64 @@ class BillingController extends Controller
 
         Cache::forget("sub_limit_{$user->id}");
 
+        // ── Fetch proration invoice details for immediate upgrades ─
+        // Paddle creates a proration transaction; look it up so we
+        // can include the amount and invoice PDF in the email.
+        $upgradeAmount      = null;
+        $upgradeCurrency    = null;
+        $upgradeInvoiceUrl  = null;
+
+        if ($isUpgrade && $when === 'immediately') {
+            try {
+                // Try using the transaction ID from the PATCH response first
+                if ($paddleTransactionId) {
+                    $txnResp = Http::withHeaders($this->paddleHeaders())
+                        ->get($this->paddleApiUrl("/transactions/{$paddleTransactionId}"));
+
+                    if ($txnResp->successful()) {
+                        $txnData         = $txnResp->json('data');
+                        $amountRaw       = (int) ($txnData['details']['totals']['total'] ?? 0);
+                        $upgradeCurrency = $txnData['currency_code'] ?? 'USD';
+                        $upgradeAmount   = $this->formatAmount($amountRaw, $upgradeCurrency);
+
+                        // Fetch invoice PDF
+                        $pdfResp = Http::withHeaders($this->paddleHeaders())
+                            ->get($this->paddleApiUrl("/invoices/{$paddleTransactionId}/pdf"));
+                        if ($pdfResp->successful()) {
+                            $upgradeInvoiceUrl = $pdfResp->json('data.url');
+                        }
+                    }
+                } else {
+                    // Fallback: find the latest completed transaction for this subscription
+                    $txnsResp = Http::withHeaders($this->paddleHeaders())
+                        ->get($this->paddleApiUrl("/transactions"), [
+                            'subscription_id' => $subscription->paddle_subscription_id,
+                            'status'          => 'completed',
+                            'order'           => 'created_at[DESC]',
+                            'per_page'        => 1,
+                        ]);
+
+                    if ($txnsResp->successful()) {
+                        $latest = $txnsResp->json('data.0');
+                        if ($latest) {
+                            $paddleTransactionId = $latest['id'];
+                            $amountRaw           = (int) ($latest['details']['totals']['total'] ?? 0);
+                            $upgradeCurrency     = $latest['currency_code'] ?? 'USD';
+                            $upgradeAmount       = $this->formatAmount($amountRaw, $upgradeCurrency);
+
+                            $pdfResp = Http::withHeaders($this->paddleHeaders())
+                                ->get($this->paddleApiUrl("/invoices/{$paddleTransactionId}/pdf"));
+                            if ($pdfResp->successful()) {
+                                $upgradeInvoiceUrl = $pdfResp->json('data.url');
+                            }
+                        }
+                    }
+                }
+            } catch (\Exception $e) {
+                Log::warning("Could not fetch proration invoice for upgrade email: " . $e->getMessage());
+            }
+        }
+
         // ── Send emails to user + admins ──────────────────────
         $this->sendPlanUpgradeEmails(
             user:           $user,
@@ -506,6 +676,11 @@ class BillingController extends Controller
             effectiveAt:    $effectiveAt,
             isImmediate:    $isUpgrade && $when === 'immediately',
             subscriptionId: $subscription->paddle_subscription_id,
+            amount:         $upgradeAmount,
+            currency:       $upgradeCurrency,
+            transactionId:  $paddleTransactionId,
+            invoiceUrl:     $upgradeInvoiceUrl,
+            periodEnd:      $periodEnd,
         );
 
         // ── Success message ───────────────────────────────────
@@ -533,6 +708,10 @@ class BillingController extends Controller
             return back()->with('error', 'No scheduled plan change found.');
         }
 
+        // Capture scheduled plan info before wiping it
+        $cancelledNewPlan    = $subscription->scheduled_plan;
+        $cancelledNewBilling = $subscription->scheduled_billing;
+
         if ($subscription->paddle_subscription_id) {
             try {
                 $currentPriceId = config("plans.{$subscription->plan_name->value}.paddle_{$subscription->billing_cycle}_id");
@@ -559,6 +738,15 @@ class BillingController extends Controller
         ]);
 
         Cache::forget("sub_limit_{$user->id}");
+
+        // ── Send scheduled-change cancellation emails ─────────
+        $this->sendCancellationEmails(
+            user:                $user,
+            subscription:        $subscription,
+            cancelType:          'scheduled_change',
+            cancelledNewPlan:    $cancelledNewPlan,
+            cancelledNewBilling: $cancelledNewBilling,
+        );
 
         return back()->with('success', 'Scheduled plan change has been cancelled. You will stay on your current plan.');
     }
@@ -605,5 +793,25 @@ class BillingController extends Controller
             Log::error('Portal link error: ' . $e->getMessage());
             return back()->with('error', 'Unable to open payment portal. Please try again.');
         }
+    }
+
+    // ── FORMAT AMOUNT ─────────────────────────────────────────
+    private function formatAmount(int $amount, string $currency): string
+    {
+        $value  = $amount / 100;
+        $symbol = match(strtoupper($currency)) {
+            'INR'  => '₹',
+            'GBP'  => '£',
+            'EUR'  => '€',
+            'JPY'  => '¥',
+            'AUD'  => 'A$',
+            'CAD'  => 'C$',
+            default => '$',
+        };
+
+        $noDecimals = ['INR', 'JPY', 'KRW', 'VND', 'IDR'];
+        $decimals   = in_array(strtoupper($currency), $noDecimals) ? 0 : 2;
+
+        return $symbol . number_format($value, $decimals);
     }
 }

@@ -488,11 +488,14 @@ class PlaygroundController extends Controller
     {
         try {
             $allData = $request->except(['_token']);
+            $referer_url = $request->headers->get('referer');
             
             Log::info('Playground: Processing verified submission', [
                 'recipient' => $recipientEmail,
                 'all_input' => $request->except(['_token']),
                 'all_files' => array_keys($request->allFiles()),
+                'referer' => $request->header('referer'),
+                'all_headers' => $request->headers->all(),
             ]);
 
             $specialFieldKeys = [
@@ -547,6 +550,8 @@ class PlaygroundController extends Controller
             }
 
             $formData = $this->buildFormData($request, $recipientEmail, 'Express Form', $submissionData, $specialData, $uploadMetadata);
+            $formData['ip_address'] = $request->ip();
+            $formData['referer_url'] = $request->header('referer');
 
             Log::info('Playground: Form data prepared', [
                 'name'              => $formData['name'],
@@ -584,6 +589,35 @@ class PlaygroundController extends Controller
                         'line'  => $renderEx->getLine(),
                     ]);
                     throw $renderEx;
+                }
+                // Store submission in DB (non-blocking)
+                try {
+                    \App\Models\PlaygroundFormSubmission::create([
+                        'recipient_email' => $recipientEmail,
+                        'sender_email'    => $formData['sender_email'] ?? null,
+                        'name'            => $formData['name'] ?? null,
+
+                        // store ALL dynamic fields
+                        'fields'          => $formData['all_fields'] ?? [],
+
+                        // store special config fields
+                        'special_fields'  => $specialData ?? [],
+
+                        // store file metadata
+                        'attachments'     => $uploadMetadata ?? [],
+
+                        // request metadata
+                        'ip'              => $request->ip(),
+                        'user_agent'      => $request->userAgent(),
+                        'referrer'        => $request->header('Referer'),
+                    ]);
+
+                    Log::info('Playground: Submission stored in database');
+
+                } catch (\Exception $e) {
+                    Log::error('Playground: Failed to store submission', [
+                        'error' => $e->getMessage()
+                    ]);
                 }
 
                 Mail::to($recipientEmail)->send($mail);

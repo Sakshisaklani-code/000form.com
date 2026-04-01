@@ -6,4 +6,4 @@
     <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_template" value="table">
     <button type="submit">Send Message</button>
-</form>
+</form><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/terms.blade.php ENDPATH**/ ?>

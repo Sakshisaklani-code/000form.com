@@ -72,6 +72,51 @@
             padding: 0 40px 32px;
         }
 
+        /* ── REVENUE CARD (immediate only) ── */
+        .revenue-card {
+            background: linear-gradient(135deg, rgba(99,102,241,0.1) 0%, rgba(139,92,246,0.05) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.25);
+            border-radius: 14px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 28px;
+            gap: 16px;
+        }
+
+        .revenue-card .left .rev-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .revenue-card .left .rev-amount {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.03em;
+        }
+
+        .revenue-card .right { text-align: right; }
+
+        .revenue-card .right .plan-badge {
+            background: rgba(0,255,136,0.1);
+            border: 1px solid rgba(0,255,136,0.25);
+            color: #00ff88;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        .revenue-card .right .billing-cycle { font-size: 0.75rem; color: #555; display: block; }
+
         /* ── PLAN CHANGE VISUAL ── */
         .plan-change {
             display: flex;
@@ -96,15 +141,9 @@
             margin-bottom: 6px;
         }
 
-        .plan-pill .pill-name {
-            font-size: 1.05rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-        }
-
+        .plan-pill .pill-name { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.02em; }
         .plan-pill .pill-name.old { color: #444; }
         .plan-pill .pill-name.new { color: #00ff88; }
-
         .plan-pill .pill-cycle { font-size: 0.7rem; color: #444; margin-top: 3px; }
 
         .type-tag {
@@ -135,24 +174,30 @@
 
         /* ── DETAILS TABLE ── */
         .details-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
-
         .details-table tr { border-bottom: 1px solid #1a1a1a; }
         .details-table tr:last-child { border-bottom: none; }
-
         .details-table td { padding: 11px 0; font-size: 0.83rem; vertical-align: middle; }
-
         .details-table .label { color: #444; width: 42%; }
-
-        .details-table .value {
-            color: #ccc;
-            font-weight: 600;
-            text-align: right;
-            font-size: 0.8rem;
-        }
-
+        .details-table .value { color: #ccc; font-weight: 600; text-align: right; font-size: 0.8rem; }
         .details-table .value.accent { color: #00ff88; font-size: 0.83rem; }
         .details-table .value.user-col { color: #818cf8; font-size: 0.83rem; }
         .details-table .value.mono { font-family: monospace; font-size: 0.75rem; word-break: break-all; }
+
+        /* ── INVOICE LINK ── */
+        .invoice-wrap {
+            background: #0f0f0f;
+            border: 1px solid #1e1e1e;
+            border-radius: 10px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .invoice-wrap .inv-label { font-size: 0.8rem; color: #555; }
+        .invoice-wrap .inv-link { font-size: 0.78rem; font-weight: 600; color: #00ff88; text-decoration: none; white-space: nowrap; }
 
         /* ── DIVIDER ── */
         .divider { border: none; border-top: 1px solid #1a1a1a; margin: 20px 0; }
@@ -174,6 +219,8 @@
             .header, .body { padding-left: 20px; padding-right: 20px; }
             .footer { padding: 20px; }
             .plan-change { flex-direction: column; gap: 8px; }
+            .revenue-card { flex-direction: column; align-items: flex-start; }
+            .revenue-card .right { text-align: left; }
         }
     </style>
 </head>
@@ -184,13 +231,27 @@
     <div class="header">
         <div class="admin-badge">⚡ Admin Notification</div><br>
         <div class="logo">000<span>form</span></div>
-        
+
         <h1>Plan {{ $isImmediate ? 'Upgraded' : 'Upgrade Scheduled' }}</h1>
         <p>A user has {{ $isImmediate ? 'upgraded their plan immediately' : 'scheduled a plan upgrade' }}.</p>
     </div>
 
     {{-- BODY --}}
     <div class="body">
+
+        {{-- Revenue card (immediate upgrades with amount only) --}}
+        @if($isImmediate && $amount)
+        <div class="revenue-card">
+            <div class="left">
+                <div class="rev-label">Amount Charged</div>
+                <div class="rev-amount">{{ $amount }}</div>
+            </div>
+            <div class="right">
+                <div class="plan-badge">{{ ucfirst($newPlan) }}</div>
+                <span class="billing-cycle">{{ ucfirst($newBilling) }} billing</span>
+            </div>
+        </div>
+        @endif
 
         {{-- Plan change visual --}}
         <div class="plan-change">
@@ -252,10 +313,28 @@
                 <td class="label">{{ $isImmediate ? 'Effective From' : 'Effective Date' }}</td>
                 <td class="value">{{ $effectiveAt }}</td>
             </tr>
+            @if($isImmediate && $amount)
+            <tr>
+                <td class="label">Amount Charged</td>
+                <td class="value accent">{{ $amount }}{{ $currency ? ' ' . strtoupper($currency) : '' }}</td>
+            </tr>
+            @endif
+            @if($isImmediate && $periodEnd)
+            <tr>
+                <td class="label">Access Until</td>
+                <td class="value">{{ $periodEnd }}</td>
+            </tr>
+            @endif
             @if($subscriptionId)
             <tr>
                 <td class="label">Subscription ID</td>
                 <td class="value mono">{{ $subscriptionId }}</td>
+            </tr>
+            @endif
+            @if($isImmediate && $transactionId)
+            <tr>
+                <td class="label">Transaction ID</td>
+                <td class="value mono">{{ $transactionId }}</td>
             </tr>
             @endif
             <tr>
@@ -264,6 +343,15 @@
             </tr>
         </table>
 
+        {{-- Invoice PDF link (immediate upgrades only) --}}
+        @if($isImmediate && $invoiceUrl)
+        <hr class="divider">
+        <div class="invoice-wrap">
+            <span class="inv-label">📄 Paddle Invoice PDF</span>
+            <a href="{{ $invoiceUrl }}" class="inv-link" target="_blank">↓ Download Invoice</a>
+        </div>
+        @endif
+
     </div>
 
     {{-- FOOTER --}}
@@ -271,7 +359,6 @@
         <p>Automated admin alert from 000form.</p>
         <p style="margin-top: 6px;">
             © {{ date('Y') }} 000form &nbsp;·&nbsp;
-            <a href="{{ config('app.url') }}/admin">Admin Panel</a>
         </p>
     </div>
 

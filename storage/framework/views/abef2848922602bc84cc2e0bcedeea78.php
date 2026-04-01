@@ -265,82 +265,84 @@
                 <span class="highlight">000</span><span class="normal">form</span>
             </div>
             <div class="using-line">⚡ You are using 000form Express</div>
-            <h1>New submission: {{ $form->name }}</h1>
+            <h1>New submission: <?php echo e($form->name); ?></h1>
         </div>
         
         <div class="email-body">
             <p class="submission-intro">
-                📅 Received {{ $submission ? $submission->created_at->format('M j, Y \a\t g:i A') : now()->format('M j, Y \a\t g:i A') }}
+                📅 Received <?php echo e($submission ? $submission->created_at->format('M j, Y \a\t g:i A') : now()->format('M j, Y \a\t g:i A')); ?>
+
             </p>
             
-            @php
+            <?php
                         $skipKeys = ['captcha', 'g-recaptcha-response', 'h-captcha-response', 'cf-turnstile-response', 'recaptcha'];
                         $skipValues = ['false', 'true', '0', '1', ''];
-                    @endphp
+                    ?>
 
-                    @foreach($data as $key => $value)
-                        @php
+                    <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php
                             $strVal = is_string($value) ? trim($value) : (string) $value;
                             $lowerKey = strtolower($key);
                             $lowerVal = strtolower($strVal);
-                        @endphp
+                        ?>
 
-                        {{-- Skip: empty, captcha keys, boolean-like values on captcha-adjacent keys, pure boolean strings --}}
-                        @if(
+                        
+                        <?php if(
                             $strVal !== '' &&
                             !in_array($lowerKey, $skipKeys) &&
                             !($lowerVal === 'false' || $lowerVal === 'true')
-                        )
+                        ): ?>
                     <div class="field-card">
-                        <div class="field-label">{{ ucfirst(str_replace('_', ' ', $key)) }}</div>
-                        <div class="field-value">{!! nl2br(e($value)) !!}</div>
+                        <div class="field-label"><?php echo e(ucfirst(str_replace('_', ' ', $key))); ?></div>
+                        <div class="field-value"><?php echo nl2br(e($value)); ?></div>
                     </div>
-                @endif
-            @endforeach
+                <?php endif; ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             
-            @if($hasAttachment && !empty($attachments))
+            <?php if($hasAttachment && !empty($attachments)): ?>
                 <div class="attachment-box">
                     <div class="attachment-header">
-                        <span>📎</span> <strong>{{ $attachmentCount }} Attachment(s)</strong>
+                        <span>📎</span> <strong><?php echo e($attachmentCount); ?> Attachment(s)</strong>
                     </div>
                     <div class="attachment-grid">
-                        @foreach($attachments as $attachment)
+                        <?php $__currentLoopData = $attachments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $attachment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="attachment-badge">
-                                📄 <span class="file-name">{{ $attachment['name'] ?? 'file' }}</span>
+                                📄 <span class="file-name"><?php echo e($attachment['name'] ?? 'file'); ?></span>
                             </div>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
-            @endif
+            <?php endif; ?>
             
-            @if($submission)
-                <a href="{{ route('dashboard.submissions.show', [$form->id, $submission->id]) }}" class="cta-button">
+            <?php if($submission): ?>
+                <a href="<?php echo e(route('dashboard.submissions.show', [$form->id, $submission->id])); ?>" class="cta-button">
                     View in Dashboard <span>→</span>
                 </a>
-            @endif
+            <?php endif; ?>
 
             <div class="metadata-box">
-                    <span><strong>🌐 IP:</strong> {{ $ipAddress ?? 'N/A' }}</span><br>
+                    <span><strong>🌐 IP:</strong> <?php echo e($ipAddress ?? 'N/A'); ?></span><br>
+                    <span><strong>🌐 Referrer:</strong> <?php echo e($formData['referer_url'] ?? 'N/A'); ?></span>
             </div>
             <div class="metadata-box">
-                    <span><strong>🌐 Referrer:</strong> {{ $formData['referer_url'] ?? 'N/A' }}</span>
+                    <span><strong>🌐 Referrer:</strong> <?php echo e($formData['referer_url'] ?? 'N/A'); ?></span>
             </div>
             
             
-            @if($submission)
+            <?php if($submission): ?>
                 <div class="metadata-box">
-                    <span><strong>🌐 IP:</strong> {{ $submission->ip_address ?? 'N/A' }}</span>
-                    @if($submission->referrer)
-                        <span><strong>🔗 From:</strong> {{ parse_url($submission->referrer, PHP_URL_HOST) ?? $submission->referrer }}</span>
-                    @endif
+                    <span><strong>🌐 IP:</strong> <?php echo e($submission->ip_address ?? 'N/A'); ?></span>
+                    <?php if($submission->referrer): ?>
+                        <span><strong>🔗 From:</strong> <?php echo e(parse_url($submission->referrer, PHP_URL_HOST) ?? $submission->referrer); ?></span>
+                    <?php endif; ?>
                 </div>
-            @endif
+            <?php endif; ?>
         </div>
         
         <div class="email-footer">
-            <p>Sent via <a href="{{ config('app.url') }}">000form.com</a></p>
+            <p>Sent via <a href="<?php echo e(config('app.url')); ?>">000form.com</a></p>
             <p>⚡ You Are Working with 000form.com ⚡</p>
         </div>
     </div>
 </body>
-</html>
+</html><?php /**PATH C:\Git-folders\000form.com\resources\views/emails/express/submission-box.blade.php ENDPATH**/ ?>

@@ -133,3 +133,846 @@
 #34 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
 #35 {main}
 "} 
+[2026-04-01 06:50:58] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:51:10] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:51:12] local.INFO: Plan swapped via Paddle: personal/monthly → professional/monthly (when=next_billing_period) for user d4846ed8-0c73-4d43-8052-21cb0f8e8039  
+[2026-04-01 06:51:15] local.INFO: Plan upgrade email sent to user: tsaklani2drish@gmail.com  
+[2026-04-01 06:51:16] local.INFO: Plan upgrade admin notification sent to: sakshi.saklani@drishinfo.com, tsaklani2drish@gmail.com  
+[2026-04-01 06:51:17] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:51:48] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:51:53] local.INFO: Cancellation email sent to user: tsaklani2drish@gmail.com (type=scheduled_change)  
+[2026-04-01 06:51:53] local.INFO: Cancellation admin notification sent to: sakshi.saklani@drishinfo.com, tsaklani2drish@gmail.com (type=scheduled_change)  
+[2026-04-01 06:51:55] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:52:26] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:52:30] local.INFO: Plan swapped via Paddle: personal/monthly → professional/monthly (when=immediately) for user d4846ed8-0c73-4d43-8052-21cb0f8e8039  
+[2026-04-01 06:52:32] local.INFO: Plan upgrade email sent to user: tsaklani2drish@gmail.com  
+[2026-04-01 06:52:33] local.INFO: Plan upgrade admin notification sent to: sakshi.saklani@drishinfo.com, tsaklani2drish@gmail.com  
+[2026-04-01 06:52:35] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:57:45] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:57:53] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:59:14] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:59:20] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 06:59:23] local.INFO: Cancellation email sent to user: tsaklani2drish@gmail.com (type=subscription)  
+[2026-04-01 06:59:24] local.INFO: Cancellation admin notification sent to: sakshi.saklani@drishinfo.com, tsaklani2drish@gmail.com (type=subscription)  
+[2026-04-01 06:59:26] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 07:27:07] local.ERROR: Unable to prepare route [dashboard/forms/{formId}/submissions/{id}] for serialization. Another route has already been assigned name [dashboard.submissions.show]. {"exception":"[object] (LogicException(code: 0): Unable to prepare route [dashboard/forms/{formId}/submissions/{id}] for serialization. Another route has already been assigned name [dashboard.submissions.show]. at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php:248)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php(209): Illuminate/Routing/AbstractRouteCollection->addToSymfonyRoutesCollection(Object(Symfony/Component/Routing/RouteCollection), Object(Illuminate/Routing/Route))
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php(246): Illuminate/Routing/AbstractRouteCollection->toSymfonyRouteCollection()
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php(193): Illuminate/Routing/RouteCollection->toSymfonyRouteCollection()
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php(164): Illuminate/Routing/AbstractRouteCollection->dumper()
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/RouteCacheCommand.php(109): Illuminate/Routing/AbstractRouteCollection->compile()
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/RouteCacheCommand.php(68): Illuminate/Foundation/Console/RouteCacheCommand->buildRouteCacheFile(Object(Illuminate/Routing/RouteCollection))
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Foundation/Console/RouteCacheCommand->handle()
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#12 C:/Git-folders/000form.com/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(68): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArrayInput), Object(Symfony/Component/Console/Output/NullOutput))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(41): Illuminate/Console/Command->runCommand('route:cache', Array, Object(Symfony/Component/Console/Output/NullOutput))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(53): Illuminate/Console/Command->callSilent('route:cache', Array)
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/OptimizeCommand.php(48): Illuminate/Console/Command->callSilently('route:cache')
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(40): Illuminate/Foundation/Console/OptimizeCommand->Illuminate/Foundation/Console/{closure}()
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/View/Components/Factory.php(60): Illuminate/Console/View/Components/Task->render('routes', Object(Closure))
+#20 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/OptimizeCommand.php(48): Illuminate/Console/View/Components/Factory->__call('task', Array)
+#21 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Foundation/Console/OptimizeCommand->handle()
+#22 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#23 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#24 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#25 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#26 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#27 C:/Git-folders/000form.com/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#28 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#29 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(1102): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#30 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Foundation/Console/OptimizeCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#31 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#32 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#33 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#34 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#35 {main}
+"} 
+[2026-04-01 09:14:57] local.INFO: Playground: verification email sent {"email":"tsaklani2drish@yopmail.com"} 
+[2026-04-01 09:16:08] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:16:08] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 09:16:10] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty qwerty.","_captcha":"false"},"all_files":[]} 
+[2026-04-01 09:16:10] local.INFO: Playground: Form data prepared {"name":"Sakshi Saklani","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty qwerty.","all_fields":{"message":"qwerty qwerty.","name":"Sakshi Saklani","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 09:16:10] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 09:16:10] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:16:10] local.INFO: Playground: Mail rendered successfully {"html_length":7139,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-04-01 09:16:10] local.INFO: Playground: Submission stored in database  
+[2026-04-01 09:16:10] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:16:11] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:16:11] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-04-01 09:32:26] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:32:26] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 09:32:27] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty qwerty qwerty IP.","_captcha":"false"},"all_files":[]} 
+[2026-04-01 09:32:27] local.INFO: Playground: Form data prepared {"name":"Sakshi Saklani","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty qwerty qwerty IP.","all_fields":{"message":"qwerty qwerty qwerty IP.","name":"Sakshi Saklani","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 09:32:27] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 09:32:27] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:32:27] local.INFO: Playground: Mail rendered successfully {"html_length":7149,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-04-01 09:32:28] local.INFO: Playground: Submission stored in database  
+[2026-04-01 09:32:28] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:32:29] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:32:29] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-04-01 09:33:36] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:33:36] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 09:33:37] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"sakshi","email":"tanuja10@yopmail.com","message":"qwerty qwerty qwerty 1234.","_captcha":"false"},"all_files":[]} 
+[2026-04-01 09:33:37] local.INFO: Playground: Form data prepared {"name":"sakshi","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty qwerty qwerty 1234.","all_fields":{"message":"qwerty qwerty qwerty 1234.","name":"sakshi","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 09:33:37] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 09:33:37] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:33:37] local.INFO: Playground: Mail rendered successfully {"html_length":7143,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-04-01 09:33:38] local.INFO: Playground: Submission stored in database  
+[2026-04-01 09:33:38] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:33:39] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:33:39] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-04-01 09:39:33] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:39:33] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 09:39:34] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty qwerty","_captcha":"false"},"all_files":[]} 
+[2026-04-01 09:39:34] local.INFO: Playground: Form data prepared {"name":"Sakshi Saklani","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty qwerty","all_fields":{"message":"qwerty qwerty","name":"Sakshi Saklani","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 09:39:34] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 09:39:34] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:39:34] local.INFO: Playground: Mail rendered successfully {"html_length":7138,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-04-01 09:39:34] local.INFO: Playground: Submission stored in database  
+[2026-04-01 09:39:34] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:39:35] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:39:35] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-04-01 09:40:33] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:40:33] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 09:40:34] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty qwerty","_captcha":"false"},"all_files":[]} 
+[2026-04-01 09:40:34] local.INFO: Playground: Form data prepared {"name":"Sakshi Saklani","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty qwerty","all_fields":{"message":"qwerty qwerty","name":"Sakshi Saklani","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 09:40:34] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 09:40:34] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:40:34] local.INFO: Playground: Mail rendered successfully {"html_length":7138,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-04-01 09:40:34] local.INFO: Playground: Submission stored in database  
+[2026-04-01 09:40:34] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:40:36] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:40:36] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-04-01 09:43:05] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:43:05] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 09:43:06] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"tarun","email":"tanuja10@yopmail.com","message":"qwerty 1234","_captcha":"false"},"all_files":[]} 
+[2026-04-01 09:43:06] local.INFO: Playground: Form data prepared {"name":"tarun","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty 1234","all_fields":{"message":"qwerty 1234","name":"tarun","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 09:43:06] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 09:43:06] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:43:06] local.INFO: Playground: Mail rendered successfully {"html_length":7127,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-04-01 09:43:07] local.INFO: Playground: Submission stored in database  
+[2026-04-01 09:43:07] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:43:08] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:43:08] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-04-01 09:44:30] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:44:30] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 09:44:31] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"tanuja","email":"tanuja10@yopmail.com","message":"qwerty 12345","_captcha":"false"},"all_files":[]} 
+[2026-04-01 09:44:31] local.INFO: Playground: Form data prepared {"name":"tanuja","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty 12345","all_fields":{"message":"qwerty 12345","name":"tanuja","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 09:44:31] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 09:44:31] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:44:31] local.INFO: Playground: Mail rendered successfully {"html_length":7129,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-04-01 09:44:31] local.INFO: Playground: Submission stored in database  
+[2026-04-01 09:44:31] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:44:32] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:44:32] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-04-01 09:46:15] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:46:15] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 09:46:16] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"TANUJA SAKLANI","email":"tanuja8@yopmail.com","message":"QWERTY QWERTY QWERTY.","_captcha":"false"},"all_files":[]} 
+[2026-04-01 09:46:16] local.INFO: Playground: Form data prepared {"name":"TANUJA SAKLANI","sender_email":"tanuja8@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"QWERTY QWERTY QWERTY.","all_fields":{"message":"QWERTY QWERTY QWERTY.","name":"TANUJA SAKLANI","email":"tanuja8@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 09:46:16] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 09:46:16] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:46:16] local.ERROR: Playground: Mail RENDER failed — this is why email is blank/broken {"error":"Attempt to read property \"id\" on null (View: C:\\Git-folders\\000form.com\\resources\\views\\emails\\express\\submission-basic.blade.php)","file":"C:\\Git-folders\\000form.com\\storage\\framework\\views\\18cbfff88363df1a31e31bd1714f4403.php","line":251} 
+[2026-04-01 09:46:16] local.ERROR: Playground: Email sending failed: Attempt to read property "id" on null (View: C:\Git-folders\000form.com\resources\views\emails\express\submission-basic.blade.php) {"file":"C:\\Git-folders\\000form.com\\storage\\framework\\views\\18cbfff88363df1a31e31bd1714f4403.php","line":251} 
+[2026-04-01 09:46:16] local.ERROR: Playground: Submission failed — Attempt to read property "id" on null (View: C:\Git-folders\000form.com\resources\views\emails\express\submission-basic.blade.php) {"exception_class":"Illuminate\\View\\ViewException","file":"C:\\Git-folders\\000form.com\\storage\\framework\\views\\18cbfff88363df1a31e31bd1714f4403.php","line":251,"recipient":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:46:59] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:46:59] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 09:47:00] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"TANUJA TANUJA","email":"tanuja10@yopmail.com","message":"QWERTY QWERTY","_captcha":"false"},"all_files":[]} 
+[2026-04-01 09:47:00] local.INFO: Playground: Form data prepared {"name":"TANUJA TANUJA","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"QWERTY QWERTY","all_fields":{"message":"QWERTY QWERTY","name":"TANUJA TANUJA","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 09:47:00] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 09:47:00] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:47:00] local.INFO: Playground: Mail rendered successfully {"html_length":7237,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-04-01 09:47:01] local.INFO: Playground: Submission stored in database  
+[2026-04-01 09:47:01] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:47:01] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:47:01] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-04-01 09:47:54] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:47:54] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 09:47:55] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"SAKSHI SAKSHI","email":"tanuja5@yopmail.com","message":"QWERTY QWERTY QWERTY.","_captcha":"false"},"all_files":[]} 
+[2026-04-01 09:47:55] local.INFO: Playground: Form data prepared {"name":"SAKSHI SAKSHI","sender_email":"tanuja5@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"QWERTY QWERTY QWERTY.","all_fields":{"message":"QWERTY QWERTY QWERTY.","name":"SAKSHI SAKSHI","email":"tanuja5@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 09:47:55] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 09:47:55] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:47:55] local.ERROR: Playground: Mail RENDER failed — this is why email is blank/broken {"error":"Attempt to read property \"id\" on null (View: C:\\Git-folders\\000form.com\\resources\\views\\emails\\express\\submission-basic.blade.php)","file":"C:\\Git-folders\\000form.com\\storage\\framework\\views\\18cbfff88363df1a31e31bd1714f4403.php","line":252} 
+[2026-04-01 09:47:55] local.ERROR: Playground: Email sending failed: Attempt to read property "id" on null (View: C:\Git-folders\000form.com\resources\views\emails\express\submission-basic.blade.php) {"file":"C:\\Git-folders\\000form.com\\storage\\framework\\views\\18cbfff88363df1a31e31bd1714f4403.php","line":252} 
+[2026-04-01 09:47:55] local.ERROR: Playground: Submission failed — Attempt to read property "id" on null (View: C:\Git-folders\000form.com\resources\views\emails\express\submission-basic.blade.php) {"exception_class":"Illuminate\\View\\ViewException","file":"C:\\Git-folders\\000form.com\\storage\\framework\\views\\18cbfff88363df1a31e31bd1714f4403.php","line":252,"recipient":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:50:34] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:50:34] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 09:50:35] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"QWERTY QWERTY QWERTY","_template":"box","_captcha":"false"},"all_files":[]} 
+[2026-04-01 09:50:35] local.INFO: Playground: Special field found {"key":"_template","value":"box"} 
+[2026-04-01 09:50:35] local.INFO: Playground: Form data prepared {"name":"Sakshi Saklani","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"QWERTY QWERTY QWERTY","all_fields":{"message":"QWERTY QWERTY QWERTY","name":"Sakshi Saklani","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 09:50:35] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 09:50:35] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"box","view":"emails.express.submission-box","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:50:35] local.INFO: Playground: Mail rendered successfully {"html_length":9555,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-04-01 09:50:36] local.INFO: Playground: Submission stored in database  
+[2026-04-01 09:50:36] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"box","view":"emails.express.submission-box","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:50:37] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:50:37] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-04-01 09:52:12] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:52:12] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 09:52:13] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"QWERTY","email":"tanuja10@yopmail.com","message":"QWERTY QWERTY","_template":"box","_captcha":"false"},"all_files":[]} 
+[2026-04-01 09:52:13] local.INFO: Playground: Special field found {"key":"_template","value":"box"} 
+[2026-04-01 09:52:13] local.INFO: Playground: Form data prepared {"name":"QWERTY","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"QWERTY QWERTY","all_fields":{"message":"QWERTY QWERTY","name":"QWERTY","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 09:52:13] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 09:52:14] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"box","view":"emails.express.submission-box","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:52:14] local.INFO: Playground: Mail rendered successfully {"html_length":9540,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-04-01 09:52:14] local.INFO: Playground: Submission stored in database  
+[2026-04-01 09:52:14] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"box","view":"emails.express.submission-box","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:52:15] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:52:15] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-04-01 09:53:17] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:53:17] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 09:53:19] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"tarun","email":"tanuja10@yopmail.com","message":"qwerty qwerty","_template":"box","_captcha":"false"},"all_files":[]} 
+[2026-04-01 09:53:19] local.INFO: Playground: Special field found {"key":"_template","value":"box"} 
+[2026-04-01 09:53:19] local.INFO: Playground: Form data prepared {"name":"tarun","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty qwerty","all_fields":{"message":"qwerty qwerty","name":"tarun","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 09:53:19] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 09:53:19] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"box","view":"emails.express.submission-box","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:53:19] local.INFO: Playground: Mail rendered successfully {"html_length":9514,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-04-01 09:53:19] local.INFO: Playground: Submission stored in database  
+[2026-04-01 09:53:19] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"box","view":"emails.express.submission-box","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:53:20] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:53:20] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-04-01 09:53:54] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:53:54] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 09:53:55] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty","_template":"table","_captcha":"false"},"all_files":[]} 
+[2026-04-01 09:53:55] local.INFO: Playground: Special field found {"key":"_template","value":"table"} 
+[2026-04-01 09:53:55] local.INFO: Playground: Form data prepared {"name":"Sakshi Saklani","sender_email":"tanuja10@yopmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty","all_fields":{"message":"qwerty","name":"Sakshi Saklani","email":"tanuja10@yopmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 09:53:55] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 09:53:55] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:53:55] local.INFO: Playground: Mail rendered successfully {"html_length":9508,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+
+        body {
+
+            font-family: 'DM Sa"} 
+[2026-04-01 09:53:55] local.INFO: Playground: Submission stored in database  
+[2026-04-01 09:53:55] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 09:53:56] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 09:53:56] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":null} 
+[2026-04-01 10:19:45] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 10:19:45] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 10:19:46] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"sakshi saklani","email":"tsaklani2drish@gmail.com","message":"testing http referer.","_captcha":"false"},"all_files":[],"referer":"https://kenisha-unglib-eventually.ngrok-free.dev/terms","all_headers":{"host":["kenisha-unglib-eventually.ngrok-free.dev"],"user-agent":["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"],"content-length":["97"],"accept":["text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"],"accept-encoding":["gzip, deflate, br, zstd"],"accept-language":["en-US,en;q=0.9"],"cache-control":["max-age=0"],"content-type":["application/x-www-form-urlencoded"],"cookie":["_ga=GA1.1.636030621.1773981792; abuse_interstitial=kenisha-unglib-eventually.ngrok-free.dev; XSRF-TOKEN=eyJpdiI6IjEyL0V5ejlyeTBOQVlmOE8wdE9Nd2c9PSIsInZhbHVlIjoid3lXVzd0c1NnMFpzK1RIWUI0RkllMkJ1cnZXNUVGVVZZVWlqeTZTQk9HK0RiKzRqaG1aTUdkVld5c0dmSzRKU1ErZGdoNnZIQUhKbzFiWFhPOGk4OFVMK1VYUVl3SmU2NEdWMlgrWEZjVGkzV1U2cUdTMEt4Q05pb2FmTlcwOTUiLCJtYWMiOiJhNTI2NDVjZTM4YjBhY2YwNjA5YjExYWUwYjQ5YmZjZTljYzJhZmM5Nzg4MGViZDE1N2Q4NzY3NGUzY2Y4NWIxIiwidGFnIjoiIn0%3D; 000form_session=eyJpdiI6ImVORFNoU1Z3cGVzVE9YZkpmK2pvS1E9PSIsInZhbHVlIjoiWkxlRGcwY0xWYWtCc2JlNTNaMVNsYjFHdGlCS2I0WEc3T0d3YU94TjIvQW9MNStIaEtDVHR6WUhJdk0xTlQrTlgya2loQ3hhQ252QWpjTmhwOVFPODdwNGhKeVJydEVZaUFURUtWam1UQUs2UDVOZTJtdmJOekU4ZUNwMW5vSXkiLCJtYWMiOiI2Y2RkZjE2MDYyMDgyMTIzMmQ2ZDAxMDJhMmZlODE4MWUzZWQ4Mzc5ZTg1NGRiOTVjOWYxOGMwNDM1YmUzMGY4IiwidGFnIjoiIn0%3D; _ga_TV3T8837GC=GS2.1.s1775037006$o21$g1$t1775038766$j56$l0$h0"],"ngrok-skip-browser-warning":["1"],"origin":["https://kenisha-unglib-eventually.ngrok-free.dev"],"priority":["u=0, i"],"referer":["https://kenisha-unglib-eventually.ngrok-free.dev/terms"],"sec-ch-ua":["\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""],"sec-ch-ua-mobile":["?0"],"sec-ch-ua-platform":["\"Windows\""],"sec-fetch-dest":["document"],"sec-fetch-mode":["navigate"],"sec-fetch-site":["same-origin"],"sec-fetch-user":["?1"],"upgrade-insecure-requests":["1"],"x-forwarded-for":["112.196.28.2"],"x-forwarded-host":["kenisha-unglib-eventually.ngrok-free.dev"],"x-forwarded-proto":["https"]}} 
+[2026-04-01 10:19:46] local.INFO: Playground: Form data prepared {"name":"sakshi saklani","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"testing http referer.","all_fields":{"message":"testing http referer.","name":"sakshi saklani","email":"tsaklani2drish@gmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 10:19:46] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 10:19:46] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 10:19:46] local.INFO: Playground: Mail rendered successfully {"html_length":7325,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-04-01 10:19:46] local.INFO: Playground: Submission stored in database  
+[2026-04-01 10:19:46] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 10:19:48] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 10:19:48] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":"https://kenisha-unglib-eventually.ngrok-free.dev/terms"} 
+[2026-04-01 10:20:32] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 10:20:32] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 10:20:33] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"sakshi saklani","email":"tsaklani2drish@gmail.com","message":"qwerty","_captcha":"false"},"all_files":[],"referer":"https://kenisha-unglib-eventually.ngrok-free.dev/terms","all_headers":{"host":["kenisha-unglib-eventually.ngrok-free.dev"],"user-agent":["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"],"content-length":["82"],"accept":["text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"],"accept-encoding":["gzip, deflate, br, zstd"],"accept-language":["en-US,en;q=0.9"],"cache-control":["max-age=0"],"content-type":["application/x-www-form-urlencoded"],"cookie":["_ga=GA1.1.636030621.1773981792; abuse_interstitial=kenisha-unglib-eventually.ngrok-free.dev; _ga_TV3T8837GC=GS2.1.s1775037006$o21$g1$t1775038766$j56$l0$h0; XSRF-TOKEN=eyJpdiI6Ii9sbWxWRE03MXlaTmFURVJ2OG9yNEE9PSIsInZhbHVlIjoibW5IMG5IVlJOY2dZZ2w0S08rOStyWHJJb0s5Uno3b3E5Zk10RGk5QlFyNHFzeEhGdWthTFh1MUFDOE9yaHM3RDAzMTRZZ1RDek43L1I4eVl4RjhsMFd3cDRiSmEyQ2ZLWFVjekFPRk9ud096aXJVblE4Vnp1L0piVUJVek5MZmEiLCJtYWMiOiIxM2QzMjJmZjhkZTRkNWY3ZjQzYmZlODg3ZGMzYTQ3MzMwZmUyZTdiMGJhNDAzMmUyNWQ2MjUzNGUzNmI4MTQ5IiwidGFnIjoiIn0%3D; 000form_session=eyJpdiI6Ijd3aHJCT0Npd085V3ZFZ0FQNFRxTFE9PSIsInZhbHVlIjoiRlF1alZaWXhsY3IyR3dlZXdlVTZLc3FEWjFQRjdqZzV6ZmduWGU4WWgrOGZMT1BpcENNOWNmcW9PY3htdDRQRkpMZGI2U3V6d0ZtZWlwRGUxNkpGRUNJbnluY0xzeUVjaW1Xb0JTdzZvOWVTejVXM3RCS2MvVUFiRjlPQkNSR2YiLCJtYWMiOiIxY2IyYWU0YWRkYmQ2YTRiYTBkZDUzNjExYTJlNmFiMzJhMzg1N2QyNjE5OThkNDU0YjJhMGY5Mzc5NDIxMTkzIiwidGFnIjoiIn0%3D"],"ngrok-skip-browser-warning":["1"],"origin":["https://kenisha-unglib-eventually.ngrok-free.dev"],"priority":["u=0, i"],"referer":["https://kenisha-unglib-eventually.ngrok-free.dev/terms"],"sec-ch-ua":["\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""],"sec-ch-ua-mobile":["?0"],"sec-ch-ua-platform":["\"Windows\""],"sec-fetch-dest":["document"],"sec-fetch-mode":["navigate"],"sec-fetch-site":["same-origin"],"sec-fetch-user":["?1"],"upgrade-insecure-requests":["1"],"x-forwarded-for":["112.196.28.2"],"x-forwarded-host":["kenisha-unglib-eventually.ngrok-free.dev"],"x-forwarded-proto":["https"]}} 
+[2026-04-01 10:20:33] local.INFO: Playground: Form data prepared {"name":"sakshi saklani","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty","all_fields":{"message":"qwerty","name":"sakshi saklani","email":"tsaklani2drish@gmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 10:20:33] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 10:20:33] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 10:20:33] local.INFO: Playground: Mail rendered successfully {"html_length":7314,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-04-01 10:20:34] local.INFO: Playground: Submission stored in database  
+[2026-04-01 10:20:34] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 10:20:34] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 10:20:34] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":"https://kenisha-unglib-eventually.ngrok-free.dev/terms"} 
+[2026-04-01 10:21:30] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 10:21:30] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 10:21:31] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"Tanuja Saklani","email":"tsaklani2drish@gmail.com","message":"qwerty qwerty qwerty.","_captcha":"false"},"all_files":[],"referer":"https://kenisha-unglib-eventually.ngrok-free.dev/terms","all_headers":{"host":["kenisha-unglib-eventually.ngrok-free.dev"],"user-agent":["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"],"content-length":["97"],"accept":["text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"],"accept-encoding":["gzip, deflate, br, zstd"],"accept-language":["en-US,en;q=0.9"],"cache-control":["max-age=0"],"content-type":["application/x-www-form-urlencoded"],"cookie":["_ga=GA1.1.636030621.1773981792; abuse_interstitial=kenisha-unglib-eventually.ngrok-free.dev; _ga_TV3T8837GC=GS2.1.s1775037006$o21$g1$t1775038766$j56$l0$h0; XSRF-TOKEN=eyJpdiI6ImJkRWUyZytxbExXZ0xaTnZtT1RGUlE9PSIsInZhbHVlIjoiaDlrWkowMDJrSEhFWmc2RzZ6ZVB4ZHlLcVhqYkdUS3d2cjNsOS9XRXlRdGdTYjV3a2pSQ1RmcTVWSEFJcUFzRmhqYmtkbWxjcUMrYUpRanpQN2FCOXJSNlFsM2VsMDVUa29vT0FQdldYRVY3czVkMkQ2UTJOYStCZEs2a1JaUjAiLCJtYWMiOiJiOGZhZjgwYjhkZDJjMjQ0NDE4ZmJkNDY3MGI4ODE0NWIzYzQ3NjU1MTliYjA5ODg5ZTIzZjNhZjFhN2U1ZDE2IiwidGFnIjoiIn0%3D; 000form_session=eyJpdiI6IkRNanNzNkNXc2ppQnp5Y0tSQmxER3c9PSIsInZhbHVlIjoicWRhWU91RTViVGVLR2pPcXp1SklNSHhvYnZ0SEtTV0xWNDJmNjcvc0N4NDJITlJGdGd6S0V3bEFRbnAyODJMNFZJYTB5OVgrU092S2ZRaWxHVjI0cDNmVS9tMi85UE5FSlozZ2x1VFVoenVxamtMQVJ3bHFiZXFLRS96cm9WYUwiLCJtYWMiOiI0YzIxOTM2MGI5OWRmOTc5NDAwN2NmMGUwMjQ5N2ExOGI3Nzk1ZTkwZGZmZjhiYWFmZGZjODc5Y2Q1MmE0OWRjIiwidGFnIjoiIn0%3D"],"ngrok-skip-browser-warning":["1"],"origin":["https://kenisha-unglib-eventually.ngrok-free.dev"],"priority":["u=0, i"],"referer":["https://kenisha-unglib-eventually.ngrok-free.dev/terms"],"sec-ch-ua":["\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""],"sec-ch-ua-mobile":["?0"],"sec-ch-ua-platform":["\"Windows\""],"sec-fetch-dest":["document"],"sec-fetch-mode":["navigate"],"sec-fetch-site":["same-origin"],"sec-fetch-user":["?1"],"upgrade-insecure-requests":["1"],"x-forwarded-for":["112.196.28.2"],"x-forwarded-host":["kenisha-unglib-eventually.ngrok-free.dev"],"x-forwarded-proto":["https"]}} 
+[2026-04-01 10:21:31] local.INFO: Playground: Form data prepared {"name":"Tanuja Saklani","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty qwerty qwerty.","all_fields":{"message":"qwerty qwerty qwerty.","name":"Tanuja Saklani","email":"tsaklani2drish@gmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 10:21:31] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 10:21:31] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 10:21:31] local.INFO: Playground: Mail rendered successfully {"html_length":7329,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-04-01 10:21:32] local.INFO: Playground: Submission stored in database  
+[2026-04-01 10:21:32] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"basic","view":"emails.express.submission-basic","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 10:21:33] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 10:21:33] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":"https://kenisha-unglib-eventually.ngrok-free.dev/terms"} 
+[2026-04-01 10:22:07] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 10:22:07] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 10:22:09] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"sakshi saklani","email":"tsaklani2drish@gmail.com","message":"qwerty","_captcha":"false","_template":"box"},"all_files":[],"referer":"https://kenisha-unglib-eventually.ngrok-free.dev/terms","all_headers":{"host":["kenisha-unglib-eventually.ngrok-free.dev"],"user-agent":["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"],"content-length":["96"],"accept":["text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"],"accept-encoding":["gzip, deflate, br, zstd"],"accept-language":["en-US,en;q=0.9"],"cache-control":["max-age=0"],"content-type":["application/x-www-form-urlencoded"],"cookie":["_ga=GA1.1.636030621.1773981792; abuse_interstitial=kenisha-unglib-eventually.ngrok-free.dev; _ga_TV3T8837GC=GS2.1.s1775037006$o21$g1$t1775038766$j56$l0$h0; XSRF-TOKEN=eyJpdiI6IlZXWmlKL2p0SDhTZVRVVTJkbFVNMkE9PSIsInZhbHVlIjoiZ0xZYlRKeDdzN0gvcnFlSlhXemU3OG00UFpJUTNodlUzM2VlUlVHUExPL1FrdCtsUFNSZ2h3Z3FUNG4wMERzUDZmTkx4eFQrSEwvdDNGNnNPZDVubGluNTZTb1N3V2xVWGdwWnl0dnA0ajU5MzRYeWFPNGduSlZnck85SnJjbzEiLCJtYWMiOiJkMDllYmZiODllMzI3MmE1NTgyOTI0NzUxNjM2MDYyMTE1OTBiYmRjNzM2ZTM0ZDhmMDgwYWU2NjVlZDI0NTRlIiwidGFnIjoiIn0%3D; 000form_session=eyJpdiI6IlpRWndkdllwM3NrcDF5QU1IWENTdnc9PSIsInZhbHVlIjoibnVTbGpZV3hNMVE1Ty94aXoxaUR6TnRqMUw4cFNnRHpGRWE5b09ubmVGS1dYNUxFZ2owMHhnWUFqaDYvak0xekR5Ty9vd1pmQ2V5ZGV3V2Q0eFh4UFpHQy9iMTA5T0o4M2ZTZUxJekFEUEhRVUNGc3lwbi91TGpla3d0eXc0ODkiLCJtYWMiOiIyN2Q1MWM5NzFiMGEyMGQwNTExNWMwZDNmZDQ4YzNjMTBjNTYwYjM1MWI4NjUzOGM2NWNlNTQ5YTM2NDViY2M2IiwidGFnIjoiIn0%3D"],"ngrok-skip-browser-warning":["1"],"origin":["https://kenisha-unglib-eventually.ngrok-free.dev"],"priority":["u=0, i"],"referer":["https://kenisha-unglib-eventually.ngrok-free.dev/terms"],"sec-ch-ua":["\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""],"sec-ch-ua-mobile":["?0"],"sec-ch-ua-platform":["\"Windows\""],"sec-fetch-dest":["document"],"sec-fetch-mode":["navigate"],"sec-fetch-site":["same-origin"],"sec-fetch-user":["?1"],"upgrade-insecure-requests":["1"],"x-forwarded-for":["112.196.28.2"],"x-forwarded-host":["kenisha-unglib-eventually.ngrok-free.dev"],"x-forwarded-proto":["https"]}} 
+[2026-04-01 10:22:09] local.INFO: Playground: Special field found {"key":"_template","value":"box"} 
+[2026-04-01 10:22:09] local.INFO: Playground: Form data prepared {"name":"sakshi saklani","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty","all_fields":{"message":"qwerty","name":"sakshi saklani","email":"tsaklani2drish@gmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 10:22:09] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 10:22:09] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"box","view":"emails.express.submission-box","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 10:22:09] local.INFO: Playground: Mail rendered successfully {"html_length":9646,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-04-01 10:22:09] local.INFO: Playground: Submission stored in database  
+[2026-04-01 10:22:09] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"box","view":"emails.express.submission-box","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 10:22:10] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 10:22:10] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":"https://kenisha-unglib-eventually.ngrok-free.dev/terms"} 
+[2026-04-01 10:22:52] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 10:22:52] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 10:22:53] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"sakshi saklani","email":"tsaklani2drish@gmail.com","message":"qwerty","_captcha":"false","_template":"box"},"all_files":[],"referer":"https://kenisha-unglib-eventually.ngrok-free.dev/terms","all_headers":{"host":["kenisha-unglib-eventually.ngrok-free.dev"],"user-agent":["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"],"content-length":["96"],"accept":["text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"],"accept-encoding":["gzip, deflate, br, zstd"],"accept-language":["en-US,en;q=0.9"],"cache-control":["max-age=0"],"content-type":["application/x-www-form-urlencoded"],"cookie":["_ga=GA1.1.636030621.1773981792; abuse_interstitial=kenisha-unglib-eventually.ngrok-free.dev; _ga_TV3T8837GC=GS2.1.s1775037006$o21$g1$t1775038766$j56$l0$h0; XSRF-TOKEN=eyJpdiI6Ijl2OENxbEF5ZDBkUnRvVG1Jcy81bWc9PSIsInZhbHVlIjoicHBrUWtvYWk0V0FEMktZS1VPYmM0ZXN2NXI0b1RhZnQrR1JsMGJCb1FDTGNRM2NzT09OamE1enpPekVBdStTRUFHaDdUdUZKMXFiSW1UZ1p2dVVablcvZzFjQXhaSThuSGwyTTI3VVYwTTdSa3BnRVBGTmJOUVdRU2l2OHhvNG4iLCJtYWMiOiJlMDAzYjA4ZGE0OTRmZjJiMmJmMGYxODA2YTcyNDc4YTIxMTg4MmJiMzYzZmIwYTJlN2YzMzg0YmQ4NWY3NDVkIiwidGFnIjoiIn0%3D; 000form_session=eyJpdiI6IndkdHNsektLWXpMMXp1VWRXSFY4QVE9PSIsInZhbHVlIjoiTXhiQ1BKRWtteTJ1REJ6ZkMzYzNsWHcyVmx5TEFTeEtNMy9qYkRFaExGZkJTaExqMDJhTDlMdkRyMEtiS2s5aHUycTB6QXorNStwS2RlZmxtOHpGREFCTE5Zd3VGcmFNa0M5V25NR25tYVVaT2ZTRElxNi9nRjRzSGRqUXFTbmYiLCJtYWMiOiJmMGRiMDA1YWRlODg1NGFjYmM5NGE4MGY3ODNmMTNlNjJiZWY1ZWU3MTViMWU2ZjI1MjgwMjFmYzgwZmViNThhIiwidGFnIjoiIn0%3D"],"ngrok-skip-browser-warning":["1"],"origin":["https://kenisha-unglib-eventually.ngrok-free.dev"],"priority":["u=0, i"],"referer":["https://kenisha-unglib-eventually.ngrok-free.dev/terms"],"sec-ch-ua":["\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""],"sec-ch-ua-mobile":["?0"],"sec-ch-ua-platform":["\"Windows\""],"sec-fetch-dest":["document"],"sec-fetch-mode":["navigate"],"sec-fetch-site":["same-origin"],"sec-fetch-user":["?1"],"upgrade-insecure-requests":["1"],"x-forwarded-for":["112.196.28.2"],"x-forwarded-host":["kenisha-unglib-eventually.ngrok-free.dev"],"x-forwarded-proto":["https"]}} 
+[2026-04-01 10:22:53] local.INFO: Playground: Special field found {"key":"_template","value":"box"} 
+[2026-04-01 10:22:53] local.INFO: Playground: Form data prepared {"name":"sakshi saklani","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty","all_fields":{"message":"qwerty","name":"sakshi saklani","email":"tsaklani2drish@gmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 10:22:53] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 10:22:53] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"box","view":"emails.express.submission-box","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 10:22:53] local.INFO: Playground: Mail rendered successfully {"html_length":9827,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+    "} 
+[2026-04-01 10:22:54] local.INFO: Playground: Submission stored in database  
+[2026-04-01 10:22:54] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"box","view":"emails.express.submission-box","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 10:22:55] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 10:22:55] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":"https://kenisha-unglib-eventually.ngrok-free.dev/terms"} 
+[2026-04-01 10:23:32] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 10:23:32] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 10:23:33] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"sakshi saklani","email":"tsaklani2drish@gmail.com","message":"qwerty","_captcha":"false","_template":"table"},"all_files":[],"referer":"https://kenisha-unglib-eventually.ngrok-free.dev/terms","all_headers":{"host":["kenisha-unglib-eventually.ngrok-free.dev"],"user-agent":["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"],"content-length":["98"],"accept":["text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"],"accept-encoding":["gzip, deflate, br, zstd"],"accept-language":["en-US,en;q=0.9"],"cache-control":["max-age=0"],"content-type":["application/x-www-form-urlencoded"],"cookie":["_ga=GA1.1.636030621.1773981792; abuse_interstitial=kenisha-unglib-eventually.ngrok-free.dev; _ga_TV3T8837GC=GS2.1.s1775037006$o21$g1$t1775038766$j56$l0$h0; XSRF-TOKEN=eyJpdiI6InFhZjVFUHdhVk5waFgvSWhGdWR0U2c9PSIsInZhbHVlIjoiejA0cjJMVUtlMW9tU2NwTmlkTTlGYWRhdWJVTHgxSmNndmRiR1NGd3pPYUIrQmZKVDVMaU4vNGtud2FFdDFhcWRNaXVvZURucUxDZXhKM0ZXUXg4c1pyTy9xQlA5SVgxS1BLbWQvUGsxSVNTQ2w4TmR0VUxING5FWDZNbVIzc2EiLCJtYWMiOiIyODdlYmQzZWM0YzhmNzY2NDFlMzJlNTY0YzBjM2VjMWJjNWRkOTNmMjMxZDMxOTJkZmE4MDcxZWUxZGYxYjlhIiwidGFnIjoiIn0%3D; 000form_session=eyJpdiI6IjcrbDZMZTVpamFtamgyRUxrbzBhOUE9PSIsInZhbHVlIjoiMFFFcENhbHpnaHgyV0J3NndML244U2h3S29ibTFJUkxBaCs1eTRCVXNwTFB0VUJwUGJiWWZnVURZZXlVakhJVUlSSW5mL3EvOGdEMzlZaGkyMTZvVDhkajQzdmxjV3BtZEZDNHVMR2owQ3E3RG83d3prd3BGTXBCU3RlN3dwc3YiLCJtYWMiOiIzOWI1NzRjYzYwZGM4NTA2NDZiYzg4ZmI2MjgzN2Y3OWEyNmFkYWNmNmY4MDY1MzUwMDM4NTBkZGQ3MGUwYzM1IiwidGFnIjoiIn0%3D"],"ngrok-skip-browser-warning":["1"],"origin":["https://kenisha-unglib-eventually.ngrok-free.dev"],"priority":["u=0, i"],"referer":["https://kenisha-unglib-eventually.ngrok-free.dev/terms"],"sec-ch-ua":["\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""],"sec-ch-ua-mobile":["?0"],"sec-ch-ua-platform":["\"Windows\""],"sec-fetch-dest":["document"],"sec-fetch-mode":["navigate"],"sec-fetch-site":["same-origin"],"sec-fetch-user":["?1"],"upgrade-insecure-requests":["1"],"x-forwarded-for":["112.196.28.2"],"x-forwarded-host":["kenisha-unglib-eventually.ngrok-free.dev"],"x-forwarded-proto":["https"]}} 
+[2026-04-01 10:23:33] local.INFO: Playground: Special field found {"key":"_template","value":"table"} 
+[2026-04-01 10:23:33] local.INFO: Playground: Form data prepared {"name":"sakshi saklani","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwerty","all_fields":{"message":"qwerty","name":"sakshi saklani","email":"tsaklani2drish@gmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 10:23:33] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 10:23:33] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 10:23:33] local.INFO: Playground: Mail rendered successfully {"html_length":9638,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+
+        body {
+
+            font-family: 'DM Sa"} 
+[2026-04-01 10:23:34] local.INFO: Playground: Submission stored in database  
+[2026-04-01 10:23:34] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 10:23:35] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 10:23:35] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":"https://kenisha-unglib-eventually.ngrok-free.dev/terms"} 
+[2026-04-01 10:24:19] local.INFO: Playground: handleEmailSubmission called {"email":"tsaklani2drish@gmail.com"} 
+[2026-04-01 10:24:19] local.INFO: Playground email submission received {"email":"tsaklani2drish@gmail.com","ip":"127.0.0.1","method":"POST","has_files":"no"} 
+[2026-04-01 10:24:21] local.INFO: Playground: Processing verified submission {"recipient":"tsaklani2drish@gmail.com","all_input":{"name":"sakshi saklani","email":"tsaklani2drish@gmail.com","message":"qwertty","_captcha":"false","_template":"table"},"all_files":[],"referer":"https://kenisha-unglib-eventually.ngrok-free.dev/terms","all_headers":{"host":["kenisha-unglib-eventually.ngrok-free.dev"],"user-agent":["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"],"content-length":["99"],"accept":["text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"],"accept-encoding":["gzip, deflate, br, zstd"],"accept-language":["en-US,en;q=0.9"],"cache-control":["max-age=0"],"content-type":["application/x-www-form-urlencoded"],"cookie":["_ga=GA1.1.636030621.1773981792; abuse_interstitial=kenisha-unglib-eventually.ngrok-free.dev; _ga_TV3T8837GC=GS2.1.s1775037006$o21$g1$t1775038766$j56$l0$h0; XSRF-TOKEN=eyJpdiI6IktETnkraVBhcHEyVE1WNGFnQ3BETHc9PSIsInZhbHVlIjoicjBadWQvdVhGbXB5TGJkTG9zL05IclV6MDcrWHNRa1pjbWdZckFvQmZ2VzBrc29qMi9YMDhLTTNJeDRsU1BJRUhpME9mT01kNzBYT1JxS2NkZnJsZXNiQXYvL0VNZHF3T2hMZC9jenllSFI4aU1ZZkpKT0NXNEpLYSt3U3VEdHQiLCJtYWMiOiIyMDRkZGFlN2YyY2FiZWEwMTZlMWI0ZDk1ZDkxZTNmYzczZDE5ZmE0YjY3MGNhNmUxMjYzNGMyODJjNmRlNzExIiwidGFnIjoiIn0%3D; 000form_session=eyJpdiI6IkRQYXdsSWE1M3pUR3ZWWjdKWmxPUkE9PSIsInZhbHVlIjoiM1RMaktheWdhTXVoVE5aQzNaa096cktYUFRDdEJkL3dxdTNIaFBtNkc5b1crZ2NCM0xTTVJSMHEyUUZvUlFJajFpOG5mMDQyUHRoREFJTnlXQ2JEcmJVa3hMWTNhekNnaWRWWW5sMExsY0piSzd4OEQ2K3lmMTlZNm5IbUlGRkkiLCJtYWMiOiIxMzMwOWUwNTI3YjZiOGRmZmZiMmZjODI2ZWExMDQ4ODJmMDZiYTQ2ZjNlZTc0MzI3ZTAxNjE3NTQ1MDViNmIxIiwidGFnIjoiIn0%3D"],"ngrok-skip-browser-warning":["1"],"origin":["https://kenisha-unglib-eventually.ngrok-free.dev"],"priority":["u=0, i"],"referer":["https://kenisha-unglib-eventually.ngrok-free.dev/terms"],"sec-ch-ua":["\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""],"sec-ch-ua-mobile":["?0"],"sec-ch-ua-platform":["\"Windows\""],"sec-fetch-dest":["document"],"sec-fetch-mode":["navigate"],"sec-fetch-site":["same-origin"],"sec-fetch-user":["?1"],"upgrade-insecure-requests":["1"],"x-forwarded-for":["112.196.28.2"],"x-forwarded-host":["kenisha-unglib-eventually.ngrok-free.dev"],"x-forwarded-proto":["https"]}} 
+[2026-04-01 10:24:21] local.INFO: Playground: Special field found {"key":"_template","value":"table"} 
+[2026-04-01 10:24:21] local.INFO: Playground: Form data prepared {"name":"sakshi saklani","sender_email":"tsaklani2drish@gmail.com","recipient_email":"tsaklani2drish@gmail.com","message":"qwertty","all_fields":{"message":"qwertty","name":"sakshi saklani","email":"tsaklani2drish@gmail.com","_captcha":"false"},"has_sender_email":true,"attachments_count":0} 
+[2026-04-01 10:24:21] local.INFO: Playground: Attempting to send email {"to":"tsaklani2drish@gmail.com","from_address":"no-reply@000form.com","from_name":"000form","mailer":"smtp","host":"000form.com","subject":"New Form Submission — 000form"} 
+[2026-04-01 10:24:21] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 10:24:21] local.INFO: Playground: Mail rendered successfully {"html_length":9691,"html_preview":"
+
+
+
+
+
+    
+
+    
+
+    New Submission - 000form Express
+
+    
+
+    
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+
+        body {
+
+            font-family: 'DM Sa"} 
+[2026-04-01 10:24:21] local.INFO: Playground: Submission stored in database  
+[2026-04-01 10:24:21] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
+[2026-04-01 10:24:22] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
+[2026-04-01 10:24:22] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":"https://kenisha-unglib-eventually.ngrok-free.dev/terms"} 

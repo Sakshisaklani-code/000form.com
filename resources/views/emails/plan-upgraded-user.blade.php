@@ -14,11 +14,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        .wrapper {
-            max-width: 580px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+        .wrapper { max-width: 580px; margin: 0 auto; padding: 40px 20px; }
 
         /* ── HEADER ── */
         .header {
@@ -75,11 +71,7 @@
             margin-bottom: 10px;
         }
 
-        .header p {
-            color: #777;
-            font-size: 0.875rem;
-            line-height: 1.6;
-        }
+        .header p { color: #777; font-size: 0.875rem; line-height: 1.6; }
 
         /* ── BODY ── */
         .body {
@@ -103,10 +95,7 @@
             margin-bottom: 28px;
         }
 
-        .plan-pill {
-            text-align: center;
-            flex: 1;
-        }
+        .plan-pill { text-align: center; flex: 1; }
 
         .plan-pill .pill-label {
             font-size: 0.65rem;
@@ -126,17 +115,52 @@
         .plan-pill .pill-name.old { color: #555; }
         .plan-pill .pill-name.new { color: #00ff88; }
 
-        .plan-pill .pill-cycle {
-            font-size: 0.72rem;
-            color: #555;
-            margin-top: 4px;
-            text-transform: capitalize;
+        .plan-pill .pill-cycle { font-size: 0.72rem; color: #555; margin-top: 4px; text-transform: capitalize; }
+
+        .arrow { font-size: 1.4rem; color: #333; flex-shrink: 0; }
+
+        /* ── PAYMENT HIGHLIGHT CARD (immediate only) ── */
+        .payment-card {
+            background: linear-gradient(135deg, rgba(0, 30, 20, 0.6) 0%, rgba(0, 20, 12, 0.4) 100%);
+            border: 1px solid rgba(0, 255, 136, 0.25);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            margin-bottom: 28px;
         }
 
-        .arrow {
-            font-size: 1.4rem;
-            color: #333;
-            flex-shrink: 0;
+        .payment-card .pay-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #7effb3;
+            background: rgba(0, 255, 136, 0.12);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 40px;
+            margin-bottom: 12px;
+        }
+
+        .payment-card .pay-amount {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.03em;
+            margin-bottom: 6px;
+        }
+
+        .payment-card .pay-currency {
+            font-size: 0.78rem;
+            color: #555;
+        }
+
+        .payment-card .pay-renewal {
+            font-size: 0.78rem;
+            color: #666;
+            border-top: 1px dashed #2a2a2a;
+            padding-top: 12px;
+            margin-top: 12px;
         }
 
         /* ── EFFECTIVE DATE CALLOUT ── */
@@ -161,10 +185,8 @@
         }
 
         .callout-icon { font-size: 1.2rem; flex-shrink: 0; }
-
         .callout-immediate .callout-text { color: #a3f0cc; }
         .callout-scheduled .callout-text { color: #fde68a; }
-
         .callout-text strong { display: block; margin-bottom: 2px; font-size: 0.8rem; }
 
         /* ── SECTION LABEL ── */
@@ -178,20 +200,11 @@
         }
 
         /* ── DETAILS TABLE ── */
-        .details-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 28px;
-        }
-
+        .details-table { width: 100%; border-collapse: collapse; margin-bottom: 28px; }
         .details-table tr { border-bottom: 1px solid #1a1a1a; }
         .details-table tr:last-child { border-bottom: none; }
 
-        .details-table td {
-            padding: 11px 0;
-            font-size: 0.85rem;
-            vertical-align: middle;
-        }
+        .details-table td { padding: 11px 0; font-size: 0.85rem; vertical-align: middle; }
 
         .details-table .label { color: #555; width: 45%; }
 
@@ -203,9 +216,33 @@
         }
 
         .details-table .value.accent { color: #00ff88; }
+        .details-table .value.mono { font-family: monospace; font-size: 0.75rem; word-break: break-all; }
 
         /* ── DIVIDER ── */
         .divider { border: none; border-top: 1px solid #1a1a1a; margin: 20px 0; }
+
+        /* ── INVOICE LINK ── */
+        .invoice-wrap {
+            background: #0f0f0f;
+            border: 1px solid #1e1e1e;
+            border-radius: 10px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .invoice-wrap .inv-label { font-size: 0.8rem; color: #555; }
+
+        .invoice-wrap .inv-link {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #00ff88;
+            text-decoration: none;
+            white-space: nowrap;
+        }
 
         /* ── CTA ── */
         .cta-wrap { text-align: center; margin: 24px 0 8px; }
@@ -263,7 +300,7 @@
 
         <p>
             @if($isImmediate)
-                Your new plan is active immediately. Here's what changed.
+                Your new plan is active immediately. Here's a full summary of your upgrade.
             @else
                 Your plan will upgrade on <strong>{{ $effectiveAt }}</strong>. No action needed.
             @endif
@@ -288,6 +325,20 @@
             </div>
         </div>
 
+        {{-- Payment highlight (immediate upgrades only) --}}
+        @if($isImmediate && $amount)
+        <div class="payment-card">
+            <div class="pay-label">{{ ucfirst($newBilling) }} Plan</div>
+            <div class="pay-amount">{{ $amount }}</div>
+            @if($currency)
+            <div class="pay-currency">{{ strtoupper($currency) }}</div>
+            @endif
+            @if($periodEnd)
+            <div class="pay-renewal">Next renewal on {{ $periodEnd }}</div>
+            @endif
+        </div>
+        @endif
+
         {{-- Effective date callout --}}
         <div class="effective-callout {{ $isImmediate ? 'callout-immediate' : 'callout-scheduled' }}">
             <div class="callout-icon">{{ $isImmediate ? '✅' : '🗓' }}</div>
@@ -303,7 +354,7 @@
         </div>
 
         {{-- Change summary --}}
-        <div class="section-label">Change Summary</div>
+        <div class="section-label">{{ $isImmediate ? 'Upgrade Summary' : 'Change Summary' }}</div>
         <table class="details-table">
             <tr>
                 <td class="label">Previous Plan</td>
@@ -313,14 +364,32 @@
                 <td class="label">New Plan</td>
                 <td class="value accent">{{ ucfirst($newPlan) }} – {{ ucfirst($newBilling) }}</td>
             </tr>
+            @if($isImmediate && $amount)
+            <tr>
+                <td class="label">Amount Charged</td>
+                <td class="value accent">{{ $amount }}{{ $currency ? ' ' . strtoupper($currency) : '' }}</td>
+            </tr>
+            @endif
             <tr>
                 <td class="label">{{ $isImmediate ? 'Effective From' : 'Effective Date' }}</td>
                 <td class="value">{{ $effectiveAt }}</td>
             </tr>
+            @if($isImmediate && $periodEnd)
+            <tr>
+                <td class="label">Access Until</td>
+                <td class="value">{{ $periodEnd }}</td>
+            </tr>
+            @endif
             @if($subscriptionId)
             <tr>
                 <td class="label">Subscription ID</td>
-                <td class="value" style="font-family: monospace; font-size: 0.75rem;">{{ $subscriptionId }}</td>
+                <td class="value mono">{{ $subscriptionId }}</td>
+            </tr>
+            @endif
+            @if($isImmediate && $transactionId)
+            <tr>
+                <td class="label">Transaction ID</td>
+                <td class="value mono">{{ $transactionId }}</td>
             </tr>
             @endif
             <tr>
@@ -328,6 +397,15 @@
                 <td class="value">{{ $userEmail }}</td>
             </tr>
         </table>
+
+        {{-- Invoice PDF link (immediate upgrades only) --}}
+        @if($isImmediate && $invoiceUrl)
+        <hr class="divider">
+        <div class="invoice-wrap">
+            <span class="inv-label">📄 Invoice PDF</span>
+            <a href="{{ $invoiceUrl }}" class="inv-link" target="_blank">↓ Download Invoice</a>
+        </div>
+        @endif
 
         <hr class="divider">
 

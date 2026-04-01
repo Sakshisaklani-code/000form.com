@@ -348,7 +348,6 @@
         <p>This is an automated admin alert from 000form.</p>
         <p style="margin-top: 6px;">
             © {{ date('Y') }} 000form &nbsp;·&nbsp;
-            <a href="{{ config('app.url') }}/admin">Admin Panel</a>
         </p>
     </div>
 

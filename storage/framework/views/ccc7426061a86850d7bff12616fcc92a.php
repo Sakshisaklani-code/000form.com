@@ -250,10 +250,11 @@
             <div class="brand">
                 <span class="accent">000</span><span class="base">form</span>
             </div>
-            <h1>New submission: {{ $form->name }}</h1>
+            <h1>New submission: <?php echo e($form->name); ?></h1>
             <div class="received-line">
                 <span class="received-dot"></span>
-                Received {{ $submission ? $submission->created_at->format('M j, Y \a\t g:i A') : now()->format('M j, Y \a\t g:i A') }}
+                Received <?php echo e($submission ? $submission->created_at->format('M j, Y \a\t g:i A') : now()->format('M j, Y \a\t g:i A')); ?>
+
             </div>
         </div>
 
@@ -262,75 +263,75 @@
 
             <div class="table-shell">
                 <table class="fields">
-                    @php
+                    <?php
                         $skipKeys = ['captcha', 'g-recaptcha-response', 'h-captcha-response', 'cf-turnstile-response', 'recaptcha'];
                         $skipValues = ['false', 'true', '0', '1', ''];
-                    @endphp
+                    ?>
 
-                    @foreach($data as $key => $value)
-                        @php
+                    <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php
                             $strVal = is_string($value) ? trim($value) : (string) $value;
                             $lowerKey = strtolower($key);
                             $lowerVal = strtolower($strVal);
-                        @endphp
+                        ?>
 
-                        {{-- Skip: empty, captcha keys, boolean-like values on captcha-adjacent keys, pure boolean strings --}}
-                        @if(
+                        
+                        <?php if(
                             $strVal !== '' &&
                             !in_array($lowerKey, $skipKeys) &&
                             !($lowerVal === 'false' || $lowerVal === 'true')
-                        )
+                        ): ?>
                             <tr>
-                                <td class="label">{{ ucfirst(str_replace(['_', '-'], ' ', $key)) }}</td>
-                                <td class="value">{!! nl2br(e($value)) !!}</td>
+                                <td class="label"><?php echo e(ucfirst(str_replace(['_', '-'], ' ', $key))); ?></td>
+                                <td class="value"><?php echo nl2br(e($value)); ?></td>
                             </tr>
-                        @endif
-                    @endforeach
+                        <?php endif; ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                    @if($hasAttachment && !empty($attachments))
+                    <?php if($hasAttachment && !empty($attachments)): ?>
                         <tr>
                             <td class="label">📎 Files</td>
                             <td class="value">
                                 <ul class="attach-chips">
-                                    @foreach($attachments as $attachment)
-                                        <li>📄 {{ $attachment['name'] ?? 'file' }}</li>
-                                    @endforeach
+                                    <?php $__currentLoopData = $attachments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $attachment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li>📄 <?php echo e($attachment['name'] ?? 'file'); ?></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                             </td>
                         </tr>
-                    @endif
+                    <?php endif; ?>
                 </table>
             </div>
 
-            @if($submission)
+            <?php if($submission): ?>
                 <div class="cta-wrap">
-                    <a href="{{ route('dashboard.submissions.show', [$form->id, $submission->id]) }}" class="cta-btn">
+                    <a href="<?php echo e(route('dashboard.submissions.show', [$form->id, $submission->id])); ?>" class="cta-btn">
                         View in Dashboard →
                     </a>
                 </div>
-            @endif
+            <?php endif; ?>
 
             <div class="meta">
-                    <span><strong>IP</strong> {{ $ipAddress ?? 'N/A' }}</span><br>
+                    <span><strong>IP</strong> <?php echo e($ipAddress ?? 'N/A'); ?></span><br>
             </div>
             <div class="meta">
-                    <span><strong>🌐 Referrer:</strong> {{ $formData['referer_url'] ?? 'N/A' }}</span>
+                    <span><strong>🌐 Referrer:</strong> <?php echo e($formData['referer_url'] ?? 'N/A'); ?></span>
             </div>
 
-            @if($submission)
+            <?php if($submission): ?>
                 <div class="meta">
-                    <span><strong>IP</strong> &nbsp;{{ $submission->ip_address ?? 'N/A' }}</span>
-                    @if($submission->referrer)
-                        <span><strong>REF</strong> &nbsp;{{ parse_url($submission->referrer, PHP_URL_HOST) ?? $submission->referrer }}</span>
-                    @endif
+                    <span><strong>IP</strong> &nbsp;<?php echo e($submission->ip_address ?? 'N/A'); ?></span>
+                    <?php if($submission->referrer): ?>
+                        <span><strong>REF</strong> &nbsp;<?php echo e(parse_url($submission->referrer, PHP_URL_HOST) ?? $submission->referrer); ?></span>
+                    <?php endif; ?>
                 </div>
-            @endif
+            <?php endif; ?>
 
         </div>
 
         <!-- FOOTER -->
         <div class="card-footer">
-            <p>Sent via <a href="{{ config('app.url') }}">000form.com</a></p>
+            <p>Sent via <a href="<?php echo e(config('app.url')); ?>">000form.com</a></p>
             <p>⚡ You Are Working with 000form.com ⚡</div>
         </div>
 
@@ -339,4 +340,4 @@
 </div>
 
 </body>
-</html>
+</html><?php /**PATH C:\Git-folders\000form.com\resources\views/emails/express/submission-table.blade.php ENDPATH**/ ?>
