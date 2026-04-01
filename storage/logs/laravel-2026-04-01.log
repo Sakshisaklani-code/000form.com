@@ -976,3 +976,55 @@
 [2026-04-01 10:24:21] local.INFO: Building form submission email {"subject":"New Form Submission from 000form","template":"table","view":"emails.express.submission-table","attachments":0,"has_cc":false,"has_bcc":false,"has_replyto":true} 
 [2026-04-01 10:24:22] local.INFO: Playground: Email sent successfully {"to":"tsaklani2drish@gmail.com"} 
 [2026-04-01 10:24:22] local.INFO: Playground: Submission completed successfully {"recipient":"tsaklani2drish@gmail.com","attachments":0,"form_referrer":"https://kenisha-unglib-eventually.ngrok-free.dev/terms"} 
+[2026-04-01 10:46:12] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:46:29] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:46:37] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:46:39] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:46:48] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:47:05] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:47:08] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:47:12] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:47:15] local.INFO: Paddle API: transaction txn_01kn4aeaxz1xryrt35z9ncz82y status=completed  
+[2026-04-01 10:47:15] local.INFO: Invoice PDF fetched for txn_01kn4aeaxz1xryrt35z9ncz82y: yes  
+[2026-04-01 10:47:19] local.INFO: Payment success email sent to user: tsaklani2drish@gmail.com  
+[2026-04-01 10:47:19] local.ERROR: Failed to send admin payment email: Email "" does not comply with addr-spec of RFC 2822.  
+[2026-04-01 10:47:19] local.INFO: Built subscription from Paddle API for user d4846ed8-0c73-4d43-8052-21cb0f8e8039 {"plan":"personal","sub_id":"sub_01kn4aepsrtbx6a7wjmxrb4xqp","txn_id":"txn_01kn4aeaxz1xryrt35z9ncz82y","currency":"INR","invoice_pdf":"yes"} 
+[2026-04-01 10:49:29] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:49:45] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:50:00] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:50:06] local.INFO: Paddle immediate upgrade response transaction ID: null  
+[2026-04-01 10:50:06] local.INFO: Plan swapped via Paddle: personal/monthly → professional/monthly (when=immediately) for user d4846ed8-0c73-4d43-8052-21cb0f8e8039  
+[2026-04-01 10:50:07] local.WARNING: Could not resolve upgrade proration amount for user d4846ed8-0c73-4d43-8052-21cb0f8e8039, sub sub_01kn4aepsrtbx6a7wjmxrb4xqp  
+[2026-04-01 10:50:09] local.INFO: Plan upgrade email sent to user: tsaklani2drish@gmail.com  
+[2026-04-01 10:50:09] local.WARNING: No MAIL_ADMIN_EMAILS configured — admin plan upgrade notification skipped.  
+[2026-04-01 10:50:11] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:51:31] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:51:35] local.INFO: Plan swapped via Paddle: professional/monthly → business/monthly (when=next_billing_period) for user d4846ed8-0c73-4d43-8052-21cb0f8e8039  
+[2026-04-01 10:51:37] local.INFO: Plan upgrade email sent to user: tsaklani2drish@gmail.com  
+[2026-04-01 10:51:37] local.WARNING: No MAIL_ADMIN_EMAILS configured — admin plan upgrade notification skipped.  
+[2026-04-01 10:51:38] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:52:00] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:52:04] local.INFO: Cancellation email sent to user: tsaklani2drish@gmail.com (type=scheduled_change)  
+[2026-04-01 10:52:04] local.WARNING: No MAIL_ADMIN_EMAILS configured — admin cancellation notification skipped.  
+[2026-04-01 10:52:06] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:52:10] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:52:13] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:55:14] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:55:24] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:55:27] local.INFO: Plan swapped via Paddle: professional/monthly → business/monthly (when=next_billing_period) for user d4846ed8-0c73-4d43-8052-21cb0f8e8039  
+[2026-04-01 10:55:27] local.INFO: Admin emails resolved:  ["sakshi.saklani@drishinfo.com","tsaklani2drish@gmail.com"] 
+[2026-04-01 10:55:28] local.INFO: Plan upgrade email sent to user: tsaklani2drish@gmail.com  
+[2026-04-01 10:55:28] local.INFO: Plan upgrade admin notification sent to: sakshi.saklani@drishinfo.com, tsaklani2drish@gmail.com  
+[2026-04-01 10:55:30] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:56:06] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:56:09] local.INFO: Cancellation email sent to user: tsaklani2drish@gmail.com (type=scheduled_change)  
+[2026-04-01 10:56:09] local.INFO: Cancellation admin notification sent to: sakshi.saklani@drishinfo.com, tsaklani2drish@gmail.com (type=scheduled_change)  
+[2026-04-01 10:56:11] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:56:19] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-01 10:56:24] local.INFO: Paddle immediate upgrade response transaction ID: null  
+[2026-04-01 10:56:24] local.INFO: Plan swapped via Paddle: professional/monthly → business/monthly (when=immediately) for user d4846ed8-0c73-4d43-8052-21cb0f8e8039  
+[2026-04-01 10:56:25] local.WARNING: Could not resolve upgrade proration amount for user d4846ed8-0c73-4d43-8052-21cb0f8e8039, sub sub_01kn4aepsrtbx6a7wjmxrb4xqp  
+[2026-04-01 10:56:25] local.INFO: Admin emails resolved:  ["sakshi.saklani@drishinfo.com","tsaklani2drish@gmail.com"] 
+[2026-04-01 10:56:26] local.INFO: Plan upgrade email sent to user: tsaklani2drish@gmail.com  
+[2026-04-01 10:56:27] local.INFO: Plan upgrade admin notification sent to: sakshi.saklani@drishinfo.com, tsaklani2drish@gmail.com  
+[2026-04-01 10:56:29] local.ERROR: JWT verification error: Incorrect key for this algorithm  

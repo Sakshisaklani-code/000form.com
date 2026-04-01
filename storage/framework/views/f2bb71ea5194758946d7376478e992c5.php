@@ -1,4 +1,4 @@
-<form action="https://kenisha-unglib-eventually.ngrok-free.dev/f/tsaklani2drish@gmail.com" method="POST">
+<form action="https://000form.com/f/tsaklani2drish@gmail.com" method="POST">
     <input type="text" name="name" placeholder="Your name" required>
     <input type="email" name="email" placeholder="Your email" required>
     <textarea name="message" placeholder="Your message" required></textarea>

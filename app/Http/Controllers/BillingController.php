@@ -530,6 +530,8 @@ class BillingController extends Controller
                         ?? $response->json('data.transaction_id')
                         ?? null;
 
+                    Log::info("Paddle immediate upgrade response transaction ID: " . ($paddleTransactionId ?? 'null'));
+
                 } else {
                     $r1 = Http::withHeaders($this->paddleHeaders())
                         ->patch($this->paddleApiUrl("/subscriptions/{$subscription->paddle_subscription_id}"), [
@@ -610,14 +612,17 @@ class BillingController extends Controller
 
         // ── Fetch proration invoice details for immediate upgrades ─
         // Paddle creates a proration transaction; look it up so we
-        // can include the amount and invoice PDF in the email.
-        $upgradeAmount      = null;
-        $upgradeCurrency    = null;
-        $upgradeInvoiceUrl  = null;
+        // can include the correct upgrade amount and invoice PDF in
+        // the email — NOT the previous plan's renewal amount.
+        $upgradeAmount     = null;
+        $upgradeCurrency   = null;
+        $upgradeInvoiceUrl = null;
 
         if ($isUpgrade && $when === 'immediately') {
             try {
-                // Try using the transaction ID from the PATCH response first
+                // ── Step 1: Use transaction ID from PATCH response ─
+                // Most reliable — Paddle returns it directly when the
+                // proration charge is created synchronously.
                 if ($paddleTransactionId) {
                     $txnResp = Http::withHeaders($this->paddleHeaders())
                         ->get($this->paddleApiUrl("/transactions/{$paddleTransactionId}"));
@@ -628,19 +633,25 @@ class BillingController extends Controller
                         $upgradeCurrency = $txnData['currency_code'] ?? 'USD';
                         $upgradeAmount   = $this->formatAmount($amountRaw, $upgradeCurrency);
 
-                        // Fetch invoice PDF
                         $pdfResp = Http::withHeaders($this->paddleHeaders())
                             ->get($this->paddleApiUrl("/invoices/{$paddleTransactionId}/pdf"));
                         if ($pdfResp->successful()) {
                             $upgradeInvoiceUrl = $pdfResp->json('data.url');
                         }
+
+                        Log::info("Upgrade invoice fetched via PATCH transaction ID: {$paddleTransactionId}, amount: {$upgradeAmount}");
                     }
-                } else {
-                    // Fallback: find the latest completed transaction for this subscription
+                }
+
+                // ── Step 2: Fallback — query for 'billed' transactions ─
+                // Proration/upgrade transactions start as 'billed', NOT
+                // 'completed'. The old code queried 'completed' which
+                // always returned the PREVIOUS plan's renewal invoice.
+                if (! $upgradeAmount && $subscription->paddle_subscription_id) {
                     $txnsResp = Http::withHeaders($this->paddleHeaders())
                         ->get($this->paddleApiUrl("/transactions"), [
                             'subscription_id' => $subscription->paddle_subscription_id,
-                            'status'          => 'completed',
+                            'status'          => 'billed',
                             'order'           => 'created_at[DESC]',
                             'per_page'        => 1,
                         ]);
@@ -658,14 +669,50 @@ class BillingController extends Controller
                             if ($pdfResp->successful()) {
                                 $upgradeInvoiceUrl = $pdfResp->json('data.url');
                             }
+
+                            Log::info("Upgrade invoice fetched via billed transactions fallback: {$paddleTransactionId}, amount: {$upgradeAmount}");
                         }
                     }
                 }
+
+                // ── Step 3: Last resort — subscription latest_transaction ─
+                // Uses Paddle's ?include=latest_transaction on the
+                // subscription endpoint to get whatever was charged most
+                // recently, accepting both 'billed' and 'completed'.
+                if (! $upgradeAmount && $subscription->paddle_subscription_id) {
+                    $subResp = Http::withHeaders($this->paddleHeaders())
+                        ->get($this->paddleApiUrl("/subscriptions/{$subscription->paddle_subscription_id}"), [
+                            'include' => 'latest_transaction',
+                        ]);
+
+                    if ($subResp->successful()) {
+                        $latestTxn = $subResp->json('data.latest_transaction');
+                        if ($latestTxn && in_array($latestTxn['status'] ?? '', ['billed', 'completed'])) {
+                            $paddleTransactionId = $latestTxn['id'];
+                            $amountRaw           = (int) ($latestTxn['details']['totals']['total'] ?? 0);
+                            $upgradeCurrency     = $latestTxn['currency_code'] ?? 'USD';
+                            $upgradeAmount       = $this->formatAmount($amountRaw, $upgradeCurrency);
+
+                            $pdfResp = Http::withHeaders($this->paddleHeaders())
+                                ->get($this->paddleApiUrl("/invoices/{$paddleTransactionId}/pdf"));
+                            if ($pdfResp->successful()) {
+                                $upgradeInvoiceUrl = $pdfResp->json('data.url');
+                            }
+
+                            Log::info("Upgrade invoice fetched via latest_transaction include: {$paddleTransactionId}, amount: {$upgradeAmount}");
+                        }
+                    }
+                }
+
+                if (! $upgradeAmount) {
+                    Log::warning("Could not resolve upgrade proration amount for user {$user->id}, sub {$subscription->paddle_subscription_id}");
+                }
+
             } catch (\Exception $e) {
                 Log::warning("Could not fetch proration invoice for upgrade email: " . $e->getMessage());
             }
         }
-
+        Log::info('Admin emails resolved: ', $this->getAdminEmails());
         // ── Send emails to user + admins ──────────────────────
         $this->sendPlanUpgradeEmails(
             user:           $user,
