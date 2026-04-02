@@ -66,7 +66,6 @@
                     <th>Valid</th>
                     <th>Spam</th>
                     <th>Status</th>
-                    <th>Last Submission</th>
                     <th>View</th>
                 </tr>
             </thead>
@@ -105,9 +104,6 @@
                                     <span class="badge-dot"></span>Paused
                                 </span>
                             @endif
-                        </td>
-                        <td class="text-muted">
-                            {{ $form->last_submission_at ? $form->last_submission_at->diffForHumans() : 'Never' }}
                         </td>
                         <td class="text-right">
                             <a href="{{ route('dashboard.forms.show', $form->id) }}"

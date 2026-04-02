@@ -407,3 +407,6 @@ DETAIL:  Failing row contains (2, d4846ed8-0c73-4d43-8052-21cb0f8e8039, null, tx
 [2026-04-02 09:09:15] local.ERROR: JWT verification error: Incorrect key for this algorithm  
 [2026-04-02 09:10:59] local.ERROR: JWT verification error: Incorrect key for this algorithm  
 [2026-04-02 09:14:42] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:38:22] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:40:43] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:43:46] local.ERROR: JWT verification error: Incorrect key for this algorithm  
