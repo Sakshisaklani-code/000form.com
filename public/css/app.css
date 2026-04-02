@@ -32,7 +32,9 @@
 html {
     scroll-behavior: smooth;
 }
-
+html, body {
+    overflow-x: clip;
+}
 body {
     font-family: var(--font-display);
     background: var(--bg-primary);
@@ -117,10 +119,12 @@ code, .mono {
    ============================================ */
 
 .nav {
-    position: fixed;
+    position: sticky; /* or fixed if you want */
     top: 0;
-    left: 0;
-    right: 0;
+
+    width: 100%;          /* ensure it follows page width */
+    left: auto;           /* REMOVE left/right */
+    right: auto;
     z-index: 100;
     padding: 1rem 0;
     background: rgba(5, 5, 5, 0.8);
@@ -140,7 +144,6 @@ code, .mono {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1.5rem;
-    flex-wrap: wrap;
 }
 
 .nav-logo {

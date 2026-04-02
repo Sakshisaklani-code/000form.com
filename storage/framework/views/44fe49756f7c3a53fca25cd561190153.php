@@ -45,131 +45,175 @@
     </script>
     <?php echo $__env->yieldPushContent('styles'); ?>
     <style>
-        /* EXPRESS BLUE PILL */
-        .pill-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 9px 18px 9px 13px;
-            border-radius: 999px;
-            background: linear-gradient(135deg, #1e6be6 0%, #0a3fa8 100%);
-            color: #fafcff!important;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.18);
-            box-shadow: 0 2px 12px rgba(30,107,230,0.38),
-                        inset 0 1px 0 rgba(255,255,255,0.14);
-            transition: all 0.3s ease;
-        }
+        /* ============================================
+        Fix: Right-side horizontal overflow gap
+        ============================================ */
 
-        .pill-link:hover {
-            box-shadow: 0 6px 22px rgba(30,107,230,0.8);
-            transform: scale(1.08); 
-        }
-
-        .pill-icon {
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.15);
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        /* Mobile menu styles */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            z-index: 100;
-        }
-        
-        .mobile-menu-toggle span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background: var(--text-primary);
-            margin: 5px 0;
-            transition: 0.3s;
-            border-radius: 3px;
-        }
-        
-        .mobile-menu-toggle.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        
-        .mobile-menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .mobile-menu-toggle.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
+        /* Step 1: Force body to never exceed viewport */
+            .hero-bg,
+            .hero-gradient,
+            .hero-gradient-1,
+            .hero-gradient-2 {
+                max-width: none;
+                overflow: hidden;
             }
-            
-            .nav-links,
-            .nav-actions {
-                display: none;
+
+            .features,
+            .how-it-works,
+            .cta-section,
+            .footer,
+            .hero {
+                overflow-x: clip;
+            }
+            html {
+                overflow-x: clip;
+            }
+
+            body {
+                overflow-x: clip;
                 width: 100%;
             }
-            
-            .nav-links.active,
-            .nav-actions.active {
-                display: flex;
-                flex-direction: column;
+
+            /* Step 2: Clip the hero section tightly */
+            .hero {
+                overflow: clip;   /* 'clip' is stronger than 'hidden' — doesn't create scroll context */
+            }
+
+            /* Step 3: Constrain the gradient blobs from bleeding */
+            .hero-gradient-1 {
+                right: 0;         /* was -100px — remove the negative offset */
+                opacity: 0.15;    /* slightly reduce to compensate for smaller spread */
+            }
+
+            .hero-gradient-2 {
+                left: 0;          /* was -100px */
+                opacity: 0.15;
+            }
+            /* EXPRESS BLUE PILL */
+            .pill-link {
+                display: inline-flex;
                 align-items: center;
-                gap: 1rem;
-                padding: 1rem 0;
+                gap: 8px;
+                padding: 9px 18px 9px 13px;
+                border-radius: 999px;
+                background: linear-gradient(135deg, #1e6be6 0%, #0a3fa8 100%);
+                color: #fafcff!important;
+                font-size: 14px;
+                font-weight: 600;
+                text-decoration: none;
+                border: 1px solid rgba(255,255,255,0.18);
+                box-shadow: 0 2px 12px rgba(30,107,230,0.38),
+                            inset 0 1px 0 rgba(255,255,255,0.14);
+                transition: all 0.3s ease;
             }
-            
-            .nav-links.active {
-                border-top: 1px solid var(--border-color);
-                margin-top: 1rem;
+
+            .pill-link:hover {
+                box-shadow: 0 6px 22px rgba(30,107,230,0.8);
+                transform: scale(1.08); 
             }
-            
-            .nav-inner {
-                flex-wrap: wrap;
-            }
-            
-            .footer-inner {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-            
-            .footer-links {
-                flex-wrap: wrap;
+
+            .pill-icon {
+                width: 20px;
+                height: 20px;
+                display: flex;
+                align-items: center;
                 justify-content: center;
+                background: rgba(255,255,255,0.15);
+                border-radius: 50%;
+                border: 1px solid rgba(255,255,255,0.2);
             }
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 1rem;
+
+            /* Mobile menu styles */
+            .mobile-menu-toggle {
+                display: none;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0.5rem;
+                z-index: 100;
             }
             
-            .nav-logo {
-                font-size: 1.5rem;
+            .mobile-menu-toggle span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                background: var(--text-primary);
+                margin: 5px 0;
+                transition: 0.3s;
+                border-radius: 3px;
             }
             
-            .btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
+            .mobile-menu-toggle.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
             }
-        }
-        .nav-logo img{
-            height: 40px;
-            /* filter: brightness(0) saturate(100%) invert(74%) sepia(69%) saturate(500%) hue-rotate(100deg) brightness(105%); */
-        }
+            
+            .mobile-menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .mobile-menu-toggle.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            
+            @media (max-width: 768px) {
+                .mobile-menu-toggle {
+                    display: block;
+                }
+                
+                .nav-links,
+                .nav-actions {
+                    display: none;
+                    width: 100%;
+                }
+                
+                .nav-links.active,
+                .nav-actions.active {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 1rem;
+                    padding: 1rem 0;
+                }
+                
+                .nav-links.active {
+                    border-top: 1px solid var(--border-color);
+                    margin-top: 1rem;
+                }
+                
+                .nav-inner {
+                    flex-wrap: wrap;
+                }
+                
+                .footer-inner {
+                    flex-direction: column;
+                    text-align: center;
+                    gap: 1rem;
+                }
+                
+                .footer-links {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                .container {
+                    padding: 0 1rem;
+                }
+                
+                .nav-logo {
+                    font-size: 1.5rem;
+                }
+                
+                .btn {
+                    padding: 0.5rem 1rem;
+                    font-size: 0.9rem;
+                }
+            }
+            .nav-logo img{
+                height: 40px;
+                /* filter: brightness(0) saturate(100%) invert(74%) sepia(69%) saturate(500%) hue-rotate(100deg) brightness(105%); */
+            }
     </style>
 </head>
 <body id="main-body">
