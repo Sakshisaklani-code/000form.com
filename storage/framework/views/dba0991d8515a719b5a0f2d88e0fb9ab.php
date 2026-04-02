@@ -71,4 +71,4 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     btn.textContent = 'Send Message';
   }
 });
-</script>
+</script><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/refund.blade.php ENDPATH**/ ?>

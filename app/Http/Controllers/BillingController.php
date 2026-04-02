@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Subscription;
 use App\Models\SubscriptionInvoice;
 use App\Enums\PlanName;
+use App\Jobs\SendUpgradeInvoiceEmail;
 use App\Mail\PlanUpgraded;
 use App\Mail\SubscriptionCancelled;
 use App\Mail\SubscriptionResumed;
@@ -215,7 +216,7 @@ class BillingController extends Controller
         try {
             Mail::to($user->email)->send(new SubscriptionResumed(
                 userEmail:        $user->email,
-                userId:           $user->id,
+                userId:           (int) $user->id,
                 planName:         $planName,
                 billingCycle:     $billingCycle,
                 isAdminCopy:      false,
@@ -236,7 +237,7 @@ class BillingController extends Controller
             if (!empty($adminEmails)) {
                 Mail::to($adminEmails)->send(new SubscriptionResumed(
                     userEmail:        $user->email,
-                    userId:           $user->id,
+                    userId:           (int) $user->id,
                     planName:         $planName,
                     billingCycle:     $billingCycle,
                     isAdminCopy:      true,
@@ -570,6 +571,7 @@ class BillingController extends Controller
         $planRank  = ['free' => 0, 'personal' => 1, 'professional' => 2, 'business' => 3];
         $isUpgrade = ($planRank[$plan] ?? 0) > ($planRank[$currentPlan] ?? 0);
         $newLimits = config("plans.{$plan}");
+        $oldBilling = $subscription->billing_cycle; // capture before DB update
 
         // ── Call Paddle API ───────────────────────────────────
         $paddleTransactionId = null;
@@ -674,119 +676,58 @@ class BillingController extends Controller
 
         Cache::forget("sub_limit_{$user->id}");
 
-        // ── Fetch proration invoice details for immediate upgrades ─
-        // Paddle creates a proration transaction; look it up so we
-        // can include the correct upgrade amount and invoice PDF in
-        // the email — NOT the previous plan's renewal amount.
-        $upgradeAmount     = null;
-        $upgradeCurrency   = null;
-        $upgradeInvoiceUrl = null;
+        // ── Email dispatch ────────────────────────────────────
+        //
+        // IMMEDIATE UPGRADES → SendUpgradeInvoiceEmail queued job
+        // ─────────────────────────────────────────────────────────
+        // Paddle generates the proration transaction asynchronously.
+        // Sending the email right now would show a null amount and no
+        // invoice. The job waits 15 s then retries every 30 s up to
+        // 5×, polling Paddle until the transaction is billed/completed.
+        // Only then does it send both the user and admin emails with
+        // the correct amount, transaction ID, and invoice PDF link.
+        //
+        // SCHEDULED CHANGES → sent immediately via sendPlanUpgradeEmails()
+        // ──────────────────────────────────────────────────────────────────
+        // No payment occurs at this point so there is nothing to wait for.
 
         if ($isUpgrade && $when === 'immediately') {
-            try {
-                // ── Step 1: Use transaction ID from PATCH response ─
-                if ($paddleTransactionId) {
-                    $txnResp = Http::withHeaders($this->paddleHeaders())
-                        ->get($this->paddleApiUrl("/transactions/{$paddleTransactionId}"));
+            $adminEmails = $this->getAdminEmails();
 
-                    if ($txnResp->successful()) {
-                        $txnData         = $txnResp->json('data');
-                        $amountRaw       = (int) ($txnData['details']['totals']['total'] ?? 0);
-                        $upgradeCurrency = $txnData['currency_code'] ?? 'USD';
-                        $upgradeAmount   = $this->formatAmount($amountRaw, $upgradeCurrency);
+            Log::info("Dispatching SendUpgradeInvoiceEmail job for user {$user->id}", [
+                'old_plan'    => $currentPlan,
+                'new_plan'    => $plan,
+                'txn_id'      => $paddleTransactionId ?? 'null — job will search',
+                'sub_id'      => $subscription->paddle_subscription_id,
+                'admin_count' => count($adminEmails),
+            ]);
 
-                        $pdfResp = Http::withHeaders($this->paddleHeaders())
-                            ->get($this->paddleApiUrl("/invoices/{$paddleTransactionId}/pdf"));
-                        if ($pdfResp->successful()) {
-                            $upgradeInvoiceUrl = $pdfResp->json('data.url');
-                        }
+            SendUpgradeInvoiceEmail::dispatch(
+                user:                $user,
+                oldPlan:             $currentPlan,
+                oldBilling:          $oldBilling,
+                newPlan:             $plan,
+                newBilling:          $billing,
+                effectiveAt:         $effectiveAt,
+                subscriptionId:      $subscription->paddle_subscription_id,
+                paddleTransactionId: $paddleTransactionId,
+                periodEnd:           $periodEnd ?? '',
+                adminEmails:         $adminEmails,
+            )->delay(now()->addSeconds(15));
 
-                        Log::info("Upgrade invoice fetched via PATCH transaction ID: {$paddleTransactionId}, amount: {$upgradeAmount}");
-                    }
-                }
-
-                // ── Step 2: Fallback — query for 'billed' transactions ─
-                if (! $upgradeAmount && $subscription->paddle_subscription_id) {
-                    $txnsResp = Http::withHeaders($this->paddleHeaders())
-                        ->get($this->paddleApiUrl("/transactions"), [
-                            'subscription_id' => $subscription->paddle_subscription_id,
-                            'status'          => 'billed',
-                            'order'           => 'created_at[DESC]',
-                            'per_page'        => 1,
-                        ]);
-
-                    if ($txnsResp->successful()) {
-                        $latest = $txnsResp->json('data.0');
-                        if ($latest) {
-                            $paddleTransactionId = $latest['id'];
-                            $amountRaw           = (int) ($latest['details']['totals']['total'] ?? 0);
-                            $upgradeCurrency     = $latest['currency_code'] ?? 'USD';
-                            $upgradeAmount       = $this->formatAmount($amountRaw, $upgradeCurrency);
-
-                            $pdfResp = Http::withHeaders($this->paddleHeaders())
-                                ->get($this->paddleApiUrl("/invoices/{$paddleTransactionId}/pdf"));
-                            if ($pdfResp->successful()) {
-                                $upgradeInvoiceUrl = $pdfResp->json('data.url');
-                            }
-
-                            Log::info("Upgrade invoice fetched via billed transactions fallback: {$paddleTransactionId}, amount: {$upgradeAmount}");
-                        }
-                    }
-                }
-
-                // ── Step 3: Last resort — subscription latest_transaction ─
-                if (! $upgradeAmount && $subscription->paddle_subscription_id) {
-                    $subResp = Http::withHeaders($this->paddleHeaders())
-                        ->get($this->paddleApiUrl("/subscriptions/{$subscription->paddle_subscription_id}"), [
-                            'include' => 'latest_transaction',
-                        ]);
-
-                    if ($subResp->successful()) {
-                        $latestTxn = $subResp->json('data.latest_transaction');
-                        if ($latestTxn && in_array($latestTxn['status'] ?? '', ['billed', 'completed'])) {
-                            $paddleTransactionId = $latestTxn['id'];
-                            $amountRaw           = (int) ($latestTxn['details']['totals']['total'] ?? 0);
-                            $upgradeCurrency     = $latestTxn['currency_code'] ?? 'USD';
-                            $upgradeAmount       = $this->formatAmount($amountRaw, $upgradeCurrency);
-
-                            $pdfResp = Http::withHeaders($this->paddleHeaders())
-                                ->get($this->paddleApiUrl("/invoices/{$paddleTransactionId}/pdf"));
-                            if ($pdfResp->successful()) {
-                                $upgradeInvoiceUrl = $pdfResp->json('data.url');
-                            }
-
-                            Log::info("Upgrade invoice fetched via latest_transaction include: {$paddleTransactionId}, amount: {$upgradeAmount}");
-                        }
-                    }
-                }
-
-                if (! $upgradeAmount) {
-                    Log::warning("Could not resolve upgrade proration amount for user {$user->id}, sub {$subscription->paddle_subscription_id}");
-                }
-
-            } catch (\Exception $e) {
-                Log::warning("Could not fetch proration invoice for upgrade email: " . $e->getMessage());
-            }
+        } else {
+            // Scheduled changes — no invoice to wait for, send immediately
+            $this->sendPlanUpgradeEmails(
+                user:           $user,
+                oldPlan:        $currentPlan,
+                oldBilling:     $oldBilling,
+                newPlan:        $plan,
+                newBilling:     $billing,
+                effectiveAt:    $effectiveAt,
+                isImmediate:    false,
+                subscriptionId: $subscription->paddle_subscription_id,
+            );
         }
-
-        Log::info('Admin emails resolved: ', $this->getAdminEmails());
-
-        // ── Send emails to user + admins ──────────────────────
-        $this->sendPlanUpgradeEmails(
-            user:           $user,
-            oldPlan:        $currentPlan,
-            oldBilling:     $subscription->billing_cycle,
-            newPlan:        $plan,
-            newBilling:     $billing,
-            effectiveAt:    $effectiveAt,
-            isImmediate:    $isUpgrade && $when === 'immediately',
-            subscriptionId: $subscription->paddle_subscription_id,
-            amount:         $upgradeAmount,
-            currency:       $upgradeCurrency,
-            transactionId:  $paddleTransactionId,
-            invoiceUrl:     $upgradeInvoiceUrl,
-            periodEnd:      $periodEnd,
-        );
 
         // ── Success message ───────────────────────────────────
         if ($isUpgrade && $when === 'immediately') {

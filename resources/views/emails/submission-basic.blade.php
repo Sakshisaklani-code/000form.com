@@ -154,6 +154,24 @@
         .metadata strong {
             color: #888888;
         }
+        .referrer-block {
+            margin-top: 12px;
+            font-size: 12px;
+            color: #555555;
+        }
+        .referrer-block strong {
+            color: #888888;
+        }
+        .referrer-block a {
+            color: #00ff88;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .referrer-full {
+            color: #444444;
+            font-size: 11px;
+            margin-left: 6px;
+        }
     </style>
 </head>
 <body>
@@ -164,21 +182,21 @@
             </div>
             <h1>New submission: {{ $form->name }}</h1>
         </div>
-        
+
         <div class="email-body">
             <p class="submission-intro">
                 Received {{ $submission ? $submission->created_at->format('M j, Y') . ' at ' . $submission->created_at->format('g:i A') : now()->format('M j, Y') . ' at ' . now()->format('g:i A') }}
             </p>
-            
+
             <p class="submission-intro">Here's what they had to say:</p>
-            
+
             @foreach($data as $key => $value)
                 <div class="field-item">
                     <div class="field-label">{{ str_replace('_', ' ', $key) }}</div>
                     <div class="field-value">{!! nl2br(e($value)) !!}</div>
                 </div>
             @endforeach
-            
+
             @if($hasAttachment && $attachmentCount > 0)
                 <div class="attachment-info">
                     <p>
@@ -206,27 +224,38 @@
                     </ul>
                 </div>
             @endif
-            
+
             @if($submission)
                 <a href="{{ route('dashboard.submissions.show', [$form->id, $submission->id]) }}" class="cta-button">
                     View in Dashboard
                 </a>
             @endif
-            
+
+            {{-- METADATA: IP + Referrer --}}
             @if($submission)
                 <div class="timestamp metadata">
                     <span style="margin-right: 16px;">
                         <strong>IP:</strong> {{ $submission->ip_address ?? 'N/A' }}
                     </span>
-                    @if($submission->referrer)
-                    <span>
-                        <strong>From:</strong> {{ parse_url($submission->referrer, PHP_URL_HOST) ?? $submission->referrer }}
-                    </span>
-                    @endif
                 </div>
             @endif
+
+            @if(!empty($referrer))
+                <div class="referrer-block">
+                    <strong>Website Submitted from:</strong>
+                    <a href="{{ $referrer }}">{{ parse_url($referrer, PHP_URL_HOST) ?? $referrer }}</a>
+                </div>
+            @endif
+
+            @if(!empty($referrer))
+                <div class="referrer-block">
+                    <strong>Form URL:</strong>
+                    <span class="referrer-full">({{ $referrer }})</span>
+                </div>
+            @endif
+
         </div>
-        
+
         <div class="email-footer">
             <p>Sent via <a href="{{ config('app.url') }}">000form.com</a></p>
             <p style="margin-top: 8px; color: #333333; font-size: 11px;">

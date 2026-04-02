@@ -54,51 +54,24 @@
             font-size: 14px;
             color: #888888;
         }
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 24px 0;
+        .field-item {
+            padding: 12px 10px;
+            border: 1px solid #494949;
             border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #1a1a1a;
+            margin-bottom: 10px;
         }
-        .data-table thead {
-            background-color: #00ff88;
-            color: #050505;
-        }
-        .data-table th {
-            padding: 12px 16px;
-            text-align: left;
-            font-weight: 600;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .data-table tbody tr {
-            border-bottom: 1px solid #1a1a1a;
-            background-color: #111111;
-        }
-        .data-table tbody tr:last-child {
-            border-bottom: none;
-        }
-        .data-table tbody tr:nth-child(even) {
-            background-color: #0f0f0f;
-        }
-        .data-table td {
-            padding: 12px 16px;
-            font-size: 14px;
-            color: #a7a6a6;
-        }
-        .data-table td:first-child {
+        .field-label {
             font-weight: 500;
             color: #a7a6a6;
+            margin-bottom: 4px;
+            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-size: 12px;
-            width: 35%;
         }
-        .data-table td:last-child {
+        .field-value {
             color: #fafafa;
+            font-size: 15px;
+            line-height: 1.5;
             word-wrap: break-word;
         }
         .attachment-info {
@@ -202,102 +175,97 @@
 </head>
 <body>
     <div class="email-container">
+
         <div class="email-header">
             <div class="brand">
                 <span class="highlight">000</span>form
             </div>
-            <h1>New submission: {{ $form->name }}</h1>
+            <h1>New submission: <?php echo e($form->name); ?></h1>
         </div>
 
         <div class="email-body">
             <p class="submission-intro">
-                Received {{ $submission ? $submission->created_at->format('M j, Y') . ' at ' . $submission->created_at->format('g:i A') : now()->format('M j, Y') . ' at ' . now()->format('g:i A') }}
+                Received <?php echo e($submission ? $submission->created_at->format('M j, Y') . ' at ' . $submission->created_at->format('g:i A') : now()->format('M j, Y') . ' at ' . now()->format('g:i A')); ?>
+
             </p>
 
             <p class="submission-intro">Here's what they had to say:</p>
 
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($data as $key => $value)
-                        <tr>
-                            <td>{{ str_replace('_', ' ', $key) }}</td>
-                            <td>{!! nl2br(e($value)) !!}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php if(!empty($value)): ?>
+                    <div class="field-item">
+                        <div class="field-label"><?php echo e(ucfirst(str_replace('_', ' ', $key))); ?></div>
+                        <div class="field-value"><?php echo nl2br(e($value)); ?></div>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-            @if($hasAttachment && $attachmentCount > 0)
+            <?php if($hasAttachment && $attachmentCount > 0): ?>
                 <div class="attachment-info">
                     <p>
                         <span class="attachment-icon">📎</span>
-                        <strong>{{ $attachmentCount }} Attachment{{ $attachmentCount > 1 ? 's' : '' }}:</strong>
+                        <strong><?php echo e($attachmentCount); ?> Attachment<?php echo e($attachmentCount > 1 ? 's' : ''); ?>:</strong>
                     </p>
                     <ul class="attachment-list">
-                        @foreach($attachments as $attachment)
-                            @php
-                                $fileName = $attachment['name'] ?? 'file';
-                                $fileSize = isset($attachment['size']) ? number_format($attachment['size'] / 1024, 1) . ' KB' : '';
-                                $mimeType = $attachment['type'] ?? '';
-                                $isImage  = str_starts_with($mimeType, 'image/');
-                                $fileUrl  = isset($attachment['path'])
+                        <?php $__currentLoopData = $attachments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $attachment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php
+                                $fileName  = $attachment['name'] ?? 'file';
+                                $fileSize  = isset($attachment['size']) ? number_format($attachment['size'] / 1024, 1) . ' KB' : '';
+                                $mimeType  = $attachment['type'] ?? '';
+                                $isImage   = str_starts_with($mimeType, 'image/');
+                                $fileUrl   = isset($attachment['path'])
                                     ? rtrim(config('app.url'), '/') . '/storage/' . ltrim($attachment['path'], '/')
                                     : null;
-                            @endphp
+                            ?>
                             <li>
-                                <span class="file-name">{{ $fileName }}</span>
-                                @if($fileSize)
-                                    <span class="file-meta">({{ $fileSize }})</span>
-                                @endif
+                                <span class="file-name"><?php echo e($fileName); ?></span>
+                                <?php if($fileSize): ?>
+                                    <span class="file-meta">(<?php echo e($fileSize); ?>)</span>
+                                <?php endif; ?>
                             </li>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </ul>
                 </div>
-            @endif
+            <?php endif; ?>
 
-            @if($submission)
-                <a href="{{ route('dashboard.submissions.show', [$form->id, $submission->id]) }}" class="cta-button">
+            <?php if($submission): ?>
+                <a href="<?php echo e(route('dashboard.submissions.show', [$form->id, $submission->id])); ?>" class="cta-button">
                     View in Dashboard
                 </a>
-            @endif
+            <?php endif; ?>
 
-            {{-- METADATA: IP + Referrer --}}
-            @if($submission)
+            
+            <?php if($submission): ?>
                 <div class="timestamp metadata">
                     <span style="margin-right: 16px;">
-                        <strong>IP:</strong> {{ $submission->ip_address ?? 'N/A' }}
+                        <strong>IP:</strong> <?php echo e($submission->ip_address ?? 'N/A'); ?>
+
                     </span>
                 </div>
-            @endif
+            <?php endif; ?>
 
-            @if(!empty($referrer))
+            <?php if(!empty($referrer)): ?>
                 <div class="referrer-block">
-                    <strong>Website Submitted from:</strong>
-                    <a href="{{ $referrer }}">{{ parse_url($referrer, PHP_URL_HOST) ?? $referrer }}</a>
+                    <strong>Submitted from:</strong>
+                    <span class="referrer-full">(<?php echo e($referrer); ?>)</span>
                 </div>
-            @endif
+            <?php endif; ?>
 
-            @if(!empty($referrer))
+            <?php if(!empty($referrer)): ?>
                 <div class="referrer-block">
                     <strong>Form URL:</strong>
-                    <span class="referrer-full">({{ $referrer }})</span>
+                    <span class="referrer-full">(<?php echo e($referrer); ?>)</span>
                 </div>
-            @endif
-
+            <?php endif; ?>
         </div>
 
         <div class="email-footer">
-            <p>Sent via <a href="{{ config('app.url') }}">000form.com</a></p>
+            <p>Sent via <a href="<?php echo e(config('app.url')); ?>">000form.com</a></p>
             <p style="margin-top: 8px; color: #333333; font-size: 11px;">
-                Form: {{ $form->name }} ({{ $form->slug }})
+                Form: <?php echo e($form->name); ?> (<?php echo e($form->slug); ?>)
             </p>
         </div>
+
     </div>
 </body>
-</html>
+</html><?php /**PATH C:\Git-folders\000form.com\resources\views/emails/submission-box.blade.php ENDPATH**/ ?>

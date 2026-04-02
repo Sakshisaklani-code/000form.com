@@ -80,7 +80,6 @@ class SendUpgradeInvoiceEmail implements ShouldQueue
         // ── 2. Extract billing details ────────────────────────
         $status      = $transaction['status'] ?? null;
         $txnId       = $transaction['id']     ?? null;
-        $invoiceUrl  = $transaction['invoice_pdf'] ?? null;
 
         // Amount — Paddle puts totals in `details.totals`
         $totals      = $transaction['details']['totals'] ?? [];
@@ -91,7 +90,27 @@ class SendUpgradeInvoiceEmail implements ShouldQueue
             ? $this->formatAmount((int) $rawAmount, $currency)
             : null;
 
-        // ── 3. Persist invoice record ─────────────────────────
+        // ── 3. Fetch invoice PDF URL ──────────────────────────
+        // Paddle does NOT embed the PDF URL in the transaction object.
+        // It must be fetched separately from GET /invoices/{txnId}/pdf.
+        $invoiceUrl = null;
+        if ($txnId) {
+            try {
+                $pdfResp = Http::withHeaders($this->paddleHeaders())
+                    ->get($this->paddleApiUrl("/invoices/{$txnId}/pdf"));
+
+                if ($pdfResp->successful()) {
+                    $invoiceUrl = $pdfResp->json('data.url');
+                    Log::info("SendUpgradeInvoiceEmail: invoice PDF fetched for txn {$txnId}: " . ($invoiceUrl ?? 'null'));
+                } else {
+                    Log::warning("SendUpgradeInvoiceEmail: invoice PDF fetch failed for txn {$txnId}: " . $pdfResp->body());
+                }
+            } catch (\Throwable $e) {
+                Log::warning("SendUpgradeInvoiceEmail: invoice PDF exception for txn {$txnId}: " . $e->getMessage());
+            }
+        }
+
+        // ── 4. Persist invoice record ─────────────────────────
         if ($txnId && $rawAmount !== null) {
             try {
                 SubscriptionInvoice::updateOrCreate(
@@ -111,7 +130,7 @@ class SendUpgradeInvoiceEmail implements ShouldQueue
             }
         }
 
-        // ── 4. Send emails ────────────────────────────────────
+        // ── 5. Send emails ────────────────────────────────────
         $this->sendEmails($formattedAmount, $currency, $txnId, $invoiceUrl, $status);
     }
 
@@ -142,9 +161,10 @@ class SendUpgradeInvoiceEmail implements ShouldQueue
 
         try {
             $response = Http::withHeaders($this->paddleHeaders())
-                ->get($this->paddleApiUrl("/subscriptions/{$this->subscriptionId}/transactions"), [
-                    'per_page' => 10,
-                    'order_by' => 'created_at[DESC]',
+                ->get($this->paddleApiUrl("/transactions"), [
+                    'subscription_id' => $this->subscriptionId,
+                    'per_page'        => 10,
+                    'order_by'        => 'created_at[DESC]',
                 ]);
 
             if (! $response->successful()) {

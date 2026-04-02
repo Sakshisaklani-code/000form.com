@@ -34,20 +34,20 @@ class FormSubmissionMail extends Mailable
         array $attachmentPaths = [],
         array $attachmentMetadata = []
     ) {
-        $this->form = $form;
-        $this->submissionData = $submissionData;
-        $this->submission = $submission;
-        $this->attachmentPaths = $attachmentPaths;
+        $this->form               = $form;
+        $this->submissionData     = $submissionData;
+        $this->submission         = $submission;
+        $this->attachmentPaths    = $attachmentPaths;
         $this->attachmentMetadata = $attachmentMetadata;
-        
+
         // Determine template: _template parameter, or default to 'basic'
         $this->template = strtolower($submissionData['_template'] ?? 'basic');
-        
+
         // Validate template (only allow: basic, table, box)
         if (!in_array($this->template, ['basic', 'table', 'box'])) {
             $this->template = 'basic';
         }
-        
+
         Log::info('Email template selected: ' . $this->template);
         Log::info('Attachments to process: ' . count($this->attachmentPaths));
     }
@@ -58,15 +58,15 @@ class FormSubmissionMail extends Mailable
     public function envelope(): Envelope
     {
         // Get subject from _subject field or use default
-        $subject = $this->submissionData['_subject'] ?? 
-                   $this->submissionData['subject'] ?? 
+        $subject = $this->submissionData['_subject'] ??
+                   $this->submissionData['subject'] ??
                    "New submission from {$this->form->name}";
-        
+
         // Get reply-to from _replyto or email field
-        $replyTo = $this->submissionData['_replyto'] ?? 
-                   $this->submissionData['email'] ?? 
+        $replyTo = $this->submissionData['_replyto'] ??
+                   $this->submissionData['email'] ??
                    null;
-        
+
         // Build envelope with reply-to if available
         if ($replyTo && filter_var($replyTo, FILTER_VALIDATE_EMAIL)) {
             return new Envelope(
@@ -75,7 +75,7 @@ class FormSubmissionMail extends Mailable
                 subject: $subject,
             );
         }
-        
+
         // Without reply-to
         return new Envelope(
             from: new Address(config('mail.from.address'), $this->form->name),
@@ -91,10 +91,14 @@ class FormSubmissionMail extends Mailable
         // Select the appropriate view based on template
         $viewName = match($this->template) {
             'table' => 'emails.submission-table',
-            'box' => 'emails.submission-box',
+            'box'   => 'emails.submission-box',
             default => 'emails.submission-basic',
         };
-        
+
+        // Resolve referrer — prefer stored submission value (already corrected
+        // for captcha flow) over anything in submissionData
+        $referrer = $this->submission?->referrer ?? null;
+
         return new Content(
             view: $viewName,
             with: [
@@ -104,6 +108,7 @@ class FormSubmissionMail extends Mailable
                 'hasAttachment'   => !empty($this->attachmentPaths),
                 'attachmentCount' => count($this->attachmentPaths),
                 'attachments'     => $this->getAttachmentInfo(),
+                'referrer'        => $referrer,
             ],
         );
     }
@@ -114,13 +119,13 @@ class FormSubmissionMail extends Mailable
     public function attachments(): array
     {
         $attachments = [];
-        
+
         foreach ($this->attachmentPaths as $index => $filePath) {
             if (file_exists($filePath)) {
                 Log::info('Attaching file: ' . $filePath);
-                
+
                 $metadata = $this->attachmentMetadata[$index] ?? [];
-                
+
                 $attachments[] = Attachment::fromPath($filePath)
                     ->as($metadata['name'] ?? 'attachment_' . ($index + 1))
                     ->withMime($metadata['type'] ?? 'application/octet-stream');
@@ -131,9 +136,9 @@ class FormSubmissionMail extends Mailable
                 ]);
             }
         }
-        
+
         Log::info('Total attachments added: ' . count($attachments));
-        
+
         return $attachments;
     }
 
@@ -182,16 +187,17 @@ class FormSubmissionMail extends Mailable
     protected function getAttachmentInfo(): array
     {
         $info = [];
-        
+
         foreach ($this->attachmentMetadata as $metadata) {
             $info[] = [
                 'name'      => $metadata['name'] ?? 'Unknown',
                 'size'      => $metadata['size'] ?? 0,
                 'type'      => $metadata['type'] ?? 'application/octet-stream',
                 'extension' => $metadata['extension'] ?? '',
+                'path'      => $metadata['path'] ?? null,
             ];
         }
-        
+
         return $info;
     }
 
@@ -205,10 +211,10 @@ class FormSubmissionMail extends Mailable
         if ($bytes <= 0) {
             return '0 B';
         }
-        
+
         $units = ['B', 'KB', 'MB', 'GB'];
-        $i = floor(log($bytes, 1024));
-        
+        $i     = floor(log($bytes, 1024));
+
         return round($bytes / pow(1024, $i), 2) . ' ' . $units[$i];
     }
 }

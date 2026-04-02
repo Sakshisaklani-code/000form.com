@@ -79,7 +79,7 @@ class FormSubmissionController extends Controller
                 })
                 ->first();
 
-           if ($activeSub
+            if ($activeSub
                 && $activeSub->submissions_limit !== -1
                 && $activeSub->submissions_used >= $activeSub->submissions_limit
             ) {
@@ -116,7 +116,7 @@ class FormSubmissionController extends Controller
                 'files'      => $this->storeTempFiles($request, $form),
                 'ip'         => $clientIp,
                 'user_agent' => $request->userAgent(),
-                'referrer'   => $request->header('Referer'),
+                'referrer'   => $request->header('Referer') ?? $request->server('HTTP_REFERER'),
                 'timestamp'  => now()->toDateTimeString(),
             ]);
 
@@ -128,6 +128,25 @@ class FormSubmissionController extends Controller
 
             return redirect()->route('captcha.show', $form->id);
         }
+
+        /*
+        |--------------------------------------------------------------------------
+        | RESOLVE TRUE REFERRER
+        | Do this BEFORE creating the submission so the stored referrer always
+        | points to the original form page, not the captcha interstitial.
+        |--------------------------------------------------------------------------
+        */
+
+        $formReferrer = $request->header('Referer') ?? $request->server('HTTP_REFERER');
+
+        if (Session::has('pending_submission_' . $form->id)) {
+            $pendingEarly = Session::get('pending_submission_' . $form->id);
+            if (!empty($pendingEarly['referrer'])) {
+                $formReferrer = $pendingEarly['referrer'];
+            }
+        }
+
+        Log::info('Resolved referrer', ['referrer' => $formReferrer]);
 
         /*
         |--------------------------------------------------------------------------
@@ -193,6 +212,8 @@ class FormSubmissionController extends Controller
         /*
         |--------------------------------------------------------------------------
         | STORE SUBMISSION
+        | Use $formReferrer (already corrected for captcha flow) so the stored
+        | referrer always reflects the original form page URL.
         |--------------------------------------------------------------------------
         */
 
@@ -206,12 +227,12 @@ class FormSubmissionController extends Controller
             ],
             'ip_address'  => $clientIp,
             'user_agent'  => $request->userAgent(),
-            'referrer'    => $request->header('Referer'),
+            'referrer'    => $formReferrer,
             'is_spam'     => $isSpam,
             'spam_reason' => $spamReason,
         ]);
 
-        Log::info('Submission stored', ['id' => $submission->id]);
+        Log::info('Submission stored', ['id' => $submission->id, 'referrer' => $formReferrer]);
 
         /*
         |--------------------------------------------------------------------------
@@ -267,11 +288,9 @@ class FormSubmissionController extends Controller
 
         /*
         |--------------------------------------------------------------------------
-        | CLEAN TEMP FILES + FLASH ORIGINAL FORM REFERRER
+        | CLEAN TEMP FILES
         |--------------------------------------------------------------------------
         */
-
-        $formReferrer = $request->header('Referer') ?? $request->server('HTTP_REFERER');
 
         if (Session::has('pending_submission_' . $form->id)) {
 
@@ -279,10 +298,6 @@ class FormSubmissionController extends Controller
 
             if (!empty($pending['files'])) {
                 $this->cleanupTempFiles($pending['files']);
-            }
-
-            if (!empty($pending['referrer'])) {
-                $formReferrer = $pending['referrer'];
             }
 
             Session::forget('pending_submission_' . $form->id);
@@ -380,6 +395,7 @@ class FormSubmissionController extends Controller
                 Log::info('Recreated request', [
                     'has_files' => count($newRequest->allFiles()),
                     'ip'        => $storedIp,
+                    'referrer'  => $storedReferrer,
                 ]);
 
                 return $this->submit($newRequest, $form->slug);
@@ -439,6 +455,7 @@ class FormSubmissionController extends Controller
         Log::info('Recreating request with files', [
             'temp_files' => $tempFiles,
             'ip'         => $ip,
+            'referrer'   => $referrer,
             'is_ajax'    => $isAjax,
         ]);
 
@@ -598,7 +615,8 @@ class FormSubmissionController extends Controller
         ];
 
         try {
-            $clientIp = $request->ip() ?? $request->getClientIp() ?? '0.0.0.0';
+            $clientIp     = $request->ip() ?? $request->getClientIp() ?? '0.0.0.0';
+            $formReferrer = $request->header('Referer') ?? $request->server('HTTP_REFERER');
 
             $sub = Submission::create([
                 'form_id'     => $form->id,
@@ -606,13 +624,13 @@ class FormSubmissionController extends Controller
                 'metadata'    => $metadata,
                 'ip_address'  => $clientIp,
                 'user_agent'  => $request->userAgent(),
-                'referrer'    => $request->header('Referer'),
+                'referrer'    => $formReferrer,
                 'is_spam'     => false,
                 'is_archived' => true,
                 'spam_reason' => null,
             ]);
 
-            Log::info('Archived submission stored (form paused): ID ' . $sub->id . ' IP: ' . $clientIp);
+            Log::info('Archived submission stored (form paused): ID ' . $sub->id . ' IP: ' . $clientIp . ' Referrer: ' . $formReferrer);
         } catch (\Exception $e) {
             Log::error('Failed to store archived submission: ' . $e->getMessage());
         }
@@ -722,6 +740,7 @@ class FormSubmissionController extends Controller
                 'has_files'     => !empty($uploadedFiles),
                 'file_count'    => count($uploadedFiles),
                 'file_paths'    => $uploadedFiles,
+                'referrer'      => $submission?->referrer,
             ]);
 
             $ccEmails = [];

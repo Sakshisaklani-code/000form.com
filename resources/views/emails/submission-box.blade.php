@@ -60,9 +60,6 @@
             border-radius: 8px;
             margin-bottom: 10px;
         }
-        .field-item:last-child {
-            border-bottom: none;
-        }
         .field-label {
             font-weight: 500;
             color: #a7a6a6;
@@ -156,28 +153,43 @@
         .metadata strong {
             color: #888888;
         }
+        .referrer-block {
+            margin-top: 12px;
+            font-size: 12px;
+            color: #555555;
+        }
+        .referrer-block strong {
+            color: #888888;
+        }
+        .referrer-block a {
+            color: #00ff88;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .referrer-full {
+            color: #444444;
+            font-size: 11px;
+            margin-left: 6px;
+        }
     </style>
 </head>
 <body>
     <div class="email-container">
 
-        {{-- HEADER --}}
         <div class="email-header">
             <div class="brand">
                 <span class="highlight">000</span>form
             </div>
-            {{-- FIX: was {{ form->name }}, missing @ --}}
             <h1>New submission: {{ $form->name }}</h1>
         </div>
 
         <div class="email-body">
             <p class="submission-intro">
-                Received {{ $submittedAt ?? '' }}
+                Received {{ $submission ? $submission->created_at->format('M j, Y') . ' at ' . $submission->created_at->format('g:i A') : now()->format('M j, Y') . ' at ' . now()->format('g:i A') }}
             </p>
 
             <p class="submission-intro">Here's what they had to say:</p>
 
-            {{-- FIX: was bare foreach with no @, and $value was used but never defined --}}
             @foreach($data as $key => $value)
                 @if(!empty($value))
                     <div class="field-item">
@@ -187,38 +199,24 @@
                 @endif
             @endforeach
 
-            {{-- ATTACHMENTS SECTION --}}
-            {{--
-                $attachments      = email attachment objects (used by mailer to attach files)
-                $attachments (blade) comes from $formData['attachments_metadata'] passed as $attachments to view
-                We use $attachments array which contains: name, size, type, path
-            --}}
-            @php
-                // Resolve correct attachment list — blade receives 'attachments' from viewData
-                // which maps to attachments_metadata (has name/size/type/path keys)
-                $attachmentList = $attachments ?? [];
-            @endphp
-
-            @if($hasAttachment && !empty($attachmentList))
+            @if($hasAttachment && $attachmentCount > 0)
                 <div class="attachment-info">
                     <p>
                         <span class="attachment-icon">📎</span>
                         <strong>{{ $attachmentCount }} Attachment{{ $attachmentCount > 1 ? 's' : '' }}:</strong>
                     </p>
                     <ul class="attachment-list">
-                        @foreach($attachmentList as $attachment)
+                        @foreach($attachments as $attachment)
                             @php
                                 $fileName  = $attachment['name'] ?? 'file';
                                 $fileSize  = isset($attachment['size']) ? number_format($attachment['size'] / 1024, 1) . ' KB' : '';
                                 $mimeType  = $attachment['type'] ?? '';
                                 $isImage   = str_starts_with($mimeType, 'image/');
-                                // Build public URL from stored path so image renders in email
                                 $fileUrl   = isset($attachment['path'])
                                     ? rtrim(config('app.url'), '/') . '/storage/' . ltrim($attachment['path'], '/')
                                     : null;
                             @endphp
                             <li>
-                                {{-- Show inline image preview for image attachments --}}
                                 <span class="file-name">{{ $fileName }}</span>
                                 @if($fileSize)
                                     <span class="file-meta">({{ $fileSize }})</span>
@@ -229,33 +227,40 @@
                 </div>
             @endif
 
-            {{-- Dashboard button only shown when a real submission object exists --}}
             @if($submission)
-                <a href="{{ $appUrl }}" class="cta-button">
+                <a href="{{ route('dashboard.submissions.show', [$form->id, $submission->id]) }}" class="cta-button">
                     View in Dashboard
                 </a>
             @endif
 
-            {{-- FIX: was wrapped in orphaned @endif with no opening @if --}}
+            {{-- METADATA: IP + Referrer --}}
             @if($submission)
                 <div class="timestamp metadata">
                     <span style="margin-right: 16px;">
                         <strong>IP:</strong> {{ $submission->ip_address ?? 'N/A' }}
                     </span>
-                    @if(!empty($submission->referrer))
-                        <span>
-                            <strong>From:</strong> {{ parse_url($submission->referrer, PHP_URL_HOST) ?? $submission->referrer }}
-                        </span>
-                    @endif
                 </div>
             @endif
 
+            @if(!empty($referrer))
+                <div class="referrer-block">
+                    <strong>Website Submitted from:</strong>
+                    <a href="{{ $referrer }}">{{ parse_url($referrer, PHP_URL_HOST) ?? $referrer }}</a>
+                </div>
+            @endif
+
+            @if(!empty($referrer))
+                <div class="referrer-block">
+                    <strong>Form URL:</strong>
+                    <span class="referrer-full">({{ $referrer }})</span>
+                </div>
+            @endif
         </div>
 
         <div class="email-footer">
-            <p>Sent via <a href="{{ $appUrl ?? '#' }}">000form.com</a></p>
+            <p>Sent via <a href="{{ config('app.url') }}">000form.com</a></p>
             <p style="margin-top: 8px; color: #333333; font-size: 11px;">
-                Form: {{ $form->name ?? '' }}
+                Form: {{ $form->name }} ({{ $form->slug }})
             </p>
         </div>
 
