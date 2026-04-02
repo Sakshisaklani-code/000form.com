@@ -1,0 +1,9 @@
+[2026-04-02 06:17:11] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 06:17:18] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 06:17:21] local.INFO: Cancellation email sent to user: tsaklani2drish@gmail.com (type=subscription)  
+[2026-04-02 06:17:21] local.INFO: Cancellation admin notification sent to: sakshi.saklani@drishinfo.com (type=subscription)  
+[2026-04-02 06:17:22] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 06:17:52] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 06:17:55] local.INFO: Resume confirmation email sent to user: tsaklani2drish@gmail.com  
+[2026-04-02 06:17:55] local.INFO: Resume admin notification sent to: sakshi.saklani@drishinfo.com  
+[2026-04-02 06:17:57] local.ERROR: JWT verification error: Incorrect key for this algorithm  

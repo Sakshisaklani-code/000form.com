@@ -7,6 +7,7 @@ use App\Models\SubscriptionInvoice;
 use App\Enums\PlanName;
 use App\Mail\PlanUpgraded;
 use App\Mail\SubscriptionCancelled;
+use App\Mail\SubscriptionResumed;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -193,6 +194,63 @@ class BillingController extends Controller
             }
         } catch (\Throwable $e) {
             Log::error("Failed to send admin cancellation email: " . $e->getMessage());
+        }
+    }
+
+    // ── SEND RESUME EMAILS ────────────────────────────────────
+    // Sends reactivation confirmation to user + all admins.
+    // Called after a cancelled subscription is successfully resumed.
+    private function sendResumeEmails(
+        $user,
+        Subscription $subscription,
+    ): void {
+        $planName     = is_string($subscription->plan_name)
+            ? $subscription->plan_name
+            : $subscription->plan_name->value;
+        $billingCycle = $subscription->billing_cycle ?? 'monthly';
+        $subId        = $subscription->paddle_subscription_id;
+        $accessUntil  = $subscription->current_period_end?->format('M d, Y');
+
+        // ── 1. Email to the user ──────────────────────────────
+        try {
+            Mail::to($user->email)->send(new SubscriptionResumed(
+                userEmail:        $user->email,
+                userId:           $user->id,
+                planName:         $planName,
+                billingCycle:     $billingCycle,
+                isAdminCopy:      false,
+                accessUntil:      $accessUntil,
+                subscriptionId:   $subId,
+                paddleCustomerId: null,
+            ));
+
+            Log::info("Resume confirmation email sent to user: {$user->email}");
+        } catch (\Throwable $e) {
+            Log::error("Failed to send resume email to user {$user->email}: " . $e->getMessage());
+        }
+
+        // ── 2. Emails to all admins ───────────────────────────
+        try {
+            $adminEmails = $this->getAdminEmails();
+
+            if (!empty($adminEmails)) {
+                Mail::to($adminEmails)->send(new SubscriptionResumed(
+                    userEmail:        $user->email,
+                    userId:           $user->id,
+                    planName:         $planName,
+                    billingCycle:     $billingCycle,
+                    isAdminCopy:      true,
+                    accessUntil:      $accessUntil,
+                    subscriptionId:   $subId,
+                    paddleCustomerId: $user->paddle_customer_id ?? null,
+                ));
+
+                Log::info("Resume admin notification sent to: " . implode(', ', $adminEmails));
+            } else {
+                Log::warning("No MAIL_ADMIN_EMAILS configured — admin resume notification skipped.");
+            }
+        } catch (\Throwable $e) {
+            Log::error("Failed to send admin resume email: " . $e->getMessage());
         }
     }
 
@@ -465,6 +523,12 @@ class BillingController extends Controller
 
         Cache::forget("sub_limit_{$user->id}");
 
+        // ── Send reactivation emails to user + admins ─────────
+        $this->sendResumeEmails(
+            user:         $user,
+            subscription: $subscription,
+        );
+
         return back()->with('success', 'Your subscription has been reactivated successfully.');
     }
 
@@ -621,8 +685,6 @@ class BillingController extends Controller
         if ($isUpgrade && $when === 'immediately') {
             try {
                 // ── Step 1: Use transaction ID from PATCH response ─
-                // Most reliable — Paddle returns it directly when the
-                // proration charge is created synchronously.
                 if ($paddleTransactionId) {
                     $txnResp = Http::withHeaders($this->paddleHeaders())
                         ->get($this->paddleApiUrl("/transactions/{$paddleTransactionId}"));
@@ -644,9 +706,6 @@ class BillingController extends Controller
                 }
 
                 // ── Step 2: Fallback — query for 'billed' transactions ─
-                // Proration/upgrade transactions start as 'billed', NOT
-                // 'completed'. The old code queried 'completed' which
-                // always returned the PREVIOUS plan's renewal invoice.
                 if (! $upgradeAmount && $subscription->paddle_subscription_id) {
                     $txnsResp = Http::withHeaders($this->paddleHeaders())
                         ->get($this->paddleApiUrl("/transactions"), [
@@ -676,9 +735,6 @@ class BillingController extends Controller
                 }
 
                 // ── Step 3: Last resort — subscription latest_transaction ─
-                // Uses Paddle's ?include=latest_transaction on the
-                // subscription endpoint to get whatever was charged most
-                // recently, accepting both 'billed' and 'completed'.
                 if (! $upgradeAmount && $subscription->paddle_subscription_id) {
                     $subResp = Http::withHeaders($this->paddleHeaders())
                         ->get($this->paddleApiUrl("/subscriptions/{$subscription->paddle_subscription_id}"), [
@@ -712,7 +768,9 @@ class BillingController extends Controller
                 Log::warning("Could not fetch proration invoice for upgrade email: " . $e->getMessage());
             }
         }
+
         Log::info('Admin emails resolved: ', $this->getAdminEmails());
+
         // ── Send emails to user + admins ──────────────────────
         $this->sendPlanUpgradeEmails(
             user:           $user,
