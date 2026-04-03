@@ -1,8 +1,8 @@
-@extends('layouts.dashboard')
 
-@section('title', 'Billing & Subscription - 000form')
 
-@section('content')
+<?php $__env->startSection('title', 'Billing & Subscription - 000form'); ?>
+
+<?php $__env->startSection('content'); ?>
 
 <style>
     .bp-header { margin-bottom: 2.5rem; }
@@ -356,7 +356,7 @@
     }
 </style>
 
-{{-- Load Paddle.js for PricePreview API --}}
+
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 
 <div class="bp">
@@ -367,37 +367,38 @@
         <p>Manage your plan, view invoices, and update payment details.</p>
     </div>
 
-    @if(session('success'))
-        <div class="bp-flash success">✓ {{ session('success') }}</div>
-    @endif
-    @if(session('error'))
-        <div class="bp-flash error">⚠ {{ session('error') }}</div>
-    @endif
-    @if(session('upgrade_prompt'))
-        <div class="bp-flash info">↑ {{ session('upgrade_prompt') }}</div>
-    @endif
+    <?php if(session('success')): ?>
+        <div class="bp-flash success">✓ <?php echo e(session('success')); ?></div>
+    <?php endif; ?>
+    <?php if(session('error')): ?>
+        <div class="bp-flash error">⚠ <?php echo e(session('error')); ?></div>
+    <?php endif; ?>
+    <?php if(session('upgrade_prompt')): ?>
+        <div class="bp-flash info">↑ <?php echo e(session('upgrade_prompt')); ?></div>
+    <?php endif; ?>
 
-    @if($subscription)
+    <?php if($subscription): ?>
 
-        {{-- ── SCHEDULED PLAN CHANGE BANNER ── --}}
-        @if($scheduledChange ?? null)
-        @php
+        
+        <?php if($scheduledChange ?? null): ?>
+        <?php
             $scheduledPlanRank   = ['personal' => 1, 'professional' => 2, 'business' => 3];
             $currentPlanRank     = $scheduledPlanRank[$subscription->plan_name->value] ?? 0;
             $scheduledTargetRank = $scheduledPlanRank[$scheduledChange['plan']] ?? 0;
             $isScheduledUpgrade  = $scheduledTargetRank > $currentPlanRank;
             $nextLimits          = config("plans.{$scheduledChange['plan']}");
-        @endphp
+        ?>
         <div class="bp-scheduled-card">
             <div class="bp-scheduled-title">
-                {{ $isScheduledUpgrade ? '↑ Upgrade Scheduled' : ' Plan Change Scheduled' }}
+                <?php echo e($isScheduledUpgrade ? '↑ Upgrade Scheduled' : ' Plan Change Scheduled'); ?>
+
             </div>
             <div class="bp-scheduled-header">
                 <div>
                     <div class="bp-scheduled-plan">
-                        <span class="from">{{ $subscription->plan_name->label() }} ({{ ucfirst($subscription->billing_cycle) }})</span>
+                        <span class="from"><?php echo e($subscription->plan_name->label()); ?> (<?php echo e(ucfirst($subscription->billing_cycle)); ?>)</span>
                         <span class="arrow">→</span>
-                        <span class="to">{{ ucfirst($scheduledChange['plan']) }} ({{ ucfirst($scheduledChange['billing']) }})</span>
+                        <span class="to"><?php echo e(ucfirst($scheduledChange['plan'])); ?> (<?php echo e(ucfirst($scheduledChange['billing'])); ?>)</span>
                     </div>
                     <div style="display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:0.75rem;">
                         <div>
@@ -408,23 +409,23 @@
                         </div>
                         <div>
                             <div style="font-size:0.7rem;color:#4db8ff;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.2rem;">Submissions</div>
-                            <div style="font-weight:700;font-size:1rem;">{{ $nextLimits['submissions'] === -1 ? 'Unlimited' : number_format($nextLimits['submissions']) }}</div>
+                            <div style="font-weight:700;font-size:1rem;"><?php echo e($nextLimits['submissions'] === -1 ? 'Unlimited' : number_format($nextLimits['submissions'])); ?></div>
                         </div>
                         <div>
                             <div style="font-size:0.7rem;color:#4db8ff;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.2rem;">Team Members</div>
-                            <div style="font-weight:700;font-size:1rem;">{{ $nextLimits['team_members'] === -1 ? 'Unlimited' : $nextLimits['team_members'] }}</div>
+                            <div style="font-weight:700;font-size:1rem;"><?php echo e($nextLimits['team_members'] === -1 ? 'Unlimited' : $nextLimits['team_members']); ?></div>
                         </div>
                         <div>
                             <div style="font-size:0.7rem;color:#4db8ff;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.2rem;">Effective On</div>
-                            <div style="font-weight:700;font-size:1rem;">{{ $scheduledChange['effective_at'] }}</div>
+                            <div style="font-weight:700;font-size:1rem;"><?php echo e($scheduledChange['effective_at']); ?></div>
                         </div>
                     </div>
                     <div class="bp-scheduled-date" style="margin-top:0.75rem;">
-                        Your current plan and limits remain active until <strong>{{ $scheduledChange['effective_at'] }}</strong>.
+                        Your current plan and limits remain active until <strong><?php echo e($scheduledChange['effective_at']); ?></strong>.
                     </div>
                 </div>
-                <form method="POST" action="{{ route('billing.cancel-scheduled-change') }}">
-                    @csrf
+                <form method="POST" action="<?php echo e(route('billing.cancel-scheduled-change')); ?>">
+                    <?php echo csrf_field(); ?>
                     <button type="submit" class="bp-btn bp-btn-blue"
                             onclick="return confirm('Cancel the scheduled plan change? You will stay on your current plan.')">
                         ✕ Cancel Scheduled Change
@@ -432,204 +433,216 @@
                 </form>
             </div>
         </div>
-        @endif
+        <?php endif; ?>
 
-        {{-- ── CURRENT PLAN ── --}}
+        
         <div class="bp-card">
             <div class="bp-card-title">Current Plan</div>
             <div class="bp-plan-row">
                 <div>
                     <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:0.5rem;">
-                        <div class="bp-plan-name">{{ $subscription->plan_name->label() }}</div>
-                        <span class="bp-status {{ $subscription->status->value }}">
+                        <div class="bp-plan-name"><?php echo e($subscription->plan_name->label()); ?></div>
+                        <span class="bp-status <?php echo e($subscription->status->value); ?>">
                             <span class="bp-status-dot"></span>
-                            {{ $subscription->statusLabel() }}
+                            <?php echo e($subscription->statusLabel()); ?>
+
                         </span>
                     </div>
                     <div class="bp-plan-price">
                         <strong id="current-plan-price">
-                            @if($subscription->billing_cycle === 'annual')
-                                ${{ config("plans.{$subscription->plan_name->value}.price_annual") }}
-                            @else
-                                ${{ config("plans.{$subscription->plan_name->value}.price_monthly") }}
-                            @endif
+                            <?php if($subscription->billing_cycle === 'annual'): ?>
+                                $<?php echo e(config("plans.{$subscription->plan_name->value}.price_annual")); ?>
+
+                            <?php else: ?>
+                                $<?php echo e(config("plans.{$subscription->plan_name->value}.price_monthly")); ?>
+
+                            <?php endif; ?>
                         </strong>
-                        / {{ $subscription->billing_cycle === 'annual' ? 'year' : 'month' }}
-                        @if($subscription->billing_cycle === 'annual')
+                        / <?php echo e($subscription->billing_cycle === 'annual' ? 'year' : 'month'); ?>
+
+                        <?php if($subscription->billing_cycle === 'annual'): ?>
                             <span style="color:var(--accent);font-size:0.8rem;margin-left:0.5rem;">20% off</span>
-                        @endif
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
 
-            @if($subscription->onGracePeriod())
+            <?php if($subscription->onGracePeriod()): ?>
                 <div class="bp-banner warning">
                     <span class="bp-banner-icon">⚠</span>
                     <div>
                         Your plan is cancelled. Full access until
-                        <strong>{{ $subscription->current_period_end?->format('M d, Y') }}</strong>.
+                        <strong><?php echo e($subscription->current_period_end?->format('M d, Y')); ?></strong>.
                         After that your account switches to the Free plan (50 submissions/month).
                     </div>
                 </div>
-            @endif
-            @if($subscription->onPaymentGracePeriod())
+            <?php endif; ?>
+            <?php if($subscription->onPaymentGracePeriod()): ?>
                 <div class="bp-banner danger">
                     <span class="bp-banner-icon">✕</span>
                     <div>
                         Your last payment failed. Update your payment method to keep access.
-                        Grace period ends <strong>{{ $subscription->grace_period_ends_at?->format('M d, Y') }}</strong>.
-                        <a href="{{ route('billing.portal-link') }}" style="color:inherit;text-decoration:underline;margin-left:0.25rem;">Update now →</a>
+                        Grace period ends <strong><?php echo e($subscription->grace_period_ends_at?->format('M d, Y')); ?></strong>.
+                        <a href="<?php echo e(route('billing.portal-link')); ?>" style="color:inherit;text-decoration:underline;margin-left:0.25rem;">Update now →</a>
                     </div>
                 </div>
-            @endif
-            @if($subscription->isTrialing())
+            <?php endif; ?>
+            <?php if($subscription->isTrialing()): ?>
                 <div class="bp-banner info">
                     <span class="bp-banner-icon">◷</span>
                     <div>
-                        Your trial ends on <strong>{{ $subscription->trial_ends_at?->format('M d, Y') }}</strong>.
-                        <a href="{{ route('billing.portal-link') }}" style="color:inherit;text-decoration:underline;margin-left:0.25rem;">Add card →</a>
+                        Your trial ends on <strong><?php echo e($subscription->trial_ends_at?->format('M d, Y')); ?></strong>.
+                        <a href="<?php echo e(route('billing.portal-link')); ?>" style="color:inherit;text-decoration:underline;margin-left:0.25rem;">Add card →</a>
                     </div>
                 </div>
-            @endif
-            @if($subscription->status->value === 'paused')
+            <?php endif; ?>
+            <?php if($subscription->status->value === 'paused'): ?>
                 <div class="bp-banner warning">
                     <span class="bp-banner-icon">⏸</span>
                     <div>Your subscription is paused. Resume below to restore access.</div>
                 </div>
-            @endif
+            <?php endif; ?>
         </div>
 
-        {{-- ── BILLING DETAILS ── --}}
+        
         <div class="bp-card">
             <div class="bp-card-title">Billing Details</div>
             <div class="bp-details-grid">
                 <div>
                     <div class="bp-detail-label">Plan started</div>
-                    <div class="bp-detail-value">{{ $subscription->created_at?->format('M d, Y') ?? '—' }}</div>
+                    <div class="bp-detail-value"><?php echo e($subscription->created_at?->format('M d, Y') ?? '—'); ?></div>
                 </div>
                 <div>
                     <div class="bp-detail-label">Current period</div>
                     <div class="bp-detail-value">
-                        {{ $subscription->current_period_start?->format('M d') ?? '—' }}
-                        → {{ $subscription->current_period_end?->format('M d, Y') ?? '—' }}
+                        <?php echo e($subscription->current_period_start?->format('M d') ?? '—'); ?>
+
+                        → <?php echo e($subscription->current_period_end?->format('M d, Y') ?? '—'); ?>
+
                     </div>
                 </div>
                 <div>
                     <div class="bp-detail-label">
-                        @if($subscription->cancel_at_period_end) Cancels on @else Next renewal @endif
+                        <?php if($subscription->cancel_at_period_end): ?> Cancels on <?php else: ?> Next renewal <?php endif; ?>
                     </div>
-                    <div class="bp-detail-value {{ $subscription->cancel_at_period_end ? '' : 'accent' }}">
-                        {{ $subscription->nextBillingLabel() }}
+                    <div class="bp-detail-value <?php echo e($subscription->cancel_at_period_end ? '' : 'accent'); ?>">
+                        <?php echo e($subscription->nextBillingLabel()); ?>
+
                     </div>
                 </div>
                 <div>
                     <div class="bp-detail-label">Billing cycle</div>
-                    <div class="bp-detail-value">{{ ucfirst($subscription->billing_cycle) }}</div>
+                    <div class="bp-detail-value"><?php echo e(ucfirst($subscription->billing_cycle)); ?></div>
                 </div>
                 <div>
                     <div class="bp-detail-label">Last payment</div>
-                    <div class="bp-detail-value">{{ $subscription->last_payment_at?->format('M d, Y') ?? '—' }}</div>
+                    <div class="bp-detail-value"><?php echo e($subscription->last_payment_at?->format('M d, Y') ?? '—'); ?></div>
                 </div>
                 <div>
                     <div class="bp-detail-label">Payment method</div>
                     <div class="bp-detail-value">
-                        <a href="{{ route('billing.portal-link') }}" class="bp-invoice-dl">Update card →</a>
+                        <a href="<?php echo e(route('billing.portal-link')); ?>" class="bp-invoice-dl">Update card →</a>
                     </div>
                 </div>
             </div>
 
-            @php
+            <?php
                 $limit    = $subscription->submissions_limit;
                 $used     = $subscription->submissions_used;
                 $pct      = $subscription->submissionsUsedPercent();
                 $barClass = $pct >= 100 ? 'danger' : ($pct >= 80 ? 'warning' : '');
-            @endphp
+            ?>
             <div class="bp-usage">
                 <div class="bp-usage-header">
                     <span class="bp-usage-label">Submissions this period</span>
                     <span class="bp-usage-count">
-                        {{ number_format($used) }} / {{ $limit === -1 ? '∞' : number_format($limit) }}
+                        <?php echo e(number_format($used)); ?> / <?php echo e($limit === -1 ? '∞' : number_format($limit)); ?>
+
                     </span>
                 </div>
                 <div class="bp-usage-track">
-                    <div class="bp-usage-fill {{ $barClass }}"
-                         style="width: {{ $limit === -1 ? '10' : $pct }}%"></div>
+                    <div class="bp-usage-fill <?php echo e($barClass); ?>"
+                         style="width: <?php echo e($limit === -1 ? '10' : $pct); ?>%"></div>
                 </div>
-                @if($pct >= 80 && $limit !== -1)
+                <?php if($pct >= 80 && $limit !== -1): ?>
                     <p style="font-size:0.8rem;color:#ffa500;margin-top:0.5rem;">
-                        You've used {{ $pct }}% of your limit.
+                        You've used <?php echo e($pct); ?>% of your limit.
                     </p>
-                @endif
+                <?php endif; ?>
             </div>
         </div>
 
-        {{-- ── PLAN FEATURES ── --}}
+        
         <div class="bp-card">
             <div class="bp-card-title">Plan Features</div>
-            @php $limits = $subscription->plan_name->limits(); @endphp
+            <?php $limits = $subscription->plan_name->limits(); ?>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
                 <div>
                     <div class="bp-detail-label">Submissions / month</div>
                     <div class="bp-detail-value accent">
-                        {{ $limits['submissions'] === -1 ? 'Unlimited' : number_format($limits['submissions']) }}
+                        <?php echo e($limits['submissions'] === -1 ? 'Unlimited' : number_format($limits['submissions'])); ?>
+
                     </div>
                 </div>
                 <div>
                     <div class="bp-detail-label">Forms</div>
                     <div class="bp-detail-value accent">
-                        {{ $limits['forms'] === -1 ? 'Unlimited' : $limits['forms'] }}
+                        <?php echo e($limits['forms'] === -1 ? 'Unlimited' : $limits['forms']); ?>
+
                     </div>
                 </div>
                 <div>
                     <div class="bp-detail-label">Team members</div>
                     <div class="bp-detail-value accent">
-                        {{ $limits['team_members'] === -1 ? 'Unlimited' : $limits['team_members'] }}
+                        <?php echo e($limits['team_members'] === -1 ? 'Unlimited' : $limits['team_members']); ?>
+
                     </div>
                 </div>
                 <div>
                     <div class="bp-detail-label">File uploads</div>
                     <div class="bp-detail-value accent">
-                        {{ $limits['file_upload_mb'] === 0 ? 'Not included' : $limits['file_upload_mb'] . ' MB' }}
+                        <?php echo e($limits['file_upload_mb'] === 0 ? 'Not included' : $limits['file_upload_mb'] . ' MB'); ?>
+
                     </div>
                 </div>
             </div>
         </div>
 
-        {{-- ── MANAGE SUBSCRIPTION ── --}}
+        
         <div class="bp-card">
             <div class="bp-card-title">Manage Subscription</div>
             <div class="bp-actions">
-                @if($subscription->isActive() && !$subscription->cancel_at_period_end)
+                <?php if($subscription->isActive() && !$subscription->cancel_at_period_end): ?>
                     <button type="button" class="bp-btn bp-btn-outline" onclick="openChangePlan()">
                         ↕ Change Plan
                     </button>
-                @endif
-                @if($subscription->onGracePeriod())
-                    <form method="POST" action="{{ route('billing.resume') }}" style="display:inline;">
-                        @csrf
+                <?php endif; ?>
+                <?php if($subscription->onGracePeriod()): ?>
+                    <form method="POST" action="<?php echo e(route('billing.resume')); ?>" style="display:inline;">
+                        <?php echo csrf_field(); ?>
                         <button type="submit" class="bp-btn bp-btn-resume">▶ Reactivate Subscription</button>
                     </form>
-                @endif
-                @if($subscription->isActive() && !$subscription->cancel_at_period_end)
-                    <form method="POST" action="{{ route('billing.cancel') }}" style="display:inline;">
-                        @csrf
+                <?php endif; ?>
+                <?php if($subscription->isActive() && !$subscription->cancel_at_period_end): ?>
+                    <form method="POST" action="<?php echo e(route('billing.cancel')); ?>" style="display:inline;">
+                        <?php echo csrf_field(); ?>
                         <button type="submit" class="bp-btn bp-btn-danger"
-                                onclick="return confirm('Cancel your subscription? You keep full access until {{ $subscription->current_period_end?->format('M d, Y') }}. After that you switch to the free plan (50 submissions/month).')">
+                                onclick="return confirm('Cancel your subscription? You keep full access until <?php echo e($subscription->current_period_end?->format('M d, Y')); ?>. After that you switch to the free plan (50 submissions/month).')">
                             ✕ Cancel Subscription
                         </button>
                     </form>
-                @endif
+                <?php endif; ?>
             </div>
-            @if($subscription->isActive() && !$subscription->cancel_at_period_end)
+            <?php if($subscription->isActive() && !$subscription->cancel_at_period_end): ?>
                 <p style="font-size:0.8rem;color:var(--text-muted);margin-top:1rem;">
-                    Cancelling keeps your access active until {{ $subscription->current_period_end?->format('M d, Y') }}.
+                    Cancelling keeps your access active until <?php echo e($subscription->current_period_end?->format('M d, Y')); ?>.
                     After that your account automatically switches to the free plan with 50 submissions/month.
                 </p>
-            @endif
+            <?php endif; ?>
         </div>
 
 
-    @else
+    <?php else: ?>
 
         <div class="bp-card">
             <div class="bp-no-sub">
@@ -639,22 +652,20 @@
                     You currently have 50 submissions/month.<br>
                     Upgrade to unlock more submissions, team members and features.
                 </p>
-                <a href="{{ route('pricing') }}" class="bp-btn bp-btn-primary" style="display:inline-flex;">
+                <a href="<?php echo e(route('pricing')); ?>" class="bp-btn bp-btn-primary" style="display:inline-flex;">
                     View Plans & Upgrade →
                 </a>
             </div>
         </div>
 
-    @endif
+    <?php endif; ?>
 
 </div>
 </div>
 
-{{-- ══════════════════════════════════════════
-    CHANGE PLAN MODAL — Redesigned
-══════════════════════════════════════════ --}}
-@if($subscription ?? false)
-@php
+
+<?php if($subscription ?? false): ?>
+<?php
     $currentPlan    = $subscription->plan_name->value;
     $currentBilling = $subscription->billing_cycle;
     $planRank       = ['personal' => 1, 'professional' => 2, 'business' => 3];
@@ -706,25 +717,25 @@
             ? config("plans.{$scheduledPlan}.paddle_annual_id")
             : config("plans.{$scheduledPlan}.paddle_monthly_id");
     }
-@endphp
+?>
 
 <div class="cp-overlay" id="changePlanModal" style="display:none;">
     <div class="cp-modal">
 
-        {{-- Header --}}
+        
         <div class="cp-modal-head">
             <div class="cp-modal-title">Choose a Plan</div>
             <button class="cp-close" onclick="closeChangePlan()" aria-label="Close">×</button>
         </div>
         <div class="cp-modal-meta">
-            Current: <strong>{{ ucfirst($currentPlan) }} / {{ ucfirst($currentBilling) }}</strong>
-            &nbsp;·&nbsp; Next renewal: <strong>{{ $nextRenewal }}</strong>
-            @if($scheduledPlan)
-                &nbsp;·&nbsp; <span style="color:#4db8ff;">Scheduled → {{ ucfirst($scheduledPlan) }}</span>
-            @endif
+            Current: <strong><?php echo e(ucfirst($currentPlan)); ?> / <?php echo e(ucfirst($currentBilling)); ?></strong>
+            &nbsp;·&nbsp; Next renewal: <strong><?php echo e($nextRenewal); ?></strong>
+            <?php if($scheduledPlan): ?>
+                &nbsp;·&nbsp; <span style="color:#4db8ff;">Scheduled → <?php echo e(ucfirst($scheduledPlan)); ?></span>
+            <?php endif; ?>
         </div>
 
-        {{-- Billing cycle toggle --}}
+        
         <div class="cp-billing-row">
             <span class="cp-billing-row-label">Billing cycle</span>
             <div class="cp-billing-switch">
@@ -738,10 +749,10 @@
             </div>
         </div>
 
-        {{-- Plans grid --}}
+        
         <div class="cp-plans-grid">
-            @foreach($allPlans as $planKey => $planData)
-            @php
+            <?php $__currentLoopData = $allPlans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planKey => $planData): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php
                 // Exact match: same plan AND same billing cycle → truly "current"
                 $isCurrent      = ($planKey === $currentPlan && $planData['rank'] === $currentRank);
                 // Same plan tier but different billing cycle (e.g. on monthly, want annual of same plan)
@@ -759,117 +770,115 @@
                 elseif ($isScheduled)    $cardClass = 'cp-plan-scheduled';
                 elseif ($isDowngrade)    $cardClass = 'cp-plan-disabled';
                 if ($isRecommended && !$isCurrent) $cardClass .= ' cp-plan-recommended';
-            @endphp
-            <div class="cp-plan-card {{ $cardClass }}" id="cpcard-{{ $planKey }}">
+            ?>
+            <div class="cp-plan-card <?php echo e($cardClass); ?>" id="cpcard-<?php echo e($planKey); ?>">
 
-                {{-- Ribbon --}}
-                @if($isCurrent)
+                
+                <?php if($isCurrent): ?>
                     <div class="cp-plan-ribbon ribbon-current">Your Plan</div>
-                @elseif($isScheduled)
+                <?php elseif($isScheduled): ?>
                     <div class="cp-plan-ribbon ribbon-scheduled">Scheduled</div>
-                @elseif($isBillingSwitch && !$isCurrent)
+                <?php elseif($isBillingSwitch && !$isCurrent): ?>
                     <div class="cp-plan-ribbon ribbon-upgrade">Switch Billing</div>
-                @elseif($isUpgrade)
+                <?php elseif($isUpgrade): ?>
                     <div class="cp-plan-ribbon ribbon-upgrade">Upgrade</div>
-                @elseif($isDowngrade)
+                <?php elseif($isDowngrade): ?>
                     <div class="cp-plan-ribbon ribbon-disabled">Lower Tier</div>
-                @endif
+                <?php endif; ?>
 
-                {{-- Name --}}
-                <div class="cp-plan-name">{{ $planData['label'] }}</div>
+                
+                <div class="cp-plan-name"><?php echo e($planData['label']); ?></div>
 
-                {{-- Price --}}
+                
                 <div class="cp-plan-price-area">
-                    <div class="cp-plan-price-val" id="cp-price-{{ $planKey }}">
+                    <div class="cp-plan-price-val" id="cp-price-<?php echo e($planKey); ?>">
                         <span class="cp-price-loading">Loading…</span>
                     </div>
-                    <div class="cp-plan-price-per" id="cp-price-per-{{ $planKey }}">/ month</div>
+                    <div class="cp-plan-price-per" id="cp-price-per-<?php echo e($planKey); ?>">/ month</div>
                 </div>
 
-                {{-- Features --}}
+                
                 <ul class="cp-plan-features">
-                    @foreach($planData['feats'] as $feat)
+                    <?php $__currentLoopData = $planData['feats']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $feat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <li class="cp-plan-feat">
                             <span class="feat-icon">✓</span>
-                            {{ $feat }}
+                            <?php echo e($feat); ?>
+
                         </li>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </ul>
 
-                {{-- CTA --}}
-                @if($isCurrent)
-                    {{--
-                        Two states managed by JS (cpSetBilling):
-                        1. Toggle matches current billing  → "Current Plan" (locked)
-                        2. Toggle differs from current billing → "Switch to Annual at Renewal"
-                    --}}
+                
+                <?php if($isCurrent): ?>
+                    
                     <button class="cp-card-btn cp-card-btn-current"
-                            id="btn-current-match-{{ $planKey }}"
+                            id="btn-current-match-<?php echo e($planKey); ?>"
                             disabled>✓ Current Plan</button>
 
-                    <div id="btn-billing-switch-{{ $planKey }}" style="display:none;">
-                        <input type="hidden" id="cp-billing-{{ $planKey }}" value="{{ $currentBilling }}">
-                        <form method="POST" action="{{ route('billing.change-plan') }}" id="cpform-renewal-{{ $planKey }}">
-                            @csrf
-                            <input type="hidden" name="plan"    value="{{ $planKey }}">
-                            <input type="hidden" name="billing" id="cpbilling-renewal-{{ $planKey }}" value="{{ $currentBilling }}">
+                    <div id="btn-billing-switch-<?php echo e($planKey); ?>" style="display:none;">
+                        <input type="hidden" id="cp-billing-<?php echo e($planKey); ?>" value="<?php echo e($currentBilling); ?>">
+                        <form method="POST" action="<?php echo e(route('billing.change-plan')); ?>" id="cpform-renewal-<?php echo e($planKey); ?>">
+                            <?php echo csrf_field(); ?>
+                            <input type="hidden" name="plan"    value="<?php echo e($planKey); ?>">
+                            <input type="hidden" name="billing" id="cpbilling-renewal-<?php echo e($planKey); ?>" value="<?php echo e($currentBilling); ?>">
                             <input type="hidden" name="when"    value="next_billing_period">
                             <button type="button"
                                     class="cp-card-btn cp-card-btn-upgrade cp-card-btn-now"
-                                    onclick="cpSubmit('{{ $planKey }}', 'next_billing_period', '{{ $planData['label'] }}')">
+                                    onclick="cpSubmit('<?php echo e($planKey); ?>', 'next_billing_period', '<?php echo e($planData['label']); ?>')">
                                 ↻ Switch to Annual at Renewal
                             </button>
                         </form>
                         <div style="font-size:0.72rem;color:var(--text-muted);text-align:center;padding-top:0.25rem;">
-                            No charge today · takes effect {{ $nextRenewal }}
+                            No charge today · takes effect <?php echo e($nextRenewal); ?>
+
                         </div>
                     </div>
 
-                @elseif($isScheduled)
-                    <button class="cp-card-btn cp-card-btn-scheduled" disabled>◷ Switching on {{ $nextRenewal }}</button>
+                <?php elseif($isScheduled): ?>
+                    <button class="cp-card-btn cp-card-btn-scheduled" disabled>◷ Switching on <?php echo e($nextRenewal); ?></button>
 
-                @elseif($isDowngrade)
-                    {{-- Downgrade disabled — no action --}}
+                <?php elseif($isDowngrade): ?>
+                    
                     <button class="cp-card-btn cp-card-btn-disabled" disabled>Downgrade Unavailable</button>
 
-                @elseif($isUpgrade)
-                    <input type="hidden" id="cp-billing-{{ $planKey }}" value="monthly">
+                <?php elseif($isUpgrade): ?>
+                    <input type="hidden" id="cp-billing-<?php echo e($planKey); ?>" value="monthly">
                     <div class="cp-card-actions">
-                        {{-- Upgrade Now --}}
-                        <form method="POST" action="{{ route('billing.change-plan') }}" id="cpform-now-{{ $planKey }}">
-                            @csrf
-                            <input type="hidden" name="plan"    value="{{ $planKey }}">
-                            <input type="hidden" name="billing" id="cpbilling-now-{{ $planKey }}" value="monthly">
+                        
+                        <form method="POST" action="<?php echo e(route('billing.change-plan')); ?>" id="cpform-now-<?php echo e($planKey); ?>">
+                            <?php echo csrf_field(); ?>
+                            <input type="hidden" name="plan"    value="<?php echo e($planKey); ?>">
+                            <input type="hidden" name="billing" id="cpbilling-now-<?php echo e($planKey); ?>" value="monthly">
                             <input type="hidden" name="when"    value="immediately">
                             <button type="button"
                                     class="cp-card-btn cp-card-btn-upgrade cp-card-btn-now"
-                                    onclick="cpSubmit('{{ $planKey }}', 'immediately', '{{ $planData['label'] }}')">
+                                    onclick="cpSubmit('<?php echo e($planKey); ?>', 'immediately', '<?php echo e($planData['label']); ?>')">
                                 ↑ Upgrade Now
                             </button>
                         </form>
-                        {{-- At Renewal --}}
-                        <form method="POST" action="{{ route('billing.change-plan') }}" id="cpform-renewal-{{ $planKey }}">
-                            @csrf
-                            <input type="hidden" name="plan"    value="{{ $planKey }}">
-                            <input type="hidden" name="billing" id="cpbilling-renewal-{{ $planKey }}" value="monthly">
+                        
+                        <form method="POST" action="<?php echo e(route('billing.change-plan')); ?>" id="cpform-renewal-<?php echo e($planKey); ?>">
+                            <?php echo csrf_field(); ?>
+                            <input type="hidden" name="plan"    value="<?php echo e($planKey); ?>">
+                            <input type="hidden" name="billing" id="cpbilling-renewal-<?php echo e($planKey); ?>" value="monthly">
                             <input type="hidden" name="when"    value="next_billing_period">
                             <button type="button"
                                     class="cp-card-btn cp-card-btn-renewal"
-                                    onclick="cpSubmit('{{ $planKey }}', 'next_billing_period', '{{ $planData['label'] }}')">
-                                Schedule at Renewal ({{ $nextRenewal }})
+                                    onclick="cpSubmit('<?php echo e($planKey); ?>', 'next_billing_period', '<?php echo e($planData['label']); ?>')">
+                                Schedule at Renewal (<?php echo e($nextRenewal); ?>)
                             </button>
                         </form>
                     </div>
-                @endif
+                <?php endif; ?>
 
             </div>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
 
-        {{-- Legend --}}
+        
         <div class="cp-legend">
             <span>⚡ <strong>Upgrade Now</strong> — charged immediately, limits active right away.</span>
-            <span>📅 <strong>At Renewal</strong> — no charge today, takes effect on {{ $nextRenewal }}.</span>
+            <span>📅 <strong>At Renewal</strong> — no charge today, takes effect on <?php echo e($nextRenewal); ?>.</span>
             <span>↻ <strong>Switch Billing</strong> — change monthly ↔ annual on same plan at renewal.</span>
             <span>🔒 <strong>Downgrade</strong> — not available via the portal; contact support.</span>
         </div>
@@ -881,27 +890,27 @@
     const cpPriceMap = {};
 
     const cpPlanDefaults = {
-        @foreach($allPlans as $planKey => $planData)
-        '{{ $planKey }}': {
-            mo: '${{ $planData['price_mo'] }}',
-            yr: '${{ $planData['price_yr'] }}',
-            paddle_mo: '{{ $planData['paddle_mo'] }}',
-            paddle_yr: '{{ $planData['paddle_yr'] }}',
+        <?php $__currentLoopData = $allPlans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planKey => $planData): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        '<?php echo e($planKey); ?>': {
+            mo: '$<?php echo e($planData['price_mo']); ?>',
+            yr: '$<?php echo e($planData['price_yr']); ?>',
+            paddle_mo: '<?php echo e($planData['paddle_mo']); ?>',
+            paddle_yr: '<?php echo e($planData['paddle_yr']); ?>',
             moFormatted: null,
             yrFormatted: null,
         },
-        @endforeach
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     };
 
-    const currentPaddleId    = '{{ $currentPaddleId }}';
-    const scheduledPaddleId  = '{{ $scheduledPaddleId }}';
-    const currentBillingCycle = '{{ $currentBilling }}';
+    const currentPaddleId    = '<?php echo e($currentPaddleId); ?>';
+    const scheduledPaddleId  = '<?php echo e($scheduledPaddleId); ?>';
+    const currentBillingCycle = '<?php echo e($currentBilling); ?>';
 
     // ── Init Paddle ───────────────────────────────────────────────────────────────
-    @if(config('cashier.environment') === 'sandbox')
+    <?php if(config('cashier.environment') === 'sandbox'): ?>
         Paddle.Environment.set('sandbox');
-    @endif
-    Paddle.Initialize({ token: '{{ config('cashier.client_side_token') }}' });
+    <?php endif; ?>
+    Paddle.Initialize({ token: '<?php echo e(config('cashier.client_side_token')); ?>' });
 
     // ── Fetch localized prices ────────────────────────────────────────────────────
     (async function fetchPortalPrices() {
@@ -939,7 +948,7 @@
             if (scheduledPaddleId && cpPriceMap[scheduledPaddleId]) {
                 const schedEl = document.getElementById('scheduled-price');
                 if (schedEl) {
-                    const per = '{{ $subscription->scheduled_billing ?? "monthly" }}' === 'annual' ? '/year' : '/month';
+                    const per = '<?php echo e($subscription->scheduled_billing ?? "monthly"); ?>' === 'annual' ? '/year' : '/month';
                     schedEl.innerHTML = cpPriceMap[scheduledPaddleId]
                         + '<span style="font-size:0.8rem;font-weight:400;color:var(--text-muted);">' + per + '</span>';
                 }
@@ -961,15 +970,15 @@
         // Fallback for scheduled price
         const schedEl = document.getElementById('scheduled-price');
         if (schedEl) {
-            @if($scheduledChange ?? null)
-            @php
+            <?php if($scheduledChange ?? null): ?>
+            <?php
                 $fallbackPrice = ($scheduledChange['billing'] === 'annual')
                     ? '$' . config("plans.{$scheduledChange['plan']}.price_annual")
                     : '$' . config("plans.{$scheduledChange['plan']}.price_monthly");
                 $fallbackPer = ($scheduledChange['billing'] === 'annual') ? '/year' : '/month';
-            @endphp
-            schedEl.innerHTML = '{{ $fallbackPrice }}<span style="font-size:0.8rem;font-weight:400;color:var(--text-muted);">{{ $fallbackPer }}</span>';
-            @endif
+            ?>
+            schedEl.innerHTML = '<?php echo e($fallbackPrice); ?><span style="font-size:0.8rem;font-weight:400;color:var(--text-muted);"><?php echo e($fallbackPer); ?></span>';
+            <?php endif; ?>
         }
     }
 
@@ -990,8 +999,8 @@
 
     // ── Billing cycle toggle ──────────────────────────────────────────────────────
     let cpCurrentBilling = 'monthly';
-    const cpUserCurrentPlan    = '{{ $currentPlan }}';
-    const cpUserCurrentBilling = '{{ $currentBilling }}';
+    const cpUserCurrentPlan    = '<?php echo e($currentPlan); ?>';
+    const cpUserCurrentBilling = '<?php echo e($currentBilling); ?>';
 
     function cpSetBilling(cycle) {
         cpCurrentBilling = cycle;
@@ -1047,13 +1056,13 @@
             : (data?.yrFormatted || data?.yr);
 
         // Detect if this is a billing-cycle switch on the same plan vs a true upgrade
-        const isBillingSwitch = (planKey === '{{ $currentPlan }}');
+        const isBillingSwitch = (planKey === '<?php echo e($currentPlan); ?>');
 
         let msg = '';
         if (isBillingSwitch && when === 'next_billing_period') {
-            msg = '↻ Switch ' + planLabel + ' to ' + billingLabel + ' billing at renewal ({{ $nextRenewal }})?\n\n'
+            msg = '↻ Switch ' + planLabel + ' to ' + billingLabel + ' billing at renewal (<?php echo e($nextRenewal); ?>)?\n\n'
                 + '• No charge today.\n'
-                + '• You will be billed ' + price + ' on {{ $nextRenewal }}.\n'
+                + '• You will be billed ' + price + ' on <?php echo e($nextRenewal); ?>.\n'
                 + '• Your current monthly billing continues until then.';
         } else if (when === 'immediately') {
             msg = '⚠ Upgrade to ' + planLabel + ' (' + billingLabel + ')\n\n'
@@ -1061,10 +1070,10 @@
                 + '• New plan limits activate immediately after payment.\n\n'
                 + 'Confirm upgrade?';
         } else {
-            msg = 'Schedule upgrade to ' + planLabel + ' (' + billingLabel + ') at renewal ({{ $nextRenewal }})?\n\n'
+            msg = 'Schedule upgrade to ' + planLabel + ' (' + billingLabel + ') at renewal (<?php echo e($nextRenewal); ?>)?\n\n'
                 + '• No charge today.\n'
-                + '• You will be billed ' + price + ' on {{ $nextRenewal }}.\n'
-                + '• Change takes effect on {{ $nextRenewal }}.';
+                + '• You will be billed ' + price + ' on <?php echo e($nextRenewal); ?>.\n'
+                + '• Change takes effect on <?php echo e($nextRenewal); ?>.';
         }
 
         if (!confirm(msg)) return;
@@ -1079,7 +1088,7 @@
         document.getElementById('changePlanModal').style.display = 'flex';
         document.body.style.overflow = 'hidden';
         // Sync billing to current plan billing on open
-        cpSetBilling('{{ $currentBilling }}');
+        cpSetBilling('<?php echo e($currentBilling); ?>');
     }
     function closeChangePlan() {
         document.getElementById('changePlanModal').style.display = 'none';
@@ -1092,6 +1101,7 @@
         if (e.key === 'Escape') closeChangePlan();
     });
 </script>
-@endif
+<?php endif; ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.dashboard', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/billing/portal.blade.php ENDPATH**/ ?>

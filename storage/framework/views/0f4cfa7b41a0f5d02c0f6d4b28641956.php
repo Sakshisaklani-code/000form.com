@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="x-apple-disable-message-reformatting" />
     <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no" />
-    <title>Plan {{ $isImmediate ? 'Upgraded' : 'Upgrade Scheduled' }} | 000form</title>
+    <title>Plan <?php echo e($isImmediate ? 'Upgraded' : 'Upgrade Scheduled'); ?> | 000form</title>
     <!--[if mso]>
     <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
     <![endif]-->
@@ -39,25 +39,25 @@
                         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.03em;color:#ffffff;margin-bottom:18px;">000<span style="color:#00ff88;">form</span></div>
 
                         <!-- Badge: green = immediate, amber = scheduled -->
-                        @if($isImmediate)
+                        <?php if($isImmediate): ?>
                         <div style="display:inline-block;background-color:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.3);border-radius:60px;padding:7px 20px;margin-bottom:20px;">
                             <span style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;font-weight:700;color:#00ff88;letter-spacing:0.04em;">&#8679;&nbsp; Plan Upgraded</span>
                         </div>
-                        @else
+                        <?php else: ?>
                         <div style="display:inline-block;background-color:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.3);border-radius:60px;padding:7px 20px;margin-bottom:20px;">
                             <span style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;font-weight:700;color:#fbbf24;letter-spacing:0.04em;">&#8679;&nbsp; Upgrade Scheduled</span>
                         </div>
-                        @endif
+                        <?php endif; ?>
 
                         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:24px;font-weight:800;color:#ffffff;letter-spacing:-0.03em;margin-bottom:10px;line-height:1.25;">
-                            @if($isImmediate)Your plan is now upgraded!
-                            @else Your upgrade is scheduled
-                            @endif
+                            <?php if($isImmediate): ?>Your plan is now upgraded!
+                            <?php else: ?> Your upgrade is scheduled
+                            <?php endif; ?>
                         </div>
                         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px;color:#888888;line-height:1.5;">
-                            @if($isImmediate)Your new plan is active immediately. Here&rsquo;s a full summary.
-                            @else Your plan will upgrade on <strong style="color:#fbbf24;">{{ $effectiveAt }}</strong>. No action needed.
-                            @endif
+                            <?php if($isImmediate): ?>Your new plan is active immediately. Here&rsquo;s a full summary.
+                            <?php else: ?> Your plan will upgrade on <strong style="color:#fbbf24;"><?php echo e($effectiveAt); ?></strong>. No action needed.
+                            <?php endif; ?>
                         </div>
                     </td>
                 </tr>
@@ -72,50 +72,50 @@
                                 <!-- Old plan -->
                                 <td class="plan-col" align="center" style="padding:22px 16px;width:42%;">
                                     <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:10px;font-weight:700;color:#444444;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">Previous</div>
-                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:18px;font-weight:800;color:#555555;letter-spacing:-0.02em;">{{ ucfirst($oldPlan) }}</div>
-                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;color:#444444;margin-top:4px;text-transform:capitalize;">{{ ucfirst($oldBilling) }}</div>
+                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:18px;font-weight:800;color:#555555;letter-spacing:-0.02em;"><?php echo e(ucfirst($oldPlan)); ?></div>
+                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;color:#444444;margin-top:4px;text-transform:capitalize;"><?php echo e(ucfirst($oldBilling)); ?></div>
                                 </td>
                                 <!-- Arrow -->
                                 <td class="arrow-col" align="center" style="font-size:22px;color:#333333;width:16%;vertical-align:middle;">&rarr;</td>
                                 <!-- New plan -->
                                 <td class="plan-col" align="center" style="padding:22px 16px;width:42%;">
-                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:10px;font-weight:700;color:#444444;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">{{ $isImmediate ? 'New Plan' : 'Upgrading To' }}</div>
-                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:18px;font-weight:800;color:#00ff88;letter-spacing:-0.02em;">{{ ucfirst($newPlan) }}</div>
-                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;color:#444444;margin-top:4px;text-transform:capitalize;">{{ ucfirst($newBilling) }}</div>
+                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:10px;font-weight:700;color:#444444;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;"><?php echo e($isImmediate ? 'New Plan' : 'Upgrading To'); ?></div>
+                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:18px;font-weight:800;color:#00ff88;letter-spacing:-0.02em;"><?php echo e(ucfirst($newPlan)); ?></div>
+                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;color:#444444;margin-top:4px;text-transform:capitalize;"><?php echo e(ucfirst($newBilling)); ?></div>
                                     <!-- Immediate / Scheduled tag -->
                                     <div style="margin-top:8px;">
-                                        @if($isImmediate)
+                                        <?php if($isImmediate): ?>
                                         <span style="display:inline-block;background-color:rgba(0,255,136,0.1);border-radius:6px;padding:3px 10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:10px;font-weight:700;color:#00ff88;letter-spacing:0.05em;text-transform:uppercase;">Immediate</span>
-                                        @else
+                                        <?php else: ?>
                                         <span style="display:inline-block;background-color:rgba(251,191,36,0.1);border-radius:6px;padding:3px 10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:10px;font-weight:700;color:#fbbf24;letter-spacing:0.05em;text-transform:uppercase;">Scheduled</span>
-                                        @endif
+                                        <?php endif; ?>
                                     </div>
                                 </td>
                             </tr>
                         </table>
 
                         <!-- Payment highlight card (immediate + amount only) -->
-                        @if($isImmediate && $amount)
+                        <?php if($isImmediate && $amount): ?>
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#0d2b1e;border:1px solid rgba(0,255,136,0.25);border-radius:16px;margin-bottom:28px;">
                             <tr>
                                 <td align="center" style="padding:26px 24px;">
                                     <div style="display:inline-block;background-color:rgba(0,255,136,0.12);border-radius:40px;padding:4px 14px;margin-bottom:12px;">
-                                        <span style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:11px;font-weight:700;color:#7effb3;letter-spacing:0.1em;text-transform:uppercase;">{{ ucfirst($newBilling) }} Plan</span>
+                                        <span style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:11px;font-weight:700;color:#7effb3;letter-spacing:0.1em;text-transform:uppercase;"><?php echo e(ucfirst($newBilling)); ?> Plan</span>
                                     </div>
-                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:42px;font-weight:800;color:#ffffff;letter-spacing:-0.03em;margin-bottom:6px;">{{ $amount }}</div>
-                                    @if($currency)
-                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;color:#555555;margin-bottom:12px;">{{ strtoupper($currency) }}</div>
-                                    @endif
-                                    @if($periodEnd)
-                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:13px;color:#666666;border-top:1px dashed #1e4030;padding-top:14px;">Next renewal on {{ $periodEnd }}</div>
-                                    @endif
+                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:42px;font-weight:800;color:#ffffff;letter-spacing:-0.03em;margin-bottom:6px;"><?php echo e($amount); ?></div>
+                                    <?php if($currency): ?>
+                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;color:#555555;margin-bottom:12px;"><?php echo e(strtoupper($currency)); ?></div>
+                                    <?php endif; ?>
+                                    <?php if($periodEnd): ?>
+                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:13px;color:#666666;border-top:1px dashed #1e4030;padding-top:14px;">Next renewal on <?php echo e($periodEnd); ?></div>
+                                    <?php endif; ?>
                                 </td>
                             </tr>
                         </table>
-                        @endif
+                        <?php endif; ?>
 
                         <!-- Effective callout -->
-                        @if($isImmediate)
+                        <?php if($isImmediate): ?>
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:rgba(0,255,136,0.06);border:1px solid rgba(0,255,136,0.2);border-radius:12px;margin-bottom:28px;">
                             <tr>
                                 <td style="padding:16px 18px;">
@@ -131,7 +131,7 @@
                                 </td>
                             </tr>
                         </table>
-                        @else
+                        <?php else: ?>
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.2);border-radius:12px;margin-bottom:28px;">
                             <tr>
                                 <td style="padding:16px 18px;">
@@ -139,7 +139,7 @@
                                         <tr>
                                             <td style="font-size:20px;vertical-align:top;width:28px;padding-right:10px;">&#128197;</td>
                                             <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px;color:#fde68a;line-height:1.5;vertical-align:top;">
-                                                <strong style="display:block;margin-bottom:4px;font-size:13px;">Effective {{ $effectiveAt }}</strong>
+                                                <strong style="display:block;margin-bottom:4px;font-size:13px;">Effective <?php echo e($effectiveAt); ?></strong>
                                                 Your current plan stays active until then. The upgrade applies automatically at renewal.
                                             </td>
                                         </tr>
@@ -147,74 +147,74 @@
                                 </td>
                             </tr>
                         </table>
-                        @endif
+                        <?php endif; ?>
 
                         <!-- Summary label -->
-                        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:10px;font-weight:700;color:#444444;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;">{{ $isImmediate ? 'Upgrade Summary' : 'Change Summary' }}</div>
+                        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:10px;font-weight:700;color:#444444;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;"><?php echo e($isImmediate ? 'Upgrade Summary' : 'Change Summary'); ?></div>
 
                         <!-- Summary table -->
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:28px;">
                             <tr style="border-bottom:1px solid #1a1a1a;">
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;width:45%;">Previous Plan</td>
-                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#cccccc;font-weight:600;text-align:right;">{{ ucfirst($oldPlan) }} &ndash; {{ ucfirst($oldBilling) }}</td>
+                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#cccccc;font-weight:600;text-align:right;"><?php echo e(ucfirst($oldPlan)); ?> &ndash; <?php echo e(ucfirst($oldBilling)); ?></td>
                             </tr>
                             <tr style="border-bottom:1px solid #1a1a1a;">
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;">New Plan</td>
-                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#00ff88;font-weight:700;text-align:right;">{{ ucfirst($newPlan) }} &ndash; {{ ucfirst($newBilling) }}</td>
+                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#00ff88;font-weight:700;text-align:right;"><?php echo e(ucfirst($newPlan)); ?> &ndash; <?php echo e(ucfirst($newBilling)); ?></td>
                             </tr>
-                            @if($isImmediate && $amount)
+                            <?php if($isImmediate && $amount): ?>
                             <tr style="border-bottom:1px solid #1a1a1a;">
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;">Amount Charged</td>
-                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#00ff88;font-weight:700;text-align:right;">{{ $amount }}{{ $currency ? ' ' . strtoupper($currency) : '' }}</td>
+                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#00ff88;font-weight:700;text-align:right;"><?php echo e($amount); ?><?php echo e($currency ? ' ' . strtoupper($currency) : ''); ?></td>
                             </tr>
-                            @endif
+                            <?php endif; ?>
                             <tr style="border-bottom:1px solid #1a1a1a;">
-                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;">{{ $isImmediate ? 'Effective From' : 'Effective Date' }}</td>
-                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#cccccc;font-weight:600;text-align:right;">{{ $effectiveAt }}</td>
+                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;"><?php echo e($isImmediate ? 'Effective From' : 'Effective Date'); ?></td>
+                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#cccccc;font-weight:600;text-align:right;"><?php echo e($effectiveAt); ?></td>
                             </tr>
-                            @if($isImmediate && $periodEnd)
+                            <?php if($isImmediate && $periodEnd): ?>
                             <tr style="border-bottom:1px solid #1a1a1a;">
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;">Access Until</td>
-                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#cccccc;font-weight:600;text-align:right;">{{ $periodEnd }}</td>
+                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#cccccc;font-weight:600;text-align:right;"><?php echo e($periodEnd); ?></td>
                             </tr>
-                            @endif
-                            @if($subscriptionId)
+                            <?php endif; ?>
+                            <?php if($subscriptionId): ?>
                             <tr style="border-bottom:1px solid #1a1a1a;">
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;">Subscription ID</td>
-                                <td style="font-family:'Courier New',monospace;padding:11px 0;font-size:12px;color:#aaaaaa;font-weight:600;text-align:right;word-break:break-all;">{{ $subscriptionId }}</td>
+                                <td style="font-family:'Courier New',monospace;padding:11px 0;font-size:12px;color:#aaaaaa;font-weight:600;text-align:right;word-break:break-all;"><?php echo e($subscriptionId); ?></td>
                             </tr>
-                            @endif
-                            @if($isImmediate && $transactionId)
+                            <?php endif; ?>
+                            <?php if($isImmediate && $transactionId): ?>
                             <tr style="border-bottom:1px solid #1a1a1a;">
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;">Transaction ID</td>
-                                <td style="font-family:'Courier New',monospace;padding:11px 0;font-size:12px;color:#aaaaaa;font-weight:600;text-align:right;word-break:break-all;">{{ $transactionId }}</td>
+                                <td style="font-family:'Courier New',monospace;padding:11px 0;font-size:12px;color:#aaaaaa;font-weight:600;text-align:right;word-break:break-all;"><?php echo e($transactionId); ?></td>
                             </tr>
-                            @endif
+                            <?php endif; ?>
                             <tr>
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;">Account</td>
-                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#aaaaaa;font-weight:600;text-align:right;">{{ $userEmail }}</td>
+                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#aaaaaa;font-weight:600;text-align:right;"><?php echo e($userEmail); ?></td>
                             </tr>
                         </table>
 
                         <!-- Invoice -->
-                        @if($isImmediate && $invoiceUrl)
+                        <?php if($isImmediate && $invoiceUrl): ?>
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"><tr><td style="border-top:1px solid #1a1a1a;padding:0 0 20px 0;font-size:0;line-height:0;">&nbsp;</td></tr></table>
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#0f0f0f;border:1px solid #1e1e1e;border-radius:10px;margin-bottom:24px;">
                             <tr>
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:14px 18px;font-size:13px;color:#555555;">&#128196; Invoice PDF</td>
                                 <td style="padding:14px 18px;text-align:right;">
-                                    <a href="{{ $invoiceUrl }}" target="_blank" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;font-weight:600;color:#00ff88;text-decoration:none;">&#8595; Download Invoice</a>
+                                    <a href="<?php echo e($invoiceUrl); ?>" target="_blank" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;font-weight:600;color:#00ff88;text-decoration:none;">&#8595; Download Invoice</a>
                                 </td>
                             </tr>
                         </table>
-                        @endif
+                        <?php endif; ?>
 
                         <!-- Divider + CTA -->
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"><tr><td style="border-top:1px solid #1a1a1a;padding:0 0 24px 0;font-size:0;line-height:0;">&nbsp;</td></tr></table>
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
                                 <td align="center">
-                                    <a href="{{ config('app.url') }}/billing" style="display:inline-block;background-color:#00ff88;color:#0a0a0a;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:15px;font-weight:700;padding:14px 36px;border-radius:10px;text-decoration:none;">View Plan Details &rarr;</a>
+                                    <a href="<?php echo e(config('app.url')); ?>/billing" style="display:inline-block;background-color:#00ff88;color:#0a0a0a;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:15px;font-weight:700;padding:14px 36px;border-radius:10px;text-decoration:none;">View Plan Details &rarr;</a>
                                 </td>
                             </tr>
                         </table>
@@ -226,11 +226,11 @@
                 <tr>
                     <td align="center" style="background-color:#0a0a0a;border-top:1px solid #1a1a1a;padding:24px 32px;">
                         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;color:#444444;line-height:1.7;">
-                            Questions? Contact us at <a href="mailto:{{ config('mail.from.address') }}" style="color:#666666;text-decoration:none;">{{ config('mail.from.address') }}</a>
+                            Questions? Contact us at <a href="mailto:<?php echo e(config('mail.from.address')); ?>" style="color:#666666;text-decoration:none;"><?php echo e(config('mail.from.address')); ?></a>
                         </div>
                         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:11px;color:#333333;margin-top:10px;">
-                            &copy; {{ date('Y') }} 000form &nbsp;&middot;&nbsp;
-                            <a href="{{ config('app.url') }}/billing" style="color:#444444;text-decoration:none;">Manage Subscription</a>
+                            &copy; <?php echo e(date('Y')); ?> 000form &nbsp;&middot;&nbsp;
+                            <a href="<?php echo e(config('app.url')); ?>/billing" style="color:#444444;text-decoration:none;">Manage Subscription</a>
                         </div>
                     </td>
                 </tr>
@@ -240,4 +240,4 @@
     </tr>
 </table>
 </body>
-</html>
+</html><?php /**PATH C:\Git-folders\000form.com\resources\views/emails/plan-upgraded-user.blade.php ENDPATH**/ ?>

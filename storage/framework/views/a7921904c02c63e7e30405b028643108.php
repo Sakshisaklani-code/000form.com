@@ -43,10 +43,10 @@
 
                         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:24px;font-weight:800;color:#ffffff;letter-spacing:-0.03em;margin-bottom:10px;line-height:1.25;">Welcome back! Your subscription is active again</div>
                         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px;color:#888888;line-height:1.5;">
-                            Your <strong style="color:#ffffff;">{{ ucfirst($planName) }}</strong> plan has been successfully reactivated.
-                            @if($accessUntil)
-                                Your next billing date is <strong style="color:#ffffff;">{{ $accessUntil }}</strong>.
-                            @endif
+                            Your <strong style="color:#ffffff;"><?php echo e(ucfirst($planName)); ?></strong> plan has been successfully reactivated.
+                            <?php if($accessUntil): ?>
+                                Your next billing date is <strong style="color:#ffffff;"><?php echo e($accessUntil); ?></strong>.
+                            <?php endif; ?>
                         </div>
                     </td>
                 </tr>
@@ -60,8 +60,8 @@
                             <tr>
                                 <td align="center" style="padding:26px 24px;">
                                     <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:10px;font-weight:700;color:#555555;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">Active Plan</div>
-                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:24px;font-weight:800;color:#00ff88;letter-spacing:-0.02em;margin-bottom:6px;">{{ ucfirst($planName) }}</div>
-                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:13px;color:#555555;text-transform:capitalize;">{{ ucfirst($billingCycle) }} billing</div>
+                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:24px;font-weight:800;color:#00ff88;letter-spacing:-0.02em;margin-bottom:6px;"><?php echo e(ucfirst($planName)); ?></div>
+                                    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:13px;color:#555555;text-transform:capitalize;"><?php echo e(ucfirst($billingCycle)); ?> billing</div>
                                 </td>
                             </tr>
                         </table>
@@ -75,7 +75,7 @@
                                             <td style="font-size:20px;vertical-align:top;width:28px;padding-right:10px;">&#127881;</td>
                                             <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px;color:#6ee7b7;line-height:1.5;vertical-align:top;">
                                                 <strong style="display:block;margin-bottom:4px;font-size:13px;">You&rsquo;re all set &mdash; full access restored</strong>
-                                                Your {{ ucfirst($planName) }} plan is fully active. All your limits and features have been restored. No data was lost.
+                                                Your <?php echo e(ucfirst($planName)); ?> plan is fully active. All your limits and features have been restored. No data was lost.
                                             </td>
                                         </tr>
                                     </table>
@@ -89,27 +89,27 @@
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:28px;">
                             <tr style="border-bottom:1px solid #1a1a1a;">
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;width:45%;">Active Plan</td>
-                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#00ff88;font-weight:700;text-align:right;">{{ ucfirst($planName) }} &ndash; {{ ucfirst($billingCycle) }}</td>
+                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#00ff88;font-weight:700;text-align:right;"><?php echo e(ucfirst($planName)); ?> &ndash; <?php echo e(ucfirst($billingCycle)); ?></td>
                             </tr>
-                            @if($accessUntil)
+                            <?php if($accessUntil): ?>
                             <tr style="border-bottom:1px solid #1a1a1a;">
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;">Next Billing Date</td>
-                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#00ff88;font-weight:700;text-align:right;">{{ $accessUntil }}</td>
+                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#00ff88;font-weight:700;text-align:right;"><?php echo e($accessUntil); ?></td>
                             </tr>
-                            @endif
+                            <?php endif; ?>
                             <tr style="border-bottom:1px solid #1a1a1a;">
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;">Reactivated At</td>
-                                <td style="font-family:'Courier New',monospace;padding:11px 0;font-size:12px;color:#aaaaaa;font-weight:600;text-align:right;">{{ now()->format('M d, Y – H:i') }} UTC</td>
+                                <td style="font-family:'Courier New',monospace;padding:11px 0;font-size:12px;color:#aaaaaa;font-weight:600;text-align:right;"><?php echo e(now()->format('M d, Y – H:i')); ?> UTC</td>
                             </tr>
-                            @if($subscriptionId)
+                            <?php if($subscriptionId): ?>
                             <tr style="border-bottom:1px solid #1a1a1a;">
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;">Subscription ID</td>
-                                <td style="font-family:'Courier New',monospace;padding:11px 0;font-size:12px;color:#aaaaaa;font-weight:600;text-align:right;word-break:break-all;">{{ $subscriptionId }}</td>
+                                <td style="font-family:'Courier New',monospace;padding:11px 0;font-size:12px;color:#aaaaaa;font-weight:600;text-align:right;word-break:break-all;"><?php echo e($subscriptionId); ?></td>
                             </tr>
-                            @endif
+                            <?php endif; ?>
                             <tr>
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;">Account</td>
-                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#aaaaaa;font-weight:600;text-align:right;">{{ $userEmail }}</td>
+                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#aaaaaa;font-weight:600;text-align:right;"><?php echo e($userEmail); ?></td>
                             </tr>
                         </table>
 
@@ -118,7 +118,7 @@
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
                                 <td align="center">
-                                    <a href="{{ config('app.url') }}/billing" style="display:inline-block;background-color:#00ff88;color:#0a0a0a;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:15px;font-weight:700;padding:14px 36px;border-radius:10px;text-decoration:none;">View Billing Dashboard &rarr;</a>
+                                    <a href="<?php echo e(config('app.url')); ?>/billing" style="display:inline-block;background-color:#00ff88;color:#0a0a0a;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:15px;font-weight:700;padding:14px 36px;border-radius:10px;text-decoration:none;">View Billing Dashboard &rarr;</a>
                                 </td>
                             </tr>
                         </table>
@@ -130,11 +130,11 @@
                 <tr>
                     <td align="center" style="background-color:#0a0a0a;border-top:1px solid #1a1a1a;padding:24px 32px;">
                         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;color:#444444;line-height:1.7;">
-                            Questions? Contact us at <a href="mailto:{{ config('mail.from.address') }}" style="color:#666666;text-decoration:none;">{{ config('mail.from.address') }}</a>
+                            Questions? Contact us at <a href="mailto:<?php echo e(config('mail.from.address')); ?>" style="color:#666666;text-decoration:none;"><?php echo e(config('mail.from.address')); ?></a>
                         </div>
                         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:11px;color:#333333;margin-top:10px;">
-                            &copy; {{ date('Y') }} 000form &nbsp;&middot;&nbsp;
-                            <a href="{{ config('app.url') }}/billing" style="color:#444444;text-decoration:none;">Manage Subscription</a>
+                            &copy; <?php echo e(date('Y')); ?> 000form &nbsp;&middot;&nbsp;
+                            <a href="<?php echo e(config('app.url')); ?>/billing" style="color:#444444;text-decoration:none;">Manage Subscription</a>
                         </div>
                     </td>
                 </tr>
@@ -144,4 +144,4 @@
     </tr>
 </table>
 </body>
-</html>
+</html><?php /**PATH C:\Git-folders\000form.com\resources\views/emails/subscription-resumed.blade.php ENDPATH**/ ?>

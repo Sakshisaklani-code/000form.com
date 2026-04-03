@@ -56,13 +56,13 @@
                                         <tr>
                                             <td style="vertical-align:middle;">
                                                 <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:10px;font-weight:700;color:#555555;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;">Reactivated Plan</div>
-                                                <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:28px;font-weight:800;color:#00ff88;letter-spacing:-0.02em;">{{ ucfirst($planName) }}</div>
+                                                <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:28px;font-weight:800;color:#00ff88;letter-spacing:-0.02em;"><?php echo e(ucfirst($planName)); ?></div>
                                             </td>
                                             <td style="vertical-align:middle;text-align:right;padding-left:16px;">
                                                 <div style="display:inline-block;background-color:rgba(0,255,136,0.12);border-radius:8px;padding:6px 14px;margin-bottom:6px;">
                                                     <span style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;font-weight:700;color:#00ff88;">&#10003; Active</span>
                                                 </div>
-                                                <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;color:#555555;display:block;margin-top:4px;">{{ ucfirst($billingCycle) }} billing</div>
+                                                <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;color:#555555;display:block;margin-top:4px;"><?php echo e(ucfirst($billingCycle)); ?> billing</div>
                                             </td>
                                         </tr>
                                     </table>
@@ -75,18 +75,18 @@
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:24px;">
                             <tr style="border-bottom:1px solid #1a1a1a;">
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;width:44%;">User ID</td>
-                                <td style="font-family:'Courier New',monospace;padding:11px 0;font-size:12px;color:#cccccc;font-weight:600;text-align:right;">#{{ $userId }}</td>
+                                <td style="font-family:'Courier New',monospace;padding:11px 0;font-size:12px;color:#cccccc;font-weight:600;text-align:right;">#<?php echo e($userId); ?></td>
                             </tr>
                             <tr style="border-bottom:1px solid #1a1a1a;">
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;">Email</td>
-                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#818cf8;font-weight:600;text-align:right;">{{ $userEmail }}</td>
+                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#818cf8;font-weight:600;text-align:right;"><?php echo e($userEmail); ?></td>
                             </tr>
-                            @if($paddleCustomerId)
+                            <?php if($paddleCustomerId): ?>
                             <tr>
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;">Paddle Customer ID</td>
-                                <td style="font-family:'Courier New',monospace;padding:11px 0;font-size:12px;color:#cccccc;font-weight:600;text-align:right;word-break:break-all;">{{ $paddleCustomerId }}</td>
+                                <td style="font-family:'Courier New',monospace;padding:11px 0;font-size:12px;color:#cccccc;font-weight:600;text-align:right;word-break:break-all;"><?php echo e($paddleCustomerId); ?></td>
                             </tr>
-                            @endif
+                            <?php endif; ?>
                         </table>
 
                         <!-- Divider -->
@@ -97,23 +97,23 @@
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:8px;">
                             <tr style="border-bottom:1px solid #1a1a1a;">
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;width:44%;">Plan</td>
-                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#00ff88;font-weight:700;text-align:right;">{{ ucfirst($planName) }} &ndash; {{ ucfirst($billingCycle) }}</td>
+                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#00ff88;font-weight:700;text-align:right;"><?php echo e(ucfirst($planName)); ?> &ndash; <?php echo e(ucfirst($billingCycle)); ?></td>
                             </tr>
-                            @if($accessUntil)
+                            <?php if($accessUntil): ?>
                             <tr style="border-bottom:1px solid #1a1a1a;">
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;">Next Billing Date</td>
-                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#fbbf24;font-weight:700;text-align:right;">{{ $accessUntil }}</td>
+                                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#fbbf24;font-weight:700;text-align:right;"><?php echo e($accessUntil); ?></td>
                             </tr>
-                            @endif
-                            @if($subscriptionId)
+                            <?php endif; ?>
+                            <?php if($subscriptionId): ?>
                             <tr style="border-bottom:1px solid #1a1a1a;">
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;">Subscription ID</td>
-                                <td style="font-family:'Courier New',monospace;padding:11px 0;font-size:12px;color:#cccccc;font-weight:600;text-align:right;word-break:break-all;">{{ $subscriptionId }}</td>
+                                <td style="font-family:'Courier New',monospace;padding:11px 0;font-size:12px;color:#cccccc;font-weight:600;text-align:right;word-break:break-all;"><?php echo e($subscriptionId); ?></td>
                             </tr>
-                            @endif
+                            <?php endif; ?>
                             <tr>
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:11px 0;font-size:13px;color:#555555;">Reactivated At</td>
-                                <td style="font-family:'Courier New',monospace;padding:11px 0;font-size:12px;color:#cccccc;font-weight:600;text-align:right;">{{ now()->format('M d, Y – H:i:s') }} UTC</td>
+                                <td style="font-family:'Courier New',monospace;padding:11px 0;font-size:12px;color:#cccccc;font-weight:600;text-align:right;"><?php echo e(now()->format('M d, Y – H:i:s')); ?> UTC</td>
                             </tr>
                         </table>
 
@@ -124,7 +124,7 @@
                 <tr>
                     <td align="center" style="background-color:#0a0a0a;border-top:1px solid #1a1a1a;padding:24px 32px;">
                         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;color:#333333;line-height:1.7;">Automated admin alert from 000form.</div>
-                        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:11px;color:#2e2e2e;margin-top:6px;">&copy; {{ date('Y') }} 000form</div>
+                        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:11px;color:#2e2e2e;margin-top:6px;">&copy; <?php echo e(date('Y')); ?> 000form</div>
                     </td>
                 </tr>
 
@@ -133,4 +133,4 @@
     </tr>
 </table>
 </body>
-</html>
+</html><?php /**PATH C:\Git-folders\000form.com\resources\views/emails/subscription-resumed-admin.blade.php ENDPATH**/ ?>

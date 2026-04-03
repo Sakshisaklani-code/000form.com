@@ -93,7 +93,8 @@
                                     Email address
                                 </td>
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:15px 18px;font-size:13px;color:#a5b4fc;font-weight:700;text-align:right;word-break:break-all;border-bottom:1px solid #2e2e2e;">
-                                    {{ $userEmail }}
+                                    <?php echo e($userEmail); ?>
+
                                 </td>
                             </tr>
 
@@ -103,7 +104,7 @@
                                     Registered at
                                 </td>
                                 <td style="font-family:'Courier New',monospace;padding:15px 18px;font-size:12px;color:#dddddd;font-weight:600;text-align:right;border-bottom:1px solid #2e2e2e;">
-                                    {{ now()->format('Y-m-d H:i:s') }} UTC
+                                    <?php echo e(now()->format('Y-m-d H:i:s')); ?> UTC
                                 </td>
                             </tr>
 
@@ -156,10 +157,10 @@
                         style="background-color:#0f0f0f;border-top:1px solid #2a2a2a;padding:22px 32px;">
                         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;color:#888888;line-height:1.7;">
                             Automated admin alert from
-                            <a href="{{ config('app.url') }}" style="color:#aaaaaa;text-decoration:none;font-weight:600;">000form</a>.
+                            <a href="<?php echo e(config('app.url')); ?>" style="color:#aaaaaa;text-decoration:none;font-weight:600;">000form</a>.
                         </div>
                         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:11px;color:#666666;margin-top:6px;">
-                            &copy; {{ date('Y') }} 000form
+                            &copy; <?php echo e(date('Y')); ?> 000form
                         </div>
                     </td>
                 </tr>
@@ -171,4 +172,4 @@
 </table>
 
 </body>
-</html>
+</html><?php /**PATH C:\Git-folders\000form.com\resources\views/emails/new-user-registered.blade.php ENDPATH**/ ?>

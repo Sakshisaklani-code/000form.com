@@ -410,3 +410,108 @@ DETAIL:  Failing row contains (2, d4846ed8-0c73-4d43-8052-21cb0f8e8039, null, tx
 [2026-04-02 10:38:22] local.ERROR: JWT verification error: Incorrect key for this algorithm  
 [2026-04-02 10:40:43] local.ERROR: JWT verification error: Incorrect key for this algorithm  
 [2026-04-02 10:43:46] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:45:13] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:46:02] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:47:27] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:55:46] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:55:49] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:55:57] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:55:59] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:56:08] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:56:10] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:56:23] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:56:25] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:56:26] local.ERROR: Supabase refresh token error: Client error: `POST https://zpqlkncexstlodwcneuq.supabase.co/auth/v1/token?grant_type=refresh_token` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"refresh_token_not_found","msg":"Invalid Refresh Token: Refresh Token Not Found"}
+  
+[2026-04-02 10:56:46] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:57:10] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:57:12] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:57:31] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:57:34] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:57:42] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:57:46] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:58:22] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:58:27] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:58:30] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 10:58:33] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:02:13] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:02:16] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:09:06] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:39:41] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:39:47] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:39:52] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:40:10] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:40:12] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:40:16] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:40:17] local.INFO: Paddle API: transaction txn_01kn6zw6zmjqdgka7xz4tmj689 status=completed  
+[2026-04-02 11:40:17] local.INFO: Invoice PDF fetched for txn_01kn6zw6zmjqdgka7xz4tmj689: yes  
+[2026-04-02 11:40:21] local.INFO: Payment success email sent to user: sakshi20@yopmail.com  
+[2026-04-02 11:40:21] local.INFO: Payment admin notification sent to: sakshi.saklani@drishinfo.com, sakshi.cr@essenn.associates  
+[2026-04-02 11:40:21] local.INFO: Built subscription from Paddle API for user 1bde17a0-4b99-4ef5-b278-4e902f1717fe {"plan":"personal","sub_id":"sub_01kn6zwkg05xw09fpx1859t90y","txn_id":"txn_01kn6zw6zmjqdgka7xz4tmj689","currency":"INR","invoice_pdf":"yes"} 
+[2026-04-02 11:47:59] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:48:10] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:48:19] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:48:38] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:48:40] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:48:44] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:48:45] local.INFO: Paddle API: transaction txn_01kn70bmxvh0xvwkqnf6ddr4k0 status=completed  
+[2026-04-02 11:48:46] local.INFO: Invoice PDF fetched for txn_01kn70bmxvh0xvwkqnf6ddr4k0: yes  
+[2026-04-02 11:48:49] local.INFO: Payment success email sent to user: sakshi20@yopmail.com  
+[2026-04-02 11:48:50] local.INFO: Payment admin notification sent to: sakshi.saklani@drishinfo.com, sakshi.cr@essenn.associates, tsaklani2drish@gmail.com  
+[2026-04-02 11:48:50] local.INFO: Built subscription from Paddle API for user 1bde17a0-4b99-4ef5-b278-4e902f1717fe {"plan":"personal","sub_id":"sub_01kn70c39q8r84v98nwwrh9par","txn_id":"txn_01kn70bmxvh0xvwkqnf6ddr4k0","currency":"INR","invoice_pdf":"yes"} 
+[2026-04-02 11:48:55] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:54:57] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:55:00] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:55:10] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:55:25] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:55:27] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:55:30] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 11:55:31] local.INFO: Paddle API: transaction txn_01kn70r50e1j8dhhdd4xwvps1y status=completed  
+[2026-04-02 11:55:33] local.INFO: Invoice PDF fetched for txn_01kn70r50e1j8dhhdd4xwvps1y: yes  
+[2026-04-02 11:55:36] local.INFO: Payment success email sent to user: sakshi20@yopmail.com  
+[2026-04-02 11:55:36] local.INFO: Payment admin notification sent to: sakshi.saklani@drishinfo.com, sakshi.cr@essenn.associates, tsaklani2drish@gmail.com  
+[2026-04-02 11:55:36] local.INFO: Built subscription from Paddle API for user 1bde17a0-4b99-4ef5-b278-4e902f1717fe {"plan":"personal","sub_id":"sub_01kn70rgn5ae1v4k12qvr0w2sn","txn_id":"txn_01kn70r50e1j8dhhdd4xwvps1y","currency":"INR","invoice_pdf":"yes"} 
+[2026-04-02 12:01:52] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:01:55] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:02:01] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:02:30] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:02:33] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:02:36] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:02:37] local.INFO: Paddle API: transaction txn_01kn714p5rx5k4haxxa6k70ht1 status=completed  
+[2026-04-02 12:02:38] local.INFO: Invoice PDF fetched for txn_01kn714p5rx5k4haxxa6k70ht1: yes  
+[2026-04-02 12:02:41] local.INFO: Payment success email sent to user: sakshi20@yopmail.com  
+[2026-04-02 12:02:42] local.INFO: Payment admin notification sent to: sakshi.saklani@drishinfo.com, sakshi.cr@essenn.associates, tsaklani2drish@gmail.com  
+[2026-04-02 12:02:42] local.INFO: Built subscription from Paddle API for user 1bde17a0-4b99-4ef5-b278-4e902f1717fe {"plan":"personal","sub_id":"sub_01kn715fkatryxxs3zs8qp1mmy","txn_id":"txn_01kn714p5rx5k4haxxa6k70ht1","currency":"INR","invoice_pdf":"yes"} 
+[2026-04-02 12:06:10] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:06:17] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:06:21] local.INFO: Cancellation email sent to user: sakshi20@yopmail.com (type=subscription)  
+[2026-04-02 12:06:21] local.INFO: Cancellation admin notification sent to: sakshi.saklani@drishinfo.com, sakshi.cr@essenn.associates, tsaklani2drish@gmail.com (type=subscription)  
+[2026-04-02 12:06:23] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:06:35] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:06:44] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:06:47] local.INFO: Resume confirmation email sent to user: sakshi20@yopmail.com  
+[2026-04-02 12:06:47] local.INFO: Resume admin notification sent to: sakshi.saklani@drishinfo.com, sakshi.cr@essenn.associates, tsaklani2drish@gmail.com  
+[2026-04-02 12:06:49] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:07:07] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:07:47] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:07:49] local.INFO: Plan swapped via Paddle: personal/monthly → professional/monthly (when=next_billing_period) for user 1bde17a0-4b99-4ef5-b278-4e902f1717fe  
+[2026-04-02 12:07:51] local.INFO: Plan upgrade email sent to user: sakshi20@yopmail.com  
+[2026-04-02 12:07:51] local.INFO: Plan upgrade admin notification sent to: sakshi.saklani@drishinfo.com, sakshi.cr@essenn.associates, tsaklani2drish@gmail.com  
+[2026-04-02 12:07:53] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:08:14] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:08:17] local.INFO: Cancellation email sent to user: sakshi20@yopmail.com (type=scheduled_change)  
+[2026-04-02 12:08:18] local.INFO: Cancellation admin notification sent to: sakshi.saklani@drishinfo.com, sakshi.cr@essenn.associates, tsaklani2drish@gmail.com (type=scheduled_change)  
+[2026-04-02 12:08:19] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:09:05] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-02 12:09:09] local.INFO: Paddle immediate upgrade response transaction ID: null  
+[2026-04-02 12:09:09] local.INFO: Plan swapped via Paddle: personal/monthly → professional/monthly (when=immediately) for user 1bde17a0-4b99-4ef5-b278-4e902f1717fe  
+[2026-04-02 12:09:10] local.INFO: Dispatching SendUpgradeInvoiceEmail job for user 1bde17a0-4b99-4ef5-b278-4e902f1717fe {"old_plan":"personal","new_plan":"professional","txn_id":"null — job will search","sub_id":"sub_01kn715fkatryxxs3zs8qp1mmy","admin_count":3} 
+[2026-04-02 12:09:11] local.INFO: SendUpgradeInvoiceEmail: attempt 1 for user 1bde17a0-4b99-4ef5-b278-4e902f1717fe {"sub_id":"sub_01kn715fkatryxxs3zs8qp1mmy","txn_id":"null — will search"} 
+[2026-04-02 12:09:11] local.INFO: SendUpgradeInvoiceEmail: matched transaction txn_01kn71hmacc10qexgd7v6vkp7a via subscription search.  
+[2026-04-02 12:09:12] local.WARNING: SendUpgradeInvoiceEmail: invoice PDF fetch failed for txn txn_01kn71hmacc10qexgd7v6vkp7a: {"error":{"type":"request_error","code":"not_found","detail":"invoice txn_01kn71hmacc10qexgd7v6vkp7a not found.","documentation_url":"https://developer.paddle.com/v1/errors/shared/not_found"},"meta":{"request_id":"5e44cb5c-2699-4e36-a6a6-103b031452c4"}}  
+[2026-04-02 12:09:12] local.WARNING: SendUpgradeInvoiceEmail: could not persist invoice record: SQLSTATE[23502]: Not null violation: 7 ERROR:  null value in column "subscription_id" of relation "subscription_invoices" violates not-null constraint
+DETAIL:  Failing row contains (2, 1bde17a0-4b99-4ef5-b278-4e902f1717fe, null, txn_01kn71hmacc10qexgd7v6vkp7a, null, INR, paid, 2026-04-02 12:09:12, null, 2026-04-02 12:09:12, 2026-04-02 12:09:12). (Connection: pgsql, SQL: insert into "subscription_invoices" ("paddle_transaction_id", "user_id", "currency", "status", "invoice_url", "paid_at", "updated_at", "created_at") values (txn_01kn71hmacc10qexgd7v6vkp7a, 1bde17a0-4b99-4ef5-b278-4e902f1717fe, INR, paid, ?, 2026-04-02 12:09:12, 2026-04-02 12:09:12, 2026-04-02 12:09:12) returning "id")  
+[2026-04-02 12:09:13] local.INFO: SendUpgradeInvoiceEmail: user email sent to sakshi20@yopmail.com (txn=txn_01kn71hmacc10qexgd7v6vkp7a)  
+[2026-04-02 12:09:14] local.INFO: SendUpgradeInvoiceEmail: admin email sent to sakshi.saklani@drishinfo.com, sakshi.cr@essenn.associates, tsaklani2drish@gmail.com  
+[2026-04-02 12:09:16] local.ERROR: JWT verification error: Incorrect key for this algorithm  
