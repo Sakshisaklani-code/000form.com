@@ -1,8 +1,8 @@
-@extends('layouts.express')
 
-@section('title', 'Express- 000form')
 
-@section('content')
+<?php $__env->startSection('title', 'Express- 000form'); ?>
+
+<?php $__env->startSection('content'); ?>
 
 <!-- ===================== PAGE ===================== -->
 <div class="page">
@@ -84,7 +84,7 @@
                             Copy HTML
                         </button>
                     </div>
-                    <textarea id="htmlEditor" class="code-editor" spellcheck="false">&lt;form action="{{ config('app.url') }}/f/YOUR@EMAIL.COM" method="POST"&gt;
+                    <textarea id="htmlEditor" class="code-editor" spellcheck="false">&lt;form action="<?php echo e(config('app.url')); ?>/f/YOUR@EMAIL.COM" method="POST"&gt;
     &lt;input type="text" name="name" placeholder="Your name" required&gt;
     &lt;input type="email" name="email" placeholder="Your email" required&gt;
     &lt;textarea name="message" placeholder="Your message" required&gt;&lt;/textarea&gt;
@@ -234,7 +234,7 @@ button[type="submit"]:hover {
                 </svg>
                 <span><strong>Express has no submission history.</strong> Emails only go to your inbox — there's no dashboard to review or export past entries. Need history, spam filtering, and team access?</span>
             </div>
-            <a href="{{ route('signup') }}" class="limitation-cta">
+            <a href="<?php echo e(route('signup')); ?>" class="limitation-cta">
                 
                     <span class="pill-icon">
                         <svg width="11" height="13" viewBox="0 0 12 14" fill="none">
@@ -308,7 +308,7 @@ button[type="submit"]:hover {
                     </div>
                     <strong>Land in your inbox</strong>
                     <p>Every entry is formatted and emailed directly to you. No login. 
-                        <!-- Need history? <a href="{{ route('signup') }}" style="color:var(--blue-bright);">Create a free account.</a> -->
+                        <!-- Need history? <a href="<?php echo e(route('signup')); ?>" style="color:var(--blue-bright);">Create a free account.</a> -->
                 </p>
                 </div>
             </div>
@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function checkEmailVerification(email) {
-        return fetch('{{ route("playground.check-verified") }}?email=' + encodeURIComponent(email), {
+        return fetch('<?php echo e(route("playground.check-verified")); ?>?email=' + encodeURIComponent(email), {
             headers: { 'Accept': 'application/json' }
         })
         .then(r => r.json())
@@ -473,9 +473,9 @@ document.addEventListener('DOMContentLoaded', function () {
         verifyBtn.innerHTML = 'Sending…';
         setEmailStatus('', '');
 
-        fetch('{{ route("playground.verify") }}', {
+        fetch('<?php echo e(route("playground.verify")); ?>', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}', 'Accept': 'application/json' },
+            headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>', 'Accept': 'application/json' },
             body: JSON.stringify({ email })
         })
         .then(r => r.json())
@@ -538,11 +538,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const formData = new FormData(form);
-            formData.append('_token', '{{ csrf_token() }}');
+            formData.append('_token', '<?php echo e(csrf_token()); ?>');
             formData.append('recipient_email', targetEmail);
             formData.append('from_playground', 'true');
 
-            fetch('{{ route("playground.submit") }}', {
+            fetch('<?php echo e(route("playground.submit")); ?>', {
                 method: 'POST',
                 headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
                 body: formData
@@ -595,4 +595,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.express', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/playground.blade.php ENDPATH**/ ?>
