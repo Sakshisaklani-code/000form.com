@@ -296,21 +296,11 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 280px;
+            max-width:170px;
             padding: 0.65rem 0.85rem;
             font-size: 0.95rem;
             border-radius: 9px;
             text-align: center;
-        }
-
-        .pill-link {
-            width: 100% !important;
-            max-width: 120px !important;
-            justify-content: center !important;
-            margin-left: 0 !important;
-            margin-top: 0.4rem;
-            padding: 0.7rem 1rem !important;
-            border-radius: 10px !important;
         }
 
         .nav-links li:last-child {
