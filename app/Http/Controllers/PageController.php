@@ -59,14 +59,15 @@ class PageController extends Controller
     {
         $user = $request->user();
 
+        if (!$user) {
+            return redirect('/login');
+        }
 
         $additionalEmails = \App\Models\UserEmail::where('user_id', $user->id)
             ->latest()
             ->get();
 
-        return view('pages.account-settings', [
-            'additionalEmails' => $additionalEmails,
-        ]);
+        return view('pages.account-settings', compact('additionalEmails'));
     }
 
 }

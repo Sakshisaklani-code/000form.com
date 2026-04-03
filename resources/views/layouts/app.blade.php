@@ -45,9 +45,105 @@
     </script>
     @stack('styles')
     <style>
+        
         /* ============================================
         Fix: Right-side horizontal overflow gap
         ============================================ */
+        /* === OVERFLOW FIX === */
+
+        /* ============================================
+        MOBILE OVERFLOW FIX — all 4 culprits
+        ============================================ */
+
+        /* 1. All glow blobs — clip them inside their parent */
+        .lp-glow,
+        .lp-glow--1,
+        .lp-glow--2,
+        .lp-glow--3,
+        .lp-glow--4,
+        .lpc-glow--tl,
+        .lpe-glow--tr,
+        .lp-cta__glow {
+            max-width: 100vw;
+            overflow: hidden;
+            /* Remove any negative left/right offsets on mobile */
+        }
+
+        /* Clip glow blobs at the section level */
+        [class*="lp-glow"],
+        [class*="lpc-glow"],
+        [class*="lpe-glow"],
+        .lp-cta__glow {
+            pointer-events: none;
+        }
+
+        /* 2. Dashboard preview — scale it down to fit */
+        .lp-prev--dashboard,
+        .lp-prev {
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .lp-dash {
+            max-width: 100%;
+            overflow: hidden;
+            transform-origin: top left;
+        }
+
+        /* 3. Hero row — stack vertically on mobile */
+        .lp-hero__row-copy {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* 4. Table — make it scrollable horizontally, not page-breaking */
+        .lp-dm__table {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* ============================================
+        WRAP IT ALL — clip at section boundaries
+        ============================================ */
+        @media (max-width: 768px) {
+
+            /* Shrink glow blobs to safe sizes */
+            .lp-glow--1 { width: 100vw !important; left: 0 !important; right: auto !important; }
+            .lp-glow--2 { width: 80vw  !important; left: 0 !important; right: auto !important; }
+            .lp-glow--3 { width: 80vw  !important; left: 0 !important; right: auto !important; }
+            .lp-glow--4 { width: 100vw !important; left: 0 !important; right: auto !important; }
+            .lpc-glow--tl { width: 100vw !important; left: 0  !important; }
+            .lpe-glow--tr { width: 100vw !important; right: 0 !important; left: auto !important; }
+            .lp-cta__glow { width: 100vw !important; left: 0  !important; right: auto !important; }
+
+            /* Scale the dashboard preview down to fit screen */
+            .lp-prev--dashboard {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            .lp-dash {
+                width: 100% !important;
+                max-width: 100% !important;
+                font-size: 11px; /* shrink text inside mockup proportionally */
+            }
+
+            .lp-dash__main {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            /* Hero copy full width */
+            .lp-hero__row-copy {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding-right: 1rem;
+                box-sizing: border-box;
+            }
+        }
 
         /* Step 1: Force body to never exceed viewport */
             .hero-bg,
@@ -214,6 +310,34 @@
                 height: 40px;
                 /* filter: brightness(0) saturate(100%) invert(74%) sepia(69%) saturate(500%) hue-rotate(100deg) brightness(105%); */
             }
+
+            @media (max-width: 768px) {
+                /* Footer logo only */
+                .nav-logo.footer {
+                    display: block;
+                    text-align: center;
+                    margin: 0 auto 10px;
+                    width: 100%;
+                    border-top: none;
+                }
+
+                /* Adjust footer-top for vertical layout on mobile */
+                .footer-top {
+                    display: flex;
+                    
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                }
+
+                /* Stack footer links vertically */
+                .footer-links {
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+                }
+            }
     </style>
 </head>
 <body id="main-body">
@@ -283,9 +407,9 @@
                 <p class="footer-copy">&copy; {{ date('Y') }} 000form. All rights reserved.</p>
 
                 <p class="footer-attribution">
-                    Product of <a href="#">172 Tech</a> · 
-                    Designed by <a href="#">530 Expert</a> · 
-                    Developed by <a href="#">ESS ENN Associates</a>
+                    Product of <a href="https://172tech.com/">172 Tech</a> · 
+                    Designed by <a href="https://530.expert/">530 Expert</a> · 
+                    Developed by <a href="https://essenn.associates/">ESS ENN Associates</a>
                 </p>
             </div>
         </div>
@@ -293,6 +417,11 @@
 
     <script src="/js/app.js"></script>
     <script>
+        document.querySelectorAll('*').forEach(el => {
+            if (el.offsetWidth > document.documentElement.offsetWidth) {
+                console.log(el, el.offsetWidth);
+            }
+        });
         // ✅ FIRST: Check for password reset recovery token BEFORE touching the hash
         (function () {
             const hash = window.location.hash;
@@ -365,4 +494,5 @@
     </script>
     @stack('scripts')
 </body>
+</html>
 </html>

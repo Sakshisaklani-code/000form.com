@@ -7,11 +7,30 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use App\Services\SupabaseAuthService;
+use Illuminate\Validation\Rules\Password;
 use App\Models\Subscription;
 
 class AccountController extends Controller
 {
     protected SupabaseAuthService $supabase;
+
+     /**
+     * Returns the standard password validation rule used across all auth flows.
+     * - Minimum 8 characters
+     * - At least one uppercase letter
+     * - At least one lowercase letter
+     * - At least one number
+     * - At least one symbol / special character
+     * - Not a commonly known compromised password
+     */
+    protected function passwordRule(): Password
+    {
+        return Password::min(8)
+            ->mixedCase()      // requires at least one upper + one lower
+            ->numbers()        // requires at least one digit
+            ->symbols()        // requires at least one special character
+            ->uncompromised(); // rejects passwords found in known data breaches
+    }
 
     public function index(Request $request)
     {
@@ -35,16 +54,25 @@ class AccountController extends Controller
     // ── UPDATE PASSWORD ───────────────────────────────────────────
     // 1. Verify current password via Supabase signIn
     // 2. Update via Supabase Auth API using the access token
+
     public function updatePassword(Request $request)
     {
         $request->validate([
             'current_password' => ['required'],
-            'password'         => ['required', 'min:8', 'confirmed'],
+            'password'         => $request->validate([
+            'password' => ['required', 'confirmed', $this->passwordRule()],
+        ], [
+            'password.min'          => 'Password must be at least 8 characters.',
+            'password.mixed_case'   => 'Password must contain at least one uppercase and one lowercase letter.',
+            'password.numbers'      => 'Password must contain at least one number.',
+            'password.symbols'      => 'Password must contain at least one special character (e.g. @, #, !).',
+            'password.uncompromised'=> 'This password has appeared in a data breach. Please choose a different one.',
+            'password.confirmed'    => 'Passwords do not match.',
+        ])
         ]);
 
         $user = Auth::user();
 
-        // OAuth users (Google etc) have no password — block this flow
         if ($user->provider !== 'email') {
             return back()->withErrors([
                 'current_password' => 'Password update is not available for '
@@ -62,7 +90,10 @@ class AccountController extends Controller
             return back()->withErrors(['current_password' => $result['error']]);
         }
 
-        return back()->with('success', 'Password updated successfully.');
+        // 🔥 IMPORTANT: logout after password change
+        Auth::logout();
+
+        return redirect('/login')->with('message', 'Password updated. Please log in again.');
     }
 
     // ── DELETE ACCOUNT ────────────────────────────────────────────

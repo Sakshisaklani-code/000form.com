@@ -986,7 +986,7 @@ code, .mono {
 /* Bottom Section */
 .footer-bottom {
     text-align: center;
-    border-top: 1px solid #111;
+    /* border-top: 1px solid #111; */
     padding-top: 20px;
 }
 
