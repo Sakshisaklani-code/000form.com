@@ -97,7 +97,7 @@
                         <div class="lp-dash__main">
                             <div class="lp-dash__topbar">
                                 <span class="lp-dash__page-title">Dashboard</span>
-                                <div class="lp-dash__new-btn">+ New Form</div>
+                                <div class="lp-dash__new-btn"><a href="<?php echo e(route('signup')); ?>">+ New Project</a></div>
                             </div>
                             <div class="lp-dash__stats">
                                 <div class="lp-dash__stat">
@@ -210,9 +210,7 @@
                         </div>
                         <div class="lp-email__body">
                             <div class="lp-email__card">
-                                <div class="lp-email__card-logo">
-                                    <span class="lp-email__logo-green">000</span><span class="lp-email__logo-white">form</span>
-                                </div>
+                                <div class="fp-email__logo"><b>000</b>form</div>
                                 <div class="lp-email__card-title">New submission: Contact Form</div>
                                 <div class="lp-email__card-divider"></div>
                                 <div class="lp-email__card-meta">Received <?php echo e(now()->format('M d, Y')); ?> at <?php echo e(now()->format('h:i A')); ?></div>
@@ -360,234 +358,6 @@
 </section>
 
 
-
-<section class="lpe-section">
-    <div class="lpe-glow--tr"></div>
-
-    <div class="lp-container">
-
-        <div class="lpe-grid">
-
-            
-            <div class="lpe-steps">
-
-                <div class="lpe-step">
-                    <div class="lpe-step__left">
-                        <div class="lpe-step__num">01</div>
-                        <div class="lpe-step__line"></div>
-                    </div>
-                    <div class="lpe-step__body">
-                        <h4>Enter your email</h4>
-                        <p>No account, no password, no credit card — just your email address to get started.</p>
-                    </div>
-                </div>
-
-                <div class="lpe-step">
-                    <div class="lpe-step__left">
-                        <div class="lpe-step__num">02</div>
-                        <div class="lpe-step__line"></div>
-                    </div>
-                    <div class="lpe-step__body">
-                        <h4>Verify once</h4>
-                        <p>Click the link we send you — that's your only setup step. Takes under 30 seconds.</p>
-                    </div>
-                </div>
-
-                <div class="lpe-step">
-                    <div class="lpe-step__left">
-                        <div class="lpe-step__num">03</div>
-                    </div>
-                    <div class="lpe-step__body">
-                        <h4>Start getting notifications</h4>
-                        <p>Submissions hit your inbox instantly. Spam filtered, reply-to pre-set, delivered in seconds.</p>
-                    </div>
-                </div>
-
-            </div>
-
-            
-            <div class="lpe-copy">
-
-                <div class="lpe-badge">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                    Express
-                </div>
-
-                <h2 class="lpe-title">
-                    Zero setup.<br>
-                    <span class="lpe-title__accent">Just notifications.</span>
-                </h2>
-
-                <p class="lpe-desc">
-                    No account required. Verify your email once and your endpoint is live — submissions land in your inbox within seconds, every time.
-                </p>
-
-                <ul class="lpe-perks">
-                    <li>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                        No registration, no login, no dashboard
-                    </li>
-                    <li>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                        Instant email delivery, reply-to pre-set
-                    </li>
-                    <li>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                        Spam &amp; honeypot protection included
-                    </li>
-                    <li>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                        Live in under 60 seconds
-                    </li>
-                </ul>
-
-                <a href="/express" class="lpe-cta">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                    Get started — no account needed
-                </a>
-
-                <p class="lpe-note">Verify email once · Instant notifications · No dashboard</p>
-
-            </div>
-
-        </div>
-
-    </div>
-</section>
-
-
-<section class="lp-features" id="features">
-    <div class="lp-container">
-
-        <div class="lp-section-head">
-            <div class="lp-section-tag">Features</div>
-            <h2>Everything you need.<br><span class="lp-dim">Nothing you don't.</span></h2>
-            <p>A complete form backend without the complexity — all the power, none of the server maintenance.</p>
-        </div>
-
-        <div class="lp-feat-grid">
-
-            <div class="lp-feat-card lp-feat-card--wide">
-                <div class="lp-feat-card__icon lp-feat-card__icon--accent">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
-                </div>
-                <h3>Instant email notifications</h3>
-                <p>Every form submission lands directly in your inbox. Reply to the sender without ever logging into a dashboard. Customize your notification template.</p>
-                <div class="lp-feat-card__visual lp-feat-card__visual--email">
-                    <div class="lp-email-preview">
-                        <div class="lp-ep__header">
-                            <div class="lp-ep__from">
-                                <div class="lp-ep__avatar">J</div>
-                                <div>
-                                    <div class="lp-ep__name">John Smith</div>
-                                    <div class="lp-ep__addr">via 000form.com</div>
-                                </div>
-                            </div>
-                            <div class="lp-ep__time">just now</div>
-                        </div>
-                        <div class="lp-ep__subject">New form submission — Contact Form</div>
-                        <div class="lp-ep__rows">
-                            <div class="lp-ep__row"><span>Name</span><span>John Smith</span></div>
-                            <div class="lp-ep__row"><span>Email</span><span class="lp-accent-text">john@example.com</span></div>
-                            <div class="lp-ep__row"><span>Message</span><span>Hey, I'm interested in working together…</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lp-feat-card">
-                <div class="lp-feat-card__icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
-                <h3>Smart spam protection</h3>
-                <p>Built-in honeypot fields and Blacklist filtering before they reach your inbox.</p>
-                <div class="lp-feat-tag-row">
-                    <span class="lp-feat-tag">Honeypot</span>
-                    <span class="lp-feat-tag">Blacklisting</span>
-                    <span class="lp-feat-tag">Captcha</span>
-                </div>
-            </div>
-
-            <div class="lp-feat-card">
-                <div class="lp-feat-card__icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-                </div>
-                <h3>Submission dashboard</h3>
-                <p>All your responses, searchable and filterable in one place. Never lose a submission.</p>
-                <div class="lp-feat-tag-row">
-                    <span class="lp-feat-tag">Filter & search</span>
-                    <span class="lp-feat-tag">Full history</span>
-                </div>
-            </div>
-
-            <div class="lp-feat-card">
-                <div class="lp-feat-card__icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                </div>
-                <h3>Analytics & trends</h3>
-                <p>Visualize submission volumes over time. Spot drop-offs or spikes at a glance.</p>
-                <div class="lp-feat-tag-row">
-                    <span class="lp-feat-tag">Volume graphs</span>
-                    <span class="lp-feat-tag">Per-form stats</span>
-                </div>
-            </div>
-
-            <div class="lp-feat-card">
-                <div class="lp-feat-card__icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                </div>
-                <h3>AJAX / fetch support</h3>
-                <p>Submit without page reloads. Full JSON API — works with React, Vue, vanilla JS, anything.</p>
-                <div class="lp-feat-tag-row">
-                    <span class="lp-feat-tag">JSON API</span>
-                    <span class="lp-feat-tag">CORS ready</span>
-                </div>
-            </div>
-
-            <div class="lp-feat-card">
-                <div class="lp-feat-card__icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                </div>
-                <h3>CSV export</h3>
-                <p>Download all submissions at any time. Your data belongs to you — always portable.</p>
-                <div class="lp-feat-tag-row">
-                    <span class="lp-feat-tag">One-click export</span>
-                    <span class="lp-feat-tag">All fields</span>
-                </div>
-            </div>
-
-            <div class="lp-feat-card">
-                <div class="lp-feat-card__icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                </div>
-                <h3>Team access</h3>
-                <p>Invite teammates to view and manage submissions together on paid plans.</p>
-                <div class="lp-feat-tag-row">
-                    <span class="lp-feat-tag">Multi-user</span>
-                    <span class="lp-feat-tag">Role access</span>
-                </div>
-            </div>
-
-            <div class="lp-feat-card">
-                <div class="lp-feat-card__icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                </div>
-                <h3>File uploads</h3>
-                <p>Accept file attachments directly through your forms. Stored securely, accessible from your dashboard.</p>
-                <div class="lp-feat-tag-row">
-                    <span class="lp-feat-tag">Up to 10MB</span>
-                    <span class="lp-feat-tag">Secure storage</span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-
-
-
 <section class="lp-preview">
     
     <div class="lp-container">
@@ -646,7 +416,7 @@
             <div class="lp-dm__main">
                 <div class="lp-dm__topbar">
                     <div class="lp-dm__topbar-title">Dashboard</div>
-                    <div class="lp-dm__btn">+ New Form</div>
+                    <div class="lp-dm__btn"><a href="<?php echo e(route('signup')); ?>">+ New Project</a></div>
                 </div>
                 <div class="lp-dm__stats">
                     <div class="lp-dm__stat">
@@ -771,559 +541,636 @@
     </div>
 </section>
 
+
+
+<section class="lpe-section">
+
+  
+  <div class="lp-container">
+    <div class="lpe-or-row">
+      <div class="lpe-or-line"></div>
+      <div class="lpe-or-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        OR USE EXPRESS
+      </div>
+      <div class="lpe-or-line"></div>
+    </div>
+  </div>
+
+  <div class="lp-container">
+    <div class="lpe-card">
+      <div class="lpe-grid">
+
+        
+        <div class="lpe-copy">
+          <div class="lpe-badge">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Express
+          </div>
+          <h2 class="lpe-title">
+            Zero setup.<br>
+            <span class="lpe-title__accent">Just notifications.</span>
+          </h2>
+          <p class="lpe-desc">
+            Verify your email once and your endpoint is live — submissions land in your inbox within seconds, every time.
+          </p>
+          <ul class="lpe-perks">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> No registration, no login, no dashboard</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Instant email delivery, reply-to pre-set</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Live in under 60 seconds</li>
+          </ul>
+          <a href="/express" class="lpe-cta">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Get started — no account needed
+          </a>
+          <!-- <p class="lpe-note">Verify email once · Instant notifications · No dashboard</p> -->
+        </div>
+
+        
+        <div class="lpe-steps">
+          <div class="lpe-step">
+            <div class="lpe-step__left">
+              <div class="lpe-step__num">01</div>
+              <div class="lpe-step__line"></div>
+            </div>
+            <div class="lpe-step__body">
+              <h4>Enter your email</h4>
+              <p>No account, no password, no credit card — just your email address to get started.</p>
+            </div>
+          </div>
+          <div class="lpe-step">
+            <div class="lpe-step__left">
+              <div class="lpe-step__num">02</div>
+              <div class="lpe-step__line"></div>
+            </div>
+            <div class="lpe-step__body">
+              <h4>Verify once</h4>
+              <p>Click the link we send you — that's your only setup step. Takes under 30 seconds.</p>
+            </div>
+          </div>
+          <div class="lpe-step">
+            <div class="lpe-step__left">
+              <div class="lpe-step__num">03</div>
+            </div>
+            <div class="lpe-step__body">
+              <h4>Start getting notifications</h4>
+              <p>Submissions hit your inbox instantly. Spam filtered, reply-to pre-set, delivered in seconds.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startPush('styles'); ?>
 <style>
-   :root {
-    --blue:        #3b82f6;
-    --blue-bright: #60a5fa;
-    --blue-dim:    #1d4ed8;
-    --blue-glow:   rgba(59,130,246,0.15);
-    --blue-glow-2: rgba(59,130,246,0.08);
-    --blue-border: rgba(59,130,246,0.25);
-    --green:       #00ff88;
-    --green-dark:  #00cc6a;
-}
+    :root {
+        --blue:        #3b82f6;
+        --blue-bright: #60a5fa;
+        --blue-dim:    #1d4ed8;
+        --blue-glow:   rgba(59,130,246,0.15);
+        --blue-glow-2: rgba(59,130,246,0.08);
+        --blue-border: rgba(59,130,246,0.25);
+        --green:       #00ff88;
+        --green-dark:  #00cc6a;
+    }
 
-/* ════════════════════════════════════════════════════════
-   CORE SECTION
-════════════════════════════════════════════════════════ */
-.lpc-section {
-    padding: 6rem 0 5rem;
+    .fp-email__logo {
+        font-family: var(--font-mono);
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--text-secondary);
+        letter-spacing: 0.01em;
+        margin-bottom: 0.25rem;
+    }
+
+    .fp-email__logo b { color: var(--accent); font-weight: 700; }
+
+    /* ════════════════════════════════════════════════════════
+    CORE SECTION
+    ════════════════════════════════════════════════════════ */
+    .lpc-section {
+        padding: 6rem 0 5rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .lpc-glow--tl {
+        position: absolute;
+        width: 650px; height: 500px;
+        border-radius: 50%;
+        background: var(--green);
+        opacity: 0.04;
+        filter: blur(150px);
+        top: -100px; left: -180px;
+        pointer-events: none;
+    }
+
+    /* Two-col layout: left copy | right steps */
+    .lpc-layout {
+        display: grid;
+        grid-template-columns: 1fr 1.15fr;
+        gap: 5rem;
+        align-items: start;
+    }
+
+    /* ── Left col ── */
+    .lpc-left {
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+        position: sticky;
+        top: 2rem; /* stays in view as right scrolls on tall viewports */
+    }
+
+    .lpc-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        width: fit-content;
+        font-size: 0.72rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        padding: 0.3rem 0.9rem;
+        border-radius: 100px;
+        background: rgba(0,255,136,0.09);
+        border: 1px solid rgba(0,255,136,0.22);
+        color: var(--green);
+    }
+
+    .lpc-badge__dot {
+        width: 7px; height: 7px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 0 3px rgba(0,255,136,0.2);
+        animation: lp-pulse 2s infinite;
+    }
+
+    .lpc-title {
+        font-size: clamp(1.85rem, 2.6vw, 2.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        color: rgba(255,255,255,0.95);
+        margin: 0;
+    }
+
+    .lpc-title__accent {
+        background: linear-gradient(120deg, var(--green) 0%, #78ffc8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .lpc-desc {
+        font-size: 0.96rem;
+        line-height: 1.75;
+        color: rgba(255,255,255,0.62);
+        margin: 0;
+    }
+
+    .lpc-perks {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+    }
+
+    .lpc-perks li {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-size: 0.875rem;
+        color: rgba(255,255,255,0.68);
+    }
+
+    .lpc-perks li svg { color: var(--green); flex-shrink: 0; }
+
+    .lpc-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+        font-weight: 700;
+        font-size: 0.94rem;
+        text-decoration: none;
+        border-radius: 10px;
+        padding: 0.88rem 1.65rem;
+        transition: all 0.22s ease;
+        background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+        color: #001a0d;
+        border: 1px solid rgba(0,255,136,0.25);
+        box-shadow: 0 0 18px rgba(0,255,136,0.28), inset 0 1px 0 rgba(255,255,255,0.2);
+        margin-top: 0.25rem;
+    }
+
+    .lpc-cta:hover {
+        background: linear-gradient(135deg, #33ffaa 0%, #00bb66 100%);
+        box-shadow: 0 0 32px rgba(0,255,136,0.5);
+        transform: translateY(-2px);
+    }
+
+    .lpc-note {
+        font-size: 0.73rem;
+        color: rgba(255,255,255,0.32);
+        margin: 0;
+        letter-spacing: 0.02em;
+    }
+
+    /* ── Right col ── */
+    .lpc-right {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .lpc-right__head {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .lpc-setup-tag {
+        display: inline-block;
+        font-family: var(--font-mono, monospace);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--green);
+        background: rgba(0,255,136,0.08);
+        border: 1px solid rgba(0,255,136,0.2);
+        padding: 0.25rem 0.85rem;
+        border-radius: 100px;
+        width: fit-content;
+    }
+
+    .lpc-setup-title {
+        font-size: clamp(1.35rem, 1.9vw, 1.75rem);
+        font-weight: 800;
+        line-height: 1.15;
+        letter-spacing: -0.025em;
+        color: rgba(255,255,255,0.92);
+        margin: 0;
+    }
+
+    .lpc-setup-sub {
+        font-size: 0.9rem;
+        line-height: 1.65;
+        color: rgba(255,255,255,0.52);
+        margin: 0;
+    }
+
+    /* ── Vertical steps ── */
+    .lpc-vsteps {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .lpc-vstep {
+        display: flex;
+        gap: 1.1rem;
+        position: relative;
+    }
+
+    .lpc-vstep__left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .lpc-vstep__num {
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'SF Mono', 'Fira Code', monospace;
+        font-size: 0.72rem;
+        font-weight: 800;
+        background: rgba(0,255,136,0.07);
+        border: 1px solid rgba(0,255,136,0.28);
+        color: var(--green);
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1;
+    }
+
+    .lpc-vstep__line {
+        width: 1px;
+        flex: 1;
+        min-height: 1.5rem;
+        background: linear-gradient(to bottom, rgba(0,255,136,0.22), transparent);
+        margin: 4px 0;
+    }
+
+    .lpc-vstep__body {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 0.5rem 0 2rem;
+    }
+
+    .lpc-vstep:last-child .lpc-vstep__body { padding-bottom: 0; }
+
+    .lpc-vstep__body h4 {
+        font-size: 0.96rem;
+        font-weight: 700;
+        color: rgba(255,255,255,0.9);
+        margin: 0;
+    }
+
+    .lpc-vstep__body p {
+        font-size: 0.86rem;
+        line-height: 1.65;
+        color: rgba(255,255,255,0.56);
+        margin: 0;
+    }
+
+    .lpc-vstep__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 0.5rem;
+        font-size: 0.84rem;
+        font-weight: 600;
+        color: var(--green);
+        text-decoration: none;
+        transition: gap 0.2s;
+    }
+    .lpc-vstep__link:hover { gap: 10px; }
+
+    .lpc-snippet {
+        margin-top: 0.7rem;
+        background: rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 8px;
+        padding: 0.6rem 0.9rem;
+        font-family: 'SF Mono', 'Fira Code', monospace;
+        font-size: 0.72rem;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.72);
+        overflow-x: auto;
+    }
+
+    /* Bottom CTA under steps */
+    .lpc-bottom-cta {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    /* ════════════════════════════════════════════════════════
+    EXPRESS SECTION
+    ════════════════════════════════════════════════════════ */
+    .lpe-section {
     position: relative;
+    padding: 80px 0;
     overflow: hidden;
-}
-
-.lpc-glow--tl {
+    background: #06090f;
+    }
+    .lpe-section::before {
+    content: '';
     position: absolute;
-    width: 650px; height: 500px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px; height: 500px;
+    background: radial-gradient(ellipse at center, rgba(30,90,255,0.22) 0%, rgba(20,60,200,0.1) 40%, transparent 70%);
     border-radius: 50%;
-    background: var(--green);
-    opacity: 0.04;
-    filter: blur(150px);
-    top: -100px; left: -180px;
     pointer-events: none;
-}
-
-/* Two-col layout: left copy | right steps */
-.lpc-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.15fr;
-    gap: 5rem;
-    align-items: start;
-}
-
-/* ── Left col ── */
-.lpc-left {
-    display: flex;
-    flex-direction: column;
-    gap: 1.1rem;
-    position: sticky;
-    top: 2rem; /* stays in view as right scrolls on tall viewports */
-}
-
-.lpc-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    width: fit-content;
-    font-size: 0.72rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 0.3rem 0.9rem;
-    border-radius: 100px;
-    background: rgba(0,255,136,0.09);
-    border: 1px solid rgba(0,255,136,0.22);
-    color: var(--green);
-}
-
-.lpc-badge__dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 0 3px rgba(0,255,136,0.2);
-    animation: lp-pulse 2s infinite;
-}
-
-.lpc-title {
-    font-size: clamp(1.85rem, 2.6vw, 2.5rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    color: rgba(255,255,255,0.95);
-    margin: 0;
-}
-
-.lpc-title__accent {
-    background: linear-gradient(120deg, var(--green) 0%, #78ffc8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.lpc-desc {
-    font-size: 0.96rem;
-    line-height: 1.75;
-    color: rgba(255,255,255,0.62);
-    margin: 0;
-}
-
-.lpc-perks {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-}
-
-.lpc-perks li {
+    z-index: 0;
+    }
+    .lpe-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(60,120,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(60,120,255,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+    }
+    .lpe-or-row {
     display: flex;
     align-items: center;
-    gap: 9px;
-    font-size: 0.875rem;
-    color: rgba(255,255,255,0.68);
-}
-
-.lpc-perks li svg { color: var(--green); flex-shrink: 0; }
-
-.lpc-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    width: fit-content;
-    font-weight: 700;
-    font-size: 0.94rem;
-    text-decoration: none;
-    border-radius: 10px;
-    padding: 0.88rem 1.65rem;
-    transition: all 0.22s ease;
-    background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
-    color: #001a0d;
-    border: 1px solid rgba(0,255,136,0.25);
-    box-shadow: 0 0 18px rgba(0,255,136,0.28), inset 0 1px 0 rgba(255,255,255,0.2);
-    margin-top: 0.25rem;
-}
-
-.lpc-cta:hover {
-    background: linear-gradient(135deg, #33ffaa 0%, #00bb66 100%);
-    box-shadow: 0 0 32px rgba(0,255,136,0.5);
-    transform: translateY(-2px);
-}
-
-.lpc-note {
-    font-size: 0.73rem;
-    color: rgba(255,255,255,0.32);
-    margin: 0;
-    letter-spacing: 0.02em;
-}
-
-/* ── Right col ── */
-.lpc-right {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.lpc-right__head {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-}
-
-.lpc-setup-tag {
-    display: inline-block;
-    font-family: var(--font-mono, monospace);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--green);
-    background: rgba(0,255,136,0.08);
-    border: 1px solid rgba(0,255,136,0.2);
-    padding: 0.25rem 0.85rem;
-    border-radius: 100px;
-    width: fit-content;
-}
-
-.lpc-setup-title {
-    font-size: clamp(1.35rem, 1.9vw, 1.75rem);
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.025em;
-    color: rgba(255,255,255,0.92);
-    margin: 0;
-}
-
-.lpc-setup-sub {
-    font-size: 0.9rem;
-    line-height: 1.65;
-    color: rgba(255,255,255,0.52);
-    margin: 0;
-}
-
-/* ── Vertical steps ── */
-.lpc-vsteps {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-}
-
-.lpc-vstep {
-    display: flex;
-    gap: 1.1rem;
-    position: relative;
-}
-
-.lpc-vstep__left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-shrink: 0;
-}
-
-.lpc-vstep__num {
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.72rem;
-    font-weight: 800;
-    background: rgba(0,255,136,0.07);
-    border: 1px solid rgba(0,255,136,0.28);
-    color: var(--green);
-    flex-shrink: 0;
+    gap: 16px;
+    margin-bottom: 40px;
     position: relative;
     z-index: 1;
-}
-
-.lpc-vstep__line {
-    width: 1px;
-    flex: 1;
-    min-height: 1.5rem;
-    background: linear-gradient(to bottom, rgba(0,255,136,0.22), transparent);
-    margin: 4px 0;
-}
-
-.lpc-vstep__body {
+    }
+    .lpe-or-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(60,120,255,0.35), transparent);
+    }
+    .lpe-or-pill {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 0.5rem 0 2rem;
-}
-
-.lpc-vstep:last-child .lpc-vstep__body { padding-bottom: 0; }
-
-.lpc-vstep__body h4 {
-    font-size: 0.96rem;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(60,120,255,0.4);
+    background: rgba(20,50,180,0.15);
+    font-size: 13px;
     font-weight: 700;
-    color: rgba(255,255,255,0.9);
-    margin: 0;
-}
-
-.lpc-vstep__body p {
-    font-size: 0.86rem;
-    line-height: 1.65;
-    color: rgba(255,255,255,0.56);
-    margin: 0;
-}
-
-.lpc-vstep__link {
+    color: #6ea4ff;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    }
+    .lpe-card {
+    border: 1px solid rgba(40,100,255,0.2);
+    border-radius: 24px;
+    padding: 56px 52px;
+    background: rgba(10,18,40,0.6);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    }
+    .lpe-card::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px;
+    width: 120px; height: 120px;
+    background: linear-gradient(135deg, rgba(60,120,255,0.4), transparent 60%);
+    border-radius: 24px 0 0 0;
+    pointer-events: none;
+    }
+    .lpe-card::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; right: -1px;
+    width: 100px; height: 100px;
+    background: linear-gradient(315deg, rgba(60,120,255,0.2), transparent 60%);
+    border-radius: 0 0 24px 0;
+    pointer-events: none;
+    }
+    .lpe-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    }
+    .lpe-badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    margin-top: 0.5rem;
-    font-size: 0.84rem;
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: rgba(40,100,255,0.18);
+    border: 1px solid rgba(60,130,255,0.35);
+    font-size: 11px;
     font-weight: 600;
-    color: var(--green);
-    text-decoration: none;
-    transition: gap 0.2s;
-}
-.lpc-vstep__link:hover { gap: 10px; }
-
-.lpc-snippet {
-    margin-top: 0.7rem;
-    background: rgba(0,0,0,0.3);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 8px;
-    padding: 0.6rem 0.9rem;
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.72rem;
-    line-height: 1.6;
-    color: rgba(255,255,255,0.72);
-    overflow-x: auto;
-}
-
-/* Bottom CTA under steps */
-.lpc-bottom-cta {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-/* ════════════════════════════════════════════════════════
-   EXPRESS SECTION
-════════════════════════════════════════════════════════ */
-.lpe-section {
-    padding: 5rem 0 6rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.lpe-glow--tr {
-    position: absolute;
-    width: 650px; height: 500px;
-    border-radius: 50%;
-    background: var(--blue);
-    opacity: 0.06;
-    filter: blur(150px);
-    top: -80px; right: -180px;
-    pointer-events: none;
-}
-
-.lpe-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-}
-
-/* Steps (left) */
-.lpe-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-}
-
-.lpe-step {
-    display: flex;
-    gap: 1.1rem;
-}
-
-.lpe-step__left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-shrink: 0;
-}
-
-.lpe-step__num {
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.72rem;
-    font-weight: 800;
-    background: var(--blue-glow-2);
-    border: 1px solid var(--blue-border);
-    color: var(--blue-bright);
-    flex-shrink: 0;
-    z-index: 1;
-}
-
-.lpe-step__line {
-    width: 1px;
-    flex: 1;
-    min-height: 1.5rem;
-    background: linear-gradient(to bottom, rgba(59,130,246,0.25), transparent);
-    margin: 4px 0;
-}
-
-.lpe-step__body {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 0.5rem 0 2rem;
-}
-
-.lpe-step:last-child .lpe-step__body { padding-bottom: 0; }
-
-.lpe-step__body h4 {
-    font-size: 0.96rem;
-    font-weight: 700;
-    color: rgba(255,255,255,0.9);
-    margin: 0;
-}
-
-.lpe-step__body p {
-    font-size: 0.86rem;
-    line-height: 1.65;
-    color: rgba(255,255,255,0.56);
-    margin: 0;
-}
-
-/* Copy (right) */
-.lpe-copy {
-    display: flex;
-    flex-direction: column;
-    gap: 1.15rem;
-}
-
-.lpe-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    width: fit-content;
-    font-size: 0.72rem;
-    font-weight: 800;
+    color: #7ab4ff;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 0.3rem 0.9rem;
-    border-radius: 100px;
-    background: var(--blue-glow-2);
-    border: 1px solid var(--blue-border);
-    color: var(--blue-bright);
-}
-
-.lpe-title {
-    font-size: clamp(1.85rem, 2.6vw, 2.5rem);
+    margin-bottom: 20px;
+    }
+    .lpe-title {
+    font-size: clamp(28px, 4vw, 48px);
     font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    color: rgba(255,255,255,0.95);
-    margin: 0;
-}
-
-.lpe-title__accent {
-    background: linear-gradient(120deg, var(--blue) 0%, var(--blue-bright) 100%);
+    line-height: 1.08;
+    color: #fff;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    }
+    .lpe-title__accent {
+    background: linear-gradient(90deg, #4d8fff, #a0cfff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-}
-
-.lpe-desc {
-    font-size: 0.96rem;
-    line-height: 1.75;
-    color: rgba(255,255,255,0.62);
-    margin: 0;
-}
-
-.lpe-perks {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-}
-
-.lpe-perks li {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    font-size: 0.875rem;
-    color: rgba(255,255,255,0.68);
-}
-
-.lpe-perks li svg { color: var(--blue-bright); flex-shrink: 0; }
-
-.lpe-cta {
+    }
+    .lpe-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 28px;
+    }
+    .lpe-perks { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 36px; }
+    .lpe-perks li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.75); }
+    .lpe-perks li svg { flex-shrink: 0; color: #4d8fff; background: rgba(40,90,255,0.15); border-radius: 50%; padding: 3px; width: 20px; height: 20px; }
+    .lpe-cta {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    width: fit-content;
+    gap: 9px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #1a4adf, #3366ff);
+    box-shadow: 0 0 32px rgba(40,100,255,0.45), inset 0 1px 0 rgba(255,255,255,0.15);
+    font-size: 14px;
     font-weight: 700;
-    font-size: 0.94rem;
-    text-decoration: none;
-    border-radius: 10px;
-    padding: 0.88rem 1.65rem;
-    transition: all 0.22s ease;
-    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dim) 100%);
     color: #fff;
-    border: 1px solid var(--blue-border);
-    box-shadow: 0 0 18px rgba(59,130,246,0.28), inset 0 1px 0 rgba(255,255,255,0.12);
-    margin-top: 0.15rem;
-}
-
-.lpe-cta:hover {
-    background: linear-gradient(135deg, var(--blue-bright) 0%, var(--blue) 100%);
-    box-shadow: 0 0 32px rgba(59,130,246,0.5);
-    transform: translateY(-2px);
-}
-
-.lpe-note {
-    font-size: 0.73rem;
-    color: rgba(59,130,246,0.5);
-    margin: 0;
-    letter-spacing: 0.02em;
-}
-
-/* ════════════════════════════════════════════════════════
-   CONTRAST FIXES
-════════════════════════════════════════════════════════ */
-.lp-hero__desc                          { color: rgba(255,255,255,0.68) !important; }
-.lp-proof-lbl                           { color: rgba(255,255,255,0.48) !important; font-size: 0.72rem !important; }
-.lp-hero__row-copy p                    { color: rgba(255,255,255,0.62) !important; font-size: 0.95rem !important; }
-.lp-hero__row-bullets li                { color: rgba(255,255,255,0.72) !important; font-size: 0.875rem !important; }
-.lp-feat-card p                         { color: rgba(255,255,255,0.62) !important; font-size: 0.9rem !important; }
-.lp-feat-tag                            { color: rgba(255,255,255,0.55) !important; }
-.lp-ep__name                            { color: rgba(255,255,255,0.95) !important; }
-.lp-ep__addr                            { color: rgba(255,255,255,0.48) !important; }
-.lp-ep__time                            { color: rgba(255,255,255,0.42) !important; }
-.lp-ep__subject                         { color: rgba(255,255,255,0.85) !important; }
-.lp-ep__row span:first-child            { color: rgba(255,255,255,0.42) !important; font-size: 0.72rem !important; }
-.lp-ep__row span:last-child             { color: rgba(255,255,255,0.82) !important; font-size: 0.8rem !important; }
-.lp-step__body p                        { color: rgba(255,255,255,0.62) !important; font-size: 0.9rem !important; }
-.lp-step__snippet                       { color: rgba(255,255,255,0.75) !important; font-size: 0.78rem !important; }
-.lp-section-head p                      { color: rgba(255,255,255,0.65) !important; font-size: 1.02rem !important; }
-.lp-dm__stat-lbl                        { color: rgba(255,255,255,0.52) !important; font-size: 0.7rem !important; }
-.lp-dm__td-endpoint                     { color: rgba(255,255,255,0.48) !important; }
-.lp-dm__td-muted                        { color: rgba(255,255,255,0.45) !important; }
-.lp-dm__table th                        { color: rgba(255,255,255,0.48) !important; font-size: 0.68rem !important; }
-.lp-dm__table td                        { color: rgba(255,255,255,0.72) !important; font-size: 0.82rem !important; }
-.lp-dm__nav-item                        { color: rgba(255,255,255,0.58) !important; font-size: 0.82rem !important; }
-.lp-cta__inner p:not(.lp-cta__note)    { color: rgba(255,255,255,0.65) !important; }
-.lp-cta__note                           { color: rgba(255,255,255,0.35) !important; }
-.banner-content p                       { color: rgba(255,255,255,0.65) !important; }
-.banner-description                     { color: rgba(255,255,255,0.55) !important; }
-.lp-pt__footer                          { color: rgba(255,255,255,0.4) !important; font-size: 0.82rem !important; }
-.lp-dash__stat-lbl                      { color: rgba(255,255,255,0.48) !important; }
-.lp-dash__form-sub                      { color: rgba(255,255,255,0.48) !important; }
-.lp-dash__nav-item                      { color: rgba(255,255,255,0.58) !important; font-size: 0.72rem !important; }
-.lp-email__card-meta                    { color: rgba(255,255,255,0.52) !important; font-size: 0.72rem !important; }
-.lp-email__card-caption                 { color: rgba(255,255,255,0.58) !important; font-size: 0.76rem !important; }
-.lp-email__field-key                    { color: rgba(255,255,255,0.45) !important; font-size: 0.65rem !important; }
-.lp-email__field-val                    { color: rgba(255,255,255,0.88) !important; font-size: 0.78rem !important; }
-
-/* ════════════════════════════════════════════════════════
-   RESPONSIVE
-════════════════════════════════════════════════════════ */
-@media (max-width: 1024px) {
-    .lpc-layout { gap: 3.5rem; }
-    .lpe-grid   { gap: 3.5rem; }
-}
-
-@media (max-width: 860px) {
-    .lpc-layout {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+    text-decoration: none;
+    transition: box-shadow 0.25s, transform 0.2s;
     }
-    .lpc-left { position: static; }
-    .lpe-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+    .lpe-cta:hover {
+    box-shadow: 0 0 48px rgba(40,100,255,0.65), inset 0 1px 0 rgba(255,255,255,0.2);
+    transform: translateY(-1px);
     }
-    /* On mobile: copy above steps for Express */
-    .lpe-copy  { order: 1; }
-    .lpe-steps { order: 2; }
+    .lpe-note { margin-top: 14px; font-size: 12px; color: rgba(255,255,255,0.25); }
+    .lpe-steps { display: flex; flex-direction: column; }
+    .lpe-step { display: flex; gap: 20px; }
+    .lpe-step__left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .lpe-step__num {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(60,120,255,0.45);
+    background: rgba(20,50,180,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: #6ea4ff; letter-spacing: 0.05em;
+    }
+    .lpe-step__line {
+    width: 1px; flex: 1; min-height: 32px;
+    background: linear-gradient(to bottom, rgba(60,120,255,0.35), rgba(60,120,255,0.05));
+    margin: 6px 0;
+    }
+    .lpe-step__body { padding-bottom: 36px; }
+    .lpe-step:last-child .lpe-step__body { padding-bottom: 0; }
+    .lpe-step__body h4 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 6px; margin-top: 8px; }
+    .lpe-step__body p { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.45); }
+    @media (max-width: 768px) {
+    .lpe-grid { grid-template-columns: 1fr; gap: 40px; }
+    .lpe-card { padding: 36px 24px; }
+    }
 
-    .lpc-section { padding: 4rem 0 3.5rem; }
-    .lpe-section  { padding: 3.5rem 0 4rem; }
-}
+    /* ════════════════════════════════════════════════════════
+    CONTRAST FIXES
+    ════════════════════════════════════════════════════════ */
+    .lp-hero__desc                          { color: rgba(255,255,255,0.68) !important; }
+    .lp-proof-lbl                           { color: rgba(255,255,255,0.48) !important; font-size: 0.72rem !important; }
+    .lp-hero__row-copy p                    { color: rgba(255,255,255,0.62) !important; font-size: 0.95rem !important; }
+    .lp-hero__row-bullets li                { color: rgba(255,255,255,0.72) !important; font-size: 0.875rem !important; }
+    .lp-feat-card p                         { color: rgba(255,255,255,0.62) !important; font-size: 0.9rem !important; }
+    .lp-feat-tag                            { color: rgba(255,255,255,0.55) !important; }
+    .lp-ep__name                            { color: rgba(255,255,255,0.95) !important; }
+    .lp-ep__addr                            { color: rgba(255,255,255,0.48) !important; }
+    .lp-ep__time                            { color: rgba(255,255,255,0.42) !important; }
+    .lp-ep__subject                         { color: rgba(255,255,255,0.85) !important; }
+    .lp-ep__row span:first-child            { color: rgba(255,255,255,0.42) !important; font-size: 0.72rem !important; }
+    .lp-ep__row span:last-child             { color: rgba(255,255,255,0.82) !important; font-size: 0.8rem !important; }
+    .lp-step__body p                        { color: rgba(255,255,255,0.62) !important; font-size: 0.9rem !important; }
+    .lp-step__snippet                       { color: rgba(255,255,255,0.75) !important; font-size: 0.78rem !important; }
+    .lp-section-head p                      { color: rgba(255,255,255,0.65) !important; font-size: 1.02rem !important; }
+    .lp-dm__stat-lbl                        { color: rgba(255,255,255,0.52) !important; font-size: 0.7rem !important; }
+    .lp-dm__td-endpoint                     { color: rgba(255,255,255,0.48) !important; }
+    .lp-dm__td-muted                        { color: rgba(255,255,255,0.45) !important; }
+    .lp-dm__table th                        { color: rgba(255,255,255,0.48) !important; font-size: 0.68rem !important; }
+    .lp-dm__table td                        { color: rgba(255,255,255,0.72) !important; font-size: 0.82rem !important; }
+    .lp-dm__nav-item                        { color: rgba(255,255,255,0.58) !important; font-size: 0.82rem !important; }
+    .lp-cta__inner p:not(.lp-cta__note)    { color: rgba(255,255,255,0.65) !important; }
+    .lp-cta__note                           { color: rgba(255,255,255,0.35) !important; }
+    .banner-content p                       { color: rgba(255,255,255,0.65) !important; }
+    .banner-description                     { color: rgba(255,255,255,0.55) !important; }
+    .lp-pt__footer                          { color: rgba(255,255,255,0.4) !important; font-size: 0.82rem !important; }
+    .lp-dash__stat-lbl                      { color: rgba(255,255,255,0.48) !important; }
+    .lp-dash__form-sub                      { color: rgba(255,255,255,0.48) !important; }
+    .lp-dash__nav-item                      { color: rgba(255,255,255,0.58) !important; font-size: 0.72rem !important; }
+    .lp-email__card-meta                    { color: rgba(255,255,255,0.52) !important; font-size: 0.72rem !important; }
+    .lp-email__card-caption                 { color: rgba(255,255,255,0.58) !important; font-size: 0.76rem !important; }
+    .lp-email__field-key                    { color: rgba(255,255,255,0.45) !important; font-size: 0.65rem !important; }
+    .lp-email__field-val                    { color: rgba(255,255,255,0.88) !important; font-size: 0.78rem !important; }
 
-@media (max-width: 640px) {
-    .lpc-title, .lpe-title { font-size: 1.7rem; }
-    .lpc-cta, .lpe-cta { width: 100%; justify-content: center; }
-    .lpc-bottom-cta { flex-direction: column; align-items: stretch; }
-    .lpc-bottom-cta .lp-btn { justify-content: center; }
-}
+    /* ════════════════════════════════════════════════════════
+    RESPONSIVE
+    ════════════════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+        .lpc-layout { gap: 3.5rem; }
+        .lpe-grid   { gap: 3.5rem; }
+    }
+
+    @media (max-width: 860px) {
+        .lpc-layout {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+        .lpc-left { position: static; }
+        .lpe-grid {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+        /* On mobile: copy above steps for Express */
+        .lpe-copy  { order: 1; }
+        .lpe-steps { order: 2; }
+
+        .lpc-section { padding: 4rem 0 3.5rem; }
+        .lpe-section  { padding: 3.5rem 0 4rem; }
+    }
+
+    @media (max-width: 640px) {
+        .lpc-title, .lpe-title { font-size: 1.7rem; }
+        .lpc-cta, .lpe-cta { width: 100%; justify-content: center; }
+        .lpc-bottom-cta { flex-direction: column; align-items: stretch; }
+        .lpc-bottom-cta .lp-btn { justify-content: center; }
+    }
 
 
             /* ════════════════════════════════════════════════════════

@@ -708,7 +708,7 @@ form.<span class="fn">addEventListener</span>(<span class="str2">'submit'</span>
                 
                 <div class="docs-cta">
                     <p>Ready to get started?</p>
-                    <a href="<?php echo e(route('playground.index')); ?>" class="btn btn-secondary" style="margin-right:0.75rem;">
+                    <a href="<?php echo e(route('playground.index')); ?>#play-area" class="btn btn-secondary" style="margin-right:0.75rem;">
                         <i class="bi bi-play-circle"></i> Try Express
                     </a>
                 </div>

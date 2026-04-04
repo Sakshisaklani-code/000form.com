@@ -45,7 +45,94 @@
     </script>
     <?php echo $__env->yieldPushContent('styles'); ?>
     <style>
-        
+       .mode-toggle {
+        display: inline-flex;
+        align-items: center;
+        padding: 4px;
+        border-radius: 999px;
+        position: relative;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.09);
+        height: 49px;
+        box-sizing: border-box;
+        }
+        .mode-toggle .slider-bg {
+        position: absolute;
+        top: 4px;
+        bottom: 4px;
+        border-radius: 999px;
+        pointer-events: none;
+        z-index: 0;
+        }
+        .mode-toggle .slider-bg.on-express {
+        background: linear-gradient(135deg, #1a3a9f, #2255dd);
+        box-shadow: 0 0 18px rgba(50,120,255,0.55), inset 0 1px 0 rgba(255,255,255,0.15);
+        }
+        .mode-toggle .slider-bg.on-core {
+        background: linear-gradient(135deg, #0a3d22, #0e6035);
+        box-shadow: 0 0 18px rgba(20,200,90,0.45), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        .mode-toggle .tog-btn {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        padding: 0 18px;
+        height: 40px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        background: none;
+        border: none;
+        white-space: nowrap;
+        box-sizing: border-box;
+        transition: color 0.22s, background 0.22s;
+        color: rgba(255,255,255,0.55);
+        }
+        .mode-toggle .tog-btn .icon {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        background: rgba(255,255,255,0.1);
+        transition: background 0.22s, box-shadow 0.22s;
+        }
+        .mode-toggle .tog-btn[data-page="express"].active {
+        color: #fff;
+        cursor: default;
+        pointer-events: none;
+        }
+        .mode-toggle .tog-btn[data-page="express"].active .icon {
+        background: rgba(80,140,255,0.4);
+        box-shadow: 0 0 8px rgba(80,160,255,0.7);
+        }
+        .mode-toggle .tog-btn[data-page="core"].active {
+        color: #18ff85;
+        cursor: default;
+        pointer-events: none;
+        }
+        .mode-toggle .tog-btn[data-page="core"].active .icon {
+        background: rgba(24,200,90,0.35);
+        box-shadow: 0 0 8px rgba(24,220,100,0.8);
+        }
+        .mode-toggle .tog-btn[data-page="express"]:not(.active):hover {
+        color: #fff;
+        background: rgba(80,140,255,0.1);
+        }
+        .mode-toggle .tog-btn[data-page="core"]:not(.active):hover {
+        color: #18ff85;
+        background: rgba(24,200,90,0.1);
+        }
+        :root{
+            --mono:   'JetBrains Mono', monospace;
+        }
+         
         /* ============================================
         Fix: Right-side horizontal overflow gap
         ============================================ */
@@ -338,6 +425,8 @@
                     gap: 10px;
                 }
             }
+
+            .footer-logo { font-family: var(--mono); font-size: 1.9rem; font-weight: 700; background: linear-gradient(135deg, #00ff88 0%, #0a9253 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.02em; filter: drop-shadow(0 0 12px rgba(59, 246, 75, 0.3)); }
     </style>
 </head>
 <body id="main-body">
@@ -357,19 +446,30 @@
             <ul class="nav-links" id="navLinks">
                 
                 <li><a href="<?php echo e(route('docs')); ?>">Documentation</a></li>
+                <li><a href="<?php echo e(route('features')); ?>">Features</a></li>
                 <li><a href="<?php echo e(route('pricing')); ?>">Pricing</a></li>
                 <li><a href="<?php echo e(route('Home.library')); ?>">Library</a></li>
                 <li>
-                    <a href="<?php echo e(route('playground.index')); ?>" class="pill-link">
-                        <span class="pill-icon">
-                        <svg width="11" height="13" viewBox="0 0 12 14" fill="none">
-                            <path d="M7 1L2 7.5H6L5 13L10 6.5H6.5L7 1Z"
-                                fill="white" stroke="rgba(255,255,255,0.4)"
-                                stroke-width="0.5" stroke-linejoin="round"/>
-                        </svg>
+                    <div class="mode-toggle">
+                        <div class="slider-bg on-core" id="mode-slider"></div>
+                        <a href="<?php echo e(route('playground.index')); ?>" class="tog-btn" data-page="express">
+                        <span class="icon">
+                            <svg width="11" height="13" viewBox="0 0 12 14" fill="none">
+                            <path d="M7 1L2 7.5H6L5 13L10 6.5H6.5L7 1Z" fill="white" stroke="rgba(255,255,255,0.4)" stroke-width="0.5" stroke-linejoin="round"/>
+                            </svg>
                         </span>
                         Express
-                    </a>
+                        </a>
+                        <a class="tog-btn active" data-page="core">
+                        <span class="icon">
+                            <svg width="12" height="12" viewBox="0 0 18 18" fill="none">
+                            <path d="M9 1.5L15.5 5.25V12.75L9 16.5L2.5 12.75V5.25L9 1.5Z" stroke="white" stroke-width="1.6" fill="none"/>
+                            <circle cx="9" cy="9" r="2.2" fill="white"/>
+                            </svg>
+                        </span>
+                        Core
+                        </a>
+                    </div>
                 </li>
             </ul>
             
@@ -391,7 +491,7 @@
             <div class="footer-top">
                 
                 <!-- Left: Logo -->
-                <div class="nav-logo"><span>000</span>form</div>
+                <div class="footer-logo"><span>000</span>form</div>
 
                 <!-- Right: Links -->
                 <ul class="footer-links">
@@ -416,7 +516,18 @@
     </footer>
 
     <script src="/js/app.js"></script>
+
     <script>
+        document.querySelectorAll('.mode-toggle').forEach(wrap => {
+            const slider = wrap.querySelector('#mode-slider');
+            const active = wrap.querySelector('.tog-btn.active');
+            if (!slider || !active) return;
+            requestAnimationFrame(() => {
+                slider.style.left = active.offsetLeft + 'px';
+                slider.style.width = active.offsetWidth + 'px';
+            });
+        });
+
         document.querySelectorAll('*').forEach(el => {
             if (el.offsetWidth > document.documentElement.offsetWidth) {
                 console.log(el, el.offsetWidth);

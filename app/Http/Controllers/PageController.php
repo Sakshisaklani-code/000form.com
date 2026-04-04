@@ -70,4 +70,14 @@ class PageController extends Controller
         return view('pages.account-settings', compact('additionalEmails'));
     }
 
+    public function Land()
+    {
+        return view('pages.land');
+    }
+
+    public function Features()
+    {
+        return view('pages.features');
+    }
+
 }
