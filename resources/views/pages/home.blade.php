@@ -67,80 +67,133 @@
             {{-- Row 1: Dashboard (left) + copy (right) ── --}}
             <div class="lp-hero__row">
 
+                {{-- ════════════════════════════════════
+                     DASHBOARD MOCK #1 — Hero row
+                     Matches real dashboard screenshot
+                ════════════════════════════════════ --}}
                 <div class="lp-prev lp-prev--dashboard">
                     <div class="lp-prev__label">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
                         Your dashboard
                     </div>
-                    <div class="lp-dash">
-                        <div class="lp-dash__side">
-                            <div class="lp-dash__logo"><span>000<b>form</b></span></div>
-                            <div class="lp-dash__user">
-                                <div class="lp-dash__avatar">S</div>
-                                <span>you@email.com</span>
+
+                    <div class="rdm rdm--small">
+                        {{-- Sidebar --}}
+                        <div class="rdm__sidebar">
+                            <div class="rdm__logo">
+                                <img src="{{ asset('images/logo/000formlogo.png') }}" alt="000form" class="rdm__logo-img">
                             </div>
-                            <nav class="lp-dash__nav">
-                                <div class="lp-dash__nav-item lp-dash__nav-item--active">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                            <div class="rdm__user-chip">
+                                <div class="rdm__avatar">S</div>
+                                <span>test@gmail.com</span>
+                            </div>
+                            <div class="rdm__nav-section-label">MAIN</div>
+                            <nav class="rdm__nav">
+                                <div class="rdm__nav-item rdm__nav-item--active">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
                                     Dashboard
                                 </div>
-                                <div class="lp-dash__nav-item">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                                    New Form
+                                <div class="rdm__nav-item">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                                    New Project
                                 </div>
-                                <div class="lp-dash__nav-item">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                                    Plan & Subscriptions
+                                <div class="rdm__nav-item">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                    Team Management
                                 </div>
-                                <div class="lp-dash__nav-item">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-                                    Account
+                            </nav>
+                            <div class="rdm__nav-section-label" style="margin-top:0.4rem;">ACCOUNT</div>
+                            <nav class="rdm__nav">
+                                <div class="rdm__nav-item">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                                    Account Settings
                                 </div>
                             </nav>
                         </div>
-                        <div class="lp-dash__main">
-                            <div class="lp-dash__topbar">
-                                <span class="lp-dash__page-title">Dashboard</span>
-                                <div class="lp-dash__new-btn"><a href="{{ route('signup') }}">+ New Project</a></div>
+
+                        {{-- Main content --}}
+                        <div class="rdm__main">
+                            <div class="rdm__topbar">
+                                <span class="rdm__page-title">Dashboard</span>
+                                <div class="rdm__new-btn">+ New Project</div>
                             </div>
-                            <div class="lp-dash__stats">
-                                <div class="lp-dash__stat">
-                                    <div class="lp-dash__stat-lbl">Total Forms</div>
-                                    <div class="lp-dash__stat-val">4</div>
+
+                            {{-- Stats row --}}
+                            <div class="rdm__stats">
+                                <div class="rdm__stat">
+                                    <div class="rdm__stat-lbl">Projects</div>
+                                    <div class="rdm__stat-val">1</div>
                                 </div>
-                                <div class="lp-dash__stat">
-                                    <div class="lp-dash__stat-lbl">Total Submissions</div>
-                                    <div class="lp-dash__stat-val">128</div>
+                                <div class="rdm__stat">
+                                    <div class="rdm__stat-lbl">Total Forms</div>
+                                    <div class="rdm__stat-val">2</div>
                                 </div>
-                                <div class="lp-dash__stat">
-                                    <div class="lp-dash__stat-lbl">Valid</div>
-                                    <div class="lp-dash__stat-val lp-dash__stat-val--green">121</div>
+                                <div class="rdm__stat">
+                                    <div class="rdm__stat-lbl">Total Submissions</div>
+                                    <div class="rdm__stat-val">10</div>
                                 </div>
-                                <div class="lp-dash__stat">
-                                    <div class="lp-dash__stat-lbl">Spam Blocked</div>
-                                    <div class="lp-dash__stat-val lp-dash__stat-val--red">7</div>
+                                <div class="rdm__stat">
+                                    <div class="rdm__stat-lbl">Valid</div>
+                                    <div class="rdm__stat-val rdm__stat-val--green">6</div>
                                 </div>
-                                <div class="lp-dash__stat">
-                                    <div class="lp-dash__stat-lbl">Unread</div>
-                                    <div class="lp-dash__stat-val lp-dash__stat-val--green">3</div>
+                                <div class="rdm__stat">
+                                    <div class="rdm__stat-lbl">Spam Blocked</div>
+                                    <div class="rdm__stat-val rdm__stat-val--red">4</div>
                                 </div>
-                                <div class="lp-dash__stat">
-                                    <div class="lp-dash__stat-lbl">This Month</div>
-                                    <div class="lp-dash__stat-val">14 new</div>
+                                <div class="rdm__stat">
+                                    <div class="rdm__stat-lbl">Unread</div>
+                                    <div class="rdm__stat-val rdm__stat-val--green">6</div>
                                 </div>
                             </div>
-                            <div class="lp-dash__forms-head">Your Forms</div>
-                            <div class="lp-dash__form-row">
-                                <div class="lp-dash__form-dot lp-dash__form-dot--on"></div>
-                                <div class="lp-dash__form-name">contact-form</div>
-                                <div class="lp-dash__form-sub">84 submissions</div>
-                                <div class="lp-dash__form-badge">Active</div>
+
+                            {{-- Project section --}}
+                            <div class="rdm__project-row">
+                                <div class="rdm__project-dot"></div>
+                                <span class="rdm__project-name">PROJECT 1</span>
+                                <!-- <span class="rdm__project-desc">— Testing the create project in the live server.</span> -->
+                                <span class="rdm__new-badge">6 new</span>
+                                <div style="flex:1"></div>
+                                <span class="rdm__project-meta">2 forms</span>
+                                <span class="rdm__project-action">+ Add Form</span>
+                                <span class="rdm__project-action">View</span>
+                                <span class="rdm__project-action">Settings</span>
                             </div>
-                            <div class="lp-dash__form-row">
-                                <div class="lp-dash__form-dot lp-dash__form-dot--on"></div>
-                                <div class="lp-dash__form-name">feedback</div>
-                                <div class="lp-dash__form-sub">44 submissions</div>
-                                <div class="lp-dash__form-badge">Active</div>
+
+                            {{-- Forms table --}}
+                            <div class="rdm__table-wrap">
+                                <table class="rdm__table">
+                                    <thead>
+                                        <tr>
+                                            <th>Form Name</th>
+                                            <th>Endpoint</th>
+                                            <th>Total</th>
+                                            <th>Valid</th>
+                                            <th>Spam</th>
+                                            <th>Status</th>
+                                            <th>View</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="rdm__td-name">Second Form<span class="rdm__new-badge">1 new</span></td>
+                                            <td class="rdm__td-ep">/f/****</td>
+                                            <td>1</td>
+                                            <td class="rdm__td-green">1</td>
+                                            <td class="rdm__td-red">0</td>
+                                            <td><span class="rdm__status">● Active</span></td>
+                                            <td class="rdm__td-view">View</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="rdm__td-name">First form<span class="rdm__new-badge">5 new</span></td>
+                                            <td class="rdm__td-ep">/f/****</td>
+                                            <td>9</td>
+                                            <td class="rdm__td-green">5</td>
+                                            <td class="rdm__td-red">4</td>
+                                            <td><span class="rdm__status">● Active</span></td>
+                                            <td class="rdm__td-view">View</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -247,7 +300,7 @@
 </section>
 
 {{-- ═══════════════════════════════════════════════════════
-     CORE SECTION  ← paste right after hero 
+     CORE SECTION
 ═══════════════════════════════════════════════════════ --}}
 <section class="lpc-section">
     <div class="lpc-glow--tl"></div>
@@ -256,7 +309,6 @@
 
         <div class="lpc-layout">
 
-            {{-- ════ LEFT: badge + title + desc + perks + CTA ════ --}}
             <div class="lpc-left">
 
                 <div class="lpc-badge">
@@ -301,7 +353,6 @@
 
             </div>
 
-            {{-- ════ RIGHT: setup heading + 3 steps stacked vertically ════ --}}
             <div class="lpc-right">
 
                 <div class="lpc-right__head">
@@ -343,7 +394,6 @@
                     <div class="lpc-vstep">
                         <div class="lpc-vstep__left">
                             <div class="lpc-vstep__num">03</div>
-                            {{-- no line after last step --}}
                         </div>
                         <div class="lpc-vstep__body">
                             <h4>Point your HTML form at it</h4>
@@ -364,10 +414,10 @@
 </section>
 
 {{-- ═══════════════════════════════════════════════════════
-     DASHBOARD PREVIEW
+     DASHBOARD PREVIEW SECTION  — full accurate mock
 ═══════════════════════════════════════════════════════ --}}
 <section class="lp-preview">
-    
+
     <div class="lp-container">
 
         <div class="lp-section-head">
@@ -376,84 +426,111 @@
             <p>Manage all your endpoints, browse submissions, export data, and invite your team — all in one focused interface.</p>
         </div>
 
-        <div class="lp-dashboard-mock">
-            <div class="lp-dm__sidebar">
-                <div class="lp-dm__logo">000<span>form</span></div>
-                <div class="lp-dm__user-chip">
-                    <div class="lp-dm__user-avatar">Y</div>
-                    <span class="lp-dm__user-email">YOUR EMAIL</span>
+        {{-- ════════════════════════════════════
+             DASHBOARD MOCK #2 — Full preview
+             Matches real dashboard screenshot
+        ════════════════════════════════════ --}}
+        <div class="rdm rdm--full">
+            {{-- Sidebar --}}
+            <div class="rdm__sidebar">
+                <div class="rdm__logo">
+                    <img src="{{ asset('images/logo/000formlogo.png') }}" alt="000form" class="rdm__logo-img rdm__logo-img--lg">
                 </div>
-                <nav class="lp-dm__nav">
-                    <div class="lp-dm__nav-item lp-dm__nav-item--active">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+
+                <div class="rdm__user-chip">
+                    <div class="rdm__avatar">S</div>
+                    <span>test@gmail.com</span>
+                </div>
+
+                <div class="rdm__nav-section-label">MAIN</div>
+                <nav class="rdm__nav">
+                    <div class="rdm__nav-item rdm__nav-item--active">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
                         Dashboard
                     </div>
-                    <div class="lp-dm__nav-item">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        New Form
+                    <div class="rdm__nav-item">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                        New Project
                     </div>
-                    <div class="lp-dm__nav-item">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                        Plan & Subscriptions
-                    </div>
-                    <div class="lp-dm__nav-item">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
-                        Payment History
-                    </div>
-                    <div class="lp-dm__nav-item">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <div class="rdm__nav-item">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                         Team Management
                     </div>
                 </nav>
-                <div class="lp-dm__nav lp-dm__nav--bottom">
-                    <div class="lp-dm__nav-item">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+
+                <div class="rdm__nav-section-label">ACCOUNT</div>
+                <nav class="rdm__nav">
+                    <div class="rdm__nav-item">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                        Account Settings
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:auto;"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </nav>
+
+                <div class="rdm__nav-section-label rdm__nav-section-label--bottom">RESOURCES</div>
+                <nav class="rdm__nav">
+                    <div class="rdm__nav-item">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                         Documentation
                     </div>
-                    <div class="lp-dm__nav-item">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        Account
-                    </div>
-                    <div class="lp-dm__nav-item">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                    <div class="rdm__nav-item">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
                         Sign Out
                     </div>
-                </div>
+                </nav>
             </div>
 
-            <div class="lp-dm__main">
-                <div class="lp-dm__topbar">
-                    <div class="lp-dm__topbar-title">Dashboard</div>
-                    <div class="lp-dm__btn"><a href="{{ route('signup') }}">+ New Project</a></div>
+            {{-- Main content --}}
+            <div class="rdm__main">
+                <div class="rdm__topbar">
+                    <span class="rdm__page-title">Dashboard</span>
+                    <div class="rdm__new-btn">+ New Project</div>
                 </div>
-                <div class="lp-dm__stats">
-                    <div class="lp-dm__stat">
-                        <div class="lp-dm__stat-lbl">Total Forms</div>
-                        <div class="lp-dm__stat-val">3</div>
+
+                {{-- Stats row --}}
+                <div class="rdm__stats">
+                    <div class="rdm__stat">
+                        <div class="rdm__stat-lbl">Projects</div>
+                        <div class="rdm__stat-val">1</div>
                     </div>
-                    <div class="lp-dm__stat">
-                        <div class="lp-dm__stat-lbl">Total Submissions</div>
-                        <div class="lp-dm__stat-val">34</div>
+                    <div class="rdm__stat">
+                        <div class="rdm__stat-lbl">Total Forms</div>
+                        <div class="rdm__stat-val">2</div>
                     </div>
-                    <div class="lp-dm__stat">
-                        <div class="lp-dm__stat-lbl">Valid</div>
-                        <div class="lp-dm__stat-val lp-dm__stat-val--green">27</div>
+                    <div class="rdm__stat">
+                        <div class="rdm__stat-lbl">Total Submissions</div>
+                        <div class="rdm__stat-val">10</div>
                     </div>
-                    <div class="lp-dm__stat">
-                        <div class="lp-dm__stat-lbl">Spam Blocked</div>
-                        <div class="lp-dm__stat-val lp-dm__stat-val--red">7</div>
+                    <div class="rdm__stat">
+                        <div class="rdm__stat-lbl">Valid</div>
+                        <div class="rdm__stat-val rdm__stat-val--green">6</div>
                     </div>
-                    <div class="lp-dm__stat">
-                        <div class="lp-dm__stat-lbl">Unread</div>
-                        <div class="lp-dm__stat-val lp-dm__stat-val--green">26</div>
+                    <div class="rdm__stat">
+                        <div class="rdm__stat-lbl">Spam Blocked</div>
+                        <div class="rdm__stat-val rdm__stat-val--red">4</div>
                     </div>
-                    <div class="lp-dm__stat">
-                        <div class="lp-dm__stat-lbl">This Month</div>
-                        <div class="lp-dm__stat-val">3 <span class="lp-dm__stat-new">new</span></div>
+                    <div class="rdm__stat">
+                        <div class="rdm__stat-lbl">Unread</div>
+                        <div class="rdm__stat-val rdm__stat-val--green">6</div>
                     </div>
                 </div>
-                <div class="lp-dm__table-wrap">
-                    <table class="lp-dm__table">
+
+                {{-- Project header row --}}
+                <div class="rdm__project-row">
+                    <div class="rdm__project-dot"></div>
+                    <span class="rdm__project-name">PROJECT 1</span>
+                    <span class="rdm__project-desc">— Application Development</span>
+                    <span class="rdm__new-badge">6 new</span>
+                    <div style="flex:1"></div>
+                    <span class="rdm__project-meta">2 forms</span>
+                    <span class="rdm__project-action">+ Add Form</span>
+                    <span class="rdm__project-action">View</span>
+                    <span class="rdm__project-action">Settings</span>
+                </div>
+
+                {{-- Forms table --}}
+                <div class="rdm__table-wrap">
+                    <table class="rdm__table">
                         <thead>
                             <tr>
                                 <th>Form Name</th>
@@ -462,33 +539,33 @@
                                 <th>Valid</th>
                                 <th>Spam</th>
                                 <th>Status</th>
-                                <th>Last Submission</th>
+                                <th>View</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="lp-dm__td-name">
-                                    Contact Form
-                                    <span class="lp-dm__new-badge">23 new</span>
+                                <td class="rdm__td-name">
+                                    Second Form
+                                    <span class="rdm__new-badge">1 new</span>
                                 </td>
-                                <td class="lp-dm__td-endpoint">/f/••••••</td>
-                                <td>31</td>
-                                <td class="lp-dm__td-green">24</td>
-                                <td>7</td>
-                                <td><span class="lp-dm__status-badge">Active</span></td>
-                                <td class="lp-dm__td-muted">1 week ago</td>
+                                <td class="rdm__td-ep">/f/****</td>
+                                <td>1</td>
+                                <td class="rdm__td-green">1</td>
+                                <td class="rdm__td-red">0</td>
+                                <td><span class="rdm__status">● Active</span></td>
+                                <td class="rdm__td-view">View</td>
                             </tr>
                             <tr>
-                                <td class="lp-dm__td-name">
-                                    Test form
-                                    <span class="lp-dm__new-badge">3 new</span>
+                                <td class="rdm__td-name">
+                                    First form
+                                    <span class="rdm__new-badge">5 new</span>
                                 </td>
-                                <td class="lp-dm__td-endpoint">/f/••••••</td>
-                                <td>3</td>
-                                <td class="lp-dm__td-green">3</td>
-                                <td>0</td>
-                                <td><span class="lp-dm__status-badge">Active</span></td>
-                                <td class="lp-dm__td-muted">2 days ago</td>
+                                <td class="rdm__td-ep">/f/****</td>
+                                <td>9</td>
+                                <td class="rdm__td-green">5</td>
+                                <td class="rdm__td-red">4</td>
+                                <td><span class="rdm__status">● Active</span></td>
+                                <td class="rdm__td-view">View</td>
                             </tr>
                         </tbody>
                     </table>
@@ -529,7 +606,7 @@
 
         <div class="lp-pt__footer">
             All plans include spam filtering, AJAX support, CSV export &amp; dashboard access. &nbsp;
-            <a href="/pricing">See full comparison </a>
+            <a href="/pricing">See full comparison</a>
         </div>
 
     </div>
@@ -553,13 +630,11 @@
     </div>
 </section>
 
-
 {{-- ═══════════════════════════════════════════════════════
-     EXPRESS SECTION  ← paste immediately after Core
+     EXPRESS SECTION
 ═══════════════════════════════════════════════════════ --}}
 <section class="lpe-section">
 
-  {{-- OR divider --}}
   <div class="lp-container">
     <div class="lpe-or-row">
       <div class="lpe-or-line"></div>
@@ -575,7 +650,6 @@
     <div class="lpe-card">
       <div class="lpe-grid">
 
-        {{-- LEFT: copy + CTA --}}
         <div class="lpe-copy">
           <div class="lpe-badge">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
@@ -597,10 +671,8 @@
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             Get started — no account needed
           </a>
-          <!-- <p class="lpe-note">Verify email once · Instant notifications · No dashboard</p> -->
         </div>
 
-        {{-- RIGHT: steps --}}
         <div class="lpe-steps">
           <div class="lpe-step">
             <div class="lpe-step__left">
@@ -663,8 +735,369 @@
         letter-spacing: 0.01em;
         margin-bottom: 0.25rem;
     }
-
     .fp-email__logo b { color: var(--accent); font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════
+       REAL DASHBOARD MOCK  (rdm)
+       — used in both hero row and full preview section
+       — mirrors the actual dashboard screenshot precisely
+    ═══════════════════════════════════════════════════════ */
+    .rdm {
+        display: flex;
+        background: #0d0f12;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 32px 80px rgba(0,0,0,0.55);
+        font-family: var(--font-display, sans-serif);
+    }
+
+    /* Logo image */
+    .rdm__logo-img {
+        height: 28px;
+        width: auto;
+        display: block;
+        object-fit: contain;
+    }
+
+    .rdm__logo-img--lg {
+        height: 34px;
+    }
+
+    /* Small variant for hero row */
+    .rdm--small { font-size: 0.7rem; }
+    .rdm--small .rdm__sidebar { width: 150px; padding: 0.9rem 0.7rem; }
+    .rdm--small .rdm__page-title { font-size: 0.95rem; }
+    .rdm--small .rdm__stat-val { font-size: 1rem; }
+    .rdm--small .rdm__stat-lbl { font-size: 0.55rem; }
+    .rdm--small .rdm__stat { padding: 0.55rem 0.6rem; }
+    .rdm--small .rdm__stats { grid-template-columns: repeat(3, 1fr); gap: 0.45rem; }
+    .rdm--small .rdm__main { padding: 0.9rem 1rem; gap: 0.75rem; }
+    .rdm--small .rdm__table { font-size: 0.62rem; }
+    .rdm--small .rdm__table th,
+    .rdm--small .rdm__table td { padding: 0.4rem 0.6rem; }
+    .rdm--small .rdm__new-btn { font-size: 0.62rem; padding: 0.35rem 0.7rem; }
+    .rdm--small .rdm__project-row { padding: 0.45rem 0.7rem; gap: 0.4rem; }
+    .rdm--small .rdm__nav-item { font-size: 0.65rem; padding: 0.38rem 0.5rem; gap: 6px; }
+    .rdm--small .rdm__user-chip { padding: 0.38rem 0.55rem; }
+    .rdm--small .rdm__avatar { width: 18px; height: 18px; font-size: 0.58rem; }
+    .rdm--small .rdm__logo-img { height: 22px; }
+
+    /* Full variant for preview section */
+    .rdm--full { font-size: 0.82rem; }
+    .rdm--full .rdm__page-title { font-size: 1.4rem; }
+    .rdm--full .rdm__stat-val { font-size: 1.55rem; }
+    .rdm--full .rdm__sidebar { width: 220px; padding: 1.5rem 1rem; }
+    .rdm--full .rdm__stats { grid-template-columns: repeat(6, 1fr); }
+
+    /* ── Sidebar ── */
+    .rdm__sidebar {
+        width: 185px;
+        flex-shrink: 0;
+        background: #0a0c0f;
+        border-right: 1px solid rgba(255,255,255,0.07);
+        padding: 1.1rem 0.85rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+    }
+
+    .rdm__logo {
+        display: flex;
+        align-items: center;
+        padding: 0 0.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .rdm__user-chip {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        background: rgba(0,255,136,0.07);
+        border: 1px solid rgba(0,255,136,0.15);
+        border-radius: 10px;
+        padding: 0.5rem 0.65rem;
+        margin-bottom: 0.85rem;
+        overflow: hidden;
+    }
+
+    .rdm__avatar {
+        width: 22px; height: 22px;
+        border-radius: 50%;
+        background: var(--accent, #00ff88);
+        color: #000;
+        font-weight: 800;
+        font-size: 0.65rem;
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .rdm__user-chip span {
+        font-size: 0.62rem;
+        color: rgba(255,255,255,0.55);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .rdm__nav-section-label {
+        font-size: 0.55rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: rgba(255,255,255,0.25);
+        padding: 0.55rem 0.5rem 0.2rem;
+        text-transform: uppercase;
+    }
+
+    .rdm__nav-section-label--bottom { margin-top: auto; }
+
+    .rdm__nav {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        margin-bottom: 0.2rem;
+    }
+
+    .rdm__nav-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.48rem 0.6rem;
+        border-radius: 8px;
+        font-size: 0.73rem;
+        color: rgba(255,255,255,0.45);
+        cursor: pointer;
+        transition: all 0.15s;
+    }
+
+    .rdm__nav-item svg { flex-shrink: 0; opacity: 0.7; }
+
+    .rdm__nav-item--active {
+        background: rgba(0,255,136,0.08);
+        border: 1px solid rgba(0,255,136,0.18);
+        color: var(--accent, #00ff88);
+        font-weight: 600;
+    }
+
+    .rdm__nav-item--active svg { opacity: 1; }
+
+    /* ── Main area ── */
+    .rdm__main {
+        flex: 1;
+        padding: 1.25rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        overflow: hidden;
+        min-width: 0;
+    }
+
+    .rdm__topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .rdm__page-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: rgba(255,255,255,0.95);
+        letter-spacing: -0.01em;
+    }
+
+    .rdm__new-btn {
+        background: var(--accent, #00ff88);
+        color: #000;
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 0.45rem 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+
+    /* Stats cards */
+    .rdm__stats {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 0.6rem;
+    }
+
+    .rdm__stat {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 10px;
+        padding: 0.75rem 0.8rem;
+    }
+
+    .rdm__stat-lbl {
+        font-size: 0.6rem;
+        color: rgba(255,255,255,0.35);
+        font-weight: 600;
+        margin-bottom: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .rdm__stat-val {
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: rgba(255,255,255,0.9);
+        letter-spacing: -0.025em;
+        line-height: 1;
+    }
+
+    .rdm__stat-val--green { color: var(--accent, #00ff88); }
+    .rdm__stat-val--red   { color: #ff4949; }
+
+    /* Project header row */
+    .rdm__project-row {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.6rem 0.85rem;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 10px;
+        flex-wrap: nowrap;
+        overflow: hidden;
+    }
+
+    .rdm__project-dot {
+        width: 8px; height: 8px;
+        border-radius: 50%;
+        background: var(--accent, #00ff88);
+        box-shadow: 0 0 0 3px rgba(0,255,136,0.18);
+        flex-shrink: 0;
+    }
+
+    .rdm__project-name {
+        font-size: 0.75rem;
+        font-weight: 800;
+        color: rgba(255,255,255,0.9);
+        white-space: nowrap;
+        letter-spacing: 0.02em;
+    }
+
+    .rdm__project-desc {
+        font-size: 0.68rem;
+        color: rgba(255,255,255,0.38);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+    }
+
+    .rdm__new-badge {
+        font-size: 0.58rem;
+        font-weight: 700;
+        background: rgba(0,255,136,0.12);
+        border: 1px solid rgba(0,255,136,0.25);
+        color: var(--accent, #00ff88);
+        padding: 0.15rem 0.5rem;
+        border-radius: 100px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .rdm__project-meta {
+        font-size: 0.65rem;
+        color: rgba(255,255,255,0.35);
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .rdm__project-action {
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: rgba(255,255,255,0.5);
+        white-space: nowrap;
+        flex-shrink: 0;
+        cursor: pointer;
+        transition: color 0.15s;
+    }
+
+    .rdm__project-action:hover { color: rgba(255,255,255,0.9); }
+
+    /* Forms table */
+    .rdm__table-wrap {
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .rdm__table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.75rem;
+    }
+
+    .rdm__table thead tr {
+        background: rgba(255,255,255,0.03);
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .rdm__table th {
+        padding: 0.55rem 0.85rem;
+        text-align: left;
+        font-size: 0.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgba(255,255,255,0.3);
+        white-space: nowrap;
+    }
+
+    .rdm__table tbody tr {
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+        transition: background 0.15s;
+    }
+
+    .rdm__table tbody tr:last-child { border-bottom: none; }
+    .rdm__table tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+    .rdm__table td {
+        padding: 0.7rem 0.85rem;
+        color: rgba(255,255,255,0.6);
+        white-space: nowrap;
+    }
+
+    .rdm__td-name {
+        color: rgba(255,255,255,0.88) !important;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .rdm__td-ep {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.68rem;
+        color: rgba(255,255,255,0.32) !important;
+    }
+
+    .rdm__td-green { color: var(--accent, #00ff88) !important; font-weight: 700; }
+    .rdm__td-red   { color: #ff4949 !important; font-weight: 700; }
+
+    .rdm__status {
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: var(--accent, #00ff88);
+        background: rgba(0,255,136,0.1);
+        border: 1px solid rgba(0,255,136,0.22);
+        padding: 0.18rem 0.6rem;
+        border-radius: 100px;
+    }
+
+    .rdm__td-view {
+        color: rgba(255,255,255,0.4) !important;
+        cursor: pointer;
+        font-weight: 600;
+        transition: color 0.15s;
+    }
+
+    .rdm__td-view:hover { color: rgba(255,255,255,0.9) !important; }
 
     /* ════════════════════════════════════════════════════════
     CORE SECTION
@@ -686,7 +1119,6 @@
         pointer-events: none;
     }
 
-    /* Two-col layout: left copy | right steps */
     .lpc-layout {
         display: grid;
         grid-template-columns: 1fr 1.15fr;
@@ -694,13 +1126,12 @@
         align-items: start;
     }
 
-    /* ── Left col ── */
     .lpc-left {
         display: flex;
         flex-direction: column;
         gap: 1.1rem;
         position: sticky;
-        top: 2rem; /* stays in view as right scrolls on tall viewports */
+        top: 2rem;
     }
 
     .lpc-badge {
@@ -752,8 +1183,7 @@
 
     .lpc-perks {
         list-style: none;
-        padding: 0;
-        margin: 0;
+        padding: 0; margin: 0;
         display: flex;
         flex-direction: column;
         gap: 0.55rem;
@@ -797,21 +1227,11 @@
         font-size: 0.73rem;
         color: rgba(255,255,255,0.32);
         margin: 0;
-        letter-spacing: 0.02em;
     }
 
-    /* ── Right col ── */
-    .lpc-right {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-    }
+    .lpc-right { display: flex; flex-direction: column; gap: 2rem; }
 
-    .lpc-right__head {
-        display: flex;
-        flex-direction: column;
-        gap: 0.6rem;
-    }
+    .lpc-right__head { display: flex; flex-direction: column; gap: 0.6rem; }
 
     .lpc-setup-tag {
         display: inline-block;
@@ -844,18 +1264,9 @@
         margin: 0;
     }
 
-    /* ── Vertical steps ── */
-    .lpc-vsteps {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-    }
+    .lpc-vsteps { display: flex; flex-direction: column; gap: 0; }
 
-    .lpc-vstep {
-        display: flex;
-        gap: 1.1rem;
-        position: relative;
-    }
+    .lpc-vstep { display: flex; gap: 1.1rem; position: relative; }
 
     .lpc-vstep__left {
         display: flex;
@@ -867,9 +1278,7 @@
     .lpc-vstep__num {
         width: 44px; height: 44px;
         border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: flex; align-items: center; justify-content: center;
         font-family: 'SF Mono', 'Fira Code', monospace;
         font-size: 0.72rem;
         font-weight: 800;
@@ -877,14 +1286,11 @@
         border: 1px solid rgba(0,255,136,0.28);
         color: var(--green);
         flex-shrink: 0;
-        position: relative;
-        z-index: 1;
+        position: relative; z-index: 1;
     }
 
     .lpc-vstep__line {
-        width: 1px;
-        flex: 1;
-        min-height: 1.5rem;
+        width: 1px; flex: 1; min-height: 1.5rem;
         background: linear-gradient(to bottom, rgba(0,255,136,0.22), transparent);
         margin: 4px 0;
     }
@@ -898,29 +1304,14 @@
 
     .lpc-vstep:last-child .lpc-vstep__body { padding-bottom: 0; }
 
-    .lpc-vstep__body h4 {
-        font-size: 0.96rem;
-        font-weight: 700;
-        color: rgba(255,255,255,0.9);
-        margin: 0;
-    }
-
-    .lpc-vstep__body p {
-        font-size: 0.86rem;
-        line-height: 1.65;
-        color: rgba(255,255,255,0.56);
-        margin: 0;
-    }
+    .lpc-vstep__body h4 { font-size: 0.96rem; font-weight: 700; color: rgba(255,255,255,0.9); margin: 0; }
+    .lpc-vstep__body p  { font-size: 0.86rem; line-height: 1.65; color: rgba(255,255,255,0.56); margin: 0; }
 
     .lpc-vstep__link {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
+        display: inline-flex; align-items: center; gap: 6px;
         margin-top: 0.5rem;
-        font-size: 0.84rem;
-        font-weight: 600;
-        color: var(--green);
-        text-decoration: none;
+        font-size: 0.84rem; font-weight: 600;
+        color: var(--green); text-decoration: none;
         transition: gap 0.2s;
     }
     .lpc-vstep__link:hover { gap: 10px; }
@@ -938,182 +1329,108 @@
         overflow-x: auto;
     }
 
-    /* Bottom CTA under steps */
-    .lpc-bottom-cta {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-
     /* ════════════════════════════════════════════════════════
     EXPRESS SECTION
     ════════════════════════════════════════════════════════ */
     .lpe-section {
-    position: relative;
-    padding: 80px 0;
-    overflow: hidden;
-    background: #06090f;
+        position: relative;
+        padding: 80px 0;
+        overflow: hidden;
+        background: #06090f;
     }
     .lpe-section::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 700px; height: 500px;
-    background: radial-gradient(ellipse at center, rgba(30,90,255,0.22) 0%, rgba(20,60,200,0.1) 40%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
+        content: '';
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 700px; height: 500px;
+        background: radial-gradient(ellipse at center, rgba(30,90,255,0.22) 0%, rgba(20,60,200,0.1) 40%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
     }
     .lpe-section::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(rgba(60,120,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(60,120,255,0.04) 1px, transparent 1px);
-    background-size: 48px 48px;
-    pointer-events: none;
-    z-index: 0;
+        content: '';
+        position: absolute; inset: 0;
+        background-image: linear-gradient(rgba(60,120,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(60,120,255,0.04) 1px, transparent 1px);
+        background-size: 48px 48px;
+        pointer-events: none;
+        z-index: 0;
     }
     .lpe-or-row {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 40px;
-    position: relative;
-    z-index: 1;
+        display: flex; align-items: center; gap: 16px;
+        margin-bottom: 40px; position: relative; z-index: 1;
     }
-    .lpe-or-line {
-    flex: 1; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(60,120,255,0.35), transparent);
-    }
+    .lpe-or-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(60,120,255,0.35), transparent); }
     .lpe-or-pill {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 20px;
-    border-radius: 999px;
-    border: 1px solid rgba(60,120,255,0.4);
-    background: rgba(20,50,180,0.15);
-    font-size: 13px;
-    font-weight: 700;
-    color: #6ea4ff;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+        display: flex; align-items: center; gap: 8px;
+        padding: 8px 20px; border-radius: 999px;
+        border: 1px solid rgba(60,120,255,0.4);
+        background: rgba(20,50,180,0.15);
+        font-size: 13px; font-weight: 700; color: #6ea4ff;
+        letter-spacing: 0.06em; text-transform: uppercase;
     }
     .lpe-card {
-    border: 1px solid rgba(40,100,255,0.2);
-    border-radius: 24px;
-    padding: 56px 52px;
-    background: rgba(10,18,40,0.6);
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
+        border: 1px solid rgba(40,100,255,0.2);
+        border-radius: 24px; padding: 56px 52px;
+        background: rgba(10,18,40,0.6);
+        position: relative; overflow: hidden; z-index: 1;
     }
     .lpe-card::before {
-    content: '';
-    position: absolute;
-    top: -1px; left: -1px;
-    width: 120px; height: 120px;
-    background: linear-gradient(135deg, rgba(60,120,255,0.4), transparent 60%);
-    border-radius: 24px 0 0 0;
-    pointer-events: none;
+        content: ''; position: absolute;
+        top: -1px; left: -1px; width: 120px; height: 120px;
+        background: linear-gradient(135deg, rgba(60,120,255,0.4), transparent 60%);
+        border-radius: 24px 0 0 0; pointer-events: none;
     }
     .lpe-card::after {
-    content: '';
-    position: absolute;
-    bottom: -1px; right: -1px;
-    width: 100px; height: 100px;
-    background: linear-gradient(315deg, rgba(60,120,255,0.2), transparent 60%);
-    border-radius: 0 0 24px 0;
-    pointer-events: none;
+        content: ''; position: absolute;
+        bottom: -1px; right: -1px; width: 100px; height: 100px;
+        background: linear-gradient(315deg, rgba(60,120,255,0.2), transparent 60%);
+        border-radius: 0 0 24px 0; pointer-events: none;
     }
-    .lpe-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
-    }
+    .lpe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
     .lpe-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 14px;
-    border-radius: 999px;
-    background: rgba(40,100,255,0.18);
-    border: 1px solid rgba(60,130,255,0.35);
-    font-size: 11px;
-    font-weight: 600;
-    color: #7ab4ff;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
+        display: inline-flex; align-items: center; gap: 6px;
+        padding: 5px 14px; border-radius: 999px;
+        background: rgba(40,100,255,0.18);
+        border: 1px solid rgba(60,130,255,0.35);
+        font-size: 11px; font-weight: 600; color: #7ab4ff;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        margin-bottom: 20px;
     }
-    .lpe-title {
-    font-size: clamp(28px, 4vw, 48px);
-    font-weight: 800;
-    line-height: 1.08;
-    color: #fff;
-    margin-bottom: 16px;
-    letter-spacing: -0.02em;
-    }
-    .lpe-title__accent {
-    background: linear-gradient(90deg, #4d8fff, #a0cfff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    }
-    .lpe-desc {
-    font-size: 15px;
-    line-height: 1.7;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 28px;
-    }
+    .lpe-title { font-size: clamp(28px,4vw,48px); font-weight: 800; line-height: 1.08; color: #fff; margin-bottom: 16px; letter-spacing: -0.02em; }
+    .lpe-title__accent { background: linear-gradient(90deg,#4d8fff,#a0cfff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .lpe-desc { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.5); margin-bottom: 28px; }
     .lpe-perks { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 36px; }
     .lpe-perks li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.75); }
     .lpe-perks li svg { flex-shrink: 0; color: #4d8fff; background: rgba(40,90,255,0.15); border-radius: 50%; padding: 3px; width: 20px; height: 20px; }
     .lpe-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    padding: 14px 28px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #1a4adf, #3366ff);
-    box-shadow: 0 0 32px rgba(40,100,255,0.45), inset 0 1px 0 rgba(255,255,255,0.15);
-    font-size: 14px;
-    font-weight: 700;
-    color: #fff;
-    text-decoration: none;
-    transition: box-shadow 0.25s, transform 0.2s;
+        display: inline-flex; align-items: center; gap: 9px;
+        padding: 14px 28px; border-radius: 999px;
+        background: linear-gradient(135deg,#1a4adf,#3366ff);
+        box-shadow: 0 0 32px rgba(40,100,255,0.45), inset 0 1px 0 rgba(255,255,255,0.15);
+        font-size: 14px; font-weight: 700; color: #fff;
+        text-decoration: none; transition: box-shadow 0.25s, transform 0.2s;
     }
-    .lpe-cta:hover {
-    box-shadow: 0 0 48px rgba(40,100,255,0.65), inset 0 1px 0 rgba(255,255,255,0.2);
-    transform: translateY(-1px);
-    }
-    .lpe-note { margin-top: 14px; font-size: 12px; color: rgba(255,255,255,0.25); }
+    .lpe-cta:hover { box-shadow: 0 0 48px rgba(40,100,255,0.65), inset 0 1px 0 rgba(255,255,255,0.2); transform: translateY(-1px); }
     .lpe-steps { display: flex; flex-direction: column; }
     .lpe-step { display: flex; gap: 20px; }
     .lpe-step__left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
     .lpe-step__num {
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    border: 1px solid rgba(60,120,255,0.45);
-    background: rgba(20,50,180,0.2);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 12px; font-weight: 700; color: #6ea4ff; letter-spacing: 0.05em;
+        width: 40px; height: 40px; border-radius: 50%;
+        border: 1px solid rgba(60,120,255,0.45);
+        background: rgba(20,50,180,0.2);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 12px; font-weight: 700; color: #6ea4ff; letter-spacing: 0.05em;
     }
-    .lpe-step__line {
-    width: 1px; flex: 1; min-height: 32px;
-    background: linear-gradient(to bottom, rgba(60,120,255,0.35), rgba(60,120,255,0.05));
-    margin: 6px 0;
-    }
+    .lpe-step__line { width: 1px; flex: 1; min-height: 32px; background: linear-gradient(to bottom, rgba(60,120,255,0.35), rgba(60,120,255,0.05)); margin: 6px 0; }
     .lpe-step__body { padding-bottom: 36px; }
     .lpe-step:last-child .lpe-step__body { padding-bottom: 0; }
     .lpe-step__body h4 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 6px; margin-top: 8px; }
     .lpe-step__body p { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.45); }
     @media (max-width: 768px) {
-    .lpe-grid { grid-template-columns: 1fr; gap: 40px; }
-    .lpe-card { padding: 36px 24px; }
+        .lpe-grid { grid-template-columns: 1fr; gap: 40px; }
+        .lpe-card { padding: 36px 24px; }
     }
 
     /* ════════════════════════════════════════════════════════
@@ -1123,71 +1440,18 @@
     .lp-proof-lbl                           { color: rgba(255,255,255,0.48) !important; font-size: 0.72rem !important; }
     .lp-hero__row-copy p                    { color: rgba(255,255,255,0.62) !important; font-size: 0.95rem !important; }
     .lp-hero__row-bullets li                { color: rgba(255,255,255,0.72) !important; font-size: 0.875rem !important; }
-    .lp-feat-card p                         { color: rgba(255,255,255,0.62) !important; font-size: 0.9rem !important; }
-    .lp-feat-tag                            { color: rgba(255,255,255,0.55) !important; }
-    .lp-ep__name                            { color: rgba(255,255,255,0.95) !important; }
-    .lp-ep__addr                            { color: rgba(255,255,255,0.48) !important; }
-    .lp-ep__time                            { color: rgba(255,255,255,0.42) !important; }
-    .lp-ep__subject                         { color: rgba(255,255,255,0.85) !important; }
-    .lp-ep__row span:first-child            { color: rgba(255,255,255,0.42) !important; font-size: 0.72rem !important; }
-    .lp-ep__row span:last-child             { color: rgba(255,255,255,0.82) !important; font-size: 0.8rem !important; }
-    .lp-step__body p                        { color: rgba(255,255,255,0.62) !important; font-size: 0.9rem !important; }
-    .lp-step__snippet                       { color: rgba(255,255,255,0.75) !important; font-size: 0.78rem !important; }
+    .lp-email__card-meta                    { color: rgba(255,255,255,0.52) !important; font-size: 0.72rem !important; }
+    .lp-email__card-caption                 { color: rgba(255,255,255,0.58) !important; font-size: 0.76rem !important; }
+    .lp-email__field-key                    { color: rgba(255,255,255,0.45) !important; font-size: 0.65rem !important; }
+    .lp-email__field-val                    { color: rgba(255,255,255,0.88) !important; font-size: 0.78rem !important; }
     .lp-section-head p                      { color: rgba(255,255,255,0.65) !important; font-size: 1.02rem !important; }
-    .lp-dm__stat-lbl                        { color: rgba(255,255,255,0.52) !important; font-size: 0.7rem !important; }
-    .lp-dm__td-endpoint                     { color: rgba(255,255,255,0.48) !important; }
-    .lp-dm__td-muted                        { color: rgba(255,255,255,0.45) !important; }
-    .lp-dm__table th                        { color: rgba(255,255,255,0.48) !important; font-size: 0.68rem !important; }
-    .lp-dm__table td                        { color: rgba(255,255,255,0.72) !important; font-size: 0.82rem !important; }
-    .lp-dm__nav-item                        { color: rgba(255,255,255,0.58) !important; font-size: 0.82rem !important; }
     .lp-cta__inner p:not(.lp-cta__note)    { color: rgba(255,255,255,0.65) !important; }
     .lp-cta__note                           { color: rgba(255,255,255,0.35) !important; }
     .banner-content p                       { color: rgba(255,255,255,0.65) !important; }
     .banner-description                     { color: rgba(255,255,255,0.55) !important; }
     .lp-pt__footer                          { color: rgba(255,255,255,0.4) !important; font-size: 0.82rem !important; }
-    .lp-dash__stat-lbl                      { color: rgba(255,255,255,0.48) !important; }
-    .lp-dash__form-sub                      { color: rgba(255,255,255,0.48) !important; }
-    .lp-dash__nav-item                      { color: rgba(255,255,255,0.58) !important; font-size: 0.72rem !important; }
-    .lp-email__card-meta                    { color: rgba(255,255,255,0.52) !important; font-size: 0.72rem !important; }
-    .lp-email__card-caption                 { color: rgba(255,255,255,0.58) !important; font-size: 0.76rem !important; }
-    .lp-email__field-key                    { color: rgba(255,255,255,0.45) !important; font-size: 0.65rem !important; }
-    .lp-email__field-val                    { color: rgba(255,255,255,0.88) !important; font-size: 0.78rem !important; }
 
     /* ════════════════════════════════════════════════════════
-    RESPONSIVE
-    ════════════════════════════════════════════════════════ */
-    @media (max-width: 1024px) {
-        .lpc-layout { gap: 3.5rem; }
-        .lpe-grid   { gap: 3.5rem; }
-    }
-
-    @media (max-width: 860px) {
-        .lpc-layout {
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
-        }
-        .lpc-left { position: static; }
-        .lpe-grid {
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
-        }
-        /* On mobile: copy above steps for Express */
-        .lpe-copy  { order: 1; }
-        .lpe-steps { order: 2; }
-
-        .lpc-section { padding: 4rem 0 3.5rem; }
-        .lpe-section  { padding: 3.5rem 0 4rem; }
-    }
-
-    @media (max-width: 640px) {
-        .lpc-title, .lpe-title { font-size: 1.7rem; }
-        .lpc-cta, .lpe-cta { width: 100%; justify-content: center; }
-        .lpc-bottom-cta { flex-direction: column; align-items: stretch; }
-        .lpc-bottom-cta .lp-btn { justify-content: center; }
-    }
-
-
-            /* ════════════════════════════════════════════════════════
     GLOBAL / CONTAINER
     ════════════════════════════════════════════════════════ */
     .lp-container {
@@ -1206,11 +1470,7 @@
         overflow: hidden;
     }
 
-    .lp-hero__bg {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-    }
+    .lp-hero__bg { position: absolute; inset: 0; pointer-events: none; }
 
     .lp-glow {
         position: absolute;
@@ -1219,94 +1479,39 @@
         pointer-events: none;
     }
 
-    .lp-glow--1 {
-        width: 700px; height: 700px;
-        background: var(--accent, #00ff88);
-        opacity: 0.07;
-        top: -300px; right: -200px;
-    }
-
-    .lp-glow--2 {
-        width: 500px; height: 500px;
-        background: #0077ff;
-        opacity: 0.05;
-        bottom: -200px; left: -100px;
-    }
-
-    .lp-glow--4 {
-        width: 700px; height: 700px;
-        background: var(--accent, #00ff88);
-        opacity: 0.07;
-        top: 3700px; right: -200px;
-    }
-
-    .lp-glow--3 {
-        width: 500px; height: 500px;
-        background: #0077ff;
-        opacity: 0.05;
-        top: 4000px; left: -100px;
-    }
+    .lp-glow--1 { width: 700px; height: 700px; background: var(--accent,#00ff88); opacity: 0.07; top: -300px; right: -200px; }
+    .lp-glow--2 { width: 500px; height: 500px; background: #0077ff; opacity: 0.05; bottom: -200px; left: -100px; }
+    .lp-glow--4 { width: 700px; height: 700px; background: var(--accent,#00ff88); opacity: 0.07; top: 3700px; right: -200px; }
+    .lp-glow--3 { width: 500px; height: 500px; background: #0077ff; opacity: 0.05; top: 4000px; left: -100px; }
 
     .lp-grid {
-        position: absolute;
-        inset: 0;
-        background-image:
-            linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+        position: absolute; inset: 0;
+        background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
         background-size: 48px 48px;
         mask-image: radial-gradient(ellipse 80% 90% at 50% 0%, black 20%, transparent 100%);
     }
 
     .lp-noise {
-        position: absolute;
-        inset: 0;
-        opacity: 0.018;
+        position: absolute; inset: 0; opacity: 0.018;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
-    .lp-hero .lp-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 4rem;
-        position: relative;
-        z-index: 2;
-    }
+    .lp-hero .lp-container { display: flex; flex-direction: column; align-items: center; gap: 4rem; position: relative; z-index: 2; }
 
-    /* ── Center copy block ── */
-    .lp-hero__center {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 1.5rem;
-        max-width: 720px;
-        width: 100%;
-    }
+    .lp-hero__center { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.5rem; max-width: 720px; width: 100%; }
 
-    /* Badge */
     .lp-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 0.4rem 1rem 0.4rem 0.75rem;
-        border-radius: 100px;
-        background: rgba(0,255,136,0.07);
-        border: 1px solid rgba(0,255,136,0.2);
-        color: var(--accent, #00ff88);
-        font-size: 0.78rem;
-        font-weight: 600;
-        text-decoration: none;
-        width: fit-content;
-        transition: all 0.2s ease;
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 0.4rem 1rem 0.4rem 0.75rem; border-radius: 100px;
+        background: rgba(0,255,136,0.07); border: 1px solid rgba(0,255,136,0.2);
+        color: var(--accent,#00ff88); font-size: 0.78rem; font-weight: 600;
+        text-decoration: none; width: fit-content; transition: all 0.2s ease;
     }
-
     .lp-badge:hover { background: rgba(0,255,136,0.12); border-color: rgba(0,255,136,0.35); }
 
     .lp-badge__dot {
-        width: 7px; height: 7px;
-        border-radius: 50%;
-        background: var(--accent, #00ff88);
+        width: 7px; height: 7px; border-radius: 50%;
+        background: var(--accent,#00ff88);
         box-shadow: 0 0 0 3px rgba(0,255,136,0.2);
         animation: lp-pulse 2s infinite;
     }
@@ -1316,1336 +1521,163 @@
         50%       { box-shadow: 0 0 0 6px rgba(0,255,136,0.05); }
     }
 
-    .lp-hero__title {
-        font-size: clamp(2.8rem, 5.5vw, 4.5rem);
-        font-weight: 800;
-        line-height: 1.06;
-        letter-spacing: -0.035em;
-        color: var(--text-primary, #fff);
-        margin: 0;
-    }
+    .lp-hero__title { font-size: clamp(2.8rem,5.5vw,4.5rem); font-weight: 800; line-height: 1.06; letter-spacing: -0.035em; color: var(--text-primary,#fff); margin: 0; }
 
     .lp-hero__accent {
-        background: linear-gradient(120deg, var(--accent, #00ff88) 0%, #78b4ff 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        background: linear-gradient(120deg, var(--accent,#00ff88) 0%, #78b4ff 100%);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
-    .lp-hero__desc {
-        font-size: 1.05rem;
-        line-height: 1.75;
-        color: var(--text-secondary, rgba(255,255,255,0.55));
-        max-width: 560px;
-        margin: 0;
-    }
+    .lp-hero__desc { font-size: 1.05rem; line-height: 1.75; color: var(--text-secondary,rgba(255,255,255,0.55)); max-width: 560px; margin: 0; }
 
     .lp-code-inline {
-        font-family: 'SF Mono', 'Fira Code', monospace;
-        font-size: 0.9em;
-        background: rgba(0,255,136,0.1);
-        border: 1px solid rgba(0,255,136,0.2);
-        color: var(--accent, #00ff88);
-        padding: 0.1em 0.45em;
-        border-radius: 4px;
+        font-family: 'SF Mono','Fira Code',monospace; font-size: 0.9em;
+        background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.2);
+        color: var(--accent,#00ff88); padding: 0.1em 0.45em; border-radius: 4px;
     }
 
-    .lp-hero__actions {
-        display: flex;
-        gap: 0.85rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+    .lp-hero__actions { display: flex; gap: 0.85rem; flex-wrap: wrap; justify-content: center; }
 
-    .lp-hero__proof {
-        display: flex;
-        align-items: center;
-        gap: 1.75rem;
-        padding-top: 0.25rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+    .lp-hero__proof { display: flex; align-items: center; gap: 1.75rem; padding-top: 0.25rem; flex-wrap: wrap; justify-content: center; }
 
-    .lp-proof-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 3px;
-    }
+    .lp-proof-item { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .lp-proof-num { font-size: 1.5rem; font-weight: 800; color: var(--text-primary,#fff); line-height: 1; }
+    .lp-proof-lbl { font-size: 0.65rem; color: var(--text-muted,rgba(255,255,255,0.3)); text-transform: uppercase; letter-spacing: 0.07em; }
+    .lp-proof-sep { width: 1px; height: 32px; background: var(--border-color,rgba(255,255,255,0.1)); }
 
-    .lp-proof-num {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: var(--text-primary, #fff);
-        line-height: 1;
-    }
+    .lp-hero__rows { display: flex; flex-direction: column; gap: 5rem; width: 100%; max-width: 1100px; }
 
-    .lp-proof-lbl {
-        font-size: 0.65rem;
-        color: var(--text-muted, rgba(255,255,255,0.3));
-        text-transform: uppercase;
-        letter-spacing: 0.07em;
-    }
+    .lp-hero__row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 4rem; align-items: center; }
+    .lp-hero__row--reverse { grid-template-columns: 1fr 1.4fr; }
 
-    .lp-proof-sep {
-        width: 1px; height: 32px;
-        background: var(--border-color, rgba(255,255,255,0.1));
-    }
+    .lp-hero__row-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--accent,#00ff88); margin-bottom: 0.85rem; }
 
-    /* ── Hero alternating rows ── */
-    .lp-hero__rows {
-        display: flex;
-        flex-direction: column;
-        gap: 5rem;
-        width: 100%;
-        max-width: 1100px;
-    }
+    .lp-hero__row-copy h3 { font-size: clamp(1.5rem,2.5vw,2rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.025em; color: var(--text-primary,#fff); margin: 0 0 1rem; }
+    .lp-hero__row-copy p  { font-size: 0.92rem; line-height: 1.75; color: var(--text-secondary,rgba(255,255,255,0.5)); margin: 0 0 1.35rem; }
 
-    .lp-hero__row {
-        display: grid;
-        grid-template-columns: 1.4fr 1fr;
-        gap: 4rem;
-        align-items: center;
-    }
+    .lp-hero__row-bullets { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+    .lp-hero__row-bullets li { display: flex; align-items: center; gap: 9px; font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+    .lp-hero__row-bullets li svg { color: var(--accent,#00ff88); flex-shrink: 0; }
 
-    .lp-hero__row--reverse {
-        grid-template-columns: 1fr 1.4fr;
-    }
+    .lp-prev { display: flex; flex-direction: column; gap: 0.6rem; }
+    .lp-prev__label { display: flex; align-items: center; gap: 6px; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.25); }
 
-    .lp-hero__row-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.7rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.09em;
-        color: var(--accent, #00ff88);
-        margin-bottom: 0.85rem;
-    }
-
-    .lp-hero__row-copy h3 {
-        font-size: clamp(1.5rem, 2.5vw, 2rem);
-        font-weight: 800;
-        line-height: 1.15;
-        letter-spacing: -0.025em;
-        color: var(--text-primary, #fff);
-        margin: 0 0 1rem;
-    }
-
-    .lp-hero__row-copy p {
-        font-size: 0.92rem;
-        line-height: 1.75;
-        color: var(--text-secondary, rgba(255,255,255,0.5));
-        margin: 0 0 1.35rem;
-    }
-
-    .lp-hero__row-bullets {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 0.6rem;
-    }
-
-    .lp-hero__row-bullets li {
-        display: flex;
-        align-items: center;
-        gap: 9px;
-        font-size: 0.85rem;
-        color: rgba(255,255,255,0.6);
-    }
-
-    .lp-hero__row-bullets li svg {
-        color: var(--accent, #00ff88);
-        flex-shrink: 0;
-    }
-
-    /* ── Preview panels ── */
-    .lp-prev {
-        display: flex;
-        flex-direction: column;
-        gap: 0.6rem;
-    }
-
-    .lp-prev__label {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.68rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: rgba(255,255,255,0.25);
-    }
-
-    /* ── Dashboard mock (hero) ── */
-    .lp-dash {
-        display: flex;
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 14px;
-        overflow: hidden;
-        background: #0d0f10;
-        box-shadow: 0 30px 80px rgba(0,0,0,0.5);
-        font-size: 0.72rem;
-    }
-
-    .lp-dash__side {
-        width: 148px;
-        flex-shrink: 0;
-        border-right: 1px solid rgba(255,255,255,0.07);
-        padding: 1rem 0.75rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        background: rgba(255,255,255,0.015);
-    }
-
-    .lp-dash__logo {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.82rem;
-        font-weight: 700;
-        color: rgba(255,255,255,0.9);
-        padding: 0 0.25rem;
-    }
-
-    .lp-dash__logo b { color: var(--accent, #00ff88); font-weight: 800; }
-
-    .lp-dash__user {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: rgba(0,255,136,0.08);
-        border: 1px solid rgba(0,255,136,0.15);
-        border-radius: 8px;
-        padding: 0.45rem 0.6rem;
-        font-size: 0.65rem;
-        color: rgba(255,255,255,0.6);
-        overflow: hidden;
-    }
-
-    .lp-dash__avatar {
-        width: 20px; height: 20px;
-        border-radius: 50%;
-        background: var(--accent, #00ff88);
-        color: #000;
-        font-weight: 800;
-        font-size: 0.65rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }
-
-    .lp-dash__user span {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .lp-dash__nav {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-    }
-
-    .lp-dash__nav-item {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 0.45rem 0.6rem;
-        border-radius: 7px;
-        font-size: 0.7rem;
-        color: rgba(255,255,255,0.4);
-        cursor: pointer;
-        transition: all 0.15s;
-    }
-
-    .lp-dash__nav-item--active {
-        background: rgba(0,255,136,0.08);
-        color: var(--accent, #00ff88);
-        border: 1px solid rgba(0,255,136,0.15);
-    }
-
-    .lp-dash__main {
-        flex: 1;
-        padding: 0.9rem 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        overflow: hidden;
-    }
-
-    .lp-dash__topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .lp-dash__page-title {
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: rgba(255,255,255,0.9);
-    }
-
-    .lp-dash__new-btn {
-        background: var(--accent, #00ff88);
-        color: #000;
-        font-size: 0.65rem;
-        font-weight: 700;
-        padding: 0.35rem 0.75rem;
-        border-radius: 7px;
-        cursor: pointer;
-    }
-
-    .lp-dash__stats {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.5rem;
-    }
-
-    .lp-dash__stat {
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.07);
-        border-radius: 8px;
-        padding: 0.55rem 0.65rem;
-    }
-
-    .lp-dash__stat-lbl {
-        font-size: 0.6rem;
-        color: rgba(255,255,255,0.3);
-        margin-bottom: 3px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .lp-dash__stat-val {
-        font-size: 1.05rem;
-        font-weight: 800;
-        color: rgba(255,255,255,0.9);
-        letter-spacing: -0.02em;
-    }
-
-    .lp-dash__stat-val--green { color: var(--accent, #00ff88); }
-    .lp-dash__stat-val--red   { color: #ff5555; }
-
-    .lp-dash__forms-head {
-        font-size: 0.6rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: rgba(255,255,255,0.2);
-    }
-
-    .lp-dash__form-row {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        background: rgba(255,255,255,0.02);
-        border: 1px solid rgba(255,255,255,0.06);
-        border-radius: 8px;
-        padding: 0.55rem 0.7rem;
-    }
-
-    .lp-dash__form-dot {
-        width: 6px; height: 6px;
-        border-radius: 50%;
-        flex-shrink: 0;
-    }
-
-    .lp-dash__form-dot--on { background: var(--accent, #00ff88); box-shadow: 0 0 0 2px rgba(0,255,136,0.2); }
-
-    .lp-dash__form-name {
-        font-size: 0.72rem;
-        font-weight: 600;
-        color: rgba(255,255,255,0.8);
-        flex: 1;
-    }
-
-    .lp-dash__form-sub {
-        font-size: 0.62rem;
-        color: rgba(255,255,255,0.3);
-    }
-
-    .lp-dash__form-badge {
-        font-size: 0.58rem;
-        font-weight: 700;
-        background: rgba(0,255,136,0.1);
-        border: 1px solid rgba(0,255,136,0.2);
-        color: var(--accent, #00ff88);
-        padding: 0.15rem 0.5rem;
-        border-radius: 100px;
-    }
-
-    /* ── Email preview (hero) ── */
-    .lp-email {
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 14px;
-        overflow: hidden;
-        background: #fff;
-        box-shadow: 0 24px 64px rgba(0,0,0,0.45);
-    }
-
-    .lp-email__chrome {
-        background: #f5f5f5;
-        border-bottom: 1px solid #e0e0e0;
-        padding: 0.65rem 1rem;
-    }
-
-    .lp-email__from-row {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-    }
-
-    .lp-email__sender-avatar {
-        width: 28px; height: 28px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #1a1a1a, #333);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.72rem;
-        font-weight: 800;
-        color: var(--accent, #00ff88);
-        flex-shrink: 0;
-    }
-
-    .lp-email__sender-name {
-        font-size: 0.78rem;
-        font-weight: 700;
-        color: #1a1a1a;
-    }
-
-    .lp-email__sender-to {
-        font-size: 0.65rem;
-        color: #666;
-    }
-
-    .lp-email__body {
-        padding: 1rem;
-        background: #f9f9f9;
-    }
-
-    .lp-email__card {
-        background: #111;
-        border-radius: 10px;
-        overflow: hidden;
-        padding: 1.1rem 1.25rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.6rem;
-    }
-
-    .lp-email__card-logo {
-        font-size: 0.88rem;
-        font-weight: 800;
-        letter-spacing: -0.01em;
-        margin-bottom: 0.15rem;
-    }
-
-    .lp-email__logo-green { color: var(--accent, #00ff88); }
-    .lp-email__logo-white { color: #fff; }
-
-    .lp-email__card-title {
-        font-size: 0.92rem;
-        font-weight: 700;
-        color: #fff;
-    }
-
-    .lp-email__card-divider {
-        height: 1px;
-        background: rgba(255,255,255,0.08);
-        margin: 0.15rem 0;
-    }
-
-    .lp-email__card-meta {
-        font-size: 0.68rem;
-        color: rgba(255,255,255,0.35);
-    }
-
-    .lp-email__card-caption {
-        font-size: 0.7rem;
-        color: rgba(255,255,255,0.4);
-    }
-
-    .lp-email__card-fields {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        margin-top: 0.25rem;
-    }
-
-    .lp-email__field {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-    }
-
-    .lp-email__field-key {
-        font-size: 0.6rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        color: rgba(255,255,255,0.28);
-        text-transform: uppercase;
-    }
-
-    .lp-email__field-val {
-        font-size: 0.75rem;
-        color: rgba(255,255,255,0.85);
-        line-height: 1.4;
-    }
-
+    /* ════════════════════════════════════════════════════════
+    EMAIL PREVIEW
+    ════════════════════════════════════════════════════════ */
+    .lp-email { border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 24px 64px rgba(0,0,0,0.45); }
+    .lp-email__chrome { background: #f5f5f5; border-bottom: 1px solid #e0e0e0; padding: 0.65rem 1rem; }
+    .lp-email__from-row { display: flex; align-items: center; gap: 0.6rem; }
+    .lp-email__sender-avatar { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg,#1a1a1a,#333); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800; color: var(--accent,#00ff88); flex-shrink: 0; }
+    .lp-email__sender-name { font-size: 0.78rem; font-weight: 700; color: #1a1a1a; }
+    .lp-email__sender-to { font-size: 0.65rem; color: #666; }
+    .lp-email__body { padding: 1rem; background: #f9f9f9; }
+    .lp-email__card { background: #111; border-radius: 10px; overflow: hidden; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .lp-email__card-title { font-size: 0.92rem; font-weight: 700; color: #fff; }
+    .lp-email__card-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 0.15rem 0; }
+    .lp-email__card-meta { font-size: 0.68rem; color: rgba(255,255,255,0.35); }
+    .lp-email__card-caption { font-size: 0.7rem; color: rgba(255,255,255,0.4); }
+    .lp-email__card-fields { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.25rem; }
+    .lp-email__field { display: flex; flex-direction: column; gap: 2px; }
+    .lp-email__field-key { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; color: rgba(255,255,255,0.28); text-transform: uppercase; }
+    .lp-email__field-val { font-size: 0.75rem; color: rgba(255,255,255,0.85); line-height: 1.4; }
     .lp-email__field-val--link { color: #79aaff; }
 
     /* ════════════════════════════════════════════════════════
     BUTTONS
     ════════════════════════════════════════════════════════ */
-    .lp-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-weight: 600;
-        font-size: 0.9rem;
-        text-decoration: none;
-        border-radius: 10px;
-        padding: 0.75rem 1.5rem;
-        border: none;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        white-space: nowrap;
-    }
-
+    .lp-btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.9rem; text-decoration: none; border-radius: 10px; padding: 0.75rem 1.5rem; border: none; cursor: pointer; transition: all 0.2s ease; white-space: nowrap; }
     .lp-btn--lg  { padding: 0.875rem 1.75rem; font-size: 0.95rem; }
     .lp-btn--xl  { padding: 1.1rem 2.25rem; font-size: 1.05rem; border-radius: 12px; }
-
-    .lp-btn--primary {
-        background: var(--accent, #00ff88);
-        color: #000;
-    }
+    .lp-btn--primary { background: var(--accent,#00ff88); color: #000; }
     .lp-btn--primary:hover { background: #00e87a; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,255,136,0.3); }
-
-    .lp-btn--ghost {
-        background: transparent;
-        color: var(--text-primary, #fff);
-        border: 1px solid rgba(255,255,255,0.15);
-    }
+    .lp-btn--ghost { background: transparent; color: var(--text-primary,#fff); border: 1px solid rgba(255,255,255,0.15); }
     .lp-btn--ghost:hover { border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.04); transform: translateY(-2px); }
 
     /* ════════════════════════════════════════════════════════
     SECTION HEADER
     ════════════════════════════════════════════════════════ */
-    .lp-section-head {
-        text-align: center;
-        max-width: 640px;
-        margin: 0 auto 4rem;
-    }
-
-    .lp-section-tag {
-        display: inline-block;
-        font-family: var(--font-mono, monospace);
-        font-size: 0.68rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--accent, #00ff88);
-        background: rgba(0,255,136,0.08);
-        border: 1px solid rgba(0,255,136,0.2);
-        padding: 0.25rem 0.85rem;
-        border-radius: 100px;
-        margin-bottom: 1.25rem;
-    }
-
-    .lp-section-head h2 {
-        font-size: clamp(1.8rem, 3.5vw, 2.75rem);
-        font-weight: 800;
-        line-height: 1.15;
-        letter-spacing: -0.025em;
-        color: var(--text-primary, #fff);
-        margin: 0 0 1rem;
-    }
-
-    .lp-section-head p {
-        font-size: 1rem;
-        color: var(--text-secondary, rgba(255,255,255,0.55));
-        line-height: 1.65;
-        margin: 0;
-    }
-
+    .lp-section-head { text-align: center; max-width: 640px; margin: 0 auto 4rem; }
+    .lp-section-tag { display: inline-block; font-family: var(--font-mono,monospace); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent,#00ff88); background: rgba(0,255,136,0.08); border: 1px solid rgba(0,255,136,0.2); padding: 0.25rem 0.85rem; border-radius: 100px; margin-bottom: 1.25rem; }
+    .lp-section-head h2 { font-size: clamp(1.8rem,3.5vw,2.75rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.025em; color: var(--text-primary,#fff); margin: 0 0 1rem; }
+    .lp-section-head p { font-size: 1rem; color: var(--text-secondary,rgba(255,255,255,0.55)); line-height: 1.65; margin: 0; }
     .lp-dim { color: rgba(255,255,255,0.3); }
-    .lp-accent-text { color: var(--accent, #00ff88); }
-
-    /* ════════════════════════════════════════════════════════
-    FEATURES
-    ════════════════════════════════════════════════════════ */
-    .lp-features {
-        padding: 6rem 0;
-        background: linear-gradient(to bottom, transparent, rgba(0,255,136,0.015), transparent);
-    }
-
-    .lp-feat-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.25rem;
-    }
-
-    .lp-feat-card {
-        background: var(--bg-card, rgba(255,255,255,0.03));
-        border: 1px solid var(--border-color, rgba(255,255,255,0.08));
-        border-radius: 18px;
-        padding: 1.75rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        transition: all 0.25s ease;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .lp-feat-card::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        background: radial-gradient(circle at top left, rgba(0,255,136,0.04), transparent 60%);
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-
-    .lp-feat-card:hover { transform: translateY(-4px); border-color: rgba(0,255,136,0.2); box-shadow: 0 16px 48px rgba(0,255,136,0.08); }
-    .lp-feat-card:hover::before { opacity: 1; }
-
-    .lp-feat-card--wide { grid-column: span 2; }
-
-    .lp-feat-card__icon {
-        width: 44px; height: 44px;
-        border-radius: 12px;
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: rgba(255,255,255,0.6);
-        flex-shrink: 0;
-    }
-
-    .lp-feat-card__icon--accent {
-        background: rgba(0,255,136,0.1);
-        border-color: rgba(0,255,136,0.25);
-        color: var(--accent, #00ff88);
-    }
-
-    .lp-feat-card h3 {
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--text-primary, #fff);
-        margin: 0;
-    }
-
-    .lp-feat-card p {
-        font-size: 0.875rem;
-        line-height: 1.65;
-        color: var(--text-secondary, rgba(255,255,255,0.5));
-        margin: 0;
-    }
-
-    .lp-feat-tag-row {
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-        margin-top: auto;
-        padding-top: 0.5rem;
-    }
-
-    .lp-feat-tag {
-        font-family: var(--font-mono, monospace);
-        font-size: 0.62rem;
-        font-weight: 600;
-        padding: 0.2rem 0.6rem;
-        border-radius: 4px;
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.1);
-        color: rgba(255,255,255,0.4);
-        letter-spacing: 0.03em;
-    }
-
-    .lp-feat-card__visual--email { margin-top: auto; }
-
-    .lp-email-preview {
-        background: rgba(0,0,0,0.3);
-        border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 12px;
-        padding: 1rem 1.25rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    .lp-ep__header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.75rem;
-    }
-
-    .lp-ep__from {
-        display: flex;
-        align-items: center;
-        gap: 0.65rem;
-    }
-
-    .lp-ep__avatar {
-        width: 30px; height: 30px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--accent, #00ff88), #78b4ff);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.75rem;
-        font-weight: 700;
-        color: #000;
-    }
-
-    .lp-ep__name { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.9); }
-    .lp-ep__addr { font-size: 0.68rem; color: rgba(255,255,255,0.3); }
-    .lp-ep__time { font-size: 0.68rem; color: rgba(255,255,255,0.2); }
-
-    .lp-ep__subject {
-        font-size: 0.78rem;
-        font-weight: 600;
-        color: rgba(255,255,255,0.7);
-    }
-
-    .lp-ep__rows {
-        display: flex;
-        flex-direction: column;
-        gap: 0.3rem;
-    }
-
-    .lp-ep__row {
-        display: flex;
-        gap: 0.75rem;
-        font-size: 0.75rem;
-    }
-
-    .lp-ep__row span:first-child {
-        min-width: 60px;
-        color: rgba(255,255,255,0.25);
-        font-weight: 600;
-        font-size: 0.68rem;
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
-    }
-
-    .lp-ep__row span:last-child { color: rgba(255,255,255,0.7); }
-
-    /* ════════════════════════════════════════════════════════
-    HOW IT WORKS
-    ════════════════════════════════════════════════════════ */
-    .lp-hiw { padding: 6rem 0; }
-
-    .lp-steps {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 3rem;
-        margin-bottom: 3.5rem;
-        position: relative;
-    }
-
-    .lp-steps::before {
-        content: '';
-        position: absolute;
-        top: 1.6rem;
-        left: calc(16.66% + 1.5rem);
-        right: calc(16.66% + 1.5rem);
-        height: 1px;
-        background: linear-gradient(to right, rgba(0,255,136,0.3), rgba(0,255,136,0.1), rgba(0,255,136,0.3));
-    }
-
-    .lp-step {
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-        position: relative;
-    }
-
-    .lp-step__num {
-        width: 52px; height: 52px;
-        border-radius: 50%;
-        background: var(--bg-card, rgba(255,255,255,0.03));
-        border: 1px solid rgba(0,255,136,0.3);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--font-mono, monospace);
-        font-size: 0.85rem;
-        font-weight: 700;
-        color: var(--accent, #00ff88);
-        position: relative;
-        z-index: 1;
-    }
-
-    .lp-step__line { display: none; }
-
-    .lp-step__body h3 {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: var(--text-primary, #fff);
-        margin: 0 0 0.5rem;
-    }
-
-    .lp-step__body p {
-        font-size: 0.875rem;
-        line-height: 1.65;
-        color: var(--text-secondary, rgba(255,255,255,0.5));
-        margin: 0;
-    }
-
-    .lp-step__link {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        margin-top: 0.75rem;
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: var(--accent, #00ff88);
-        text-decoration: none;
-        transition: gap 0.2s;
-    }
-    .lp-step__link:hover { gap: 10px; }
-
-    .lp-step__snippet {
-        margin-top: 0.75rem;
-        background: rgba(0,0,0,0.3);
-        border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 8px;
-        padding: 0.6rem 0.9rem;
-        font-family: 'SF Mono', 'Fira Code', monospace;
-        font-size: 0.72rem;
-        line-height: 1.6;
-        color: rgba(255,255,255,0.6);
-        overflow-x: auto;
-    }
-
-    .lp-hiw__cta {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
+    .lp-accent-text { color: var(--accent,#00ff88); }
 
     /* ════════════════════════════════════════════════════════
     DASHBOARD PREVIEW SECTION
     ════════════════════════════════════════════════════════ */
-    .lp-preview {
-        padding: 6rem 0;
-        background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3), transparent);
-    }
-
-    .lp-dashboard-mock {
-        display: flex;
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 40px 100px rgba(0,0,0,0.5);
-        background: #121316;
-        margin-top: 1rem;
-        font-size: 0.82rem;
-        transition: all 0.5s ease;
-    }
-
-    .lp-dm__sidebar {
-        width: 220px;
-        flex-shrink: 0;
-        background: #0d0f12;
-        border-right: 1px solid rgba(255,255,255,0.07);
-        padding: 1.5rem 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-    }
-
-    .lp-dm__logo {
-        font-size: 1.3rem;
-        font-weight: 800;
-        color: rgba(255,255,255,0.9);
-        letter-spacing: -0.02em;
-        padding: 0 0.5rem;
-        margin-bottom: 1.25rem;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .lp-dm__logo span { color: var(--accent, #00ff88); }
-
-    .lp-dm__user-chip {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        background: rgba(0,255,136,0.07);
-        border: 1px solid rgba(0,255,136,0.15);
-        border-radius: 10px;
-        padding: 0.55rem 0.75rem;
-        margin-bottom: 1.25rem;
-    }
-
-    .lp-dm__user-avatar {
-        width: 26px; height: 26px;
-        border-radius: 50%;
-        background: var(--accent, #00ff88);
-        color: #000;
-        font-weight: 800;
-        font-size: 0.72rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }
-
-    .lp-dm__user-email {
-        font-size: 0.72rem;
-        color: rgba(255,255,255,0.55);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .lp-dm__nav {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-    }
-
-    .lp-dm__nav--bottom {
-        margin-top: auto;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .lp-dm__nav-item {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        padding: 0.6rem 0.75rem;
-        border-radius: 8px;
-        font-size: 0.8rem;
-        color: rgba(255,255,255,0.45);
-        cursor: pointer;
-        transition: all 0.15s;
-    }
-
-    .lp-dm__nav-item:hover { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.8); }
-
-    .lp-dm__nav-item--active {
-        background: rgba(0,255,136,0.08);
-        color: var(--accent, #00ff88);
-        border: 1px solid rgba(0,255,136,0.15);
-    }
-
-    .lp-dm__main {
-        flex: 1;
-        padding: 1.5rem 1.75rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        overflow: hidden;
-        background: #121316;
-    }
-
-    .lp-dm__topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .lp-dm__topbar-title {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: rgba(255,255,255,0.95);
-    }
-
-    .lp-dm__btn {
-        background: var(--accent, #00ff88);
-        color: #000;
-        font-size: 0.78rem;
-        font-weight: 700;
-        padding: 0.55rem 1.1rem;
-        border-radius: 8px;
-        cursor: pointer;
-    }
-
-    .lp-dm__stats {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 0.75rem;
-    }
-
-    .lp-dm__stat {
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.07);
-        border-radius: 12px;
-        padding: 1rem 0.85rem;
-    }
-
-    .lp-dm__stat-lbl {
-        font-size: 0.65rem;
-        color: rgba(255,255,255,0.35);
-        margin-bottom: 6px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        font-weight: 600;
-    }
-
-    .lp-dm__stat-val {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: rgba(255,255,255,0.9);
-        letter-spacing: -0.03em;
-        line-height: 1;
-    }
-
-    .lp-dm__stat-val--green { color: var(--accent, #00ff88); }
-    .lp-dm__stat-val--red   { color: #ff4949; }
-
-    .lp-dm__stat-new {
-        font-size: 0.7rem;
-        font-weight: 700;
-        color: rgba(255,255,255,0.5);
-    }
-
-    .lp-dm__table-wrap {
-        border: 1px solid rgba(255,255,255,0.07);
-        border-radius: 12px;
-        overflow: hidden;
-    }
-
-    .lp-dm__table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 0.78rem;
-    }
-
-    .lp-dm__table thead tr {
-        background: rgba(255,255,255,0.03);
-        border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-
-    .lp-dm__table th {
-        padding: 0.7rem 1rem;
-        text-align: left;
-        font-size: 0.65rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.07em;
-        color: rgba(255,255,255,0.3);
-    }
-
-    .lp-dm__table tbody tr {
-        border-bottom: 1px solid rgba(255,255,255,0.04);
-        transition: background 0.15s;
-    }
-
-    .lp-dm__table tbody tr:last-child { border-bottom: none; }
-    .lp-dm__table tbody tr:hover { background: rgba(255,255,255,0.02); }
-
-    .lp-dm__table td {
-        padding: 0.85rem 1rem;
-        color: rgba(255,255,255,0.6);
-    }
-
-    .lp-dm__td-name {
-        color: rgba(255,255,255,0.9) !important;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-    }
-
-    .lp-dm__new-badge {
-        font-size: 0.62rem;
-        font-weight: 700;
-        background: rgba(0,255,136,0.1);
-        border: 1px solid rgba(0,255,136,0.2);
-        color: var(--accent, #00ff88);
-        padding: 0.15rem 0.5rem;
-        border-radius: 100px;
-    }
-
-    .lp-dm__td-endpoint {
-        font-family: 'SF Mono', 'Fira Code', monospace;
-        font-size: 0.72rem;
-        color: rgba(255,255,255,0.3) !important;
-    }
-
-    .lp-dm__td-green { color: var(--accent, #00ff88) !important; font-weight: 700; }
-    .lp-dm__td-muted { color: rgba(255,255,255,0.3) !important; font-size: 0.75rem; }
-
-    .lp-dm__status-badge {
-        background: rgba(0,255,136,0.1);
-        border: 1px solid rgba(0,255,136,0.2);
-        color: var(--accent, #00ff88);
-        font-size: 0.65rem;
-        font-weight: 700;
-        padding: 0.2rem 0.65rem;
-        border-radius: 100px;
-    }
+    .lp-preview { padding: 6rem 0; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3), transparent); }
 
     /* ════════════════════════════════════════════════════════
     PRICING BANNER
     ════════════════════════════════════════════════════════ */
-
-    .lp-pricing-teaser {
-        padding: 4rem 1.5rem;
-        border-radius: 1.5rem;
-        max-width: 1400px;
-        margin: 0 auto;
-        transition: all 0.5s ease;
-    }
-
-    .lp-container {
-        max-width: 1050px;
-        margin: 0 auto;
-    }
-
-    .lp-section-head {
-        text-align: center;
-        margin-bottom: 2rem;
-    }
+    .lp-pricing-teaser { padding: 4rem 1.5rem; border-radius: 1.5rem; max-width: 1400px; margin: 0 auto; }
 
     .banner-inner {
-        border-radius: 1.5rem;
-        padding: 0 2.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        gap: 3rem;
-        margin: 2rem 0 2rem;
-        box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
-        transition: all 0.5s ease;
+        border-radius: 1.5rem; padding: 0 2.5rem;
+        display: flex; align-items: center; justify-content: flex-start;
+        flex-wrap: wrap; gap: 3rem; margin: 2rem 0 2rem;
     }
+    .banner-content { flex: 0 1 auto; max-width: 80%; }
+    .banner-content h2 { font-size: clamp(1.8rem,3.5vw,2.75rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.025em; color: var(--text-primary,#fff); margin: 0 0 1rem; }
+    .banner-content h2 .lp-dim { color: rgba(255,255,255,0.3); }
+    .banner-content p { font-size: 1rem; line-height: 1.65; color: rgba(255,255,255,0.5); max-width: 620px; margin: 0; }
+    .banner-description { font-size: 0.95rem; color: #94a3b8; margin-top: 0.5rem; }
+    .banner-decoration { flex-shrink: 0; }
 
-    .banner-content {
-        flex: 0 1 auto;
-        max-width: 80%;
-    }
+    .lp-pt__footer { text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.25); padding-top: 0.5rem; }
+    .lp-pt__footer a { color: var(--accent,#00ff88); text-decoration: none; font-weight: 600; opacity: 0.8; transition: opacity 0.2s; }
+    .lp-pt__footer a:hover { text-decoration: underline; }
 
-    .banner-content h2 {
-        font-size: clamp(1.8rem, 3.5vw, 2.75rem);
-        font-weight: 800;
-        line-height: 1.15;
-        letter-spacing: -0.025em;
-        color: var(--text-primary, #fff);
-        margin: 0 0 1rem;
-    }
-
-    .banner-content h2 .lp-dim {
-        color: rgba(255, 255, 255, 0.3)
-    }
-
-    .banner-content p {
-        font-size: 1rem;
-        line-height: 1.65;
-        color: rgba(255, 255, 255, 0.5);
-        max-width: 620px;
-        margin: 0;
-    }
-
-    .banner-description {
-        font-size: 0.95rem;
-        color: #94a3b8;
-        margin-top: 0.5rem;
-    }
-
-    .banner-decoration {
-        flex-shrink: 0;
-    }
-
-    .pricing-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.75rem;
-        background: white;
-        padding: 0.85rem 2rem;
-        border-radius: 3rem;
-        font-weight: 700;
-        font-size: 0.95rem;
-        color: #0f172a;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        white-space: nowrap;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .pricing-link:hover {
-        background: #f1f5f9;
-        transform: scale(1.02);
-        gap: 0.9rem;
-        box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.25);
-    }
-
-    .pricing-link svg {
-        width: 16px;
-        height: 16px;
-        stroke: #4f46e5;
-        stroke-width: 2.2;
-        transition: transform 0.2s ease;
-    }
-
-    .pricing-link:hover svg {
-        transform: translateX(4px);
-    }
-
-    .lp-pt__footer a:hover {
-        text-decoration: underline;
-    }
-
-    @media (max-width: 768px) {
-        body {
-            padding: 1rem;
-        }
-        .lp-pricing-teaser {
-            padding: 2rem 1rem;
-        }
-        .banner-inner {
-            flex-direction: column;
-            text-align: center;
-            padding: 2rem 1.5rem;
-            gap: 1.5rem;
-        }
-        .banner-content {
-            text-align: center;
-            max-width: 100%;
-        }
-        .banner-content h2 {
-            font-size: 1.5rem;
-        }
-        .pricing-link {
-            white-space: normal;
-            justify-content: center;
-        }
-    }
-    .lp-pt__footer {
-        text-align: center;
-        font-size: 0.78rem;
-        color: rgba(255,255,255,0.25);
-        padding-top: 0.5rem;
-    }
-
-    .lp-pt__footer a {
-        color: var(--accent, #00ff88);
-        text-decoration: none;
-        font-weight: 600;
-        opacity: 0.8;
-        transition: opacity 0.2s;
-    }
     /* ════════════════════════════════════════════════════════
     FINAL CTA
     ════════════════════════════════════════════════════════ */
-    .lp-cta {
-        padding: 7rem 0;
-        position: relative;
-        overflow: hidden;
-        text-align: center;
-    }
-
-    .lp-cta__bg {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-    }
-
-    .lp-cta__glow {
-        position: absolute;
-        width: 800px; height: 400px;
-        border-radius: 50%;
-        background: var(--accent, #00ff88);
-        filter: blur(200px);
-        opacity: 0.06;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    .lp-cta__inner {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-    }
-
-    .lp-cta__inner h2 {
-        font-size: clamp(2rem, 4vw, 3.25rem);
-        font-weight: 800;
-        line-height: 1.1;
-        letter-spacing: -0.03em;
-        color: var(--text-primary, #fff);
-        margin: 0;
-    }
-
-    .lp-cta__inner p {
-        font-size: 1rem;
-        line-height: 1.65;
-        color: rgba(255,255,255,0.5);
-        max-width: 520px;
-        margin: 0;
-    }
-
-    .lp-cta__note {
-        font-size: 0.78rem !important;
-        color: rgba(255,255,255,0.2) !important;
-    }
+    .lp-cta { padding: 7rem 0; position: relative; overflow: hidden; text-align: center; }
+    .lp-cta__bg { position: absolute; inset: 0; pointer-events: none; }
+    .lp-cta__glow { position: absolute; width: 800px; height: 400px; border-radius: 50%; background: var(--accent,#00ff88); filter: blur(200px); opacity: 0.06; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .lp-cta__inner { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+    .lp-cta__inner h2 { font-size: clamp(2rem,4vw,3.25rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; color: var(--text-primary,#fff); margin: 0; }
+    .lp-cta__inner p { font-size: 1rem; line-height: 1.65; color: rgba(255,255,255,0.5); max-width: 520px; margin: 0; }
+    .lp-cta__note { font-size: 0.78rem !important; color: rgba(255,255,255,0.2) !important; }
 
     /* ════════════════════════════════════════════════════════
     RESPONSIVE
     ════════════════════════════════════════════════════════ */
     @media (max-width: 1024px) {
-        .lp-feat-grid { grid-template-columns: repeat(2, 1fr); }
-        .lp-feat-card--wide { grid-column: span 2; }
-        .lp-dm__stats { grid-template-columns: repeat(3, 1fr); }
-        .lp-pt__grid { grid-template-columns: repeat(2, 1fr); }
+        .lpc-layout { gap: 3.5rem; }
         .lp-hero__row { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
         .lp-hero__row--reverse { grid-template-columns: 1fr 1fr; }
+        .rdm--full .rdm__stats { grid-template-columns: repeat(3,1fr); }
     }
 
     @media (max-width: 860px) {
         .lp-hero__rows { gap: 3.5rem; }
-        .lp-hero__row,
-        .lp-hero__row--reverse { grid-template-columns: 1fr; gap: 2rem; }
+        .lp-hero__row, .lp-hero__row--reverse { grid-template-columns: 1fr; gap: 2rem; }
         .lp-hero__row--reverse .lp-hero__row-copy { order: -1; }
-        .lp-steps { grid-template-columns: 1fr; gap: 2rem; }
-        .lp-steps::before { display: none; }
-        .lp-pt__grid { grid-template-columns: repeat(2, 1fr); }
-        .lp-dashboard-mock { flex-direction: column; }
-        .lp-dm__sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; align-items: center; padding: 1rem; gap: 0.75rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
-        .lp-dm__nav, .lp-dm__nav--bottom { flex-direction: row; flex-wrap: wrap; }
-        .lp-dm__nav--bottom { margin-top: 0; padding-top: 0; border-top: none; }
-        .lp-dm__stats { grid-template-columns: repeat(3, 1fr); }
-        .lp-pricing-banner__inner { justify-content: center; text-align: center; }
+        .lpc-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+        .lpc-left { position: static; }
+        .lpe-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+        .rdm__sidebar { width: 160px; }
+        .rdm--full { flex-direction: column; }
+        .rdm--full .rdm__sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+        .rdm--full .rdm__stats { grid-template-columns: repeat(3,1fr); }
+        .rdm__nav-section-label--bottom { margin-top: 0; }
+        .banner-inner { flex-direction: column; align-items: flex-start; padding: 0; }
     }
 
     @media (max-width: 640px) {
         .lp-hero { padding: 5rem 0 3rem; }
-        .lp-features, .lp-hiw, .lp-preview, .lp-pricing-teaser, .lp-cta { padding: 4rem 0; }
-        .lp-feat-grid { grid-template-columns: 1fr; }
-        .lp-feat-card--wide { grid-column: span 1; }
-        .lp-pt__grid { grid-template-columns: 1fr; }
+        .lp-preview, .lp-pricing-teaser, .lp-cta { padding: 4rem 0; }
         .lp-hero__proof { flex-wrap: wrap; }
-        .lp-dm__stats { grid-template-columns: repeat(2, 1fr); }
+        .rdm { flex-direction: column; }
+        .rdm__sidebar { width: 100%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 0.85rem; }
+        .rdm__stats { grid-template-columns: repeat(2,1fr); }
         .lp-container { padding: 0 1.25rem; }
-        .lp-pricing-banner { padding: 0.95rem 1.25rem; }
-        .lp-pricing-banner__left { justify-content: center; }
+        .lpe-card { padding: 36px 24px; }
+        .lpc-section { padding: 4rem 0 3.5rem; }
+        .lpe-section { padding: 3.5rem 0 4rem; }
     }
-
 </style>
 @endpush
 
@@ -2675,12 +1707,12 @@
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.08 });
 
-        document.querySelectorAll('.lp-feat-card, .lp-step, .lp-pt__card, .lp-hero__row, .lp-pricing-teaser, .banner-inner, .lp-dashboard-mock').forEach(el => {
+        document.querySelectorAll('.lp-hero__row, .lp-pricing-teaser, .banner-inner, .rdm').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(18px)';
-            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
             observer.observe(el);
         });
 
