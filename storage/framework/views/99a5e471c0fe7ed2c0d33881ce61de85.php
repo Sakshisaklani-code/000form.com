@@ -1,6 +1,17 @@
 <?php $__env->startSection('title', 'Submission Details'); ?>
 
 <?php $__env->startSection('content'); ?>
+<style>
+    @media (max-width: 480px) {
+        .edit-project{
+        display: block!important;
+    
+        }
+        .card-edit{
+            margin-bottom: 22px;
+        }
+    }
+</style>
 <div class="page-header">
     <div>
         <a href="<?php echo e(route('dashboard.forms.show', $form->id)); ?>" class="text-muted" style="font-size: 0.875rem;">
@@ -22,9 +33,9 @@
     </div>
 </div>
 
-<div style="display: grid; grid-template-columns: 1fr 300px; gap: 2rem; align-items: start;">
+<div class="edit-project" style="display: grid; grid-template-columns: 1fr 300px; gap: 2rem; align-items: start;">
     <!-- Submission Data -->
-    <div class="card">
+    <div class="card card-edit">
         <h4 style="margin-bottom: 1.5rem;">Form Data</h4>
         
         <div style="display: flex; flex-direction: column; gap: 1.25rem;">

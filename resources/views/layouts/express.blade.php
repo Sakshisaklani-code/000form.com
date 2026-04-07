@@ -737,7 +737,7 @@
     CODE TEXTAREA
     ============================================= */
     .code-editor {
-        flex: 1; width: 100%; min-height: 0;
+        flex: 1; width: 100%; min-height: 250px;
         font-family: var(--mono); font-size: 11.5px; line-height: 1.8;
         padding: 1.1rem 1.4rem;
         background: transparent; color: rgba(147,197,253,0.7);

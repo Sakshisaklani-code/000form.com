@@ -4,6 +4,17 @@
 @section('title', 'Edit ' . $project->name)
 
 @section('content')
+<style>
+    @media (max-width: 480px) {
+        .edit-project{
+        display: block!important;
+    
+        }
+        .card-edit{
+            margin-bottom: 22px;
+        }
+    }
+</style>
 <div class="page-header">
     <div>
         <a href="{{ route('dashboard.projects.show', $project->id) }}" class="text-muted" style="font-size: 0.875rem;">
@@ -13,10 +24,10 @@
     </div>
 </div>
 
-<div style="display: grid; grid-template-columns: 1fr 300px; gap: 2rem; align-items: start;">
+<div class="edit-project" style="display: grid; grid-template-columns: 1fr 300px; gap: 2rem; align-items: start;">
 
     {{-- Settings form --}}
-    <div class="card">
+    <div class="card card-edit">
         @if($errors->any())
             <div class="alert alert-error mb-3">{{ $errors->first() }}</div>
         @endif
@@ -106,22 +117,49 @@
     </div>
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    function syncSwatches() {
+<!-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function syncSwatches() {
+            document.querySelectorAll('.color-radio').forEach(function (radio) {
+                const swatch = radio.closest('label').querySelector('.color-swatch');
+                swatch.style.borderColor = radio.checked ? radio.value : 'transparent';
+                swatch.style.boxShadow   = radio.checked ? '0 0 0 2px var(--bg-primary)' : 'none';
+            });
+        }
         document.querySelectorAll('.color-radio').forEach(function (radio) {
-            const swatch = radio.closest('label').querySelector('.color-swatch');
-            swatch.style.borderColor = radio.checked ? radio.value : 'transparent';
-            swatch.style.boxShadow   = radio.checked ? '0 0 0 2px var(--bg-primary)' : 'none';
+            radio.addEventListener('change', syncSwatches);
+            radio.closest('label').querySelector('.color-swatch').addEventListener('click', function () {
+                radio.checked = true; syncSwatches();
+            });
         });
-    }
-    document.querySelectorAll('.color-radio').forEach(function (radio) {
-        radio.addEventListener('change', syncSwatches);
-        radio.closest('label').querySelector('.color-swatch').addEventListener('click', function () {
-            radio.checked = true; syncSwatches();
-        });
+        syncSwatches();
     });
-    syncSwatches();
-});
+</script> -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function syncSwatches() {
+            document.querySelectorAll('.color-radio').forEach(function (radio) {
+                const swatch = radio.closest('label').querySelector('.color-swatch');
+                if (radio.checked) {
+                    swatch.style.border = '3px solid white'; // fixed white border for selected
+                    swatch.style.boxShadow = '0 0 0 2px var(--bg-primary)';
+                } else {
+                    swatch.style.border = '3px solid transparent'; // unselected
+                    swatch.style.boxShadow = 'none';
+                }
+            });
+        }
+
+        document.querySelectorAll('.color-radio').forEach(function (radio) {
+            radio.addEventListener('change', syncSwatches);
+            radio.closest('label').querySelector('.color-swatch').addEventListener('click', function () {
+                radio.checked = true; 
+                syncSwatches();
+            });
+        });
+
+        syncSwatches();
+    });
 </script>
 @endsection

@@ -7,6 +7,90 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <style>
+    /* ─────────────────────────────────────────────────────────────
+   MOBILE RESPONSIVENESS (Below 860px)
+   ───────────────────────────────────────────────────────────── */
+    @media (max-width: 860px) {
+        /* 1. FORCE SCROLLING: Undo the desktop 'overflow: hidden' */
+        html, body {
+            height: auto !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+        }
+
+        /* 2. RESET LAYOUT: Change grid to a single column */
+        .docs-layout {
+            display: flex !important;
+            flex-direction: column !important;
+            height: auto !important;
+            gap: 1.5rem !important;
+        }
+
+        /* 3. WRAPPER SPACING: Give more room for the fixed header */
+        .docs-wrap {
+            height: auto !important;
+            padding: 6rem 1rem 3rem !important;
+        }
+
+        /* 4. HIDE SIDEBAR: Standard practice for mobile docs 
+        (Or you can keep it, but it takes up too much space) */
+        .docs-nav {
+            display: none !important;
+        }
+
+        /* 5. RESET MAIN CONTENT: Remove fixed heights and custom scrolls */
+        .docs-layout > div {
+            height: auto !important;
+            overflow-y: visible !important;
+            padding-right: 0 !important;
+        }
+
+        /* 6. TYPOGRAPHY: Scale down for small screens */
+        .hero-title2 {
+            font-size: 1.8rem !important;
+            line-height: 1.2;
+        }
+        
+        .hero-description {
+            font-size: 14px !important;
+        }
+
+        /* 7. QUICK START CARDS: Stack them */
+        .qs-grid {
+            grid-template-columns: 1fr !important;
+        }
+
+        /* 8. TABLES: Enable horizontal scroll for small screens */
+        .sf-table {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* 9. CODE BLOCKS: Prevent clipping */
+        .code-content pre {
+            font-size: 12px !important;
+            white-space: pre-wrap !important; /* Optional: wraps long lines */
+            word-break: break-all !important;
+        }
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+    EXTRA SMALL DEVICES (Below 480px)
+    ───────────────────────────────────────────────────────────── */
+    @media (max-width: 480px) {
+        .docs-section-header {
+            padding: 1.2rem 1rem 0 !important;
+        }
+        .docs-section-body {
+            padding: 0 1rem 1.5rem !important;
+        }
+        .hero-title2 {
+            font-size: 1.5rem !important;
+        }
+    }
+
     /* ========== BLUE THEME (replaces green) ========== */
     :root {
         --blue:          #3b82f6;
@@ -289,7 +373,7 @@
                         <path d="M2 17l10 5 10-5"/>
                         <path d="M2 12l10 5 10-5"/>
                     </svg>
-                    Express Guide • Simplify your workflow
+                    Guide • Simplify your workflow
                 </div>
                 
                 <h1 class="hero-title2">

@@ -716,6 +716,7 @@
 
 @push('styles')
 <style>
+    
     :root {
         --blue:        #3b82f6;
         --blue-bright: #60a5fa;
@@ -766,7 +767,7 @@
 
     /* Small variant for hero row */
     .rdm--small { font-size: 0.7rem; }
-    .rdm--small .rdm__sidebar { width: 150px; padding: 0.9rem 0.7rem; }
+    /* .rdm--small .rdm__sidebar { width: 150px; padding: 0.9rem 0.7rem; } */
     .rdm--small .rdm__page-title { font-size: 0.95rem; }
     .rdm--small .rdm__stat-val { font-size: 1rem; }
     .rdm--small .rdm__stat-lbl { font-size: 0.55rem; }
@@ -1660,7 +1661,7 @@
         .lpe-grid { grid-template-columns: 1fr; gap: 2.5rem; }
         .rdm__sidebar { width: 160px; }
         .rdm--full { flex-direction: column; }
-        .rdm--full .rdm__sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+        .rdm--full .rdm__sidebar { width: 100%; flex-wrap: wrap; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
         .rdm--full .rdm__stats { grid-template-columns: repeat(3,1fr); }
         .rdm__nav-section-label--bottom { margin-top: 0; }
         .banner-inner { flex-direction: column; align-items: flex-start; padding: 0; }

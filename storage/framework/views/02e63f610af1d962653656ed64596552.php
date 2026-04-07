@@ -1,8 +1,8 @@
-@extends('layouts.dashboard')
 
-@section('title', 'Payment History - 000form')
 
-@section('content')
+<?php $__env->startSection('title', 'Payment History - 000form'); ?>
+
+<?php $__env->startSection('content'); ?>
 
 <style>
     .ph-header {
@@ -206,7 +206,7 @@
     <p>All payment attempts for your account — successful, failed and incomplete.</p>
 </div>
 
-@php
+<?php
     $Completed  = collect($transactions)->where('status_type', 'success')->count();
     $successful  = collect($transactions)->where('status_type', 'success')->count();
     $failed      = collect($transactions)->where('status_type', 'failed')->count();
@@ -214,33 +214,33 @@
     $totalPaid   = collect($transactions)->where('status_type', 'success')->sum(function($t) {
         return 0; // amounts are formatted strings — just show count
     });
-@endphp
+?>
 
-{{-- ── STATS ── --}}
+
 <div class="ph-stats">
     <div class="ph-stat">
         <div class="ph-stat-label">Total Transactions</div>
-        <div class="ph-stat-value">{{ count($transactions) }}</div>
+        <div class="ph-stat-value"><?php echo e(count($transactions)); ?></div>
     </div>
     <div class="ph-stat">
         <div class="ph-stat-label">Successful</div>
-        <div class="ph-stat-value green">{{ $successful }}</div>
+        <div class="ph-stat-value green"><?php echo e($successful); ?></div>
     </div>
     <div class="ph-stat">
         <div class="ph-stat-label">Failed</div>
-        <div class="ph-stat-value red">{{ $failed }}</div>
+        <div class="ph-stat-value red"><?php echo e($failed); ?></div>
     </div>
     <div class="ph-stat">
         <div class="ph-stat-label">Incomplete</div>
-        <div class="ph-stat-value amber">{{ $incomplete }}</div>
+        <div class="ph-stat-value amber"><?php echo e($incomplete); ?></div>
     </div>
 </div>
 
-{{-- ── TRANSACTION TABLE ── --}}
+
 <div class="ph-card">
     <div class="ph-card-title">All Transactions</div>
 
-    @if(count($transactions) > 0)
+    <?php if(count($transactions) > 0): ?>
     <div class="ph-table-wrap">
         <table class="ph-table">
             <thead>
@@ -254,48 +254,50 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($transactions as $txn)
+                <?php $__currentLoopData = $transactions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $txn): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
-                        <td>{{ $txn['date'] }}</td>
-                        <td>{{ $txn['plan'] }}</td>
+                        <td><?php echo e($txn['date']); ?></td>
+                        <td><?php echo e($txn['plan']); ?></td>
                         <td>
-                            <span class="ph-amount">{{ $txn['amount'] }}</span>
+                            <span class="ph-amount"><?php echo e($txn['amount']); ?></span>
                         </td>
                         <td>
-                            <span class="ph-txn-id">{{ $txn['txn_id'] }}</span>
+                            <span class="ph-txn-id"><?php echo e($txn['txn_id']); ?></span>
                         </td>
                         <td>
                             <div>
-                                <span class="ph-badge {{ $txn['status_type'] }}">
+                                <span class="ph-badge <?php echo e($txn['status_type']); ?>">
                                     <span class="ph-badge-dot"></span>
-                                    {{ $txn['status'] }}
+                                    <?php echo e($txn['status']); ?>
+
                                 </span>
-                                @if($txn['error'])
-                                    <div class="ph-error">{{ $txn['error'] }}</div>
-                                @endif
+                                <?php if($txn['error']): ?>
+                                    <div class="ph-error"><?php echo e($txn['error']); ?></div>
+                                <?php endif; ?>
                             </div>
                         </td>
                         <td>
-                            @if($txn['status_type'] === 'success')
-                                <a href="{{ route('billing.invoice-pdf', $txn['txn_id']) }}"
+                            <?php if($txn['status_type'] === 'success'): ?>
+                                <a href="<?php echo e(route('billing.invoice-pdf', $txn['txn_id'])); ?>"
                                    class="ph-invoice-link"
                                    target="_blank">
                                     ↓ PDF
                                 </a>
-                            @else
+                            <?php else: ?>
                                 <span class="ph-no-invoice">—</span>
-                            @endif
+                            <?php endif; ?>
                         </td>
                     </tr>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
         </table>
     </div>
-    @else
+    <?php else: ?>
         <div class="ph-empty">
             No payment history yet. Your transactions will appear here after your first payment.
         </div>
-    @endif
+    <?php endif; ?>
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.dashboard', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/billing/payment-history.blade.php ENDPATH**/ ?>

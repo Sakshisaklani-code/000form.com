@@ -1,8 +1,8 @@
-@extends('layouts.dashboard')
 
-@section('title', 'Account & Team - 000form')
 
-@section('content')
+<?php $__env->startSection('title', 'Account & Team - 000form'); ?>
+
+<?php $__env->startSection('content'); ?>
 
 <style>
     .ap {
@@ -307,93 +307,91 @@
 
 <div class="ap">
 
-    {{-- HEADER --}}
+    
     <div class="ap-header">
         <h1>Account & Team</h1>
         <p>Manage your account details and email addresses.</p>
     </div>
 
-    {{-- FLASH MESSAGES --}}
-    @if(session('success'))
-        <div class="ap-flash success">✓ {{ session('success') }}</div>
-    @endif
-    @if(session('error'))
-        <div class="ap-flash error">⚠ {{ session('error') }}</div>
-    @endif
-    @if($errors->has('additional_email'))
-        <div class="ap-flash error">⚠ {{ $errors->first('additional_email') }}</div>
-    @endif
+    
+    <?php if(session('success')): ?>
+        <div class="ap-flash success">✓ <?php echo e(session('success')); ?></div>
+    <?php endif; ?>
+    <?php if(session('error')): ?>
+        <div class="ap-flash error">⚠ <?php echo e(session('error')); ?></div>
+    <?php endif; ?>
+    <?php if($errors->has('additional_email')): ?>
+        <div class="ap-flash error">⚠ <?php echo e($errors->first('additional_email')); ?></div>
+    <?php endif; ?>
 
-    {{-- ACCOUNT INFO --}}
+    
     <div class="ap-card">
         <div class="ap-card-title">Account Info</div>
         <div class="ap-grid">
             <div>
                 <div class="ap-label">Email</div>
-                <div class="ap-value">{{ auth()->user()?->email ?? '—' }}</div>
+                <div class="ap-value"><?php echo e(auth()->user()?->email ?? '—'); ?></div>
             </div>
             <div>
                 <div class="ap-label">Provider</div>
-                <div class="ap-value">{{ ucfirst(auth()->user()?->provider ?? 'email') }}</div>
+                <div class="ap-value"><?php echo e(ucfirst(auth()->user()?->provider ?? 'email')); ?></div>
             </div>
             <div>
                 <div class="ap-label">Account Created</div>
-                <div class="ap-value">{{ auth()->user()?->created_at?->format('M d, Y') ?? '—' }}</div>
+                <div class="ap-value"><?php echo e(auth()->user()?->created_at?->format('M d, Y') ?? '—'); ?></div>
             </div>
         </div>
     </div>
 
-    {{-- ══════════════════════════════════════════════════════
-         EMAIL ADDRESSES
-    ══════════════════════════════════════════════════════ --}}
+    
     <div class="ap-card">
         <div class="ap-card-title">Email Addresses</div>
 
         <div class="email-list">
 
-            {{-- PRIMARY EMAIL (always first) --}}
+            
             <div class="email-row">
                 <div class="email-row-left">
-                    <span class="email-address">{{ auth()->user()->email }}</span>
+                    <span class="email-address"><?php echo e(auth()->user()->email); ?></span>
                     <span class="email-badge badge-primary">Primary</span>
                     <span class="email-badge badge-verified">Verified</span>
                 </div>
-                {{-- No actions for primary email --}}
+                
             </div>
 
-            {{-- ADDITIONAL EMAILS --}}
-            @forelse($additionalEmails as $userEmail)
+            
+            <?php $__empty_1 = true; $__currentLoopData = $additionalEmails; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $userEmail): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <div class="email-row">
                     <div class="email-row-left">
-                        <span class="email-address">{{ $userEmail->email }}</span>
-                        @if($userEmail->is_verified)
+                        <span class="email-address"><?php echo e($userEmail->email); ?></span>
+                        <?php if($userEmail->is_verified): ?>
                             <span class="email-badge badge-verified">Verified</span>
-                        @else
+                        <?php else: ?>
                             <span class="email-badge badge-pending">Pending verification</span>
-                        @endif
+                        <?php endif; ?>
                     </div>
 
                     <div class="email-row-actions">
-                        {{-- Resend verification if not verified --}}
-                        @unless($userEmail->is_verified)
+                        
+                        <?php if (! ($userEmail->is_verified)): ?>
                             <form method="POST"
-                                  action="{{ route('account.email.resend', $userEmail) }}"
+                                  action="<?php echo e(route('account.email.resend', $userEmail)); ?>"
                                   style="display:inline;">
-                                @csrf
+                                <?php echo csrf_field(); ?>
                                 <button type="submit"
                                         class="ap-btn ap-btn-outline ap-btn-sm">
                                     Resend
                                 </button>
                             </form>
-                        @endunless
+                        <?php endif; ?>
 
-                        {{-- Remove email --}}
+                        
                         <form method="POST"
-                              action="{{ route('account.email.destroy', $userEmail) }}"
+                              action="<?php echo e(route('account.email.destroy', $userEmail)); ?>"
                               style="display:inline;"
-                              onsubmit="return confirm('Remove {{ $userEmail->email }} from your account?')">
-                            @csrf
-                            @method('DELETE')
+                              onsubmit="return confirm('Remove <?php echo e($userEmail->email); ?> from your account?')">
+                            <?php echo csrf_field(); ?>
+                            <?php echo method_field('DELETE'); ?>
                             <button type="submit"
                                     class="ap-btn ap-btn-danger ap-btn-sm">
                                 Remove
@@ -401,25 +399,25 @@
                         </form>
                     </div>
                 </div>
-            @empty
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                 <p style="font-size:0.85rem;color:#555;margin:0;">
                     No additional emails added yet.
                 </p>
-            @endforelse
+            <?php endif; ?>
 
         </div>
 
-        {{-- Only show add form if under the limit --}}
-        @if($additionalEmails->count() < 1)
+        
+        <?php if($additionalEmails->count() < 1): ?>
             <form method="POST"
-                action="{{ route('account.email.store') }}"
+                action="<?php echo e(route('account.email.store')); ?>"
                 class="add-email-form">
-                @csrf
+                <?php echo csrf_field(); ?>
                 <input type="email"
                     name="additional_email"
                     class="add-email-input"
                     placeholder="Add another email address..."
-                    value="{{ old('additional_email') }}"
+                    value="<?php echo e(old('additional_email')); ?>"
                     required>
                 <button type="submit" class="ap-btn ap-btn-primary">
                     + Add Email
@@ -429,28 +427,28 @@
             <p style="font-size:0.78rem;color:#555;margin-top:0.75rem;">
                 A verification link will be sent to the new email address.
             </p>
-        @else
+        <?php else: ?>
             <p style="font-size:0.82rem;color:#555;margin-top:1rem;">
                 Maximum of 1 additional email allowed.
             </p>
-        @endif
+        <?php endif; ?>
 
     </div>
 
-    {{-- ACCOUNT SETTINGS --}}
+    
     <div class="ap-card">
         <div class="ap-card-title">Account Settings</div>
 
         <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-            @if(auth()->user()?->provider === 'email')
+            <?php if(auth()->user()?->provider === 'email'): ?>
                 <button onclick="openPasswordModal()" class="ap-btn ap-btn-outline">
                     🔒 Change Password
                 </button>
-            @else
+            <?php else: ?>
                 <span style="font-size:0.85rem;color:#666;padding:0.7rem 0;">
-                    Password management not available for {{ ucfirst(auth()->user()?->provider) }} accounts.
+                    Password management not available for <?php echo e(ucfirst(auth()->user()?->provider)); ?> accounts.
                 </span>
-            @endif
+            <?php endif; ?>
 
             <button onclick="openDeleteModal()" class="ap-btn ap-btn-danger">
                 🗑 Delete Account
@@ -460,17 +458,17 @@
 
 </div>
 
-{{-- CHANGE PASSWORD MODAL --}}
+
 <div id="passwordModal" class="modal-overlay" style="display:none;">
     <div class="modal-content">
         <h2>Change Password</h2>
 
-        @if($errors->has('current_password') || $errors->has('password'))
-            <div class="modal-error">{{ $errors->first() }}</div>
-        @endif
+        <?php if($errors->has('current_password') || $errors->has('password')): ?>
+            <div class="modal-error"><?php echo e($errors->first()); ?></div>
+        <?php endif; ?>
 
-        <form method="POST" action="{{ route('account.password.update') }}">
-            @csrf
+        <form method="POST" action="<?php echo e(route('account.password.update')); ?>">
+            <?php echo csrf_field(); ?>
 
             <div class="password-toggle-container">
                 <label for="current_password" class="modal-label">Current Password</label>
@@ -504,7 +502,7 @@
     </div>
 </div>
 
-{{-- DELETE ACCOUNT MODAL --}}
+
 <div id="deleteModal" class="modal-overlay" style="display:none;">
     <div class="modal-content">
         <h2>Delete Account</h2>
@@ -519,9 +517,9 @@
             </ul>
         </div>
 
-        <form method="POST" action="{{ route('account.delete') }}">
-            @csrf
-            @method('DELETE')
+        <form method="POST" action="<?php echo e(route('account.delete')); ?>">
+            <?php echo csrf_field(); ?>
+            <?php echo method_field('DELETE'); ?>
             <div class="modal-actions">
                 <button type="button" class="btn-cancel" onclick="closeDeleteModal()">Cancel</button>
                 <button type="submit" class="btn-danger-confirm"
@@ -545,9 +543,10 @@
         btn.textContent = input.type === 'password' ? 'Show' : 'Hide';
     }
 
-    @if($errors->has('current_password') || $errors->has('password'))
+    <?php if($errors->has('current_password') || $errors->has('password')): ?>
         document.addEventListener('DOMContentLoaded', () => openPasswordModal());
-    @endif
+    <?php endif; ?>
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.dashboard', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/account-settings.blade.php ENDPATH**/ ?>

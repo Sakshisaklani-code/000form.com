@@ -1,8 +1,8 @@
-@extends('layouts.dashboard')
 
-@section('title', 'Team Members - 000form')
 
-@section('content')
+<?php $__env->startSection('title', 'Team Members - 000form'); ?>
+
+<?php $__env->startSection('content'); ?>
 
 <style>
     .tm-header { margin-bottom: 2.5rem; }
@@ -180,64 +180,64 @@
         <p>Invite team members to collaborate on your forms and submissions.</p>
     </div>
 
-    @if(session('success'))
-        <div class="tm-flash success">✓ {{ session('success') }}</div>
-    @endif
-    @if(session('error'))
-        <div class="tm-flash error">⚠ {{ session('error') }}</div>
-    @endif
-    @if(session('info'))
-        <div class="tm-flash info">ℹ {{ session('info') }}</div>
-    @endif
+    <?php if(session('success')): ?>
+        <div class="tm-flash success">✓ <?php echo e(session('success')); ?></div>
+    <?php endif; ?>
+    <?php if(session('error')): ?>
+        <div class="tm-flash error">⚠ <?php echo e(session('error')); ?></div>
+    <?php endif; ?>
+    <?php if(session('info')): ?>
+        <div class="tm-flash info">ℹ <?php echo e(session('info')); ?></div>
+    <?php endif; ?>
 
-    @php
+    <?php
         $limitDisplay = $limit === -1 ? 'Unlimited' : $limit;
         $pct = $limit === -1 ? 10 : round(($currentCount / $limit) * 100);
         $barClass = $pct >= 100 ? 'danger' : ($pct >= 80 ? 'warning' : '');
-    @endphp
+    ?>
 
-    {{-- ── UPGRADE BANNER (if at limit) ── --}}
-    @if(! $canAdd && $limit !== -1)
+    
+    <?php if(! $canAdd && $limit !== -1): ?>
         <div class="tm-upgrade-banner">
-            <p>⚠ You've reached your team member limit ({{ $limit }} members on your current plan). Upgrade to add more.</p>
-            <a href="{{ route('billing.portal') }}" class="tm-btn tm-btn-outline tm-btn-sm">Upgrade Plan →</a>
+            <p>⚠ You've reached your team member limit (<?php echo e($limit); ?> members on your current plan). Upgrade to add more.</p>
+            <a href="<?php echo e(route('billing.portal')); ?>" class="tm-btn tm-btn-outline tm-btn-sm">Upgrade Plan →</a>
         </div>
-    @endif
+    <?php endif; ?>
 
-    {{-- ── INVITE FORM ── --}}
+    
     <div class="tm-card">
         <div class="tm-card-title">Invite Team Member</div>
 
-        {{-- Usage bar --}}
+        
         <div class="tm-usage">
             <div class="tm-usage-bar-wrap">
                 <div class="tm-usage-label">Team members used</div>
                 <div class="tm-usage-track">
-                    <div class="tm-usage-fill {{ $barClass }}" style="width: {{ min($pct, 100) }}%"></div>
+                    <div class="tm-usage-fill <?php echo e($barClass); ?>" style="width: <?php echo e(min($pct, 100)); ?>%"></div>
                 </div>
             </div>
-            <span class="tm-usage-count">{{ $currentCount }} / {{ $limitDisplay }}</span>
+            <span class="tm-usage-count"><?php echo e($currentCount); ?> / <?php echo e($limitDisplay); ?></span>
             <span class="tm-limit-badge">
-                @if($limit === -1) Unlimited @else {{ max(0, $limit - $currentCount) }} remaining @endif
+                <?php if($limit === -1): ?> Unlimited <?php else: ?> <?php echo e(max(0, $limit - $currentCount)); ?> remaining <?php endif; ?>
             </span>
         </div>
 
-        @if($canAdd)
-            <form method="POST" action="{{ route('team.invite') }}">
-                @csrf
+        <?php if($canAdd): ?>
+            <form method="POST" action="<?php echo e(route('team.invite')); ?>">
+                <?php echo csrf_field(); ?>
                 <div class="tm-invite-form">
                     <div class="form-group">
                         <label for="email">Email address</label>
                         <input type="email" name="email" id="email"
                                placeholder="colleague@example.com"
-                               value="{{ old('email') }}" required>
+                               value="<?php echo e(old('email')); ?>" required>
                     </div>
                     <div class="form-group" style="max-width:180px;">
                         <label for="role">Role</label>
                         <select name="role" id="role">
-                            <option value="viewer"  {{ old('role') === 'viewer'  ? 'selected' : '' }}>Viewer</option>
-                            <option value="editor"  {{ old('role') === 'editor'  ? 'selected' : '' }}>Editor</option>
-                            <option value="admin"   {{ old('role') === 'admin'   ? 'selected' : '' }}>Admin</option>
+                            <option value="viewer"  <?php echo e(old('role') === 'viewer'  ? 'selected' : ''); ?>>Viewer</option>
+                            <option value="editor"  <?php echo e(old('role') === 'editor'  ? 'selected' : ''); ?>>Editor</option>
+                            <option value="admin"   <?php echo e(old('role') === 'admin'   ? 'selected' : ''); ?>>Admin</option>
                         </select>
                     </div>
                     <button type="submit" class="tm-btn tm-btn-primary" style="align-self:flex-end;">
@@ -245,17 +245,17 @@
                     </button>
                 </div>
             </form>
-        @else
+        <?php else: ?>
             <p style="font-size:0.875rem;color:var(--text-muted);">
                 Upgrade your plan to invite more team members.
-                <a href="{{ route('billing.portal') }}" style="color:var(--accent);">Upgrade →</a>
+                <a href="<?php echo e(route('billing.portal')); ?>" style="color:var(--accent);">Upgrade →</a>
             </p>
-        @endif
+        <?php endif; ?>
     </div>
 
-    {{-- ── CURRENT MEMBERS ── --}}
+    
     <div class="tm-card">
-        <div class="tm-card-title">Current Members ({{ $currentCount }})</div>
+        <div class="tm-card-title">Current Members (<?php echo e($currentCount); ?>)</div>
         <div class="tm-table-wrap"> 
             <table class="tm-table">
                 <thead>
@@ -267,71 +267,72 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- Owner row --}}
+                    
                     <tr>
                         <td>
                             <div class="tm-member-info">
-                                <div class="tm-avatar">{{ strtoupper(substr($user->name ?? $user->email, 0, 1)) }}</div>
+                                <div class="tm-avatar"><?php echo e(strtoupper(substr($user->name ?? $user->email, 0, 1))); ?></div>
                                 <div>
-                                    <div class="tm-member-name">{{ $user->name ?? 'You' }} <span style="color:var(--text-muted);font-size:0.75rem;">(you)</span></div>
-                                    <div class="tm-member-email">{{ $user->email }}</div>
+                                    <div class="tm-member-name"><?php echo e($user->name ?? 'You'); ?> <span style="color:var(--text-muted);font-size:0.75rem;">(you)</span></div>
+                                    <div class="tm-member-email"><?php echo e($user->email); ?></div>
                                 </div>
                             </div>
                         </td>
                         <td><span class="tm-role-badge owner">Owner</span></td>
-                        <td>{{ $user->created_at?->format('M d, Y') ?? '—' }}</td>
+                        <td><?php echo e($user->created_at?->format('M d, Y') ?? '—'); ?></td>
                         <td>—</td>
                     </tr>
 
-                    {{-- Team members --}}
-                    @forelse($members as $member)
+                    
+                    <?php $__empty_1 = true; $__currentLoopData = $members; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $member): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr>
                             <td>
                                 <div class="tm-member-info">
                                     <div class="tm-avatar">
-                                        {{ strtoupper(substr($member->member->name ?? $member->member->email ?? '?', 0, 1)) }}
+                                        <?php echo e(strtoupper(substr($member->member->name ?? $member->member->email ?? '?', 0, 1))); ?>
+
                                     </div>
                                     <div>
-                                        <div class="tm-member-email">{{ $member->member->email ?? '—' }}</div>
+                                        <div class="tm-member-email"><?php echo e($member->member->email ?? '—'); ?></div>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <form method="POST" action="{{ route('team.member.role', $member) }}" style="display:inline;">
-                                    @csrf
+                                <form method="POST" action="<?php echo e(route('team.member.role', $member)); ?>" style="display:inline;">
+                                    <?php echo csrf_field(); ?>
                                     <select name="role" class="tm-role-select" onchange="this.form.submit()">
-                                        <option value="viewer" {{ $member->role === 'viewer' ? 'selected' : '' }}>Viewer</option>
-                                        <option value="editor" {{ $member->role === 'editor' ? 'selected' : '' }}>Editor</option>
-                                        <option value="admin"  {{ $member->role === 'admin'  ? 'selected' : '' }}>Admin</option>
+                                        <option value="viewer" <?php echo e($member->role === 'viewer' ? 'selected' : ''); ?>>Viewer</option>
+                                        <option value="editor" <?php echo e($member->role === 'editor' ? 'selected' : ''); ?>>Editor</option>
+                                        <option value="admin"  <?php echo e($member->role === 'admin'  ? 'selected' : ''); ?>>Admin</option>
                                     </select>
                                 </form>
                             </td>
-                            <td>{{ $member->joined_at?->format('M d, Y') ?? '—' }}</td>
+                            <td><?php echo e($member->joined_at?->format('M d, Y') ?? '—'); ?></td>
                             <td>
-                                <form method="POST" action="{{ route('team.member.remove', $member) }}">
-                                    @csrf
-                                    @method('DELETE')
+                                <form method="POST" action="<?php echo e(route('team.member.remove', $member)); ?>">
+                                    <?php echo csrf_field(); ?>
+                                    <?php echo method_field('DELETE'); ?>
                                     <button type="submit" class="tm-btn tm-btn-danger"
-                                            onclick="return confirm('Remove {{ $member->member->email }} from your workspace?')">
+                                            onclick="return confirm('Remove <?php echo e($member->member->email); ?> from your workspace?')">
                                         Remove
                                     </button>
                                 </form>
                             </td>
                         </tr>
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <tr>
                             <td colspan="4" class="tm-empty">No team members yet. Invite someone above.</td>
                         </tr>
-                    @endforelse
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
     </div>
 
-    {{-- ── PENDING INVITATIONS ── --}}
-    @if($pendingInvitations->count())
+    
+    <?php if($pendingInvitations->count()): ?>
     <div class="tm-card">
-        <div class="tm-card-title">Pending Invitations ({{ $pendingInvitations->count() }})</div>
+        <div class="tm-card-title">Pending Invitations (<?php echo e($pendingInvitations->count()); ?>)</div>
         <table class="tm-table">
             <thead>
                 <tr>
@@ -342,35 +343,35 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($pendingInvitations as $invitation)
+                <?php $__currentLoopData = $pendingInvitations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $invitation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
                         <td>
-                            <div style="font-weight:500;color:var(--text-primary);">{{ $invitation->invitee_email }}</div>
+                            <div style="font-weight:500;color:var(--text-primary);"><?php echo e($invitation->invitee_email); ?></div>
                             <span class="tm-status-badge pending">Pending</span>
                         </td>
-                        <td><span class="tm-role-badge {{ $invitation->role }}">{{ ucfirst($invitation->role) }}</span></td>
-                        <td style="font-size:0.8rem;color:var(--text-muted);">{{ $invitation->expires_at->format('M d, Y') }}</td>
+                        <td><span class="tm-role-badge <?php echo e($invitation->role); ?>"><?php echo e(ucfirst($invitation->role)); ?></span></td>
+                        <td style="font-size:0.8rem;color:var(--text-muted);"><?php echo e($invitation->expires_at->format('M d, Y')); ?></td>
                         <td>
                             <div class="tm-actions">
-                                <form method="POST" action="{{ route('team.invitation.resend', $invitation) }}">
-                                    @csrf
+                                <form method="POST" action="<?php echo e(route('team.invitation.resend', $invitation)); ?>">
+                                    <?php echo csrf_field(); ?>
                                     <button type="submit" class="tm-btn tm-btn-outline tm-btn-sm">↻ Resend</button>
                                 </form>
-                                <form method="POST" action="{{ route('team.invitation.cancel', $invitation) }}">
-                                    @csrf
+                                <form method="POST" action="<?php echo e(route('team.invitation.cancel', $invitation)); ?>">
+                                    <?php echo csrf_field(); ?>
                                     <button type="submit" class="tm-btn tm-btn-danger"
                                             onclick="return confirm('Cancel this invitation?')">Cancel</button>
                                 </form>
                             </div>
                         </td>
                     </tr>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
         </table>
     </div>
-    @endif
+    <?php endif; ?>
 
-    {{-- ── ROLE PERMISSIONS REFERENCE ── --}}
+    
     <div class="tm-card">
         <div class="tm-card-title">Role Permissions</div>
         <div class="tm-permissions-grid">
@@ -403,4 +404,5 @@
 
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.dashboard', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/team/index.blade.php ENDPATH**/ ?>

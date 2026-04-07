@@ -119,11 +119,10 @@ code, .mono {
    ============================================ */
 
 .nav {
-    position: sticky; /* or fixed if you want */
+    position: sticky;
     top: 0;
-
-    width: 100%;          /* ensure it follows page width */
-    left: auto;           /* REMOVE left/right */
+    width: 100%;
+    left: auto;
     right: auto;
     z-index: 100;
     padding: 1rem 0;
@@ -236,7 +235,7 @@ code, .mono {
     transition: all 0.2s ease;
     border: none;
     text-decoration: none;
-    min-height: 44px; /* Better touch target */
+    min-height: 44px;
 }
 
 .btn-primary {
@@ -336,7 +335,7 @@ code, .mono {
     width: 100%;
     padding: 0.875rem 1rem;
     font-family: var(--font-display);
-    font-size: 16px; /* Prevents zoom on iOS */
+    font-size: 16px;
     color: var(--text-primary);
     background: var(--bg-tertiary);
     border: 1px solid var(--border-color);
@@ -442,7 +441,6 @@ code, .mono {
 
 @media (max-width: 768px) {
     .code-header {
-        flex-direction: column;
         align-items: stretch;
     }
 }
@@ -922,16 +920,14 @@ code, .mono {
     border-top: 1px solid #08371d;
 }
 
-/* Top Row Layout */
 .footer-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* responsive */
+    flex-wrap: wrap;
     margin-bottom: 30px;
 }
 
-/* Logo */
 .nav-logo {
     font-size: 26px;
     font-weight: 600;
@@ -943,7 +939,6 @@ code, .mono {
     color: #00ff88;
 }
 
-/* Links */
 .footer-links {
     list-style: none;
     padding: 0;
@@ -963,7 +958,6 @@ code, .mono {
     transition: all 0.3s ease;
 }
 
-/* Underline animation */
 .footer-links a::after {
     content: "";
     position: absolute;
@@ -983,21 +977,17 @@ code, .mono {
     width: 100%;
 }
 
-/* Bottom Section */
 .footer-bottom {
     text-align: center;
-    /* border-top: 1px solid #111; */
     padding-top: 20px;
 }
 
-/* Copyright */
 .footer-copy {
     font-size: 15px;
     color: #777;
     margin-bottom: 8px;
 }
 
-/* Attribution */
 .footer-attribution {
     font-size: 14px;
     color: #666;
@@ -1012,6 +1002,7 @@ code, .mono {
 .footer-attribution a:hover {
     text-decoration: underline;
 }
+
 /* ============================================
    Dashboard Layout
    ============================================ */
@@ -1090,7 +1081,6 @@ code, .mono {
 .sidebar-footer {
     margin-top: auto;
     padding-top: 2rem;
-    /* border-top: 1px solid var(--border-color); */
 }
 
 .main-content {
@@ -1292,12 +1282,27 @@ code, .mono {
     padding: 0 1rem;
 }
 
+/*
+ * IMPORTANT: .table-wrapper must NOT have overflow:hidden or a fixed min-width.
+ * overflow:hidden kills horizontal scrolling on mobile.
+ * min-width on the wrapper (not the table) causes the wrapper to expand
+ * past the viewport so the scroll container never activates.
+ *
+ * Correct pattern:
+ *   - wrapper  → overflow-x: auto  (scroll container)
+ *   - table    → min-width: 780px  (forces scroll to kick in)
+ */
 .table-wrapper {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    overflow: hidden;
-    min-width: 600px;
+    overflow-x: auto;                    /* ← was: overflow: hidden  (FIXED) */
+    -webkit-overflow-scrolling: touch;   /* smooth iOS momentum scroll        */
+}
+
+.table-wrapper .table {
+    min-width: 780px;   /* ← moved here from wrapper; ensures all 7 cols fit */
+    width: 100%;
 }
 
 .table {
@@ -1560,15 +1565,15 @@ code, .mono {
     font-size: 0.9rem;
 }
 
-.auth-footer-express{
-   text-align: center;
+.auth-footer-express {
+    text-align: center;
     margin-top: 0.5rem;
     color: var(--text-muted);
     font-size: 0.9rem;
 }
 
-.auth-footer-express a{
-   text-align: center;
+.auth-footer-express a {
+    text-align: center;
     margin-top: 0.5rem;
     color: #3b82f6;
     font-size: 1rem;

@@ -1,6 +1,91 @@
 <?php $__env->startSection('title', 'Dashboard'); ?>
 
 <?php $__env->startSection('content'); ?>
+
+<style>
+/* ── Mobile-first responsive fixes ───────────────────────── */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+@media (min-width: 480px) {
+    .stats-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 900px) {
+    .stats-grid { grid-template-columns: repeat(6, 1fr); }
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-card .stat-value {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+}
+.stat-card .stat-label {
+    font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+}
+
+.project-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+@media (min-width: 640px) {
+    .project-header {
+        align-items: center;
+        padding: 1.1rem 1.5rem;
+    }
+}
+
+.project-header-left {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+.project-header-right {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    flex-shrink: 0;
+}
+
+.project-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text);
+    text-decoration: none;
+    word-break: break-word;
+}
+
+/* .table-wrapper scroll fix is handled globally in app.css */
+
+.standalone-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+</style>
+
 <div class="page-header">
     <h1 class="page-title">Dashboard</h1>
     <a href="<?php echo e(route('dashboard.projects.create')); ?>" class="btn btn-primary">
@@ -42,21 +127,18 @@
 
 
 <?php if($projects->count() > 0): ?>
-    <div style="display: flex; flex-direction: column; gap: 2rem; margin-bottom: 2rem;">
+    <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2rem;">
         <?php $__currentLoopData = $projects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $project): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="card" style="padding: 0; overflow: hidden;">
 
                 
-                <div style="display: flex; align-items: center; justify-content: space-between;
-                            padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-color);
-                            background: var(--bg-secondary);">
-                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div class="project-header">
+                    <div class="project-header-left">
                         
                         <span style="display: inline-block; width: 10px; height: 10px;
                                      border-radius: 50%; background: <?php echo e($project->color); ?>;
                                      flex-shrink: 0;"></span>
-                        <a href="<?php echo e(route('dashboard.projects.show', $project->id)); ?>"
-                           style="font-weight: 600; font-size: 1rem; color: var(--text); text-decoration: none;">
+                        <a href="<?php echo e(route('dashboard.projects.show', $project->id)); ?>" class="project-name">
                             <?php echo e($project->name); ?>
 
                         </a>
@@ -68,7 +150,7 @@
                             <span class="badge badge-success"><?php echo e($projectUnread); ?> new</span>
                         <?php endif; ?>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <div class="project-header-right">
                         <span style="font-size: 0.8rem; color: var(--text-muted);">
                             <?php echo e($project->forms->count()); ?> <?php echo e(Str::plural('form', $project->forms->count())); ?>
 
@@ -86,7 +168,7 @@
 
                 
                 <?php if($project->forms->count() > 0): ?>
-                    <div class="table-wrapper" style="margin: 0; border: none; border-radius: 0;">
+                    <div class="table-wrapper">
                         <table class="table" style="margin: 0;">
                             <thead>
                                 <tr>
@@ -160,7 +242,7 @@
 
 
 <?php if($projects->count() === 0 && $standaloneForms->count() === 0): ?>
-    <div class="card">
+    <div class="card" style="overflow: hidden;">
         <div class="empty-state">
             <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
@@ -179,7 +261,7 @@
 
 <?php if($standaloneForms->count() > 0): ?>
     <div style="margin-top: 2rem;">
-        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+        <div class="standalone-header">
             <h2 style="font-size: 1rem; font-weight: 600; color: var(--text-secondary); margin: 0;">
                 Standalone Forms
             </h2>

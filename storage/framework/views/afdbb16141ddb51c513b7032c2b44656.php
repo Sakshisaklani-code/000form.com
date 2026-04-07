@@ -592,6 +592,7 @@
         .fp { padding: 5rem 1rem 3rem; }
         .fp-cta { padding: 2.5rem 1.5rem; }
         .fp-head h1 { font-size: 2rem; }
+        .fp-grid { gap: 1.5rem; }
     }
 </style>
 

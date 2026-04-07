@@ -10,7 +10,11 @@
         gap: 0;
         border-bottom: 2px solid var(--border-color);
         margin-bottom: 1.75rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
     }
+    .page-tabs-bar::-webkit-scrollbar { display: none; }
     .page-tab {
         display: inline-flex;
         align-items: center;
@@ -28,6 +32,7 @@
         transition: color 0.2s, border-color 0.2s;
         border-radius: 6px 6px 0 0;
         white-space: nowrap;
+        flex-shrink: 0;
     }
     .page-tab:hover  { color: var(--text); background: var(--bg-tertiary); }
     .page-tab.active { color: var(--text); border-bottom-color: #414265; font-weight: 600; }
@@ -45,7 +50,13 @@
         flex-wrap: wrap;
         border-bottom: 2px solid var(--border-color);
     }
-    .submission-tabs { display: flex; }
+    .submission-tabs {
+        display: flex;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .submission-tabs::-webkit-scrollbar { display: none; }
     .submission-tab {
         display: inline-flex;
         align-items: center;
@@ -61,6 +72,8 @@
         text-decoration: none;
         transition: color 0.2s, border-color 0.2s, background 0.15s;
         border-radius: 6px 6px 0 0;
+        white-space: nowrap;
+        flex-shrink: 0;
     }
     .submission-tab:hover  { color: var(--text); background: var(--bg-tertiary); }
     .submission-tab.active { color: var(--text); border-bottom-color: #414265; font-weight: 600; }
@@ -161,15 +174,29 @@
 
     /* ── Code tabs ── */
     .code-tabs {
-        display: flex; gap: 0.5rem; flex-wrap: wrap;
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
         margin-bottom: 1rem;
         border-bottom: 1px solid var(--border-color);
         padding-bottom: 0.5rem;
     }
+    .code-tabs::-webkit-scrollbar { display: none; }
     .code-tab {
-        padding: 0.5rem 1rem; background: none; border: none;
-        border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500;
-        color: #64748b; cursor: pointer; transition: all 0.2s;
+        padding: 0.5rem 1rem;
+        background: none;
+        border: none;
+        border-radius: 0.375rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #64748b;
+        cursor: pointer;
+        transition: all 0.2s;
+        white-space: nowrap;
+        flex-shrink: 0;
     }
     .code-tab:hover  { background: #f1f5f9; color: #181818; }
     .code-tab.active { background: #414265; color: white; }
@@ -189,12 +216,16 @@
     .code-copy:hover { background: #475569; }
     .code-content {
         background: #181818; padding: 1.25rem;
-        border-radius: 0 0 0.5rem 0.5rem; overflow-x: auto;
+        border-radius: 0 0 0.5rem 0.5rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
     .code-content pre {
         margin: 0; color: #e2e8f0;
         font-family: 'Fira Code', 'Courier New', monospace;
         font-size: 0.875rem; line-height: 1.5;
+        white-space: pre;
+        min-width: max-content;
     }
     .tag      { color: #ff79c6; }
     .attr     { color: #8be9fd; }
@@ -214,7 +245,7 @@
         margin-bottom: 1.25rem;
     }
     .captcha-info-box svg { color: #414265; flex-shrink: 0; margin-top: 1px; }
-    .captcha-info-box p   { margin: 0; font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+    .captcha-info-box p   { margin: 0; font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; word-break: break-word; }
     .captcha-info-box strong { color: var(--text); }
 
     /* ── Table ── */
@@ -350,6 +381,7 @@
         z-index: 1000;
         align-items: center;
         justify-content: center;
+        padding: 1rem;
     }
     .modal-overlay.open { display: flex; }
     .modal-box {
@@ -361,6 +393,8 @@
         max-width: 480px;
         box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         position: relative;
+        max-height: 90vh;
+        overflow-y: auto;
     }
     .modal-title {
         font-size: 1rem; font-weight: 700;
@@ -391,21 +425,125 @@
 
     /* ── Responsive ── */
     @media (max-width: 768px) {
+        /* Stats: 2×2 grid on mobile */
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+
+        /* Charts: stack vertically */
         .charts-grid { grid-template-columns: 1fr !important; }
-        .search-input { width: 180px; }
-        .search-input:focus { width: 220px; }
+
+        /* Search: full width below the sub-tabs */
+        .submission-tabs-bar {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.5rem;
+        }
+        .search-wrapper {
+            width: 100%;
+            padding-bottom: 0.5rem;
+        }
+        .search-input {
+            width: 100% !important;
+        }
+        .search-input:focus {
+            width: 100% !important;
+        }
+
+        /* Page header: stack buttons */
+        .page-header {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 0.75rem;
+        }
+        .page-header > div:last-child {
+            width: 100%;
+        }
+        .page-header .btn {
+            flex: 1;
+            justify-content: center;
+        }
+
+        /* Endpoint strip: stack on mobile */
+        .endpoint-strip-inner {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 0.5rem;
+        }
+        .endpoint-strip-actions {
+            width: 100%;
+            justify-content: flex-end;
+        }
+
+        /* Form ID strip: stack on mobile */
+        .formid-strip-inner {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 0.5rem;
+        }
+        .formid-strip-actions {
+            width: 100%;
+            justify-content: flex-end;
+        }
+
+        /* Code panel: smaller font on mobile */
+        .code-content pre {
+            font-size: 0.75rem;
+        }
+
+        /* Validation grid: 1 column */
         .validation-grid { grid-template-columns: 1fr; }
+
+        /* Modal form row: 1 column */
         .form-row { grid-template-columns: 1fr; }
+
+        /* Table: allow horizontal scroll */
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Pagination: stack */
+        .pagination-footer {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .pagination-info { justify-content: center; }
+        .pagination-controls { justify-content: center; }
+
+        /* Workflow info banner */
+        .workflow-section-header {
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .workflow-section-header .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Archive toggle banner */
+        .archive-toggle-banner {
+            flex-direction: column;
+            align-items: flex-start;
+        }
     }
+
     @media (max-width: 640px) {
-        .pagination-footer { flex-direction: column; align-items: stretch; text-align: center; }
-        .pagination-info, .pagination-controls { justify-content: center; }
         .pagination-link { padding: 0.5rem; }
+        .pagination-link span { display: none; }
+
+        /* Stat cards: tighter on very small screens */
+        .stat-card {
+            padding: 0.65rem 0.75rem;
+        }
+        .stat-value {
+            font-size: 1.4rem;
+        }
     }
 </style>
 
 
-<div class="page-header">
+<div class="page-header" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.75rem;">
     <div>
         <a href="<?php echo e(route('dashboard')); ?>" class="text-muted"
            style="font-size:0.875rem;display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
@@ -456,16 +594,16 @@
 
 
 <div class="card mb-3" style="padding:1rem 1.25rem;">
-    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+    <div class="endpoint-strip-inner" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
         <div style="display:flex;align-items:center;gap:0.75rem;flex:1;min-width:0;">
             <span class="endpoint-method">POST</span>
             <span class="endpoint-url"
-                  style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;font-size:0.85rem;">
+                  style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0;font-size:0.85rem;">
                 <?php echo e($form->endpoint_url); ?>
 
             </span>
         </div>
-        <div style="display:flex;align-items:center;gap:0.75rem;flex-shrink:0;">
+        <div class="endpoint-strip-actions" style="display:flex;align-items:center;gap:0.75rem;flex-shrink:0;flex-wrap:wrap;">
             <span class="badge <?php echo e($form->status === 'active' && $form->email_verified ? 'badge-success' : 'badge-warning'); ?>">
                 <span class="badge-dot"></span>
                 <?php echo e($form->email_verified ? ucfirst($form->status) : 'Pending Verification'); ?>
@@ -484,18 +622,18 @@
 
 
 <div class="card mb-3" style="padding:1rem 1.25rem;">
-    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
-        <div style="display:flex;align-items:center;gap:0.75rem;flex:1;min-width:0;">
-            <span class="endpoint-method" style="background:#6366f1;">Form ID</span>
-            <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;font-size:0.90rem;">
+    <div class="formid-strip-inner" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;flex:1;min-width:0;flex-wrap:wrap;">
+            <span class="endpoint-method" style="background:#6366f1;flex-shrink:0;">Form ID</span>
+            <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0;font-size:0.90rem;">
                 <?php echo e($form->slug); ?>
 
             </span>
-            <span style="font-size:0.78rem;">
-                — Use this ID to embed a <strong style="color:var(--text);font-weight:500;">popup form</strong>.
+            <span style="font-size:0.78rem;flex-shrink:0;">
+                — to embed <strong style="color:var(--text);font-weight:500;">popup form</strong>.
             </span>
         </div>
-        <div style="display:flex;align-items:center;gap:0.75rem;flex-shrink:0;">
+        <div class="formid-strip-actions" style="display:flex;align-items:center;gap:0.75rem;flex-shrink:0;">
             <button class="btn btn-ghost btn-sm" onclick="copyFormId('<?php echo e($form->slug); ?>')">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
@@ -682,8 +820,8 @@
             </div>
 
             <?php if(!($form->archive_when_paused ?? true)): ?>
-                <div style="padding:0.75rem 1.25rem;background:rgba(245,158,11,0.06);border-bottom:1px solid var(--border-color);display:flex;align-items:center;gap:0.6rem;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+                <div style="padding:0.75rem 1.25rem;background:rgba(245,158,11,0.06);border-bottom:1px solid var(--border-color);display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" style="flex-shrink:0;">
                         <circle cx="12" cy="12" r="10"/>
                         <line x1="12" y1="8" x2="12" y2="12"/>
                         <line x1="12" y1="16" x2="12.01" y2="16"/>
@@ -892,13 +1030,13 @@
 
             
             <div class="captcha-info-box">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                 </svg>
-                <div>
+                <div style="min-width:0;">
                     <p>
                         <strong>
-                        To disable captcha add: <code style="background:rgba(0,0,0,0.08);padding:0.1rem 0.4rem;border-radius:4px;">&lt;input type="hidden" name="_captcha" value="false"&gt;</code></strong>
+                        To disable captcha add: <code style="background:rgba(0,0,0,0.08);padding:0.1rem 0.4rem;border-radius:4px;word-break:break-all;">&lt;input type="hidden" name="_captcha" value="false"&gt;</code></strong>
                     </p>
                 </div>
             </div>

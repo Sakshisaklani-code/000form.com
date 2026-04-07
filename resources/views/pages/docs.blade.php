@@ -7,6 +7,323 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <style>
+    
+    /* ─────────────────────────────
+    GLOBAL MOBILE FIX (FULL WIDTH)
+    ───────────────────────────── */
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Fix Bootstrap container on mobile */
+    @media (max-width: 768px) {
+
+        .container {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+            margin: 0 !important;
+        }
+
+        /* Remove extra wrapper spacing */
+        .docs-wrap {
+            padding: 5rem 0 2rem !important;
+        }
+
+        /* Make layout full width */
+        .docs-layout {
+            display: block !important;
+            width: 100%;
+        }
+
+        /* Hide sidebar completely */
+        .docs-nav {
+            display: none !important;
+        }
+
+        /* Sections take full width */
+        .docs-section {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            border-radius: 10px;
+        }
+
+        /* Fix internal padding */
+        .docs-section-header,
+        .docs-section-body {
+            padding-left: 14px !important;
+            padding-right: 14px !important;
+        }
+
+        /* Hero full width */
+        .hero-content {
+            width: 100%;
+            padding: 0 10px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 1.8rem !important;
+            line-height: 1.3;
+        }
+
+        .hero-description {
+            font-size: 13px;
+        }
+
+        /* Quick cards full width */
+        .qs-grid {
+            display: flex !important;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .qs-card {
+            width: 100%;
+            padding: 12px;
+        }
+
+        /* Code blocks fix overflow */
+        .code-block {
+            width: 100%;
+        }
+
+        .code-content {
+            overflow-x: auto;
+            padding: 10px;
+        }
+
+        .code-content pre {
+            font-size: 12px;
+            white-space: pre;
+        }
+
+        /* Table scroll fix */
+        .sf-table {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        /* Buttons full width */
+        .docs-cta a {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+
+    /* ─────────────────────────────
+    EXTRA SMALL DEVICES
+    ───────────────────────────── */
+    @media (max-width: 480px) {
+
+        .hero-title {
+            font-size: 1.5rem !important;
+        }
+
+        .docs-section-header h2 {
+            font-size: 0.95rem;
+        }
+
+        .docs-section-header p {
+            font-size: 12px;
+        }
+
+        .code-content pre {
+            font-size: 11px;
+        }
+    }
+    /* ───────────────── MOBILE IMPROVEMENTS ───────────────── */
+
+    @media (max-width: 1024px) {
+        .docs-layout {
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+        }
+    }
+
+    @media (max-width: 860px) {
+
+        .docs-wrap {
+            padding: 6rem 0 3rem;
+        }
+
+        /* Stack layout */
+        .docs-layout {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        /* Hide sidebar (already done, but reinforcing) */
+        .docs-nav {
+            display: none;
+        }
+
+        /* Section spacing */
+        .docs-section {
+            margin-bottom: 2rem;
+        }
+
+        .docs-section-header {
+            padding: 1.2rem 1.2rem 0;
+        }
+
+        .docs-section-body {
+            padding: 0 1.2rem 1.2rem;
+        }
+
+        /* Titles */
+        .docs-section-header h2 {
+            font-size: 1rem;
+        }
+
+        .docs-section-header p {
+            font-size: 13px;
+        }
+
+        /* Quick start cards */
+        .qs-grid {
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+        }
+
+        .qs-card {
+            padding: 1rem;
+        }
+
+        .qs-card-body h4 {
+            font-size: 13.5px;
+        }
+
+        .qs-card-body p {
+            font-size: 12.5px;
+        }
+
+        /* Code blocks */
+        .code-content {
+            padding: 0.9rem;
+        }
+
+        .code-content pre {
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .code-header {
+            padding: 0.4rem 0.7rem;
+        }
+
+        .code-copy {
+            font-size: 10px!important;
+            padding: 2px 6px;
+        }
+
+        /* Tables scroll */
+        .sf-table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .sf-table th,
+        .sf-table td {
+            font-size: 12px;
+            padding: 0.6rem;
+        }
+
+        /* Notes */
+        .note-box {
+            font-size: 13px;
+            padding: 0.7rem 0.9rem;
+        }
+
+        /* Limits list */
+        .limits-list li {
+            font-size: 13px;
+            padding: 0.6rem 0;
+        }
+
+        /* CTA buttons */
+        .docs-cta a {
+            display: block;
+            width: 100%;
+            margin-bottom: 0.6rem;
+        }
+
+        /* Hero section */
+        .hero-content {
+            margin-bottom: 2rem !important;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 1.8rem;
+            line-height: 1.3;
+        }
+
+        .hero-description {
+            font-size: 13.5px;
+        }
+    }
+
+    /* Extra small devices */
+    @media (max-width: 480px) {
+
+        .docs-wrap {
+            padding: 5rem 0 2.5rem;
+        }
+
+        .docs-section-header h2 {
+            font-size: 0.95rem;
+        }
+
+        .docs-section-header p {
+            font-size: 12.5px;
+        }
+
+        .code-content pre {
+            font-size: 11.5px;
+        }
+
+        .hero-title {
+            font-size: 1.6rem;
+        }
+
+        .hero-description {
+            font-size: 12.5px;
+        }
+    }
+    /* ───── FULL WIDTH FIX FOR MOBILE ───── */
+
+    @media (max-width: 768px) {
+
+        .container {
+            max-width: 100% !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+        }
+
+        .docs-wrap {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .hero-content {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        /* Remove boxed feeling */
+        body {
+            overflow-x: hidden;
+        }
+    }
+
     .docs-wrap { padding: 8rem 0 5rem; }
 
     .docs-layout {
@@ -23,7 +340,7 @@
         padding: 1.25rem 0; background: #0d0d0d;
     }
     .docs-nav-label {
-        font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+        font-size: 16px; font-weight: 700; letter-spacing: 1.5px;
         text-transform: uppercase; color: #3a3a3a;
         padding: 0 1.25rem; margin-bottom: 0.4rem; margin-top: 1.1rem;
     }
@@ -54,7 +371,7 @@
         display: inline-flex; align-items: center; justify-content: center;
         font-size: 15px; color: #00ff88; flex-shrink: 0;
     }
-    .docs-section-header p { font-size: 14.5px; color: #666; margin: 0 0 1.35rem; line-height: 1.65; }
+    .docs-section-header p { font-size: 16.5px; color: #666; margin: 0 0 1.35rem; line-height: 1.65; }
     .docs-section-body { padding: 0 1.75rem 1.75rem; }
 
     /* ── Code blocks ── */
@@ -65,6 +382,7 @@
     .code-block:last-child { margin-bottom: 0; }
     .code-header {
         display: flex; align-items: center; justify-content: space-between;
+        flex-direction:row;
         padding: 0.5rem 1rem; background: #111; border-bottom: 1px solid #1e1e1e;
     }
     .code-lang {
@@ -329,7 +647,7 @@
                         </div>
                         <div class="note-box">
                             <i class="bi bi-play-circle-fill"></i>
-                            <span>Not ready to sign up yet? <a href="{{ route('playground.index') }}" style="color:#00ff88;text-decoration:none;font-weight:600;">Try the Playground</a> &mdash; test everything right now with no account needed.</span>
+                            <span>Not ready to sign up yet? <a href="{{ route('playground.index') }}" style="color:#1d4ed8;text-decoration:none;font-weight:600;">Try the Express</a> &mdash; test everything right now with no account needed.</span>
                         </div>
                     </div>
                 </div>
