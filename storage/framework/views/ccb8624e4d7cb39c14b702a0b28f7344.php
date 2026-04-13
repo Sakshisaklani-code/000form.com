@@ -53,19 +53,19 @@
                         </div>
 
                         <!-- Event badge — colour changes by auth method -->
-                        @if($authMethod === 'google')
+                        <?php if($authMethod === 'google'): ?>
                         <div style="display:inline-block;background-color:#1e1a0d;border:1px solid #cc8800;border-radius:60px;padding:8px 22px;margin-bottom:22px;">
                             <span style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;font-weight:700;color:#fbbf24;letter-spacing:0.05em;">
                                 &#127881;&nbsp; New Google Registration
                             </span>
                         </div>
-                        @else
+                        <?php else: ?>
                         <div style="display:inline-block;background-color:#0d2b1e;border:1px solid #00cc6a;border-radius:60px;padding:8px 22px;margin-bottom:22px;">
                             <span style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;font-weight:700;color:#00ff88;letter-spacing:0.05em;">
                                 &#127881;&nbsp; New Registration
                             </span>
                         </div>
-                        @endif
+                        <?php endif; ?>
 
                         <!-- Title -->
                         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:26px;font-weight:800;color:#ffffff;letter-spacing:-0.03em;line-height:1.2;margin-bottom:12px;">
@@ -74,11 +74,11 @@
 
                         <!-- Subtitle -->
                         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:15px;color:#bbbbbb;line-height:1.6;">
-                            @if($authMethod === 'google')
-                                A new account was created via <strong style="color:#fbbf24;">Google Social Login</strong> on&nbsp;<strong style="color:#00ff88;">000form</strong>.
-                            @else
+                            <?php if($authMethod === 'google'): ?>
+                                A new account was created via <strong style="color:#fbbf24;">Google OAuth</strong> on&nbsp;<strong style="color:#00ff88;">000form</strong>.
+                            <?php else: ?>
                                 A new account was created via <strong style="color:#a5b4fc;">Email &amp; Password</strong> on&nbsp;<strong style="color:#00ff88;">000form</strong>.
-                            @endif
+                            <?php endif; ?>
                         </div>
 
                     </td>
@@ -105,7 +105,8 @@
                                     Full name
                                 </td>
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:15px 18px;font-size:13px;color:#ffffff;font-weight:700;text-align:right;border-bottom:1px solid #2e2e2e;">
-                                    {{ $userName ?: '—' }}
+                                    <?php echo e($userName ?: '—'); ?>
+
                                 </td>
                             </tr>
 
@@ -115,7 +116,8 @@
                                     Email address
                                 </td>
                                 <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:15px 18px;font-size:13px;color:#a5b4fc;font-weight:700;text-align:right;word-break:break-all;border-bottom:1px solid #2e2e2e;">
-                                    {{ $userEmail }}
+                                    <?php echo e($userEmail); ?>
+
                                 </td>
                             </tr>
 
@@ -125,15 +127,15 @@
                                     Signed up via
                                 </td>
                                 <td style="padding:15px 18px;text-align:right;border-bottom:1px solid #2e2e2e;">
-                                    @if($authMethod === 'google')
+                                    <?php if($authMethod === 'google'): ?>
                                         <span style="display:inline-block;background-color:#1e1a0d;border:1px solid #cc8800;border-radius:20px;padding:5px 14px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;font-weight:700;color:#fbbf24;letter-spacing:0.03em;">
                                             &#127381; Google OAuth
                                         </span>
-                                    @else
+                                    <?php else: ?>
                                         <span style="display:inline-block;background-color:#1a1a3a;border:1px solid #4444bb;border-radius:20px;padding:5px 14px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;font-weight:700;color:#a5b4fc;letter-spacing:0.03em;">
                                             &#9993; Email &amp; Password
                                         </span>
-                                    @endif
+                                    <?php endif; ?>
                                 </td>
                             </tr>
 
@@ -144,10 +146,11 @@
                                 </td>
                                 <td style="padding:15px 18px;text-align:right;border-bottom:1px solid #2e2e2e;">
                                     <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:13px;color:#dddddd;font-weight:600;">
-                                        {{ now()->format('l, d M Y') }}
+                                        <?php echo e(now()->format('l, d M Y')); ?>
+
                                     </div>
                                     <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:11px;color:#888888;margin-top:3px;">
-                                        {{ now()->format('h:i A') }} UTC
+                                        <?php echo e(now()->format('h:i A')); ?> UTC
                                     </div>
                                 </td>
                             </tr>
@@ -201,10 +204,10 @@
                         style="background-color:#0f0f0f;border-top:1px solid #2a2a2a;padding:22px 32px;">
                         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;color:#888888;line-height:1.7;">
                             Automated admin alert from
-                            <a href="{{ config('app.url') }}" style="color:#aaaaaa;text-decoration:none;font-weight:600;">000form</a>.
+                            <a href="<?php echo e(config('app.url')); ?>" style="color:#aaaaaa;text-decoration:none;font-weight:600;">000form</a>.
                         </div>
                         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:11px;color:#666666;margin-top:6px;">
-                            &copy; {{ date('Y') }} 000form
+                            &copy; <?php echo e(date('Y')); ?> 000form
                         </div>
                     </td>
                 </tr>
@@ -216,4 +219,4 @@
 </table>
 
 </body>
-</html>
+</html><?php /**PATH C:\Git-folders\000form.com\resources\views/emails/new-user-registered.blade.php ENDPATH**/ ?>

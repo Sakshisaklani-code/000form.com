@@ -9,7 +9,7 @@
             </a>
             <p class="text-muted">Create your free account</p>
         </div>
-        
+
         <div class="auth-card">
             <?php if($errors->any()): ?>
                 <div class="alert alert-error mb-3">
@@ -17,7 +17,7 @@
 
                 </div>
             <?php endif; ?>
-            
+
             <!-- Google OAuth -->
             <a href="<?php echo e(route('social.redirect', 'google')); ?>" class="oauth-btn">
                 <svg viewBox="0 0 24 24" width="20" height="20">
@@ -28,38 +28,55 @@
                 </svg>
                 Continue with Google
             </a>
-            
+
             <div class="auth-divider">or</div>
-            
+
             <!-- Email/Password Form -->
             <form method="POST" action="<?php echo e(route('signup')); ?>">
                 <?php echo csrf_field(); ?>
+
                 
                 <div class="form-group">
-                    <label for="email" class="form-label">Email</label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        class="form-input" 
-                        value="<?php echo e(old('email')); ?>"
-                        placeholder="you@example.com"
-                        required 
+                    <label for="name" class="form-label">Full Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        class="form-input"
+                        value="<?php echo e(old('name')); ?>"
+                        placeholder="Alex Johnson"
+                        required
                         autofocus
+                        autocomplete="name"
                     >
                 </div>
-                
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="form-input"
+                        value="<?php echo e(old('email')); ?>"
+                        placeholder="you@example.com"
+                        required
+                        autocomplete="email"
+                    >
+                </div>
+
                 <div class="form-group">
                     <label for="password" class="form-label">Password</label>
                     <div style="position: relative;">
-                        <input 
-                            type="password" 
-                            id="password" 
-                            name="password" 
-                            class="form-input" 
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            class="form-input"
                             placeholder="At least 8 characters"
                             required
                             minlength="8"
+                            autocomplete="new-password"
                             style="padding-right: 42px;"
                         >
                         <span onclick="togglePassword('password', this)" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888888; user-select: none;">
@@ -75,17 +92,18 @@
                         </span>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="password_confirmation" class="form-label">Confirm Password</label>
                     <div style="position: relative;">
-                        <input 
-                            type="password" 
-                            id="password_confirmation" 
-                            name="password_confirmation" 
-                            class="form-input" 
+                        <input
+                            type="password"
+                            id="password_confirmation"
+                            name="password_confirmation"
+                            class="form-input"
                             placeholder="Confirm your password"
                             required
+                            autocomplete="new-password"
                             style="padding-right: 42px;"
                         >
                         <span onclick="togglePassword('password_confirmation', this)" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888888; user-select: none;">
@@ -101,17 +119,20 @@
                         </span>
                     </div>
                 </div>
-                
+
                 <p class="text-muted mb-3" style="font-size: 0.8rem;">
-                    By signing up, you agree to our <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.
+                    By signing up, you agree to our
+                    <a href="<?php echo e(route('pages.terms')); ?>">Terms of Service</a>
+                    and
+                    <a href="<?php echo e(route('pages.privacy-policy')); ?>">Privacy Policy</a>.
                 </p>
-                
+
                 <button type="submit" class="btn btn-primary" style="width: 100%;">
                     Create Account
                 </button>
             </form>
         </div>
-        
+
         <div class="auth-footer">
             Already have an account? <a href="<?php echo e(route('login')); ?>">Sign in</a>
         </div>
@@ -119,23 +140,25 @@
             OR
         </div>
         <div class="auth-footer-express">
-            Get started without signup with <a class="express" href="<?php echo e(route('playground.index')); ?>">Express</a>
+            Get started without signup with
+            <a class="express" href="<?php echo e(route('playground.index')); ?>">Express</a>
         </div>
     </div>
 </div>
 
 <script>
 function togglePassword(fieldId, icon) {
-    const input = document.getElementById(fieldId);
-    const eyeOpen = icon.querySelector('.eye-open');
+    const input     = document.getElementById(fieldId);
+    const eyeOpen   = icon.querySelector('.eye-open');
     const eyeClosed = icon.querySelector('.eye-closed');
+
     if (input.type === 'password') {
-        input.type = 'text';
+        input.type            = 'text';
         eyeOpen.style.display = 'none';
         eyeClosed.style.display = 'inline';
     } else {
-        input.type = 'password';
-        eyeOpen.style.display = 'inline';
+        input.type              = 'password';
+        eyeOpen.style.display   = 'inline';
         eyeClosed.style.display = 'none';
     }
 }
