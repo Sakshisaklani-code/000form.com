@@ -444,7 +444,7 @@
             </button>
             
             <ul class="nav-links" id="navLinks">
-                
+                <li><a href="/">Home</a></li>
                 <li><a href="{{ route('docs') }}">Documentation</a></li>
                 <li><a href="{{ route('features') }}">Features</a></li>
                 <li><a href="{{ route('pricing') }}">Pricing</a></li>

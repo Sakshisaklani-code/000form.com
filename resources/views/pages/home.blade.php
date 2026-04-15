@@ -1,1722 +1,882 @@
-@extends('layouts.app')
-
-@section('title', '000form - Free Form Backend for Your Website')
-
-@section('content')
-
-{{-- ═══════════════════════════════════════════════════════
-     HERO
-═══════════════════════════════════════════════════════ --}}
-<section class="lp-hero">
-    <div class="lp-hero__bg">
-        <div class="lp-glow lp-glow--1"></div>
-        <div class="lp-glow lp-glow--2"></div>
-        <div class="lp-grid"></div>
-        <div class="lp-noise"></div>
-    </div>
-
-    <div class="lp-container">
-
-        {{-- ── TOP: centred copy + CTA ── --}}
-        <div class="lp-hero__center">
-
-            <a href="{{ route('signup') }}" class="lp-badge">
-                <span class="lp-badge__dot"></span>
-                Free to start — no credit card required
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-
-            <h1 class="lp-hero__title">
-                Form backend<br>
-                <span class="lp-hero__accent">without the backend</span>
-            </h1>
-
-            <p class="lp-hero__desc">
-                Point your HTML <code class="lp-code-inline">&lt;form&gt;</code> at our endpoint and we handle the rest — submissions, spam filtering, instant email notifications, and a full management dashboard.
-            </p>
-
-            <div class="lp-hero__actions">
-                <a href="{{ route('signup') }}" class="lp-btn lp-btn--primary lp-btn--lg">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
-                    Create free account
-                </a>
-            </div>
-
-            <div class="lp-hero__proof">
-                <div class="lp-proof-item">
-                    <span class="lp-proof-num">50</span>
-                    <span class="lp-proof-lbl">free submissions/mo</span>
-                </div>
-                <div class="lp-proof-sep"></div>
-                <div class="lp-proof-item">
-                    <span class="lp-proof-num">∞</span>
-                    <span class="lp-proof-lbl">unlimited forms</span>
-                </div>
-                <div class="lp-proof-sep"></div>
-                <div class="lp-proof-item">
-                    <span class="lp-proof-num">0</span>
-                    <span class="lp-proof-lbl">lines of server code</span>
-                </div>
-            </div>
-
-        </div>
-
-        {{-- ── BOTTOM: alternating image/text rows ── --}}
-        <div class="lp-hero__rows">
-
-            {{-- Row 1: Dashboard (left) + copy (right) ── --}}
-            <div class="lp-hero__row">
-
-                {{-- ════════════════════════════════════
-                     DASHBOARD MOCK #1 — Hero row
-                     Matches real dashboard screenshot
-                ════════════════════════════════════ --}}
-                <div class="lp-prev lp-prev--dashboard">
-                    <div class="lp-prev__label">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                        Your dashboard
-                    </div>
-
-                    <div class="rdm rdm--small">
-                        {{-- Sidebar --}}
-                        <div class="rdm__sidebar">
-                            <div class="rdm__logo">
-                                <img src="{{ asset('images/logo/000formlogo.png') }}" alt="000form" class="rdm__logo-img">
-                            </div>
-                            <div class="rdm__user-chip">
-                                <div class="rdm__avatar">S</div>
-                                <span>test@gmail.com</span>
-                            </div>
-                            <div class="rdm__nav-section-label">MAIN</div>
-                            <nav class="rdm__nav">
-                                <div class="rdm__nav-item rdm__nav-item--active">
-                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                                    Dashboard
-                                </div>
-                                <div class="rdm__nav-item">
-                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-                                    New Project
-                                </div>
-                                <div class="rdm__nav-item">
-                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                                    Team Management
-                                </div>
-                            </nav>
-                            <div class="rdm__nav-section-label" style="margin-top:0.4rem;">ACCOUNT</div>
-                            <nav class="rdm__nav">
-                                <div class="rdm__nav-item">
-                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-                                    Account Settings
-                                </div>
-                            </nav>
-                        </div>
-
-                        {{-- Main content --}}
-                        <div class="rdm__main">
-                            <div class="rdm__topbar">
-                                <span class="rdm__page-title">Dashboard</span>
-                                <div class="rdm__new-btn">+ New Project</div>
-                            </div>
-
-                            {{-- Stats row --}}
-                            <div class="rdm__stats">
-                                <div class="rdm__stat">
-                                    <div class="rdm__stat-lbl">Projects</div>
-                                    <div class="rdm__stat-val">1</div>
-                                </div>
-                                <div class="rdm__stat">
-                                    <div class="rdm__stat-lbl">Total Forms</div>
-                                    <div class="rdm__stat-val">2</div>
-                                </div>
-                                <div class="rdm__stat">
-                                    <div class="rdm__stat-lbl">Total Submissions</div>
-                                    <div class="rdm__stat-val">10</div>
-                                </div>
-                                <div class="rdm__stat">
-                                    <div class="rdm__stat-lbl">Valid</div>
-                                    <div class="rdm__stat-val rdm__stat-val--green">6</div>
-                                </div>
-                                <div class="rdm__stat">
-                                    <div class="rdm__stat-lbl">Spam Blocked</div>
-                                    <div class="rdm__stat-val rdm__stat-val--red">4</div>
-                                </div>
-                                <div class="rdm__stat">
-                                    <div class="rdm__stat-lbl">Unread</div>
-                                    <div class="rdm__stat-val rdm__stat-val--green">6</div>
-                                </div>
-                            </div>
-
-                            {{-- Project section --}}
-                            <div class="rdm__project-row">
-                                <div class="rdm__project-dot"></div>
-                                <span class="rdm__project-name">PROJECT 1</span>
-                                <!-- <span class="rdm__project-desc">— Testing the create project in the live server.</span> -->
-                                <span class="rdm__new-badge">6 new</span>
-                                <div style="flex:1"></div>
-                                <span class="rdm__project-meta">2 forms</span>
-                                <span class="rdm__project-action">+ Add Form</span>
-                                <span class="rdm__project-action">View</span>
-                                <span class="rdm__project-action">Settings</span>
-                            </div>
-
-                            {{-- Forms table --}}
-                            <div class="rdm__table-wrap">
-                                <table class="rdm__table">
-                                    <thead>
-                                        <tr>
-                                            <th>Form Name</th>
-                                            <th>Endpoint</th>
-                                            <th>Total</th>
-                                            <th>Valid</th>
-                                            <th>Spam</th>
-                                            <th>Status</th>
-                                            <th>View</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="rdm__td-name">Second Form<span class="rdm__new-badge">1 new</span></td>
-                                            <td class="rdm__td-ep">/f/****</td>
-                                            <td>1</td>
-                                            <td class="rdm__td-green">1</td>
-                                            <td class="rdm__td-red">0</td>
-                                            <td><span class="rdm__status">● Active</span></td>
-                                            <td class="rdm__td-view">View</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="rdm__td-name">First form<span class="rdm__new-badge">5 new</span></td>
-                                            <td class="rdm__td-ep">/f/****</td>
-                                            <td>9</td>
-                                            <td class="rdm__td-green">5</td>
-                                            <td class="rdm__td-red">4</td>
-                                            <td><span class="rdm__status">● Active</span></td>
-                                            <td class="rdm__td-view">View</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lp-hero__row-copy">
-                    <div class="lp-hero__row-tag">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                        Command center
-                    </div>
-                    <h3>Every submission,<br>in one place.</h3>
-                    <p>Your dashboard gives you a bird's-eye view of all your forms — total submissions, spam blocked, unread counts, and active status at a glance. No more digging through email threads or spreadsheets.</p>
-                    <ul class="lp-hero__row-bullets">
-                        <li>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            Real-time submission counts per form
-                        </li>
-                        <li>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            Spam blocked automatically, never in your inbox
-                        </li>
-                        <li>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            Manage unlimited forms from one account
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-
-            {{-- Row 2: copy (left) + email (right) ── --}}
-            <div class="lp-hero__row lp-hero__row--reverse">
-
-                <div class="lp-hero__row-copy">
-                    <div class="lp-hero__row-tag">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        Instant notifications
-                    </div>
-                    <h3>Submissions hit your<br>inbox instantly.</h3>
-                    <p>The moment someone submits your form, you get a clean, well-formatted email notification with every field clearly laid out. Reply directly from your inbox — no logging in required.</p>
-                    <ul class="lp-hero__row-bullets">
-                        <li>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            Delivered in seconds, every time
-                        </li>
-                        <li>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            Reply-to set to the submitter's email
-                        </li>
-                        <li>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            Fully customizable notification template
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="lp-prev lp-prev--email">
-                    <div class="lp-prev__label">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        Email notification
-                    </div>
-                    <div class="lp-email">
-                        <div class="lp-email__chrome">
-                            <div class="lp-email__from-row">
-                                <div class="lp-email__sender-avatar">0</div>
-                                <div class="lp-email__sender-info">
-                                    <div class="lp-email__sender-name">000form</div>
-                                    <div class="lp-email__sender-to">to me ↓</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="lp-email__body">
-                            <div class="lp-email__card">
-                                <div class="fp-email__logo"><b>000</b>form</div>
-                                <div class="lp-email__card-title">New submission: Contact Form</div>
-                                <div class="lp-email__card-divider"></div>
-                                <div class="lp-email__card-meta">Received {{ now()->format('M d, Y') }} at {{ now()->format('h:i A') }}</div>
-                                <div class="lp-email__card-caption">Here's what they had to say:</div>
-                                <div class="lp-email__card-fields">
-                                    <div class="lp-email__field">
-                                        <div class="lp-email__field-key">MESSAGE</div>
-                                        <div class="lp-email__field-val">Hi, I'm interested in your services and would love to learn more.</div>
-                                    </div>
-                                    <div class="lp-email__field">
-                                        <div class="lp-email__field-key">NAME</div>
-                                        <div class="lp-email__field-val">Jane Cooper</div>
-                                    </div>
-                                    <div class="lp-email__field">
-                                        <div class="lp-email__field-key">EMAIL</div>
-                                        <div class="lp-email__field-val lp-email__field-val--link">jane@example.com</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-        {{-- /rows --}}
-
-    </div>
-</section>
-
-{{-- ═══════════════════════════════════════════════════════
-     CORE SECTION
-═══════════════════════════════════════════════════════ --}}
-<section class="lpc-section">
-    <div class="lpc-glow--tl"></div>
-
-    <div class="lp-container">
-
-        <div class="lpc-layout">
-
-            <div class="lpc-left">
-
-                <div class="lpc-badge">
-                    <span class="lpc-badge__dot"></span>
-                    Core
-                </div>
-
-                <h2 class="lpc-title">
-                    Your data.<br>
-                    <span class="lpc-title__accent">Your dashboard.</span>
-                </h2>
-
-                <p class="lpc-desc">
-                    Register a free account, create unlimited form endpoints, and every submission lands in your personal dashboard — searchable, filterable, exportable, and always yours.
-                </p>
-
-                <ul class="lpc-perks">
-                    <li>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                        Permanent submission storage &amp; full history
-                    </li>
-                    <li>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                        Analytics &amp; trends per form
-                    </li>
-                    <li>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                        Spam filtering, CSV export &amp; file uploads
-                    </li>
-                    <li>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                        Team collaboration on paid plans
-                    </li>
-                </ul>
-
-                <a href="{{ route('signup') }}" class="lpc-cta">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
-                    Create free account
-                </a>
-
-                <p class="lpc-note">No credit card · Unlimited forms · 50 free submissions/mo</p>
-
-            </div>
-
-            <div class="lpc-right">
-
-                <div class="lpc-right__head">
-                    <span class="lpc-setup-tag">Setup</span>
-                    <h3 class="lpc-setup-title">
-                        Live in <span class="lpc-title__accent">3 minutes</span>, literally.
-                    </h3>
-                    <p class="lpc-setup-sub">No server. No config files. No deployment pipelines. Just a URL swap.</p>
-                </div>
-
-                <div class="lpc-vsteps">
-
-                    <div class="lpc-vstep">
-                        <div class="lpc-vstep__left">
-                            <div class="lpc-vstep__num">01</div>
-                            <div class="lpc-vstep__line"></div>
-                        </div>
-                        <div class="lpc-vstep__body">
-                            <h4>Create your account</h4>
-                            <p>Sign up free — no credit card required. Your account gives you a dashboard, submission history, and your own form endpoints.</p>
-                            <a href="{{ route('signup') }}" class="lpc-vstep__link">
-                                Sign up now
-                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="lpc-vstep">
-                        <div class="lpc-vstep__left">
-                            <div class="lpc-vstep__num">02</div>
-                            <div class="lpc-vstep__line"></div>
-                        </div>
-                        <div class="lpc-vstep__body">
-                            <h4>Create a form endpoint</h4>
-                            <p>From your dashboard, create a new form. Name it, configure notification settings, and copy your unique endpoint URL.</p>
-                        </div>
-                    </div>
-
-                    <div class="lpc-vstep">
-                        <div class="lpc-vstep__left">
-                            <div class="lpc-vstep__num">03</div>
-                        </div>
-                        <div class="lpc-vstep__body">
-                            <h4>Point your HTML form at it</h4>
-                            <p>Change your form's <code class="lp-code-inline">action</code> to your endpoint URL. That's it — no other code changes needed.</p>
-                            <div class="lpc-snippet">
-                                <span class="t-tag">&lt;form</span> <span class="t-attr">action</span>=<span class="t-str">"https://000form.com/f/<span class="t-accent">your-endpoint</span>"</span><span class="t-tag">&gt;</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-</section>
-
-{{-- ═══════════════════════════════════════════════════════
-     DASHBOARD PREVIEW SECTION  — full accurate mock
-═══════════════════════════════════════════════════════ --}}
-<section class="lp-preview">
-
-    <div class="lp-container">
-
-        <div class="lp-section-head">
-            <div class="lp-section-tag">Dashboard</div>
-            <h2>Your command center<br><span class="lp-dim">for every form.</span></h2>
-            <p>Manage all your endpoints, browse submissions, export data, and invite your team — all in one focused interface.</p>
-        </div>
-
-        {{-- ════════════════════════════════════
-             DASHBOARD MOCK #2 — Full preview
-             Matches real dashboard screenshot
-        ════════════════════════════════════ --}}
-        <div class="rdm rdm--full">
-            {{-- Sidebar --}}
-            <div class="rdm__sidebar">
-                <div class="rdm__logo">
-                    <img src="{{ asset('images/logo/000formlogo.png') }}" alt="000form" class="rdm__logo-img rdm__logo-img--lg">
-                </div>
-
-                <div class="rdm__user-chip">
-                    <div class="rdm__avatar">S</div>
-                    <span>test@gmail.com</span>
-                </div>
-
-                <div class="rdm__nav-section-label">MAIN</div>
-                <nav class="rdm__nav">
-                    <div class="rdm__nav-item rdm__nav-item--active">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                        Dashboard
-                    </div>
-                    <div class="rdm__nav-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-                        New Project
-                    </div>
-                    <div class="rdm__nav-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                        Team Management
-                    </div>
-                </nav>
-
-                <div class="rdm__nav-section-label">ACCOUNT</div>
-                <nav class="rdm__nav">
-                    <div class="rdm__nav-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-                        Account Settings
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:auto;"><polyline points="6 9 12 15 18 9"/></svg>
-                    </div>
-                </nav>
-
-                <div class="rdm__nav-section-label rdm__nav-section-label--bottom">RESOURCES</div>
-                <nav class="rdm__nav">
-                    <div class="rdm__nav-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                        Documentation
-                    </div>
-                    <div class="rdm__nav-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-                        Sign Out
-                    </div>
-                </nav>
-            </div>
-
-            {{-- Main content --}}
-            <div class="rdm__main">
-                <div class="rdm__topbar">
-                    <span class="rdm__page-title">Dashboard</span>
-                    <div class="rdm__new-btn">+ New Project</div>
-                </div>
-
-                {{-- Stats row --}}
-                <div class="rdm__stats">
-                    <div class="rdm__stat">
-                        <div class="rdm__stat-lbl">Projects</div>
-                        <div class="rdm__stat-val">1</div>
-                    </div>
-                    <div class="rdm__stat">
-                        <div class="rdm__stat-lbl">Total Forms</div>
-                        <div class="rdm__stat-val">2</div>
-                    </div>
-                    <div class="rdm__stat">
-                        <div class="rdm__stat-lbl">Total Submissions</div>
-                        <div class="rdm__stat-val">10</div>
-                    </div>
-                    <div class="rdm__stat">
-                        <div class="rdm__stat-lbl">Valid</div>
-                        <div class="rdm__stat-val rdm__stat-val--green">6</div>
-                    </div>
-                    <div class="rdm__stat">
-                        <div class="rdm__stat-lbl">Spam Blocked</div>
-                        <div class="rdm__stat-val rdm__stat-val--red">4</div>
-                    </div>
-                    <div class="rdm__stat">
-                        <div class="rdm__stat-lbl">Unread</div>
-                        <div class="rdm__stat-val rdm__stat-val--green">6</div>
-                    </div>
-                </div>
-
-                {{-- Project header row --}}
-                <div class="rdm__project-row">
-                    <div class="rdm__project-dot"></div>
-                    <span class="rdm__project-name">PROJECT 1</span>
-                    <span class="rdm__project-desc">— Application Development</span>
-                    <span class="rdm__new-badge">6 new</span>
-                    <div style="flex:1"></div>
-                    <span class="rdm__project-meta">2 forms</span>
-                    <span class="rdm__project-action">+ Add Form</span>
-                    <span class="rdm__project-action">View</span>
-                    <span class="rdm__project-action">Settings</span>
-                </div>
-
-                {{-- Forms table --}}
-                <div class="rdm__table-wrap">
-                    <table class="rdm__table">
-                        <thead>
-                            <tr>
-                                <th>Form Name</th>
-                                <th>Endpoint</th>
-                                <th>Total</th>
-                                <th>Valid</th>
-                                <th>Spam</th>
-                                <th>Status</th>
-                                <th>View</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="rdm__td-name">
-                                    Second Form
-                                    <span class="rdm__new-badge">1 new</span>
-                                </td>
-                                <td class="rdm__td-ep">/f/****</td>
-                                <td>1</td>
-                                <td class="rdm__td-green">1</td>
-                                <td class="rdm__td-red">0</td>
-                                <td><span class="rdm__status">● Active</span></td>
-                                <td class="rdm__td-view">View</td>
-                            </tr>
-                            <tr>
-                                <td class="rdm__td-name">
-                                    First form
-                                    <span class="rdm__new-badge">5 new</span>
-                                </td>
-                                <td class="rdm__td-ep">/f/****</td>
-                                <td>9</td>
-                                <td class="rdm__td-green">5</td>
-                                <td class="rdm__td-red">4</td>
-                                <td><span class="rdm__status">● Active</span></td>
-                                <td class="rdm__td-view">View</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-{{-- ═══════════════════════════════════════════════════════
-     PRICING TEASER
-═══════════════════════════════════════════════════════ --}}
-<div class="lp-glow lp-glow--4"></div>
-<div class="lp-glow lp-glow--3"></div>
-<section class="lp-pricing-teaser">
-    <div class="lp-container">
-
-        <div class="banner-inner">
-            <div class="banner-content">
-                <div class="lp-section-tag">Pricing</div>
-                <h2>One plan for every<br><span class="lp-dim">stage of your project.</span></h2>
-                <p>Start free, no credit card needed. Upgrade when your forms need to grow.</p>
-                <p class="banner-description">
-                    Find the perfect plan for your project. From free tier to enterprise — flexible options, no hidden fees.
-                </p>
-            </div>
-            <div class="banner-decoration">
-                <a href="/pricing" class="lp-btn lp-btn--primary lp-btn--lg">
-                    View pricing plans
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <line x1="5" y1="12" x2="19" y2="12"/>
-                        <polyline points="12 5 19 12 12 19"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-
-        <div class="lp-pt__footer">
-            All plans include spam filtering, AJAX support, CSV export &amp; dashboard access. &nbsp;
-            <a href="/pricing">See full comparison</a>
-        </div>
-
-    </div>
-</section>
-
-{{-- ═══════════════════════════════════════════════════════
-     FINAL CTA
-═══════════════════════════════════════════════════════ --}}
-<section class="lp-cta">
-    <div class="lp-cta__bg">
-        <div class="lp-cta__glow"></div>
-    </div>
-    <div class="lp-container lp-cta__inner">
-        <h2>Your forms deserve<br>a real backend.</h2>
-        <p>Join developers, freelancers, and agencies who've ditched the DIY form scripts. Get started in under three minutes — for free.</p>
-        <a href="{{ route('signup') }}" class="lp-btn lp-btn--primary lp-btn--xl">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
-            Create your free account
-        </a>
-        <p class="lp-cta__note">Free forever plan available. No credit card required.</p>
-    </div>
-</section>
-
-{{-- ═══════════════════════════════════════════════════════
-     EXPRESS SECTION
-═══════════════════════════════════════════════════════ --}}
-<section class="lpe-section">
-
-  <div class="lp-container">
-    <div class="lpe-or-row">
-      <div class="lpe-or-line"></div>
-      <div class="lpe-or-pill">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        OR USE EXPRESS
-      </div>
-      <div class="lpe-or-line"></div>
-    </div>
-  </div>
-
-  <div class="lp-container">
-    <div class="lpe-card">
-      <div class="lpe-grid">
-
-        <div class="lpe-copy">
-          <div class="lpe-badge">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            Express
-          </div>
-          <h2 class="lpe-title">
-            Zero setup.<br>
-            <span class="lpe-title__accent">Just notifications.</span>
-          </h2>
-          <p class="lpe-desc">
-            Verify your email once and your endpoint is live — submissions land in your inbox within seconds, every time.
-          </p>
-          <ul class="lpe-perks">
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> No registration, no login, no dashboard</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Instant email delivery, reply-to pre-set</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Live in under 60 seconds</li>
-          </ul>
-          <a href="/express" class="lpe-cta">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            Get started — no account needed
-          </a>
-        </div>
-
-        <div class="lpe-steps">
-          <div class="lpe-step">
-            <div class="lpe-step__left">
-              <div class="lpe-step__num">01</div>
-              <div class="lpe-step__line"></div>
-            </div>
-            <div class="lpe-step__body">
-              <h4>Enter your email</h4>
-              <p>No account, no password, no credit card — just your email address to get started.</p>
-            </div>
-          </div>
-          <div class="lpe-step">
-            <div class="lpe-step__left">
-              <div class="lpe-step__num">02</div>
-              <div class="lpe-step__line"></div>
-            </div>
-            <div class="lpe-step__body">
-              <h4>Verify once</h4>
-              <p>Click the link we send you — that's your only setup step. Takes under 30 seconds.</p>
-            </div>
-          </div>
-          <div class="lpe-step">
-            <div class="lpe-step__left">
-              <div class="lpe-step__num">03</div>
-            </div>
-            <div class="lpe-step__body">
-              <h4>Start getting notifications</h4>
-              <p>Submissions hit your inbox instantly. Spam filtered, reply-to pre-set, delivered in seconds.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-</section>
-
-
-@endsection
-
-@push('styles')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>000form — Form Backend Without the Backend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<!-- Favicon -->
+    <link rel="icon" href="{{ asset('images/favicon/000formFavicon-default.png') }}" type="image/svg+xml">
+    <!-- Canonical Tag --> 
+    <link rel="canonical" href="https://000form.com/" />
+    <!-- Keywords --> 
+    <meta name="keywords" content="form backend, HTML form endpoint, contact form API, Forms without backend, no-server contact form, serverless form handling, static site form backend, form submission API, form processing service, form endpoint for static sites, form handling without server, form backend for JAMstack, form submission endpoint, form backend for frontend developers, form handling API, form backend service, form submission handling, form backend solution" />
+    <!-- FontsStyles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/css/app.css">
+    <!-- Open Graph Tags --> 
+    <meta property="og:title" content="000Forms - Smart Form Submissions" /> 
+    <meta property="og:description" content="Easily create and manage forms with 000Forms, a Laravel-powered solution." /> 
+    <meta property="og:type" content="website" /> 
+    <meta property="og:url" content="https://000form.com/" /> 
+    <meta property="og:image" content="{{ asset('images/og-image/og-image.jpg') }}" /> 
+    <meta property="og:site_name" content="000Forms" />
+    <!-- Index and follow for SEO -->
+    <meta name="robots" content="index, follow">
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Google Analytics tag (gtag.js) --> 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TV3T8837GC"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-TV3T8837GC'); </script>
+    <!-- Schema.org JSON-LD --> 
+    <script type="application/ld+json"> 
+        {
+            "@context": "https://schema.org", 
+            "@type": "Organization", 
+            "name": "000Form", 
+            "alternateName": "000Form", 
+            "url": "https://000form.com/",
+            "logo": "https://000form.com/images/logo/000formlogo.png" 
+        }
+    </script>
 <style>
-    
-    :root {
-        --blue:        #3b82f6;
-        --blue-bright: #60a5fa;
-        --blue-dim:    #1d4ed8;
-        --blue-glow:   rgba(59,130,246,0.15);
-        --blue-glow-2: rgba(59,130,246,0.08);
-        --blue-border: rgba(59,130,246,0.25);
-        --green:       #00ff88;
-        --green-dark:  #00cc6a;
-    }
-
-    .fp-email__logo {
-        font-family: var(--font-mono);
-        font-size: 0.92rem;
-        font-weight: 700;
-        color: var(--text-secondary);
-        letter-spacing: 0.01em;
-        margin-bottom: 0.25rem;
-    }
-    .fp-email__logo b { color: var(--accent); font-weight: 700; }
-
-    /* ═══════════════════════════════════════════════════════
-       REAL DASHBOARD MOCK  (rdm)
-       — used in both hero row and full preview section
-       — mirrors the actual dashboard screenshot precisely
-    ═══════════════════════════════════════════════════════ */
-    .rdm {
-        display: flex;
-        background: #0d0f12;
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 32px 80px rgba(0,0,0,0.55);
-        font-family: var(--font-display, sans-serif);
-    }
-
-    /* Logo image */
-    .rdm__logo-img {
-        height: 28px;
-        width: auto;
-        display: block;
-        object-fit: contain;
-    }
-
-    .rdm__logo-img--lg {
-        height: 34px;
-    }
-
-    /* Small variant for hero row */
-    .rdm--small { font-size: 0.7rem; }
-    /* .rdm--small .rdm__sidebar { width: 150px; padding: 0.9rem 0.7rem; } */
-    .rdm--small .rdm__page-title { font-size: 0.95rem; }
-    .rdm--small .rdm__stat-val { font-size: 1rem; }
-    .rdm--small .rdm__stat-lbl { font-size: 0.55rem; }
-    .rdm--small .rdm__stat { padding: 0.55rem 0.6rem; }
-    .rdm--small .rdm__stats { grid-template-columns: repeat(3, 1fr); gap: 0.45rem; }
-    .rdm--small .rdm__main { padding: 0.9rem 1rem; gap: 0.75rem; }
-    .rdm--small .rdm__table { font-size: 0.62rem; }
-    .rdm--small .rdm__table th,
-    .rdm--small .rdm__table td { padding: 0.4rem 0.6rem; }
-    .rdm--small .rdm__new-btn { font-size: 0.62rem; padding: 0.35rem 0.7rem; }
-    .rdm--small .rdm__project-row { padding: 0.45rem 0.7rem; gap: 0.4rem; }
-    .rdm--small .rdm__nav-item { font-size: 0.65rem; padding: 0.38rem 0.5rem; gap: 6px; }
-    .rdm--small .rdm__user-chip { padding: 0.38rem 0.55rem; }
-    .rdm--small .rdm__avatar { width: 18px; height: 18px; font-size: 0.58rem; }
-    .rdm--small .rdm__logo-img { height: 22px; }
-
-    /* Full variant for preview section */
-    .rdm--full { font-size: 0.82rem; }
-    .rdm--full .rdm__page-title { font-size: 1.4rem; }
-    .rdm--full .rdm__stat-val { font-size: 1.55rem; }
-    .rdm--full .rdm__sidebar { width: 220px; padding: 1.5rem 1rem; }
-    .rdm--full .rdm__stats { grid-template-columns: repeat(6, 1fr); }
-
-    /* ── Sidebar ── */
-    .rdm__sidebar {
-        width: 185px;
-        flex-shrink: 0;
-        background: #0a0c0f;
-        border-right: 1px solid rgba(255,255,255,0.07);
-        padding: 1.1rem 0.85rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.15rem;
-    }
-
-    .rdm__logo {
-        display: flex;
-        align-items: center;
-        padding: 0 0.2rem;
-        margin-bottom: 1rem;
-    }
-
-    .rdm__user-chip {
-        display: flex;
-        align-items: center;
-        gap: 0.55rem;
-        background: rgba(0,255,136,0.07);
-        border: 1px solid rgba(0,255,136,0.15);
-        border-radius: 10px;
-        padding: 0.5rem 0.65rem;
-        margin-bottom: 0.85rem;
-        overflow: hidden;
-    }
-
-    .rdm__avatar {
-        width: 22px; height: 22px;
-        border-radius: 50%;
-        background: var(--accent, #00ff88);
-        color: #000;
-        font-weight: 800;
-        font-size: 0.65rem;
-        display: flex; align-items: center; justify-content: center;
-        flex-shrink: 0;
-    }
-
-    .rdm__user-chip span {
-        font-size: 0.62rem;
-        color: rgba(255,255,255,0.55);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .rdm__nav-section-label {
-        font-size: 0.55rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        color: rgba(255,255,255,0.25);
-        padding: 0.55rem 0.5rem 0.2rem;
-        text-transform: uppercase;
-    }
-
-    .rdm__nav-section-label--bottom { margin-top: auto; }
-
-    .rdm__nav {
-        display: flex;
-        flex-direction: column;
-        gap: 1px;
-        margin-bottom: 0.2rem;
-    }
-
-    .rdm__nav-item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 0.48rem 0.6rem;
-        border-radius: 8px;
-        font-size: 0.73rem;
-        color: rgba(255,255,255,0.45);
-        cursor: pointer;
-        transition: all 0.15s;
-    }
-
-    .rdm__nav-item svg { flex-shrink: 0; opacity: 0.7; }
-
-    .rdm__nav-item--active {
-        background: rgba(0,255,136,0.08);
-        border: 1px solid rgba(0,255,136,0.18);
-        color: var(--accent, #00ff88);
-        font-weight: 600;
-    }
-
-    .rdm__nav-item--active svg { opacity: 1; }
-
-    /* ── Main area ── */
-    .rdm__main {
-        flex: 1;
-        padding: 1.25rem 1.5rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        overflow: hidden;
-        min-width: 0;
-    }
-
-    .rdm__topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .rdm__page-title {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: rgba(255,255,255,0.95);
-        letter-spacing: -0.01em;
-    }
-
-    .rdm__new-btn {
-        background: var(--accent, #00ff88);
-        color: #000;
-        font-size: 0.72rem;
-        font-weight: 700;
-        padding: 0.45rem 1rem;
-        border-radius: 8px;
-        cursor: pointer;
-        white-space: nowrap;
-    }
-
-    /* Stats cards */
-    .rdm__stats {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 0.6rem;
-    }
-
-    .rdm__stat {
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.07);
-        border-radius: 10px;
-        padding: 0.75rem 0.8rem;
-    }
-
-    .rdm__stat-lbl {
-        font-size: 0.6rem;
-        color: rgba(255,255,255,0.35);
-        font-weight: 600;
-        margin-bottom: 4px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .rdm__stat-val {
-        font-size: 1.35rem;
-        font-weight: 800;
-        color: rgba(255,255,255,0.9);
-        letter-spacing: -0.025em;
-        line-height: 1;
-    }
-
-    .rdm__stat-val--green { color: var(--accent, #00ff88); }
-    .rdm__stat-val--red   { color: #ff4949; }
-
-    /* Project header row */
-    .rdm__project-row {
-        display: flex;
-        align-items: center;
-        gap: 0.55rem;
-        padding: 0.6rem 0.85rem;
-        background: rgba(255,255,255,0.02);
-        border: 1px solid rgba(255,255,255,0.06);
-        border-radius: 10px;
-        flex-wrap: nowrap;
-        overflow: hidden;
-    }
-
-    .rdm__project-dot {
-        width: 8px; height: 8px;
-        border-radius: 50%;
-        background: var(--accent, #00ff88);
-        box-shadow: 0 0 0 3px rgba(0,255,136,0.18);
-        flex-shrink: 0;
-    }
-
-    .rdm__project-name {
-        font-size: 0.75rem;
-        font-weight: 800;
-        color: rgba(255,255,255,0.9);
-        white-space: nowrap;
-        letter-spacing: 0.02em;
-    }
-
-    .rdm__project-desc {
-        font-size: 0.68rem;
-        color: rgba(255,255,255,0.38);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        min-width: 0;
-    }
-
-    .rdm__new-badge {
-        font-size: 0.58rem;
-        font-weight: 700;
-        background: rgba(0,255,136,0.12);
-        border: 1px solid rgba(0,255,136,0.25);
-        color: var(--accent, #00ff88);
-        padding: 0.15rem 0.5rem;
-        border-radius: 100px;
-        white-space: nowrap;
-        flex-shrink: 0;
-    }
-
-    .rdm__project-meta {
-        font-size: 0.65rem;
-        color: rgba(255,255,255,0.35);
-        white-space: nowrap;
-        flex-shrink: 0;
-    }
-
-    .rdm__project-action {
-        font-size: 0.65rem;
-        font-weight: 600;
-        color: rgba(255,255,255,0.5);
-        white-space: nowrap;
-        flex-shrink: 0;
-        cursor: pointer;
-        transition: color 0.15s;
-    }
-
-    .rdm__project-action:hover { color: rgba(255,255,255,0.9); }
-
-    /* Forms table */
-    .rdm__table-wrap {
-        border: 1px solid rgba(255,255,255,0.07);
-        border-radius: 10px;
-        overflow: hidden;
-    }
-
-    .rdm__table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 0.75rem;
-    }
-
-    .rdm__table thead tr {
-        background: rgba(255,255,255,0.03);
-        border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-
-    .rdm__table th {
-        padding: 0.55rem 0.85rem;
-        text-align: left;
-        font-size: 0.5rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: rgba(255,255,255,0.3);
-        white-space: nowrap;
-    }
-
-    .rdm__table tbody tr {
-        border-bottom: 1px solid rgba(255,255,255,0.04);
-        transition: background 0.15s;
-    }
-
-    .rdm__table tbody tr:last-child { border-bottom: none; }
-    .rdm__table tbody tr:hover { background: rgba(255,255,255,0.02); }
-
-    .rdm__table td {
-        padding: 0.7rem 0.85rem;
-        color: rgba(255,255,255,0.6);
-        white-space: nowrap;
-    }
-
-    .rdm__td-name {
-        color: rgba(255,255,255,0.88) !important;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .rdm__td-ep {
-        font-family: var(--font-mono, monospace);
-        font-size: 0.68rem;
-        color: rgba(255,255,255,0.32) !important;
-    }
-
-    .rdm__td-green { color: var(--accent, #00ff88) !important; font-weight: 700; }
-    .rdm__td-red   { color: #ff4949 !important; font-weight: 700; }
-
-    .rdm__status {
-        font-size: 0.65rem;
-        font-weight: 700;
-        color: var(--accent, #00ff88);
-        background: rgba(0,255,136,0.1);
-        border: 1px solid rgba(0,255,136,0.22);
-        padding: 0.18rem 0.6rem;
-        border-radius: 100px;
-    }
-
-    .rdm__td-view {
-        color: rgba(255,255,255,0.4) !important;
-        cursor: pointer;
-        font-weight: 600;
-        transition: color 0.15s;
-    }
-
-    .rdm__td-view:hover { color: rgba(255,255,255,0.9) !important; }
-
-    /* ════════════════════════════════════════════════════════
-    CORE SECTION
-    ════════════════════════════════════════════════════════ */
-    .lpc-section {
-        padding: 6rem 0 5rem;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .lpc-glow--tl {
-        position: absolute;
-        width: 650px; height: 500px;
-        border-radius: 50%;
-        background: var(--green);
-        opacity: 0.04;
-        filter: blur(150px);
-        top: -100px; left: -180px;
-        pointer-events: none;
-    }
-
-    .lpc-layout {
-        display: grid;
-        grid-template-columns: 1fr 1.15fr;
-        gap: 5rem;
-        align-items: start;
-    }
-
-    .lpc-left {
-        display: flex;
-        flex-direction: column;
-        gap: 1.1rem;
-        position: sticky;
-        top: 2rem;
-    }
-
-    .lpc-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        width: fit-content;
-        font-size: 0.72rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        padding: 0.3rem 0.9rem;
-        border-radius: 100px;
-        background: rgba(0,255,136,0.09);
-        border: 1px solid rgba(0,255,136,0.22);
-        color: var(--green);
-    }
-
-    .lpc-badge__dot {
-        width: 7px; height: 7px;
-        border-radius: 50%;
-        background: var(--green);
-        box-shadow: 0 0 0 3px rgba(0,255,136,0.2);
-        animation: lp-pulse 2s infinite;
-    }
-
-    .lpc-title {
-        font-size: clamp(1.85rem, 2.6vw, 2.5rem);
-        font-weight: 800;
-        line-height: 1.1;
-        letter-spacing: -0.03em;
-        color: rgba(255,255,255,0.95);
-        margin: 0;
-    }
-
-    .lpc-title__accent {
-        background: linear-gradient(120deg, var(--green) 0%, #78ffc8 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .lpc-desc {
-        font-size: 0.96rem;
-        line-height: 1.75;
-        color: rgba(255,255,255,0.62);
-        margin: 0;
-    }
-
-    .lpc-perks {
-        list-style: none;
-        padding: 0; margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 0.55rem;
-    }
-
-    .lpc-perks li {
-        display: flex;
-        align-items: center;
-        gap: 9px;
-        font-size: 0.875rem;
-        color: rgba(255,255,255,0.68);
-    }
-
-    .lpc-perks li svg { color: var(--green); flex-shrink: 0; }
-
-    .lpc-cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        width: fit-content;
-        font-weight: 700;
-        font-size: 0.94rem;
-        text-decoration: none;
-        border-radius: 10px;
-        padding: 0.88rem 1.65rem;
-        transition: all 0.22s ease;
-        background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
-        color: #001a0d;
-        border: 1px solid rgba(0,255,136,0.25);
-        box-shadow: 0 0 18px rgba(0,255,136,0.28), inset 0 1px 0 rgba(255,255,255,0.2);
-        margin-top: 0.25rem;
-    }
-
-    .lpc-cta:hover {
-        background: linear-gradient(135deg, #33ffaa 0%, #00bb66 100%);
-        box-shadow: 0 0 32px rgba(0,255,136,0.5);
-        transform: translateY(-2px);
-    }
-
-    .lpc-note {
-        font-size: 0.73rem;
-        color: rgba(255,255,255,0.32);
-        margin: 0;
-    }
-
-    .lpc-right { display: flex; flex-direction: column; gap: 2rem; }
-
-    .lpc-right__head { display: flex; flex-direction: column; gap: 0.6rem; }
-
-    .lpc-setup-tag {
-        display: inline-block;
-        font-family: var(--font-mono, monospace);
-        font-size: 0.68rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--green);
-        background: rgba(0,255,136,0.08);
-        border: 1px solid rgba(0,255,136,0.2);
-        padding: 0.25rem 0.85rem;
-        border-radius: 100px;
-        width: fit-content;
-    }
-
-    .lpc-setup-title {
-        font-size: clamp(1.35rem, 1.9vw, 1.75rem);
-        font-weight: 800;
-        line-height: 1.15;
-        letter-spacing: -0.025em;
-        color: rgba(255,255,255,0.92);
-        margin: 0;
-    }
-
-    .lpc-setup-sub {
-        font-size: 0.9rem;
-        line-height: 1.65;
-        color: rgba(255,255,255,0.52);
-        margin: 0;
-    }
-
-    .lpc-vsteps { display: flex; flex-direction: column; gap: 0; }
-
-    .lpc-vstep { display: flex; gap: 1.1rem; position: relative; }
-
-    .lpc-vstep__left {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex-shrink: 0;
-    }
-
-    .lpc-vstep__num {
-        width: 44px; height: 44px;
-        border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
-        font-family: 'SF Mono', 'Fira Code', monospace;
-        font-size: 0.72rem;
-        font-weight: 800;
-        background: rgba(0,255,136,0.07);
-        border: 1px solid rgba(0,255,136,0.28);
-        color: var(--green);
-        flex-shrink: 0;
-        position: relative; z-index: 1;
-    }
-
-    .lpc-vstep__line {
-        width: 1px; flex: 1; min-height: 1.5rem;
-        background: linear-gradient(to bottom, rgba(0,255,136,0.22), transparent);
-        margin: 4px 0;
-    }
-
-    .lpc-vstep__body {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        padding: 0.5rem 0 2rem;
-    }
-
-    .lpc-vstep:last-child .lpc-vstep__body { padding-bottom: 0; }
-
-    .lpc-vstep__body h4 { font-size: 0.96rem; font-weight: 700; color: rgba(255,255,255,0.9); margin: 0; }
-    .lpc-vstep__body p  { font-size: 0.86rem; line-height: 1.65; color: rgba(255,255,255,0.56); margin: 0; }
-
-    .lpc-vstep__link {
-        display: inline-flex; align-items: center; gap: 6px;
-        margin-top: 0.5rem;
-        font-size: 0.84rem; font-weight: 600;
-        color: var(--green); text-decoration: none;
-        transition: gap 0.2s;
-    }
-    .lpc-vstep__link:hover { gap: 10px; }
-
-    .lpc-snippet {
-        margin-top: 0.7rem;
-        background: rgba(0,0,0,0.3);
-        border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 8px;
-        padding: 0.6rem 0.9rem;
-        font-family: 'SF Mono', 'Fira Code', monospace;
-        font-size: 0.72rem;
-        line-height: 1.6;
-        color: rgba(255,255,255,0.72);
-        overflow-x: auto;
-    }
-
-    /* ════════════════════════════════════════════════════════
-    EXPRESS SECTION
-    ════════════════════════════════════════════════════════ */
-    .lpe-section {
-        position: relative;
-        padding: 80px 0;
-        overflow: hidden;
-        background: #06090f;
-    }
-    .lpe-section::before {
-        content: '';
-        position: absolute;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        width: 700px; height: 500px;
-        background: radial-gradient(ellipse at center, rgba(30,90,255,0.22) 0%, rgba(20,60,200,0.1) 40%, transparent 70%);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 0;
-    }
-    .lpe-section::after {
-        content: '';
-        position: absolute; inset: 0;
-        background-image: linear-gradient(rgba(60,120,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(60,120,255,0.04) 1px, transparent 1px);
-        background-size: 48px 48px;
-        pointer-events: none;
-        z-index: 0;
-    }
-    .lpe-or-row {
-        display: flex; align-items: center; gap: 16px;
-        margin-bottom: 40px; position: relative; z-index: 1;
-    }
-    .lpe-or-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(60,120,255,0.35), transparent); }
-    .lpe-or-pill {
-        display: flex; align-items: center; gap: 8px;
-        padding: 8px 20px; border-radius: 999px;
-        border: 1px solid rgba(60,120,255,0.4);
-        background: rgba(20,50,180,0.15);
-        font-size: 13px; font-weight: 700; color: #6ea4ff;
-        letter-spacing: 0.06em; text-transform: uppercase;
-    }
-    .lpe-card {
-        border: 1px solid rgba(40,100,255,0.2);
-        border-radius: 24px; padding: 56px 52px;
-        background: rgba(10,18,40,0.6);
-        position: relative; overflow: hidden; z-index: 1;
-    }
-    .lpe-card::before {
-        content: ''; position: absolute;
-        top: -1px; left: -1px; width: 120px; height: 120px;
-        background: linear-gradient(135deg, rgba(60,120,255,0.4), transparent 60%);
-        border-radius: 24px 0 0 0; pointer-events: none;
-    }
-    .lpe-card::after {
-        content: ''; position: absolute;
-        bottom: -1px; right: -1px; width: 100px; height: 100px;
-        background: linear-gradient(315deg, rgba(60,120,255,0.2), transparent 60%);
-        border-radius: 0 0 24px 0; pointer-events: none;
-    }
-    .lpe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-    .lpe-badge {
-        display: inline-flex; align-items: center; gap: 6px;
-        padding: 5px 14px; border-radius: 999px;
-        background: rgba(40,100,255,0.18);
-        border: 1px solid rgba(60,130,255,0.35);
-        font-size: 11px; font-weight: 600; color: #7ab4ff;
-        letter-spacing: 0.08em; text-transform: uppercase;
-        margin-bottom: 20px;
-    }
-    .lpe-title { font-size: clamp(28px,4vw,48px); font-weight: 800; line-height: 1.08; color: #fff; margin-bottom: 16px; letter-spacing: -0.02em; }
-    .lpe-title__accent { background: linear-gradient(90deg,#4d8fff,#a0cfff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .lpe-desc { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.5); margin-bottom: 28px; }
-    .lpe-perks { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 36px; }
-    .lpe-perks li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.75); }
-    .lpe-perks li svg { flex-shrink: 0; color: #4d8fff; background: rgba(40,90,255,0.15); border-radius: 50%; padding: 3px; width: 20px; height: 20px; }
-    .lpe-cta {
-        display: inline-flex; align-items: center; gap: 9px;
-        padding: 14px 28px; border-radius: 999px;
-        background: linear-gradient(135deg,#1a4adf,#3366ff);
-        box-shadow: 0 0 32px rgba(40,100,255,0.45), inset 0 1px 0 rgba(255,255,255,0.15);
-        font-size: 14px; font-weight: 700; color: #fff;
-        text-decoration: none; transition: box-shadow 0.25s, transform 0.2s;
-    }
-    .lpe-cta:hover { box-shadow: 0 0 48px rgba(40,100,255,0.65), inset 0 1px 0 rgba(255,255,255,0.2); transform: translateY(-1px); }
-    .lpe-steps { display: flex; flex-direction: column; }
-    .lpe-step { display: flex; gap: 20px; }
-    .lpe-step__left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
-    .lpe-step__num {
-        width: 40px; height: 40px; border-radius: 50%;
-        border: 1px solid rgba(60,120,255,0.45);
-        background: rgba(20,50,180,0.2);
-        display: flex; align-items: center; justify-content: center;
-        font-size: 12px; font-weight: 700; color: #6ea4ff; letter-spacing: 0.05em;
-    }
-    .lpe-step__line { width: 1px; flex: 1; min-height: 32px; background: linear-gradient(to bottom, rgba(60,120,255,0.35), rgba(60,120,255,0.05)); margin: 6px 0; }
-    .lpe-step__body { padding-bottom: 36px; }
-    .lpe-step:last-child .lpe-step__body { padding-bottom: 0; }
-    .lpe-step__body h4 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 6px; margin-top: 8px; }
-    .lpe-step__body p { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.45); }
-    @media (max-width: 768px) {
-        .lpe-grid { grid-template-columns: 1fr; gap: 40px; }
-        .lpe-card { padding: 36px 24px; }
-    }
-
-    /* ════════════════════════════════════════════════════════
-    CONTRAST FIXES
-    ════════════════════════════════════════════════════════ */
-    .lp-hero__desc                          { color: rgba(255,255,255,0.68) !important; }
-    .lp-proof-lbl                           { color: rgba(255,255,255,0.48) !important; font-size: 0.72rem !important; }
-    .lp-hero__row-copy p                    { color: rgba(255,255,255,0.62) !important; font-size: 0.95rem !important; }
-    .lp-hero__row-bullets li                { color: rgba(255,255,255,0.72) !important; font-size: 0.875rem !important; }
-    .lp-email__card-meta                    { color: rgba(255,255,255,0.52) !important; font-size: 0.72rem !important; }
-    .lp-email__card-caption                 { color: rgba(255,255,255,0.58) !important; font-size: 0.76rem !important; }
-    .lp-email__field-key                    { color: rgba(255,255,255,0.45) !important; font-size: 0.65rem !important; }
-    .lp-email__field-val                    { color: rgba(255,255,255,0.88) !important; font-size: 0.78rem !important; }
-    .lp-section-head p                      { color: rgba(255,255,255,0.65) !important; font-size: 1.02rem !important; }
-    .lp-cta__inner p:not(.lp-cta__note)    { color: rgba(255,255,255,0.65) !important; }
-    .lp-cta__note                           { color: rgba(255,255,255,0.35) !important; }
-    .banner-content p                       { color: rgba(255,255,255,0.65) !important; }
-    .banner-description                     { color: rgba(255,255,255,0.55) !important; }
-    .lp-pt__footer                          { color: rgba(255,255,255,0.4) !important; font-size: 0.82rem !important; }
-
-    /* ════════════════════════════════════════════════════════
-    GLOBAL / CONTAINER
-    ════════════════════════════════════════════════════════ */
-    .lp-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-        width: 100%;
-    }
-
-    /* ════════════════════════════════════════════════════════
-    HERO
-    ════════════════════════════════════════════════════════ */
-    .lp-hero {
-        position: relative;
-        padding: 7rem 0 5rem;
-        overflow: hidden;
-    }
-
-    .lp-hero__bg { position: absolute; inset: 0; pointer-events: none; }
-
-    .lp-glow {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(160px);
-        pointer-events: none;
-    }
-
-    .lp-glow--1 { width: 700px; height: 700px; background: var(--accent,#00ff88); opacity: 0.07; top: -300px; right: -200px; }
-    .lp-glow--2 { width: 500px; height: 500px; background: #0077ff; opacity: 0.05; bottom: -200px; left: -100px; }
-    .lp-glow--4 { width: 700px; height: 700px; background: var(--accent,#00ff88); opacity: 0.07; top: 3700px; right: -200px; }
-    .lp-glow--3 { width: 500px; height: 500px; background: #0077ff; opacity: 0.05; top: 4000px; left: -100px; }
-
-    .lp-grid {
-        position: absolute; inset: 0;
-        background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-        background-size: 48px 48px;
-        mask-image: radial-gradient(ellipse 80% 90% at 50% 0%, black 20%, transparent 100%);
-    }
-
-    .lp-noise {
-        position: absolute; inset: 0; opacity: 0.018;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-
-    .lp-hero .lp-container { display: flex; flex-direction: column; align-items: center; gap: 4rem; position: relative; z-index: 2; }
-
-    .lp-hero__center { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.5rem; max-width: 720px; width: 100%; }
-
-    .lp-badge {
-        display: inline-flex; align-items: center; gap: 8px;
-        padding: 0.4rem 1rem 0.4rem 0.75rem; border-radius: 100px;
-        background: rgba(0,255,136,0.07); border: 1px solid rgba(0,255,136,0.2);
-        color: var(--accent,#00ff88); font-size: 0.78rem; font-weight: 600;
-        text-decoration: none; width: fit-content; transition: all 0.2s ease;
-    }
-    .lp-badge:hover { background: rgba(0,255,136,0.12); border-color: rgba(0,255,136,0.35); }
-
-    .lp-badge__dot {
-        width: 7px; height: 7px; border-radius: 50%;
-        background: var(--accent,#00ff88);
-        box-shadow: 0 0 0 3px rgba(0,255,136,0.2);
-        animation: lp-pulse 2s infinite;
-    }
-
-    @keyframes lp-pulse {
-        0%, 100% { box-shadow: 0 0 0 3px rgba(0,255,136,0.2); }
-        50%       { box-shadow: 0 0 0 6px rgba(0,255,136,0.05); }
-    }
-
-    .lp-hero__title { font-size: clamp(2.8rem,5.5vw,4.5rem); font-weight: 800; line-height: 1.06; letter-spacing: -0.035em; color: var(--text-primary,#fff); margin: 0; }
-
-    .lp-hero__accent {
-        background: linear-gradient(120deg, var(--accent,#00ff88) 0%, #78b4ff 100%);
-        -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-
-    .lp-hero__desc { font-size: 1.05rem; line-height: 1.75; color: var(--text-secondary,rgba(255,255,255,0.55)); max-width: 560px; margin: 0; }
-
-    .lp-code-inline {
-        font-family: 'SF Mono','Fira Code',monospace; font-size: 0.9em;
-        background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.2);
-        color: var(--accent,#00ff88); padding: 0.1em 0.45em; border-radius: 4px;
-    }
-
-    .lp-hero__actions { display: flex; gap: 0.85rem; flex-wrap: wrap; justify-content: center; }
-
-    .lp-hero__proof { display: flex; align-items: center; gap: 1.75rem; padding-top: 0.25rem; flex-wrap: wrap; justify-content: center; }
-
-    .lp-proof-item { display: flex; flex-direction: column; align-items: center; gap: 3px; }
-    .lp-proof-num { font-size: 1.5rem; font-weight: 800; color: var(--text-primary,#fff); line-height: 1; }
-    .lp-proof-lbl { font-size: 0.65rem; color: var(--text-muted,rgba(255,255,255,0.3)); text-transform: uppercase; letter-spacing: 0.07em; }
-    .lp-proof-sep { width: 1px; height: 32px; background: var(--border-color,rgba(255,255,255,0.1)); }
-
-    .lp-hero__rows { display: flex; flex-direction: column; gap: 5rem; width: 100%; max-width: 1100px; }
-
-    .lp-hero__row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 4rem; align-items: center; }
-    .lp-hero__row--reverse { grid-template-columns: 1fr 1.4fr; }
-
-    .lp-hero__row-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--accent,#00ff88); margin-bottom: 0.85rem; }
-
-    .lp-hero__row-copy h3 { font-size: clamp(1.5rem,2.5vw,2rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.025em; color: var(--text-primary,#fff); margin: 0 0 1rem; }
-    .lp-hero__row-copy p  { font-size: 0.92rem; line-height: 1.75; color: var(--text-secondary,rgba(255,255,255,0.5)); margin: 0 0 1.35rem; }
-
-    .lp-hero__row-bullets { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; }
-    .lp-hero__row-bullets li { display: flex; align-items: center; gap: 9px; font-size: 0.85rem; color: rgba(255,255,255,0.6); }
-    .lp-hero__row-bullets li svg { color: var(--accent,#00ff88); flex-shrink: 0; }
-
-    .lp-prev { display: flex; flex-direction: column; gap: 0.6rem; }
-    .lp-prev__label { display: flex; align-items: center; gap: 6px; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.25); }
-
-    /* ════════════════════════════════════════════════════════
-    EMAIL PREVIEW
-    ════════════════════════════════════════════════════════ */
-    .lp-email { border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 24px 64px rgba(0,0,0,0.45); }
-    .lp-email__chrome { background: #f5f5f5; border-bottom: 1px solid #e0e0e0; padding: 0.65rem 1rem; }
-    .lp-email__from-row { display: flex; align-items: center; gap: 0.6rem; }
-    .lp-email__sender-avatar { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg,#1a1a1a,#333); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800; color: var(--accent,#00ff88); flex-shrink: 0; }
-    .lp-email__sender-name { font-size: 0.78rem; font-weight: 700; color: #1a1a1a; }
-    .lp-email__sender-to { font-size: 0.65rem; color: #666; }
-    .lp-email__body { padding: 1rem; background: #f9f9f9; }
-    .lp-email__card { background: #111; border-radius: 10px; overflow: hidden; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; }
-    .lp-email__card-title { font-size: 0.92rem; font-weight: 700; color: #fff; }
-    .lp-email__card-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 0.15rem 0; }
-    .lp-email__card-meta { font-size: 0.68rem; color: rgba(255,255,255,0.35); }
-    .lp-email__card-caption { font-size: 0.7rem; color: rgba(255,255,255,0.4); }
-    .lp-email__card-fields { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.25rem; }
-    .lp-email__field { display: flex; flex-direction: column; gap: 2px; }
-    .lp-email__field-key { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; color: rgba(255,255,255,0.28); text-transform: uppercase; }
-    .lp-email__field-val { font-size: 0.75rem; color: rgba(255,255,255,0.85); line-height: 1.4; }
-    .lp-email__field-val--link { color: #79aaff; }
-
-    /* ════════════════════════════════════════════════════════
-    BUTTONS
-    ════════════════════════════════════════════════════════ */
-    .lp-btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.9rem; text-decoration: none; border-radius: 10px; padding: 0.75rem 1.5rem; border: none; cursor: pointer; transition: all 0.2s ease; white-space: nowrap; }
-    .lp-btn--lg  { padding: 0.875rem 1.75rem; font-size: 0.95rem; }
-    .lp-btn--xl  { padding: 1.1rem 2.25rem; font-size: 1.05rem; border-radius: 12px; }
-    .lp-btn--primary { background: var(--accent,#00ff88); color: #000; }
-    .lp-btn--primary:hover { background: #00e87a; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,255,136,0.3); }
-    .lp-btn--ghost { background: transparent; color: var(--text-primary,#fff); border: 1px solid rgba(255,255,255,0.15); }
-    .lp-btn--ghost:hover { border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.04); transform: translateY(-2px); }
-
-    /* ════════════════════════════════════════════════════════
-    SECTION HEADER
-    ════════════════════════════════════════════════════════ */
-    .lp-section-head { text-align: center; max-width: 640px; margin: 0 auto 4rem; }
-    .lp-section-tag { display: inline-block; font-family: var(--font-mono,monospace); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent,#00ff88); background: rgba(0,255,136,0.08); border: 1px solid rgba(0,255,136,0.2); padding: 0.25rem 0.85rem; border-radius: 100px; margin-bottom: 1.25rem; }
-    .lp-section-head h2 { font-size: clamp(1.8rem,3.5vw,2.75rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.025em; color: var(--text-primary,#fff); margin: 0 0 1rem; }
-    .lp-section-head p { font-size: 1rem; color: var(--text-secondary,rgba(255,255,255,0.55)); line-height: 1.65; margin: 0; }
-    .lp-dim { color: rgba(255,255,255,0.3); }
-    .lp-accent-text { color: var(--accent,#00ff88); }
-
-    /* ════════════════════════════════════════════════════════
-    DASHBOARD PREVIEW SECTION
-    ════════════════════════════════════════════════════════ */
-    .lp-preview { padding: 6rem 0; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3), transparent); }
-
-    /* ════════════════════════════════════════════════════════
-    PRICING BANNER
-    ════════════════════════════════════════════════════════ */
-    .lp-pricing-teaser { padding: 4rem 1.5rem; border-radius: 1.5rem; max-width: 1400px; margin: 0 auto; }
-
-    .banner-inner {
-        border-radius: 1.5rem; padding: 0 2.5rem;
-        display: flex; align-items: center; justify-content: flex-start;
-        flex-wrap: wrap; gap: 3rem; margin: 2rem 0 2rem;
-    }
-    .banner-content { flex: 0 1 auto; max-width: 80%; }
-    .banner-content h2 { font-size: clamp(1.8rem,3.5vw,2.75rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.025em; color: var(--text-primary,#fff); margin: 0 0 1rem; }
-    .banner-content h2 .lp-dim { color: rgba(255,255,255,0.3); }
-    .banner-content p { font-size: 1rem; line-height: 1.65; color: rgba(255,255,255,0.5); max-width: 620px; margin: 0; }
-    .banner-description { font-size: 0.95rem; color: #94a3b8; margin-top: 0.5rem; }
-    .banner-decoration { flex-shrink: 0; }
-
-    .lp-pt__footer { text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.25); padding-top: 0.5rem; }
-    .lp-pt__footer a { color: var(--accent,#00ff88); text-decoration: none; font-weight: 600; opacity: 0.8; transition: opacity 0.2s; }
-    .lp-pt__footer a:hover { text-decoration: underline; }
-
-    /* ════════════════════════════════════════════════════════
-    FINAL CTA
-    ════════════════════════════════════════════════════════ */
-    .lp-cta { padding: 7rem 0; position: relative; overflow: hidden; text-align: center; }
-    .lp-cta__bg { position: absolute; inset: 0; pointer-events: none; }
-    .lp-cta__glow { position: absolute; width: 800px; height: 400px; border-radius: 50%; background: var(--accent,#00ff88); filter: blur(200px); opacity: 0.06; top: 50%; left: 50%; transform: translate(-50%,-50%); }
-    .lp-cta__inner { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
-    .lp-cta__inner h2 { font-size: clamp(2rem,4vw,3.25rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; color: var(--text-primary,#fff); margin: 0; }
-    .lp-cta__inner p { font-size: 1rem; line-height: 1.65; color: rgba(255,255,255,0.5); max-width: 520px; margin: 0; }
-    .lp-cta__note { font-size: 0.78rem !important; color: rgba(255,255,255,0.2) !important; }
-
-    /* ════════════════════════════════════════════════════════
-    RESPONSIVE
-    ════════════════════════════════════════════════════════ */
-    @media (max-width: 1024px) {
-        .lpc-layout { gap: 3.5rem; }
-        .lp-hero__row { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-        .lp-hero__row--reverse { grid-template-columns: 1fr 1fr; }
-        .rdm--full .rdm__stats { grid-template-columns: repeat(3,1fr); }
-    }
-
-    @media (max-width: 860px) {
-        .lp-hero__rows { gap: 3.5rem; }
-        .lp-hero__row, .lp-hero__row--reverse { grid-template-columns: 1fr; gap: 2rem; }
-        .lp-hero__row--reverse .lp-hero__row-copy { order: -1; }
-        .lpc-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-        .lpc-left { position: static; }
-        .lpe-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-        .rdm__sidebar { width: 160px; }
-        .rdm--full { flex-direction: column; }
-        .rdm--full .rdm__sidebar { width: 100%; flex-wrap: wrap; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
-        .rdm--full .rdm__stats { grid-template-columns: repeat(3,1fr); }
-        .rdm__nav-section-label--bottom { margin-top: 0; }
-        .banner-inner { flex-direction: column; align-items: flex-start; padding: 0; }
-    }
-
-    @media (max-width: 640px) {
-        .lp-hero { padding: 5rem 0 3rem; }
-        .lp-preview, .lp-pricing-teaser, .lp-cta { padding: 4rem 0; }
-        .lp-hero__proof { flex-wrap: wrap; }
-        .rdm { flex-direction: column; }
-        .rdm__sidebar { width: 100%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 0.85rem; }
-        .rdm__stats { grid-template-columns: repeat(2,1fr); }
-        .lp-container { padding: 0 1.25rem; }
-        .lpe-card { padding: 36px 24px; }
-        .lpc-section { padding: 4rem 0 3.5rem; }
-        .lpe-section { padding: 3.5rem 0 4rem; }
-    }
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#03030a;
+  --surface:rgba(9,9,20,0.85);
+  --surface-2:rgba(14,14,28,0.9);
+  --surface-3:rgba(18,18,32,0.95);
+  --border:rgba(255,255,255,0.06);
+  --border-hi:rgba(255,255,255,0.1);
+  --text:#f0f0f8;
+  --muted:#8888aa;
+  --dim:#44445a;
+  --green:#00e87a;
+  --green-mid:#00c46a;
+  --green-dim:rgba(0,232,122,0.08);
+  --green-glow:rgba(0,232,122,0.3);
+  --green-glass:rgba(0,232,122,0.06);
+  --blue:#4d9fff;
+  --blue-mid:#3d8aef;
+  --blue-dim:rgba(77,159,255,0.08);
+  --blue-glow:rgba(77,159,255,0.3);
+  --blue-glass:rgba(77,159,255,0.06);
+  --r-sm:10px;
+  --r-md:18px;
+  --r-lg:24px;
+  --r-xl:36px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;font-family:'DM Sans',sans-serif;}
+h1,h2,h3,h4,.brand,.btn,.tag-label,.step-num,.section-eyebrow{font-family:'Syne',sans-serif;}
+
+/* ─── GRAIN OVERLAY ─── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity:.5;pointer-events:none;z-index:0;
+}
+
+/* ─── GLOBAL AMBIENT GLOW ─── */
+.ambient-left{
+  position:fixed;top:0;left:-20%;width:60%;height:80%;
+  background:radial-gradient(ellipse at top left,rgba(0,232,122,0.05) 0%,transparent 60%);
+  pointer-events:none;z-index:0;
+}
+.ambient-right{
+  position:fixed;top:20%;right:-20%;width:60%;height:80%;
+  background:radial-gradient(ellipse at top right,rgba(77,159,255,0.05) 0%,transparent 60%);
+  pointer-events:none;z-index:0;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--green),var(--blue));border-radius:99px;}
+
+/* ─── HEADER ─── */
+header{
+  position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:300;
+  width:calc(100% - 48px);max-width:1200px;
+  height:64px;display:flex;align-items:center;justify-content:space-between;
+  padding:2.6rem 24px;
+  background:rgba(6,6,16,0.6);
+  backdrop-filter:blur(32px) saturate(200%);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:50px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.06),0 0 0 1px rgba(0,0,0,0.3);
+  transition:all .3s;
+}
+.logo-wrap{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-mark{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,var(--green),var(--green-mid));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Syne',sans-serif;font-weight:800;font-size:11px;color:#010d06;
+  letter-spacing:-1px;
+  box-shadow:0 0 20px var(--green-glow),inset 0 1px 0 rgba(255,255,255,0.3);
+}
+.brand{font-weight:700;font-size:1.3rem;letter-spacing:-0.5px;color:var(--text);}
+
+/* ─── NAVIGATION: BRIGHT TEXT LINKS (DEFAULT MUTED) ─── */
+.nav-links{
+  display:flex;
+  gap:32px;
+  align-items: center;
+}
+.nav-link{
+  font-family:'Syne',sans-serif;
+  font-weight:700;
+  font-size:1.1rem;
+  cursor:pointer;
+  text-decoration:none;
+  transition:all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  letter-spacing:-0.2px;
+  position:relative;
+  padding:8px 6px;
+  background:transparent;
+  border:none;
+}
+.nav-link-core{
+  color:var(--muted);
+}
+.nav-link-express{
+  color:var(--muted);
+}
+.nav-link-core:hover, .nav-link-core.active-link{
+  color:var(--green);
+  text-shadow:0 0 12px var(--green-glow), 0 0 4px var(--green);
+}
+.nav-link-express:hover, .nav-link-express.active-link{
+  color:var(--blue);
+  text-shadow:0 0 12px var(--blue-glow), 0 0 4px var(--blue);
+}
+.nav-link::after{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:0%;
+  height:2px;
+  background:currentColor;
+  border-radius:99px;
+  transition:width 0.3s ease;
+}
+.nav-link:hover::after, .nav-link.active-link::after{
+  width:100%;
+}
+.nav-link-core.active-link::after{
+  background:var(--green);
+  box-shadow:0 0 8px var(--green);
+}
+.nav-link-express.active-link::after{
+  background:var(--blue);
+  box-shadow:0 0 8px var(--blue);
+}
+
+/* ─── HERO ─── */
+.hero{
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:220px 6% 0px;text-align:center;position:relative;overflow:hidden;
+}
+.hero-orb-1{
+  position:absolute;width:900px;height:900px;
+  background:radial-gradient(circle,rgba(0,232,122,0.12) 0%,rgba(0,232,122,0.03) 40%,transparent 65%);
+  top:50%;left:50%;transform:translate(-50%,-55%);
+  filter:blur(40px);pointer-events:none;
+  animation:breathe 9s ease-in-out infinite;
+}
+.hero-orb-2{
+  position:absolute;width:600px;height:600px;
+  background:radial-gradient(circle,rgba(77,159,255,0.1) 0%,transparent 65%);
+  bottom:-10%;right:-5%;filter:blur(60px);pointer-events:none;
+  animation:breathe 12s ease-in-out infinite reverse;
+}
+.hero-orb-3{
+  position:absolute;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(0,232,122,0.06) 0%,transparent 65%);
+  top:10%;left:-5%;filter:blur(50px);pointer-events:none;
+  animation:breathe 7s ease-in-out infinite 3s;
+}
+@keyframes breathe{
+  0%,100%{transform:translate(-50%,-55%) scale(1);}
+  50%{transform:translate(-50%,-55%) scale(1.2);}
+}
+
+.grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 55% at 50% 42%,black 10%,transparent 75%);
+  pointer-events:none;
+}
+
+.grid-dots{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(255,255,255,0.12) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 70% 50% at 50% 42%,black 5%,transparent 70%);
+}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(0,232,122,0.06);
+  border:1px solid rgba(0,232,122,0.2);
+  border-radius:99px;padding:7px 20px;font-size:12.5px;color:var(--green);
+  font-weight:600;margin-bottom:32px;letter-spacing:.4px;
+  backdrop-filter:blur(16px);
+  box-shadow:0 0 30px rgba(0,232,122,0.1),inset 0 1px 0 rgba(255,255,255,0.08);
+  animation:fadeUp .8s .1s both;
+}
+.pulse{
+  width:6px;height:6px;background:var(--green);border-radius:50%;
+  box-shadow:0 0 8px var(--green),0 0 16px rgba(0,232,122,0.5);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:.5;transform:scale(.9);}50%{opacity:1;transform:scale(1.5);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+
+.hero h1{
+  font-size:clamp(3.2rem,8.5vw,7rem);font-weight:800;
+  letter-spacing:-4px;line-height:1.0;
+  margin-bottom:24px;animation:fadeUp .8s .2s both;
+  position:relative;
+}
+.hero h1 .line1{
+  display:block;
+  background:linear-gradient(170deg,#ffffff 0%,rgba(255,255,255,0.85) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero h1 .line2{
+  display:block;
+  background:linear-gradient(135deg,var(--green) 0%,#7fffbb 50%,var(--blue) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+.hero-desc{
+  font-size:1.1rem;color:var(--muted);max-width:480px;
+  margin:0 auto 40px;font-weight:300;line-height:1.75;
+  animation:fadeUp .8s .3s both;
+}
+
+.cta-row{
+  display:flex;align-items:center;gap:14px;justify-content:center;
+  flex-wrap:wrap;margin-bottom:48px;animation:fadeUp .8s .4s both;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:13px 30px;border-radius:14px;font-weight:700;
+  font-size:16.5px;cursor:pointer;border:none;text-decoration:none;
+  transition:all .3s;letter-spacing:-.1px;position:relative;overflow:hidden;
+}
+.btn::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.1),transparent);
+  pointer-events:none;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--green),var(--green-mid));
+  color:#010d06;
+  box-shadow:0 4px 24px var(--green-glow),0 1px 0 rgba(255,255,255,0.2) inset;
+}
+.btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 16px 36px rgba(0,232,122,.45);}
+.btn-express-cta{
+  background:linear-gradient(135deg,#5daeff,var(--blue-mid));
+  color:#fff;
+  box-shadow:0 4px 24px var(--blue-glow),0 1px 0 rgba(255,255,255,0.2) inset;
+}
+.btn-express-cta:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 16px 36px rgba(77,159,255,.45);}
+.btn-secondary{
+  background:rgba(255,255,255,0.05);color:var(--text);
+  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter:blur(16px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.07);
+}
+.btn-secondary:hover{border-color:rgba(77,159,255,.4);color:var(--blue);transform:translateY(-3px);}
+.cta-divider{color:var(--dim);font-size:13px;}
+
+.hero-note{font-size:16px;color:var(--dim);margin-bottom:56px;animation:fadeUp .8s .5s both;letter-spacing:.2px;}
+
+/* ─── SECTION ─── */
+.section{padding:120px 6%;position:relative;}
+.section-inner{max-width:1100px;margin:0 auto;}
+
+/* ─── OVERVIEW CARDS ─── */
+.overview-header{text-align:center;margin-bottom:64px;}
+.overview-header h2{
+  font-size:clamp(2rem,4vw,3.2rem);font-weight:800;
+  letter-spacing:-2px;margin-bottom:16px;
+  background:linear-gradient(135deg,#fff,rgba(255,255,255,0.6));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.overview-header p{font-size:15px;color:var(--muted);}
+
+.ov-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:3rem;
+}
+.ov-card{
+  position:relative;overflow:hidden;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:20px;padding:32px 28px;
+  backdrop-filter:blur(20px);
+  transition:all .4s;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.ov-card::before{
+  content:'';position:absolute;inset:0;border-radius:20px;
+  background:linear-gradient(135deg,rgba(255,255,255,0.04) 0%,transparent 60%);
+  pointer-events:none;
+}
+.ov-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,0.14);
+  box-shadow:0 24px 48px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.ov-card-green:hover{box-shadow:0 24px 48px rgba(0,232,122,0.12),0 0 0 1px rgba(0,232,122,0.2),inset 0 1px 0 rgba(255,255,255,0.1);}
+.ov-card-blue:hover{box-shadow:0 24px 48px rgba(77,159,255,0.12),0 0 0 1px rgba(77,159,255,0.2),inset 0 1px 0 rgba(255,255,255,0.1);}
+
+.ov-icon{
+  width:48px;height:48px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;margin-bottom:20px;position:relative;
+}
+.ov-icon-green{
+  background:linear-gradient(135deg,rgba(0,232,122,0.15),rgba(0,232,122,0.05));
+  border:1px solid rgba(0,232,122,0.2);
+  box-shadow:0 0 20px rgba(0,232,122,0.1),inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.ov-icon-blue{
+  background:linear-gradient(135deg,rgba(77,159,255,0.15),rgba(77,159,255,0.05));
+  border:1px solid rgba(77,159,255,0.2);
+  box-shadow:0 0 20px rgba(77,159,255,0.1),inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.ov-icon-white{
+  background:linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0.04));
+  border:1px solid rgba(255,255,255,0.12);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.ov-card h3{font-size:1.05rem;font-weight:700;margin-bottom:10px;letter-spacing:-.3px;}
+.ov-card p{font-size:18px;color:var(--muted);line-height:1.7;}
+
+/* ─── BACKGROUND ZONES ─── */
+.zone-green{
+  position:relative;
+}
+.zone-green::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 80% 60% at 15% 50%,rgba(0,232,122,0.04) 0%,transparent 65%);
+}
+.zone-blue{
+  position:relative;
+}
+.zone-blue::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 80% 60% at 85% 50%,rgba(77,159,255,0.04) 0%,transparent 65%);
+}
+
+/* ─── MODE SECTIONS ─── */
+.mode-layout{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.mode-layout-rtl{direction:rtl;}
+.mode-layout-rtl > *{direction:ltr;}
+
+.tag-label{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 16px;border-radius:99px;font-size:11px;font-weight:700;
+  letter-spacing:1.2px;text-transform:uppercase;margin-bottom:20px;
+  backdrop-filter:blur(16px);
+}
+.tag-core{
+  color:var(--green);
+  background:rgba(0,232,122,0.08);
+  border:1px solid rgba(0,232,122,0.2);
+  box-shadow:0 0 20px rgba(0,232,122,0.1);
+}
+.tag-express{
+  color:var(--blue);
+  background:rgba(77,159,255,0.08);
+  border:1px solid rgba(77,159,255,0.2);
+  box-shadow:0 0 20px rgba(77,159,255,0.1);
+}
+
+.mode-title{
+  font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:800;
+  letter-spacing:-2.5px;line-height:1.05;margin-bottom:18px;
+}
+.mode-desc{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:32px;max-width:420px;}
+
+.features-list{display:flex;flex-direction:column;gap:8px;margin-bottom:36px;}
+.feat-item{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:16px;padding:16px 18px;font-size:14px;
+  backdrop-filter:blur(10px);
+  transition:all .25s;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.feat-item:hover{border-color:rgba(255,255,255,0.12);transform:translateX(4px);}
+.feat-item-green:hover{border-color:rgba(0,232,122,0.2);}
+.feat-item-blue:hover{border-color:rgba(77,159,255,0.2);}
+.feat-check{
+  width:22px;height:22px;border-radius:7px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;
+}
+.check-green{background:rgba(0,232,122,0.12);color:var(--green);border:1px solid rgba(0,232,122,0.2);}
+.check-blue{background:rgba(77,159,255,0.12);color:var(--blue);border:1px solid rgba(77,159,255,0.2);}
+
+/* ─── STEPS PANEL ─── */
+.steps-panel{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:24px;padding:32px;
+  position:relative;overflow:hidden;
+  backdrop-filter:blur(24px);
+  box-shadow:0 32px 64px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.steps-panel::before{
+  content:'';position:absolute;top:0;right:0;
+  width:250px;height:250px;border-radius:50%;
+  filter:blur(70px);pointer-events:none;opacity:.35;
+}
+.steps-panel-green::before{background:radial-gradient(circle,rgba(0,232,122,0.5),transparent);}
+.steps-panel-blue::before{background:radial-gradient(circle,rgba(77,159,255,0.5),transparent);}
+.steps-panel::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent);
+}
+.steps-panel-header{margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;}
+.steps-panel-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+.step-row{display:flex;gap:18px;padding:20px 0;position:relative;}
+.step-row:not(:last-child){border-bottom:1px solid rgba(255,255,255,0.05);}
+.step-num{
+  width:42px;height:42px;border-radius:16px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;
+}
+.step-num-green{
+  background:linear-gradient(135deg,rgba(0,232,122,0.15),rgba(0,232,122,0.06));
+  color:var(--green);border:1px solid rgba(0,232,122,0.25);
+  box-shadow:0 0 16px rgba(0,232,122,0.1),inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.step-num-blue{
+  background:linear-gradient(135deg,rgba(77,159,255,0.15),rgba(77,159,255,0.06));
+  color:var(--blue);border:1px solid rgba(77,159,255,0.25);
+  box-shadow:0 0 16px rgba(77,159,255,0.1),inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.step-content h4{font-size:15px;font-weight:600;margin-bottom:5px;letter-spacing:-.2px;}
+.step-content p{font-size:13px;color:var(--muted);line-height:1.65;}
+.step-content code{
+  background:rgba(255,255,255,0.07);padding:2px 8px;border-radius:6px;
+  font-family:'JetBrains Mono',monospace;font-size:11.5px;
+  border:1px solid rgba(255,255,255,0.08);
+}
+.step-content code.c-green{color:var(--green);}
+.step-content code.c-blue{color:var(--blue);}
+
+/* ─── COMPARISON ─── */
+.compare-wrap{
+  display:grid;grid-template-columns:1.5fr 1.5fr;gap:3rem;
+  max-width:960px;margin:0 auto;
+}
+.compare-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:20px;padding:28px 26px;
+  backdrop-filter:blur(20px);
+  position:relative;overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.07);
+  transition:all .3s;
+}
+.compare-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  border-radius:99px 99px 0 0;
+}
+.compare-card-green::before{background:linear-gradient(90deg,transparent,var(--green),transparent);}
+.compare-card-blue::before{background:linear-gradient(90deg,transparent,var(--blue),transparent);}
+.compare-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,0.12);}
+.compare-card h3{font-size:16px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.compare-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.04);
+  font-size:16px;color:var(--muted);
+}
+.compare-row:last-child{border-bottom:none;padding-bottom:0;}
+.compare-row span:last-child{font-weight:600;font-size:16px;border-radius:6px;padding:2px 10px;}
+.yes-green{color:var(--green);background:rgba(0,232,122,0.08);}
+.yes-blue{color:var(--blue);background:rgba(77,159,255,0.08);}
+.no{color:var(--dim);background:rgba(255,255,255,0.04);}
+
+/* ─── BOTTOM CTA ─── */
+.cta-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:32px;padding:72px 48px;
+  position:relative;overflow:hidden;text-align:center;
+  backdrop-filter:blur(24px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.cta-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(0,232,122,0.06),transparent 55%);
+  pointer-events:none;
+}
+.cta-card h2{
+  font-size:clamp(2rem,4.5vw,3.4rem);font-weight:800;
+  letter-spacing:-2px;line-height:1.1;margin-bottom:18px;
+}
+.cta-card p{font-size:15px;color:var(--muted);margin-bottom:40px;max-width:460px;margin-left:auto;margin-right:auto;}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+/* ─── FOOTER ─── */
+footer{
+  padding:48px 6%;
+  background:rgba(255,255,255,0.02);
+  border-top:1px solid rgba(255,255,255,0.06);
+  position:relative;
+}
+footer::before{
+  content:'';position:absolute;top:0;left:20%;right:20%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);
+}
+.footer-inner{max-width:1300px;margin:0 auto;}
+.footer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:20px;}
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:24px;border-top:1px solid rgba(255,255,255,0.05);flex-wrap:wrap;gap:16px;
+}
+.footer-copy{font-size:13px;color:var(--dim);}
+.footer-badges{display:flex;gap:8px;}
+.fbadge{
+  padding:4px 14px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.5px;
+}
+.fbadge-green{background:rgba(0,232,122,0.08);color:var(--green);border:1px solid rgba(0,232,122,0.2);}
+.fbadge-blue{background:rgba(77,159,255,0.08);color:var(--blue);border:1px solid rgba(77,159,255,0.2);}
+
+/* ─── SECTION LABELS ─── */
+.section-label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--dim);margin-bottom:20px;
+}
+.label-dot{width:4px;height:4px;border-radius:50%;}
+
+/* ─── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .65s ease;}
+.reveal.in{opacity:1;transform:none;}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:920px){
+  .mode-layout,.mode-layout-rtl{grid-template-columns:1fr;gap:40px;}
+  .ov-grid{grid-template-columns:1fr;}
+  .compare-wrap{grid-template-columns:1fr;}
+  header{width:calc(100% - 24px);padding:0 16px;}
+  .nav-links{gap:20px;}
+  .nav-link{font-size:0.95rem;}
+}
+@media(max-width:600px){
+  .hero h1{letter-spacing:-2.5px;}
+  .cta-card{padding:48px 24px;}
+  .section{padding:80px 5%;}
+  .nav-links{gap:14px;}
+}
 </style>
-@endpush
+</head>
+<body>
+<div class="ambient-left"></div>
+<div class="ambient-right"></div>
 
-@push('scripts')
+<!-- ─── HEADER WITH BRIGHT TEXT LINKS (BOTH DEFAULT MUTED) ─── -->
+<header>
+  <a href="#" class="logo-wrap">
+    <img src="{{ asset('images/logo/000formlogo-default.png') }}" alt="000form Logo" style="width:auto;height:45px;"/>
+  </a>
+  <div class="nav-links">
+    <button class="nav-link nav-link-core" id="navCore">◆ Core</button>
+    <button class="nav-link nav-link-express" id="navExpress">⚡ Express</button>
+  </div>
+</header>
+
+<!-- ─── HERO SECTION (NO ACTIVE HIGHLIGHT) ─── -->
+<section class="hero">
+  <div class="grid-bg"></div>
+  <div class="grid-dots"></div>
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+  <div class="hero-orb-3"></div>
+
+  <div class="hero-badge">
+    <span class="pulse"></span>
+    Form backend without the backend
+  </div>
+
+  <h1>
+    <span class="line1">Submit forms.</span>
+    <span class="line2">Skip the server.</span>
+  </h1>
+  <p class="hero-desc">One URL change and your form just works. No server setup, no deployment, no headaches — choose Core for full control or Express for instant delivery.</p>
+
+  <div class="cta-row">
+    <a href="/core" class="btn btn-primary">Get Core </a>
+    <span class="cta-divider">or</span>
+    <a href="/express" class="btn btn-express-cta">Try Express</a>
+  </div>
+
+  <p class="hero-note">No credit card &nbsp;·&nbsp; Unlimited forms &nbsp;·&nbsp; 50 free submissions/mo</p>
+</section>
+
+<!-- ─── OVERVIEW ─── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="overview-header reveal">
+      <div class="section-label"><span class="label-dot" style="background:var(--muted);"></span> What is 000form</div>
+      <h2>Two ways to handle<br>your form submissions</h2>
+      <p>Pick the workflow that fits — full-featured dashboard or zero-setup email delivery.</p>
+    </div>
+    <div class="ov-grid">
+      <div class="ov-card ov-card-green reveal">
+        <div class="ov-icon ov-icon-green">◆</div>
+        <h3>Core — Your Dashboard</h3>
+        <p>Register once, manage unlimited endpoints from a dashboard. Full submission history, search, CSV export, spam filtering, and per-form notifications.</p>
+      </div>
+      <div class="ov-card ov-card-blue reveal">
+        <div class="ov-icon ov-icon-blue">⚡</div>
+        <h3>Express — Just Notifications</h3>
+        <p>No account needed. Verify your email in 10 seconds and get a unique endpoint. Form submissions land straight in your inbox, nothing else needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CORE SECTION ─── -->
+<section class="section zone-green" id="core">
+  <div class="section-inner">
+    <div class="mode-layout">
+      <div>
+        <div class="tag-label tag-core reveal">◆ Core</div>
+        <h2 class="mode-title reveal" style="background:linear-gradient(140deg,#fff 30%,var(--green) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;">
+          Your data.<br>Your dashboard.
+        </h2>
+        <p class="mode-desc reveal">Register once, create unlimited endpoints, and every submission lands in your personal dashboard — searchable, filterable, and always yours.</p>
+        <div class="features-list reveal">
+          <div class="feat-item feat-item-green"><div class="feat-check check-green">✓</div>Permanent submission storage &amp; full history</div>
+          <div class="feat-item feat-item-green"><div class="feat-check check-green">✓</div>Spam filtering, CSV export &amp; file uploads</div>
+          <div class="feat-item feat-item-green"><div class="feat-check check-green">✓</div>Team collaboration on paid plans</div>
+        </div>
+        <div class="reveal">
+          <a href="/core" class="btn btn-primary">Create free account →</a>
+          <p style="font-size:16px;color:var(--dim);margin-top:16px;">No credit card &nbsp;·&nbsp; 50 free submissions/mo</p>
+        </div>
+      </div>
+      <div class="steps-panel steps-panel-green reveal">
+        <div class="steps-panel-header">
+          <span class="steps-panel-title">How it works</span>
+          <span class="tag-label tag-core" style="font-size:10px;margin-bottom:0;padding:4px 16px;">3 steps</span>
+        </div>
+        <div class="step-row"><div class="step-num step-num-green">1</div><div class="step-content"><h4>Create your free account</h4><p>Sign up — you get a full dashboard, endpoint management, and complete submission history.</p></div></div>
+        <div class="step-row"><div class="step-num step-num-green">2</div><div class="step-content"><h4>Create a form endpoint</h4><p>Name your form, copy the unique URL, and configure notification preferences in seconds.</p></div></div>
+        <div class="step-row"><div class="step-num step-num-green">3</div><div class="step-content"><h4>Point your HTML form at it</h4><p>Set the <code class="c-green">action</code> attribute to your endpoint. Done — submissions flow in instantly.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXPRESS SECTION ─── -->
+<section class="section zone-blue" id="express">
+  <div class="section-inner">
+    <div class="mode-layout mode-layout-rtl">
+      <div>
+        <div class="tag-label tag-express reveal">⚡ Express</div>
+        <h2 class="mode-title reveal" style="background:linear-gradient(140deg,#fff 30%,var(--blue) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;">
+          Zero setup.<br>Just notifications.
+        </h2>
+        <p class="mode-desc reveal">No account, no login, no dashboard. Verify your email once, paste the URL. Form submissions hit your inbox in seconds, every time.</p>
+        <div class="features-list reveal">
+          <div class="feat-item feat-item-blue"><div class="feat-check check-blue">✓</div>No registration required — just your email</div>
+          <div class="feat-item feat-item-blue"><div class="feat-check check-blue">✓</div>Instant email delivery, reply-to configured</div>
+          <div class="feat-item feat-item-blue"><div class="feat-check check-blue">✓</div>CAPTCHA protection via hidden field</div>
+        </div>
+        <div class="reveal"><a href="/express" class="btn btn-express-cta">Get started — no account needed →</a></div>
+      </div>
+      <div class="steps-panel steps-panel-blue reveal">
+        <div class="steps-panel-header"><span class="steps-panel-title">How it works</span><span class="tag-label tag-express" style="font-size:10px;margin-bottom:0;padding:4px 16px;">3 steps</span></div>
+        <div class="step-row"><div class="step-num step-num-blue">1</div><div class="step-content"><h4>Enter your email</h4><p>Just your email address — no password, no signup form, no overhead.</p></div></div>
+        <div class="step-row"><div class="step-num step-num-blue">2</div><div class="step-content"><h4>Click the confirmation link</h4><p>One-click verification to confirm your address. Takes about 10 seconds.</p></div></div>
+        <div class="step-row"><div class="step-num step-num-blue">3</div><div class="step-content"><h4>Start receiving submissions</h4><p>Paste the endpoint URL in your form's <code class="c-blue">action</code>. Notifications arrive instantly.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COMPARISON ─── -->
+<section class="section">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:56px;" class="reveal">
+      <div class="section-label" style="justify-content:center;"><span class="label-dot" style="background:var(--muted);"></span> Compare plans</div>
+      <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-1.5px;background:linear-gradient(135deg,#fff,rgba(255,255,255,0.6));-webkit-background-clip:text;background-clip:text;color:transparent;">Which one do you need?</h2>
+    </div>
+    <div class="compare-wrap reveal">
+      <div class="compare-card compare-card-green"><h3><span style="color:var(--green);">◆</span> Core</h3><div class="compare-row"><span>Account required</span><span class="yes-green">Yes</span></div><div class="compare-row"><span>Submission storage</span><span class="yes-green">Permanent</span></div><div class="compare-row"><span>Dashboard &amp; search</span><span class="yes-green">Full</span></div><div class="compare-row"><span>CSV export</span><span class="yes-green">✓</span></div><div class="compare-row"><span>Analytics</span><span class="yes-green">✓</span></div><div class="compare-row"><span>File uploads</span><span class="yes-green">✓</span></div><div class="compare-row"><span>Email notifications</span><span class="yes-green">✓</span></div><div class="compare-row"><span>Time to setup</span><span class="yes-green">~2 min</span></div></div>
+      <div class="compare-card compare-card-blue"><h3><span style="color:var(--blue);">⚡</span> Express</h3><div class="compare-row"><span>Account required</span><span class="no">No</span></div><div class="compare-row"><span>Submission storage</span><span class="no">None</span></div><div class="compare-row"><span>Dashboard &amp; search</span><span class="no">None</span></div><div class="compare-row"><span>CSV export</span><span class="no">—</span></div><div class="compare-row"><span>Analytics</span><span class="no">—</span></div><div class="compare-row"><span>File uploads</span><span class="no">—</span></div><div class="compare-row"><span>Email notifications</span><span class="yes-blue">✓</span></div><div class="compare-row"><span>Time to setup</span><span class="yes-blue">&lt;60s</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BOTTOM CTA ─── -->
+<section class="section" style="padding-bottom:140px;">
+  <div class="section-inner">
+    <div class="cta-card reveal">
+      <h2>Start collecting<br><span style="background:linear-gradient(135deg,var(--green),#7fffbb,var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;">form submissions today</span></h2>
+      <p>Pick the workflow that fits your project — full-featured dashboard or zero-setup notifications.</p>
+      <div class="cta-btns"><a href="/core" class="btn btn-primary">Create free Core account</a><a href="/express" class="btn btn-express-cta">Try Express instantly</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top"><div class="logo-wrap" style="text-decoration:none;"><img src="{{ asset('images/logo/000formlogo-default.png') }}" alt="000form Logo" style="width:auto;height:45px;"/></div><p style="font-size:13.5px;color:var(--muted);max-width:340px;">Form backend made so easy — just change your action URL.</p></div>
+    <div class="footer-bottom"><span class="footer-copy">© 2026 000form. A product of <b style="color:var(--muted);">172 Tech</b> &nbsp;·&nbsp; Designed by <b style="color:var(--muted);">530 Expert</b> &nbsp;·&nbsp; Developed by <b style="color:var(--muted);">ESS ENN Associates</b></span><div class="footer-badges"><span class="fbadge fbadge-green">◆ Core</span><span class="fbadge fbadge-blue">⚡ Express</span></div></div>
+  </div>
+</footer>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+  // Bright text link navigation — redirects to section + active highlight
+  // Both nav buttons stay muted (default) when in hero section or bottom sections
+  const coreLink = document.getElementById('navCore');
+  const expressLink = document.getElementById('navExpress');
+  const coreSection = document.getElementById('core');
+  const expressSection = document.getElementById('express');
+  const heroSection = document.querySelector('.hero');
+  
+  // Get bottom sections (comparison and CTA)
+  const comparisonSection = document.querySelector('.compare-wrap')?.closest('.section');
+  const ctaSection = document.querySelector('.cta-card')?.closest('.section');
+  const footerSection = document.querySelector('footer');
 
-        // Smooth scroll
-        document.querySelectorAll('.lp-smooth-scroll').forEach(link => {
-            link.addEventListener('click', function (e) {
-                const hash = this.getAttribute('href');
-                const target = document.querySelector(hash);
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    history.replaceState(null, '', window.location.pathname);
-                }
-            });
-        });
+  function setActiveLink(activeIsCore) {
+    if (activeIsCore) {
+      coreLink.classList.add('active-link');
+      expressLink.classList.remove('active-link');
+    } else if (activeIsCore === false) {
+      expressLink.classList.add('active-link');
+      coreLink.classList.remove('active-link');
+    }
+  }
 
-        // Intersection observer for fade-in on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.08 });
+  function resetBothToDefault() {
+    coreLink.classList.remove('active-link');
+    expressLink.classList.remove('active-link');
+  }
 
-        document.querySelectorAll('.lp-hero__row, .lp-pricing-teaser, .banner-inner, .rdm').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(18px)';
-            el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
-            observer.observe(el);
-        });
+  function updateActiveFromScroll() {
+    const scrollY = window.scrollY;
+    const viewportHeight = window.innerHeight;
+    const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+    const coreTop = coreSection.offsetTop;
+    const coreBottom = coreTop + coreSection.offsetHeight;
+    const expressTop = expressSection.offsetTop;
+    const expressBottom = expressTop + expressSection.offsetHeight;
+    
+    // Get bottom sections positions
+    const comparisonTop = comparisonSection ? comparisonSection.offsetTop : Infinity;
+    const ctaTop = ctaSection ? ctaSection.offsetTop : Infinity;
+    const footerTop = footerSection ? footerSection.offsetTop : Infinity;
+    
+    // The viewport center point for detection
+    const viewportCenter = scrollY + viewportHeight * 0.4;
+    
+    // CASE 1: Hero section (top) - both default
+    if (scrollY + 100 < heroBottom) {
+      resetBothToDefault();
+      return;
+    }
+    
+    // CASE 2: Core section is active
+    if (viewportCenter >= coreTop && viewportCenter < coreBottom) {
+      setActiveLink(true);
+      return;
+    }
+    
+    // CASE 3: Express section is active (ONLY when within express bounds)
+    if (viewportCenter >= expressTop && viewportCenter < expressBottom) {
+      setActiveLink(false);
+      return;
+    }
+    
+    // CASE 4: Below Express section (comparison, CTA, footer) - BOTH DEFAULT (no active)
+    if (viewportCenter >= expressBottom) {
+      resetBothToDefault();
+      return;
+    }
+    
+    // CASE 5: Between Core bottom and Express top (overview section) - both default
+    if (viewportCenter >= coreBottom && viewportCenter < expressTop) {
+      resetBothToDefault();
+      return;
+    }
+    
+    // CASE 6: Default fallback - both default
+    resetBothToDefault();
+  }
 
+  // Click handlers: smooth scroll + immediate visual feedback
+  coreLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    coreSection.scrollIntoView({ behavior: 'smooth' });
+    setActiveLink(true);
+    // Let scroll handler refine after animation completes
+    setTimeout(() => updateActiveFromScroll(), 300);
+    setTimeout(() => updateActiveFromScroll(), 600);
+  });
+
+  expressLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    expressSection.scrollIntoView({ behavior: 'smooth' });
+    setActiveLink(false);
+    setTimeout(() => updateActiveFromScroll(), 300);
+    setTimeout(() => updateActiveFromScroll(), 600);
+  });
+
+  // Throttled scroll handler for performance
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateActiveFromScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+  
+  window.addEventListener('resize', () => {
+    updateActiveFromScroll();
+  });
+  
+  // Initial call: both buttons default (no active)
+  resetBothToDefault();
+  
+  // Multiple timeouts to handle any layout shifts or image loading
+  setTimeout(() => updateActiveFromScroll(), 100);
+  setTimeout(() => updateActiveFromScroll(), 300);
+  setTimeout(() => updateActiveFromScroll(), 600);
+  setTimeout(() => updateActiveFromScroll(), 1000);
+
+  // Reveal animations
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => { 
+      if (entry.isIntersecting) entry.target.classList.add('in'); 
     });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
-@endpush
+</body>
+</html>

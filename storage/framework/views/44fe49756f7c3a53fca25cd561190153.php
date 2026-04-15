@@ -444,7 +444,7 @@
             </button>
             
             <ul class="nav-links" id="navLinks">
-                
+                <li><a href="/">Home</a></li>
                 <li><a href="<?php echo e(route('docs')); ?>">Documentation</a></li>
                 <li><a href="<?php echo e(route('features')); ?>">Features</a></li>
                 <li><a href="<?php echo e(route('pricing')); ?>">Pricing</a></li>

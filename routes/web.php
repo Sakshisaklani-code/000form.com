@@ -438,3 +438,5 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/land',          [App\Http\Controllers\PageController::class, 'Land'])->name('land');
 
 Route::get('/features',          [App\Http\Controllers\PageController::class, 'Features'])->name('features');
+
+Route::get('/core',          [App\Http\Controllers\CoreController::class, 'Core'])->name('core');

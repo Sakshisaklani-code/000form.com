@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="description" content="000form Express — No-account form endpoint. Point your HTML form at our endpoint and get submissions delivered instantly to your inbox.">
-    <title>@yield('title', 'Express — Instant Form Endpoints | 000form')</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title><?php echo $__env->yieldContent('title', 'Express — Instant Form Endpoints | 000form'); ?></title>
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="{{ asset('images/favicon/000formFavicon-express.png') }}" type="image/svg+xml">
+    <link rel="icon" href="<?php echo e(asset('images/favicon/000formFavicon-express.png')); ?>" type="image/svg+xml">
     <link rel="canonical" href="https://000form.com/express" />
     <meta name="keywords" content="forms, form backend, contact forms, form submissions, 000Form, no-account forms">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +17,7 @@
     <meta property="og:description" content="Point your HTML form at our endpoint. Submissions arrive in your inbox instantly — no account, no setup." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://000form.com/express" />
-    <meta property="og:image" content="{{ asset('images/og-image/og-image.jpg') }}" />
+    <meta property="og:image" content="<?php echo e(asset('images/og-image/og-image.jpg')); ?>" />
     <meta name="robots" content="index, follow">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TV3T8837GC"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TV3T8837GC');</script>
@@ -953,7 +953,7 @@
     <nav class="nav">
         <div class="nav-inner">
             <a href="/express" class="nav-logo">
-                <img src="{{ asset('images/logo/000formlogo-express.png') }}" alt="000form Logo">
+                <img src="<?php echo e(asset('images/logo/000formlogo-express.png')); ?>" alt="000form Logo">
             </a>
 
             <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
@@ -989,7 +989,7 @@
         </div>
     </nav>
 
-    @yield('content')
+    <?php echo $__env->yieldContent('content'); ?>
 
     <footer class="footer">
         <div class="footer-inner">
@@ -1002,7 +1002,7 @@
                 </ul>
             </div>
             <div class="footer-bottom">
-                <p class="footer-copy">&copy; {{ date('Y') }} 000form. All rights reserved.</p>
+                <p class="footer-copy">&copy; <?php echo e(date('Y')); ?> 000form. All rights reserved.</p>
                 <p class="footer-attribution">
                     Product of <a href="https://172tech.com/">172 Tech</a> ·
                     Designed by <a href="https://530.expert/">530 Expert</a> ·
@@ -1012,12 +1012,7 @@
         </div>
     </footer>
 
-    {{--
-        IMPORTANT: app.js is loaded first.
-        The script below clones the toggle button to strip any listeners
-        app.js attached, then re-registers a clean single handler.
-        Class used is .active throughout — matches app.js convention.
-    --}}
+    
     <script src="/js/app.js"></script>
 
     <script>
@@ -1079,6 +1074,6 @@
         })();
     </script>
 
-    @stack('scripts')
+    <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>
-</html>
+</html><?php /**PATH C:\Git-folders\000form.com\resources\views/layouts/express.blade.php ENDPATH**/ ?>
