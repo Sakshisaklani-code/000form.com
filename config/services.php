@@ -13,9 +13,4 @@ return [
         'secret_key' => env('RECAPTCHA_SECRET_KEY'),
     ],
 
-    'paddle' => [
-        'site_key'   => env('PADDLE_SITE_KEY'),
-        'secret_key' => env('PADDLE_SECRET_KEY'),
-    ],
-
 ];

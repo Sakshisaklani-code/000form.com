@@ -45,7 +45,7 @@
     </script>
     @stack('styles')
     <style>
-       .mode-toggle {
+        .mode-toggle {
         display: inline-flex;
         align-items: center;
         padding: 4px;
@@ -132,13 +132,10 @@
         :root{
             --mono:   'JetBrains Mono', monospace;
         }
-         
         /* ============================================
         Fix: Right-side horizontal overflow gap
         ============================================ */
-        /* === OVERFLOW FIX === */
-
-        /* ============================================
+                /* ============================================
         MOBILE OVERFLOW FIX — all 4 culprits
         ============================================ */
 
@@ -231,6 +228,7 @@
                 box-sizing: border-box;
             }
         }
+
 
         /* Step 1: Force body to never exceed viewport */
             .hero-bg,
@@ -425,7 +423,6 @@
                     gap: 10px;
                 }
             }
-
             .footer-logo { font-family: var(--mono); font-size: 1.9rem; font-weight: 700; background: linear-gradient(135deg, #00ff88 0%, #0a9253 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.02em; filter: drop-shadow(0 0 12px rgba(59, 246, 75, 0.3)); }
     </style>
 </head>
@@ -516,94 +513,145 @@
     </footer>
 
     <script src="/js/app.js"></script>
-
     <script>
-        document.querySelectorAll('.mode-toggle').forEach(wrap => {
-            const slider = wrap.querySelector('#mode-slider');
-            const active = wrap.querySelector('.tog-btn.active');
-            if (!slider || !active) return;
-            requestAnimationFrame(() => {
-                slider.style.left = active.offsetLeft + 'px';
-                slider.style.width = active.offsetWidth + 'px';
+        // Mode toggle handling with redirect
+        (function() {
+            // Handle mode toggle buttons and redirect to /core when switching to Core
+            document.querySelectorAll('.mode-toggle').forEach(wrap => {
+                const slider = wrap.querySelector('#mode-slider');
+                const active = wrap.querySelector('.tog-btn.active');
+                
+                // Initialize slider position
+                if (slider && active) {
+                    requestAnimationFrame(() => {
+                        slider.style.left = active.offsetLeft + 'px';
+                        slider.style.width = active.offsetWidth + 'px';
+                    });
+                }
+                
+                // Add click handlers to toggle buttons
+                const buttons = wrap.querySelectorAll('.tog-btn');
+                buttons.forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        const isCore = this.textContent.trim().toLowerCase() === 'core';
+                        const isCurrentlyExpress = active && active.textContent.trim().toLowerCase() === 'express';
+                        
+                        // If switching to Core mode and currently on Express mode
+                        if (isCore && isCurrentlyExpress) {
+                            e.preventDefault();
+                            window.location.href = '/core';
+                            return;
+                        }
+                        
+                        // Normal toggle behavior for other cases
+                        if (slider) {
+                            requestAnimationFrame(() => {
+                                slider.style.left = this.offsetLeft + 'px';
+                                slider.style.width = this.offsetWidth + 'px';
+                            });
+                        }
+                        
+                        // Update active class
+                        buttons.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
             });
-        });
+        })();
 
-        document.querySelectorAll('*').forEach(el => {
-            if (el.offsetWidth > document.documentElement.offsetWidth) {
-                console.log(el, el.offsetWidth);
-            }
-        });
-        // ✅ FIRST: Check for password reset recovery token BEFORE touching the hash
-        (function () {
+        // Detect overflow elements (useful for debugging)
+        (function detectOverflow() {
+            document.querySelectorAll('*').forEach(el => {
+                if (el.offsetWidth > document.documentElement.offsetWidth) {
+                    console.warn('Overflow detected:', el, 'width:', el.offsetWidth);
+                }
+            });
+        })();
+
+        // ✅ Check for password reset recovery token BEFORE touching the hash
+        (function handleRecoveryToken() {
             const hash = window.location.hash;
             if (hash && hash.includes('type=recovery')) {
-                document.getElementById('main-body').style.display = 'none'; // hide flash
+                const mainBody = document.getElementById('main-body');
+                if (mainBody) mainBody.style.display = 'none'; // hide flash
+                
                 const params = new URLSearchParams(hash.substring(1));
                 const accessToken = params.get('access_token');
                 const refreshToken = params.get('refresh_token');
+                
                 if (accessToken) {
-                    window.location.replace(
-                        '/auth/reset-password-confirm-token'
-                        + '?access_token=' + encodeURIComponent(accessToken)
-                        + '&refresh_token=' + encodeURIComponent(refreshToken || '')
-                    );
+                    const redirectUrl = '/auth/reset-password-confirm-token' +
+                        '?access_token=' + encodeURIComponent(accessToken) +
+                        '&refresh_token=' + encodeURIComponent(refreshToken || '');
+                    window.location.replace(redirectUrl);
                 }
             }
         })();
 
-        // Mobile menu toggle
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const navLinks = document.getElementById('navLinks');
-        const navActions = document.getElementById('navActions');
+        // Mobile menu functionality
+        (function initMobileMenu() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+            const navActions = document.getElementById('navActions');
 
-        if (mobileMenuToggle) {
-            mobileMenuToggle.addEventListener('click', function () {
-                this.classList.toggle('active');
-                navLinks.classList.toggle('active');
-                navActions.classList.toggle('active');
-            });
+            if (mobileMenuToggle && navLinks) {
+                const toggleMenu = () => {
+                        mobileMenuToggle.classList.toggle('active');
+                        navLinks.classList.toggle('active');
+                        if (navActions) navActions.classList.toggle('active');
+                    };
+                    
+                    const closeMenu = () => {
+                        mobileMenuToggle.classList.remove('active');
+                        navLinks.classList.remove('active');
+                        if (navActions) navActions.classList.remove('active');
+                    };
+                    
+                    mobileMenuToggle.addEventListener('click', toggleMenu);
 
-            // Close menu when a nav link is clicked
-            document.querySelectorAll('#navLinks a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenuToggle.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    navActions.classList.remove('active');
-                });
-            });
+                    // Close menu when a nav link is clicked
+                    document.querySelectorAll('#navLinks a').forEach(link => {
+                        link.addEventListener('click', closeMenu);
+                    });
 
-            // Close menu when clicking outside
-            document.addEventListener('click', function (e) {
-                if (!mobileMenuToggle.contains(e.target) &&
-                    !navLinks.contains(e.target) &&
-                    !navActions.contains(e.target)) {
-                    mobileMenuToggle.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    navActions.classList.remove('active');
+                    // Close menu when clicking outside
+                    document.addEventListener('click', function(e) {
+                        if (mobileMenuToggle && navLinks && navActions) {
+                            if (!mobileMenuToggle.contains(e.target) &&
+                                !navLinks.contains(e.target) &&
+                                (!navActions || !navActions.contains(e.target))) {
+                                closeMenu();
+                            }
+                        }
+                    });
                 }
-            });
-        }
+            })();
 
-        // SECOND: Only remove hash if it's NOT a recovery token
-        if (window.location.hash && !window.location.hash.includes('type=recovery')) {
-            history.replaceState(null, '', window.location.pathname);
-        }
+            // Clean up hash if not a recovery token
+            (function cleanupHash() {
+                if (window.location.hash && !window.location.hash.includes('type=recovery')) {
+                    history.replaceState(null, '', window.location.pathname);
+                }
+            })();
 
-        // Intercept all anchor hash clicks — smooth scroll without hash in URL
-        document.addEventListener('click', function(e) {
-            const link = e.target.closest('a[href^="#"]');
-            if (!link) return;
-            const hash = link.getAttribute('href');
-            if (hash === '#' || hash === '') return;
-            const target = document.querySelector(hash);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                history.replaceState(null, '', window.location.pathname);
-            }
-        });
+            // Smooth scroll for anchor links without hash in URL
+            (function initSmoothScroll() {
+                document.addEventListener('click', function(e) {
+                    const link = e.target.closest('a[href^="#"]');
+                    if (!link) return;
+                    
+                    const hash = link.getAttribute('href');
+                    if (hash === '#' || hash === '') return;
+                    
+                    const target = document.querySelector(hash);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        history.replaceState(null, '', window.location.pathname);
+                    }
+                });
+            })();
     </script>
     @stack('scripts')
 </body>
-</html>
 </html>

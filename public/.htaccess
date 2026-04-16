@@ -5,16 +5,19 @@
 
     RewriteEngine On
 
-    # Handle Authorization Header
+    # Allow Let's Encrypt challenge files (for future SSL)
+    RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
+
+    # Handle Authorization Header (for APIs)
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-    # Redirect Trailing Slashes If Not A Folder...
+    # Redirect Trailing Slashes If Not A Folder
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
-    # Send Requests To Front Controller...
+    # Send all other requests to index.php (Laravel Front Controller)
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]

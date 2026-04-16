@@ -33,7 +33,7 @@ Drop one line into your HTML form and start receiving submissions by email. No b
 Make sure the following are installed on your machine before you begin:
 
 - PHP 8.2 or higher
-- Composer
+- Composer 
 - PostgreSQL 14+ (or a running Supabase instance)
 - Nginx or Apache
 - A self-hosted or cloud Supabase project
@@ -52,7 +52,8 @@ cd 000form
 ### 2. Install PHP dependencies
 
 ```bash
-composer install
+composer install --ignore-platform-reqs
+composer update
 composer dump-autoload
 composer require laravel/cashier-paddle
 ```

@@ -15,5 +15,6 @@ class VerifyCsrfToken extends Middleware
         'f/*',          // all form submit routes — used by popup widget
         'widget/f/*',   // backup widget route if used
         'api/paddle/webhook', // Paddle webhook route
+        'paddle/webhook',
     ];
 }

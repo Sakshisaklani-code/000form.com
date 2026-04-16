@@ -45,11 +45,6 @@ class PageController extends Controller
         return view('pages.privacy-policy');
     }
 
-    public function formSubmit()
-    {
-        return view('pages.form-submit');
-    }
-
     public function refundPolicy()
     {
         return view('pages.refund');
@@ -68,11 +63,6 @@ class PageController extends Controller
             ->get();
 
         return view('pages.account-settings', compact('additionalEmails'));
-    }
-
-    public function Land()
-    {
-        return view('pages.land');
     }
 
     public function Features()

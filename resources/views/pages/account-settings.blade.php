@@ -300,8 +300,7 @@
         .email-row { flex-direction: column; align-items: flex-start; }
         .add-email-form { flex-direction: column; }
         .add-email-input { min-width: 100%; }
-        .email-row-left{ display: block;}
-        
+         .email-row-left{ display: block;}
     }
 </style>
 

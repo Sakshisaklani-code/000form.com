@@ -677,7 +677,7 @@
             </div>
             <h3>Smart spam protection</h3>
             <p>Built-in honeypot fields and blacklist filtering block bots before they ever reach your inbox.</p>
-            <p>Default hidden field — Google CAPTCHA is enabled!</p>
+            <p>Default hidden field — Google CAPTCHA enabled!</p>
             <div class="code-block">
                             <div class="code-header"><span class="code-lang">HTML</span><button class="code-copy"><i class="bi bi-clipboard"></i> Copy</button></div>
                             <div class="code-content">

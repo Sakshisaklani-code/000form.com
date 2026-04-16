@@ -154,7 +154,7 @@
     @media (max-width: 640px) {
         .tm-card { padding: 1.5rem; }
         .tm-table th:nth-child(3), .tm-table td:nth-child(3) { display: none; }
-       
+        .tm-invite-form { flex-direction: column!important; display: block; }
     }
     /* Mobile table scroll fix */
     .tm-table-wrap {

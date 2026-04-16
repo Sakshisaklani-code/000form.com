@@ -121,7 +121,7 @@
 
 <!-- Form Preview & Code Section -->
 <section class="form-detail-section">
-      <section style="margin-top:4.5rem">
+  <section style="margin-top:4.5rem">
             <div class="hero-bg">
                 <div class="hero-gradient hero-gradient-1"></div>
                 <div class="hero-gradient hero-gradient-2"></div>

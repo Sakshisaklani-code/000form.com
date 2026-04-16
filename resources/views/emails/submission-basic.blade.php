@@ -247,13 +247,6 @@
                 </div>
             @endif
 
-            @if(!empty($referrer))
-                <div class="referrer-block">
-                    <strong>Form URL:</strong>
-                    <span class="referrer-full">({{ $referrer }})</span>
-                </div>
-            @endif
-
         </div>
 
         <div class="email-footer">

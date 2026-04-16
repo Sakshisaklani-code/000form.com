@@ -1,0 +1,131 @@
+[2026-04-08 10:09:54] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:10:05] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:10:13] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:10:23] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:10:26] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:10:40] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:11:03] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:11:07] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:11:17] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:11:25] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:11:34] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:11:37] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:11:46] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:11:53] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:12:00] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:12:02] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:13:25] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:13:27] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:13:27] production.ERROR: Supabase refresh token error: Client error: `POST https://qrrspyukvdgblhresmsv.supabase.co/auth/v1/token?grant_type=refresh_token` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"refresh_token_not_found","msg":"Invalid Refresh Token: Refresh Token Not Found"}
+  
+[2026-04-08 10:14:31] production.INFO: Supabase signup success {"result":{"success":true,"data":{"id":"760d2460-9cc5-49fc-be62-fc4ea8d0467e","aud":"authenticated","role":"authenticated","email":"sakshiisaklanii@yopmail.com","phone":"","confirmation_sent_at":"2026-04-08T10:14:29.945368374Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email":"sakshiisaklanii@yopmail.com","email_verified":false,"phone_verified":false,"sub":"760d2460-9cc5-49fc-be62-fc4ea8d0467e"},"identities":[{"identity_id":"0aed29bb-5a67-4fde-9dd3-7f83b167b4d5","id":"760d2460-9cc5-49fc-be62-fc4ea8d0467e","user_id":"760d2460-9cc5-49fc-be62-fc4ea8d0467e","identity_data":{"email":"sakshiisaklanii@yopmail.com","email_verified":false,"phone_verified":false,"sub":"760d2460-9cc5-49fc-be62-fc4ea8d0467e"},"provider":"email","last_sign_in_at":"2026-04-08T10:14:29.928924593Z","created_at":"2026-04-08T10:14:29.929343Z","updated_at":"2026-04-08T10:14:29.929343Z","email":"sakshiisaklanii@yopmail.com"}],"created_at":"2026-04-08T10:14:29.908223Z","updated_at":"2026-04-08T10:14:31.35456Z","is_anonymous":false}}} 
+[2026-04-08 10:14:31] production.INFO: Admin email sent {"emails":["sakshi.saklani@drishinfo.com","kc@essenn.associates"]} 
+[2026-04-08 10:15:15] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:15:21] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:15:53] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:15:55] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:16:00] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:16:09] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:16:13] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:16:21] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:16:28] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:16:30] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:16:35] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:16:43] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:16:51] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:16:54] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:16:59] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:17:07] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:18:04] production.INFO: === FORM SUBMISSION STARTED === {"slug":"f_mqb3c8l1","method":"POST"} 
+[2026-04-08 10:18:04] production.INFO: Request data: {"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty qwerty","honeypot_i4xTYQHp":null,"_captcha":"false"} 
+[2026-04-08 10:18:04] production.INFO: Has files: {"files":0} 
+[2026-04-08 10:18:05] production.INFO: Form found {"form_id":"a17e6b3d-06ff-4386-bbab-770c95f6b607","form_name":"Dummy edited"} 
+[2026-04-08 10:18:06] production.INFO: Resolved referrer {"referrer":null} 
+[2026-04-08 10:18:06] production.INFO: Clean submission data {"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty qwerty","honeypot_i4xTYQHp":null} 
+[2026-04-08 10:18:06] production.INFO: FILE UPLOAD CHECK {"all_files":[]} 
+[2026-04-08 10:18:06] production.INFO: VALID SUBMISSION {"form_id":"a17e6b3d-06ff-4386-bbab-770c95f6b607","ip":"112.196.28.2","is_spam":false,"reasons":[]} 
+[2026-04-08 10:18:06] production.INFO: Spam detection result {"is_spam":false,"reason":null} 
+[2026-04-08 10:18:06] production.INFO: Submission stored {"id":"a17e6bec-fbf3-480f-9078-e466446b3d8b","referrer":null} 
+[2026-04-08 10:18:07] production.INFO: === SENDING NOTIFICATION EMAIL === {"to":"sakshiisaklanii@yopmail.com","submission_id":"a17e6bec-fbf3-480f-9078-e466446b3d8b","has_files":false,"file_count":0,"file_paths":[],"referrer":null} 
+[2026-04-08 10:18:07] production.INFO: Final CC emails {"final_list":[]} 
+[2026-04-08 10:18:07] production.INFO: Verified attachment paths {"verified_count":0,"paths":[]} 
+[2026-04-08 10:18:07] production.INFO: Email template selected: basic  
+[2026-04-08 10:18:07] production.INFO: Attachments to process: 0  
+[2026-04-08 10:18:07] production.INFO: Mail object created  
+[2026-04-08 10:18:07] production.INFO: Sending email without CC {"to":"sakshiisaklanii@yopmail.com"} 
+[2026-04-08 10:18:07] production.INFO: Total attachments added: 0  
+[2026-04-08 10:18:07] production.INFO: Mail send method called successfully  
+[2026-04-08 10:18:08] production.INFO: Submission updated with email_sent flag  
+[2026-04-08 10:18:08] production.INFO: Email sent successfully to: sakshiisaklanii@yopmail.com  
+[2026-04-08 10:18:08] production.INFO: Success response {"wants_json":true,"format":null,"redirect_url":null} 
+[2026-04-08 10:18:27] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:18:34] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:18:40] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:18:42] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:18:49] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:18:55] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:18:57] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:19:06] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:19:11] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 10:19:13] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:22:53] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:22:56] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:22:56] production.ERROR: Supabase refresh token error: Client error: `POST https://qrrspyukvdgblhresmsv.supabase.co/auth/v1/token?grant_type=refresh_token` resulted in a `400 Bad Request` response:
+{"code":400,"error_code":"refresh_token_not_found","msg":"Invalid Refresh Token: Refresh Token Not Found"}
+  
+[2026-04-08 11:23:41] production.INFO: Supabase signup success {"result":{"success":true,"data":{"id":"f470a850-0d55-45f8-a814-6b4d79ac8fa6","aud":"authenticated","role":"authenticated","email":"sakshiisaklanii123@yopmail.com","phone":"","confirmation_sent_at":"2026-04-08T11:23:40.031559984Z","app_metadata":{"provider":"email","providers":["email"]},"user_metadata":{"email":"sakshiisaklanii123@yopmail.com","email_verified":false,"phone_verified":false,"sub":"f470a850-0d55-45f8-a814-6b4d79ac8fa6"},"identities":[{"identity_id":"3a454426-d6be-47f8-b6ff-cbb54004cd53","id":"f470a850-0d55-45f8-a814-6b4d79ac8fa6","user_id":"f470a850-0d55-45f8-a814-6b4d79ac8fa6","identity_data":{"email":"sakshiisaklanii123@yopmail.com","email_verified":false,"phone_verified":false,"sub":"f470a850-0d55-45f8-a814-6b4d79ac8fa6"},"provider":"email","last_sign_in_at":"2026-04-08T11:23:40.01445918Z","created_at":"2026-04-08T11:23:40.014506Z","updated_at":"2026-04-08T11:23:40.014506Z","email":"sakshiisaklanii123@yopmail.com"}],"created_at":"2026-04-08T11:23:40.000802Z","updated_at":"2026-04-08T11:23:41.460032Z","is_anonymous":false}}} 
+[2026-04-08 11:23:42] production.INFO: Admin email sent {"emails":["sakshi.saklani@drishinfo.com","kc@essenn.associates"]} 
+[2026-04-08 11:24:30] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:24:36] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:24:59] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:25:01] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:25:07] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:25:14] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:25:18] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:25:47] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:25:51] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:25:59] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:26:06] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:26:08] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:27:00] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:27:10] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:27:22] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:27:32] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:27:35] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:27:43] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:27:50] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:27:57] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:29:04] production.INFO: === FORM SUBMISSION STARTED === {"slug":"f_4hks82kb","method":"POST"} 
+[2026-04-08 11:29:04] production.INFO: Request data: {"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty qwerty","honeypot_i5mwUFX9":null,"_captcha":"false"} 
+[2026-04-08 11:29:04] production.INFO: Has files: {"files":0} 
+[2026-04-08 11:29:05] production.INFO: Form found {"form_id":"a17e83f1-2aa0-4ebb-ae4f-180f4aadb671","form_name":"Dummy edited"} 
+[2026-04-08 11:29:06] production.INFO: Resolved referrer {"referrer":null} 
+[2026-04-08 11:29:06] production.INFO: Clean submission data {"name":"Sakshi Saklani","email":"tanuja10@yopmail.com","message":"qwerty qwerty","honeypot_i5mwUFX9":null} 
+[2026-04-08 11:29:06] production.INFO: FILE UPLOAD CHECK {"all_files":[]} 
+[2026-04-08 11:29:06] production.INFO: VALID SUBMISSION {"form_id":"a17e83f1-2aa0-4ebb-ae4f-180f4aadb671","ip":"117.250.37.130","is_spam":false,"reasons":[]} 
+[2026-04-08 11:29:06] production.INFO: Spam detection result {"is_spam":false,"reason":null} 
+[2026-04-08 11:29:06] production.INFO: Submission stored {"id":"a17e8551-78d0-40cf-b0e3-669b152f753c","referrer":null} 
+[2026-04-08 11:29:07] production.INFO: === SENDING NOTIFICATION EMAIL === {"to":"sakshiisaklanii123@yopmail.com","submission_id":"a17e8551-78d0-40cf-b0e3-669b152f753c","has_files":false,"file_count":0,"file_paths":[],"referrer":null} 
+[2026-04-08 11:29:07] production.INFO: Final CC emails {"final_list":[]} 
+[2026-04-08 11:29:07] production.INFO: Verified attachment paths {"verified_count":0,"paths":[]} 
+[2026-04-08 11:29:07] production.INFO: Email template selected: basic  
+[2026-04-08 11:29:07] production.INFO: Attachments to process: 0  
+[2026-04-08 11:29:07] production.INFO: Mail object created  
+[2026-04-08 11:29:07] production.INFO: Sending email without CC {"to":"sakshiisaklanii123@yopmail.com"} 
+[2026-04-08 11:29:07] production.INFO: Total attachments added: 0  
+[2026-04-08 11:29:07] production.INFO: Mail send method called successfully  
+[2026-04-08 11:29:08] production.INFO: Submission updated with email_sent flag  
+[2026-04-08 11:29:08] production.INFO: Email sent successfully to: sakshiisaklanii123@yopmail.com  
+[2026-04-08 11:29:08] production.INFO: Success response {"wants_json":true,"format":null,"redirect_url":null} 
+[2026-04-08 11:29:22] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:29:28] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:29:35] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:29:41] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:29:44] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:29:52] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:29:58] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:30:00] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:30:07] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:30:13] production.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-08 11:30:16] production.ERROR: JWT verification error: Incorrect key for this algorithm  

@@ -14,7 +14,6 @@ use App\Http\Controllers\FormValidationController;
 use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
-use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\WebhookController;
@@ -108,7 +107,7 @@ Route::prefix('express')->name('playground.')->group(function () {
     Route::get('/guide', [PlaygroundController::class, 'expressGuide'])->name('Guide');
     Route::get('/terms', [ExpressController::class, 'terms'])->name('express.terms');
     Route::get('/privacy-policy', [ExpressController::class, 'privacyPolicy'])->name('express.privacy-policy');
-    Route::get('/refund', [ExpressController::class, 'refundPolicy'])->name('express.refund');
+    // Route::get('/refund', [ExpressController::class, 'refundPolicy'])->name('express.refund');
     Route::post('/submit', [PlaygroundController::class, 'submit'])->name('submit');
     Route::get('/form-submitted', [PlaygroundController::class, 'formSubmitted'])->name('form.submitted');
     Route::get('/endpoint/{email}', [PlaygroundController::class, 'formEndpointInfo'])->name('endpoint.details');
@@ -261,7 +260,7 @@ Route::get('/privacy', [PageController::class, 'privacyPolicy'])->name('pages.pr
 Route::get('/terms', [PageController::class, 'terms'])->name('pages.terms');
 Route::get('/refund', [PageController::class, 'refundPolicy'])->name('pages.refund');
 
-Route::get('/form-submit', [PageController::class, 'formSubmit'])->name('pages.form-submit');
+
 
 
 /*
@@ -435,8 +434,5 @@ Route::middleware(['auth'])->group(function () {
  
 });
 
-Route::get('/land',          [App\Http\Controllers\PageController::class, 'Land'])->name('land');
-
 Route::get('/features',          [App\Http\Controllers\PageController::class, 'Features'])->name('features');
-
 Route::get('/core',          [App\Http\Controllers\CoreController::class, 'Core'])->name('core');

@@ -742,8 +742,19 @@ footer::before{
 <!-- ─── FOOTER ─── -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-top"><div class="logo-wrap" style="text-decoration:none;"><img src="{{ asset('images/logo/000formlogo-default.png') }}" alt="000form Logo" style="width:auto;height:45px;"/></div><p style="font-size:13.5px;color:var(--muted);max-width:340px;">Form backend made so easy — just change your action URL.</p></div>
-    <div class="footer-bottom"><span class="footer-copy">© 2026 000form. A product of <b style="color:var(--muted);">172 Tech</b> &nbsp;·&nbsp; Designed by <b style="color:var(--muted);">530 Expert</b> &nbsp;·&nbsp; Developed by <b style="color:var(--muted);">ESS ENN Associates</b></span><div class="footer-badges"><span class="fbadge fbadge-green">◆ Core</span><span class="fbadge fbadge-blue">⚡ Express</span></div></div>
+    <div class="footer-top">
+      <div class="logo-wrap" style="text-decoration:none;">
+        <img src="{{ asset('images/logo/000formlogo-default.png') }}" alt="000form Logo" style="width:auto;height:45px;"/>
+      </div>
+      <p style="font-size:13.5px;color:var(--muted);max-width:380px;">Form backend made so easy — just change your action URL.</p>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 000form. A product of <a href="https://172tech.com/" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:none;"><b>172 Tech</b></a> &nbsp;·&nbsp; Designed by <a href="https://530.expert/" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:none;"><b>530 Expert</b></a> &nbsp;·&nbsp; Developed by <a href="https://essenn.associates/" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:none;"><b>ESS ENN Associates</b></a></span>
+      <div class="footer-badges">
+        <span class="fbadge fbadge-green">◆ Core</span>
+        <span class="fbadge fbadge-blue">⚡ Express</span>
+      </div>
+    </div>
   </div>
 </footer>
 

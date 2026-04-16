@@ -11,13 +11,13 @@
 
         {{-- Error state (expired/invalid token) --}}
         <div class="auth-card" id="token-error" style="display:none; text-align:center;">
-            <!-- <div style="width:48px;height:48px;background:rgba(255,68,68,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
+            <div style="width:48px;height:48px;background:rgba(255,68,68,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--error)" stroke-width="2">
                     <circle cx="12" cy="12" r="10"/>
                     <line x1="12" y1="8" x2="12" y2="12"/>
                     <line x1="12" y1="16" x2="12.01" y2="16"/>
                 </svg>
-            </div> -->
+            </div>
             <h2 style="font-size:1.25rem;margin-bottom:0.5rem;">Link expired</h2>
             <p id="error-message" style="margin-bottom:1.5rem;font-size:0.9rem;">
                 This reset link is invalid or has expired. Please request a new one.
@@ -36,11 +36,11 @@
 
             @if($errors->any())
                 <div class="alert alert-error" style="margin-bottom:1.25rem;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <!-- <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"/>
                         <line x1="12" y1="8" x2="12" y2="12"/>
                         <line x1="12" y1="16" x2="12.01" y2="16"/>
-                    </svg>
+                    </svg> -->
                     {{ $errors->first() }}
                 </div>
             @endif

@@ -93,32 +93,53 @@
     transform: scale(1.35);
 }
 </style>
-<script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    function syncSwatches() {
+<!-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function syncSwatches() {
+            document.querySelectorAll('.color-radio').forEach(function (radio) {
+                const swatch = radio.closest('label').querySelector('.color-swatch');
+                swatch.style.borderColor = radio.checked ? radio.value : 'transparent';
+                swatch.style.boxShadow   = radio.checked ? '0 0 0 2px var(--bg-primary)' : 'none';
+            });
+        }
+
         document.querySelectorAll('.color-radio').forEach(function (radio) {
-            const swatch = radio.closest('label').querySelector('.color-swatch');
-            if (radio.checked) {
-                swatch.style.border = '3px solid white'; // fixed white border for selected
-                swatch.style.boxShadow = '0 0 0 2px var(--bg-primary)';
-            } else {
-                swatch.style.border = '3px solid transparent'; // unselected
-                swatch.style.boxShadow = 'none';
-            }
+            radio.addEventListener('change', syncSwatches);
+            // Click on swatch selects radio
+            radio.closest('label').querySelector('.color-swatch').addEventListener('click', function () {
+                radio.checked = true;
+                syncSwatches();
+            });
         });
-    }
 
-    document.querySelectorAll('.color-radio').forEach(function (radio) {
-        radio.addEventListener('change', syncSwatches);
-        radio.closest('label').querySelector('.color-swatch').addEventListener('click', function () {
-            radio.checked = true; 
-            syncSwatches();
-        });
+        syncSwatches();
     });
+</script> -->
 
-    syncSwatches();
-});
-</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function syncSwatches() {
+            document.querySelectorAll('.color-radio').forEach(function (radio) {
+                const swatch = radio.closest('label').querySelector('.color-swatch');
+                if (radio.checked) {
+                    swatch.style.border = '3px solid white'; // fixed white border for selected
+                    swatch.style.boxShadow = '0 0 0 2px var(--bg-primary)';
+                } else {
+                    swatch.style.border = '3px solid transparent'; // unselected
+                    swatch.style.boxShadow = 'none';
+                }
+            });
+        }
+
+        document.querySelectorAll('.color-radio').forEach(function (radio) {
+            radio.addEventListener('change', syncSwatches);
+            radio.closest('label').querySelector('.color-swatch').addEventListener('click', function () {
+                radio.checked = true; 
+                syncSwatches();
+            });
+        });
+
+        syncSwatches();
+    });
 </script>
 @endsection

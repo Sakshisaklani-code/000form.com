@@ -716,7 +716,6 @@
 
 @push('styles')
 <style>
-    
     :root {
         --blue:        #3b82f6;
         --blue-bright: #60a5fa;
@@ -767,7 +766,7 @@
 
     /* Small variant for hero row */
     .rdm--small { font-size: 0.7rem; }
-    /* .rdm--small .rdm__sidebar { width: 150px; padding: 0.9rem 0.7rem; } */
+    .rdm--small .rdm__sidebar { padding: 0.9rem 0.7rem; }
     .rdm--small .rdm__page-title { font-size: 0.95rem; }
     .rdm--small .rdm__stat-val { font-size: 1rem; }
     .rdm--small .rdm__stat-lbl { font-size: 0.55rem; }

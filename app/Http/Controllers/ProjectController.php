@@ -143,15 +143,14 @@ class ProjectController extends Controller
     {
         $project = $this->workspaceProjects()->findOrFail($id);
 
-        // Detach forms from project (make them standalone) rather than deleting
-        Form::where('project_id', $project->id)
-            ->update(['project_id' => null]);
+        // Delete all forms (and their submissions via cascade) inside this project
+        Form::where('project_id', $project->id)->delete();
 
         $project->delete();
 
         return redirect()
             ->route('dashboard')
-            ->with('message', "Project \"{$project->name}\" deleted. Its forms have been kept and moved to standalone.");
+            ->with('message', "Project \"{$project->name}\" deleted along with all its forms.");
     }
 
     // =========================================================================
@@ -160,7 +159,7 @@ class ProjectController extends Controller
 
     protected function canDo(string $action): bool
     {
-        $role = session('workspace_role', 'viewer'); // default to viewer
+        $role = session('workspace_role', 'owner'); // default to owner
 
         return match ($action) {
             'view'           => in_array($role, ['owner', 'admin', 'editor', 'viewer']),

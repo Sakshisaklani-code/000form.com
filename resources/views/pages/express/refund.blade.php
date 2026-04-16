@@ -7,7 +7,7 @@
     <div class="hero-gradient hero-gradient-1"></div>
     <div class="hero-gradient hero-gradient-2"></div>
     <div class="mb-12 text-center mt-4">
-        <h1 class="hero-title text-6xl">Refund and Cancellation Policy</h1>
+        <h1 class="hero-title text-6xl">Refund & Cancellation Policy</h1>
         <p class="text-gray-400 mt-3 max-w-2xl mx-auto">
             Our payment, refund, and cancellation policies for 000form Express — the simplest form backend solution.
         </p>

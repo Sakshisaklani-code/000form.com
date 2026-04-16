@@ -127,7 +127,7 @@
                                 <td style="padding:15px 18px;text-align:right;border-bottom:1px solid #2e2e2e;">
                                     @if($authMethod === 'google')
                                         <span style="display:inline-block;background-color:#1e1a0d;border:1px solid #cc8800;border-radius:20px;padding:5px 14px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;font-weight:700;color:#fbbf24;letter-spacing:0.03em;">
-                                            &#127381; Google OAuth
+                                            &#127381; Google Social Login
                                         </span>
                                     @else
                                         <span style="display:inline-block;background-color:#1a1a3a;border:1px solid #4444bb;border-radius:20px;padding:5px 14px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:12px;font-weight:700;color:#a5b4fc;letter-spacing:0.03em;">

@@ -757,9 +757,9 @@
                     <p>Property rental application</p>
                     <span class="related-form-link">View form →</span>
                 </a>
-                <a href="{{ route('Home.library.VendorApplicationForm') }}" class="related-form-card">
-                    <h4>Vendor Application Form</h4>
-                    <p>Register as a vendor or supplier</p>
+                <a href="{{ route('Home.library.InternshipApplicationForm') }}" class="related-form-card">
+                    <h4>Internship Application Form</h4>
+                    <p>Student internship application</p>
                     <span class="related-form-link">View form →</span>
                 </a>
             </div>

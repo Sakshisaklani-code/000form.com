@@ -4,24 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>@yield('title', 'Dashboard') - 000form</title>
+    <!-- Favicon -->
     <link rel="icon" href="{{ asset('images/favicon/000formFavicon.png') }}" type="image/svg+xml">
+    <!-- Canonical Tag --> 
     <link rel="canonical" href="https://000form.com/" />
+    <!-- Keywords --> 
     <meta name="keywords" content="forms, laravel forms, php form builder, contact forms, form submissions, 000Form">
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/app.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css">
-    <meta property="og:title" content="000Forms - Smart Form Submissions" />
-    <meta property="og:description" content="Easily create and manage forms with 000Forms, a Laravel-powered solution." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://000form.com/" />
-    <meta property="og:image" content="{{ asset('images/og-image/og-image.jpg') }}" />
+    <!-- Open Graph Tags --> 
+    <meta property="og:title" content="000Forms - Smart Form Submissions" /> 
+    <meta property="og:description" content="Easily create and manage forms with 000Forms, a Laravel-powered solution." /> 
+    <meta property="og:type" content="website" /> 
+    <meta property="og:url" content="https://000form.com/" /> 
+    <meta property="og:image" content="{{ asset('images/og-image/og-image.jpg') }}" /> 
     <meta property="og:site_name" content="000Forms" />
-    <meta name="robots" content="index, follow">
+    <!-- csrf token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"000Form","url":"https://000form.com/","logo":"https://000form.com/images/logo/000formlogo.png"}</script>
+    <!-- Index and follow for SEO -->
+    <meta name="robots" content="index, follow">    
+    <!-- Google Analytics tag (gtag.js) --> 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TV3T8837GC"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-TV3T8837GC'); </script>
+    <!-- Schema.org JSON-LD --> 
+    <script type="application/ld+json"> 
+        {
+            "@context": "https://schema.org", 
+            "@type": "Organization", 
+            "name": "000Form", 
+            "alternateName": "000Form", 
+            "url": "https://000form.com/",
+            "logo": "https://000form.com/images/logo/000formlogo.png" 
+        }
+    </script>
     @stack('styles')
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

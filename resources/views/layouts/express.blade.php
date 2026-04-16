@@ -23,94 +23,93 @@
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TV3T8837GC');</script>
 
 <style>
-    .mode-toggle {
-    display: inline-flex;
-    align-items: center;
-    padding: 4px;
-    border-radius: 999px;
-    position: relative;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.09);
-    height: 49px;
-    box-sizing: border-box;
-    }
-    .mode-toggle .slider-bg {
-    position: absolute;
-    top: 4px;
-    bottom: 4px;
-    border-radius: 999px;
-    pointer-events: none;
-    z-index: 0;
-    }
-    .mode-toggle .slider-bg.on-express {
-    background: linear-gradient(135deg, #1a3a9f, #2255dd);
-    box-shadow: 0 0 18px rgba(50,120,255,0.55), inset 0 1px 0 rgba(255,255,255,0.15);
-    }
-    .mode-toggle .slider-bg.on-core {
-    background: linear-gradient(135deg, #0a3d22, #0e6035);
-    box-shadow: 0 0 18px rgba(20,200,90,0.45), inset 0 1px 0 rgba(255,255,255,0.1);
-    }
-    .mode-toggle .tog-btn {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    padding: 0 18px;
-    height: 40px;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-    background: none;
-    border: none;
-    white-space: nowrap;
-    box-sizing: border-box;
-    transition: color 0.22s, background 0.22s;
-    color: rgba(255,255,255,0.55);
-    }
-    .mode-toggle .tog-btn .icon {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    background: rgba(255,255,255,0.1);
-    transition: background 0.22s, box-shadow 0.22s;
-    }
-    /* Active — Express */
-    .mode-toggle .tog-btn[data-page="express"].active {
-    color: #ffffff;
-    cursor: default;
-    pointer-events: none;
-    }
-    .mode-toggle .tog-btn[data-page="express"].active .icon {
-    background: rgba(80,140,255,0.4);
-    box-shadow: 0 0 8px rgba(80,160,255,0.7);
-    }
-    /* Active — Core */
-    .mode-toggle .tog-btn[data-page="core"].active {
-    color: #18ff85;
-    cursor: default;
-    pointer-events: none;
-    }
-    .mode-toggle .tog-btn[data-page="core"].active .icon {
-    background: rgba(24,200,90,0.35);
-    box-shadow: 0 0 8px rgba(24,220,100,0.8);
-    }
-    /* Hover — scoped */
-    .mode-toggle .tog-btn[data-page="express"]:not(.active):hover {
-    color: #ffffff;
-    background: rgba(80,140,255,0.1);
-    }
-    .mode-toggle .tog-btn[data-page="core"]:not(.active):hover {
-    color: #18ff85;
-    background: rgba(24,200,90,0.1);
-    }
-
+        .mode-toggle {
+        display: inline-flex;
+        align-items: center;
+        padding: 4px;
+        border-radius: 999px;
+        position: relative;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.09);
+        height: 49px;
+        box-sizing: border-box;
+        }
+        .mode-toggle .slider-bg {
+        position: absolute;
+        top: 4px;
+        bottom: 4px;
+        border-radius: 999px;
+        pointer-events: none;
+        z-index: 0;
+        }
+        .mode-toggle .slider-bg.on-express {
+        background: linear-gradient(135deg, #1a3a9f, #2255dd);
+        box-shadow: 0 0 18px rgba(50,120,255,0.55), inset 0 1px 0 rgba(255,255,255,0.15);
+        }
+        .mode-toggle .slider-bg.on-core {
+        background: linear-gradient(135deg, #0a3d22, #0e6035);
+        box-shadow: 0 0 18px rgba(20,200,90,0.45), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        .mode-toggle .tog-btn {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        padding: 0 18px;
+        height: 40px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        background: none;
+        border: none;
+        white-space: nowrap;
+        box-sizing: border-box;
+        transition: color 0.22s, background 0.22s;
+        color: rgba(255,255,255,0.55);
+        }
+        .mode-toggle .tog-btn .icon {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        background: rgba(255,255,255,0.1);
+        transition: background 0.22s, box-shadow 0.22s;
+        }
+        /* Active — Express */
+        .mode-toggle .tog-btn[data-page="express"].active {
+        color: #ffffff;
+        cursor: default;
+        pointer-events: none;
+        }
+        .mode-toggle .tog-btn[data-page="express"].active .icon {
+        background: rgba(80,140,255,0.4);
+        box-shadow: 0 0 8px rgba(80,160,255,0.7);
+        }
+        /* Active — Core */
+        .mode-toggle .tog-btn[data-page="core"].active {
+        color: #18ff85;
+        cursor: default;
+        pointer-events: none;
+        }
+        .mode-toggle .tog-btn[data-page="core"].active .icon {
+        background: rgba(24,200,90,0.35);
+        box-shadow: 0 0 8px rgba(24,220,100,0.8);
+        }
+        /* Hover — scoped */
+        .mode-toggle .tog-btn[data-page="express"]:not(.active):hover {
+        color: #ffffff;
+        background: rgba(80,140,255,0.1);
+        }
+        .mode-toggle .tog-btn[data-page="core"]:not(.active):hover {
+        color: #18ff85;
+        background: rgba(24,200,90,0.1);
+        }
     /* =============================================
     ROOT TOKENS
     ============================================= */
@@ -384,7 +383,7 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width:170px;
+            max-width: 170px;
             padding: 0.65rem 0.85rem;
             font-size: 0.95rem;
             border-radius: 9px;
@@ -845,7 +844,7 @@
     /* =============================================
     LIMITATION BANNER
     ============================================= */
-    .limitation-banner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.25rem 1.75rem; background: linear-gradient(135deg, rgba(251,191,36,0.05) 0%, rgba(251,191,36,0.02) 100%); border: 1px solid rgba(251,191,36,0.15); border-radius: var(--radius); box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(251,191,36,0.06); position: relative; overflow: hidden; max-width: 1095px; margin-left: 9%; }
+    .limitation-banner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.25rem 1.75rem; background: linear-gradient(135deg, rgba(251,191,36,0.05) 0%, rgba(251,191,36,0.02) 100%); border: 1px solid rgba(251,191,36,0.15); border-radius: var(--radius); box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(251,191,36,0.06); position: relative; overflow: hidden; max-width: 1095px;  }
     .limitation-banner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(251,191,36,0.35), transparent); }
     .limitation-banner-left { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.85rem; color: var(--text-3); line-height: 1.55; }
     .limitation-banner-left svg    { color: #fbbf24; flex-shrink:0; margin-top:2px; }
@@ -962,7 +961,7 @@
 
             <ul class="nav-links" id="navLinks">
                 <li><a href="/">Home</a></li>
-                <li><a href="/express/guide">Reference Guide</a></li>                
+                <li><a href="/express/guide">Reference Guide</a></li>
                 <li>
                     <div class="mode-toggle">
                         <div class="slider-bg on-express" id="mode-slider"></div>
@@ -974,7 +973,7 @@
                         </span>
                         Express
                         </a>
-                        <a href="/" class="tog-btn" data-page="core">
+                        <a href="/" type="button" class="tog-btn" data-page="core">
                         <span class="icon">
                             <svg width="12" height="12" viewBox="0 0 18 18" fill="none">
                             <path d="M9 1.5L15.5 5.25V12.75L9 16.5L2.5 12.75V5.25L9 1.5Z" stroke="white" stroke-width="1.6" fill="none"/>
@@ -998,7 +997,6 @@
                 <ul class="footer-links">
                     <li><a href="/express/terms">Terms</a></li>
                     <li><a href="/express/privacy-policy">Privacy Policy</a></li>
-                    <li><a href="/express/refund">Refund Policy</a></li>
                 </ul>
             </div>
             <div class="footer-bottom">
