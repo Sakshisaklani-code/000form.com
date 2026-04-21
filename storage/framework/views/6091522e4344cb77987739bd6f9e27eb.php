@@ -1,9 +1,9 @@
-{{-- resources/views/dashboard/index.blade.php --}}
-@extends('layouts.dashboard')
 
-@section('title', 'Dashboard')
 
-@section('content')
+
+<?php $__env->startSection('title', 'Dashboard'); ?>
+
+<?php $__env->startSection('content'); ?>
 
 <style>
 /* ── Theme ─────────────────────────────────────────────────── */
@@ -331,7 +331,7 @@ tr.form-row-hidden { display: none; }
 .btn-ghost {
     display: inline-flex; align-items: center; gap: 0.3rem;
     padding: 0.38rem 0.8rem;
-    font-family: var(--sans); font-size: 0.8rem; font-weight: 500;
+    font-family: var(--sans); font-size: 0.74rem; font-weight: 500;
     border-radius: 8px; text-decoration: none; white-space: nowrap;
     background: rgba(255,255,255,0.03);
     color: var(--t2);
@@ -446,13 +446,13 @@ tr.form-row-hidden { display: none; }
 
 <div class="dash">
 
-{{-- ── Header ──────────────────────────────────────────────────────────────── --}}
+
 <div class="dash-header au">
     <div>
         <div class="dash-eyebrow">// overview</div>
         <h1 class="dash-title">Dashboard</h1>
     </div>
-    <a href="{{ route('dashboard.projects.create') }}" class="btn-new">
+    <a href="<?php echo e(route('dashboard.projects.create')); ?>" class="btn-new">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8">
             <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
         </svg>
@@ -460,42 +460,42 @@ tr.form-row-hidden { display: none; }
     </a>
 </div>
 
-{{-- ── Stats ────────────────────────────────────────────────────────────────── --}}
+
 <div class="stats-grid">
     <div class="stat-card au d1">
         <div class="stat-label">Projects</div>
-        <div class="stat-value">{{ $stats['total_projects'] }}</div>
+        <div class="stat-value"><?php echo e($stats['total_projects']); ?></div>
         <div class="sc-shimmer"></div>
     </div>
     <div class="stat-card au d2">
         <div class="stat-label">Total Forms</div>
-        <div class="stat-value">{{ $stats['total_forms'] }}</div>
+        <div class="stat-value"><?php echo e($stats['total_forms']); ?></div>
         <div class="sc-shimmer"></div>
     </div>
     <div class="stat-card au d3">
         <div class="stat-label">Submissions</div>
-        <div class="stat-value">{{ number_format($stats['total_submissions']) }}</div>
+        <div class="stat-value"><?php echo e(number_format($stats['total_submissions'])); ?></div>
         <div class="sc-shimmer"></div>
     </div>
     <div class="stat-card g au d4">
         <div class="stat-label">Valid</div>
-        <div class="stat-value">{{ number_format($stats['total_valid']) }}</div>
+        <div class="stat-value"><?php echo e(number_format($stats['total_valid'])); ?></div>
         <div class="sc-glow"></div><div class="sc-shimmer"></div>
     </div>
     <div class="stat-card r au d5">
         <div class="stat-label">Spam Blocked</div>
-        <div class="stat-value">{{ number_format($stats['total_spam']) }}</div>
+        <div class="stat-value"><?php echo e(number_format($stats['total_spam'])); ?></div>
         <div class="sc-glow"></div><div class="sc-shimmer"></div>
     </div>
     <div class="stat-card am au d6">
         <div class="stat-label">Unread</div>
-        <div class="stat-value">{{ $stats['total_unread'] }}</div>
+        <div class="stat-value"><?php echo e($stats['total_unread']); ?></div>
         <div class="sc-glow"></div><div class="sc-shimmer"></div>
     </div>
 </div>
 
-{{-- ── Search ───────────────────────────────────────────────────────────────── --}}
-@if($projects->count() > 0 || $standaloneForms->count() > 0)
+
+<?php if($projects->count() > 0 || $standaloneForms->count() > 0): ?>
 <div class="search-row au d7">
     <div class="search-pill">
         <span class="search-pill-icon">
@@ -514,7 +514,7 @@ tr.form-row-hidden { display: none; }
     </div>
     <span class="search-count" id="searchResultCount" aria-live="polite"></span>
 </div>
-@endif
+<?php endif; ?>
 
 <div class="no-results-state" id="noResultsState" role="status">
     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -523,47 +523,47 @@ tr.form-row-hidden { display: none; }
     No results for "<strong id="noResultsTerm"></strong>"
 </div>
 
-{{-- ── Projects ─────────────────────────────────────────────────────────────── --}}
-@if($projects->count() > 0)
+
+<?php if($projects->count() > 0): ?>
 <div class="s-div au d8">
     <span class="s-div-label">Projects &amp; Forms</span>
     <span class="s-div-line"></span>
-    <span class="s-div-label" style="border: 1px solid var(--border); border-radius: 14px; padding: 0.25rem 0.65rem; color: var(--t1); font-size: 1rem!important">{{ $projects->count() }}</span>
+    <span class="s-div-label" style="border: 1px solid var(--border); border-radius: 14px; padding: 0.25rem 0.65rem; color: var(--t1); font-size: 1rem!important"><?php echo e($projects->count()); ?></span>
 </div>
 
 <div class="projects-stack" id="projectsList">
-    @foreach($projects as $project)
+    <?php $__currentLoopData = $projects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $project): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div
         class="project-card-wrap au"
-        style="animation-delay:{{ 0.1 + $loop->index * 0.07 }}s"
-        data-project-name="{{ strtolower($project->name . ' ' . $project->description) }}"
+        style="animation-delay:<?php echo e(0.1 + $loop->index * 0.07); ?>s"
+        data-project-name="<?php echo e(strtolower($project->name . ' ' . $project->description)); ?>"
     >
-        <div class="color-strip" style="background:{{ $project->color ?? '#00ff88' }};"></div>
+        <div class="color-strip" style="background:<?php echo e($project->color ?? '#00ff88'); ?>;"></div>
 
         <div class="project-header">
             <div class="project-header-left">
                 <div class="proj-dot-wrap">
-                    <span style="background:{{ $project->color ?? '#00ff88' }};"></span>
+                    <span style="background:<?php echo e($project->color ?? '#00ff88'); ?>;"></span>
                 </div>
-                <a href="{{ route('dashboard.projects.show', $project->id) }}"
-                   class="proj-name" data-label="{{ $project->name }}">{{ $project->name }}</a>
-                @if($project->description)
-                    <span class="proj-desc">— {{ Str::limit($project->description, 55) }}</span>
-                @endif
-                @php $projectUnread = $project->forms->sum('unread_count'); @endphp
-                @if($projectUnread > 0)
-                    <span class="badge b-g"><span class="bd"></span>{{ $projectUnread }} new</span>
-                @endif
+                <a href="<?php echo e(route('dashboard.projects.show', $project->id)); ?>"
+                   class="proj-name" data-label="<?php echo e($project->name); ?>"><?php echo e($project->name); ?></a>
+                <?php if($project->description): ?>
+                    <span class="proj-desc">— <?php echo e(Str::limit($project->description, 55)); ?></span>
+                <?php endif; ?>
+                <?php $projectUnread = $project->forms->sum('unread_count'); ?>
+                <?php if($projectUnread > 0): ?>
+                    <span class="badge b-g"><span class="bd"></span><?php echo e($projectUnread); ?> new</span>
+                <?php endif; ?>
             </div>
             <div class="project-header-right">
-                <span class="pill-count">{{ $project->forms->count() }} {{ Str::plural('form', $project->forms->count()) }}</span>
-                <a href="{{ route('dashboard.forms.create', ['project_id' => $project->id]) }}" class="btn-g">+ Add Form</a>
-                <a href="{{ route('dashboard.projects.show', $project->id) }}" class="btn-ghost">View</a>
-                <a href="{{ route('dashboard.projects.edit', $project->id) }}" class="btn-ghost">Settings</a>
+                <span class="pill-count"><?php echo e($project->forms->count()); ?> <?php echo e(Str::plural('form', $project->forms->count())); ?></span>
+                <a href="<?php echo e(route('dashboard.forms.create', ['project_id' => $project->id])); ?>" class="btn-g">+ Add Form</a>
+                <a href="<?php echo e(route('dashboard.projects.show', $project->id)); ?>" class="btn-ghost">View</a>
+                <a href="<?php echo e(route('dashboard.projects.edit', $project->id)); ?>" class="btn-ghost">Settings</a>
             </div>
         </div>
 
-        @if($project->forms->count() > 0)
+        <?php if($project->forms->count() > 0): ?>
         <div class="table-wrapper">
             <table class="table">
                 <thead><tr>
@@ -571,49 +571,49 @@ tr.form-row-hidden { display: none; }
                     <th>Valid</th><th>Spam</th><th>Status</th><th class="tr">Action</th>
                 </tr></thead>
                 <tbody>
-                    @foreach($project->forms as $form)
-                    <tr data-search="{{ strtolower($form->name . ' ' . $form->slug . ' ' . $form->status) }}">
+                    <?php $__currentLoopData = $project->forms; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $form): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <tr data-search="<?php echo e(strtolower($form->name . ' ' . $form->slug . ' ' . $form->status)); ?>">
                         <td>
-                            <a href="{{ route('dashboard.forms.show', $form->id) }}"
-                               class="t-link" data-label="{{ $form->name }}">{{ $form->name }}</a>
-                            @if($form->unread_count > 0)
-                                <span class="badge b-g" style="margin-left:.5rem;">{{ $form->unread_count }} new</span>
-                            @endif
+                            <a href="<?php echo e(route('dashboard.forms.show', $form->id)); ?>"
+                               class="t-link" data-label="<?php echo e($form->name); ?>"><?php echo e($form->name); ?></a>
+                            <?php if($form->unread_count > 0): ?>
+                                <span class="badge b-g" style="margin-left:.5rem;"><?php echo e($form->unread_count); ?> new</span>
+                            <?php endif; ?>
                         </td>
-                        <td><code class="mono-code">/f/{{ $form->slug }}</code></td>
-                        <td class="v-dim">{{ number_format($form->submission_count) }}</td>
-                        <td class="v-g">{{ number_format($form->valid_count) }}</td>
-                        <td class="v-r">{{ number_format($form->spam_count) }}</td>
+                        <td><code class="mono-code">/f/<?php echo e($form->slug); ?></code></td>
+                        <td class="v-dim"><?php echo e(number_format($form->submission_count)); ?></td>
+                        <td class="v-g"><?php echo e(number_format($form->valid_count)); ?></td>
+                        <td class="v-r"><?php echo e(number_format($form->spam_count)); ?></td>
                         <td>
-                            @if(!$form->email_verified)
+                            <?php if(!$form->email_verified): ?>
                                 <span class="badge b-w"><span class="bd"></span>Pending</span>
-                            @elseif($form->status === 'active')
+                            <?php elseif($form->status === 'active'): ?>
                                 <span class="badge b-g"><span class="bd"></span>Active</span>
-                            @else
+                            <?php else: ?>
                                 <span class="badge b-w"><span class="bd"></span>Paused</span>
-                            @endif
+                            <?php endif; ?>
                         </td>
                         <td class="tr">
-                            <a href="{{ route('dashboard.forms.show', $form->id) }}" class="btn-ghost">View</a>
+                            <a href="<?php echo e(route('dashboard.forms.show', $form->id)); ?>" class="btn-ghost">View</a>
                         </td>
                     </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
         </div>
-        @else
+        <?php else: ?>
             <div class="empty-row">
                 No forms yet.
-                <a href="{{ route('dashboard.forms.create', ['project_id' => $project->id]) }}">Add your first form →</a>
+                <a href="<?php echo e(route('dashboard.forms.create', ['project_id' => $project->id])); ?>">Add your first form →</a>
             </div>
-        @endif
+        <?php endif; ?>
     </div>
-    @endforeach
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </div>
-@endif
+<?php endif; ?>
 
-{{-- ── Empty state ──────────────────────────────────────────────────────────── --}}
-@if($projects->count() === 0 && $standaloneForms->count() === 0)
+
+<?php if($projects->count() === 0 && $standaloneForms->count() === 0): ?>
 <div class="empty-state-card au">
     <div class="empty-icon-wrap">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -622,12 +622,12 @@ tr.form-row-hidden { display: none; }
     </div>
     <div class="empty-title">No projects yet</div>
     <p class="empty-desc">Create a project to organise your form endpoints and start collecting submissions.</p>
-    <a href="{{ route('dashboard.projects.create') }}" class="btn-new">Create Your First Project</a>
+    <a href="<?php echo e(route('dashboard.projects.create')); ?>" class="btn-new">Create Your First Project</a>
 </div>
-@endif
+<?php endif; ?>
 
-{{-- ── Standalone forms ─────────────────────────────────────────────────────── --}}
-@if($standaloneForms->count() > 0)
+
+<?php if($standaloneForms->count() > 0): ?>
 <div class="standalone-wrap" id="standaloneSection">
     <div class="s-div" style="margin-bottom:1rem;">
         <span class="s-div-label">Standalone Forms</span>
@@ -642,43 +642,43 @@ tr.form-row-hidden { display: none; }
                     <th>Valid</th><th>Spam</th><th>Status</th><th class="tr">Action</th>
                 </tr></thead>
                 <tbody id="standaloneBody">
-                    @foreach($standaloneForms as $form)
-                    <tr data-search="{{ strtolower($form->name . ' ' . $form->slug . ' ' . $form->status) }}">
+                    <?php $__currentLoopData = $standaloneForms; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $form): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <tr data-search="<?php echo e(strtolower($form->name . ' ' . $form->slug . ' ' . $form->status)); ?>">
                         <td>
-                            <a href="{{ route('dashboard.forms.show', $form->id) }}"
-                               class="t-link" data-label="{{ $form->name }}">{{ $form->name }}</a>
-                            @if($form->unread_count > 0)
-                                <span class="badge b-g" style="margin-left:.5rem;">{{ $form->unread_count }} new</span>
-                            @endif
+                            <a href="<?php echo e(route('dashboard.forms.show', $form->id)); ?>"
+                               class="t-link" data-label="<?php echo e($form->name); ?>"><?php echo e($form->name); ?></a>
+                            <?php if($form->unread_count > 0): ?>
+                                <span class="badge b-g" style="margin-left:.5rem;"><?php echo e($form->unread_count); ?> new</span>
+                            <?php endif; ?>
                         </td>
-                        <td><code class="mono-code">/f/{{ $form->slug }}</code></td>
-                        <td class="v-dim">{{ number_format($form->submission_count) }}</td>
-                        <td class="v-g">{{ number_format($form->valid_count) }}</td>
-                        <td class="v-r">{{ number_format($form->spam_count) }}</td>
+                        <td><code class="mono-code">/f/<?php echo e($form->slug); ?></code></td>
+                        <td class="v-dim"><?php echo e(number_format($form->submission_count)); ?></td>
+                        <td class="v-g"><?php echo e(number_format($form->valid_count)); ?></td>
+                        <td class="v-r"><?php echo e(number_format($form->spam_count)); ?></td>
                         <td>
-                            @if(!$form->email_verified)
+                            <?php if(!$form->email_verified): ?>
                                 <span class="badge b-w"><span class="bd"></span>Pending</span>
-                            @elseif($form->status === 'active')
+                            <?php elseif($form->status === 'active'): ?>
                                 <span class="badge b-g"><span class="bd"></span>Active</span>
-                            @else
+                            <?php else: ?>
                                 <span class="badge b-w"><span class="bd"></span>Paused</span>
-                            @endif
+                            <?php endif; ?>
                         </td>
                         <td class="tr">
-                            <a href="{{ route('dashboard.forms.show', $form->id) }}" class="btn-ghost">View</a>
+                            <a href="<?php echo e(route('dashboard.forms.show', $form->id)); ?>" class="btn-ghost">View</a>
                         </td>
                     </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-@endif
+<?php endif; ?>
 
-</div>{{-- .dash --}}
+</div>
 
-@if($projects->count() > 0 || $standaloneForms->count() > 0)
+<?php if($projects->count() > 0 || $standaloneForms->count() > 0): ?>
 <script>
 (function () {
     const input         = document.getElementById('projectSearch');
@@ -737,6 +737,7 @@ tr.form-row-hidden { display: none; }
     clearBtn.addEventListener('click', function () { input.value = ''; doSearch(); input.focus(); });
 })();
 </script>
-@endif
+<?php endif; ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.dashboard', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/dashboard/index.blade.php ENDPATH**/ ?>
