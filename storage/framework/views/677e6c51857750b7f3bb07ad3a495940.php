@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>@yield('title', 'Dashboard') - 000form</title>
+    <title><?php echo $__env->yieldContent('title', 'Dashboard'); ?> - 000form</title>
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('images/favicon/000formFavicon.png') }}" type="image/svg+xml">
+    <link rel="icon" href="<?php echo e(asset('images/favicon/000formFavicon.png')); ?>" type="image/svg+xml">
     <!-- Canonical Tag --> 
     <link rel="canonical" href="https://000form.com/" />
     <!-- Keywords --> 
@@ -23,10 +23,10 @@
     <meta property="og:description" content="Easily create and manage forms with 000Forms, a Laravel-powered solution." /> 
     <meta property="og:type" content="website" /> 
     <meta property="og:url" content="https://000form.com/" /> 
-    <meta property="og:image" content="{{ asset('images/og-image/og-image.jpg') }}" /> 
+    <meta property="og:image" content="<?php echo e(asset('images/og-image/og-image.jpg')); ?>" /> 
     <meta property="og:site_name" content="000Forms" />
     <!-- csrf token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <!-- Index and follow for SEO -->
     <meta name="robots" content="index, follow">    
     <!-- Google Analytics tag (gtag.js) --> 
@@ -42,7 +42,7 @@
             "logo": "https://000form.com/images/logo/000formlogo.png" 
         }
     </script>
-    @stack('styles')
+    <?php echo $__env->yieldPushContent('styles'); ?>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1110,8 +1110,8 @@
 
     <!-- Mobile Header -->
     <div class="mobile-header">
-        <a href="{{ route('dashboard') }}" class="mobile-logo">
-            <img src="{{ asset('images/logo/000formlogo.png') }}" alt="000form">
+        <a href="<?php echo e(route('dashboard')); ?>" class="mobile-logo">
+            <img src="<?php echo e(asset('images/logo/000formlogo.png')); ?>" alt="000form">
         </a>
         <button class="hamburger" id="hamburger" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -1124,25 +1124,26 @@
         <aside class="sidebar" id="sidebar">
 
             <!-- Brand -->
-            <a href="{{ route('dashboard') }}" class="sidebar-brand">
-                <img src="{{ asset('images/logo/000formlogo.png') }}" alt="000form">
+            <a href="<?php echo e(route('dashboard')); ?>" class="sidebar-brand">
+                <img src="<?php echo e(asset('images/logo/000formlogo.png')); ?>" alt="000form">
             </a>
 
             <!-- User Card -->
             <div class="user-card">
                 <div class="user-avatar">
-                    {{ strtoupper(substr(Auth::user()->email, 0, 1)) }}
+                    <?php echo e(strtoupper(substr(Auth::user()->email, 0, 1))); ?>
+
                 </div>
                 <div class="user-info">
-                    @if(Auth::user()->name)
-                        <div class="user-name">{{ Auth::user()->name }}</div>
-                    @endif
-                    <div class="user-email">{{ Auth::user()->email }}</div>
+                    <?php if(Auth::user()->name): ?>
+                        <div class="user-name"><?php echo e(Auth::user()->name); ?></div>
+                    <?php endif; ?>
+                    <div class="user-email"><?php echo e(Auth::user()->email); ?></div>
                 </div>
             </div>
 
             <!-- Workspace Switcher -->
-            @if(isset($availableWorkspaces) && $availableWorkspaces->count() > 0)
+            <?php if(isset($availableWorkspaces) && $availableWorkspaces->count() > 0): ?>
             <div class="ws-section">
                 <div class="section-header">
                     <span class="section-label">Workspace</span>
@@ -1152,48 +1153,48 @@
                     </div>
                 </div>
 
-                <form method="POST" action="{{ route('team.switch') }}" class="ws-form">
-                    @csrf
-                    <input type="hidden" name="workspace_owner_id" value="{{ Auth::id() }}">
-                    <button type="submit" class="ws-btn {{ (isset($isOwnWorkspace) && $isOwnWorkspace) ? 'active-workspace' : '' }}">
-                        <div class="ws-avatar own">{{ strtoupper(substr(Auth::user()->name ?? Auth::user()->email, 0, 1)) }}</div>
+                <form method="POST" action="<?php echo e(route('team.switch')); ?>" class="ws-form">
+                    <?php echo csrf_field(); ?>
+                    <input type="hidden" name="workspace_owner_id" value="<?php echo e(Auth::id()); ?>">
+                    <button type="submit" class="ws-btn <?php echo e((isset($isOwnWorkspace) && $isOwnWorkspace) ? 'active-workspace' : ''); ?>">
+                        <div class="ws-avatar own"><?php echo e(strtoupper(substr(Auth::user()->name ?? Auth::user()->email, 0, 1))); ?></div>
                         <div class="ws-details">
                             <span class="ws-name">My Account</span>
                             <span class="ws-role">personal workspace</span>
                         </div>
-                        @if(isset($isOwnWorkspace) && $isOwnWorkspace)
+                        <?php if(isset($isOwnWorkspace) && $isOwnWorkspace): ?>
                             <span class="ws-badge">Active</span>
-                        @endif
+                        <?php endif; ?>
                     </button>
                 </form>
 
-                @foreach($availableWorkspaces as $workspace)
-                <form method="POST" action="{{ route('team.switch') }}" class="ws-form">
-                    @csrf
-                    <input type="hidden" name="workspace_owner_id" value="{{ $workspace['id'] }}">
-                    <button type="submit" class="ws-btn {{ (isset($activeWorkspaceOwnerId) && $activeWorkspaceOwnerId === $workspace['id']) ? 'active-workspace' : '' }}">
-                        <div class="ws-avatar">{{ strtoupper(substr($workspace['name'], 0, 1)) }}</div>
+                <?php $__currentLoopData = $availableWorkspaces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $workspace): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <form method="POST" action="<?php echo e(route('team.switch')); ?>" class="ws-form">
+                    <?php echo csrf_field(); ?>
+                    <input type="hidden" name="workspace_owner_id" value="<?php echo e($workspace['id']); ?>">
+                    <button type="submit" class="ws-btn <?php echo e((isset($activeWorkspaceOwnerId) && $activeWorkspaceOwnerId === $workspace['id']) ? 'active-workspace' : ''); ?>">
+                        <div class="ws-avatar"><?php echo e(strtoupper(substr($workspace['name'], 0, 1))); ?></div>
                         <div class="ws-details">
-                            <span class="ws-name">{{ $workspace['name'] }}</span>
-                            <span class="ws-role">{{ ucfirst($workspace['role']) }} team</span>
+                            <span class="ws-name"><?php echo e($workspace['name']); ?></span>
+                            <span class="ws-role"><?php echo e(ucfirst($workspace['role'])); ?> team</span>
                         </div>
-                        @if(isset($activeWorkspaceOwnerId) && $activeWorkspaceOwnerId === $workspace['id'])
+                        <?php if(isset($activeWorkspaceOwnerId) && $activeWorkspaceOwnerId === $workspace['id']): ?>
                             <span class="ws-badge">Active</span>
-                        @endif
+                        <?php endif; ?>
                     </button>
                 </form>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
-            @endif
+            <?php endif; ?>
 
             <!-- Main Nav -->
             <div class="nav-group">
                 <div class="nav-group-label">Main</div>
                 <ul class="nav-list">
 
-                    {{-- Dashboard --}}
+                    
                     <li class="nav-item">
-                        <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') && !request()->routeIs('dashboard.forms.*') && !request()->routeIs('dashboard.projects.*') ? 'active' : '' }}">
+                        <a href="<?php echo e(route('dashboard')); ?>" class="nav-link <?php echo e(request()->routeIs('dashboard') && !request()->routeIs('dashboard.forms.*') && !request()->routeIs('dashboard.projects.*') ? 'active' : ''); ?>">
                             <span class="nav-icon">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                                     <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
@@ -1204,17 +1205,15 @@
                         </a>
                     </li>
 
-                    {{-- Projects Accordion --}}
-                    @if(isset($sidebarProjects) && $sidebarProjects->isNotEmpty())
+                    
+                    <?php if(isset($sidebarProjects) && $sidebarProjects->isNotEmpty()): ?>
                     <li class="nav-item">
                         <button
-                            class="proj-acc-trigger {{
-                                request()->routeIs('dashboard.projects.*') &&
+                            class="proj-acc-trigger <?php echo e(request()->routeIs('dashboard.projects.*') &&
                                 !request()->routeIs('dashboard.projects.create')
-                                ? 'active-parent' : ''
-                            }}"
+                                ? 'active-parent' : ''); ?>"
                             id="projAccTrigger"
-                            aria-expanded="{{ request()->routeIs('dashboard.projects.*') ? 'true' : 'false' }}"
+                            aria-expanded="<?php echo e(request()->routeIs('dashboard.projects.*') ? 'true' : 'false'); ?>"
                         >
                             <span class="proj-acc-left">
                                 <span class="proj-acc-icon">
@@ -1229,29 +1228,30 @@
                             </svg>
                         </button>
 
-                        <div class="proj-acc-body {{ request()->routeIs('dashboard.projects.*') ? 'open' : '' }}" id="projAccBody">
+                        <div class="proj-acc-body <?php echo e(request()->routeIs('dashboard.projects.*') ? 'open' : ''); ?>" id="projAccBody">
                             <ul class="proj-acc-inner">
-                                @foreach($sidebarProjects as $proj)
+                                <?php $__currentLoopData = $sidebarProjects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $proj): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <li>
                                     <a
-                                        href="{{ route('dashboard.projects.show', $proj->id) }}"
-                                        class="proj-link {{ request()->is('dashboard/projects/' . $proj->id) || request()->is('dashboard/projects/' . $proj->id . '/*') ? 'active' : '' }}"
-                                        title="{{ $proj->name }}"
+                                        href="<?php echo e(route('dashboard.projects.show', $proj->id)); ?>"
+                                        class="proj-link <?php echo e(request()->is('dashboard/projects/' . $proj->id) || request()->is('dashboard/projects/' . $proj->id . '/*') ? 'active' : ''); ?>"
+                                        title="<?php echo e($proj->name); ?>"
                                     >
-                                        <span class="proj-dot" style="background: {{ $proj->color ?? '#6366f1' }}"></span>
-                                        {{ $proj->name }}
+                                        <span class="proj-dot" style="background: <?php echo e($proj->color ?? '#6366f1'); ?>"></span>
+                                        <?php echo e($proj->name); ?>
+
                                     </a>
                                 </li>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                         </div>
                     </li>
-                    @endif
+                    <?php endif; ?>
 
-                    {{-- New Project --}}
+                    
                     <li class="nav-item">
-                        <a href="{{ route('dashboard.projects.create') }}"
-                           class="nav-link {{ request()->routeIs('dashboard.projects.create') ? 'active' : '' }}">
+                        <a href="<?php echo e(route('dashboard.projects.create')); ?>"
+                           class="nav-link <?php echo e(request()->routeIs('dashboard.projects.create') ? 'active' : ''); ?>">
                             <span class="nav-icon">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                                     <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
@@ -1263,9 +1263,9 @@
                         </a>
                     </li>
 
-                    {{-- Team Management --}}
+                    
                     <li class="nav-item">
-                        <a href="{{ route('team.index') }}" class="nav-link {{ request()->routeIs('team.index') ? 'active' : '' }}">
+                        <a href="<?php echo e(route('team.index')); ?>" class="nav-link <?php echo e(request()->routeIs('team.index') ? 'active' : ''); ?>">
                             <span class="nav-icon">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -1285,9 +1285,9 @@
                 <div class="nav-group-label">Account</div>
                 <div class="acc-wrap">
                     <button
-                        class="acc-trigger {{ request()->routeIs('account.settings') || request()->routeIs('billing.portal') || request()->routeIs('billing.payment-history') ? 'open-active' : '' }}"
+                        class="acc-trigger <?php echo e(request()->routeIs('account.settings') || request()->routeIs('billing.portal') || request()->routeIs('billing.payment-history') ? 'open-active' : ''); ?>"
                         id="accTrigger"
-                        aria-expanded="{{ request()->routeIs('account.settings') || request()->routeIs('billing.portal') || request()->routeIs('billing.payment-history') ? 'true' : 'false' }}"
+                        aria-expanded="<?php echo e(request()->routeIs('account.settings') || request()->routeIs('billing.portal') || request()->routeIs('billing.payment-history') ? 'true' : 'false'); ?>"
                     >
                         <span class="acc-trigger-left">
                             <span class="acc-icon">
@@ -1302,21 +1302,21 @@
                         </svg>
                     </button>
 
-                    <div class="acc-body {{ request()->routeIs('account.settings') || request()->routeIs('billing.portal') || request()->routeIs('billing.payment-history') ? 'open' : '' }}" id="accBody">
+                    <div class="acc-body <?php echo e(request()->routeIs('account.settings') || request()->routeIs('billing.portal') || request()->routeIs('billing.payment-history') ? 'open' : ''); ?>" id="accBody">
                         <div class="acc-inner">
-                            <a href="{{ route('account.settings') }}" class="acc-sub-link {{ request()->routeIs('account.settings') ? 'active' : '' }}">
+                            <a href="<?php echo e(route('account.settings')); ?>" class="acc-sub-link <?php echo e(request()->routeIs('account.settings') ? 'active' : ''); ?>">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                                     <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
                                 </svg>
                                 Profile Settings
                             </a>
-                            <a href="{{ route('billing.portal') }}" class="acc-sub-link {{ request()->routeIs('billing.portal') ? 'active' : '' }}">
+                            <a href="<?php echo e(route('billing.portal')); ?>" class="acc-sub-link <?php echo e(request()->routeIs('billing.portal') ? 'active' : ''); ?>">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                                     <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
                                 </svg>
                                 Plans & Subscription
                             </a>
-                            <a href="{{ route('billing.payment-history') }}" class="acc-sub-link {{ request()->routeIs('billing.payment-history') ? 'active' : '' }}">
+                            <a href="<?php echo e(route('billing.payment-history')); ?>" class="acc-sub-link <?php echo e(request()->routeIs('billing.payment-history') ? 'active' : ''); ?>">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                                     <rect x="2" y="5" width="20" height="14" rx="2"/>
                                     <line x1="2" y1="10" x2="22" y2="10"/>
@@ -1334,7 +1334,7 @@
                     <div class="nav-group-label">Resources</div>
                     <ul class="nav-list" style="padding:0">
                         <li class="nav-item">
-                            <a href="{{ route('docs') }}" target="_blank" class="nav-link">
+                            <a href="<?php echo e(route('docs')); ?>" target="_blank" class="nav-link">
                                 <span class="nav-icon">
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -1348,8 +1348,8 @@
                     </ul>
                 </div>
 
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
+                <form method="POST" action="<?php echo e(route('logout')); ?>">
+                    <?php echo csrf_field(); ?>
                     <button type="submit" class="logout-btn">
                         <span class="nav-icon">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -1366,27 +1366,29 @@
 
         <!-- Main Content -->
         <main class="main">
-            @if(session('message'))
+            <?php if(session('message')): ?>
                 <div class="alert alert-success">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                         <polyline points="20 6 9 17 4 12"/>
                     </svg>
-                    {{ session('message') }}
-                </div>
-            @endif
+                    <?php echo e(session('message')); ?>
 
-            @if(session('error'))
+                </div>
+            <?php endif; ?>
+
+            <?php if(session('error')): ?>
                 <div class="alert alert-error">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                         <circle cx="12" cy="12" r="10"/>
                         <line x1="12" y1="8" x2="12" y2="12"/>
                         <line x1="12" y1="16" x2="12.01" y2="16"/>
                     </svg>
-                    {{ session('error') }}
-                </div>
-            @endif
+                    <?php echo e(session('error')); ?>
 
-            @yield('content')
+                </div>
+            <?php endif; ?>
+
+            <?php echo $__env->yieldContent('content'); ?>
         </main>
     </div>
 
@@ -1452,6 +1454,6 @@
             }
         }
     </script>
-    @stack('scripts')
+    <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>
-</html>
+</html><?php /**PATH C:\Git-folders\000form.com\resources\views/layouts/dashboard.blade.php ENDPATH**/ ?>

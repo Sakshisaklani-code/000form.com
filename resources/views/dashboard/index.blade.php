@@ -117,12 +117,12 @@
 
 .search-input {
     width: 100%;
-    padding: 1rem 2.2rem;
+    padding: 0.7rem 2.2rem;
     border: 1px solid white;
     border-radius: 3rem;
     background: var(--bg);
     color: var(--text);
-    font-size: 1rem;
+    font-size: 0.9rem;
     outline: none;
     transition: border-color 0.15s;
 }

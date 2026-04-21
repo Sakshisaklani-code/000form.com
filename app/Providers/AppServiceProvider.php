@@ -2,13 +2,17 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\URL;
 use App\Services\SpamDetectionService;
 use App\Services\SupabaseAuthService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+
+    
     /**
      * Register any application services.
      */
@@ -29,5 +33,16 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
        View::share('recaptchaSiteKey', config('services.recaptcha.site_key'));
+       URL::forceScheme('https');
+       View::composer('layouts.dashboard', function ($view) {
+            if (Auth::check()) {
+                $ownerId = session('active_workspace', Auth::id());
+                $sidebarProjects = \App\Models\Project::forUser($ownerId)
+                    ->where('status', 'active')
+                    ->orderBy('name')
+                    ->get(['id', 'name', 'color']);
+                $view->with('sidebarProjects', $sidebarProjects);
+            }
+        });
     }
 }
