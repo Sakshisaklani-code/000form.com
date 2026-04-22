@@ -208,6 +208,7 @@
 .s-div {
     display: flex; align-items: center;
     gap: 0.75rem; margin-bottom: 1.1rem;
+    padding: 0 1rem;
 }
 .s-div-label {
     font-family: var(--mono); font-size: 0.8rem; font-weight: 500;
@@ -331,7 +332,7 @@ tr.form-row-hidden { display: none; }
 .btn-ghost {
     display: inline-flex; align-items: center; gap: 0.3rem;
     padding: 0.38rem 0.8rem;
-    font-family: var(--sans); font-size: 0.74rem; font-weight: 500;
+    font-family: var(--sans); font-size: 0.8rem; font-weight: 500;
     border-radius: 8px; text-decoration: none; white-space: nowrap;
     background: rgba(255,255,255,0.03);
     color: var(--t2);

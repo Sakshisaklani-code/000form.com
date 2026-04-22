@@ -1,8 +1,8 @@
-@extends('layouts.dashboard')
 
-@section('title', $form->name)
 
-@section('content')
+<?php $__env->startSection('title', $form->name); ?>
+
+<?php $__env->startSection('content'); ?>
 <style>
 /* ── Theme vars (match dashboard) ─────────────────────────── */
 :root {
@@ -209,7 +209,7 @@
 }
 .stat-card:hover { border-color: rgba(0,255,136,0.15); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,255,136,0.08); }
 .stat-label {
-    font-family: var(--mono); font-size: 0.7rem; font-weight: 600;
+    font-family: var(--mono); font-size: 0.9rem; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.14em; color: var(--t3); margin-bottom: 0.6rem;
     display: flex; align-items: center; gap: 0.4rem;
 }
@@ -728,22 +728,22 @@
 
 <div class="form-show">
 
-{{-- ── Back crumb ───────────────────────────────────────────────────────────── --}}
-<a href="{{ route('dashboard') }}" class="back-crumb au">
+
+<a href="<?php echo e(route('dashboard')); ?>" class="back-crumb au">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         <polyline points="15 18 9 12 15 6"/>
     </svg>
     Dashboard
 </a>
 
-{{-- ── Page header ──────────────────────────────────────────────────────────── --}}
+
 <div class="dash-header au d1">
     <div>
         <div class="dash-eyebrow">// form</div>
-        <h1 class="dash-title">{{ $form->name }}</h1>
+        <h1 class="dash-title"><?php echo e($form->name); ?></h1>
     </div>
     <div class="header-actions">
-        <a href="{{ route('dashboard.forms.export', $form->id) }}" class="btn-ghost">
+        <a href="<?php echo e(route('dashboard.forms.export', $form->id)); ?>" class="btn-ghost">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                 <polyline points="7 10 12 15 17 10"/>
@@ -751,7 +751,7 @@
             </svg>
             Export CSV
         </a>
-        <a href="{{ route('dashboard.forms.edit', $form->id) }}" class="btn-ghost">
+        <a href="<?php echo e(route('dashboard.forms.edit', $form->id)); ?>" class="btn-ghost">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                 <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
@@ -761,8 +761,8 @@
     </div>
 </div>
 
-{{-- Email verification alert --}}
-@if(!$form->email_verified)
+
+<?php if(!$form->email_verified): ?>
 <div class="alert alert-warning au d2">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="12" cy="12" r="10"/>
@@ -771,28 +771,29 @@
     </svg>
     <div style="flex:1;">
         <strong>Email verification required.</strong>
-        Please check {{ $form->recipient_email }} and click the verification link.
+        Please check <?php echo e($form->recipient_email); ?> and click the verification link.
     </div>
-    <form method="POST" action="{{ route('dashboard.forms.resend-verification', $form->id) }}" style="margin:0;">
-        @csrf
+    <form method="POST" action="<?php echo e(route('dashboard.forms.resend-verification', $form->id)); ?>" style="margin:0;">
+        <?php echo csrf_field(); ?>
         <button type="submit" class="btn-secondary-verify">Resend Email</button>
     </form>
 </div>
-@endif
+<?php endif; ?>
 
-{{-- ── Endpoint strip ───────────────────────────────────────────────────────── --}}
+
 <div class="strip-card au d2">
     <div class="strip-inner endpoint-strip-inner">
         <div class="strip-left">
             <span class="strip-method post">POST</span>
-            <span class="strip-url">{{ $form->endpoint_url }}</span>
+            <span class="strip-url"><?php echo e($form->endpoint_url); ?></span>
         </div>
         <div class="strip-actions endpoint-strip-actions">
-            <span class="badge {{ $form->status === 'active' && $form->email_verified ? 'badge-success' : 'badge-warning' }}">
+            <span class="badge <?php echo e($form->status === 'active' && $form->email_verified ? 'badge-success' : 'badge-warning'); ?>">
                 <span class="badge-dot"></span>
-                {{ $form->email_verified ? ucfirst($form->status) : 'Pending Verification' }}
+                <?php echo e($form->email_verified ? ucfirst($form->status) : 'Pending Verification'); ?>
+
             </span>
-            <button class="btn-ghost btn-sm" onclick="copyEndpoint('{{ $form->slug }}')">
+            <button class="btn-ghost btn-sm" onclick="copyEndpoint('<?php echo e($form->slug); ?>')">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
@@ -803,16 +804,16 @@
     </div>
 </div>
 
-{{-- ── Form ID strip ────────────────────────────────────────────────────────── --}}
+
 <div class="strip-card au d3">
     <div class="strip-inner formid-strip-inner">
         <div class="strip-left" style="flex-wrap:wrap;">
             <span class="strip-method id">Form ID</span>
-            <span class="strip-url">{{ $form->slug }}</span>
+            <span class="strip-url"><?php echo e($form->slug); ?></span>
             <span class="strip-note">— to embed <strong>popup form</strong></span>
         </div>
         <div class="strip-actions formid-strip-actions">
-            <button class="btn-ghost btn-sm" onclick="copyFormId('{{ $form->slug }}')">
+            <button class="btn-ghost btn-sm" onclick="copyFormId('<?php echo e($form->slug); ?>')">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
@@ -823,16 +824,16 @@
     </div>
 </div>
 
-{{-- ── Stats ────────────────────────────────────────────────────────────────── --}}
+
 <div class="stats-grid au d4" style="grid-template-columns:repeat(4,1fr);">
     <div class="stat-card g">
         <div class="stat-label">Valid Submissions</div>
-        <div class="stat-value">{{ number_format($validCount) }}</div>
+        <div class="stat-value"><?php echo e(number_format($validCount)); ?></div>
         <div class="sc-glow"></div><div class="sc-shimmer"></div>
     </div>
     <div class="stat-card r">
         <div class="stat-label">Spam Blocked</div>
-        <div class="stat-value">{{ number_format($spamCount) }}</div>
+        <div class="stat-value"><?php echo e(number_format($spamCount)); ?></div>
         <div class="sc-glow"></div><div class="sc-shimmer"></div>
     </div>
     <div class="stat-card ind">
@@ -844,123 +845,121 @@
             </svg>
             Archived
         </div>
-        <div class="stat-value">{{ number_format($archiveCount) }}</div>
+        <div class="stat-value"><?php echo e(number_format($archiveCount)); ?></div>
         <div class="sc-glow"></div><div class="sc-shimmer"></div>
     </div>
     <div class="stat-card">
         <div class="stat-label">Last Submission</div>
         <div class="stat-value" style="font-size:1.05rem;color:var(--t2);">
-            {{ $form->last_submission_at ? $form->last_submission_at->diffForHumans() : 'Never' }}
+            <?php echo e($form->last_submission_at ? $form->last_submission_at->diffForHumans() : 'Never'); ?>
+
         </div>
         <div class="sc-shimmer"></div>
     </div>
 </div>
 
-{{-- ══════════════════════════════
-     MAIN PAGE TABS
-══════════════════════════════ --}}
-@php $panel = request('panel', 'submissions'); @endphp
+
+<?php $panel = request('panel', 'submissions'); ?>
 
 <nav class="page-tabs-bar au d5">
-    <a href="{{ request()->fullUrlWithQuery(['panel' => 'submissions', 'page' => 1]) }}"
-       class="page-tab {{ $panel === 'submissions' ? 'active' : '' }}">
+    <a href="<?php echo e(request()->fullUrlWithQuery(['panel' => 'submissions', 'page' => 1])); ?>"
+       class="page-tab <?php echo e($panel === 'submissions' ? 'active' : ''); ?>">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
         </svg>
         Submissions
-        @php $total = $validCount + $spamCount; @endphp
-        @if($total > 0)<span class="tab-pill valid">{{ number_format($total) }}</span>@endif
+        <?php $total = $validCount + $spamCount; ?>
+        <?php if($total > 0): ?><span class="tab-pill valid"><?php echo e(number_format($total)); ?></span><?php endif; ?>
     </a>
-    <a href="{{ request()->fullUrlWithQuery(['panel' => 'statistics']) }}"
-       class="page-tab {{ $panel === 'statistics' ? 'active' : '' }}">
+    <a href="<?php echo e(request()->fullUrlWithQuery(['panel' => 'statistics'])); ?>"
+       class="page-tab <?php echo e($panel === 'statistics' ? 'active' : ''); ?>">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
         </svg>
         Statistics
     </a>
-    <a href="{{ request()->fullUrlWithQuery(['panel' => 'code']) }}"
-       class="page-tab {{ $panel === 'code' ? 'active' : '' }}">
+    <a href="<?php echo e(request()->fullUrlWithQuery(['panel' => 'code'])); ?>"
+       class="page-tab <?php echo e($panel === 'code' ? 'active' : ''); ?>">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="16 18 22 12 16 6"/>
             <polyline points="8 6 2 12 8 18"/>
         </svg>
         Integration Code
     </a>
-    <a href="{{ request()->fullUrlWithQuery(['panel' => 'workflow']) }}"
-       class="page-tab {{ $panel === 'workflow' ? 'active' : '' }}">
+    <a href="<?php echo e(request()->fullUrlWithQuery(['panel' => 'workflow'])); ?>"
+       class="page-tab <?php echo e($panel === 'workflow' ? 'active' : ''); ?>">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="9 11 12 14 22 4"/>
             <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
         </svg>
         Workflow
-        @if(isset($validations) && $validations->count() > 0)
-            <span class="tab-pill archive">{{ $validations->count() }}</span>
-        @endif
+        <?php if(isset($validations) && $validations->count() > 0): ?>
+            <span class="tab-pill archive"><?php echo e($validations->count()); ?></span>
+        <?php endif; ?>
     </a>
 </nav>
 
-{{-- ══════════════════════════════
-     PANEL: SUBMISSIONS
-══════════════════════════════ --}}
-@php $tab = request('tab', 'valid'); @endphp
 
-<div class="page-panel {{ $panel === 'submissions' ? 'active' : '' }}">
+<?php $tab = request('tab', 'valid'); ?>
+
+<div class="page-panel <?php echo e($panel === 'submissions' ? 'active' : ''); ?>">
     <div class="submissions-section">
         <div class="submissions-section-header">
             <div class="submission-tabs-bar" style="padding-bottom:0;">
                 <div class="submission-tabs">
-                    <a href="{{ request()->fullUrlWithQuery(['panel' => 'submissions', 'tab' => 'valid', 'search' => $search, 'page' => 1]) }}"
-                       class="submission-tab {{ $tab === 'valid' ? 'active' : '' }}">
+                    <a href="<?php echo e(request()->fullUrlWithQuery(['panel' => 'submissions', 'tab' => 'valid', 'search' => $search, 'page' => 1])); ?>"
+                       class="submission-tab <?php echo e($tab === 'valid' ? 'active' : ''); ?>">
                         Inbox
-                        <span class="tab-pill valid">{{ number_format($validCount) }}</span>
+                        <span class="tab-pill valid"><?php echo e(number_format($validCount)); ?></span>
                     </a>
-                    <a href="{{ request()->fullUrlWithQuery(['panel' => 'submissions', 'tab' => 'spam', 'search' => $search, 'page' => 1]) }}"
-                       class="submission-tab {{ $tab === 'spam' ? 'active' : '' }}">
+                    <a href="<?php echo e(request()->fullUrlWithQuery(['panel' => 'submissions', 'tab' => 'spam', 'search' => $search, 'page' => 1])); ?>"
+                       class="submission-tab <?php echo e($tab === 'spam' ? 'active' : ''); ?>">
                         Spam
-                        <span class="tab-pill spam">{{ number_format($spamCount) }}</span>
+                        <span class="tab-pill spam"><?php echo e(number_format($spamCount)); ?></span>
                     </a>
-                    <a href="{{ request()->fullUrlWithQuery(['panel' => 'submissions', 'tab' => 'archive', 'search' => $search, 'page' => 1]) }}"
-                       class="submission-tab {{ $tab === 'archive' ? 'active' : '' }}">
+                    <a href="<?php echo e(request()->fullUrlWithQuery(['panel' => 'submissions', 'tab' => 'archive', 'search' => $search, 'page' => 1])); ?>"
+                       class="submission-tab <?php echo e($tab === 'archive' ? 'active' : ''); ?>">
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="21 8 21 21 3 21 3 8"/>
                             <rect x="1" y="3" width="22" height="5"/>
                             <line x1="10" y1="12" x2="14" y2="12"/>
                         </svg>
                         Archive
-                        @if(isset($archiveCount) && $archiveCount > 0)
-                            <span class="tab-pill archive">{{ number_format($archiveCount) }}</span>
-                        @endif
+                        <?php if(isset($archiveCount) && $archiveCount > 0): ?>
+                            <span class="tab-pill archive"><?php echo e(number_format($archiveCount)); ?></span>
+                        <?php endif; ?>
                     </a>
                 </div>
-                @if($tab !== 'archive')
+                <?php if($tab !== 'archive'): ?>
                 <div class="search-wrapper" style="padding-bottom:0.5rem;">
                     <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
                     </svg>
                     <input type="text" id="liveSearchInput" class="search-input"
                            placeholder="Search by name, email…"
-                           value="{{ $search }}" autocomplete="off">
-                    @if($search)
-                        <a href="{{ request()->fullUrlWithQuery(['search' => '', 'page' => 1]) }}" class="search-clear" title="Clear">✕</a>
-                    @else
+                           value="<?php echo e($search); ?>" autocomplete="off">
+                    <?php if($search): ?>
+                        <a href="<?php echo e(request()->fullUrlWithQuery(['search' => '', 'page' => 1])); ?>" class="search-clear" title="Clear">✕</a>
+                    <?php else: ?>
                         <span class="search-clear" id="clearBtn" style="display:none;" title="Clear">✕</span>
-                    @endif
+                    <?php endif; ?>
                 </div>
-                @endif
+                <?php endif; ?>
             </div>
-            @if($search && $tab !== 'archive')
+            <?php if($search && $tab !== 'archive'): ?>
                 <p class="results-info">
-                    @if($submissions->total() > 0)
-                        <strong>{{ $submissions->total() }}</strong> result{{ $submissions->total() !== 1 ? 's' : '' }}
-                        for "<strong>{{ $search }}</strong>" in <strong>{{ $tab === 'spam' ? 'Spam' : 'Inbox' }}</strong>
-                    @else
-                        No results for "<strong>{{ $search }}</strong>" in <strong>{{ $tab === 'spam' ? 'Spam' : 'Inbox' }}</strong>
-                    @endif
+                    <?php if($submissions->total() > 0): ?>
+                        <strong><?php echo e($submissions->total()); ?></strong> result<?php echo e($submissions->total() !== 1 ? 's' : ''); ?>
+
+                        for "<strong><?php echo e($search); ?></strong>" in <strong><?php echo e($tab === 'spam' ? 'Spam' : 'Inbox'); ?></strong>
+                    <?php else: ?>
+                        No results for "<strong><?php echo e($search); ?></strong>" in <strong><?php echo e($tab === 'spam' ? 'Spam' : 'Inbox'); ?></strong>
+                    <?php endif; ?>
                 </p>
-            @endif
+            <?php endif; ?>
         </div>
 
-        @if($tab === 'archive')
+        <?php if($tab === 'archive'): ?>
         <div class="archive-toggle-banner">
             <div class="archive-toggle-info">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -973,18 +972,19 @@
                     <p>When enabled, submissions received while the form is paused are stored here instead of being rejected.</p>
                 </div>
             </div>
-            <form method="POST" action="{{ route('dashboard.forms.toggle-archive', $form->id) }}" id="archiveToggleForm" style="margin:0;">
-                @csrf @method('PATCH')
+            <form method="POST" action="<?php echo e(route('dashboard.forms.toggle-archive', $form->id)); ?>" id="archiveToggleForm" style="margin:0;">
+                <?php echo csrf_field(); ?> <?php echo method_field('PATCH'); ?>
                 <label class="toggle-switch">
                     <input type="checkbox" id="archiveToggle" name="archive_when_paused" value="1"
-                           {{ ($form->archive_when_paused ?? true) ? 'checked' : '' }}
+                           <?php echo e(($form->archive_when_paused ?? true) ? 'checked' : ''); ?>
+
                            onchange="document.getElementById('archiveToggleForm').submit()">
                     <span class="toggle-track"></span>
-                    <span class="toggle-label" id="toggleLabel">{{ ($form->archive_when_paused ?? true) ? 'On' : 'Off' }}</span>
+                    <span class="toggle-label" id="toggleLabel"><?php echo e(($form->archive_when_paused ?? true) ? 'On' : 'Off'); ?></span>
                 </label>
             </form>
         </div>
-        @if(!($form->archive_when_paused ?? true))
+        <?php if(!($form->archive_when_paused ?? true)): ?>
         <div class="warn-banner">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffbb33" stroke-width="2" style="flex-shrink:0;">
                 <circle cx="12" cy="12" r="10"/>
@@ -993,10 +993,10 @@
             </svg>
             <p>Archiving is <strong>disabled</strong>. New submissions while paused will be rejected with a public error message.</p>
         </div>
-        @endif
-        @endif
+        <?php endif; ?>
+        <?php endif; ?>
 
-        @if($submissions->count() > 0)
+        <?php if($submissions->count() > 0): ?>
         <div class="table-wrapper" style="margin-top:0.5rem;">
             <table class="table">
                 <thead>
@@ -1008,138 +1008,138 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($submissions as $submission)
-                    <tr class="{{ $submission->is_spam ? 'spam-row' : ($submission->is_archived ? 'archive-row' : '') }}">
+                    <?php $__currentLoopData = $submissions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $submission): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <tr class="<?php echo e($submission->is_spam ? 'spam-row' : ($submission->is_archived ? 'archive-row' : '')); ?>">
                         <td>
-                            <a href="{{ route('dashboard.submissions.show', [$form->id, $submission->id]) }}" class="table-link">
-                                {{ Str::limit($submission->summary, 60) }}
+                            <a href="<?php echo e(route('dashboard.submissions.show', [$form->id, $submission->id])); ?>" class="table-link">
+                                <?php echo e(Str::limit($submission->summary, 60)); ?>
+
                             </a>
-                            @if(!$submission->is_read && !$submission->is_spam && !$submission->is_archived)
+                            <?php if(!$submission->is_read && !$submission->is_spam && !$submission->is_archived): ?>
                                 <span class="badge badge-success" style="margin-left:.5rem;">New</span>
-                            @endif
-                            @if($submission->is_spam)
+                            <?php endif; ?>
+                            <?php if($submission->is_spam): ?>
                                 <span class="inline-spam" style="margin-left:.5rem;">Spam</span>
-                            @endif
-                            @if($submission->is_archived)
+                            <?php endif; ?>
+                            <?php if($submission->is_archived): ?>
                                 <span class="inline-archive" style="margin-left:.5rem;">Archived</span>
-                                @if(isset($submission->metadata['archived_reason']) && $submission->metadata['archived_reason'] === 'form_paused')
+                                <?php if(isset($submission->metadata['archived_reason']) && $submission->metadata['archived_reason'] === 'form_paused'): ?>
                                     <span class="inline-muted">· received while paused</span>
-                                @endif
-                            @endif
-                            @if($submission->spam_reason)
-                                <span class="inline-muted">· {{ $submission->spam_reason }}</span>
-                            @endif
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            <?php if($submission->spam_reason): ?>
+                                <span class="inline-muted">· <?php echo e($submission->spam_reason); ?></span>
+                            <?php endif; ?>
                         </td>
                         <td class="text-muted" style="white-space:nowrap;font-family:var(--mono);font-size:0.78rem;">
-                            {{ $submission->created_at->format('M j, Y g:i A') }}
+                            <?php echo e($submission->created_at->format('M j, Y g:i A')); ?>
+
                         </td>
                         <td>
-                            @if($submission->is_archived)
+                            <?php if($submission->is_archived): ?>
                                 <span style="font-size:0.78rem;color:var(--ind);">Archived</span>
-                            @elseif($submission->is_spam)
+                            <?php elseif($submission->is_spam): ?>
                                 <span style="font-size:0.78rem;color:var(--am);">Blocked</span>
-                            @elseif($submission->email_sent)
+                            <?php elseif($submission->email_sent): ?>
                                 <span style="font-size:0.78rem;color:var(--t3);">Email sent</span>
-                            @else
+                            <?php else: ?>
                                 <span style="font-size:0.78rem;color:var(--t3);">Stored</span>
-                            @endif
+                            <?php endif; ?>
                         </td>
                         <td class="text-right">
-                            <a href="{{ route('dashboard.submissions.show', [$form->id, $submission->id]) }}" class="btn-tbl">View</a>
+                            <a href="<?php echo e(route('dashboard.submissions.show', [$form->id, $submission->id])); ?>" class="btn-tbl">View</a>
                         </td>
                     </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
         </div>
 
-        @if($submissions->hasPages() || $submissions->total() > 0)
+        <?php if($submissions->hasPages() || $submissions->total() > 0): ?>
         <div class="pagination-footer">
             <div class="pagination-info">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
                     <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
                 </svg>
-                <span>Showing <strong>{{ $submissions->firstItem() }}</strong> to <strong>{{ $submissions->lastItem() }}</strong> of <strong>{{ $submissions->total() }}</strong></span>
+                <span>Showing <strong><?php echo e($submissions->firstItem()); ?></strong> to <strong><?php echo e($submissions->lastItem()); ?></strong> of <strong><?php echo e($submissions->total()); ?></strong></span>
             </div>
             <div class="pagination-controls">
-                @if($submissions->onFirstPage())
+                <?php if($submissions->onFirstPage()): ?>
                     <span class="pagination-link disabled">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
                         <span>Prev</span>
                     </span>
-                @else
-                    <a href="{{ $submissions->previousPageUrl() }}" class="pagination-link">
+                <?php else: ?>
+                    <a href="<?php echo e($submissions->previousPageUrl()); ?>" class="pagination-link">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
                         <span>Prev</span>
                     </a>
-                @endif
+                <?php endif; ?>
                 <div class="pagination-pages">
-                    @foreach($submissions->getUrlRange(max(1, $submissions->currentPage()-2), min($submissions->lastPage(), $submissions->currentPage()+2)) as $page => $url)
-                        @if($page == $submissions->currentPage())
-                            <span class="pagination-link active">{{ $page }}</span>
-                        @else
-                            <a href="{{ $url }}" class="pagination-link">{{ $page }}</a>
-                        @endif
-                    @endforeach
+                    <?php $__currentLoopData = $submissions->getUrlRange(max(1, $submissions->currentPage()-2), min($submissions->lastPage(), $submissions->currentPage()+2)); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $page => $url): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php if($page == $submissions->currentPage()): ?>
+                            <span class="pagination-link active"><?php echo e($page); ?></span>
+                        <?php else: ?>
+                            <a href="<?php echo e($url); ?>" class="pagination-link"><?php echo e($page); ?></a>
+                        <?php endif; ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
-                @if($submissions->hasMorePages())
-                    <a href="{{ $submissions->nextPageUrl() }}" class="pagination-link">
+                <?php if($submissions->hasMorePages()): ?>
+                    <a href="<?php echo e($submissions->nextPageUrl()); ?>" class="pagination-link">
                         <span>Next</span>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
                     </a>
-                @else
+                <?php else: ?>
                     <span class="pagination-link disabled">
                         <span>Next</span>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
                     </span>
-                @endif
+                <?php endif; ?>
             </div>
         </div>
-        @endif
+        <?php endif; ?>
 
-        @else
+        <?php else: ?>
         <div class="empty-state">
-            @if($tab === 'archive')
+            <?php if($tab === 'archive'): ?>
                 <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
                 <h3 class="empty-title">Archive is empty</h3>
                 <p class="empty-description">Submissions received while the form is paused will appear here.</p>
-            @elseif($search)
+            <?php elseif($search): ?>
                 <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 <h3 class="empty-title">No results found</h3>
-                <p class="empty-description">Nothing matched "<strong>{{ $search }}</strong>". <a href="{{ request()->fullUrlWithQuery(['search' => '', 'page' => 1]) }}">Clear search</a></p>
-            @elseif($tab === 'spam')
+                <p class="empty-description">Nothing matched "<strong><?php echo e($search); ?></strong>". <a href="<?php echo e(request()->fullUrlWithQuery(['search' => '', 'page' => 1])); ?>">Clear search</a></p>
+            <?php elseif($tab === 'spam'): ?>
                 <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 <h3 class="empty-title">No spam detected</h3>
                 <p class="empty-description">Your spam folder is clean.</p>
-            @else
+            <?php else: ?>
                 <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/></svg>
                 <h3 class="empty-title">No submissions yet</h3>
                 <p class="empty-description">Submissions will appear here once your form starts receiving data.</p>
-            @endif
+            <?php endif; ?>
         </div>
-        @endif
+        <?php endif; ?>
     </div>
 </div>
 
-{{-- ══════════════════════════════
-     PANEL: STATISTICS
-══════════════════════════════ --}}
-<div class="page-panel {{ $panel === 'statistics' ? 'active' : '' }}">
+
+<div class="page-panel <?php echo e($panel === 'statistics' ? 'active' : ''); ?>">
     <div class="stats-mini-grid" style="margin-bottom:1.25rem;">
         <div class="stat-card g">
             <div class="stat-label">Valid</div>
-            <div class="stat-value">{{ number_format($validCount) }}</div>
+            <div class="stat-value"><?php echo e(number_format($validCount)); ?></div>
             <div class="sc-glow"></div><div class="sc-shimmer"></div>
         </div>
         <div class="stat-card am">
             <div class="stat-label">Spam</div>
-            <div class="stat-value" style="color:var(--am);text-shadow:0 0 20px rgba(255,187,51,0.5);">{{ number_format($spamCount) }}</div>
+            <div class="stat-value" style="color:var(--am);text-shadow:0 0 20px rgba(255,187,51,0.5);"><?php echo e(number_format($spamCount)); ?></div>
             <div class="sc-glow" style="background:var(--am);"></div><div class="sc-shimmer"></div>
         </div>
         <div class="stat-card ind">
             <div class="stat-label">Archived</div>
-            <div class="stat-value">{{ number_format($archiveCount) }}</div>
+            <div class="stat-value"><?php echo e(number_format($archiveCount)); ?></div>
             <div class="sc-glow"></div><div class="sc-shimmer"></div>
         </div>
     </div>
@@ -1157,10 +1157,8 @@
     </div>
 </div>
 
-{{-- ══════════════════════════════
-     PANEL: CODE
-══════════════════════════════ --}}
-<div class="page-panel {{ $panel === 'code' ? 'active' : '' }}">
+
+<div class="page-panel <?php echo e($panel === 'code' ? 'active' : ''); ?>">
     <div class="code-panel-card">
         <div class="code-panel-header">
             <h4 class="code-panel-title">Integration Code</h4>
@@ -1183,21 +1181,21 @@
                 <button class="code-tab" onclick="switchCodeTab('fileupload', event)">File Upload</button>
             </div>
 
-            {{-- Plain HTML --}}
+            
             <div id="code-html" class="code-block active">
                 <div class="code-header">
                     <span class="code-lang">HTML</span>
                     <button class="code-copy" onclick="copyCode('html-pre')">Copy</button>
                 </div>
                 <div class="code-content">
-                    <pre id="html-pre"><span class="tag">&lt;form</span> <span class="attr">action</span>=<span class="string">"{{ $form->endpoint_url }}"</span> <span class="attr">method</span>=<span class="string">"POST"</span><span class="tag">&gt;</span>
+                    <pre id="html-pre"><span class="tag">&lt;form</span> <span class="attr">action</span>=<span class="string">"<?php echo e($form->endpoint_url); ?>"</span> <span class="attr">method</span>=<span class="string">"POST"</span><span class="tag">&gt;</span>
   <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"text"</span>  <span class="attr">name</span>=<span class="string">"name"</span>    <span class="attr">placeholder</span>=<span class="string">"Your name"</span>    <span class="attr">required</span><span class="tag">&gt;</span>
   <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">name</span>=<span class="string">"email"</span>   <span class="attr">placeholder</span>=<span class="string">"Your email"</span>   <span class="attr">required</span><span class="tag">&gt;</span>
   <span class="tag">&lt;textarea</span> <span class="attr">name</span>=<span class="string">"message"</span> <span class="attr">placeholder</span>=<span class="string">"Your message"</span><span class="tag">&gt;&lt;/textarea&gt;</span>
-  @if($form->honeypot_enabled)
+  <?php if($form->honeypot_enabled): ?>
   <span class="comment">&lt;!-- Honeypot --&gt;</span>
-  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"{{ $form->honeypot_field }}"</span> <span class="attr">style</span>=<span class="string">"display:none"</span><span class="tag">&gt;</span>
-  @endif
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"<?php echo e($form->honeypot_field); ?>"</span> <span class="attr">style</span>=<span class="string">"display:none"</span><span class="tag">&gt;</span>
+  <?php endif; ?>
   <span class="comment">&lt;!-- Google CAPTCHA is enabled! --&gt;</span>
   <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="string">"submit"</span><span class="tag">&gt;</span>Send Message<span class="tag">&lt;/button&gt;</span>
 <span class="tag">&lt;/form&gt;</span>
@@ -1205,21 +1203,21 @@
                 </div>
             </div>
 
-            {{-- AJAX --}}
+            
             <div id="code-ajax" class="code-block">
                 <div class="code-header">
                     <span class="code-lang">HTML + AJAX</span>
                     <button class="code-copy" onclick="copyCode('ajax-pre')">Copy</button>
                 </div>
                 <div class="code-content">
-                    <pre id="ajax-pre"><span class="tag">&lt;form</span> <span class="attr">id</span>=<span class="string">"contact-form"</span> <span class="attr">action</span>=<span class="string">"{{ $form->endpoint_url }}"</span> <span class="attr">method</span>=<span class="string">"POST"</span><span class="tag">&gt;</span>
+                    <pre id="ajax-pre"><span class="tag">&lt;form</span> <span class="attr">id</span>=<span class="string">"contact-form"</span> <span class="attr">action</span>=<span class="string">"<?php echo e($form->endpoint_url); ?>"</span> <span class="attr">method</span>=<span class="string">"POST"</span><span class="tag">&gt;</span>
   <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"text"</span>  <span class="attr">name</span>=<span class="string">"name"</span>    <span class="attr">placeholder</span>=<span class="string">"Your name"</span>    <span class="attr">required</span><span class="tag">&gt;</span>
   <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">name</span>=<span class="string">"email"</span>   <span class="attr">placeholder</span>=<span class="string">"Your email"</span>   <span class="attr">required</span><span class="tag">&gt;</span>
   <span class="tag">&lt;textarea</span> <span class="attr">name</span>=<span class="string">"message"</span> <span class="attr">placeholder</span>=<span class="string">"Your message"</span><span class="tag">&gt;&lt;/textarea&gt;</span>
-  @if($form->honeypot_enabled)
+  <?php if($form->honeypot_enabled): ?>
   <span class="comment">&lt;!-- Honeypot --&gt;</span>
-  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"{{ $form->honeypot_field }}"</span> <span class="attr">style</span>=<span class="string">"display:none"</span><span class="tag">&gt;</span>
-  @endif
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"<?php echo e($form->honeypot_field); ?>"</span> <span class="attr">style</span>=<span class="string">"display:none"</span><span class="tag">&gt;</span>
+  <?php endif; ?>
   <span class="comment">&lt;!-- Disable captcha for AJAX --&gt;</span>
   <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"_captcha"</span> <span class="attr">value</span>=<span class="string">"false"</span><span class="tag">&gt;</span>
   <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="string">"submit"</span><span class="tag">&gt;</span>Send Message<span class="tag">&lt;/button&gt;</span>
@@ -1246,7 +1244,7 @@
     <span class="keyword">let</span> data = {};
     <span class="keyword">try</span> { data = JSON.parse(text); } <span class="keyword">catch</span>(err) {}
     <span class="keyword">if</span> (statusCode === 200 &amp;&amp; data.success) {
-      box.innerHTML = <span class="string">'&lt;p style="color:#00ff88;font-weight:500;"&gt;&#x2713; {{ addslashes($form->success_message ?? "Thank you for your submission!") }}&lt;/p&gt;'</span>;
+      box.innerHTML = <span class="string">'&lt;p style="color:#00ff88;font-weight:500;"&gt;&#x2713; <?php echo e(addslashes($form->success_message ?? "Thank you for your submission!")); ?>&lt;/p&gt;'</span>;
       form.reset(); <span class="keyword">return</span>;
     }
     <span class="keyword">if</span> (statusCode === 422) {
@@ -1272,7 +1270,7 @@
                 </div>
             </div>
 
-            {{-- File Upload --}}
+            
             <div id="code-fileupload" class="code-block">
                 <div class="code-header">
                     <span class="code-lang">HTML</span>
@@ -1280,7 +1278,7 @@
                 </div>
                 <div class="code-content">
                     <pre id="fileupload-pre"><span class="comment">&lt;!-- Add enctype="multipart/form-data" whenever you use file inputs --&gt;</span>
-<span class="tag">&lt;form</span> <span class="attr">action</span>=<span class="string">"{{ $form->endpoint_url }}"</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;form</span> <span class="attr">action</span>=<span class="string">"<?php echo e($form->endpoint_url); ?>"</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span><span class="tag">&gt;</span>
   <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"text"</span>  <span class="attr">name</span>=<span class="string">"name"</span>       <span class="attr">placeholder</span>=<span class="string">"Your name"</span>  <span class="attr">required</span><span class="tag">&gt;</span>
   <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">name</span>=<span class="string">"email"</span>      <span class="attr">placeholder</span>=<span class="string">"Your email"</span> <span class="attr">required</span><span class="tag">&gt;</span>
   <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"file"</span>  <span class="attr">name</span>=<span class="string">"uploads[]"</span> <span class="attr">multiple</span><span class="tag">&gt;</span>
@@ -1293,10 +1291,8 @@
     </div>
 </div>
 
-{{-- ══════════════════════════════
-     PANEL: WORKFLOW
-══════════════════════════════ --}}
-<div class="page-panel {{ $panel === 'workflow' ? 'active' : '' }}">
+
+<div class="page-panel <?php echo e($panel === 'workflow' ? 'active' : ''); ?>">
     <div class="info-banner">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10"/>
@@ -1325,60 +1321,60 @@
             <button class="btn-new btn-sm" onclick="openValidationModal()" style="border-radius:8px;">+ Add New</button>
         </div>
 
-        @if(isset($validations) && $validations->count() > 0)
+        <?php if(isset($validations) && $validations->count() > 0): ?>
         <div class="validation-grid">
-            @foreach($validations as $v)
+            <?php $__currentLoopData = $validations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $v): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="validation-card">
                 <div style="display:flex;align-items:flex-start;gap:0.75rem;flex:1;">
                     <div class="validation-card-icon">
-                        @if($v->field_type === 'email')
+                        <?php if($v->field_type === 'email'): ?>
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        @elseif($v->field_type === 'number')
+                        <?php elseif($v->field_type === 'number'): ?>
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
-                        @else
+                        <?php else: ?>
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
-                        @endif
+                        <?php endif; ?>
                     </div>
                     <div class="validation-card-info">
-                        <p class="validation-card-name">{{ $v->field_name }}</p>
+                        <p class="validation-card-name"><?php echo e($v->field_name); ?></p>
                         <p class="validation-card-meta">
-                            {{ ucfirst($v->field_type) }}
-                            @if($v->min_length || $v->max_length)
-                                · @if($v->min_length) min {{ $v->min_length }} @endif @if($v->min_length && $v->max_length) / @endif @if($v->max_length) max {{ $v->max_length }} @endif chars
-                            @endif
+                            <?php echo e(ucfirst($v->field_type)); ?>
+
+                            <?php if($v->min_length || $v->max_length): ?>
+                                · <?php if($v->min_length): ?> min <?php echo e($v->min_length); ?> <?php endif; ?> <?php if($v->min_length && $v->max_length): ?> / <?php endif; ?> <?php if($v->max_length): ?> max <?php echo e($v->max_length); ?> <?php endif; ?> chars
+                            <?php endif; ?>
                         </p>
-                        <span class="validation-card-badge {{ $v->is_required ? 'required' : 'optional' }}">
-                            {{ $v->is_required ? 'Required' : 'Optional' }}
+                        <span class="validation-card-badge <?php echo e($v->is_required ? 'required' : 'optional'); ?>">
+                            <?php echo e($v->is_required ? 'Required' : 'Optional'); ?>
+
                         </span>
                     </div>
                 </div>
                 <div class="validation-card-actions">
                     <button class="validation-card-btn"
-                            onclick="openEditValidationModal('{{ $v->id }}', '{{ $v->field_name }}', '{{ $v->field_type }}', {{ $v->min_length ?? 'null' }}, {{ $v->max_length ?? 'null' }}, {{ $v->is_required ? 'true' : 'false' }})"
+                            onclick="openEditValidationModal('<?php echo e($v->id); ?>', '<?php echo e($v->field_name); ?>', '<?php echo e($v->field_type); ?>', <?php echo e($v->min_length ?? 'null'); ?>, <?php echo e($v->max_length ?? 'null'); ?>, <?php echo e($v->is_required ? 'true' : 'false'); ?>)"
                             title="Edit">
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
                     </button>
-                    <button class="validation-card-btn delete" onclick="deleteValidation('{{ $v->id }}')" title="Delete">
+                    <button class="validation-card-btn delete" onclick="deleteValidation('<?php echo e($v->id); ?>')" title="Delete">
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
                     </button>
                 </div>
             </div>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
-        @else
+        <?php else: ?>
         <div class="empty-state">
             <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
             <h3 class="empty-title">No validations yet</h3>
             <p class="empty-description">Add validation rules to ensure submitted data meets your requirements.</p>
             <button class="btn-new btn-sm" style="border-radius:8px;margin-top:0.75rem;" onclick="openValidationModal()">+ Add First Validation</button>
         </div>
-        @endif
+        <?php endif; ?>
     </div>
 </div>
 
-{{-- ══════════════════════════════
-     VALIDATION MODAL (Add / Edit)
-══════════════════════════════ --}}
+
 <div class="modal-overlay" id="validationModal">
     <div class="modal-box">
         <button class="modal-close" onclick="closeValidationModal()">
@@ -1388,7 +1384,7 @@
         </button>
         <h3 class="modal-title" id="modalTitle">Text validation settings</h3>
         <form id="validationForm">
-            @csrf
+            <?php echo csrf_field(); ?>
             <input type="hidden" id="validationId" name="validation_id" value="">
             <div class="form-group">
                 <label class="form-label" for="fieldName">Field Name <span>— Must match the form <code style="font-family:var(--mono);font-size:0.8em;background:rgba(255,255,255,0.05);padding:0.1rem 0.3rem;border-radius:4px;">name</code> attribute.</span></label>
@@ -1427,7 +1423,7 @@
     </div>
 </div>
 
-{{-- Delete confirmation modal --}}
+
 <div class="modal-overlay" id="deleteModal">
     <div class="modal-box" style="max-width:380px;text-align:center;">
         <div class="delete-icon-wrap">
@@ -1447,13 +1443,11 @@
     </div>
 </div>
 
-</div>{{-- .form-show --}}
+</div>
 
-{{-- ══════════════════════════════
-     SCRIPTS (all original logic preserved)
-══════════════════════════════ --}}
+
 <script>
-    window.__rk = '{{ config('services.recaptcha.site_key') }}';
+    window.__rk = '<?php echo e(config('services.recaptcha.site_key')); ?>';
     document.querySelectorAll('.sitekey-placeholder').forEach(function(el) {
         el.textContent = window.__rk;
     });
@@ -1468,7 +1462,7 @@
     }
 
     function copyEndpoint(slug) {
-        navigator.clipboard.writeText('{{ url('/f') }}/' + slug);
+        navigator.clipboard.writeText('<?php echo e(url('/f')); ?>/' + slug);
         const btn = event.currentTarget, orig = btn.innerHTML;
         btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
         setTimeout(() => btn.innerHTML = orig, 2000);
@@ -1493,9 +1487,9 @@
         const input    = document.getElementById('liveSearchInput');
         const clearBtn = document.getElementById('clearBtn');
         if (!input) return;
-        const baseUrl  = "{{ route('dashboard.forms.show', $form->id) }}";
-        const curTab   = "{{ $tab }}";
-        const curPanel = "{{ $panel }}";
+        const baseUrl  = "<?php echo e(route('dashboard.forms.show', $form->id)); ?>";
+        const curTab   = "<?php echo e($tab); ?>";
+        const curPanel = "<?php echo e($panel); ?>";
         let timer;
         input.addEventListener('input', function () {
             clearTimeout(timer);
@@ -1533,10 +1527,10 @@
         new Chart(document.getElementById('lineChart'), {
             type: 'line',
             data: {
-                labels: @json($lineLabels),
+                labels: <?php echo json_encode($lineLabels, 15, 512) ?>,
                 datasets: [{
                     label: 'Submissions',
-                    data: @json($lineData),
+                    data: <?php echo json_encode($lineData, 15, 512) ?>,
                     borderColor: primaryColor,
                     backgroundColor: 'rgba(0,255,136,0.06)',
                     tension: 0.4, fill: true,
@@ -1559,7 +1553,7 @@
             data: {
                 labels: ['Valid', 'Spam', 'Archived'],
                 datasets: [{
-                    data: [{{ $validCount }}, {{ $spamCount }}, {{ $archiveCount }}],
+                    data: [<?php echo e($validCount); ?>, <?php echo e($spamCount); ?>, <?php echo e($archiveCount); ?>],
                     backgroundColor: ['rgba(0,255,136,0.75)', 'rgba(255,187,51,0.75)', 'rgba(99,102,241,0.75)'],
                     borderRadius: 8, borderSkipped: false, barThickness: 40,
                 }]
@@ -1579,9 +1573,9 @@
             new Chart(archiveCanvas, {
                 type: 'line',
                 data: {
-                    labels: @json($lineLabels),
+                    labels: <?php echo json_encode($lineLabels, 15, 512) ?>,
                     datasets: [{
-                        label: 'Archived', data: @json($archiveLineData),
+                        label: 'Archived', data: <?php echo json_encode($archiveLineData, 15, 512) ?>,
                         borderColor: archiveColor, backgroundColor: 'rgba(99,102,241,0.06)',
                         tension: 0.4, fill: true, pointRadius: 4, pointHoverRadius: 6,
                         pointBackgroundColor: archiveColor, borderWidth: 2,
@@ -1602,7 +1596,7 @@
     // ══════════════════════════════
     // WORKFLOW / VALIDATION JS (all original logic preserved)
     // ══════════════════════════════
-    const FORM_ID = '{{ $form->id }}';
+    const FORM_ID = '<?php echo e($form->id); ?>';
     let deleteTargetId = null;
 
     function updateModalTitle() {
@@ -1693,4 +1687,5 @@
     });
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.dashboard', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/dashboard/forms/show.blade.php ENDPATH**/ ?>

@@ -208,6 +208,7 @@
 .s-div {
     display: flex; align-items: center;
     gap: 0.75rem; margin-bottom: 1.1rem;
+    padding: 0 1rem;
 }
 .s-div-label {
     font-family: var(--mono); font-size: 0.8rem; font-weight: 500;
