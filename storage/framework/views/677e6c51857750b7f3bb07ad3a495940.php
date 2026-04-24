@@ -44,645 +44,536 @@
     </script>
     <?php echo $__env->yieldPushContent('styles'); ?>
 
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title><?php echo $__env->yieldContent('title', 'Dashboard'); ?> - 000form</title>
+    <link rel="icon" href="<?php echo e(asset('images/favicon/000formFavicon.png')); ?>" type="image/svg+xml">
+    <link rel="canonical" href="https://000form.com/" />
+    <meta name="keywords" content="forms, laravel forms, php form builder, contact forms, form submissions, 000Form">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css">
+    <meta property="og:title" content="000Forms - Smart Form Submissions" />
+    <meta property="og:description" content="Easily create and manage forms with 000Forms, a Laravel-powered solution." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://000form.com/" />
+    <meta property="og:image" content="<?php echo e(asset('images/og-image/og-image.jpg')); ?>" />
+    <meta property="og:site_name" content="000Forms" />
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+    <meta name="robots" content="index, follow">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TV3T8837GC"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TV3T8837GC');</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"000Form","url":"https://000form.com/","logo":"https://000form.com/images/logo/000formlogo.png"}</script>
+    <?php echo $__env->yieldPushContent('styles'); ?>
+
     <style>
-            *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-            :root {
-                --sidebar-width: 300px;
-                --header-height: 56px;
-                --radius-sm: 8px;
-                --radius-md: 12px;
-                --radius-lg: 16px;
-                --shadow-sm: 0 1px 3px rgba(0,0,0,0.5);
-                --shadow-md: 0 8px 32px rgba(0,0,0,0.7);
+        :root {
+            --sidebar-width:  260px!important;
+            --topbar-height:  78px;
+            --radius-sm:  6px;
+            --radius-md: 10px;
+            --radius-lg: 14px;
+            --bg-canvas:    #050505;
+            --bg-surface:   #080808;
+            --bg-raised:    #0d0d0d;
+            --bg-hover:     #131313;
+            --border:       #222222;
+            --border-light: #1a1a1a;
+            --text-primary:   #f0f0f0;
+            --text-secondary: #d3d3d3;
+            --text-tertiary:  #999999;
+            --text-muted:     #828283;
+            --accent:         #00ff88;
+            --accent-dim:     rgba(0,255,136,0.07);
+            --red:   #ff4455;
+            --amber: #ffbb33;
+        }
 
-                --bg-canvas:   #050505;
-                --bg-surface:  #0a0a0a;
-                --bg-raised:   #0f0f0f;
-                --bg-hover:    #151515;
-                --border:      #2a2a2a;
-                --border-light: #1e1e1e;
-                --text-primary: #ffffff;
-                --text-secondary: #c0c0c8;
-                --text-tertiary: #888888;
-                --text-muted:    #666666;
-                --accent:      #00ff88;
-                --accent-glow: rgba(0,255,136,0.08);
-                --accent-glow-strong: rgba(0,255,136,0.12);
-                --green:  #00ff88;
-                --red:    #ff5555;
-                --amber:  #ffbb33;
-            }
+        html, body {
+            height: 100%;
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-canvas);
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+        }
 
-            html, body {
-                height: 100%;
-                font-family: 'Outfit', sans-serif;
-                background: var(--bg-canvas);
-                color: var(--text-primary);
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-            }
+        /* ══════════════════════════════════════════
+           TOPBAR — spans full width (left:0)
+           Logo is inside sidebar so corner is filled
+        ══════════════════════════════════════════ */
+        .topbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;       /* full width — key fix */
+            height: var(--topbar-height);
+            background: rgba(5,5,5,0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;        /* controls on right only */
+            padding: 0 4.5rem;
+            gap: 3rem;
+            z-index: 100;
+        }
 
-            .shell { display: flex; min-height: 100vh; }
+        .topbar-right { display: flex; align-items: center; gap: 1.75rem; }
 
-            /* ── Sidebar ─────────────────────────────────────── */
-            .sidebar {
-                padding: 1rem;
-                width: var(--sidebar-width);
-                background: linear-gradient(180deg, #070707 0%, #030303 100%);
-                border-right: 1px solid var(--border);
-                display: flex;
-                flex-direction: column;
-                position: fixed;
-                top: 0; left: 0; bottom: 0;
-                z-index: 200;
-                overflow-y: auto;
-                overflow-x: hidden;
-                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                scroll-behavior: smooth;
-                scrollbar-width: thin;
-                scrollbar-color: transparent transparent;
-                scrollbar-gutter: stable;
-            }
-            .sidebar::-webkit-scrollbar { width: 6px; }
-            .sidebar::-webkit-scrollbar-track { background: transparent; }
-            .sidebar::-webkit-scrollbar-thumb {
-                background: linear-gradient(180deg, rgba(0,255,136,0.2), rgba(0,255,136,0.6));
-                border-radius: 10px;
-            }
-            .sidebar:hover::-webkit-scrollbar-thumb {
-                background: linear-gradient(180deg, rgba(0,255,136,0.5), rgba(0,255,136,1));
-            }
+        /* ── Workspace pill ── */
+        .ws-pill {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.42rem 0.75rem;
+            border-radius: var(--radius-md);
+            background: var(--bg-raised);
+            border: 1px solid var(--border);
+            font-size: 1rem125rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            color: var(--text-secondary);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.18s;
+        }
+        .ws-pill:hover, .ws-pill.open { background: var(--bg-hover); color: var(--text-primary); border-color: var(--border); }
+        .ws-pill-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--accent); flex-shrink: 0;
+            animation: blink 2s infinite;
+        }
+        @keyframes blink { 0%,100%{opacity:0.3} 50%{opacity:1} }
 
-            /* ── Brand ───────────────────────────────────────── */
-            .sidebar-brand {
-                display: flex;
-                align-items: center;
-                gap: 0.75rem;
-                padding: 1.25rem 1.25rem 1rem;
-                text-decoration: none;
-                flex-shrink: 0;
-                border-bottom: 1px solid var(--border-light);
-                margin-bottom: 1.25rem;
-            }
-            .sidebar-brand img { height: 36px; transition: transform 0.2s; }
-            .sidebar-brand:hover img { transform: scale(1.02); }
+        .ws-dropdown {
+            position: absolute;
+            top: calc(100% + 8px); left: 0;
+            min-width: 220px;
+            background: var(--bg-raised);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 0.4rem;
+            opacity: 0; pointer-events: none;
+            transform: translateY(-6px);
+            transition: opacity 0.18s, transform 0.18s;
+            z-index: 400;
+        }
+        .ws-dropdown.show { opacity: 1; pointer-events: all; transform: translateY(0); }
 
-            /* ── User Card ───────────────────────────────────── */
-            .user-card {
-                margin: 0 1rem 1rem;
-                padding: 6px;
-                border-radius: 999px;
-                background: rgba(255,255,255,0.02);
-                border: 1px solid var(--border);
-                display: flex;
-                align-items: center;
-                gap: 6px;
-                backdrop-filter: blur(8px);
-            }
-            .user-avatar {
-                width: 36px; height: 36px;
-                border-radius: 999px;
-                display: flex; align-items: center; justify-content: center;
-                font-size: 0.85rem; font-weight: 600;
-                font-family: 'JetBrains Mono', monospace;
-                color: #00ff88;
-                background: radial-gradient(circle at 30% 30%, rgba(0,255,136,0.25), rgba(0,255,136,0.05));
-                border: 1px solid rgba(0,255,136,0.5);
-                box-shadow: 0 0 0 2px rgba(0,255,136,0.05), 0 4px 12px rgba(0,0,0,0.6), inset 0 0 8px rgba(0,255,136,0.15);
-                transition: all 0.25s ease;
-            }
-            .user-avatar:hover {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 3px rgba(0,255,136,0.1), 0 6px 18px rgba(0,0,0,0.8), inset 0 0 10px rgba(0,255,136,0.25);
-            }
-            .user-info {
-                flex: 1;
-                display: flex; align-items: center;
-                background: rgba(0,255,136,0.05);
-                border-radius: 999px;
-                padding: 6px 12px;
-                overflow: hidden;
-            }
-            .user-name { display: none; }
-            .user-email { font-size: 0.7rem; color: var(--text-secondary); }
+        /* ── User Menu trigger ── */
+        .user-menu { position: relative; }
 
-            @keyframes pulse-dot {
-                0%,100% { box-shadow: 0 0 6px rgba(0,255,136,0.4); opacity: 0.8; transform: scale(1); }
-                50%      { box-shadow: 0 0 16px rgba(0,255,136,0.9); opacity: 1; transform: scale(1.1); }
-            }
+        .user-menu-trigger {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.35rem 0.65rem 0.35rem 0.35rem;
+            border-radius: var(--radius-md);
+            background: rgba(0, 255, 136, 0.08)!important;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.18s;
+        }
+        .user-menu-trigger:hover, .user-menu-trigger.open {
+            background: var(--bg-hover);
+            border-color: rgba(0,255,136,0.2);
+        }
+        .user-avatar-sm {
+            width: 26px; height: 26px; border-radius: 50%;
+            background: rgba(0,255,136,0.08);
+            border: 1px solid rgba(0,255,136,0.25);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem; font-weight: 600;
+            color: var(--accent); flex-shrink: 0;
+        }
+        .user-menu-name {
+            font-size: 1rem125rem;
+            font-weight: 400;
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-secondary);
+            max-width: 180px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .user-menu-chevron {
+            font-size: 0.6rem; color: var(--text-tertiary);
+            transition: transform 0.2s;
+        }
+        .user-menu-trigger.open .user-menu-chevron { transform: rotate(180deg); }
 
-            /* ── Workspace Switcher ──────────────────────────── */
-            .ws-section { padding: 0 1rem 0.5rem; margin-bottom: 0.5rem; }
-            .section-header {
-                display: flex; align-items: center; justify-content: space-between;
-                margin-bottom: 0.75rem; padding: 0 0.25rem;
-            }
-            .section-label {
-                font-family: 'JetBrains Mono', monospace;
-                font-size: 0.65rem; font-weight: 600;
-                text-transform: uppercase; letter-spacing: 0.1em;
-                color: var(--text-tertiary);
-            }
-            .ws-indicator { display: flex; align-items: center; gap: 6px; }
-            .ws-dot {
-                width: 6px; height: 6px; border-radius: 50%;
-                background: var(--green); animation: blink 1.5s infinite;
-            }
-            @keyframes blink { 0%,100%{opacity:0.4} 50%{opacity:1} }
-            .ws-form { margin-bottom: 0.5rem; }
-            .ws-btn {
-                width: 100%; background: transparent;
-                border: 1px solid transparent; border-radius: var(--radius-md);
-                cursor: pointer; display: flex; align-items: center; gap: 0.75rem;
-                padding: 0.7rem 0.75rem; font-family: 'Outfit', sans-serif;
-                transition: all 0.2s ease;
-            }
-            .ws-btn:hover { background: var(--bg-hover); border-color: var(--border); transform: translateX(2px); }
-            .ws-btn.active-workspace {
-                background: linear-gradient(90deg, var(--accent-glow), transparent);
-                border-left: 2px solid var(--accent); border-radius: var(--radius-md);
-            }
-            .ws-avatar {
-                width: 34px; height: 34px; border-radius: 10px;
-                background: var(--bg-hover); border: 1px solid var(--border);
-                display: flex; align-items: center; justify-content: center;
-                font-family: 'JetBrains Mono', monospace;
-                font-size: 0.8rem; font-weight: 700; color: var(--text-secondary);
-                flex-shrink: 0; transition: all 0.2s;
-            }
-            .ws-btn:hover .ws-avatar { border-color: var(--accent); }
-            .ws-avatar.own {
-                background: linear-gradient(135deg, var(--accent-glow), rgba(0,255,136,0.05));
-                border-color: rgba(0,255,136,0.4); color: var(--accent);
-            }
-            .ws-details { flex: 1; text-align: left; min-width: 0; }
-            .ws-name {
-                display: block; font-size: 0.85rem; font-weight: 600;
-                color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-            }
-            .ws-role {
-                display: block; font-size: 0.6rem; color: var(--text-tertiary);
-                font-family: 'JetBrains Mono', monospace; margin-top: 2px;
-            }
-            .ws-badge {
-                font-family: 'JetBrains Mono', monospace;
-                font-size: 0.55rem; font-weight: 600;
-                text-transform: uppercase; letter-spacing: 0.06em;
-                padding: 2px 8px;
-                background: var(--accent-glow-strong);
-                border: 1px solid rgba(0,255,136,0.3);
-                color: var(--accent); border-radius: 20px; flex-shrink: 0;
-            }
+        /* ── Dropdowns shared ── */
+        .user-dropdown {
+            position: absolute;
+            top: calc(100% + 8px); right: 0;
+            width: 256px;
+            background: var(--bg-raised);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 0.4rem;
+            opacity: 0; pointer-events: none;
+            transform: translateY(-6px);
+            transition: opacity 0.18s, transform 0.18s;
+            z-index: 400;
+        }
+        .user-dropdown.show { opacity: 1; pointer-events: all; transform: translateY(0); }
 
-            /* ── Navigation ──────────────────────────────────── */
-            .nav-group { margin-bottom: 0.8rem; }
-            .nav-group-label {
-                font-family: 'JetBrains Mono', monospace;
-                font-size: 0.7rem; font-weight: 600;
-                text-transform: uppercase; letter-spacing: 0.1em;
-                color: var(--text-tertiary);
-                padding: 0 1.25rem; margin-bottom: 0.75rem;
-                display: flex; align-items: center; gap: 8px;
-            }
-            .nav-group-label::after {
-                content: ''; flex: 1; height: 1px;
-                background: linear-gradient(90deg, var(--border), transparent);
-            }
-            .nav-list { list-style: none; padding: 0 0.75rem; }
-            .nav-item { margin: 3px 0; }
-            .nav-link {
-                display: flex; align-items: center; gap: 0.875rem;
-                padding: 0.7rem 0.875rem; border-radius: var(--radius-md);
-                color: var(--text-secondary); text-decoration: none;
-                font-size: 0.875rem; font-weight: 500;
-                transition: all 0.2s ease; position: relative;
-            }
-            .nav-link:hover { background: var(--bg-hover); color: var(--text-primary); transform: translateX(3px); }
-            .nav-link.active { background: linear-gradient(90deg, var(--accent-glow), transparent); color: var(--accent); }
-            .nav-link.active::before {
-                content: ''; position: absolute;
-                left: 0; top: 20%; bottom: 20%;
-                width: 3px; border-radius: 0 3px 3px 0;
-                background: var(--accent); box-shadow: 0 0 12px rgba(0,255,136,0.8);
-            }
-            .nav-icon {
-                display: flex; align-items: center; justify-content: center;
-                width: 22px; flex-shrink: 0; opacity: 0.7; transition: all 0.2s;
-            }
-            .nav-link:hover .nav-icon,
-            .nav-link.active .nav-icon { opacity: 1; transform: scale(1.05); }
-            .nav-link.active .nav-icon svg { stroke: var(--accent); }
+        .dropdown-header {
+            padding: 0.55rem 0.65rem 0.65rem;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 0.35rem;
+        }
+        .dropdown-header-name {
+            font-size: 1remrem; font-weight: 600;
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+        }
+        .dropdown-header-email {
+            font-size: 0.68rem; color: var(--text-tertiary);
+            font-family: 'JetBrains Mono', monospace; margin-top: 2px;
+        }
+        .dropdown-section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.67rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            color: var(--text-muted);
+            padding: 0.5rem 0.65rem 0.2rem;
+        }
+        .dropdown-item {
+            display: flex; align-items: center; gap: 0.6rem;
+            padding: 0.47rem 0.65rem;
+            border-radius: var(--radius-sm);
+            font-size: 1rem125rem; font-weight: 400;
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-secondary);
+            text-decoration: none; cursor: pointer;
+            border: none; background: transparent; width: 100%;
+            transition: all 0.15s;
+        }
+        .dropdown-item:hover { background: var(--bg-hover); color: var(--text-primary); }
+        .dropdown-item i { font-size: 1rem2rem; opacity: 0.45; flex-shrink: 0; width: 16px; }
+        .dropdown-item:hover i { opacity: 1; }
+        .dropdown-item.danger { color: var(--red); }
+        .dropdown-item.danger i { color: var(--red); opacity: 0.6; }
+        .dropdown-item.danger:hover { background: rgba(255,68,85,0.07); }
+        .dropdown-divider { height: 1px; background: var(--border-light); margin: 0.35rem 0; }
 
-            /* ── Projects Accordion ──────────────────────────── */
-            .proj-acc-trigger {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 100%;
-                padding: 0.7rem 0.875rem;
-                border-radius: var(--radius-md);
-                background: transparent;
-                border: none;
-                cursor: pointer;
-                font-family: 'Outfit', sans-serif;
-                font-size: 0.875rem;
-                font-weight: 500;
-                color: var(--text-secondary);
-                transition: all 0.2s ease;
-                position: relative;
-            }
-            .proj-acc-trigger:hover {
-                background: var(--bg-hover);
-                color: var(--text-primary);
-                transform: translateX(3px);
-            }
-            .proj-acc-trigger.active-parent {
-                background: linear-gradient(90deg, var(--accent-glow), transparent);
-                color: var(--accent);
-            }
-            .proj-acc-trigger.active-parent::before {
-                content: '';
-                position: absolute;
-                left: 0; top: 20%; bottom: 20%;
-                width: 3px;
-                border-radius: 0 3px 3px 0;
-                background: var(--accent);
-                box-shadow: 0 0 12px rgba(0,255,136,0.8);
-            }
-            .proj-acc-trigger.active-parent .proj-acc-icon svg { stroke: var(--accent); }
-            .proj-acc-left {
-                display: flex;
-                align-items: center;
-                gap: 0.875rem;
-            }
-            .proj-acc-icon {
-                display: flex; align-items: center; justify-content: center;
-                width: 22px; flex-shrink: 0; opacity: 0.7; transition: all 0.2s;
-            }
-            .proj-acc-trigger:hover .proj-acc-icon { opacity: 1; transform: scale(1.05); }
-            .proj-acc-trigger.active-parent .proj-acc-icon { opacity: 1; }
-            .proj-acc-chevron {
-                transition: transform 0.25s ease;
-                opacity: 0.4;
-                flex-shrink: 0;
-            }
-            .proj-acc-trigger.open .proj-acc-chevron { transform: rotate(180deg); opacity: 0.7; }
+        /* ws switcher rows */
+        .ws-switch-btn {
+            display: flex; align-items: center; gap: 0.55rem;
+            width: 100%; padding: 0.45rem 0.55rem;
+            background: transparent; border: none; border-radius: var(--radius-sm);
+            cursor: pointer; font-family: 'Outfit', sans-serif;
+            font-size: 1rem125rem; color: var(--text-secondary);
+            transition: all 0.15s; text-align: left;
+        }
+        .ws-switch-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+        .ws-switch-btn.active { color: var(--accent); }
+        .ws-mini-avatar {
+            width: 24px; height: 24px; border-radius: 6px;
+            background: var(--bg-hover); border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem; font-weight: 700; color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+        .ws-mini-avatar.own { border-color: rgba(0,255,136,0.25); color: var(--accent); }
+        .ws-switch-info { flex: 1; min-width: 0; }
+        .ws-switch-name { display: block; font-size: 1remrem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .ws-switch-role { display: block; font-size: 0.63rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; margin-top: 1px; }
+        .ws-active-badge {
+            font-size: 0.54rem; font-weight: 600; padding: 1px 6px;
+            border-radius: 20px; background: rgba(0,255,136,0.07);
+            border: 1px solid rgba(0,255,136,0.18); color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+        }
 
-            .proj-acc-body {
-                overflow: hidden;
-                max-height: 0;
-                transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-            .proj-acc-body.open { max-height: 400px; }
+        /* ══════════════════════════════════════════
+           SIDEBAR — top:0 so logo block fills corner
+        ══════════════════════════════════════════ */
+        .shell {
+            display: flex;
+            min-height: 100vh;
+            padding-top: var(--topbar-height);
+        }
 
-            .proj-acc-inner {
-                padding: 0.25rem 0.5rem;
-                list-style: none;
-            }
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--bg-surface);
+            border-right: 1px solid var(--border-light);
+            position: fixed;
+            padding:  0.75rem!important;
+            top: 0; left: 0; bottom: 0;    /* top:0 — fills the corner */
+            z-index: 110;                   /* above topbar */
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
 
-            .proj-link {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                padding: 0.5rem 0.75rem 0.5rem 0.875rem;
-                border-radius: var(--radius-sm);
-                color: var(--text-secondary);
-                text-decoration: none;
-                font-size: 0.8rem;
-                font-weight: 500;
-                transition: all 0.2s ease;
-                margin: 2px 0;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-            .proj-link:hover {
-                background: var(--bg-hover);
-                color: var(--text-primary);
-                transform: translateX(4px);
-            }
-            .proj-link.active {
-                color: var(--accent);
-                background: var(--accent-glow);
-            }
-            .proj-link.active svg { stroke: var(--accent); }
-            .proj-dot {
-                display: inline-block;
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                flex-shrink: 0;
-                margin-right: 2px;
-            }
+        /* Logo block — same height as topbar, fills top-left corner */
+        .sidebar-brand {
+            display: flex;
+            align-items: center;
+            height: var(--topbar-height);
+            padding: 0 1.25rem;
+            flex-shrink: 0;
+            background: var(--bg-surface);
+        }
+        .sidebar-brand a { display: flex; align-items: center; text-decoration: none; }
+        .sidebar-brand img { height: 40px; width: auto; }
 
-            /* ── Account Accordion ───────────────────────────── */
-            .acc-wrap { padding: 0 0.75rem; }
-            .acc-trigger {
-                display: flex; align-items: center; justify-content: space-between;
-                width: 100%; padding: 0.7rem 0.875rem;
-                border-radius: var(--radius-md);
-                background: transparent; border: none; cursor: pointer;
-                font-family: 'Outfit', sans-serif; font-size: 0.875rem; font-weight: 500;
-                color: var(--text-secondary); transition: all 0.2s ease;
-            }
-            .acc-trigger:hover { background: var(--bg-hover); color: var(--text-primary); transform: translateX(3px); }
-            .acc-trigger.open-active { background: linear-gradient(90deg, var(--accent-glow), transparent); color: var(--accent); }
-            .acc-trigger-left { display: flex; align-items: center; gap: 0.875rem; }
-            .acc-icon { display: flex; align-items: center; justify-content: center; width: 22px; flex-shrink: 0; opacity: 0.7; }
-            .acc-trigger:hover .acc-icon, .acc-trigger.open-active .acc-icon { opacity: 1; }
-            .acc-chevron { transition: transform 0.25s ease; opacity: 0.5; flex-shrink: 0; }
-            .acc-trigger.open .acc-chevron { transform: rotate(180deg); opacity: 0.8; }
-            .acc-body { overflow: hidden; max-height: 0; transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-            .acc-body.open { max-height: 280px; }
-            .acc-inner { padding: 0.25rem 0.5rem; margin-left: 0; }
-            .acc-sub-link {
-                display: flex; align-items: center; gap: 0.75rem;
-                padding: 0.55rem 0.75rem; border-radius: var(--radius-sm);
-                color: var(--text-secondary); text-decoration: none;
-                font-size: 0.8125rem; font-weight: 500;
-                transition: all 0.2s ease; margin: 2px 0;
-            }
-            .acc-sub-link:hover { background: var(--bg-hover); color: var(--text-primary); transform: translateX(4px); }
-            .acc-sub-link.active { color: var(--accent); background: var(--accent-glow); }
-            .acc-sub-link svg { flex-shrink: 0; opacity: 0.6; transition: opacity 0.18s; }
-            .acc-sub-link:hover svg, .acc-sub-link.active svg { opacity: 1; }
-            .acc-sub-link.active svg { stroke: var(--accent); }
+        .sidebar-section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.12em;
+            color: var(--text-muted);
+            padding: 1rem 1rem 0.3rem;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .sidebar-section-label::after {
+            content: ''; flex: 1; height: 1px;
+            background: linear-gradient(90deg, var(--border-light), transparent);
+        }
 
-            /* ── Sidebar Footer ──────────────────────────────── */
-            .sidebar-footer {
-                margin-top: auto;
-                padding: 1rem 0.75rem 1.25rem;
-                border-top: 1px solid var(--border-light);
-            }
-            .logout-btn {
-                display: flex; align-items: center; gap: 0.875rem;
-                width: 100%; padding: 0.7rem 0.875rem;
-                border-radius: var(--radius-md);
-                background: transparent; border: none; cursor: pointer;
-                font-family: 'Outfit', sans-serif; font-size: 0.875rem; font-weight: 500;
-                color: var(--text-secondary); transition: all 0.2s ease; margin-top: 0.5rem;
-            }
-            .logout-btn:hover { background: rgba(255,85,85,0.12); color: var(--red); transform: translateX(3px); }
-            .logout-btn:hover svg { stroke: var(--red); opacity: 1; }
-            .logout-btn .nav-icon { opacity: 0.6; }
+        .nav-list { list-style: none; padding: 0 0.5rem; }
+        .nav-item { margin: 1px 0; }
 
-            /* ── Mobile Header ───────────────────────────────── */
-            .mobile-header {
-                display: none;
-                position: fixed; top: 0; left: 0; right: 0;
-                height: var(--header-height);
-                background: rgba(5,5,5,0.98);
-                backdrop-filter: blur(20px);
-                border-bottom: 1px solid var(--border);
-                padding: 0 1rem;
-                align-items: center; justify-content: space-between;
-                z-index: 300;
-            }
-            .mobile-logo img { height: 28px; }
-            .hamburger {
-                display: flex; flex-direction: column; justify-content: center;
-                gap: 5px; width: 42px; height: 42px;
-                background: var(--bg-raised); border: 1px solid var(--border);
-                border-radius: var(--radius-md); cursor: pointer; align-items: center;
-                transition: all 0.2s;
-            }
-            .hamburger:hover { border-color: var(--accent); }
-            .hamburger span { display: block; width: 18px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: 0.2s; }
-            .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-            .hamburger.open span:nth-child(2) { opacity: 0; }
-            .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-            .overlay {
-                display: none; position: fixed; inset: 0;
-                background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
-                z-index: 199; transition: opacity 0.25s;
-            }
-            .overlay.show { display: block; }
+        .nav-link {
+            display: flex; align-items: center; gap: 0.65rem;
+            padding: 0.5rem 0.7rem;
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1rem; font-weight: 400;
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.18s;
+            position: relative;
+        }
+        .nav-link:hover { background: var(--bg-hover); color: var(--text-primary); }
+        .nav-link.active { background: var(--accent-dim); color: var(--accent); font-weight: 500; }
+        .nav-link.active::before {
+            content: ''; position: absolute;
+            left: 0; top: 22%; bottom: 22%;
+            width: 2px; border-radius: 0 2px 2px 0;
+            background: var(--accent);
+            box-shadow: 0 0 8px rgba(0,255,136,0.5);
+        }
+        .nav-icon { display: flex; width: 16px; flex-shrink: 0; opacity: 0.4; }
+        .nav-link:hover .nav-icon, .nav-link.active .nav-icon { opacity: 1; }
+        .nav-link.active .nav-icon svg { stroke: var(--accent); }
 
-            /* ── Main Content ────────────────────────────────── */
-            .main {
-                flex: 1; margin-left: var(--sidebar-width);
-                padding: 2rem 2.5rem; min-height: 100vh;
-                background: var(--bg-surface);
-            }
+        /* ── New button — same muted style as other nav links ── */
+        .new-btn {
+            display: flex; align-items: center; gap: 0.65rem;
+            width: 100%; padding: 0.5rem 0.7rem;
+            border-radius: var(--radius-md);
+            background: transparent; border: none; cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem; font-weight: 400;
+            color: var(--text-secondary);    /* ← muted, matches other nav items */
+            transition: all 0.18s;
+        }
+        .new-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+        .new-btn.open  { background: var(--bg-hover); color: var(--text-primary); }
+        .new-btn-icon  { display: flex; width: 16px; flex-shrink: 0; opacity: 0.4; }
+        .new-btn:hover .new-btn-icon, .new-btn.open .new-btn-icon { opacity: 1; }
+        .new-btn-chevron {
+            margin-left: auto; font-size: 0.58rem;
+            opacity: 0.35; transition: transform 0.22s;
+        }
+        .new-btn.open .new-btn-chevron { transform: rotate(180deg); opacity: 0.55; }
+        .new-btn-body { overflow: hidden; max-height: 0; transition: max-height 0.28s cubic-bezier(0.4,0,0.2,1); }
+        .new-btn-body.open { max-height: 120px; }
 
-            /* ── Alerts ──────────────────────────────────────── */
-            .alert {
-                display: flex; align-items: center; gap: 0.75rem;
-                padding: 0.875rem 1.125rem; border-radius: var(--radius-md);
-                margin-bottom: 1.5rem; font-size: 0.875rem; font-weight: 500;
-                animation: slideIn 0.3s ease;
-            }
-            @keyframes slideIn {
-                from { opacity: 0; transform: translateY(-10px); }
-                to   { opacity: 1; transform: translateY(0); }
-            }
-            .alert-success { background: rgba(0,255,136,0.08); border: 1px solid rgba(0,255,136,0.2); color: var(--green); }
-            .alert-error   { background: rgba(255,68,68,0.08);  border: 1px solid rgba(255,68,68,0.2);  color: var(--red); }
+        .new-sub-item {
+            display: flex; align-items: center; gap: 0.55rem;
+            width: 100%; padding: 0.42rem 0.7rem 0.42rem 2.55rem;
+            background: transparent; border: none; cursor: pointer;
+            font-family: 'Outfit', sans-serif; font-size: 1remrem;
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
+            text-decoration: none; transition: all 0.15s;
+        }
+        .new-sub-item:hover { background: var(--bg-hover); color: var(--text-primary); }
+        .new-sub-item i { font-size: 0.78rem; opacity: 0.45; }
+        .new-sub-item:hover i { opacity: 1; }
 
-            /* ── Responsive ──────────────────────────────────── */
-            @media (max-width: 768px) {
-                .mobile-header { display: flex; }
-                .shell { padding-top: var(--header-height); }
-                .sidebar { transform: translateX(-100%); box-shadow: var(--shadow-md); scrollbar-gutter: stable; }
-                .sidebar.open { transform: translateX(0); }
-                .main { margin-left: 0; padding: 1rem; width: 100%; }
-            }
-            @media (min-width: 769px) and (max-width: 1024px) {
-                :root { --sidebar-width: 260px; }
-                .main { padding: 1.5rem; }
-            }
-            body.no-scroll { overflow: hidden; position: fixed; width: 100%; }
+        /* Projects tree */
+        .proj-row { margin: 1px 0; }
+        .proj-row-wrap { display: flex; align-items: center; }
+        .proj-row-link {
+            display: flex; align-items: center; gap: 0.5rem;
+            flex: 1; min-width: 0;
+            padding: 0.42rem 0.4rem 0.42rem 0.7rem;
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary); text-decoration: none;
+            font-size: 1rem125rem; font-family: 'Outfit', sans-serif;
+            transition: all 0.15s;
+        }
+        .proj-row-link:hover { background: var(--bg-hover); color: var(--text-primary); }
+        .proj-row-link.active { color: var(--accent); background: var(--accent-dim); }
+        .proj-color-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+        .proj-name-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; }
+        .proj-expand-btn {
+            display: flex; align-items: center; justify-content: center;
+            width: 22px; min-height: 26px!important;
+            background: transparent; border: none; cursor: pointer;
+            color: var(--text-tertiary); border-radius: var(--radius-sm); flex-shrink: 0;
+        }
+        .proj-expand-btn svg { transition: transform 0.2s; opacity: 0.35; }
+        .proj-expand-btn.open svg { transform: rotate(90deg); opacity: 0.65; }
+        .forms-list {
+            overflow: hidden; max-height: 0;
+            transition: max-height 0.25s cubic-bezier(0.4,0,0.2,1);
+            padding-left: 1.4rem;
+        }
+        .forms-list.open { max-height: 400px; }
+        .form-link {
+            display: flex; align-items: center; gap: 0.45rem;
+            padding: 0.33rem 0.55rem;
+            border-radius: var(--radius-sm);
+            color: var(--text-tertiary); text-decoration: none;
+            font-size: 0.9rem; font-family: 'Outfit', sans-serif;
+            transition: all 0.15s;
+        }
+        .form-link:hover { background: var(--bg-hover); color: var(--text-secondary); }
+        .form-link.active { color: var(--accent); }
+        .form-link-dot { width: 3px; height: 3px; border-radius: 50%; background: currentColor; opacity: 0.45; flex-shrink: 0; }
 
-            /* ── + New Quick Button ──────────────────────────────── */
-            /* ── + New Quick Button ──────────────────────────────── */
-            .new-quick-btn {
-                display: flex; align-items: center; gap: 0.875rem;
-                width: 100%; padding: 0.7rem 0.875rem;
-                border-radius: var(--radius-md);
-                background: transparent;
-                border: none;
-                cursor: pointer; font-family: 'Outfit', sans-serif;
-                font-size: 0.875rem; font-weight: 500;
-                color: var(--text-secondary);
-                transition: all 0.2s ease;
-                position: relative;
-            }
-            .new-quick-btn:hover {
-                background: var(--accent-glow);
-                border-color: rgba(0,255,136,0.4);
-                transform: translateX(3px);
-            }
-            .new-quick-btn.open {
-                background: var(--accent-glow);
-                border-color: rgba(0,255,136,0.35);
-            }
-            .new-quick-icon {
-                display: flex; align-items: center; justify-content: center;
-                width: 22px; flex-shrink: 0;
-                opacity: 0.85; transition: all 0.2s;
-            }
-            .new-quick-btn:hover .new-quick-icon,
-            .new-quick-btn.open .new-quick-icon { opacity: 1; transform: scale(1.05); }
-            .new-quick-chevron {
-                margin-left: auto;
-                opacity: 0.5;
-                flex-shrink: 0;
-                transition: transform 0.25s ease, opacity 0.2s;
-            }
-            .new-quick-btn.open .new-quick-chevron { transform: rotate(180deg); opacity: 0.8; }
+        .sidebar-spacer { flex: 1; }
 
-            .new-quick-body {
-                overflow: hidden;
-                max-height: 0;
-                transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-            .new-quick-body.open { max-height: 120px; }
+        /* ── Sidebar bottom — account + settings shortcut ── */
+        .sidebar-bottom {
+            border-top: 1px solid var(--border-light);
+            padding: 0.5rem;
+            flex-shrink: 0;
+        }
+        .sidebar-user-btn {
+            display: flex; align-items: center; gap: 0.6rem;
+            width: 100%; padding: 0.5rem 0.6rem;
+            border-radius: var(--radius-md);
+            background: transparent; border: none; cursor: pointer;
+            font-family: 'Outfit', sans-serif; text-decoration: none;
+            transition: all 0.18s;
+        }
+        .sidebar-user-btn:hover { background: var(--bg-hover); }
+        .sidebar-user-avatar {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: rgba(0,255,136,0.07);
+            border: 1px solid rgba(0,255,136,0.18);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.63rem; font-weight: 600; color: var(--accent);
+            flex-shrink: 0;
+        }
+        .sidebar-user-info { flex: 1; min-width: 0; text-align: left; }
+        .sidebar-user-name {
+            display: block; font-size: 1remrem; font-weight: 500;
+            color: var(--text-primary); font-family: 'Outfit', sans-serif;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .sidebar-user-email {
+            display: block; font-size: 0.66rem; color: var(--text-tertiary);
+            font-family: 'JetBrains Mono', monospace;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .sidebar-settings-icon {
+            font-size: 1remrem; color: var(--text-tertiary); flex-shrink: 0;
+            transition: color 0.15s;
+        }
+        .sidebar-user-btn:hover .sidebar-settings-icon { color: var(--accent); }
 
-            /* sub-items reuse exact same pattern as .acc-sub-link */
-            .new-quick-item {
-                display: flex; align-items: center; gap: 0.75rem;
-                width: 100%; padding: 0.55rem 0.875rem;
-                background: transparent; border: none; cursor: pointer;
-                font-family: 'Outfit', sans-serif; font-size: 0.8125rem; font-weight: 500;
-                color: var(--text-secondary); border-radius: var(--radius-sm);
-                margin: 2px 0; text-decoration: none;
-                transition: all 0.2s ease;
-            }
-            .new-quick-item:hover {
-                background: var(--bg-hover);
-                color: var(--text-primary);
-                transform: translateX(4px);
-            }
-            .nqi-icon {
-                display: flex; align-items: center; justify-content: center;
-                width: 16px; flex-shrink: 0; opacity: 0.6; transition: opacity 0.18s;
-            }
-            .new-quick-item:hover .nqi-icon { opacity: 1; }
+        /* ══════════════════════════════════════════
+           MAIN
+        ══════════════════════════════════════════ */
+        .main {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            padding: 2rem 2.5rem;
+            min-height: 100vh;
+            background: var(--bg-canvas);
+        }
 
-            /* ── New Form Modal ──────────────────────────────────── */
-            .nfm-backdrop {
-                display: none; position: fixed; inset: 0;
-                background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
-                z-index: 500; align-items: center; justify-content: center;
-            }
-            .nfm-backdrop.show { display: flex; }
-            .nfm-dialog {
-                background: var(--bg-raised); border: 1px solid var(--border);
-                border-radius: var(--radius-lg); padding: 1.75rem;
-                width: 100%; max-width: 640px; margin: 1rem;
-                animation: nfmIn 0.2s ease;
-            }
-            @keyframes nfmIn {
-                from { opacity: 0; transform: translateY(-12px) scale(0.98); }
-                to   { opacity: 1; transform: translateY(0) scale(1); }
-            }
-            .nfm-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
-            .nfm-title { font-size: 1rem; font-weight: 600; color: var(--text-primary); }
-            .nfm-close {
-                width: 28px; height: 28px; border-radius: 50%;
-                background: transparent; border: 1px solid var(--border);
-                color: var(--text-secondary); cursor: pointer;
-                font-size: 1.1rem; line-height: 1; display: flex;
-                align-items: center; justify-content: center;
-                transition: all 0.15s;
-            }
-            .nfm-close:hover { background: var(--bg-hover); color: var(--text-primary); }
-            .nfm-field { margin-bottom: 1rem; }
-            .nfm-label { display: block; font-size: 0.95rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 0.4rem; }
-            .nfm-required { color: var(--red); }
-            .nfm-optional { color: var(--text-muted); font-weight: 400; font-size: 0.75rem; }
-            .nfm-select, .nfm-input {
-                width: 100%; padding: 0.6rem 0.875rem;
-                background: var(--bg-surface); border: 1px solid var(--border);
-                border-radius: var(--radius-sm); color: var(--text-primary);
-                font-family: 'Outfit', sans-serif; font-size: 0.875rem;
-                transition: border-color 0.15s;
-            }
-            .nfm-select:focus, .nfm-input:focus { outline: none; border-color: rgba(0,255,136,0.5); }
-            .nfm-actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
-            .nfm-btn-primary {
-                padding: 0.6rem 1.25rem; background: var(--accent);
-                color: #000; border: none; border-radius: var(--radius-sm);
-                font-family: 'Outfit', sans-serif; font-size: 0.875rem;
-                font-weight: 600; cursor: pointer; transition: opacity 0.15s;
-            }
-            .nfm-btn-primary:hover { opacity: 0.88; }
-            .nfm-btn-secondary {
-                padding: 0.6rem 1.25rem; background: transparent;
-                color: var(--text-secondary); border: 1px solid var(--border);
-                border-radius: var(--radius-sm); font-family: 'Outfit', sans-serif;
-                font-size: 0.975rem; font-weight: 500; cursor: pointer; transition: all 0.15s;
-            }
-            .nfm-btn-secondary:hover { background: var(--bg-hover); color: var(--text-primary); }
-            .nfm-help {
-                font-size: 0.8rem;
-                color: #999090;
-                margin-top: 0.35rem;
-                line-height: 1.4;
-            }
-            .nfm-checkbox {
-                display: flex;
-                align-items: center;
-                gap: 0.6rem;
-                font-size: 0.8125rem;
-                color: var(--text-secondary);
-                font-weight: 300;
-                cursor: pointer;
-            }
-            .nfm-checkbox input { accent-color: var(--accent); cursor: pointer; }
-            .nfm-textarea {
-                resize: vertical;
-                min-height: 110px;
-                font-family: 'Outfit', sans-serif;
-                line-height: 1.5;
-            }
-            .nfm-no-projects {
-                display: flex;
-                align-items: flex-start;
-                gap: 0.75rem;
-                padding: 0.875rem 1rem;
-                background: rgba(255,187,51,0.06);
-                border: 1px solid rgba(255,187,51,0.2);
-                border-radius: var(--radius-sm);
-                color: var(--amber);
-            }
-            .nfm-no-projects > svg {
-                flex-shrink: 0;
-                margin-top: 2px;
-                stroke: var(--amber);
-                opacity: 0.8;
-            }
-            .nfm-no-projects-title {
-                font-size: 0.875rem;
-                font-weight: 600;
-                color: var(--amber);
-                margin-bottom: 0.25rem;
-            }
-            .nfm-no-projects-desc {
-                font-size: 0.84rem;
-                color: var(--text-muted);
-                line-height: 1.5;
-                margin-bottom: 0.6rem;
-            }
-            .nfm-create-project-link {
-                display: inline-flex;
-                align-items: center;
-                gap: 0.4rem;
-                font-size: 0.8rem;
-                font-weight: 600;
-                color: var(--accent);
-                text-decoration: none;
-                transition: opacity 0.15s;
-            }
-            .nfm-create-project-link:hover { opacity: 0.75; }
-            .nfm-create-project-link svg { stroke: var(--accent); }
+        .alert {
+            display: flex; align-items: center; gap: 0.75rem;
+            padding: 0.65rem 1rem; border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+            font-size: 1rem125rem; font-family: 'Outfit', sans-serif;
+        }
+        .alert-success { background: rgba(0,255,136,0.05); border: 1px solid rgba(0,255,136,0.14); color: var(--accent); }
+        .alert-error   { background: rgba(255,68,68,0.05);  border: 1px solid rgba(255,68,68,0.14);  color: var(--red); }
+
+        /* ══════════════════════════════════════════
+           MOBILE
+        ══════════════════════════════════════════ */
+        .mobile-header {
+            display: none;
+            position: fixed; top: 0; left: 0; right: 0;
+            height: var(--topbar-height);
+            background: rgba(5,5,5,0.97);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            padding: 0 1rem;
+            align-items: center; justify-content: space-between;
+            z-index: 300;
+        }
+        .mobile-logo img { height: 24px; }
+        .hamburger {
+            display: flex; flex-direction: column;
+            justify-content: center; gap: 4px;
+            width: 36px; height: 36px;
+            background: var(--bg-raised); border: 1px solid var(--border);
+            border-radius: var(--radius-md); cursor: pointer; align-items: center;
+        }
+        .hamburger span { display: block; width: 15px; height: 1.5px; background: var(--text-primary); border-radius: 2px; transition: 0.2s; }
+        .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px,4px); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px,-4px); }
+        .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px); z-index: 89; }
+        .overlay.show { display: block; }
+
+        /* New Form Modal */
+        .nfm-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,1rem); backdrop-filter: blur(8px); z-index: 500; align-items: center; justify-content: center; }
+        .nfm-backdrop.show { display: flex; }
+        .nfm-dialog { background: var(--bg-raised); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; width: 100%; max-width: 480px; margin: 1rem; max-height: 90vh; overflow-y: auto; }
+        .nfm-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-light); }
+        .nfm-title { font-size: 0.9375rem; font-weight: 600; font-family: 'Outfit', sans-serif; }
+        .nfm-close { width: 26px; height: 26px; border-radius: 50%; background: transparent; border: 1px solid var(--border); color: var(--text-secondary); cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+        .nfm-close:hover { background: var(--bg-hover); color: var(--text-primary); }
+        .nfm-field { margin-bottom: 1rem; }
+        .nfm-label { display: block; font-size: 1remrem; font-weight: 500; font-family: 'Outfit', sans-serif; color: var(--text-secondary); margin-bottom: 0.35rem; }
+        .nfm-required { color: var(--red); }
+        .nfm-select, .nfm-input { width: 100%; padding: 0.55rem 0.75rem; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-primary); font-family: 'Outfit', sans-serif; font-size: 1rem125rem; transition: border-color 0.15s; }
+        .nfm-select:focus, .nfm-input:focus { outline: none; border-color: rgba(0,255,136,0.35); }
+        .nfm-actions { display: flex; gap: 0.6rem; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-light); }
+        .nfm-btn-primary { padding: 0.55rem 1.25rem; background: var(--accent); color: #000; border: none; border-radius: var(--radius-sm); font-weight: 600; font-family: 'Outfit', sans-serif; font-size: 1rem125rem; cursor: pointer; transition: opacity 0.15s; }
+        .nfm-btn-primary:hover { opacity: 1rem8; }
+        .nfm-btn-secondary { padding: 0.55rem 1rem; background: transparent; color: var(--text-secondary); border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: 'Outfit', sans-serif; font-size: 1rem125rem; cursor: pointer; transition: all 0.15s; }
+        .nfm-btn-secondary:hover { background: var(--bg-hover); color: var(--text-primary); }
+        .nfm-no-projects { display: flex; gap: 0.7rem; padding: 1rem; background: rgba(255,187,51,0.04); border: 1px solid rgba(255,187,51,0.14); border-radius: var(--radius-sm); font-size: 1rem125rem; font-family: 'Outfit', sans-serif; color: var(--amber); }
+
+        @media (max-width: 768px) {
+            .mobile-header { display: flex; }
+            .topbar { display: none; }
+            .shell { padding-top: var(--topbar-height); }
+            .sidebar { top: var(--topbar-height); transform: translateX(-100%); }
+            .sidebar-brand { display: none; }
+            .sidebar.open { transform: translateX(0); }
+            .main { margin-left: 0; padding: 1rem; }
+        }
+        body.no-scroll { overflow: hidden; }
     </style>
-    
 </head>
 <body>
 
-    <!-- Mobile Header -->
+    
     <div class="mobile-header">
         <a href="<?php echo e(route('dashboard')); ?>" class="mobile-logo">
             <img src="<?php echo e(asset('images/logo/000formlogo.png')); ?>" alt="000form">
@@ -691,601 +582,300 @@
             <span></span><span></span><span></span>
         </button>
     </div>
-
     <div class="overlay" id="overlay"></div>
 
+    
+    <header class="topbar" id="topbar">
+        <div class="topbar-right">
+
+            
+            <?php if(isset($availableWorkspaces) && $availableWorkspaces->count() > 0): ?>
+            <div class="user-menu" id="wsSwitcherWrap">
+                <button class="ws-pill" id="wsSwitcherTrigger" aria-expanded="false">
+                    <span class="ws-pill-dot"></span>
+                    <span style="font-family:'Outfit',sans-serif; font-size:1rem125rem; font-weight:400; color:var(--text-secondary);">
+                        <?php if(isset($isOwnWorkspace) && $isOwnWorkspace): ?>
+                            My Account
+                        <?php else: ?>
+                            <?php $__currentLoopData = $availableWorkspaces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ws): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php if(isset($activeWorkspaceOwnerId) && $activeWorkspaceOwnerId === $ws['id']): ?><?php echo e($ws['name']); ?><?php endif; ?>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
+                    </span>
+                    <i class="bi bi-chevron-down" style="font-size:0.58rem; opacity:0.4; margin-left:2px;"></i>
+                </button>
+                <div class="ws-dropdown" id="wsDropdown">
+                    <div class="dropdown-section-label">Switch workspace</div>
+                    <form method="POST" action="<?php echo e(route('team.switch')); ?>">
+                        <?php echo csrf_field(); ?>
+                        <input type="hidden" name="workspace_owner_id" value="<?php echo e(Auth::id()); ?>">
+                        <button type="submit" class="ws-switch-btn <?php echo e((isset($isOwnWorkspace) && $isOwnWorkspace) ? 'active' : ''); ?>">
+                            <div class="ws-mini-avatar own"><?php echo e(strtoupper(substr(Auth::user()->name ?? Auth::user()->email, 0, 1))); ?></div>
+                            <div class="ws-switch-info">
+                                <span class="ws-switch-name">My Account</span>
+                                <span class="ws-switch-role">personal</span>
+                            </div>
+                            <?php if(isset($isOwnWorkspace) && $isOwnWorkspace): ?><span class="ws-active-badge">Active</span><?php endif; ?>
+                        </button>
+                    </form>
+                    <?php $__currentLoopData = $availableWorkspaces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $workspace): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <form method="POST" action="<?php echo e(route('team.switch')); ?>">
+                        <?php echo csrf_field(); ?>
+                        <input type="hidden" name="workspace_owner_id" value="<?php echo e($workspace['id']); ?>">
+                        <button type="submit" class="ws-switch-btn <?php echo e((isset($activeWorkspaceOwnerId) && $activeWorkspaceOwnerId === $workspace['id']) ? 'active' : ''); ?>">
+                            <div class="ws-mini-avatar"><?php echo e(strtoupper(substr($workspace['name'], 0, 1))); ?></div>
+                            <div class="ws-switch-info">
+                                <span class="ws-switch-name"><?php echo e($workspace['name']); ?></span>
+                                <span class="ws-switch-role"><?php echo e(ucfirst($workspace['role'])); ?></span>
+                            </div>
+                            <?php if(isset($activeWorkspaceOwnerId) && $activeWorkspaceOwnerId === $workspace['id']): ?><span class="ws-active-badge">Active</span><?php endif; ?>
+                        </button>
+                    </form>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </div>
+            </div>
+            <?php endif; ?>
+
+            
+            <div class="user-menu" id="userMenuWrap">
+                <button class="user-menu-trigger" id="userMenuTrigger" aria-expanded="false">
+                    <div class="user-avatar-sm"><?php echo e(strtoupper(substr(Auth::user()->email, 0, 1))); ?></div>
+                    <span class="user-menu-name"><?php echo e(Auth::user()->email); ?></span>
+                    <i class="bi bi-chevron-down user-menu-chevron"></i>
+                </button>
+                <div class="user-dropdown" id="userDropdown">
+                    <div class="dropdown-header">
+                        <?php if(Auth::user()->name): ?><div class="dropdown-header-name"><?php echo e(Auth::user()->name); ?></div><?php endif; ?>
+                        <div class="dropdown-header-email"><?php echo e(Auth::user()->email); ?></div>
+                    </div>
+                    <div class="dropdown-section-label">Account</div>
+                    <a href="<?php echo e(route('account.settings')); ?>" class="dropdown-item"><i class="bi bi-person-gear"></i> Profile Settings</a>
+                    <a href="<?php echo e(route('team.index')); ?>" class="dropdown-item"><i class="bi bi-people"></i> Team Management</a>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-section-label">Billing</div>
+                    <a href="<?php echo e(route('billing.portal')); ?>" class="dropdown-item"><i class="bi bi-credit-card"></i> Plans & Subscription</a>
+                    <a href="<?php echo e(route('billing.payment-history')); ?>" class="dropdown-item"><i class="bi bi-receipt"></i> Payment History</a>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-section-label">Resources</div>
+                    <a href="<?php echo e(route('docs')); ?>" target="_blank" class="dropdown-item"><i class="bi bi-file-text"></i> Documentation</a>
+                    <div class="dropdown-divider"></div>
+                    <form method="POST" action="<?php echo e(route('logout')); ?>">
+                        <?php echo csrf_field(); ?>
+                        <button type="submit" class="dropdown-item danger"><i class="bi bi-box-arrow-right"></i> Sign Out</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    
     <div class="shell">
         <aside class="sidebar" id="sidebar">
 
-            <!-- Brand -->
-            <a href="<?php echo e(route('dashboard')); ?>" class="sidebar-brand">
-                <img src="<?php echo e(asset('images/logo/000formlogo.png')); ?>" alt="000form">
-            </a>
-
-            <!-- User Card -->
-            <div class="user-card">
-                <div class="user-avatar">
-                    <?php echo e(strtoupper(substr(Auth::user()->email, 0, 1))); ?>
-
-                </div>
-                <div class="user-info">
-                    <?php if(Auth::user()->name): ?>
-                        <div class="user-name"><?php echo e(Auth::user()->name); ?></div>
-                    <?php endif; ?>
-                    <div class="user-email"><?php echo e(Auth::user()->email); ?></div>
-                </div>
+            
+            <div class="sidebar-brand">
+                <a href="<?php echo e(route('dashboard')); ?>">
+                    <img src="<?php echo e(asset('images/logo/000formlogo.png')); ?>" alt="000form">
+                </a>
             </div>
 
-            <!-- Workspace Switcher -->
-            <?php if(isset($availableWorkspaces) && $availableWorkspaces->count() > 0): ?>
-            <div class="ws-section">
-                <div class="section-header">
-                    <span class="section-label">Workspace</span>
-                    <div class="ws-indicator">
-                        <span class="ws-dot"></span>
-                        <span style="font-size: 0.55rem; color: var(--text-tertiary);">live</span>
+            <div class="sidebar-section-label">Main</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="<?php echo e(route('dashboard')); ?>" class="nav-link <?php echo e(request()->routeIs('dashboard') ? 'active' : ''); ?>">
+                        <span class="nav-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                                <rect x="14" y="3" width="7" height="7" rx="1"/>
+                                <rect x="14" y="14" width="7" height="7" rx="1"/>
+                                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                            </svg>
+                        </span>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    
+                    <button class="new-btn" id="newQuickTrigger" aria-expanded="false">
+                        <span class="new-btn-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="9"/>
+                                <line x1="12" y1="8" x2="12" y2="16"/>
+                                <line x1="8" y1="12" x2="16" y2="12"/>
+                            </svg>
+                        </span>
+                        New
+                        <i class="bi bi-chevron-down new-btn-chevron"></i>
+                    </button>
+                    <div class="new-btn-body" id="newQuickBody">
+                        <a href="<?php echo e(route('dashboard.projects.create')); ?>" class="new-sub-item">
+                            <i class="bi bi-folder-plus"></i> New Project
+                        </a>
+                        <button class="new-sub-item" id="openNewFormModal">
+                            <i class="bi bi-file-plus"></i> New Form
+                        </button>
                     </div>
-                </div>
+                </li>
+            </ul>
 
-                <form method="POST" action="<?php echo e(route('team.switch')); ?>" class="ws-form">
-                    <?php echo csrf_field(); ?>
-                    <input type="hidden" name="workspace_owner_id" value="<?php echo e(Auth::id()); ?>">
-                    <button type="submit" class="ws-btn <?php echo e((isset($isOwnWorkspace) && $isOwnWorkspace) ? 'active-workspace' : ''); ?>">
-                        <div class="ws-avatar own"><?php echo e(strtoupper(substr(Auth::user()->name ?? Auth::user()->email, 0, 1))); ?></div>
-                        <div class="ws-details">
-                            <span class="ws-name">My Account</span>
-                            <span class="ws-role">personal workspace</span>
-                        </div>
-                        <?php if(isset($isOwnWorkspace) && $isOwnWorkspace): ?>
-                            <span class="ws-badge">Active</span>
-                        <?php endif; ?>
-                    </button>
-                </form>
+            <?php if(isset($sidebarProjects) && $sidebarProjects->isNotEmpty()): ?>
+            <div class="sidebar-section-label" style="margin-top:0.25rem">Projects</div>
+            <ul class="nav-list" id="projectsTree">
+                <?php $__currentLoopData = $sidebarProjects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $proj): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <li class="nav-item proj-row" id="proj-row-<?php echo e($proj->id); ?>">
+                    <div class="proj-row-wrap">
+                        <a href="<?php echo e(route('dashboard.projects.show', $proj->id)); ?>" class="proj-row-link" title="<?php echo e($proj->name); ?>">
+                            <span class="proj-color-dot" style="background:<?php echo e($proj->color ?? '#6366f1'); ?>"></span>
+                            <span class="proj-name-text"><?php echo e($proj->name); ?></span>
+                            <?php if(isset($proj->forms) && $proj->forms->isNotEmpty()): ?>
+                            <button class="proj-expand-btn" id="proj-expand-<?php echo e($proj->id); ?>" data-proj="<?php echo e($proj->id); ?>">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                            </button>
+                            <?php endif; ?>
+                        </a>
+                        
+                    </div>
+                    <?php if(isset($proj->forms) && $proj->forms->isNotEmpty()): ?>
+                    <div class="forms-list" id="forms-list-<?php echo e($proj->id); ?>">
+                        <?php $__currentLoopData = $proj->forms; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $form): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <a href="<?php echo e(route('dashboard.forms.show', $form->id)); ?>" class="form-link">
+                            <span class="form-link-dot"></span><?php echo e($form->name); ?>
 
-                <?php $__currentLoopData = $availableWorkspaces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $workspace): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <form method="POST" action="<?php echo e(route('team.switch')); ?>" class="ws-form">
-                    <?php echo csrf_field(); ?>
-                    <input type="hidden" name="workspace_owner_id" value="<?php echo e($workspace['id']); ?>">
-                    <button type="submit" class="ws-btn <?php echo e((isset($activeWorkspaceOwnerId) && $activeWorkspaceOwnerId === $workspace['id']) ? 'active-workspace' : ''); ?>">
-                        <div class="ws-avatar"><?php echo e(strtoupper(substr($workspace['name'], 0, 1))); ?></div>
-                        <div class="ws-details">
-                            <span class="ws-name"><?php echo e($workspace['name']); ?></span>
-                            <span class="ws-role"><?php echo e(ucfirst($workspace['role'])); ?> team</span>
-                        </div>
-                        <?php if(isset($activeWorkspaceOwnerId) && $activeWorkspaceOwnerId === $workspace['id']): ?>
-                            <span class="ws-badge">Active</span>
-                        <?php endif; ?>
-                    </button>
-                </form>
+                        </a>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </div>
+                    <?php endif; ?>
+                </li>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </div>
+            </ul>
             <?php endif; ?>
 
-            <!-- Main Nav -->
-            <div class="nav-group">
-                <div class="nav-group-label">Main</div>
-                <ul class="nav-list">
+            <div class="sidebar-spacer"></div>
 
-                    
-                    <li class="nav-item">
-                        <a href="<?php echo e(route('dashboard')); ?>" class="nav-link <?php echo e(request()->routeIs('dashboard') && !request()->routeIs('dashboard.forms.*') && !request()->routeIs('dashboard.projects.*') ? 'active' : ''); ?>">
-                            <span class="nav-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                    <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
-                                    <rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
-                                </svg>
-                            </span>
-                            Dashboard
-                        </a>
-                    </li>
+            
+            <div class="sidebar-bottom">
+                <a href="<?php echo e(route('account.settings')); ?>" class="sidebar-user-btn">
+                    <div class="sidebar-user-avatar">
+                        <?php echo e(strtoupper(substr(Auth::user()->email, 0, 1))); ?>
 
-                    
-                    <li class="nav-item">
-                        <button class="new-quick-btn" id="newQuickTrigger" aria-expanded="false">
-                            <span class="new-quick-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="9"/>
-                                    <line x1="12" y1="8" x2="12" y2="16"/>
-                                    <line x1="8" y1="12" x2="16" y2="12"/>
-                                </svg>
-                            </span>
-                            New
-                            <svg class="new-quick-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                <polyline points="6 9 12 15 18 9"/>
-                            </svg>
-                        </button>
-
-                        <div class="new-quick-body" id="newQuickBody">
-                            <a href="<?php echo e(route('dashboard.projects.create')); ?>" class="new-quick-item">
-                                <span class="nqi-icon">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                        <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
-                                        <line x1="12" y1="10" x2="12" y2="16"/>
-                                        <line x1="9" y1="13" x2="15" y2="13"/>
-                                    </svg>
-                                </span>
-                                New Project
-                            </a>
-                            <button class="new-quick-item" id="openNewFormModal">
-                                <span class="nqi-icon">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                        <polyline points="14 2 14 8 20 8"/>
-                                        <line x1="12" y1="18" x2="12" y2="12"/>
-                                        <line x1="9" y1="15" x2="15" y2="15"/>
-                                    </svg>
-                                </span>
-                                New Form
-                            </button>
-                        </div>
-                    </li>
-
-                    
-                    <?php if(isset($sidebarProjects) && $sidebarProjects->isNotEmpty()): ?>
-                    <li class="nav-item">
-                        <button
-                            class="proj-acc-trigger <?php echo e(request()->routeIs('dashboard.projects.*') &&
-                                !request()->routeIs('dashboard.projects.create')
-                                ? 'active-parent' : ''); ?>"
-                            id="projAccTrigger"
-                            aria-expanded="<?php echo e(request()->routeIs('dashboard.projects.*') ? 'true' : 'false'); ?>"
-                        >
-                            <span class="proj-acc-left">
-                                <span class="proj-acc-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                        <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
-                                    </svg>
-                                </span>
-                                Projects
-                            </span>
-                            <svg class="proj-acc-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                <polyline points="6 9 12 15 18 9"/>
-                            </svg>
-                        </button>
-
-                        <div class="proj-acc-body <?php echo e(request()->routeIs('dashboard.projects.*') ? 'open' : ''); ?>" id="projAccBody">
-                            <ul class="proj-acc-inner">
-                                <?php $__currentLoopData = $sidebarProjects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $proj): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <li>
-                                    <a
-                                        href="<?php echo e(route('dashboard.projects.show', $proj->id)); ?>"
-                                        class="proj-link <?php echo e(request()->is('dashboard/projects/' . $proj->id) || request()->is('dashboard/projects/' . $proj->id . '/*') ? 'active' : ''); ?>"
-                                        title="<?php echo e($proj->name); ?>"
-                                    >
-                                        <span class="proj-dot" style="background: <?php echo e($proj->color ?? '#6366f1'); ?>"></span>
-                                        <?php echo e($proj->name); ?>
-
-                                    </a>
-                                </li>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            </ul>
-                        </div>
-                    </li>
-                    <?php endif; ?>
-
-                    
-                    <li class="nav-item" style="display: none">
-                        <a href="<?php echo e(route('dashboard.projects.create')); ?>"
-                           class="nav-link <?php echo e(request()->routeIs('dashboard.projects.create') ? 'active' : ''); ?>">
-                            <span class="nav-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                    <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
-                                    <line x1="12" y1="10" x2="12" y2="16"/>
-                                    <line x1="9" y1="13" x2="15" y2="13"/>
-                                </svg>
-                            </span>
-                            New Project
-                        </a>
-                    </li>
-
-                    
-                    <li class="nav-item">
-                        <a href="<?php echo e(route('team.index')); ?>" class="nav-link <?php echo e(request()->routeIs('team.index') ? 'active' : ''); ?>">
-                            <span class="nav-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                    <circle cx="9" cy="7" r="4"/>
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                                </svg>
-                            </span>
-                            Team Management
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
-
-            <!-- Account Accordion -->
-            <div class="nav-group">
-                <div class="nav-group-label">Account</div>
-                <div class="acc-wrap">
-                    <button
-                        class="acc-trigger <?php echo e(request()->routeIs('account.settings') || request()->routeIs('billing.portal') || request()->routeIs('billing.payment-history') ? 'open-active' : ''); ?>"
-                        id="accTrigger"
-                        aria-expanded="<?php echo e(request()->routeIs('account.settings') || request()->routeIs('billing.portal') || request()->routeIs('billing.payment-history') ? 'true' : 'false'); ?>"
-                    >
-                        <span class="acc-trigger-left">
-                            <span class="acc-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-                                </svg>
-                            </span>
-                            Account Settings
-                        </span>
-                        <svg class="acc-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <polyline points="6 9 12 15 18 9"/>
-                        </svg>
-                    </button>
-
-                    <div class="acc-body <?php echo e(request()->routeIs('account.settings') || request()->routeIs('billing.portal') || request()->routeIs('billing.payment-history') ? 'open' : ''); ?>" id="accBody">
-                        <div class="acc-inner">
-                            <a href="<?php echo e(route('account.settings')); ?>" class="acc-sub-link <?php echo e(request()->routeIs('account.settings') ? 'active' : ''); ?>">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                    <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-                                </svg>
-                                Profile Settings
-                            </a>
-                            <a href="<?php echo e(route('billing.portal')); ?>" class="acc-sub-link <?php echo e(request()->routeIs('billing.portal') ? 'active' : ''); ?>">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                                </svg>
-                                Plans & Subscription
-                            </a>
-                            <a href="<?php echo e(route('billing.payment-history')); ?>" class="acc-sub-link <?php echo e(request()->routeIs('billing.payment-history') ? 'active' : ''); ?>">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                    <rect x="2" y="5" width="20" height="14" rx="2"/>
-                                    <line x1="2" y1="10" x2="22" y2="10"/>
-                                </svg>
-                                Payment History
-                            </a>
-                        </div>
                     </div>
-                </div>
+                    <div class="sidebar-user-info">
+                        <span class="sidebar-user-name"><?php echo e(Auth::user()->name ?? 'My Account'); ?></span>
+                        <span class="sidebar-user-email"><?php echo e(Auth::user()->email); ?></span>
+                    </div>
+                    <i class="bi bi-gear sidebar-settings-icon"></i>
+                </a>
             </div>
 
-            <!-- Sidebar Footer -->
-            <div class="sidebar-footer">
-                <div class="nav-group">
-                    <div class="nav-group-label">Resources</div>
-                    <ul class="nav-list" style="padding:0">
-                        <li class="nav-item">
-                            <a href="<?php echo e(route('docs')); ?>" target="_blank" class="nav-link">
-                                <span class="nav-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                        <polyline points="14 2 14 8 20 8"/>
-                                        <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
-                                    </svg>
-                                </span>
-                                Documentation
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <form method="POST" action="<?php echo e(route('logout')); ?>">
-                    <?php echo csrf_field(); ?>
-                    <button type="submit" class="logout-btn">
-                        <span class="nav-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-                                <polyline points="16 17 21 12 16 7"/>
-                                <line x1="21" y1="12" x2="9" y2="12"/>
-                            </svg>
-                        </span>
-                        Sign Out
-                    </button>
-                </form>
-            </div>
         </aside>
 
-        <!-- Main Content -->
         <main class="main">
-            <?php if(session('message')): ?>
-                <div class="alert alert-success">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <polyline points="20 6 9 17 4 12"/>
-                    </svg>
-                    <?php echo e(session('message')); ?>
-
-                </div>
-            <?php endif; ?>
-
-            <?php if(session('error')): ?>
-                <div class="alert alert-error">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <circle cx="12" cy="12" r="10"/>
-                        <line x1="12" y1="8" x2="12" y2="12"/>
-                        <line x1="12" y1="16" x2="12.01" y2="16"/>
-                    </svg>
-                    <?php echo e(session('error')); ?>
-
-                </div>
-            <?php endif; ?>
-
+            <?php if(session('message')): ?><div class="alert alert-success"><i class="bi bi-check-circle"></i> <?php echo e(session('message')); ?></div><?php endif; ?>
+            <?php if(session('error')): ?><div class="alert alert-error"><i class="bi bi-exclamation-triangle"></i> <?php echo e(session('error')); ?></div><?php endif; ?>
             <?php echo $__env->yieldContent('content'); ?>
         </main>
     </div>
 
     
     <div id="newFormModalBackdrop" class="nfm-backdrop" aria-hidden="true">
-        <div class="nfm-dialog" role="dialog" aria-modal="true" aria-labelledby="nfmTitle">
+        <div class="nfm-dialog">
             <div class="nfm-header">
-                <h2 id="nfmTitle" class="nfm-title">Create New Form</h2>
-                <button class="nfm-close" id="closeNewFormModal" aria-label="Close">&times;</button>
+                <h2 class="nfm-title">Create New Form</h2>
+                <button class="nfm-close" id="closeNewFormModal">&times;</button>
             </div>
-
             <form method="POST" action="<?php echo e(route('dashboard.forms.store')); ?>" id="newFormQuickForm">
                 <?php echo csrf_field(); ?>
-
-                
                 <div class="nfm-field">
-                    <label for="nfm_project_id" class="nfm-label">
-                        Project <span class="nfm-required">*</span>
-                    </label>
-
+                    <label class="nfm-label">Project <span class="nfm-required">*</span></label>
                     <?php if(isset($sidebarProjects) && $sidebarProjects->isNotEmpty()): ?>
-                        <select id="nfm_project_id" name="project_id" class="nfm-select" required>
+                        <select name="project_id" class="nfm-select" required>
                             <option value="">— Select a project —</option>
                             <?php $__currentLoopData = $sidebarProjects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $proj): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option value="<?php echo e($proj->id); ?>"><?php echo e($proj->name); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
-                        <p class="nfm-help">Forms must belong to a project.</p>
-
                     <?php else: ?>
-                        
                         <div class="nfm-no-projects">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                <circle cx="12" cy="12" r="10"/>
-                                <line x1="12" y1="8" x2="12" y2="12"/>
-                                <line x1="12" y1="16" x2="12.01" y2="16"/>
-                            </svg>
-                            <div>
-                                <p class="nfm-no-projects-title">No projects yet</p>
-                                <p class="nfm-no-projects-desc">
-                                    Forms must belong to a project. Create a project first, then come back to add forms inside it.
-                                </p>
-                                <a href="<?php echo e(route('dashboard.projects.create')); ?>" class="nfm-create-project-link">
-                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
-                                        <line x1="12" y1="10" x2="12" y2="16"/>
-                                        <line x1="9" y1="13" x2="15" y2="13"/>
-                                    </svg>
-                                    Create your first project
-                                </a>
-                            </div>
+                            <i class="bi bi-info-circle"></i>
+                            <div><strong>No projects yet.</strong> Create a project first.</div>
                         </div>
                     <?php endif; ?>
                 </div>
-
-                
                 <div class="nfm-field">
-                    <label for="nfm_name" class="nfm-label">
-                        Form Name <span class="nfm-required">*</span>
-                    </label>
-                    <input
-                        type="text"
-                        id="nfm_name"
-                        name="name"
-                        class="nfm-input"
-                        placeholder="e.g. Contact Form, Newsletter Signup"
-                        required
-                    >
-                    <p class="nfm-help">A friendly name to identify this form in your dashboard.</p>
+                    <label class="nfm-label">Form Name <span class="nfm-required">*</span></label>
+                    <input type="text" name="name" class="nfm-input" placeholder="e.g. Contact Form" required>
                 </div>
-
-                
                 <div class="nfm-field">
-                    <label for="nfm_recipient_email" class="nfm-label">
-                        Recipient Email <span class="nfm-required">*</span>
-                    </label>
-                    <input
-                        type="email"
-                        id="nfm_recipient_email"
-                        name="recipient_email"
-                        class="nfm-input"
-                        value="<?php echo e(Auth::user()->email); ?>"
-                        readonly
-                    >
-                    <p class="nfm-help">Form submissions will be sent to this address.</p>
+                    <label class="nfm-label">Recipient Email</label>
+                    <input type="email" name="recipient_email" class="nfm-input" value="<?php echo e(Auth::user()->email); ?>" readonly>
                 </div>
-
-                
-                <div class="nfm-field">
-                    <label class="nfm-label">Auto-Response Settings</label>
-                    <label class="nfm-checkbox">
-                        <input type="checkbox" name="auto_response_enabled" value="1" id="nfm_auto_response_enabled">
-                        <span>Enable auto-response email</span>
-                    </label>
-                    <p class="nfm-help">
-                        Send an automatic thank-you email to users who submit this form.
-                        Sent from <?php echo e(config('mail.from.address')); ?>.
-                    </p>
-                </div>
-
-                
-                <div class="nfm-field" id="nfm_autoResponseFields" style="display:none;">
-                    <label for="nfm_auto_response_message" class="nfm-label">Auto-Response Message</label>
-                    <textarea
-                        id="nfm_auto_response_message"
-                        name="auto_response_message"
-                        class="nfm-input nfm-textarea"
-                        rows="5"
-                        placeholder="Write your thank you message here..."
-                    >Dear {visitor_name},
-
-Thank you for contacting us! We have received your message via {form_name} and will get back to you shortly.
-
-Best regards,
-The {site_name} Team</textarea>
-                </div>
-
-                
-                <div class="nfm-field">
-                    <label for="nfm_redirect_url" class="nfm-label">
-                        Redirect URL <span class="nfm-optional">optional</span>
-                    </label>
-                    <input
-                        type="url"
-                        id="nfm_redirect_url"
-                        name="redirect_url"
-                        class="nfm-input"
-                        placeholder="https://yoursite.com/thank-you"
-                    >
-                    <p class="nfm-help">Where to redirect after submission. Leave empty for our default thank-you page.</p>
-                </div>
-
-                
-                <div class="nfm-field">
-                    <label for="nfm_success_message" class="nfm-label">
-                        Success Message <span class="nfm-optional">optional</span>
-                    </label>
-                    <input
-                        type="text"
-                        id="nfm_success_message"
-                        name="success_message"
-                        class="nfm-input"
-                        value="Thank you for your submission!"
-                        placeholder="Thank you for your submission!"
-                    >
-                    <p class="nfm-help">Shown on our thank-you page or returned in the JSON response.</p>
-                </div>
-
                 <div class="nfm-actions">
-                    <button
-                        type="submit"
-                        class="nfm-btn-primary"
-                        <?php if(!isset($sidebarProjects) || $sidebarProjects->isEmpty()): ?> disabled style="opacity:0.4; cursor:not-allowed;" <?php endif; ?>
-                    >
-                        Create Form
-                    </button>
+                    <button type="submit" class="nfm-btn-primary">Create Form</button>
                     <button type="button" class="nfm-btn-secondary" id="cancelNewFormModal">Cancel</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <script src="/js/app.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-
-            // ── Mobile sidebar ──────────────────────────────────────
             const hamburger = document.getElementById('hamburger');
             const sidebar   = document.getElementById('sidebar');
             const overlay   = document.getElementById('overlay');
 
-            function openSidebar() {
-                sidebar.classList.add('open');
-                overlay.classList.add('show');
-                hamburger.classList.add('open');
-                document.body.classList.add('no-scroll');
-            }
-            function closeSidebar() {
-                sidebar.classList.remove('open');
-                overlay.classList.remove('show');
-                hamburger.classList.remove('open');
-                document.body.classList.remove('no-scroll');
-            }
+            const openSidebar  = () => { sidebar.classList.add('open');    overlay.classList.add('show');    hamburger?.classList.add('open');    document.body.classList.add('no-scroll'); };
+            const closeSidebar = () => { sidebar.classList.remove('open'); overlay.classList.remove('show'); hamburger?.classList.remove('open'); document.body.classList.remove('no-scroll'); };
+            hamburger?.addEventListener('click', () => sidebar.classList.contains('open') ? closeSidebar() : openSidebar());
+            overlay?.addEventListener('click', closeSidebar);
 
-            if (hamburger) hamburger.addEventListener('click', e => { e.stopPropagation(); sidebar.classList.contains('open') ? closeSidebar() : openSidebar(); });
-            if (overlay)   overlay.addEventListener('click', closeSidebar);
-            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSidebar(); });
-            window.addEventListener('resize', () => { if (window.innerWidth > 768) closeSidebar(); });
+            // New accordion
+            const newTrigger = document.getElementById('newQuickTrigger');
+            const newBody    = document.getElementById('newQuickBody');
+            newTrigger?.addEventListener('click', () => { newBody.classList.toggle('open'); newTrigger.classList.toggle('open'); });
 
-            let tx = 0;
-            sidebar?.addEventListener('touchstart', e => { tx = e.changedTouches[0].screenX; }, { passive: true });
-            sidebar?.addEventListener('touchend',   e => { if (tx - e.changedTouches[0].screenX > 50) closeSidebar(); }, { passive: true });
-
-            // ── Account accordion ────────────────────────────────────
-            initAccordion('accTrigger', 'accBody');
-
-            // ── Projects accordion ───────────────────────────────────
-            initAccordion('projAccTrigger', 'projAccBody');
-
-        });
-
-        /**
-         * Generic accordion initialiser.
-         * Wires up a trigger button + collapsible body by their element IDs.
-         * The body element uses max-height: 0 / max-height: N for the animation.
-         */
-        function initAccordion(triggerId, bodyId) {
-            const trigger = document.getElementById(triggerId);
-            const body    = document.getElementById(bodyId);
-            if (!trigger || !body) return;
-
-            trigger.addEventListener('click', function () {
-                const isOpen = body.classList.contains('open');
-                body.classList.toggle('open', !isOpen);
-                trigger.classList.toggle('open', !isOpen);
-                trigger.setAttribute('aria-expanded', String(!isOpen));
+            // Project expand
+            document.querySelectorAll('.proj-expand-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    document.getElementById('forms-list-' + this.dataset.proj)?.classList.toggle('open');
+                    this.classList.toggle('open');
+                });
             });
 
-            // Sync chevron rotation on page load when already open
-            if (body.classList.contains('open')) {
-                trigger.classList.add('open');
-            }
-        }
+            // Dropdowns
+            const closeAllDropdowns = () => {
+                document.querySelectorAll('.user-dropdown, .ws-dropdown').forEach(d => d.classList.remove('show'));
+                document.querySelectorAll('.user-menu-trigger, .ws-pill').forEach(t => { t.classList.remove('open'); t.setAttribute('aria-expanded','false'); });
+            };
+            const initDropdown = (tid, did) => {
+                const trigger  = document.getElementById(tid);
+                const dropdown = document.getElementById(did);
+                if (!trigger || !dropdown) return;
+                trigger.addEventListener('click', e => {
+                    e.stopPropagation();
+                    const wasOpen = dropdown.classList.contains('show');
+                    closeAllDropdowns();
+                    if (!wasOpen) { dropdown.classList.add('show'); trigger.classList.add('open'); trigger.setAttribute('aria-expanded','true'); }
+                });
+            };
+            initDropdown('userMenuTrigger', 'userDropdown');
+            initDropdown('wsSwitcherTrigger', 'wsDropdown');
+            document.addEventListener('click', closeAllDropdowns);
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeAllDropdowns(); closeNfm(); closeSidebar(); } });
 
-        // ── + New quick button ───────────────────────────────────
-        initAccordion('newQuickTrigger', 'newQuickBody');
-
-        // ── New Form modal ───────────────────────────────────────
-        const nfmBackdrop  = document.getElementById('newFormModalBackdrop');
-        const openNfmBtn   = document.getElementById('openNewFormModal');
-        const closeNfmBtn  = document.getElementById('closeNewFormModal');
-        const cancelNfmBtn = document.getElementById('cancelNewFormModal');
-
-        function openNfm() {
-            nfmBackdrop.classList.add('show');
-            nfmBackdrop.setAttribute('aria-hidden', 'false');
-            document.body.classList.add('no-scroll');
-            document.getElementById('nfm_project_id').focus();
-        }
-        function closeNfm() {
-            nfmBackdrop.classList.remove('show');
-            nfmBackdrop.setAttribute('aria-hidden', 'true');
-            document.body.classList.remove('no-scroll');
-        }
-
-        openNfmBtn?.addEventListener('click', openNfm);
-        closeNfmBtn?.addEventListener('click', closeNfm);
-        cancelNfmBtn?.addEventListener('click', closeNfm);
-        nfmBackdrop?.addEventListener('click', e => { if (e.target === nfmBackdrop) closeNfm(); });
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNfm(); });
-        // Auto-response toggle inside modal
-        const nfmAutoCheckbox = document.getElementById('nfm_auto_response_enabled');
-        const nfmAutoFields   = document.getElementById('nfm_autoResponseFields');
-        const nfmNameInput    = document.getElementById('nfm_name');
-        const nfmAutoTextarea = document.getElementById('nfm_auto_response_message');
-
-        nfmAutoCheckbox?.addEventListener('change', function () {
-            nfmAutoFields.style.display = this.checked ? 'block' : 'none';
+            // New Form Modal
+            const modal     = document.getElementById('newFormModalBackdrop');
+            const openBtn   = document.getElementById('openNewFormModal');
+            const closeBtn  = document.getElementById('closeNewFormModal');
+            const cancelBtn = document.getElementById('cancelNewFormModal');
+            const openNfm  = () => { modal.classList.add('show');    document.body.classList.add('no-scroll'); };
+            const closeNfm = () => { modal.classList.remove('show'); document.body.classList.remove('no-scroll'); document.getElementById('newFormQuickForm')?.reset(); };
+            openBtn?.addEventListener('click', openNfm);
+            closeBtn?.addEventListener('click', closeNfm);
+            cancelBtn?.addEventListener('click', closeNfm);
+            modal?.addEventListener('click', e => { if (e.target === modal) closeNfm(); });
         });
-
-        nfmNameInput?.addEventListener('input', function () {
-            if (nfmAutoTextarea.dataset.manuallyEdited) return;
-            const formName = this.value.trim() || 'our form';
-            nfmAutoTextarea.value =
-                `Dear {visitor_name},\n\nThank you for contacting us! We have received your message via ${formName} and will get back to you shortly.\n\nBest regards,\nThe {site_name} Team`;
-        });
-
-        nfmAutoTextarea?.addEventListener('input', function () {
-            this.dataset.manuallyEdited = 'true';
-        });
-
-        // Reset modal state when it closes
-        function closeNfm() {
-            nfmBackdrop.classList.remove('show');
-            nfmBackdrop.setAttribute('aria-hidden', 'true');
-            document.body.classList.remove('no-scroll');
-            // reset form state
-            document.getElementById('newFormQuickForm')?.reset();
-            if (nfmAutoFields) nfmAutoFields.style.display = 'none';
-            if (nfmAutoTextarea) delete nfmAutoTextarea.dataset.manuallyEdited;
-        }
-        
     </script>
     <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>

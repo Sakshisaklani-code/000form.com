@@ -451,7 +451,8 @@ tr.form-row-hidden { display: none; }
 <div class="dash-header au">
     <div>
         <div class="dash-eyebrow">// overview</div>
-        <h1 class="dash-title">Dashboard</h1>
+        <h1 class="dash-title">Dashboard </h1>
+        <div class="dash-eyebrow mt-4"> Welcome, <?php echo e(Auth::user()->name ?? Auth::user()->email); ?></div>
     </div>
     <a href="<?php echo e(route('dashboard.projects.create')); ?>" class="btn-new">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8">
