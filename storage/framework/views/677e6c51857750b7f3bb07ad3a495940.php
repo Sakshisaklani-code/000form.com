@@ -544,7 +544,7 @@
                 display: flex; align-items: center; gap: 0.75rem;
                 width: 100%; padding: 0.55rem 0.875rem;
                 background: transparent; border: none; cursor: pointer;
-                font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 500;
+                font-family: 'Outfit', sans-serif; font-size: 0.8125rem; font-weight: 500;
                 color: var(--text-secondary); border-radius: var(--radius-sm);
                 margin: 2px 0; text-decoration: none;
                 transition: all 0.2s ease;
@@ -637,6 +637,46 @@
                 font-family: 'Outfit', sans-serif;
                 line-height: 1.5;
             }
+            .nfm-no-projects {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.75rem;
+                padding: 0.875rem 1rem;
+                background: rgba(255,187,51,0.06);
+                border: 1px solid rgba(255,187,51,0.2);
+                border-radius: var(--radius-sm);
+                color: var(--amber);
+            }
+            .nfm-no-projects > svg {
+                flex-shrink: 0;
+                margin-top: 2px;
+                stroke: var(--amber);
+                opacity: 0.8;
+            }
+            .nfm-no-projects-title {
+                font-size: 0.875rem;
+                font-weight: 600;
+                color: var(--amber);
+                margin-bottom: 0.25rem;
+            }
+            .nfm-no-projects-desc {
+                font-size: 0.84rem;
+                color: var(--text-muted);
+                line-height: 1.5;
+                margin-bottom: 0.6rem;
+            }
+            .nfm-create-project-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                font-size: 0.8rem;
+                font-weight: 600;
+                color: var(--accent);
+                text-decoration: none;
+                transition: opacity 0.15s;
+            }
+            .nfm-create-project-link:hover { opacity: 0.75; }
+            .nfm-create-project-link svg { stroke: var(--accent); }
     </style>
     
 </head>
@@ -983,13 +1023,40 @@
                     <label for="nfm_project_id" class="nfm-label">
                         Project <span class="nfm-required">*</span>
                     </label>
-                    <select id="nfm_project_id" name="project_id" class="nfm-select" required>
-                        <option value="">— Select a project —</option>
-                        <?php $__currentLoopData = $sidebarProjects ?? []; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $proj): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option value="<?php echo e($proj->id); ?>"><?php echo e($proj->name); ?></option>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </select>
-                    <p class="nfm-help">Forms must belong to a project.</p>
+
+                    <?php if(isset($sidebarProjects) && $sidebarProjects->isNotEmpty()): ?>
+                        <select id="nfm_project_id" name="project_id" class="nfm-select" required>
+                            <option value="">— Select a project —</option>
+                            <?php $__currentLoopData = $sidebarProjects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $proj): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($proj->id); ?>"><?php echo e($proj->name); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select>
+                        <p class="nfm-help">Forms must belong to a project.</p>
+
+                    <?php else: ?>
+                        
+                        <div class="nfm-no-projects">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                            <div>
+                                <p class="nfm-no-projects-title">No projects yet</p>
+                                <p class="nfm-no-projects-desc">
+                                    Forms must belong to a project. Create a project first, then come back to add forms inside it.
+                                </p>
+                                <a href="<?php echo e(route('dashboard.projects.create')); ?>" class="nfm-create-project-link">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
+                                        <line x1="12" y1="10" x2="12" y2="16"/>
+                                        <line x1="9" y1="13" x2="15" y2="13"/>
+                                    </svg>
+                                    Create your first project
+                                </a>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
                 
@@ -1086,7 +1153,13 @@ The {site_name} Team</textarea>
                 </div>
 
                 <div class="nfm-actions">
-                    <button type="submit" class="nfm-btn-primary">Create Form</button>
+                    <button
+                        type="submit"
+                        class="nfm-btn-primary"
+                        <?php if(!isset($sidebarProjects) || $sidebarProjects->isEmpty()): ?> disabled style="opacity:0.4; cursor:not-allowed;" <?php endif; ?>
+                    >
+                        Create Form
+                    </button>
                     <button type="button" class="nfm-btn-secondary" id="cancelNewFormModal">Cancel</button>
                 </div>
             </form>
