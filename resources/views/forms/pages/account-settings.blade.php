@@ -6,7 +6,6 @@
 
 <style>
     .ap {
-        padding: 6rem 2rem 3rem;
         max-width: 1100px;
         margin: 0 auto;
         color: #eee;
