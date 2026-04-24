@@ -327,7 +327,7 @@
             background: var(--bg-surface);
         }
         .sidebar-brand a { display: flex; align-items: center; text-decoration: none; }
-        .sidebar-brand img { height: 40px; width: auto; }
+        .sidebar-brand img { height: 45px; width: auto; }
 
         .sidebar-section-label {
             font-family: 'JetBrains Mono', monospace;
