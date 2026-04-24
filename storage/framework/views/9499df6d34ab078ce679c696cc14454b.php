@@ -209,7 +209,7 @@
 }
 .stat-card:hover { border-color: rgba(0,255,136,0.15); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,255,136,0.08); }
 .stat-label {
-    font-family: var(--mono); font-size: 0.9rem; font-weight: 600;
+    font-family: var(--mono); font-size: 0.7rem; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.14em; color: var(--t3); margin-bottom: 0.6rem;
     display: flex; align-items: center; gap: 0.4rem;
 }

@@ -493,6 +493,150 @@
                 .main { padding: 1.5rem; }
             }
             body.no-scroll { overflow: hidden; position: fixed; width: 100%; }
+
+            /* ── + New Quick Button ──────────────────────────────── */
+            /* ── + New Quick Button ──────────────────────────────── */
+            .new-quick-btn {
+                display: flex; align-items: center; gap: 0.875rem;
+                width: 100%; padding: 0.7rem 0.875rem;
+                border-radius: var(--radius-md);
+                background: transparent;
+                border: none;
+                cursor: pointer; font-family: 'Outfit', sans-serif;
+                font-size: 0.875rem; font-weight: 500;
+                color: var(--text-secondary);
+                transition: all 0.2s ease;
+                position: relative;
+            }
+            .new-quick-btn:hover {
+                background: var(--accent-glow);
+                border-color: rgba(0,255,136,0.4);
+                transform: translateX(3px);
+            }
+            .new-quick-btn.open {
+                background: var(--accent-glow);
+                border-color: rgba(0,255,136,0.35);
+            }
+            .new-quick-icon {
+                display: flex; align-items: center; justify-content: center;
+                width: 22px; flex-shrink: 0;
+                opacity: 0.85; transition: all 0.2s;
+            }
+            .new-quick-btn:hover .new-quick-icon,
+            .new-quick-btn.open .new-quick-icon { opacity: 1; transform: scale(1.05); }
+            .new-quick-chevron {
+                margin-left: auto;
+                opacity: 0.5;
+                flex-shrink: 0;
+                transition: transform 0.25s ease, opacity 0.2s;
+            }
+            .new-quick-btn.open .new-quick-chevron { transform: rotate(180deg); opacity: 0.8; }
+
+            .new-quick-body {
+                overflow: hidden;
+                max-height: 0;
+                transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .new-quick-body.open { max-height: 120px; }
+
+            /* sub-items reuse exact same pattern as .acc-sub-link */
+            .new-quick-item {
+                display: flex; align-items: center; gap: 0.75rem;
+                width: 100%; padding: 0.55rem 0.875rem;
+                background: transparent; border: none; cursor: pointer;
+                font-family: 'Outfit', sans-serif; font-size: 0.8125rem; font-weight: 500;
+                color: var(--text-secondary); border-radius: var(--radius-sm);
+                margin: 2px 0; text-decoration: none;
+                transition: all 0.2s ease;
+            }
+            .new-quick-item:hover {
+                background: var(--bg-hover);
+                color: var(--text-primary);
+                transform: translateX(4px);
+            }
+            .nqi-icon {
+                display: flex; align-items: center; justify-content: center;
+                width: 16px; flex-shrink: 0; opacity: 0.6; transition: opacity 0.18s;
+            }
+            .new-quick-item:hover .nqi-icon { opacity: 1; }
+
+            /* ── New Form Modal ──────────────────────────────────── */
+            .nfm-backdrop {
+                display: none; position: fixed; inset: 0;
+                background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+                z-index: 500; align-items: center; justify-content: center;
+            }
+            .nfm-backdrop.show { display: flex; }
+            .nfm-dialog {
+                background: var(--bg-raised); border: 1px solid var(--border);
+                border-radius: var(--radius-lg); padding: 1.75rem;
+                width: 100%; max-width: 640px; margin: 1rem;
+                animation: nfmIn 0.2s ease;
+            }
+            @keyframes nfmIn {
+                from { opacity: 0; transform: translateY(-12px) scale(0.98); }
+                to   { opacity: 1; transform: translateY(0) scale(1); }
+            }
+            .nfm-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
+            .nfm-title { font-size: 1rem; font-weight: 600; color: var(--text-primary); }
+            .nfm-close {
+                width: 28px; height: 28px; border-radius: 50%;
+                background: transparent; border: 1px solid var(--border);
+                color: var(--text-secondary); cursor: pointer;
+                font-size: 1.1rem; line-height: 1; display: flex;
+                align-items: center; justify-content: center;
+                transition: all 0.15s;
+            }
+            .nfm-close:hover { background: var(--bg-hover); color: var(--text-primary); }
+            .nfm-field { margin-bottom: 1rem; }
+            .nfm-label { display: block; font-size: 0.95rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 0.4rem; }
+            .nfm-required { color: var(--red); }
+            .nfm-optional { color: var(--text-muted); font-weight: 400; font-size: 0.75rem; }
+            .nfm-select, .nfm-input {
+                width: 100%; padding: 0.6rem 0.875rem;
+                background: var(--bg-surface); border: 1px solid var(--border);
+                border-radius: var(--radius-sm); color: var(--text-primary);
+                font-family: 'Outfit', sans-serif; font-size: 0.875rem;
+                transition: border-color 0.15s;
+            }
+            .nfm-select:focus, .nfm-input:focus { outline: none; border-color: rgba(0,255,136,0.5); }
+            .nfm-actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+            .nfm-btn-primary {
+                padding: 0.6rem 1.25rem; background: var(--accent);
+                color: #000; border: none; border-radius: var(--radius-sm);
+                font-family: 'Outfit', sans-serif; font-size: 0.875rem;
+                font-weight: 600; cursor: pointer; transition: opacity 0.15s;
+            }
+            .nfm-btn-primary:hover { opacity: 0.88; }
+            .nfm-btn-secondary {
+                padding: 0.6rem 1.25rem; background: transparent;
+                color: var(--text-secondary); border: 1px solid var(--border);
+                border-radius: var(--radius-sm); font-family: 'Outfit', sans-serif;
+                font-size: 0.975rem; font-weight: 500; cursor: pointer; transition: all 0.15s;
+            }
+            .nfm-btn-secondary:hover { background: var(--bg-hover); color: var(--text-primary); }
+            .nfm-help {
+                font-size: 0.8rem;
+                color: #999090;
+                margin-top: 0.35rem;
+                line-height: 1.4;
+            }
+            .nfm-checkbox {
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                font-size: 0.8125rem;
+                color: var(--text-secondary);
+                font-weight: 300;
+                cursor: pointer;
+            }
+            .nfm-checkbox input { accent-color: var(--accent); cursor: pointer; }
+            .nfm-textarea {
+                resize: vertical;
+                min-height: 110px;
+                font-family: 'Outfit', sans-serif;
+                line-height: 1.5;
+            }
     </style>
     
 </head>
@@ -594,6 +738,47 @@
                         </a>
                     </li>
 
+                    {{-- ── + New Button ─────────────────────────────────────── --}}
+                    <li class="nav-item">
+                        <button class="new-quick-btn" id="newQuickTrigger" aria-expanded="false">
+                            <span class="new-quick-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <line x1="12" y1="8" x2="12" y2="16"/>
+                                    <line x1="8" y1="12" x2="16" y2="12"/>
+                                </svg>
+                            </span>
+                            New
+                            <svg class="new-quick-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+
+                        <div class="new-quick-body" id="newQuickBody">
+                            <a href="{{ route('dashboard.projects.create') }}" class="new-quick-item">
+                                <span class="nqi-icon">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                        <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
+                                        <line x1="12" y1="10" x2="12" y2="16"/>
+                                        <line x1="9" y1="13" x2="15" y2="13"/>
+                                    </svg>
+                                </span>
+                                New Project
+                            </a>
+                            <button class="new-quick-item" id="openNewFormModal">
+                                <span class="nqi-icon">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                        <polyline points="14 2 14 8 20 8"/>
+                                        <line x1="12" y1="18" x2="12" y2="12"/>
+                                        <line x1="9" y1="15" x2="15" y2="15"/>
+                                    </svg>
+                                </span>
+                                New Form
+                            </button>
+                        </div>
+                    </li>
+
                     {{-- Projects Accordion --}}
                     @if(isset($sidebarProjects) && $sidebarProjects->isNotEmpty())
                     <li class="nav-item">
@@ -639,7 +824,7 @@
                     @endif
 
                     {{-- New Project --}}
-                    <li class="nav-item">
+                    <li class="nav-item" style="display: none">
                         <a href="{{ route('dashboard.projects.create') }}"
                            class="nav-link {{ request()->routeIs('dashboard.projects.create') ? 'active' : '' }}">
                             <span class="nav-icon">
@@ -780,6 +965,132 @@
         </main>
     </div>
 
+    {{-- ── New Form Quick Modal ────────────────────────────── --}}
+    <div id="newFormModalBackdrop" class="nfm-backdrop" aria-hidden="true">
+        <div class="nfm-dialog" role="dialog" aria-modal="true" aria-labelledby="nfmTitle">
+            <div class="nfm-header">
+                <h2 id="nfmTitle" class="nfm-title">Create New Form</h2>
+                <button class="nfm-close" id="closeNewFormModal" aria-label="Close">&times;</button>
+            </div>
+
+            <form method="POST" action="{{ route('dashboard.forms.store') }}" id="newFormQuickForm">
+                @csrf
+
+                {{-- Project --}}
+                <div class="nfm-field">
+                    <label for="nfm_project_id" class="nfm-label">
+                        Project <span class="nfm-required">*</span>
+                    </label>
+                    <select id="nfm_project_id" name="project_id" class="nfm-select" required>
+                        <option value="">— Select a project —</option>
+                        @foreach($sidebarProjects ?? [] as $proj)
+                            <option value="{{ $proj->id }}">{{ $proj->name }}</option>
+                        @endforeach
+                    </select>
+                    <p class="nfm-help">Forms must belong to a project.</p>
+                </div>
+
+                {{-- Form Name --}}
+                <div class="nfm-field">
+                    <label for="nfm_name" class="nfm-label">
+                        Form Name <span class="nfm-required">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="nfm_name"
+                        name="name"
+                        class="nfm-input"
+                        placeholder="e.g. Contact Form, Newsletter Signup"
+                        required
+                    >
+                    <p class="nfm-help">A friendly name to identify this form in your dashboard.</p>
+                </div>
+
+                {{-- Recipient Email --}}
+                <div class="nfm-field">
+                    <label for="nfm_recipient_email" class="nfm-label">
+                        Recipient Email <span class="nfm-required">*</span>
+                    </label>
+                    <input
+                        type="email"
+                        id="nfm_recipient_email"
+                        name="recipient_email"
+                        class="nfm-input"
+                        value="{{ Auth::user()->email }}"
+                        readonly
+                    >
+                    <p class="nfm-help">Form submissions will be sent to this address.</p>
+                </div>
+
+                {{-- Auto-response toggle --}}
+                <div class="nfm-field">
+                    <label class="nfm-label">Auto-Response Settings</label>
+                    <label class="nfm-checkbox">
+                        <input type="checkbox" name="auto_response_enabled" value="1" id="nfm_auto_response_enabled">
+                        <span>Enable auto-response email</span>
+                    </label>
+                    <p class="nfm-help">
+                        Send an automatic thank-you email to users who submit this form.
+                        Sent from {{ config('mail.from.address') }}.
+                    </p>
+                </div>
+
+                {{-- Auto-response message (hidden until checked) --}}
+                <div class="nfm-field" id="nfm_autoResponseFields" style="display:none;">
+                    <label for="nfm_auto_response_message" class="nfm-label">Auto-Response Message</label>
+                    <textarea
+                        id="nfm_auto_response_message"
+                        name="auto_response_message"
+                        class="nfm-input nfm-textarea"
+                        rows="5"
+                        placeholder="Write your thank you message here..."
+                    >Dear {visitor_name},
+
+Thank you for contacting us! We have received your message via {form_name} and will get back to you shortly.
+
+Best regards,
+The {site_name} Team</textarea>
+                </div>
+
+                {{-- Redirect URL --}}
+                <div class="nfm-field">
+                    <label for="nfm_redirect_url" class="nfm-label">
+                        Redirect URL <span class="nfm-optional">optional</span>
+                    </label>
+                    <input
+                        type="url"
+                        id="nfm_redirect_url"
+                        name="redirect_url"
+                        class="nfm-input"
+                        placeholder="https://yoursite.com/thank-you"
+                    >
+                    <p class="nfm-help">Where to redirect after submission. Leave empty for our default thank-you page.</p>
+                </div>
+
+                {{-- Success Message --}}
+                <div class="nfm-field">
+                    <label for="nfm_success_message" class="nfm-label">
+                        Success Message <span class="nfm-optional">optional</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="nfm_success_message"
+                        name="success_message"
+                        class="nfm-input"
+                        value="Thank you for your submission!"
+                        placeholder="Thank you for your submission!"
+                    >
+                    <p class="nfm-help">Shown on our thank-you page or returned in the JSON response.</p>
+                </div>
+
+                <div class="nfm-actions">
+                    <button type="submit" class="nfm-btn-primary">Create Form</button>
+                    <button type="button" class="nfm-btn-secondary" id="cancelNewFormModal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script src="/js/app.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -841,6 +1152,65 @@
                 trigger.classList.add('open');
             }
         }
+
+        // ── + New quick button ───────────────────────────────────
+        initAccordion('newQuickTrigger', 'newQuickBody');
+
+        // ── New Form modal ───────────────────────────────────────
+        const nfmBackdrop  = document.getElementById('newFormModalBackdrop');
+        const openNfmBtn   = document.getElementById('openNewFormModal');
+        const closeNfmBtn  = document.getElementById('closeNewFormModal');
+        const cancelNfmBtn = document.getElementById('cancelNewFormModal');
+
+        function openNfm() {
+            nfmBackdrop.classList.add('show');
+            nfmBackdrop.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('no-scroll');
+            document.getElementById('nfm_project_id').focus();
+        }
+        function closeNfm() {
+            nfmBackdrop.classList.remove('show');
+            nfmBackdrop.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('no-scroll');
+        }
+
+        openNfmBtn?.addEventListener('click', openNfm);
+        closeNfmBtn?.addEventListener('click', closeNfm);
+        cancelNfmBtn?.addEventListener('click', closeNfm);
+        nfmBackdrop?.addEventListener('click', e => { if (e.target === nfmBackdrop) closeNfm(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNfm(); });
+        // Auto-response toggle inside modal
+        const nfmAutoCheckbox = document.getElementById('nfm_auto_response_enabled');
+        const nfmAutoFields   = document.getElementById('nfm_autoResponseFields');
+        const nfmNameInput    = document.getElementById('nfm_name');
+        const nfmAutoTextarea = document.getElementById('nfm_auto_response_message');
+
+        nfmAutoCheckbox?.addEventListener('change', function () {
+            nfmAutoFields.style.display = this.checked ? 'block' : 'none';
+        });
+
+        nfmNameInput?.addEventListener('input', function () {
+            if (nfmAutoTextarea.dataset.manuallyEdited) return;
+            const formName = this.value.trim() || 'our form';
+            nfmAutoTextarea.value =
+                `Dear {visitor_name},\n\nThank you for contacting us! We have received your message via ${formName} and will get back to you shortly.\n\nBest regards,\nThe {site_name} Team`;
+        });
+
+        nfmAutoTextarea?.addEventListener('input', function () {
+            this.dataset.manuallyEdited = 'true';
+        });
+
+        // Reset modal state when it closes
+        function closeNfm() {
+            nfmBackdrop.classList.remove('show');
+            nfmBackdrop.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('no-scroll');
+            // reset form state
+            document.getElementById('newFormQuickForm')?.reset();
+            if (nfmAutoFields) nfmAutoFields.style.display = 'none';
+            if (nfmAutoTextarea) delete nfmAutoTextarea.dataset.manuallyEdited;
+        }
+        
     </script>
     @stack('scripts')
 </body>

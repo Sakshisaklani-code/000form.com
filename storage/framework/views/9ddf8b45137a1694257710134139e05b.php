@@ -125,7 +125,7 @@
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.875rem;
+    gap: 1.1rem;
     margin-bottom: 2.25rem;
     position: relative; z-index: 1;
 }
