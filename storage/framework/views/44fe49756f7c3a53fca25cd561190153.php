@@ -46,23 +46,23 @@
     <?php echo $__env->yieldPushContent('styles'); ?>
     <style>
         .mode-toggle {
-        display: inline-flex;
-        align-items: center;
-        padding: 4px;
-        border-radius: 999px;
-        position: relative;
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.09);
-        height: 49px;
-        box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
+            padding: 4px;
+            border-radius: 999px;
+            position: relative;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.09);
+            height: 49px;
+            box-sizing: border-box;
         }
         .mode-toggle .slider-bg {
-        position: absolute;
-        top: 4px;
-        bottom: 4px;
-        border-radius: 999px;
-        pointer-events: none;
-        z-index: 0;
+            position: absolute;
+            top: 4px;
+            bottom: 4px;
+            border-radius: 999px;
+            pointer-events: none;
+            z-index: 0;
         }
         .mode-toggle .slider-bg.on-express {
         background: linear-gradient(135deg, #1a3a9f, #2255dd);
@@ -347,22 +347,42 @@
                     width: 100%;
                 }
                 
-                .nav-links.active,
-                .nav-actions.active {
+                .nav {
+                    position: relative;
+                    z-index: 1000;
+                }
+
+                .nav-links {
+                    position: fixed; /* KEY CHANGE */
+                    top: 70px; /* adjust based on navbar height */
+                    left: 0;
+                    width: 100%;
+                    height: auto;
+                    background: rgba(10, 15, 25, 0.95); /* dark overlay */
+                    backdrop-filter: blur(10px);
+                    
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    gap: 1rem;
-                    padding: 1rem 0;
+                    justify-content: flex-start;
+                    gap: 1.5rem;
+
+                    padding: 2rem 0;
+                    
+                    transform: translateY(-120%);
+                    transition: transform 0.35s ease;
+                    
+                    z-index: 999;
                 }
-                
+
                 .nav-links.active {
-                    border-top: 1px solid var(--border-color);
-                    margin-top: 1rem;
+                    transform: translateY(0); /* slide down */
                 }
-                
-                .nav-inner {
-                    flex-wrap: wrap;
+
+                /* Optional: smooth link style */
+                .nav-links li a {
+                    font-size: 18px;
+                    padding: 10px 0;
                 }
                 
                 .footer-inner {
