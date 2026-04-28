@@ -450,7 +450,7 @@
 
     <nav class="nav">
         <div class="nav-inner">
-            <a href="/" class="nav-logo">
+            <a href="/core" class="nav-logo">
                 <img src="{{ asset('images/logo/000formlogo.png') }}" alt="000form Logo">
             </a>
             
