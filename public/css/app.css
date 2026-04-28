@@ -438,6 +438,16 @@ code, .mono {
     flex-wrap: wrap;
     gap: 0.75rem;
 }
+.code-header-featured {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
 
 @media (max-width: 768px) {
     .code-header {
@@ -449,6 +459,20 @@ code, .mono {
 .code-lang {
     font-family: var(--font-mono);
     font-size: 0.75rem;
+    color: var(--accent);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: rgba(0, 255, 136, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.code-lang-featured {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    width: fit-content;
     color: var(--accent);
     font-weight: 700;
     text-transform: uppercase;

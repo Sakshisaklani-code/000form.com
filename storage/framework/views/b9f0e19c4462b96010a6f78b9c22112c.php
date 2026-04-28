@@ -1,11 +1,11 @@
-@extends('layouts.app')
 
-@section('title', 'Internship Application Form - 000form Library')
 
-@push('styles')
-<link href="{{ asset('css/library.css') }}" rel="stylesheet">
-<link href="{{ asset('css/category.css') }}" rel="stylesheet">
-<link href="{{ asset('css/tenant-form.css') }}" rel="stylesheet">
+<?php $__env->startSection('title', 'Internship Application Form - 000form Library'); ?>
+
+<?php $__env->startPush('styles'); ?>
+<link href="<?php echo e(asset('css/library.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('css/category.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('css/tenant-form.css')); ?>" rel="stylesheet">
 <style>
     .form-preview-code {
         display: grid;
@@ -225,617 +225,617 @@
         opacity: 0.9;
     }
     /* ============================================
-    MOBILE RESPONSIVE STYLES
-    ============================================ */
+   MOBILE RESPONSIVE STYLES
+   ============================================ */
 
-    /* Large Tablets (992px and below) */
-    @media (max-width: 992px) {
-        .form-preview-code {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        
-        .form-preview-card {
-            order: 1;
-        }
-        
-        .code-tabs-container {
-            order: 2;
-        }
-        
-        .preview-frame {
-            max-height: 500px;
-        }
-        
-        .code-block-content {
-            max-height: 400px;
-            min-height: 300px;
-        }
-        
-        /* Form Preview Content */
-        .internship-form-preview {
-            padding: 1.25rem;
-        }
-        
-        .internship-form-preview h3 {
-            font-size: 1.35rem;
-        }
-        
-        .internship-form-preview .form-description {
-            font-size: 0.85rem;
-        }
-        
-        .internship-form-preview h4 {
-            font-size: 1rem;
-            margin: 1.25rem 0 0.875rem;
-        }
-        
-        .internship-form-preview .form-group {
-            margin-bottom: 1rem;
-        }
-        
-        .internship-form-preview label {
-            font-size: 0.8rem;
-        }
-        
-        .internship-form-preview .form-input,
-        .internship-form-preview .form-select,
-        .internship-form-preview textarea {
-            padding: 0.625rem 0.875rem;
-            font-size: 0.9rem;
-        }
-        
-        .internship-form-preview .form-row {
-            gap: 0.75rem;
-        }
-        
-        /* Related Forms Grid */
-        .related-forms-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
+/* Large Tablets (992px and below) */
+@media (max-width: 992px) {
+    .form-preview-code {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
+    
+    .form-preview-card {
+        order: 1;
+    }
+    
+    .code-tabs-container {
+        order: 2;
+    }
+    
+    .preview-frame {
+        max-height: 500px;
+    }
+    
+    .code-block-content {
+        max-height: 400px;
+        min-height: 300px;
+    }
+    
+    /* Form Preview Content */
+    .internship-form-preview {
+        padding: 1.25rem;
+    }
+    
+    .internship-form-preview h3 {
+        font-size: 1.35rem;
+    }
+    
+    .internship-form-preview .form-description {
+        font-size: 0.85rem;
+    }
+    
+    .internship-form-preview h4 {
+        font-size: 1rem;
+        margin: 1.25rem 0 0.875rem;
+    }
+    
+    .internship-form-preview .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .internship-form-preview label {
+        font-size: 0.8rem;
+    }
+    
+    .internship-form-preview .form-input,
+    .internship-form-preview .form-select,
+    .internship-form-preview textarea {
+        padding: 0.625rem 0.875rem;
+        font-size: 0.9rem;
+    }
+    
+    .internship-form-preview .form-row {
+        gap: 0.75rem;
+    }
+    
+    /* Related Forms Grid */
+    .related-forms-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
 
-    /* Tablets (768px and below) */
-    @media (max-width: 768px) {
-        .form-detail-section {
-            padding: 0 1rem;
-        }
-        
-        .form-preview-code {
-            gap: 1.5rem;
-        }
-        
-        /* Breadcrumb */
-        .form-breadcrumb {
-            font-size: 0.8rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            padding: 0.75rem 0;
-        }
-        
-        .form-breadcrumb a {
-            font-size: 0.8rem;
-        }
-        
-        .form-breadcrumb span {
-            font-size: 0.8rem;
-        }
-        
-        /* Form Preview Card */
-        .form-preview-card {
-            padding: 0;
-        }
-        
-        .form-preview-header {
-            padding: 1.25rem;
-        }
-        
-        .form-preview-header h2 {
-            font-size: 1.25rem;
-        }
-        
-        .form-preview-subtitle {
-            font-size: 0.85rem;
-        }
-        
-        /* Live Preview */
-        .live-form-preview {
-            padding: 0 1rem 1.5rem;
-        }
-        
-        .preview-title {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .preview-frame {
-            padding: 1rem;
-            max-height: 450px;
-        }
-        
-        /* Internship Form Preview */
-        .internship-form-preview {
-            padding: 1.25rem;
-        }
-        
-        .internship-form-preview h3 {
-            font-size: 1.25rem;
-        }
-        
-        .internship-form-preview h4 {
-            font-size: 0.95rem;
-            margin: 1rem 0 0.75rem;
-            padding-bottom: 0.375rem;
-        }
-        
-        .internship-form-preview .form-row {
-            flex-direction: column;
-            gap: 0;
-        }
-        
-        .internship-form-preview .form-row .form-group {
-            margin-bottom: 1rem;
-        }
-        
-        .internship-form-preview .checkbox-group {
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-        
-        .internship-form-preview .form-submit {
-            font-size: 0.9rem;
-            padding: 0.7rem 1.25rem;
-        }
-        
-        .internship-form-preview .form-note {
-            font-size: 0.75rem;
-            padding: 0.75rem;
-        }
-        
-        /* Code Tabs Container */
-        .code-tabs-header {
-            padding: 1.25rem;
-        }
-        
-        .code-tabs-title {
-            font-size: 1.1rem;
-        }
-        
-        .code-tabs-subtitle {
-            font-size: 0.8rem;
-        }
-        
-        .code-tabs {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .code-tab {
-            padding: 0.625rem 1rem;
-            font-size: 0.8rem;
-            white-space: nowrap;
-        }
-        
-        .code-block-header {
-            padding: 0.75rem 1rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        
-        .code-block-language {
-            font-size: 0.7rem;
-            padding: 0.2rem 0.5rem;
-        }
-        
-        .code-block-desc {
-            font-size: 0.75rem;
-        }
-        
-        .code-copy-btn {
-            font-size: 0.75rem;
-            padding: 0.4rem 0.75rem;
-        }
-        
-        .code-block-content {
-            max-height: 350px;
-            min-height: 250px;
-            padding: 1rem;
-        }
-        
-        .code-block-content pre {
-            font-size: 0.75rem;
-            line-height: 1.5;
-        }
-        
-        /* Instructions Card */
-        .form-instructions {
-            margin-top: 2rem;
-        }
-        
-        .instruction-card {
-            padding: 1.25rem;
-            gap: 1rem;
-        }
-        
-        .instruction-icon {
-            width: 2.5rem;
-            height: 2.5rem;
-            min-width: 2.5rem;
-            flex-shrink: 0;
-        }
-        
-        .instruction-content h4 {
-            font-size: 1rem;
-        }
-        
-        .instruction-content ol {
-            padding-left: 1.25rem;
-        }
-        
-        .instruction-content li {
-            font-size: 0.85rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        /* Related Forms */
-        .related-forms {
-            margin-top: 2.5rem;
-            padding: 1.5rem 0;
-        }
-        
-        .related-forms h3 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .related-forms-grid {
-            grid-template-columns: 1fr;
-            gap: 0.75rem;
-        }
-        
-        .related-form-card {
-            padding: 1.25rem;
-        }
-        
-        .related-form-card h4 {
-            font-size: 1rem;
-        }
-        
-        .related-form-card p {
-            font-size: 0.8rem;
-        }
-        
-        .related-form-link {
-            font-size: 0.8rem;
-        }
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+    .form-detail-section {
+        padding: 0 1rem;
     }
+    
+    .form-preview-code {
+        gap: 1.5rem;
+    }
+    
+    /* Breadcrumb */
+    .form-breadcrumb {
+        font-size: 0.8rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0.75rem 0;
+    }
+    
+    .form-breadcrumb a {
+        font-size: 0.8rem;
+    }
+    
+    .form-breadcrumb span {
+        font-size: 0.8rem;
+    }
+    
+    /* Form Preview Card */
+    .form-preview-card {
+        padding: 0;
+    }
+    
+    .form-preview-header {
+        padding: 1.25rem;
+    }
+    
+    .form-preview-header h2 {
+        font-size: 1.25rem;
+    }
+    
+    .form-preview-subtitle {
+        font-size: 0.85rem;
+    }
+    
+    /* Live Preview */
+    .live-form-preview {
+        padding: 0 1rem 1.5rem;
+    }
+    
+    .preview-title {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .preview-frame {
+        padding: 1rem;
+        max-height: 450px;
+    }
+    
+    /* Internship Form Preview */
+    .internship-form-preview {
+        padding: 1.25rem;
+    }
+    
+    .internship-form-preview h3 {
+        font-size: 1.25rem;
+    }
+    
+    .internship-form-preview h4 {
+        font-size: 0.95rem;
+        margin: 1rem 0 0.75rem;
+        padding-bottom: 0.375rem;
+    }
+    
+    .internship-form-preview .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .internship-form-preview .form-row .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .internship-form-preview .checkbox-group {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .internship-form-preview .form-submit {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.25rem;
+    }
+    
+    .internship-form-preview .form-note {
+        font-size: 0.75rem;
+        padding: 0.75rem;
+    }
+    
+    /* Code Tabs Container */
+    .code-tabs-header {
+        padding: 1.25rem;
+    }
+    
+    .code-tabs-title {
+        font-size: 1.1rem;
+    }
+    
+    .code-tabs-subtitle {
+        font-size: 0.8rem;
+    }
+    
+    .code-tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .code-tab {
+        padding: 0.625rem 1rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+    
+    .code-block-header {
+        padding: 0.75rem 1rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .code-block-language {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+    }
+    
+    .code-block-desc {
+        font-size: 0.75rem;
+    }
+    
+    .code-copy-btn {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.75rem;
+    }
+    
+    .code-block-content {
+        max-height: 350px;
+        min-height: 250px;
+        padding: 1rem;
+    }
+    
+    .code-block-content pre {
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+    
+    /* Instructions Card */
+    .form-instructions {
+        margin-top: 2rem;
+    }
+    
+    .instruction-card {
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+    
+    .instruction-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        min-width: 2.5rem;
+        flex-shrink: 0;
+    }
+    
+    .instruction-content h4 {
+        font-size: 1rem;
+    }
+    
+    .instruction-content ol {
+        padding-left: 1.25rem;
+    }
+    
+    .instruction-content li {
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    /* Related Forms */
+    .related-forms {
+        margin-top: 2.5rem;
+        padding: 1.5rem 0;
+    }
+    
+    .related-forms h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .related-forms-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .related-form-card {
+        padding: 1.25rem;
+    }
+    
+    .related-form-card h4 {
+        font-size: 1rem;
+    }
+    
+    .related-form-card p {
+        font-size: 0.8rem;
+    }
+    
+    .related-form-link {
+        font-size: 0.8rem;
+    }
+}
 
-    /* Mobile Phones (576px and below) */
-    @media (max-width: 576px) {
-        .form-detail-section {
-            padding: 0 0.75rem;
-        }
-        
-        .hero-content {
-            padding: 2rem 1rem;
-        }
-        
-        .hero-badge {
-            font-size: 0.7rem;
-            padding: 0.3rem 0.75rem;
-        }
-        
-        .hero-title {
-            font-size: 1.75rem;
-        }
-        
-        .form-breadcrumb {
-            font-size: 0.75rem;
-            padding: 0.5rem 0;
-        }
-        
-        .form-breadcrumb a,
-        .form-breadcrumb span {
-            font-size: 0.75rem;
-        }
-        
-        .form-breadcrumb svg {
-            width: 14px;
-            height: 14px;
-        }
-        
-        /* Form Preview Card */
-        .form-preview-header {
-            padding: 1rem;
-        }
-        
-        .form-preview-header h2 {
-            font-size: 1.15rem;
-        }
-        
-        .form-preview-subtitle {
-            font-size: 0.8rem;
-        }
-        
-        /* Live Preview */
-        .live-form-preview {
-            padding: 0 0.75rem 1.25rem;
-        }
-        
-        .preview-title {
-            font-size: 0.95rem;
-        }
-        
-        .preview-frame {
-            padding: 0.75rem;
-            max-height: 400px;
-        }
-        
-        /* Internship Form Preview */
-        .internship-form-preview {
-            padding: 1rem;
-        }
-        
-        .internship-form-preview h3 {
-            font-size: 1.15rem;
-            margin-bottom: 0.375rem;
-        }
-        
-        .internship-form-preview .form-description {
-            font-size: 0.8rem;
-            margin-bottom: 1.25rem;
-        }
-        
-        .internship-form-preview h4 {
-            font-size: 0.9rem;
-            margin: 1rem 0 0.75rem;
-        }
-        
-        .internship-form-preview .form-group {
-            margin-bottom: 0.875rem;
-        }
-        
-        .internship-form-preview label {
-            font-size: 0.78rem;
-            margin-bottom: 0.375rem;
-        }
-        
-        .internship-form-preview .form-input,
-        .internship-form-preview .form-select,
-        .internship-form-preview textarea {
-            padding: 0.6rem 0.75rem;
-            font-size: 0.85rem;
-            border-radius: 6px;
-        }
-        
-        .internship-form-preview textarea {
-            min-height: 80px;
-        }
-        
-        .internship-form-preview .checkbox-group {
-            gap: 0.6rem;
-        }
-        
-        .internship-form-preview .checkbox-item {
-            gap: 0.375rem;
-        }
-        
-        .internship-form-preview .checkbox-item label {
-            font-size: 0.85rem;
-        }
-        
-        .internship-form-preview .form-submit {
-            font-size: 0.85rem;
-            padding: 0.65rem 1rem;
-            border-radius: 6px;
-        }
-        
-        .internship-form-preview .form-note {
-            font-size: 0.7rem;
-            padding: 0.625rem;
-            gap: 0.5rem;
-        }
-        
-        .internship-form-preview .form-note svg {
-            width: 12px;
-            height: 12px;
-            min-width: 12px;
-        }
-        
-        /* Code Tabs */
-        .code-tabs-header {
-            padding: 1rem;
-        }
-        
-        .code-tabs-title {
-            font-size: 1rem;
-        }
-        
-        .code-tabs-subtitle {
-            font-size: 0.75rem;
-            line-height: 1.5;
-        }
-        
-        .code-tabs {
-            flex-wrap: nowrap;
-        }
-        
-        .code-tab {
-            padding: 0.5rem 0.875rem;
-            font-size: 0.78rem;
-        }
-        
-        .code-block-header {
-            padding: 0.625rem 0.875rem;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.5rem;
-        }
-        
-        .code-block-info {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.25rem;
-        }
-        
-        .code-block-desc {
-            font-size: 0.7rem;
-        }
-        
-        .code-copy-btn {
-            width: 100%;
-            text-align: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            padding: 0.5rem;
-        }
-        
-        .code-block-content {
-            max-height: 300px;
-            min-height: 200px;
-            padding: 0.75rem;
-        }
-        
-        .code-block-content pre {
-            font-size: 0.7rem;
-            line-height: 1.4;
-        }
-        
-        /* Instructions */
-        .form-instructions {
-            margin-top: 1.5rem;
-        }
-        
-        .instruction-card {
-            padding: 1rem;
-            flex-direction: column;
-            gap: 0.75rem;
-            align-items: flex-start;
-        }
-        
-        .instruction-icon {
-            width: 2.25rem;
-            height: 2.25rem;
-            min-width: 2.25rem;
-        }
-        
-        .instruction-content h4 {
-            font-size: 0.95rem;
-        }
-        
-        .instruction-content ol {
-            padding-left: 1.1rem;
-        }
-        
-        .instruction-content li {
-            font-size: 0.8rem;
-            margin-bottom: 0.625rem;
-        }
-        
-        .instruction-content code {
-            font-size: 0.75rem;
-            padding: 0.15rem 0.4rem;
-        }
-        
-        /* Related Forms */
-        .related-forms {
-            margin-top: 2rem;
-            padding: 1.25rem 0;
-        }
-        
-        .related-forms h3 {
-            font-size: 1rem;
-        }
-        
-        .related-forms-grid {
-            grid-template-columns: 1fr;
-            gap: 0.625rem;
-        }
-        
-        .related-form-card {
-            padding: 1rem;
-        }
-        
-        .related-form-card h4 {
-            font-size: 0.95rem;
-        }
-        
-        .related-form-card p {
-            font-size: 0.78rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .related-form-link {
-            font-size: 0.78rem;
-        }
+/* Mobile Phones (576px and below) */
+@media (max-width: 576px) {
+    .form-detail-section {
+        padding: 0 0.75rem;
     }
+    
+    .hero-content {
+        padding: 2rem 1rem;
+    }
+    
+    .hero-badge {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.75rem;
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .form-breadcrumb {
+        font-size: 0.75rem;
+        padding: 0.5rem 0;
+    }
+    
+    .form-breadcrumb a,
+    .form-breadcrumb span {
+        font-size: 0.75rem;
+    }
+    
+    .form-breadcrumb svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    /* Form Preview Card */
+    .form-preview-header {
+        padding: 1rem;
+    }
+    
+    .form-preview-header h2 {
+        font-size: 1.15rem;
+    }
+    
+    .form-preview-subtitle {
+        font-size: 0.8rem;
+    }
+    
+    /* Live Preview */
+    .live-form-preview {
+        padding: 0 0.75rem 1.25rem;
+    }
+    
+    .preview-title {
+        font-size: 0.95rem;
+    }
+    
+    .preview-frame {
+        padding: 0.75rem;
+        max-height: 400px;
+    }
+    
+    /* Internship Form Preview */
+    .internship-form-preview {
+        padding: 1rem;
+    }
+    
+    .internship-form-preview h3 {
+        font-size: 1.15rem;
+        margin-bottom: 0.375rem;
+    }
+    
+    .internship-form-preview .form-description {
+        font-size: 0.8rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .internship-form-preview h4 {
+        font-size: 0.9rem;
+        margin: 1rem 0 0.75rem;
+    }
+    
+    .internship-form-preview .form-group {
+        margin-bottom: 0.875rem;
+    }
+    
+    .internship-form-preview label {
+        font-size: 0.78rem;
+        margin-bottom: 0.375rem;
+    }
+    
+    .internship-form-preview .form-input,
+    .internship-form-preview .form-select,
+    .internship-form-preview textarea {
+        padding: 0.6rem 0.75rem;
+        font-size: 0.85rem;
+        border-radius: 6px;
+    }
+    
+    .internship-form-preview textarea {
+        min-height: 80px;
+    }
+    
+    .internship-form-preview .checkbox-group {
+        gap: 0.6rem;
+    }
+    
+    .internship-form-preview .checkbox-item {
+        gap: 0.375rem;
+    }
+    
+    .internship-form-preview .checkbox-item label {
+        font-size: 0.85rem;
+    }
+    
+    .internship-form-preview .form-submit {
+        font-size: 0.85rem;
+        padding: 0.65rem 1rem;
+        border-radius: 6px;
+    }
+    
+    .internship-form-preview .form-note {
+        font-size: 0.7rem;
+        padding: 0.625rem;
+        gap: 0.5rem;
+    }
+    
+    .internship-form-preview .form-note svg {
+        width: 12px;
+        height: 12px;
+        min-width: 12px;
+    }
+    
+    /* Code Tabs */
+    .code-tabs-header {
+        padding: 1rem;
+    }
+    
+    .code-tabs-title {
+        font-size: 1rem;
+    }
+    
+    .code-tabs-subtitle {
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+    
+    .code-tabs {
+        flex-wrap: nowrap;
+    }
+    
+    .code-tab {
+        padding: 0.5rem 0.875rem;
+        font-size: 0.78rem;
+    }
+    
+    .code-block-header {
+        padding: 0.625rem 0.875rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .code-block-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+    
+    .code-block-desc {
+        font-size: 0.7rem;
+    }
+    
+    .code-copy-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        padding: 0.5rem;
+    }
+    
+    .code-block-content {
+        max-height: 300px;
+        min-height: 200px;
+        padding: 0.75rem;
+    }
+    
+    .code-block-content pre {
+        font-size: 0.7rem;
+        line-height: 1.4;
+    }
+    
+    /* Instructions */
+    .form-instructions {
+        margin-top: 1.5rem;
+    }
+    
+    .instruction-card {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-start;
+    }
+    
+    .instruction-icon {
+        width: 2.25rem;
+        height: 2.25rem;
+        min-width: 2.25rem;
+    }
+    
+    .instruction-content h4 {
+        font-size: 0.95rem;
+    }
+    
+    .instruction-content ol {
+        padding-left: 1.1rem;
+    }
+    
+    .instruction-content li {
+        font-size: 0.8rem;
+        margin-bottom: 0.625rem;
+    }
+    
+    .instruction-content code {
+        font-size: 0.75rem;
+        padding: 0.15rem 0.4rem;
+    }
+    
+    /* Related Forms */
+    .related-forms {
+        margin-top: 2rem;
+        padding: 1.25rem 0;
+    }
+    
+    .related-forms h3 {
+        font-size: 1rem;
+    }
+    
+    .related-forms-grid {
+        grid-template-columns: 1fr;
+        gap: 0.625rem;
+    }
+    
+    .related-form-card {
+        padding: 1rem;
+    }
+    
+    .related-form-card h4 {
+        font-size: 0.95rem;
+    }
+    
+    .related-form-card p {
+        font-size: 0.78rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .related-form-link {
+        font-size: 0.78rem;
+    }
+}
 
-    /* Very Small Mobile Phones (380px and below) */
-    @media (max-width: 380px) {
-        .hero-title {
-            font-size: 1.5rem;
-        }
-        
-        .form-breadcrumb {
-            font-size: 0.7rem;
-        }
-        
-        .form-breadcrumb a,
-        .form-breadcrumb span {
-            font-size: 0.7rem;
-        }
-        
-        .form-breadcrumb svg {
-            width: 12px;
-            height: 12px;
-        }
-        
-        .form-preview-header h2 {
-            font-size: 1.05rem;
-        }
-        
-        .internship-form-preview {
-            padding: 0.875rem;
-        }
-        
-        .internship-form-preview h3 {
-            font-size: 1.05rem;
-        }
-        
-        .internship-form-preview h4 {
-            font-size: 0.85rem;
-        }
-        
-        .internship-form-preview label {
-            font-size: 0.75rem;
-        }
-        
-        .internship-form-preview .form-input,
-        .internship-form-preview .form-select,
-        .internship-form-preview textarea {
-            padding: 0.5rem 0.625rem;
-            font-size: 0.8rem;
-        }
-        
-        .internship-form-preview .form-submit {
-            font-size: 0.8rem;
-            padding: 0.6rem 0.875rem;
-        }
-        
-        .code-tab {
-            padding: 0.45rem 0.75rem;
-            font-size: 0.72rem;
-        }
-        
-        .code-block-content pre {
-            font-size: 0.65rem;
-        }
+/* Very Small Mobile Phones (380px and below) */
+@media (max-width: 380px) {
+    .hero-title {
+        font-size: 1.5rem;
     }
+    
+    .form-breadcrumb {
+        font-size: 0.7rem;
+    }
+    
+    .form-breadcrumb a,
+    .form-breadcrumb span {
+        font-size: 0.7rem;
+    }
+    
+    .form-breadcrumb svg {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .form-preview-header h2 {
+        font-size: 1.05rem;
+    }
+    
+    .internship-form-preview {
+        padding: 0.875rem;
+    }
+    
+    .internship-form-preview h3 {
+        font-size: 1.05rem;
+    }
+    
+    .internship-form-preview h4 {
+        font-size: 0.85rem;
+    }
+    
+    .internship-form-preview label {
+        font-size: 0.75rem;
+    }
+    
+    .internship-form-preview .form-input,
+    .internship-form-preview .form-select,
+    .internship-form-preview textarea {
+        padding: 0.5rem 0.625rem;
+        font-size: 0.8rem;
+    }
+    
+    .internship-form-preview .form-submit {
+        font-size: 0.8rem;
+        padding: 0.6rem 0.875rem;
+    }
+    
+    .code-tab {
+        padding: 0.45rem 0.75rem;
+        font-size: 0.72rem;
+    }
+    
+    .code-block-content pre {
+        font-size: 0.65rem;
+    }
+}
 </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <section class="form-detail-section">
     <section style="margin-top:4.5rem">
@@ -860,11 +860,11 @@
     <div class="container">
         
         <div class="form-breadcrumb">
-            <a href="{{ route('Home.library') }}">Library</a>
+            <a href="<?php echo e(route('Home.library')); ?>">Library</a>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M9 18l6-6-6-6"/>
             </svg>
-            <a href="{{ route('Home.library.ApplicationForm') }}">Application Forms</a>
+            <a href="<?php echo e(route('Home.library.ApplicationForm')); ?>">Application Forms</a>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M9 18l6-6-6-6"/>
             </svg>
@@ -1425,17 +1425,17 @@
         <div class="related-forms">
             <h3>Related Application Forms</h3>
             <div class="related-forms-grid">
-                <a href="{{ route('Home.library.JobApplicationForm') }}" class="related-form-card">
+                <a href="<?php echo e(route('Home.library.JobApplicationForm')); ?>" class="related-form-card">
                     <h4>Job Application Form</h4>
                     <p>Minimal job application form</p>
                     <span class="related-form-link">View form →</span>
                 </a>
-                <a href="{{ route('Home.library.RentalApplicationForm') }}" class="related-form-card">
+                <a href="<?php echo e(route('Home.library.RentalApplicationForm')); ?>" class="related-form-card">
                     <h4>Rental Application Form</h4>
                     <p>Property rental application</p>
                     <span class="related-form-link">View form →</span>
                 </a>
-                <a href="{{ route('Home.library.VendorApplicationForm') }}" class="related-form-card">
+                <a href="<?php echo e(route('Home.library.VendorApplicationForm')); ?>" class="related-form-card">
                     <h4>Vendor Application Form</h4>
                     <p>Register as a vendor or supplier</p>
                     <span class="related-form-link">View form →</span>
@@ -1484,4 +1484,5 @@
     });
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/Library/Internship-ApplicationForm.blade.php ENDPATH**/ ?>

@@ -595,7 +595,7 @@ footer::before{
 <!-- ─── HEADER WITH BRIGHT TEXT LINKS (BOTH DEFAULT MUTED) ─── -->
 <header>
   <a href="#" class="logo-wrap">
-    <img src="<?php echo e(asset('images/logo/000formlogo-default.png')); ?>" alt="000form Logo" style="width:auto;height:45px;"/>
+    <img src="<?php echo e(asset('images/logo/000formlogo-default.png')); ?>" alt="000form Logo" style="width:auto;height:40px;"/>
   </a>
   <div class="nav-links">
     <button class="nav-link nav-link-core" id="navCore">◆ Core</button>

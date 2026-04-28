@@ -1,8 +1,8 @@
-@extends('layouts.app')
 
-@section('title', '000form - Features')
 
-@section('content')
+<?php $__env->startSection('title', '000form - Features'); ?>
+
+<?php $__env->startSection('content'); ?>
 
 <style>
     /* ═══════════════════════════════════════════════════
@@ -599,9 +599,7 @@
 <div class="fp">
 <div class="fp-wrap">
 
-    {{-- ════════════════════════════════════════
-         HERO
-    ════════════════════════════════════════ --}}
+    
     <div class="fp-head">
         <div class="hero-badge" style="margin-bottom:1.5rem;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -613,17 +611,13 @@
         <p>A complete form backend without the complexity — all the power, none of the server maintenance.</p>
     </div>
 
-    {{-- ════════════════════════════════════════
-         SECTION LABEL: Core features
-    ════════════════════════════════════════ --}}
+    
     <div class="fp-sep">
         <span class="fp-sep__label">Core features</span>
         <div class="fp-sep__line"></div>
     </div>
 
-    {{-- ════════════════════════════════════════
-         ROW 1 — Email (8) + Spam (4)
-    ════════════════════════════════════════ --}}
+    
     <div class="fp-grid">
 
         <div class="fp-card fp-col-6">
@@ -703,11 +697,9 @@
             </div>
         </div>
 
-    </div>{{-- /row 1 --}}
+    </div>
 
-    {{-- ════════════════════════════════════════
-         ROW 2 — Dashboard (4) + Analytics (4) + AJAX (4)
-    ════════════════════════════════════════ --}}
+    
     <div class="fp-grid">
 
         <div class="fp-card fp-col-4">
@@ -754,11 +746,9 @@
             </div>
         </div>
 
-    </div>{{-- /row 2 --}}
+    </div>
 
-    {{-- ════════════════════════════════════════
-         ROW 3 — CSV (3) + Team (3) + File uploads (6)
-    ════════════════════════════════════════ --}}
+    
     <div class="fp-grid">
 
         <div class="fp-card fp-col-4">
@@ -810,25 +800,19 @@
             </div>
         </div>
 
-    </div>{{-- /row 3 --}}
+    </div>
 
-    {{-- ════════════════════════════════════════
-         SECTION LABEL: Add-ons
-    ════════════════════════════════════════ --}}
+    
     <div class="fp-sep" style="margin-top:0.5rem;">
         <span class="fp-sep__label">Optional add-ons</span>
         <div class="fp-sep__line"></div>
     </div>
 
-    {{-- ════════════════════════════════════════
-         ROW 4 — Chat Widget (full width)
-         Left: description + code
-         Right: accurate widget preview
-    ════════════════════════════════════════ --}}
+    
     <div class="fp-grid" style="margin-bottom:1.5rem;">
         <div class="fp-card fp-col-12" style="flex-direction:row; align-items:flex-start; gap:2.5rem; flex-wrap:wrap;">
 
-            {{-- LEFT: description --}}
+            
             <div style="flex:1; min-width:280px; display:flex; flex-direction:column; gap:0.9rem;">
                 <div class="fp-icon fp-icon--green">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -859,12 +843,12 @@
                 </div>
             </div>
 
-            {{-- RIGHT: accurate chat widget preview --}}
+            
             <div class="fp-chat-wrap">
 
-                {{-- Popup modal --}}
+                
                 <div class="fp-cw">
-                    {{-- Dark green header --}}
+                    
                     <div class="fp-cw__hdr">
                         <div class="fp-cw__hdr-text">
                             <div class="fp-cw__hdr-title">Contact Us</div>
@@ -873,7 +857,7 @@
                         <div class="fp-cw__close">✕</div>
                     </div>
 
-                    {{-- Form body --}}
+                    
                     <div class="fp-cw__body">
                         <div class="fp-cw__field">
                             <label class="fp-cw__label">Your Name</label>
@@ -891,30 +875,29 @@
                     </div>
                 </div>
 
-                {{-- Floating action button --}}
+                
                 <div class="fp-cw__fab">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2">
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                     </svg>
                 </div>
 
-            </div>{{-- /fp-chat-wrap --}}
+            </div>
         </div>
-    </div>{{-- /row 4 --}}
+    </div>
 
-    {{-- ════════════════════════════════════════
-         BOTTOM CTA
-    ════════════════════════════════════════ --}}
+    
     <div class="fp-cta">
         <h2>Ready to ship your forms?</h2>
         <p>Point your form at your endpoint and go live in minutes — no server needed.</p>
         <div class="fp-btn-row">
-            <a href="{{ route('signup') }}" class="fp-btn-solid">Get started free →</a>
-            <a href="{{ route('docs') }}"   class="fp-btn-outline">Read the docs</a>
+            <a href="<?php echo e(route('signup')); ?>" class="fp-btn-solid">Get started free →</a>
+            <a href="<?php echo e(route('docs')); ?>"   class="fp-btn-outline">Read the docs</a>
         </div>
     </div>
 
 </div>
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Git-folders\000form.com\resources\views/pages/features.blade.php ENDPATH**/ ?>

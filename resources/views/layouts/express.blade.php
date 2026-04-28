@@ -358,7 +358,7 @@
             top: 64px; /* adjust to your navbar height */
             left: 0;
             width: 100%;
-            height: auto;
+            height: calc(100vh - 64px); /* full remaining height */
 
             background: rgba(6,6,10,0.96);
             backdrop-filter: blur(18px);
