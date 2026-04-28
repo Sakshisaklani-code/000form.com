@@ -578,13 +578,13 @@ footer::before{
   .compare-wrap{grid-template-columns:1fr;}
   header{width:calc(100% - 24px);padding:0 16px;}
   .nav-links{gap:20px;}
-  .nav-link{font-size:0.95rem;}
+  .nav-link{font-size:0.95rem!important;}
 }
 @media(max-width:600px){
   .hero h1{letter-spacing:-2.5px;}
   .cta-card{padding:48px 24px;}
   .section{padding:80px 5%;}
-  .nav-links{gap:14px;}
+  .nav-links{gap:4px;}
 }
 </style>
 </head>
@@ -595,7 +595,7 @@ footer::before{
 <!-- ─── HEADER WITH BRIGHT TEXT LINKS (BOTH DEFAULT MUTED) ─── -->
 <header>
   <a href="#" class="logo-wrap">
-    <img src="{{ asset('images/logo/000formlogo-default.png') }}" alt="000form Logo" style="width:auto;height:45px;"/>
+    <img src="{{ asset('images/logo/000formlogo-default.png') }}" alt="000form Logo" style="width:auto;height:40px;"/>
   </a>
   <div class="nav-links">
     <button class="nav-link nav-link-core" id="navCore">◆ Core</button>
