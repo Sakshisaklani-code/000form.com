@@ -195,6 +195,835 @@
         cursor: not-allowed;
         opacity: 0.9;
     }
+
+    /* ============================================
+    VENDOR APPLICATION FORM - MOBILE RESPONSIVE
+    ============================================ */
+
+    /* Large Tablets & Small Desktops (992px and below) */
+    @media (max-width: 992px) {
+        .form-preview-code {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .form-preview-card {
+            order: 1;
+        }
+        
+        .code-tabs-container {
+            order: 2;
+        }
+        
+        .preview-frame {
+            max-height: 500px;
+        }
+        
+        .code-block-content {
+            max-height: 400px;
+            min-height: 300px;
+        }
+        
+        /* Vendor Form Preview Adjustments */
+        .vendor-form-preview {
+            padding: 1.25rem;
+        }
+        
+        .vendor-form-preview h3 {
+            font-size: 1.35rem;
+        }
+        
+        .vendor-form-preview .form-description {
+            font-size: 0.85rem;
+        }
+        
+        .vendor-form-preview h4 {
+            font-size: 1rem;
+            margin: 1.25rem 0 0.875rem;
+        }
+        
+        .vendor-form-preview .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .vendor-form-preview label {
+            font-size: 0.8rem;
+        }
+        
+        .vendor-form-preview .form-input,
+        .vendor-form-preview .form-select {
+            padding: 0.625rem 0.875rem;
+            font-size: 0.9rem;
+        }
+        
+        .vendor-form-preview .form-row {
+            gap: 0.75rem;
+        }
+        
+        /* Related Forms Grid */
+        .related-forms-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+    }
+
+    /* Tablets (768px and below) */
+    @media (max-width: 768px) {
+        .form-detail-section {
+            padding: 0 1rem;
+        }
+        
+        .form-preview-code {
+            gap: 1.5rem;
+        }
+        
+        /* Breadcrumb */
+        .form-breadcrumb {
+            font-size: 0.8rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0.75rem 0;
+        }
+        
+        .form-breadcrumb a {
+            font-size: 0.8rem;
+        }
+        
+        .form-breadcrumb span {
+            font-size: 0.8rem;
+        }
+        
+        /* Form Preview Card */
+        .form-preview-card {
+            padding: 0;
+        }
+        
+        .form-preview-header {
+            padding: 1.25rem;
+        }
+        
+        .form-preview-header h2 {
+            font-size: 1.25rem;
+        }
+        
+        .form-preview-subtitle {
+            font-size: 0.85rem;
+        }
+        
+        /* Live Preview */
+        .live-form-preview {
+            padding: 0 1rem 1.5rem;
+        }
+        
+        .preview-title {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .preview-frame {
+            padding: 1rem;
+            max-height: 450px;
+            overflow-y: auto;
+        }
+        
+        /* Vendor Form Preview */
+        .vendor-form-preview {
+            padding: 1.25rem;
+        }
+        
+        .vendor-form-preview h4 {
+            font-size: 0.95rem;
+            margin: 1rem 0 0.75rem;
+            padding-bottom: 0.375rem;
+        }
+        
+        .vendor-form-preview h4:first-of-type {
+            margin-top: 0;
+        }
+        
+        .vendor-form-preview .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .vendor-form-preview label {
+            font-size: 0.82rem;
+            margin-bottom: 0.4rem;
+        }
+        
+        .vendor-form-preview .form-input,
+        .vendor-form-preview .form-select {
+            padding: 0.65rem 0.875rem;
+            font-size: 0.875rem;
+            border-radius: 7px;
+        }
+        
+        .vendor-form-preview .form-row {
+            flex-direction: column;
+            gap: 0;
+        }
+        
+        .vendor-form-preview .form-row .form-group {
+            margin-bottom: 0.875rem;
+        }
+        
+        .vendor-form-preview .form-submit {
+            font-size: 0.9rem;
+            padding: 0.7rem 1.25rem;
+            border-radius: 7px;
+        }
+        
+        .vendor-form-preview .form-note {
+            font-size: 0.75rem;
+            padding: 0.75rem;
+        }
+        
+        /* Code Tabs Container */
+        .code-tabs-header {
+            padding: 1.25rem;
+        }
+        
+        .code-tabs-title {
+            font-size: 1.1rem;
+        }
+        
+        .code-tabs-subtitle {
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+        
+        .code-tabs {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            flex-wrap: nowrap;
+            flex-direction: row !important;
+            display: flex !important;
+            gap: 0;
+            border-bottom: 1px solid #2a2a2a;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .code-tabs::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .code-tab {
+            padding: 0.625rem 0.875rem;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+            width: auto !important;
+            min-width: fit-content !important;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .code-tab.active {
+            border-bottom-color: #00ff88;
+        }
+        
+        .code-block-header {
+            padding: 0.75rem 1rem;
+            flex-wrap: nowrap !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 0.75rem !important;
+        }
+        
+        .code-block-info {
+            flex-direction: row !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            flex-shrink: 1;
+            min-width: 0;
+        }
+        
+        .code-block-language {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            flex-shrink: 0;
+        }
+        
+        .code-block-desc {
+            font-size: 0.75rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .code-copy-btn {
+            font-size: 0.75rem;
+            padding: 0.4rem 0.75rem;
+            width: auto !important;
+            flex-shrink: 0;
+            white-space: nowrap;
+            min-width: fit-content !important;
+        }
+        
+        .code-block-content {
+            max-height: 350px;
+            min-height: 250px;
+            padding: 1rem;
+            overflow: auto !important;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .code-block-content pre {
+            font-size: 0.72rem;
+            line-height: 1.5;
+            white-space: pre !important;
+            word-wrap: normal !important;
+            overflow-x: auto !important;
+        }
+        
+        /* Instructions Card */
+        .form-instructions {
+            margin-top: 2rem;
+        }
+        
+        .instruction-card {
+            padding: 1.25rem;
+            gap: 1rem;
+        }
+        
+        .instruction-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            min-width: 2.5rem;
+            flex-shrink: 0;
+        }
+        
+        .instruction-content h4 {
+            font-size: 1rem;
+        }
+        
+        .instruction-content ol {
+            padding-left: 1.25rem;
+        }
+        
+        .instruction-content li {
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+        
+        .instruction-content code {
+            font-size: 0.78rem;
+            padding: 0.15rem 0.4rem;
+        }
+        
+        /* Related Forms */
+        .related-forms {
+            margin-top: 2.5rem;
+            padding: 1.5rem 0;
+        }
+        
+        .related-forms h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .related-forms-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+        
+        .related-form-card {
+            padding: 1.25rem;
+        }
+        
+        .related-form-card h4 {
+            font-size: 1rem;
+        }
+        
+        .related-form-card p {
+            font-size: 0.8rem;
+        }
+        
+        .related-form-link {
+            font-size: 0.8rem;
+        }
+    }
+
+    /* Mobile Phones (576px and below) */
+    @media (max-width: 576px) {
+        .form-detail-section {
+            padding: 0 0.75rem;
+        }
+        
+        /* Hero Content */
+        .hero-content {
+            padding: 2rem 1rem;
+        }
+        
+        .hero-badge {
+            font-size: 0.7rem;
+            padding: 0.3rem 0.75rem;
+        }
+        
+        .hero-title {
+            font-size: 1.75rem;
+        }
+        
+        /* Breadcrumb */
+        .form-breadcrumb {
+            font-size: 0.75rem;
+            padding: 0.5rem 0;
+        }
+        
+        .form-breadcrumb a,
+        .form-breadcrumb span {
+            font-size: 0.75rem;
+        }
+        
+        .form-breadcrumb svg {
+            width: 14px;
+            height: 14px;
+        }
+        
+        /* Form Preview Card */
+        .form-preview-card {
+            padding: 0.5rem !important;
+        }
+        
+        .form-preview-header {
+            padding: 1rem 0.75rem !important;
+        }
+        
+        .form-preview-header h2 {
+            font-size: 1.1rem !important;
+        }
+        
+        .form-preview-subtitle {
+            font-size: 0.78rem !important;
+        }
+        
+        /* Live Preview */
+        .live-form-preview {
+            padding: 0 0.5rem 1rem !important;
+        }
+        
+        .preview-title {
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .preview-frame {
+            padding: 0.5rem !important;
+            max-height: 350px !important;
+        }
+        
+        /* Vendor Form Preview */
+        .vendor-form-preview {
+            padding: 1rem;
+        }
+        
+        .vendor-form-preview h4 {
+            font-size: 0.9rem;
+            margin: 1rem 0 0.75rem;
+            padding-bottom: 0.35rem;
+        }
+        
+        .vendor-form-preview .form-group {
+            margin-bottom: 0.875rem;
+        }
+        
+        .vendor-form-preview label {
+            font-size: 0.78rem;
+            margin-bottom: 0.375rem;
+        }
+        
+        .vendor-form-preview .form-input,
+        .vendor-form-preview .form-select {
+            padding: 0.6rem 0.75rem;
+            font-size: 0.85rem;
+            border-radius: 6px;
+        }
+        
+        .vendor-form-preview .form-row {
+            flex-direction: column;
+            gap: 0;
+            margin-top: 0.25rem;
+        }
+        
+        .vendor-form-preview .form-row .form-group {
+            margin-bottom: 0.75rem;
+        }
+        
+        .vendor-form-preview .form-submit {
+            font-size: 0.85rem;
+            padding: 0.65rem 1rem;
+            border-radius: 6px;
+        }
+        
+        .vendor-form-preview .form-note {
+            font-size: 0.7rem;
+            padding: 0.625rem;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+        
+        .vendor-form-preview .form-note svg {
+            width: 12px;
+            height: 12px;
+            min-width: 12px;
+        }
+        
+        /* Code Tabs */
+        .code-tabs-header {
+            padding: 1rem;
+        }
+        
+        .code-tabs-title {
+            font-size: 1rem;
+        }
+        
+        .code-tabs-subtitle {
+            font-size: 0.75rem;
+        }
+        
+        .code-tabs {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            display: flex !important;
+            gap: 0;
+            position: relative;
+        }
+        
+        .code-tabs::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 30px;
+            background: linear-gradient(to right, transparent, rgba(13, 13, 13, 0.9));
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .code-tab {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.78rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+            width: auto !important;
+            min-width: fit-content !important;
+            text-align: center !important;
+        }
+        
+        .code-block-header {
+            padding: 0.625rem 0.875rem;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 0.5rem !important;
+        }
+        
+        .code-block-info {
+            flex-direction: row !important;
+            align-items: center !important;
+            gap: 0.35rem !important;
+        }
+        
+        .code-block-language {
+            font-size: 0.65rem !important;
+            padding: 0.15rem 0.4rem !important;
+        }
+        
+        .code-block-desc {
+            font-size: 0.7rem !important;
+        }
+        
+        .code-copy-btn {
+            width: auto !important;
+            flex-shrink: 0;
+            white-space: nowrap;
+            font-size: 0.7rem !important;
+            padding: 0.4rem 0.75rem !important;
+            min-width: fit-content !important;
+        }
+        
+        .code-block-content {
+            max-height: 300px;
+            min-height: 200px;
+            padding: 0.75rem;
+        }
+        
+        .code-block-content pre {
+            font-size: 0.68rem !important;
+            line-height: 1.4;
+        }
+        
+        /* Instructions */
+        .form-instructions {
+            margin-top: 1.5rem;
+        }
+        
+        .instruction-card {
+            padding: 1rem;
+            flex-direction: column !important;
+            gap: 0.75rem;
+            align-items: flex-start !important;
+        }
+        
+        .instruction-icon {
+            width: 2.25rem;
+            height: 2.25rem;
+            min-width: 2.25rem;
+        }
+        
+        .instruction-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .instruction-content h4 {
+            font-size: 0.95rem;
+        }
+        
+        .instruction-content ol {
+            padding-left: 1.1rem;
+        }
+        
+        .instruction-content li {
+            font-size: 0.8rem;
+            margin-bottom: 0.625rem;
+        }
+        
+        .instruction-content code {
+            font-size: 0.72rem;
+            padding: 0.12rem 0.35rem;
+        }
+        
+        /* Related Forms */
+        .related-forms {
+            margin-top: 2rem;
+            padding: 1.25rem 0;
+        }
+        
+        .related-forms h3 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .related-forms-grid {
+            grid-template-columns: 1fr !important;
+            gap: 0.625rem;
+        }
+        
+        .related-form-card {
+            padding: 1rem;
+        }
+        
+        .related-form-card h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .related-form-card p {
+            font-size: 0.78rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .related-form-link {
+            font-size: 0.78rem;
+        }
+    }
+
+    /* Very Small Mobile Phones (380px and below) */
+    @media (max-width: 380px) {
+        .form-detail-section {
+            padding: 0 0.5rem;
+        }
+        
+        .hero-title {
+            font-size: 1.5rem;
+        }
+        
+        .hero-badge {
+            font-size: 0.65rem;
+            padding: 0.25rem 0.625rem;
+        }
+        
+        .form-breadcrumb {
+            font-size: 0.7rem;
+        }
+        
+        .form-breadcrumb a,
+        .form-breadcrumb span {
+            font-size: 0.7rem;
+        }
+        
+        .form-breadcrumb svg {
+            width: 12px;
+            height: 12px;
+        }
+        
+        .form-preview-header {
+            padding: 0.875rem;
+        }
+        
+        .form-preview-header h2 {
+            font-size: 1.05rem;
+        }
+        
+        .form-preview-subtitle {
+            font-size: 0.75rem;
+        }
+        
+        .preview-frame {
+            padding: 0.625rem;
+        }
+        
+        /* Vendor Form Preview */
+        .vendor-form-preview {
+            padding: 0.875rem;
+        }
+        
+        .vendor-form-preview h4 {
+            font-size: 0.85rem;
+            margin: 0.875rem 0 0.625rem;
+        }
+        
+        .vendor-form-preview label {
+            font-size: 0.75rem;
+        }
+        
+        .vendor-form-preview .form-input,
+        .vendor-form-preview .form-select {
+            padding: 0.55rem 0.625rem;
+            font-size: 0.8rem;
+        }
+        
+        .vendor-form-preview .form-submit {
+            font-size: 0.8rem;
+            padding: 0.6rem 0.875rem;
+        }
+        
+        .vendor-form-preview .form-note {
+            font-size: 0.68rem;
+        }
+        
+        /* Code Tabs */
+        .code-tab {
+            padding: 0.45rem 0.625rem;
+            font-size: 0.72rem;
+        }
+        
+        .code-block-header {
+            padding: 0.5rem 0.75rem;
+        }
+        
+        .code-block-content {
+            padding: 0.625rem;
+        }
+        
+        .code-block-content pre {
+            font-size: 0.62rem !important;
+        }
+        
+        /* Related Forms */
+        .related-form-card {
+            padding: 0.875rem;
+        }
+        
+        .related-form-card h4 {
+            font-size: 0.9rem;
+        }
+        
+        .related-form-card p {
+            font-size: 0.75rem;
+        }
+        
+        .related-form-link {
+            font-size: 0.75rem;
+        }
+    }
+
+    /* Landscape Mode Fix for Mobile */
+    @media (max-width: 768px) and (orientation: landscape) {
+        .preview-frame {
+            max-height: 300px;
+        }
+        
+        .code-block-content {
+            max-height: 200px;
+            min-height: 150px;
+        }
+    }
+
+    /* Ensure smooth touch scrolling for code blocks and preview frames */
+    .preview-frame,
+    .code-block-content {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+
+    /* Ensure proper text sizing on iOS to prevent zoom on focus */
+    @supports (-webkit-touch-callout: none) {
+        .vendor-form-preview .form-input,
+        .vendor-form-preview .form-select {
+            font-size: 16px;
+        }
+        
+        @media (max-width: 576px) {
+            .vendor-form-preview .form-input,
+            .vendor-form-preview .form-select {
+                font-size: 15px;
+            }
+        }
+    }
+
+    /* Fix for long placeholder text overflow */
+    .vendor-form-preview .form-input::placeholder {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    /* Improve touch targets on mobile */
+    @media (max-width: 768px) {
+        .form-breadcrumb a {
+            padding: 0.25rem 0;
+        }
+        
+        .code-tab {
+            min-height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .code-copy-btn {
+            min-height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .related-form-card {
+            min-height: 4rem;
+        }
+    }
+
+    /* Code tabs container overflow fix */
+    .code-tabs-container {
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .code-tab-panel {
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .code-block-wrapper {
+        min-width: 0;
+        overflow: hidden;
+    }
 </style>
 @endpush
 
