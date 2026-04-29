@@ -1,0 +1,67 @@
+[2026-04-28 11:54:43] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 11:54:54] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 11:56:11] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 11:56:43] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 11:56:52] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 11:56:58] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 11:57:04] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 11:57:14] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 11:57:18] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 11:57:22] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 11:58:38] local.ERROR: Unable to prepare route [dashboard/forms/{formId}/submissions/{id}] for serialization. Another route has already been assigned name [dashboard.submissions.show]. {"exception":"[object] (LogicException(code: 0): Unable to prepare route [dashboard/forms/{formId}/submissions/{id}] for serialization. Another route has already been assigned name [dashboard.submissions.show]. at C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php:248)
+[stacktrace]
+#0 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php(209): Illuminate/Routing/AbstractRouteCollection->addToSymfonyRoutesCollection(Object(Symfony/Component/Routing/RouteCollection), Object(Illuminate/Routing/Route))
+#1 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php(246): Illuminate/Routing/AbstractRouteCollection->toSymfonyRouteCollection()
+#2 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php(193): Illuminate/Routing/RouteCollection->toSymfonyRouteCollection()
+#3 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php(164): Illuminate/Routing/AbstractRouteCollection->dumper()
+#4 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/RouteCacheCommand.php(109): Illuminate/Routing/AbstractRouteCollection->compile()
+#5 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/RouteCacheCommand.php(68): Illuminate/Foundation/Console/RouteCacheCommand->buildRouteCacheFile(Object(Illuminate/Routing/RouteCollection))
+#6 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Foundation/Console/RouteCacheCommand->handle()
+#7 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#8 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#9 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#10 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#11 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#12 C:/Git-folders/000form.com/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#13 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArrayInput), Object(Illuminate/Console/OutputStyle))
+#14 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(68): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArrayInput), Object(Symfony/Component/Console/Output/NullOutput))
+#15 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(41): Illuminate/Console/Command->runCommand('route:cache', Array, Object(Symfony/Component/Console/Output/NullOutput))
+#16 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php(53): Illuminate/Console/Command->callSilent('route:cache', Array)
+#17 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/OptimizeCommand.php(48): Illuminate/Console/Command->callSilently('route:cache')
+#18 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(40): Illuminate/Foundation/Console/OptimizeCommand->Illuminate/Foundation/Console/{closure}()
+#19 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/View/Components/Factory.php(60): Illuminate/Console/View/Components/Task->render('routes', Object(Closure))
+#20 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/OptimizeCommand.php(48): Illuminate/Console/View/Components/Factory->__call('task', Array)
+#21 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate/Foundation/Console/OptimizeCommand->handle()
+#22 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate/Container/BoundMethod::Illuminate/Container/{closure}()
+#23 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate/Container/Util::unwrapIfClosure(Object(Closure))
+#24 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate/Container/BoundMethod::callBoundMethod(Object(Illuminate/Foundation/Application), Array, Object(Closure))
+#25 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate/Container/BoundMethod::call(Object(Illuminate/Foundation/Application), Array, Array, NULL)
+#26 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate/Container/Container->call(Array)
+#27 C:/Git-folders/000form.com/vendor/symfony/console/Command/Command.php(341): Illuminate/Console/Command->execute(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#28 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony/Component/Console/Command/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Illuminate/Console/OutputStyle))
+#29 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(1102): Illuminate/Console/Command->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#30 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(356): Symfony/Component/Console/Application->doRunCommand(Object(Illuminate/Foundation/Console/OptimizeCommand), Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#31 C:/Git-folders/000form.com/vendor/symfony/console/Application.php(195): Symfony/Component/Console/Application->doRun(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#32 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony/Component/Console/Application->run(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#33 C:/Git-folders/000form.com/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
+#34 C:/Git-folders/000form.com/artisan(11): Illuminate/Foundation/Application->handleCommand(Object(Symfony/Component/Console/Input/ArgvInput))
+#35 {main}
+"} 
+[2026-04-28 11:58:57] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 12:03:42] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 12:04:36] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 12:21:56] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 12:22:06] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 12:22:10] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 12:22:14] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 12:22:23] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 12:22:34] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 12:22:40] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 12:23:04] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 12:23:12] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 12:24:38] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 12:27:28] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 12:33:42] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 12:37:54] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 12:40:48] local.ERROR: JWT verification error: Incorrect key for this algorithm  
+[2026-04-28 12:42:52] local.ERROR: JWT verification error: Incorrect key for this algorithm  

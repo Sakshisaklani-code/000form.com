@@ -443,6 +443,167 @@ tr.form-row-hidden { display: none; }
 .d3 { animation-delay: 0.12s; } .d4 { animation-delay: 0.17s; }
 .d5 { animation-delay: 0.22s; } .d6 { animation-delay: 0.27s; }
 .d7 { animation-delay: 0.32s; } .d8 { animation-delay: 0.36s; }
+
+/* ── Mobile Responsive ───────────────────────────────────────── */
+@media (max-width: 768px) {
+    * {
+        padding: 0 3px; margin: 0;
+    }
+    .dash-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .dash-title {
+        font-size: 2rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .stat-card {
+        padding: 1.2rem;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+    }
+    
+    .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+    
+    .project-header-left {
+        flex-wrap: wrap;
+    }
+    
+    .project-header-right {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .btn-g, .btn-ghost {
+        font-size: 0.72rem;
+        padding: 0.35rem 0.7rem;
+    }
+    
+    .table th, .table td {
+        padding: 0.6rem 0.5rem;
+        font-size: 0.72rem;
+    }
+    
+    .table th:nth-child(2),
+    .table td:nth-child(2) {
+        display: none;
+    }
+    
+    .search-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-pill {
+        max-width: 100%;
+    }
+    
+    .btn-new {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .s-div-label, .standalone-badge {
+        font-size: 0.7rem !important;
+    }
+    
+    .proj-name {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .dash-title {
+        font-size: 1.75rem;
+    }
+    
+    .dash-eyebrow {
+        font-size: 0.65rem;
+    }
+    
+    .stat-card {
+        padding: 1rem;
+    }
+    
+    .stat-value {
+        font-size: 1.35rem;
+    }
+    
+    .project-card-wrap {
+        border-radius: 14px;
+    }
+    
+    .table th:nth-child(3),
+    .table td:nth-child(3),
+    .table th:nth-child(5),
+    .table td:nth-child(5) {
+        display: none;
+    }
+    
+    .project-header-right {
+        gap: 0.4rem;
+    }
+    
+    .pill-count {
+        font-size: 0.55rem;
+        padding: 0.15rem 0.5rem;
+    }
+    
+    .mono-code {
+        font-size: 0.7rem;
+    }
+    
+    .empty-state-card {
+        padding: 3rem 1rem;
+    }
+    
+    .empty-icon-wrap {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .projects-stack {
+        gap: 1.2rem;
+    }
+}
+
+/* ── Touch improvements ─────────────────────────────────────── */
+@media (hover: none) and (pointer: coarse) {
+    .btn-g, .btn-ghost, .btn-new, .t-link, .proj-name {
+        padding: 0.5rem 0.6rem;
+        min-height: 12px;
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    .search-pill input {
+        min-height: 44px;
+    }
+    
+    .table td, .table th {
+        padding: 0.7rem 0.8rem;
+    }
+}
 </style>
 
 <div class="dash">
