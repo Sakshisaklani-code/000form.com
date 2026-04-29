@@ -4,3 +4,4 @@ prod-ca-2021.crt
 /bootstrap/cache/config.php
 /bootstrap/cache/routes.php
 /bootstrap/cache/services.php
+/storage/framework/

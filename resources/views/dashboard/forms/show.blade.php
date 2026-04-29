@@ -90,6 +90,7 @@
 .btn-ghost {
     display: inline-flex; align-items: center; gap: 0.35rem;
     padding: 0.55rem 1rem;
+    min-height: 12px;
     font-family: var(--sans); font-size: 0.8rem; font-weight: 500;
     border-radius: 999px; text-decoration: none;
     background: rgba(255,255,255,0.03); color: var(--t2);
@@ -119,7 +120,7 @@
 .alert {
     display: flex; align-items: center; gap: 0.75rem;
     padding: 0.9rem 1.1rem; border-radius: 14px;
-    margin-bottom: 1.25rem; font-size: 0.875rem; font-weight: 500;
+    margin-bottom: 1.25rem; font-size: 0.8rem; font-weight: 500;
     position: relative; z-index: 1;
 }
 .alert-warning {
@@ -158,7 +159,7 @@
 .strip-method.id   { background: rgba(99,102,241,0.1); color: var(--ind); border: 1px solid rgba(99,102,241,0.2); }
 .strip-url {
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-    flex: 1; min-width: 0; font-size: 0.85rem;
+    flex: 1; min-width: 0; font-size: 0.7rem;
     font-family: var(--mono); color: var(--t2);
 }
 .strip-note { font-size: 0.75rem; color: var(--t3); flex-shrink: 0; }
@@ -504,11 +505,13 @@
 }
 .code-tabs::-webkit-scrollbar { display: none; }
 .code-tab {
+    min-height: 14px!important;
     padding: 0.4rem 0.9rem;
     background: rgba(255,255,255,0.03); border: 1px solid var(--border);
     border-radius: 8px; font-family: var(--sans); font-size: 0.78rem; font-weight: 500;
     color: var(--t3); cursor: pointer; transition: all 0.2s;
     white-space: nowrap; flex-shrink: 0;
+    font-size: 0.7rem;
 }
 .code-tab:hover  { background: rgba(255,255,255,0.07); color: var(--t1); }
 .code-tab.active { background: rgba(0,255,136,0.1); color: var(--g); border-color: rgba(0,255,136,0.25); }
@@ -524,7 +527,8 @@
 .code-lang { color: var(--t3); font-family: var(--mono); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; }
 .code-copy {
     background: rgba(255,255,255,0.06); color: var(--t2);
-    border: 1px solid var(--border); padding: 0.25rem 0.7rem;
+    min-height: 12px!important;
+    border: 2px solid var(--border); padding: 0.25rem 0.7rem;
     border-radius: 6px; font-family: var(--sans); font-size: 0.72rem; font-weight: 500;
     cursor: pointer; transition: all 0.18s;
 }
